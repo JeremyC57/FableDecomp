@@ -34,6 +34,12 @@ def tsv(p):
     return [l.split("\t") for l in open(p, encoding="utf-8").read().splitlines()[1:] if l.strip()]
 
 
+# The anonymous-namespace tag ?A0x<8 hex>@ is a hash VC7.1 derives per translation unit (from the source path), so two rows
+# naming the same file-local global or function spell it with different hashes; compare spellings with it normalised.
+ANON = re.compile(r"\?A0x[0-9a-fA-F]{8}@")
+def anon(s): return ANON.sub("?A0x@", s)
+
+
 def main():
     av = sys.argv[1:]
     args = [a for i, a in enumerate(av) if not a.startswith("--") and not (i and av[i - 1] == "--extra")]
@@ -63,9 +69,9 @@ def main():
         other = sorted(x for x in sym2addr.get(s, ()) if x != a)
         if other: fails.append(("SYMBOL_ELSEWHERE", a, s + " bound at " + ",".join(other[:5])))
         here = addr2sym.get(a, set())
-        proven = sorted(x for x in here if x in pdb and x != s)
+        proven = sorted(x for x in here if x in pdb and anon(x) != anon(s))
         if proven: fails.append(("ADDRESS_PROVEN", a, proven[0]))
-        diff = sorted(x for x in here if x != s)
+        diff = sorted(x for x in here if anon(x) != anon(s))
         if diff and not proven: fails.append(("OTHER_SPELLING", a, " | ".join(diff[:4])))
     for k in fails: print("FAIL", *k, sep="\t")
     print("descriptive_check: %d lines, %d FAIL" % (len(lines), len(fails)))

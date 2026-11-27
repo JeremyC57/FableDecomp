@@ -29,6 +29,11 @@ private:
 #endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 public:
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+EWeaponClass GetWeaponClass() const;
+ bool IsAbleToBeUsedToBlock(const CThing&,const CThing*,const CThing*) const;
+ bool IsBlockBrokenOnBlock(const CThing&,const CThing*,const CThing*) const;
+#endif
 long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
 #endif
 public:

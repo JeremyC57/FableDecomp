@@ -67,6 +67,13 @@ public:
     void CreateWorldLevelWad(const CWideString&,const CWideString&);
     void SetAsUsingWAD(const CWideString&);
 #endif
+#ifdef FABLE_RETAIL_LEVEL_LOADER_OBJECT_LOAD_PASS29
+    void ActivateNavMap(long);
+    void PostLoadInitialise(long);
+    void ActivateTopology(long);
+    void SetMapAsLoading(long, bool);
+    void SetRegionAsLoaded(long, const CCharString&);
+#endif
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();
     virtual void DeleteAllRegions();

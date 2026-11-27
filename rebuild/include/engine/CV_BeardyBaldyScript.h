@@ -44,6 +44,9 @@ public:
     void WatchForNewBeard();
     void WatchForNewTash();
     void GoTalkToBeardyBaldy();
+#ifdef FABLE_RETAIL_BEARDY_RESET_HAIR_WATCH_PASS29
+    void ResetHairWatch();
+#endif
 #endif
     void ResetRandomSpeechTime();                                        // 0x00E53C70
     void SetWanderPointAndDistance(const CScriptThing&, const C3DVector&); // 0x00E53F60

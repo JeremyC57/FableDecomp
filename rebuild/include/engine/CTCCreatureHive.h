@@ -9,6 +9,9 @@
 #include "engine/CTCBase.h"
 class CTCCreatureHive : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_GENERATOR_CREATE_PASS29
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){ return TCI_CREATURE_HIVE; }
+#endif
     void Open();                                                         // 0x0077D230
 private:
     bool Animating;                                                      // +0x0c
@@ -28,5 +31,5 @@ private:
 public:
 #endif // FABLE_RETAIL_CTCCREATUREHIVE_VSLOTS2
 };
-FABLE_STATIC_ASSERT(sizeof(CTCCreatureHive) == 0x10);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CTCCreatureHive) == 0x10);
 #endif

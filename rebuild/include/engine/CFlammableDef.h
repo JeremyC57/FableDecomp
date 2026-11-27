@@ -8,12 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CSubDefClassBase.h"
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+#include "engine/CFireEffectCreationSet.h"
+#endif
 class CFlammableDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+    void GetAllFireHelpers(std::vector<CDefString>&) const;
+    bool GetEffectAtHelperPoint(const CCharString&, long&) const;
+    bool GetEffectAtHelperPoint(CDefString, long&) const;
+#endif
     long  FireResistance;                                                // +0x28
     float MaxDamageCaused;                                               // +0x2c
     float FireDamagePerCycle;                                            // +0x30
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+    float FireDamagePeriod;
+    CFireEffectCreationSet EffectCreationSet;
+#else
     float FireDamagePeriod;                                              // +0x34
+#endif
 #ifdef FABLE_RETAIL_CFLAMMABLEDEF_RTTI_DECLS
     // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
     // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual

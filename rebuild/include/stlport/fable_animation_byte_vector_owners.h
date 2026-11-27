@@ -22,9 +22,23 @@ __declspec(noinline)
 void std::vector<unsigned char>::_M_insert_overflow(iterator position,const unsigned char& x,const std::__true_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     unsigned char* newStart=this->_M_end_of_storage.allocate(len);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+// Inline-budget: the retail byte-vector owner calls the shared pointer-copy routine here.
+#pragma inline_depth(0)
+#endif
     unsigned char* newFinish=(unsigned char*)__copy_trivial(this->_M_start,position,newStart);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+#pragma inline_depth()
+#endif
     newFinish=fill_n(newFinish,fillLength,x);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+// Inline-budget: the retail byte-vector owner calls the shared pointer-copy routine here.
+#pragma inline_depth(0)
+#endif
     if(!atEnd) newFinish=(unsigned char*)__copy_trivial(position,this->_M_finish,newFinish);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+#pragma inline_depth()
+#endif
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
 template<> inline void std::vector<unsigned char>::_M_fill_insert(
@@ -35,14 +49,28 @@ template<> inline void std::vector<unsigned char>::_M_fill_insert(
             const size_type elems_after=this->_M_finish-position;
             value_type* old_finish=this->_M_finish;
             if(elems_after>n) {
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+// Inline-budget: the retail byte-vector owner calls the shared pointer-copy routine here.
+#pragma inline_depth(0)
+#endif
                 __copy_trivial(this->_M_finish-n,this->_M_finish,this->_M_finish);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+#pragma inline_depth()
+#endif
                 this->_M_finish+=n;
                 __copy_trivial_backward(position,old_finish-n,old_finish);
                 fill(position,position+n,x_copy);
             } else {
                 fill(this->_M_finish,this->_M_finish+(n-elems_after),x_copy);
                 this->_M_finish+=n-elems_after;
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+// Inline-budget: the retail byte-vector owner calls the shared pointer-copy routine here.
+#pragma inline_depth(0)
+#endif
                 __copy_trivial(position,old_finish,this->_M_finish);
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+#pragma inline_depth()
+#endif
                 this->_M_finish+=elems_after;
                 fill(position,old_finish,x_copy);
             }
@@ -53,7 +81,12 @@ template<> inline void std::vector<unsigned char>::_M_fill_insert(
 #pragma optimize("",on)
 #pragma optimize("s",on)
 #endif
-template<> inline void std::vector<unsigned char>::resize(size_type n,const unsigned char& x) { if (n<size()) erase(begin()+n,end()); else insert(end(),n-size(),x); }
+template<> inline
+#if defined(FABLE_RETAIL_STLP_DEFINITION_STREAM_BYTE_COPIES) && defined(_MSC_VER)
+// Inline-budget: the framed one-argument resize calls this retail specialization at 00486189.
+__declspec(noinline)
+#endif
+void std::vector<unsigned char>::resize(size_type n,const unsigned char& x) { if (n<size()) erase(begin()+n,end()); else insert(end(),n-size(),x); }
 #if defined(_MSC_VER)
 #pragma optimize("y",off)
 #endif

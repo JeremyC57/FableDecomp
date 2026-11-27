@@ -12,6 +12,9 @@ enum EEnginePrimitiveBlendMode;
 enum EEnginePrimitiveBlendOp;
 class CEnginePrimitiveLine:public CEnginePrimitive {
 public:
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+ CEnginePrimitiveLine() : CEnginePrimitive(ENGINE_PRIMITIVE_LINE,0,(EEngineInterpolationSet)0), UseZBuffer(true) {}
+#endif
 #if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG)
  // Original donor01d06250: base(TYPE_LINE,id,set), Start/End/Colour copy ctors, then these scalar initialisers.
  // Real visible body reads every reference input; no writes through input references.
@@ -42,5 +45,5 @@ public:
  EEnginePrimitiveBlendOp BlendOp;
  bool UseZBuffer;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveLine)==60);
+FABLE_STATIC_ASSERT_AT(45, sizeof(CEnginePrimitiveLine)==60);
 #endif

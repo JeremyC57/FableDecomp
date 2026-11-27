@@ -9,11 +9,16 @@
 namespace NAnimationEvents {
 class CEvent {
 public:
+#ifdef FABLE_RETAIL_ANIMATION_EVENTS_LOAD_PASS29
+    CEvent() {}
+    CEvent(unsigned long index,float time,bool externally_imported,bool stop_event)
+        : Index(index), ExternallyImported(externally_imported), StopEvent(stop_event), Time(time) {}
+#endif
     unsigned long Index : 30;                                            // +0x00 bits 0..29
     unsigned long ExternallyImported : 1;                                // +0x00 bit 30
     unsigned long StopEvent : 1;                                         // +0x00 bit 31
     float Time;                                                          // +0x04
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NAnimationEvents::CEvent) == 8);
+FABLE_STATIC_ASSERT_AT(18, sizeof(NAnimationEvents::CEvent) == 8);
 #endif // FABLE_ENGINE_NANIMATIONEVENTS_CEVENT_H

@@ -7,6 +7,11 @@ namespace NGraphicAppearance {class CPrimitive;}
 class CTCSkeletalMorph;
 // Both original complete records; retail arrays shrink16->12 and native fields10/18/1c/28.
 class CTCRandomAppearanceMorph : public CTCAppearanceMorphBase, public NGraphicAppearance::CAGraphicAppearanceComponent {
+#ifdef FABLE_RETAIL_DECAPITATE_PASS29
+public:
+ static CCharString FABLE_FASTCALL StatGetClassTypeName(){return CCharString("CTCRandomAppearanceMorph");}
+ void UpdateDecapitationStatus();
+#endif
 private:
  void UpdateMorphSet();
  CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;
@@ -14,5 +19,5 @@ private:
  std::vector<NGraphicAppearance::CPrimitive*> PrimHandles;
  CTCSkeletalMorph* PTCSkeletalMorph;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCRandomAppearanceMorph)==0x2c);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CTCRandomAppearanceMorph)==0x2c);
 #endif

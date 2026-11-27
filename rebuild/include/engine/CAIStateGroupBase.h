@@ -72,6 +72,15 @@ protected:
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_WAITMESSAGE
     template<class Filter> EAIActionReturn AIAction_WaitForMessageCallback(EAIActionRepeat,const Filter&,const CMessageEvent**);
 #endif
+
+#ifdef FABLE_RETAIL_APPRENTICE_PRACTICE_PASS29
+protected: void CreateItem(const CCharString&, const CCharString&);
+    void DestroyItem(const CCharString&);
+#endif
+#ifdef FABLE_RETAIL_MOVETOTHINGPROXIMITY_PASS29
+    void SetThingToNotAvoid(const CThing*);
+    void SetProximityForDirectApproach(float);
+#endif
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_SETPUSHABLEBYHERO
     // Nested opt-in (wf5 row 0x009692C0 CAIStateGroup_TavernKeeper::ReceivePayment): Ego_r.pdb / FableWin.pdb

@@ -5,6 +5,9 @@
 // ?Reset@CBankStateBlock@@QAEXPBV1@@Z; the derived vtables (CGraphicBankStateBlock 0x0129C888) put GetDefault at slot 1, CreateCRC at
 // slot 2 and the protected Set at slot 3 (rtti-vtables.tsv, manifest labels of 0x009FCEF0 / 0x00A00940 / 0x009FD020). No data members.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_MESHBANK_STATE_CALCCRC_PASS29
+#include "engine/CCRC.h"
+#endif
 class CBankStateBlock {
 public:
     CBankStateBlock() { }
@@ -13,7 +16,10 @@ public:
     virtual unsigned long CreateCRC() = 0;                               // slot 2
     void Reset(const CBankStateBlock* block);                            // ?Reset@CBankStateBlock@@QAEXPBV1@@Z
 protected:
+#ifdef FABLE_RETAIL_MESHBANK_STATE_CALCCRC_PASS29
+    unsigned long CalcCRC(void* data, unsigned long length) { return CCRC::Calc(0, data, length); }
+#endif
     virtual void Set(const CBankStateBlock* block) = 0;                  // slot 3
 };
-FABLE_STATIC_ASSERT(sizeof(CBankStateBlock) == 0x4);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CBankStateBlock) == 0x4);
 #endif // FABLE_ENGINE_CBANKSTATEBLOCK_H

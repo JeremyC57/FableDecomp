@@ -106,6 +106,10 @@ public:
     }
 #endif
 };
+#if defined(FABLE_RETAIL_INVENTORY_ITER_CALL_PASS29) && defined(_MSC_VER)
+// Inline-budget: native 005b1704 and the expanded increment at 005a33f9 both call the global member.
+template<> __declspec(noinline) inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_increment(_Rb_tree_node_base*);
+#endif
 #ifdef FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
 // The same library specialization is selected from a size-built compiland at 004292C0.
 #ifdef _MSC_VER
@@ -555,7 +559,12 @@ private:
         return y;
     }
 #else
+#ifdef FABLE_RETAIL_INVENTORY_TYPED_LOWER_BOUND_PASS29
+    // STLport 4.6.2 _tree.h returns the typed node. The inventory map consumes its pair at the native lower bound.
+    _Link_type _M_lower_bound(const K& key) const;
+#else
     _Rb_tree_node_base* _M_lower_bound(const K& key) const;
+#endif
     _Rb_tree_node_base* _M_upper_bound(const K& key) const;
 #endif
 public:
@@ -675,6 +684,10 @@ public:
         }
         return iterator(y);
     }
+#if defined(FABLE_RETAIL_STLP_POST_DEED_RANGE_OUTLINE) && !defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+// Inline-budget: key erase calls both equal_range and range erase in its native 83-byte owner.
+    __declspec(noinline)
+#endif
 #if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
     // Nested opt-in (chunk 879, row 0x00502E90 CWorldMap::PopulateRegionWithVillagers; re-based by agent wfE10): that TU expands
     // erase(const K&) in place (0x005034BE, its distance count dead) and CALLS both halves out of line (equal_range 0x00514730, pair
@@ -694,6 +707,10 @@ public:
         }
         return const_iterator(y);
     }
+#endif
+#if defined(FABLE_RETAIL_STLP_POST_DEED_RANGE_OUTLINE) && !defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
+// Inline-budget: key erase calls both equal_range and range erase in its native 83-byte owner.
+    __declspec(noinline)
 #endif
 #if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
     __declspec(noinline)
@@ -1045,6 +1062,9 @@ public:
     iterator find(const K& key){return _M_t.find(key);}
     pair<iterator,bool> insert(const value_type& value){return _M_t.insert_unique(value);}
     iterator insert(iterator position,const value_type& value){return _M_t.insert_unique(position,value);}
+#ifdef FABLE_RETAIL_EXPERIENCE_ORB_CREATE_PASS29
+    const_iterator lower_bound(const K& key)const{return _M_t.lower_bound(key);}
+#endif
     iterator lower_bound(const K& key){return _M_t.lower_bound(key);}
     Compare key_comp()const{return _M_t.key_comp();}
     const_iterator find(const K& key)const{return _M_t.find(key);}
@@ -1398,8 +1418,12 @@ template<>
 CUIStateMap::iterator CUIStateMap::insert(iterator, const value_type&);
 
 #pragma optimize("y", off)
-template<> inline
-NUISystem::CUIState& CUIStateMap::operator[](const unsigned long& k)
+template<>
+#ifdef FABLE_RETAIL_STLP_CUISTATE_MAP_GETSIZE_OUTOFLINE
+// GetSize calls the native 0042d5b1 owner for each state lookup.
+FABLE_STLP_NOINLINE
+#endif
+inline NUISystem::CUIState& CUIStateMap::operator[](const unsigned long& k)
 {
     iterator i = lower_bound(k);
     if (i == end() || key_comp()(k, (*i).first)) {

@@ -10,7 +10,7 @@
 #include "engine/CEnginePrimitive.h"
 #include "engine/C2DBoxF.h"
 #include "engine/C3DOrientationInterpolator.h"
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23) || defined(FABLE_RETAIL_DRAW_TYPED_ANIMATION)
 #include "engine/C3DAnimationInterpolator.h"
 #endif
 #include "engine/C3DBoundingSphere.h"
@@ -28,7 +28,7 @@ public:
     unsigned long MeshIndex;                                             // +0x1c
     unsigned char Alpha;                                                 // +0x20
     C3DOrientationInterpolator Orientation;                              // +0x24
-#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DANIMATINGMESH_IMPLICIT_DTOR_PASS23) || defined(FABLE_RETAIL_DRAW_TYPED_ANIMATION)
     C3DAnimationInterpolator Anim;
 #else
     unsigned char Anim[0x14];                                            // +0x58 C3DAnimationInterpolator

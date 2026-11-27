@@ -175,6 +175,10 @@ public:
 #ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
 private:
     bool ReadEntryList(CFileDataInputStream& is,unsigned long max_index,unsigned long entry_count);
+#ifdef FABLE_RETAIL_CBANKFILE_READFILEINFORMATION_PASS29
+    bool ReadFileInformation(bool);
+    bool ReadRecoveryFile(unsigned long);
+#endif
     void PostInitEntries();
 public:
     long GetSize() const { return Size; }

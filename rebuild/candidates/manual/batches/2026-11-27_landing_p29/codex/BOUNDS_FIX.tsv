@@ -1,0 +1,4 @@
+row	old_end_exclusive	correct_end_exclusive	evidence
+00f36d30	00f36ed3	00f36eb1	ret at +180h; 15 padding bytes then independent StartResourceUse and EndResourceUse each returning with four-byte stack cleanup. Corrected leaf re-cut from executable using cut_row.py and compared.
+00c72200	00c72502	00c724e5	741-byte SDK COFF section includes both local jump tables. Then 11 padding bytes precede a separate getter at 00c724f0 ending with ret 8. Verified with cut_row.py.
+00b5c120	00b5c455	00b5c364	580-byte leaf followed by twelve padding bytes and ten separate setters. See rows/00b5c120/EXTENT.tsv.

@@ -40,6 +40,9 @@ public:
  // FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE (GetCRC). No layout change.
  void SetCurrentGroupName(const CCharString& name) { Group = name; GroupCRC = name.GetCRC(); }
 #endif
+#ifdef FABLE_RETAIL_DRAGONBASE_DONOR_PROTECTED_PASS29
+private:
+#endif
  CCharString Group;
  unsigned long GroupCRC;
 };

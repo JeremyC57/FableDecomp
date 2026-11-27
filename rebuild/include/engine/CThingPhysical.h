@@ -100,7 +100,12 @@ public:
     // (static fastcall), inline in retail: the rough-area scan's type test `and edx,3 ; cmp dl,3` (0x0063F92B). Body only.
     static unsigned long FABLE_FASTCALL StatGetTypeFlags() { return 3; }
 #endif
+#ifdef FABLE_RETAIL_GUARD_HEALTH_PRECISION_PASS29
+    // 007b3421 compares the single-precision value directly with the representation of 1.0f.
+    float GetHealth() const { return static_cast<float>(static_cast<double>(Health)); }
+#else
     float GetHealth() const { return Health; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_HEALTHMODIFIERS
     // Opt-in (hand3c3, row 0x0057C4F1 CTCHeroStats::ApplyBonusItemEffects): Ego_r.pdb / Ego_d.pdb ?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z
     // (retail 0x006A6290, landed with this Leaf) and ?SetMaxHealth@CThingPhysical@@QAEXM_N@Z (retail 0x006A5260, landed). Declarations only.

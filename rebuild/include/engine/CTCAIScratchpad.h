@@ -12,6 +12,11 @@
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_MINION_FOLLOW_UPDATE_PASS29
+    CCharString GetTargetName() const { return TargetName; }
+    EScriptingStateGroups GetScriptingStateGroup() const { return ScriptingStateGroup; }
+    float GetFollowDistance() const { return FollowDistance; }
+#endif
 #ifdef FABLE_RETAIL_DRINK_FIXTURE_PASS27
 public:
     CTCAIScratchpad(CThing&);
@@ -55,6 +60,9 @@ public:
  static bool BettingActive;
  static long BettingAmount;
  static bool CountBetMoneyDown;
+#endif
+#ifdef FABLE_RETAIL_AVOID_REGION_FRAME_PASS29
+ void SetTargetingDistanceOffset(float distance){TargetingDistanceOffset=distance;}
 #endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_AI_SCRATCHPAD;}
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_TARGETINGOFFSET

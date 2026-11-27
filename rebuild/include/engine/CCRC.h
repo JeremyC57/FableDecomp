@@ -6,7 +6,12 @@
 #include "rebuild_abi.h"
 #if defined(FABLE_RETAIL_CCRC_ORIGINAL_TYPED_LOOP_PASS27)
 // Original FableWin 0186D2D0 and Ego_d local records agree on each typed intermediate.
+#ifdef FABLE_RETAIL_CRC32TAB_PASS29
+// Ego_r and FableWin ?CRC32TAB@@3QBKB; all 256 values agree with retail 0129A168.
+extern const unsigned long CRC32TAB[256];
+#else
 extern unsigned long g_CRCTable[256];
+#endif
 class CCRC {
 public:
     static unsigned long FABLE_FASTCALL Calc(unsigned long lOldCRC32, const void* pData, unsigned long lNumOfBytes) {
@@ -18,7 +23,11 @@ public:
         for (lI = 0; lI < lNumOfBytes; ++lI) {
             lX = pRun[lI] ^ (lNewCRC32 & 0xff);
             lNewCRC32 >>= 8;
+#ifdef FABLE_RETAIL_CRC32TAB_PASS29
+            lNewCRC32 ^= CRC32TAB[lX];
+#else
             lNewCRC32 ^= g_CRCTable[lX];
+#endif
         }
         return lNewCRC32;
     }

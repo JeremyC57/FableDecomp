@@ -68,6 +68,9 @@ public:
     virtual void GlobalUpdate(bool paused);
 #endif
     void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
+#ifdef FABLE_RETAIL_REGION_DRAW_PASS29
+    bool IsOpen() const {return ReallyActive;}
+#endif
     bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuitting() const { return Quitting; }                         // FableWin ?IsQuitting@CTCQuestCompletionUI@@QBE_NXZ
     bool IsQuittingFadeOut() const { return QuittingFadeOut; }           // FableWin ?IsQuittingFadeOut@CTCQuestCompletionUI@@QBE_NXZ

@@ -52,7 +52,28 @@ public:
     // pushes the record's address, 0x00416F79 `lea eax,[ebp-40h] ; push eax`). Declaration only.
     void UpdateChecksum(long time_stamp, const CChecksum& checksum);    // 0x009F4A90
 #endif
-#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
+#if defined(FABLE_RETAIL_CINPUTMANAGER_UPDATE_PASS29)
+protected:
+    bool AddEventToStore(const CInputEvent&);
+    void EmptyEventStore();
+    void LoadEventPackage();
+    void SaveEventPackage();
+    void SetEventsFromEventPackage(const CInputEventPackage&);
+public:
+    unsigned long CalculateInternalChecksum() const;
+protected:
+    std::vector<CInputEvent> ProcessedEvents, EventStore;
+    long NoStoredEvents, NoEventScansRunning;
+    boost::scoped_ptr<CMouse> PMouse;
+    boost::scoped_ptr<CKeyboard> PKeyboard;
+    std::vector<CCountedPointer<CJoystick> > PJoysticks;
+    bool Loading, Saving;
+    CChecksum Checksum;
+    std::vector<CInputEventPackage> LoadedEventPackages;
+    long CurrentFilePackageIndex, TimeStamp;
+    CDiskFileWin32 PackageFile;
+    unsigned long NoUpdates;
+#elif defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
 protected:
     unsigned char _pad_0x04[0x2c-4];
     std::vector<CCountedPointer<CJoystick> > PJoysticks;

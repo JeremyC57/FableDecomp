@@ -22,11 +22,17 @@ public:
     virtual void PerformAction();                                         // slot 3 0x0084B420 ?PerformAction@CCreatureAction_FillBucket@@UAEXXZ
     virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0084C5C0 ?Clone@CCreatureAction_FillBucket@@UBEPAVCCreatureActionBase@@XZ
 public:
-    unsigned char PAICreature[0x8];                          // +0xa8 CIntelligentPointer<CThingAICreature>
+#ifdef FABLE_RETAIL_GOTOWELL_PASS29
+    CCreatureAction_FillBucket(CThingAICreature& creature);
+    CIntelligentPointer<CThingAICreature> PAICreature;
+#else
+    unsigned char PAICreature[0x8];
+#endif
+                          // +0xa8 CIntelligentPointer<CThingAICreature>
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_FillBucket) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_FillBucket, PAICreature) == 0xa8);
+FABLE_STATIC_ASSERT_AT(28, sizeof(CCreatureAction_FillBucket) == 0xb0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CCreatureAction_FillBucket, PAICreature) == 0xa8);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_FillBucket {

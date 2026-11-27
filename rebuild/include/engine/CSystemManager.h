@@ -47,7 +47,13 @@ private:
  // `mov ebp,[eax+84h]` after GFGetSystemManager 0x009A4EC0; the landed ~CText 0x0054F6E0 reads the same word), so the unnamed
  // counted-pointer composite the ctor 0x009A7440 zeroes (`[esi+7Ch]` / `[esi+80h]`) sits before PFontManager, after
  // PGraphicBankManager +0x6C and PMeshBankManager +0x74 (landed CGraphicBankManager / CMeshBankManager readers). Same size.
- unsigned char _pad_007c[8]; // Native ctor009a7440 additional unaccessed composite; original name not recovered.
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+ // Descriptive: retail-only field; native system constructor clears the pair and ParseSubtitles reads its Data at +0x7c.
+ CCountedPointer<class CASoundManager> RetailSoundManager007C;
+#else
+ unsigned char _pad_007c[8];
+#endif
+ // Native ctor009a7440 additional unaccessed composite; original name not recovered.
  CCountedPointer<CFontManager> PFontManager;                            // +0x84 (retail)
 #else
  CCountedPointer<CFontManager> PFontManager;
@@ -110,6 +116,10 @@ CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 #endif
 // Chunk 749 (the CText destructor TU of rows 0x00550010 / 0x00550020): Ego_r.pdb ?GetFontManager@CSystemManager@@QAEPAVCFontManager@@XZ,
 // inline in retail (~CText 0x0054F6E0 reads PFontManager +0x84 in place).
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+ // Descriptive: inline accessor; VC10 removed this retail member.
+ CASoundManager* GetRetailSoundManager007C() { return RetailSoundManager007C.Get(); }
+#endif
  CFontManager* GetFontManager(){return PFontManager.Get();}
 #endif
 #if defined(FABLE_RETAIL_CSYSTEMMANAGER_APPACTIVE) && !defined(FABLE_RETAIL_CSYSTEMMANAGER_FOCUS)

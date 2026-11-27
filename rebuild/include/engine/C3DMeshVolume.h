@@ -13,6 +13,9 @@ public:
     C3DMeshVolume();
     C3DMeshVolume(const class C3DMeshFileConvexVolumeChunk&, class CMovableResourceMemoryPool*);
 #endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+    CCharString GetName() const { return Name; }
+#endif
     const CContainmentVolume* GetConvexVolume() const { return ConvexVolume.Get(); }
 private:
     CCharString                         Name;           // +0x00

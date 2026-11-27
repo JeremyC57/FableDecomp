@@ -218,6 +218,13 @@ protected:
     // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
     // ?UpdateActionAnimation@CCreatureActionBase@@QAEXXZ (public, out of line in retail at 0x00694890). Declaration only.
 public:
+#ifdef FABLE_RETAIL_UPDATE_ACTION_ANIMATION_PASS29
+private:
+    void InitialiseActionPause();
+    void InitialiseActionTime();
+    void InitialiseActionEvents();
+public:
+#endif
     void UpdateActionAnimation();                                        // 0x00694890
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
@@ -248,6 +255,9 @@ protected:
     // retail 0x00692990 after 0x00692980), out of line in retail (`add ecx,8 ; call GetPItem ; mov ecx,eax ; jmp
     // CThing::PeekThingSearchTools 0x004C7A60`). Declaration only.
 protected:
+#ifdef FABLE_RETAIL_DAMAGE_ACTION_PASS29
+    class CWorldMap& GetWorldMap();
+#endif
     const CThingSearchTools& PeekThingSearchTools() const;              // 0x00692990
 #endif
 #if defined(FABLE_RETAIL_CCREATUREACTIONBASE_HASPERFORMEDACTION) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
@@ -304,6 +314,12 @@ public:
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
 protected:
  CIntelligentPointer<CThingCreatureBase> PCreature;
+#ifdef FABLE_RETAIL_DRAGON_SWOOP_PASS29
+public:
+    // Ego_r 00518F30 and FableWin 01DB9290, called by DragonSwoop::FrameUpdate.
+    float GetPercentageComplete() const;
+protected:
+#endif
  long TotalTime;
  long ActionTime;
  long AnimDelayTime;

@@ -1,6 +1,9 @@
 #if !defined(FABLE_ENGINE_CTCCREATUREMODEMANAGER_H) && !defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS)
 #define FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+#include "engine/CAnimFilterOfGroup.h"
+#endif
 #ifdef FABLE_RETAIL_CMODEBASE_ORIGINAL_GETTYPE_PASS26
 #include "engine/NCreatureMode.h"
 #endif
@@ -82,7 +85,11 @@ public:
 #endif
     protected:
         CThing& ParentThing;
+#ifdef FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+        CAnimFilterOfGroup WeaponBasedFilter;
+#else
         unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.
+#endif
         long FramesBeforeRemovingSelf;bool Active;
     };
 #ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY

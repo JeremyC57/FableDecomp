@@ -10,6 +10,14 @@
 namespace NUISystem {
 class CRedefinerList : public CScrollableList {
 public:
+#ifdef FABLE_RETAIL_REDEFINER_LIST_GENERATE_PASS29
+protected:
+    bool IsRedefinableControl(const CActionInputControl&) const;
+    CKeyRedefiner* FindRedefinerForAlias(EGameAction, std::list<CKeyRedefiner*>&, CKeyRedefiner::EGameActionSubType) const;
+    void AddAlias(const std::map<unsigned long,unsigned long>::const_iterator&, std::list<CKeyRedefiner*>&, CKeyRedefiner::EGameActionSubType);
+    void GenerateListItems(const std::vector<CActionInputControl>&);
+public:
+#endif
     CRedefinerList(long);
     CRedefinerList(const CRedefinerList&);
     virtual ~CRedefinerList();

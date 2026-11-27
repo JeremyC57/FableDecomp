@@ -17,7 +17,16 @@ class C2DExtentsI; class CPixelFormat; class CTexture; class CSurface;
 #ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_ALLOCATEDEPTHBUFFERSURFACE
 #include "engine/ESurfaceMultisampleType.h"
 #endif
+#ifdef FABLE_RETAIL_GPU_SCRATCH_RESOURCES_PASS29
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CArray.h"
+#include "engine/CTexture.h"
+#include "engine/ESurfaceMultisampleType.h"
+#include "engine/CSurface.h"
+class CGPUScratchBufferTextureManager : public CBaseClassNonCopyable {
+#else
 class CGPUScratchBufferTextureManager {
+#endif
 public:
 #ifdef FABLE_RETAIL_CGPUSCRATCHBUFFERTEXTUREMANAGER_CTOR
     // Retail opt-in (wfE7, row 0x00B3CB30): Ego_r.pdb / FableWin.pdb ??0CGPUScratchBufferTextureManager@@QAE@XZ (retail 0x00F37520) and
@@ -68,7 +77,30 @@ public:
     void EndSurfaceUse(long handle);                                     // 0x00F36F30
 #endif
 private:
+#ifdef FABLE_RETAIL_GPU_SCRATCH_RESOURCES_PASS29
+    enum EResourceType { RESOURCE_TYPE_NOT_ALLOCATED, RESOURCE_TYPE_TEXTURE, RESOURCE_TYPE_DEPTH_BUFFER_SURFACE };
+    struct CResourceEntry {
+        EResourceType ResourceType;
+        CTexture* Texture;
+        CSurface* Surface;
+        long PageIndex;
+        C2DExtentsI Dimensions;
+        long NoLevels;
+        CPixelFormat PixelFormat;
+        ESurfaceMultisampleType MultiSampleType;
+        unsigned long UseageFlags;
+        ESurfacePool MemoryPool;
+    };
+    struct CResourcePage;
+    struct CScratchPool;
+    CArray<CResourceEntry> Resources;
+    CArray<CResourcePage> MemoryPages;
+    CArray<CScratchPool> ScratchPools;
+    CArray<long> FreeTexturePageSlots, FreeTextureSlots;
+    bool ShutdownFlag;
+#else
     unsigned char Unmodeled_0x00[0x44];
+#endif
 };
 FABLE_STATIC_ASSERT_AT(36, sizeof(CGPUScratchBufferTextureManager) == 0x44);
 #endif // FABLE_ENGINE_CGPUSCRATCHBUFFERTEXTUREMANAGER_H

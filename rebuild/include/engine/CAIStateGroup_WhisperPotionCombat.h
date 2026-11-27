@@ -39,20 +39,31 @@ protected:
     virtual bool IsRunnableLeaf();                                        // slot 15 0x0096AAD0 ?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ
 public:
     virtual bool IsCombatStateGroup() const;                              // slot 20 0x009031D7 ?IsCombatStateGroup@CAIStateGroup_WhisperPotionCombat@@UBE_NXZ
+#ifdef FABLE_RETAIL_WHISPER_POTION_COMBAT_PASS29
+protected:
+    bool GetValidJumpPosition(C3DVector&);
+    void DisappearJump();
+    std::vector<CIntelligentPointer<CThing> > TrapThings;
+    long FrameLastRun;
+    C3DVector Jump_to_pos;
+#else
 public:
     unsigned char TrapThings[0xc];                           // +0x1c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
     long          FrameLastRun;                              // +0x28
     float         Jump_to_pos_X;                             // +0x2c C3DVector::X
     float         Jump_to_pos_Y;                             // +0x30 C3DVector::Y
     float         Jump_to_pos_Z;                             // +0x34 C3DVector::Z
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WhisperPotionCombat) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, TrapThings) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, FrameLastRun) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_X) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Y) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Z) == 0x34);
+FABLE_STATIC_ASSERT_AT(50, sizeof(CAIStateGroup_WhisperPotionCombat) == 0x38);
+#ifndef FABLE_RETAIL_WHISPER_POTION_COMBAT_PASS29
+FABLE_STATIC_ASSERT_AT(51, offsetof(CAIStateGroup_WhisperPotionCombat, TrapThings) == 0x1c);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CAIStateGroup_WhisperPotionCombat, FrameLastRun) == 0x28);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_X) == 0x2c);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Y) == 0x30);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CAIStateGroup_WhisperPotionCombat, Jump_to_pos_Z) == 0x34);
+#endif
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

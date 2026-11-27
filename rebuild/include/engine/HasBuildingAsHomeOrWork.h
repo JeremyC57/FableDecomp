@@ -8,7 +8,13 @@
 class HasBuildingAsHomeOrWork {
     CThing* Building;
 public:
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+    HasBuildingAsHomeOrWork(const CThing& building):Building(const_cast<CThing*>(&building)){}
+#endif
 #ifdef FABLE_RETAIL_HASBUILDINGASHOMEORWORK_SIZE_INSTANCE_PASS26
+#if defined(FABLE_RETAIL_UPDATE_CURFEW_PASS29) && defined(_MSC_VER)
+    __declspec(noinline)
+#endif
     bool operator()(const CIntelligentPointer<CThingAICreature>& creature) const;
 #else
     bool operator()(const CIntelligentPointer<CThingAICreature>& creature) const

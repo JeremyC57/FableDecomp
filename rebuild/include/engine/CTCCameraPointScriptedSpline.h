@@ -18,8 +18,23 @@
 class CRightHandedSet;
 class CTCCameraPointScriptedSpline : public CTCCameraPointDefinitionBase {
 public:
+    #ifdef FABLE_RETAIL_SCRIPTED_SPLINE_UPDATE_PASS29
+private:
+    void UpdateSplines();
+public:
+    void EstimateKeyIndex();
+    #endif
     class CKeyCamera {                                       // 56 bytes (Ego_r.pdb)
     public:
+#ifdef FABLE_RETAIL_SCRIPTED_SPLINE_UPDATE_PASS29
+        const C3DVector& GetPosition()const{return Pos;}
+        const C3DVector& GetLookDirection()const{return LookDirection;}
+        float GetFOV()const{return FOV;}
+        float GetRoll()const{return Roll;}
+        float GetShuttleSpeed()const{return ShuttleSpeed;}
+        float GetAnimationSpeed()const{return SpeedFraction;}
+        float GetDuration()const{return Duration;}
+#endif
         float GetPauseTime() const { return PauseTime; }     // FableWin ?GetPauseTime@CKeyCamera@CTCCameraPointScriptedSpline@@QBEMXZ
         CCharString GetEvent() const;                        // 0x0075C9B0 FableWin ?GetEvent@CKeyCamera@CTCCameraPointScriptedSpline@@QBE?AVCCharString@@XZ
         float DeltaIndex;                                    // +0x00
@@ -37,7 +52,14 @@ public:
     float UpdateCameraParams(float index, C3DVector& pos, C3DVector& view_dir, float& fov, float& roll, bool& finished,
                              const C3DVector* origin, const CRightHandedSet* axes);                       // 0x0075D580
     long GetKeyCamera(float index) const;                    // 0x0075CFE0 ?GetKeyCamera@CTCCameraPointScriptedSpline@@QBEJM@Z
-    void InitialiseSpline(long start_node, long end_node);   // 0x0075D050 ?InitialiseSpline@CTCCameraPointScriptedSpline@@QAEXJJ@Z
+#ifdef FABLE_RETAIL_SCRIPTED_SPLINE_UPDATE_PASS29
+    void InitialiseSpline(long start_node,long end_node) {
+    AnimationSpeed=0.0f; PauseFor=0.0f; NodeToStartOn=start_node; NodeToEndOn=end_node;
+    if(NodeToEndOn==-1)NodeToEndOn=KeyCameras.size()-1;
+ }
+#else
+    void InitialiseSpline(long start_node, long end_node);
+#endif   // 0x0075D050 ?InitialiseSpline@CTCCameraPointScriptedSpline@@QAEXJJ@Z
 
     C3DVector EditPreviewPos;                                // +0x40
     C3DVector EditPreviewViewDirection;                      // +0x4c
@@ -61,9 +83,9 @@ public:
     long NodeToEndOn;                                        // +0xb8
     float AnimationSpeed;                                    // +0xbc
 };
-FABLE_STATIC_ASSERT(offsetof(CTCCameraPointScriptedSpline, PTimingSpline) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CTCCameraPointScriptedSpline, PPositionSpline) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CTCCameraPointScriptedSpline, MessageToBeSent) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CTCCameraPointScriptedSpline, AnimationSpeed) == 0xbc);
-FABLE_STATIC_ASSERT(sizeof(CTCCameraPointScriptedSpline::CKeyCamera) == 0x38);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CTCCameraPointScriptedSpline, PTimingSpline) == 0x60);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CTCCameraPointScriptedSpline, PPositionSpline) == 0x78);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CTCCameraPointScriptedSpline, MessageToBeSent) == 0x9c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CTCCameraPointScriptedSpline, AnimationSpeed) == 0xbc);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CTCCameraPointScriptedSpline::CKeyCamera) == 0x38);
 #endif // FABLE_ENGINE_CTCCAMERAPOINTSCRIPTEDSPLINE_H

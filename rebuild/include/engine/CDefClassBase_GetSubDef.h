@@ -56,6 +56,53 @@ bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* def
 }
 #pragma optimize("",on)
 #endif
+#ifdef FABLE_RETAIL_WAREHOUSE_MOVE_CRATES_PASS29
+#include "engine/CCrateStackDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CCrateStackDef>(CDefPointer<const CCrateStackDef>* def)const {
+ const CSubDefInfo* psub_def_info=GetPSubDefInfo(CCrateStackDef::StatGetTypeName());
+ if(psub_def_info){
+  CDefPointer<const CDefClassBase> pbase(PDefManager->GetPDefFromGlobalIndex(psub_def_info->DefIndex));
+  def->SetDynamicCast(pbase);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+
+#ifdef FABLE_RETAIL_SHOT_ONHIT_PASS29
+// Inline-budget: native GetSubDef is called at this site. Its separately linked 162-byte body uses frame-pointer size optimization.
+#include "engine/CThingMultiArrowShotDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CThingMultiArrowShotDef>(CDefPointer<const CThingMultiArrowShotDef>* def)const {
+ const CSubDefInfo* psub_def_info=GetPSubDefInfo(CThingMultiArrowShotDef::StatGetTypeName());
+ if(psub_def_info){
+  CDefPointer<const CDefClassBase> pbase(PDefManager->GetPDefFromGlobalIndex(psub_def_info->DefIndex));
+  def->SetDynamicCast(pbase);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+
+#endif
 #ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY
 // Opt-in (NF357 2026-11-24; T3 nf340 0x0042B1A6). Fidelity: scaffolding, not retail: it is for link determinism and makes no claim about
 // retail's text. The per-type size-body device of engine/CDefinitionManager.h (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_<T>_SIZE_BODY,

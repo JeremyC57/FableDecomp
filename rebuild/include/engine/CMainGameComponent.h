@@ -380,7 +380,11 @@ public:
 #else
     const NGameText::CDataBank& GetTextBank() const { return **reinterpret_cast<NGameText::CDataBank* const*>(PTextBank); }
 #endif
+#ifdef FABLE_RETAIL_REGION_DRAW_PASS29
+    const CFontBank& PeekCutSceneMainFont() const {return *PCutSceneMainFont;}
+#else
     const CFontBank& PeekCutSceneMainFont() const { return **reinterpret_cast<CFontBank* const*>(PCutSceneMainFont); }
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK_INITIALISED
     // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay, which expands CProgressDisplay::GetPTextBank):
     // FableWin.pdb ?IsTextBankInitialised@CMainGameComponent@@QBE_NXZ (0x018B4730), inline in retail (0x00499364 tests the PTextBank

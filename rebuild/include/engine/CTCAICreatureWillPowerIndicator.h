@@ -8,6 +8,9 @@ class CThing;
 class CTCAICreatureWillPowerIndicator : public CTCBase {
 public:
     virtual void FrameUpdate();
+#ifdef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+    void Reset(float);
+#endif
 #ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_AICREATURE_WILL_POWER_INDICATOR; }
 #ifdef FABLE_RETAIL_MAZE_FIXTURE_PASS27

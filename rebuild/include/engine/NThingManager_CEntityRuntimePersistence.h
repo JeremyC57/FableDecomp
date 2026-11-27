@@ -32,6 +32,10 @@ public:
         bool GamePersistent;
         unsigned long SectionNameCRC;
     };
+#ifdef FABLE_RETAIL_ENTITY_SAVE_SCRIPT_PASS29
+    // Public member in both original PDBs. Retail 0051EDA0 writes the thing manager script.
+    void SaveToGameStateScript(CCharString&);
+#endif
     void SaveToGameStateBinary(CPersistContext&);
 #ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_CLEAR
     // Opt-in (chunk 765, row 0x00520C70 CThingManager::ClearPersistenceDataForSection): Ego_r.pdb / FableWin.pdb
@@ -87,8 +91,8 @@ private:
     std::map<unsigned __int64,CPersistedDeadEntity> PersistedDeadEntities;
     long SaveFormatVersion;
 };
-FABLE_STATIC_ASSERT(sizeof(CEntityRuntimePersistence::CEntityScriptInfo)==24);
-FABLE_STATIC_ASSERT(sizeof(CEntityRuntimePersistence::CPersistedDeadEntity)==16);
-FABLE_STATIC_ASSERT(sizeof(CEntityRuntimePersistence)==40);
+FABLE_STATIC_ASSERT_AT(90, sizeof(CEntityRuntimePersistence::CEntityScriptInfo)==24);
+FABLE_STATIC_ASSERT_AT(91, sizeof(CEntityRuntimePersistence::CPersistedDeadEntity)==16);
+FABLE_STATIC_ASSERT_AT(92, sizeof(CEntityRuntimePersistence)==40);
 }
 #endif

@@ -5,13 +5,31 @@
 // pass 20 hand-back modelled it). Without the macro the earlier narrower model below is unchanged.
 // Complete original owner from both original PDBs and native offsets.
 #include "engine/CTCDriverBase.h"
+#ifdef FABLE_RETAIL_EMITTER_CAMERA_ATTACHMENT_PASS29
+#include "engine/CRightHandedSet.h"
+#include "engine/NParticleEngine_CParticleUpdateParameters.h"
+#endif
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 #include "fable_string.h"
 namespace NParticleEngine{class CParticleEmitter;template<class A,class B>class CParticleUpdateParameters;}
 class CRightHandedSet;class C3DVector;
 class CTCDParticleEmitter:public CTCDriverBase{
+#ifdef FABLE_RETAIL_EMITTER_CAMERA_ATTACHMENT_PASS29
+public:
+ enum EAttachmentFlags { AF_NULL=1,AF_ATTACH_DUMMY=2,AF_ATTACH_HELPER=4,AF_MOVING=8,AF_DONT_DIE_WITH_ATTACHMENT=16,AF_USE_THING_ORIENTATION=32,AF_FLOAT_ON_WATER=64,AF_USE_OFFSET=128 };
+private:
+ class CParticleCreationParameters {
+ public:
+  bool InterpolatingParticle,ParticleCreationDisabled,UpdateParametersSet,AlwaysUpdateFlag;
+  long StartParticleID,EndParticleID;
+  float Interpolate;
+  CRightHandedSet RHSet;
+  NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long> UpdateParameters;
+ };
+#else
 private:class CParticleCreationParameters;
+#endif
 public:
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PARTICLE_EMITTER;}
  virtual ETCInterfaceType GetInterfaceType() const;
@@ -110,7 +128,7 @@ public:
  virtual ~CTCDParticleEmitter();
  CTCDParticleEmitter & operator=(const CTCDParticleEmitter & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDParticleEmitter)==72);
+FABLE_STATIC_ASSERT_AT(113, sizeof(CTCDParticleEmitter)==72);
 #elif defined(FABLE_RETAIL_CTCDPARTICLEEMITTER_METHODS_ONLY)
 // Partial mode (NF122, q6226 / q6227 / q6228): member declarations only, without the CTCBase base, for landed rows that still model
 // CThing / ETCInterfaceType locally and so cannot include engine/CTCBase.h (0x0080D0B0, 0x0089F910, 0x0089F9E0). Name binding only:

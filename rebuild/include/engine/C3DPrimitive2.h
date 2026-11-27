@@ -22,6 +22,10 @@ class C3DPrimitive2;   // NF314 opt-in: forward declaration for the friend below
 namespace N3DPrimitive {
 class CTriangleList;
 class CDeviceIndependent : public CBaseClassNonCopyable {
+#ifdef FABLE_RETAIL_GROUP_REMAP_PASS29
+private:
+ void RemapBoneIndices(std::map<unsigned long,unsigned long>& index_map);
+#endif
 public:
     CDeviceIndependent();                                                // 0x00A98100
     virtual ~CDeviceIndependent();

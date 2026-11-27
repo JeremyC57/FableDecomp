@@ -28,6 +28,10 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#if defined(FABLE_RETAIL_AI_CREATURE_ONHIT_PASS29) || defined(FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29)
+public: const CThingCreatureBase* PeekPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
+#endif
+
 #ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28
 public:
     // Both original symbol tables; native caller targets 00663490.
@@ -255,10 +259,14 @@ protected:
     float TurnSpeed;
     CCountedPointer<CCreatureInteraction> PCreatureInteraction;
     CTCCreatureModeManager* PTCModeManager;
+#ifdef FABLE_RETAIL_GENERIC_STRIKE_RESPONSE_PASS29
+    ECombatAnimationHandedness PreviousActionHandedness;
+#else
 #ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
     ECombatAnimationHandedness PreviousActionHandedness;
 #else
     unsigned char PreviousActionHandedness[4];
+#endif
 #endif
     long PreviousActionHandednessWF;
     unsigned char BodyReorienter[4];
@@ -274,6 +282,10 @@ public:
     bool UseMovementInActions:1,UpdateMovementVectorThisFrame:1,AbortingCurrentAction:1,DemonDoor:1,
         Oracle:1,HadFacingAngleYZSetByBodyOrientation:1,UnderInfluenceOfEpicSpell:1,HiddenOnMiniMap:1;
     bool IsShowingDebugInfo:1;
+#ifdef FABLE_RETAIL_BODY_REORIENT_SLOPE_PASS29
+public:
+    void SetHadFacingAngleYZSetByBodyOrientation(bool value) { HadFacingAngleYZSetByBodyOrientation=value; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAGSETTERS
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): FableWin.pdb's inline setters
     // ?SetLeaveDeadBodyOverride@CThingCreatureBase@@QAEX_N@Z, ?SetLeaveExperienceOrbsOverride@CThingCreatureBase@@QAEX_N@Z and
@@ -316,7 +328,11 @@ public:
     // Retail opt-in (chunk 778, row 0x00839420 NThingHelpers::CreateEffectOnHit): Ego_r.pdb / FableWin.pdb
     // ?GetLastActionHandedness@CThingCreatureBase@@QBE?AW4ECombatAnimationHandedness@@XZ, inline in retail (`mov eax,[ebp+138h]`
     // on the striking creature). The enum stays the opaque 4-byte member; the body reads it as its long value. No layout change.
+#ifdef FABLE_RETAIL_GENERIC_STRIKE_RESPONSE_PASS29
+    ECombatAnimationHandedness GetLastActionHandedness() const { return PreviousActionHandedness; }
+#else
     long GetLastActionHandedness() const { return *reinterpret_cast<const long*>(PreviousActionHandedness); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CHILD
     // Both original PDBs: public const IsChild; donor GetPrioritisedAbilityDefs and native00661f70.

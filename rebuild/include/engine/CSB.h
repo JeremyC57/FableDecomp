@@ -19,14 +19,30 @@
 class CSteeringAgent;
 class CSB {
 public:
+#ifdef FABLE_RETAIL_STEERING_PROCESS_PASS29
+    enum ESB_TYPE { ESB_AGENTS, ESB_GOAL, ESBI_AGENTS, ESBC_CORRIDOR, ESBC_AGENTS };
+    virtual ~CSB();
+#endif
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+    enum ESB_TYPE { ESB_AGENTS, ESB_GOAL, ESBI_AGENTS, ESBC_CORRIDOR, ESBC_AGENTS };
+    virtual ~CSB();
+#endif
     virtual bool Process(const CSteeringAgent* agent) = 0;
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+    virtual ESB_TYPE GetType()=0;
+    virtual void CreateLineList(std::vector<C3DVector>&);
+    virtual void Reset();
+#endif
+#ifdef FABLE_RETAIL_STEERING_PROCESS_PASS29
+    virtual ESB_TYPE GetType() = 0;
+#endif
     const C2DVector& GetOutput() { return Output.GetVector(); }
     bool ShouldIgnoreAgent(const CSteeringAgent* agent, const CSteeringAgent* other, const CSteeringAgent* target);   // 0x00A87260
     float GetDistanceBetweenAgents(const CSteeringAgent* agent, const CSteeringAgent* other, bool relative);           // 0x00A872F0
 protected:
     CKinematic Output;                                                   // +0x04
 };
-FABLE_STATIC_ASSERT(sizeof(CSB) == 0xc);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CSB) == 0xc);
 #else
 
 #pragma pack(push, 1)
@@ -37,9 +53,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSB) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CSB, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSB, Output) == 0x4);
+FABLE_STATIC_ASSERT_AT(40, sizeof(CSB) == 0xc);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CSB, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CSB, Output) == 0x4);
 
 #endif // FABLE_RETAIL_CSB
 #endif // FABLE_ENGINE_CSB_H

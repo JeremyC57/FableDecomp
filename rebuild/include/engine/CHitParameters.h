@@ -92,6 +92,13 @@ public:
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 // Evidence: both original PDB type records and donor OnHit/helper disassembly.
 public:
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+bool IsDrainHealStrike() const;
+bool IsShotStrike() const;
+void SetBlocked(bool value){Blocked=value;}
+void SetBlockCounter(bool value){BlockCounter=value;}
+void SetGuaranteeHitResponse(bool value){GuaranteeHit=value;}
+#endif
 void SetHitLocation(NHitLocations::CHitLocation& location);
 void SetPHitMaterialDef(CDefPointer<const CMaterialDef> material);
 void SetHitNegated(bool value){HitNegated=value;}

@@ -163,6 +163,10 @@ public:
     // or address reference in Fable.exe), while a plain-inline copy would be called from such sites.
 #ifdef FABLE_RETAIL_PASS22_SLIDER_PROCESS_EVENT
     // Original FableWin022782D0 calls operator== then negates its Boolean result.
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+    // Inline-budget: the original two-component inequality is expanded at the corridor goal test.
+    FABLE_FORCEINLINE
+#endif
     bool operator!=(const C2DVector& rhs) const { return !(*this==rhs); }
     bool operator==(const C2DVector& vector) const
     {

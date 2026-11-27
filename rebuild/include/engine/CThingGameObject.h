@@ -13,6 +13,11 @@ namespace NHitLocations{class CHitLocation;}
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 #endif
 class CThingGameObject : public CThingPhysical {
+#ifdef FABLE_RETAIL_AI_RELATIONSHIPS_PASS29
+protected: virtual void InitialActivate();
+private:
+#endif
+
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
 // Evidence: both original PDB types and donor026fd4f0; native007c1000 accesses.
 public:

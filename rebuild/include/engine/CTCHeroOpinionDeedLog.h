@@ -35,6 +35,14 @@ public:
     // ?IsDeedWitnessed@CTCHeroOpinionDeedLog@@QAE_NJ_N@Z, out of line in retail at 0x006C5E90 (landed). Declaration only: no layout change.
     bool IsDeedWitnessed(long, bool);                                    // 0x006C5E90
 #endif
+#ifdef FABLE_RETAIL_POST_DEED_PASS29
+    bool GetGuardsIgnoreCrimes() { return GuardsIgnoreCrimes; }
+#endif
+#ifdef FABLE_RETAIL_DEED_FRAME_PASS29
+    void RemoveDeed(long);
+    void RemoveDeedStillSearchingForWitnesses(long);
+    void RemoveCrimeFromVillage(long);
+#endif
     long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
                   EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990
 private:

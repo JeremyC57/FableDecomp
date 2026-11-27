@@ -21,6 +21,11 @@ virtual void OnHitByMelee(const C3DVector&,const C3DVector&,CThing&);
 virtual void OnHitByShot(const C3DVector&,const C3DVector&,CThing&);
 virtual void OnHit(const C3DVector&,const C3DVector&);
 #endif
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+public:
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_DEGRADABLE;}
+    bool IsFullyDegraded() const;
+#endif
 protected:
     virtual void OnCreate();                                             // slot 4 0x008EC870
 private:
@@ -29,5 +34,5 @@ private:
     const CDegradableInfo*            PCurrentDegradableInfo;            // +0x14
     CThingPhysical*                   PParentThingPhysical;              // +0x18
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDegradableBase) == 0x1c);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CTCDegradableBase) == 0x1c);
 #endif

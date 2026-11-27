@@ -30,7 +30,11 @@ public:
     CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
 #endif
 #ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+#ifdef FABLE_RETAIL_MINION_GOSSIP_PREDICATES_PASS29
+    bool operator()(const CMessageEvent& event) const;
+#else
     bool operator()(const CMessageEvent& event) const{return Type==event.Type;}
+#endif
 #else
     bool operator()(const CMessageEvent& event) const;
 #endif                   // 0x006AF1C0
@@ -45,7 +49,15 @@ public:
  __declspec(noinline)
 #endif
  CMessageEventFilter_IsTargettedAtThing(const CThing& thing):UID(thing.GetUniqueID()){}
+#ifdef FABLE_RETAIL_APPRENTICE_PRACTICE_PASS29
+ bool operator()(const CMessageEvent& event)const;
+#else
+#ifdef FABLE_RETAIL_MINION_SINGLE_TARGET_PREDICATE_PASS29
+ bool operator()(const CMessageEvent& event)const;
+#else
  bool operator()(const CMessageEvent& event)const{return UID==event.TargetUID;}
+#endif
+#endif
 private:
 #ifdef _MSC_VER
  unsigned __int64 UID;
@@ -59,7 +71,11 @@ public:
  __declspec(noinline)
 #endif
  CMessageEventFilter_IsOriginatedByThing(const CThing& thing):UID(thing.GetUniqueID()){}
+#ifdef FABLE_RETAIL_MINION_GOSSIP_PREDICATES_PASS29
+    bool operator()(const CMessageEvent& event) const;
+#else
  bool operator()(const CMessageEvent& event)const{return UID==event.OriginatorUID;}
+#endif
 private:
 #ifdef _MSC_VER
  unsigned __int64 UID;

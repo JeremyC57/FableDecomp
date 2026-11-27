@@ -14,7 +14,12 @@ private: virtual CCreatureActionBase* Clone() const;
     // virtual override, as the twin CCombatAction_GenericStrikeResponseKnockdown::FinishAction 0x00867B40). Declaration only.
 public: virtual void FinishAction();                                     // 0x00867D20
 #endif
+#ifdef FABLE_RETAIL_EXPL_RESPONSE_PASS29
+public: virtual void Initialise();
+private: CIntelligentPointer<CThing> PExplosion; C3DVector PointOfHit,HitDir; bool FlipFacing;
+#else
 private: unsigned char PExplosion[8],PointOfHit[12],HitDir[12]; bool FlipFacing;
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTION_GENERICRESPONSETOEXPLOSION_RTTI_DECLS
     // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
     // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual

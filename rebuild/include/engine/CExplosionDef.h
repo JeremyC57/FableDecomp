@@ -2,6 +2,9 @@
 #define FABLE_ENGINE_CEXPLOSIONDEF_H
 #include "engine/CSubDefClassBase.h"
 // Original TPI0x314e9; native field ExplosionShouldKnockdown64, size70 after vector reduction.
+#ifdef FABLE_RETAIL_DYNAMIC_EXPLOSION_PASS29
+#include "engine/CExplosionRing.h"
+#endif
 class CExplosionDef : public CSubDefClassBase {
 public:
 #ifdef FABLE_RETAIL_CEXPLOSIONDEF_MEMBERS
@@ -14,7 +17,16 @@ public:
     float Damage;                                                // +0x28
     float ExplosionRadius;                                       // +0x2C
     long FireDamage;                                             // +0x30
+#ifdef FABLE_RETAIL_DYNAMIC_EXPLOSION_PASS29
+    float ExplosionLifeTime;
+    bool DamageFalloffWithRadius;
+    long ExplosionBlendSmall, ExplosionBlendLarge;
+    long ExplosionReplacementBlendSmall, ExplosionReplacementBlendLarge;
+    float SecondsBeforeEffectReplacement, ExplosionRadiusSmall, ExplosionRadiusLarge;
+    std::vector<CExplosionRing> ExplosionRings;
+#else
     unsigned char _pad_0x34[0x30];
+#endif
 #else
     unsigned char _pad_0x25[0x3f];
 #endif

@@ -27,6 +27,10 @@ public:
 #ifdef FABLE_RETAIL_SCYTHE_BEFORE_TABLETS_PASS27
     CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me);
 #else
+#ifdef FABLE_RETAIL_DEMON_DOORS_REGISTRATION_PASS29
+    // Inline-budget: the typed factories expand the Me copy and directly initialize the entity base.
+    FABLE_FORCEINLINE
+#endif
     CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) :
 #ifdef FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
         Game(game),

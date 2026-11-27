@@ -32,9 +32,20 @@ class C3DMeshVolume;
 #include "engine/CIPhysicsFacesSegmentBase.h"
 #include "engine/CCountedPointer.h"
 #endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+#include "engine/C3DHelperPoint.h"
+#include "engine/C3DDummyObject.h"
+#include "engine/C3DMeshVolume.h"
+#include "engine/CSymbolMap.h"
+class C3DMeshFile;
+#endif
 class CPhysicsMesh : public CIVCountedPointeeBase {
 public:
     virtual ~CPhysicsMesh();
+#ifdef FABLE_RETAIL_CPHYSICSMESH_CAST_PASS29
+    bool GetPointIntersectionFromTo(const C3DVector&, const C3DVector&, CMeshIntersectionData&) const;
+    bool GetSphereIntersectionFromTo(float, const C3DVector&, const C3DVector&, CMeshIntersectionData&) const;
+#endif
     const C3DBoundingSphere& GetBoundingSphere() const { return BoundingSphere; }
     bool HasBoundingSphereIntersectedFromTo(float sphere_radius,
         const C3DVector& from, const C3DVector& to) const;
@@ -105,11 +116,23 @@ private:
     FABLE_FORCEINLINE bool HasCollidedWithTriangleAt(const C3DTriangle2&,const C3DVector&,
         const C3DVector&,float,C3DVector&,C3DVector&) const;
 #endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+    void GetHelperDataFromFileData(const C3DMeshFile&);
+    void GetContainmentDataFromFileData(const C3DMeshFile&);
+#endif
     unsigned long ReferenceCount;                     //0x08
     bool NavigationLineListInfo;                       //0x0c
     unsigned char _pad_0d[3];
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+    CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> > HelperPoints;
+#else
     unsigned char HelperPoints[16];                    //0x10 CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >
+#endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+    CVectorMap<CCharString,C3DDummyObject,CCompareString<C3DDummyObject> > DummyObjects;
+#else
     unsigned char DummyObjects[16];                    //0x20 CVectorMap<CCharString,C3DDummyObject,CCompareString<C3DDummyObject> >
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_INTERSECTION_PASS23
     // Original field types in both PDBs; native00a17822/+30,00a1782f/+3c.
     CArray<C3DTriangle2> TotalFaceIndices;
@@ -131,7 +154,11 @@ private:
 #else
     unsigned char NavigationContainmentVolumes[16];    //0x54 CVectorMap<long,C3DMeshVolume,CKeyPairCompareLess<long,C3DMeshVolume> >
 #endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+    CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> > ContainmentVolumes;
+#else
     unsigned char ContainmentVolumes[16];              //0x64 CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<CCharString,C3DMeshVolume> >
+#endif
     C3DBoundingSphere BoundingSphere;                  //0x74
 #ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDS
     C3DBoundingBox BoundingBox;                        //0x84

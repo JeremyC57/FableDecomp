@@ -108,6 +108,32 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
     };
+#ifdef FABLE_RETAIL_BANDIT_CAMP_ASSASSINS_PASS29
+    class CAssassin2 : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+        virtual void Init();
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;
+    };
+    class CAssassin3 : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+        virtual void Init();
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;
+    };
+#endif
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSIN1
     // Retail opt-in (chunk 845, re-applied by B24A11 2026-11-24 onto today's header): Ego_r.pdb CAssassin1 (28 bytes: CEntityScriptBase
     //   0x14, ParentClass +0x14, PMasterData +0x18); vtable 0x012C8B9C: 0 scalar deleting dtor 0x00D04A40, 1 Main 0x00D04AE0, 2 Init

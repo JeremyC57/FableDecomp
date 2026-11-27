@@ -228,4 +228,79 @@ namespace fable_portable
     __asm gf_sse_c4_done:
 #endif
 
+#ifdef FABLE_RETAIL_VECTOR_NORMALISE_PASS29
+// Retail-asm-helper: GF_SSE_NORMALISE_3D_VECTORS
+// Retail-asm: 0x00A5C3B6..0x00A5C46F. The kernel saves count, processes adjacent
+// pairs with aligned loads/stores, then restores count to process the odd tail.
+// FableWin 033152F5 has the same block. The five intrinsic probes change its
+// prologue/register allocation or spill the low vector before loading the high one.
+#if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST) || !defined(_MSC_VER) || !defined(_M_IX86)
+#include "engine/NVectorMathNormalisePortable.h"
+#endif
+#if defined(FABLE_PORTABLE) || !defined(_MSC_VER) || !defined(_M_IX86)
+#define GF_SSE_NORMALISE_3D_VECTORS(src, dest, count, src_stride_2, dest_stride_2, min_divisor) \
+    fable_portable::Normalise3DVectors(src, dest, count, src_stride_2, dest_stride_2, (min_divisor).X)
+#else
+#define GF_SSE_NORMALISE_3D_VECTORS(src, dest, count, src_stride_2, dest_stride_2, min_divisor) \
+    __asm mov     eax, dest \
+    __asm mov     edx, src \
+    __asm mov     ecx, count \
+    __asm push    ecx \
+    __asm shr     ecx, 1 \
+    __asm je      gf_sse_normalise_single \
+    __asm gf_sse_normalise_pair: \
+    __asm mov     dword ptr [edx + 0Ch], 0 \
+    __asm mov     dword ptr [edx + 1Ch], 0 \
+    __asm movaps  xmm0, [edx] \
+    __asm movaps  xmm4, [edx + 10h] \
+    __asm movaps  xmm1, xmm0 \
+    __asm movaps  xmm5, xmm4 \
+    __asm mulps   xmm1, xmm1 \
+    __asm mulps   xmm5, xmm5 \
+    __asm movaps  xmm2, xmm1 \
+    __asm movaps  xmm6, xmm5 \
+    __asm shufps  xmm2, xmm2, 4Eh \
+    __asm shufps  xmm6, xmm6, 4Eh \
+    __asm addps   xmm1, xmm2 \
+    __asm addps   xmm5, xmm6 \
+    __asm movaps  xmm2, xmm1 \
+    __asm movaps  xmm6, xmm5 \
+    __asm shufps  xmm2, xmm2, 11h \
+    __asm shufps  xmm6, xmm6, 11h \
+    __asm addps   xmm1, xmm2 \
+    __asm addps   xmm5, xmm6 \
+    __asm sqrtps  xmm1, xmm1 \
+    __asm sqrtps  xmm5, xmm5 \
+    __asm maxps   xmm1, min_divisor \
+    __asm maxps   xmm5, min_divisor \
+    __asm divps   xmm0, xmm1 \
+    __asm divps   xmm4, xmm5 \
+    __asm movaps  [eax], xmm0 \
+    __asm movaps  [eax + 10h], xmm4 \
+    __asm add     eax, dest_stride_2 \
+    __asm add     edx, src_stride_2 \
+    __asm dec     ecx \
+    __asm jne     gf_sse_normalise_pair \
+    __asm gf_sse_normalise_single: \
+    __asm pop     ecx \
+    __asm and     ecx, 1 \
+    __asm je      gf_sse_normalise_done \
+    __asm mov     dword ptr [edx + 0Ch], 0 \
+    __asm movaps  xmm0, [edx] \
+    __asm movaps  xmm1, xmm0 \
+    __asm mulps   xmm1, xmm1 \
+    __asm movaps  xmm2, xmm1 \
+    __asm shufps  xmm2, xmm2, 4Eh \
+    __asm addps   xmm1, xmm2 \
+    __asm movaps  xmm2, xmm1 \
+    __asm shufps  xmm2, xmm2, 11h \
+    __asm addps   xmm1, xmm2 \
+    __asm sqrtps  xmm1, xmm1 \
+    __asm maxps   xmm1, min_divisor \
+    __asm divps   xmm0, xmm1 \
+    __asm movaps  [eax], xmm0 \
+    __asm gf_sse_normalise_done:
+#endif
+#endif
+
 #endif  // FABLE_ENGINE_NVECTORMATHSSE_H

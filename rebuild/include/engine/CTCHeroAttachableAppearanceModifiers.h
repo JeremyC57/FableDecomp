@@ -6,6 +6,10 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+#include "engine/CDefPointer.h"
+class CTextureReplacementDef;
+#endif
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -35,6 +39,26 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppe
 class CTCHeroAttachableAppearanceModifiers {
 #endif
 public:
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+private:
+    class CModifierEntry;
+    class CModifierGraphic {
+    public:
+        CModifierGraphic(long bank_index, float render_sizex, CDefPointer<const CTextureReplacementDef> ptexture_replacement)
+            : PTextureReplacement(ptexture_replacement), BankIndex(bank_index), RenderSizeX(render_sizex) {}
+        CDefPointer<const CTextureReplacementDef> PTextureReplacement;
+        long BankIndex;
+        float RenderSizeX;
+    };
+    void AddGraphic(const CModifierGraphic& graphic) { Graphics.push_back(graphic); }
+    void UpdateGraphics();
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+public:
+    virtual bool OnAppearanceDraw(NGraphicAppearance::CTCGraphicAppearance&,const NGraphicAppearance::CGraphicAppearanceDrawInfo&);
+private:
+#endif
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE
     // NF91 opt-in (round 7, q11198 row 0x0059D9C2 CTCInventoryTrade::ApplyHairCard): Ego_r.pdb (0x0055BD50) + FableWin.pdb
     // ?AddAppearanceModifierWithReplace@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z (public; the long overload), out of line in retail
@@ -83,9 +107,18 @@ public:
     unsigned char _pad_0x0c[0x4];                            // +0x0c
 #endif
     unsigned long FrameLastChanged;                          // +0x10
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+    bool Changed : 1, RecreatePrimitives : 1, AppearanceModifiersLoaded : 1;
+    unsigned char _pad15;
+#else
     unsigned char AppearanceModifiersLoaded[0x2];            // +0x14 bitfield group: bool:1
+#endif
     unsigned char _pad_0x16[0x2];                            // +0x16
-    unsigned char PrimHandles[0xc];                          // +0x18 vector<NGraphicAppearance::CPrimitive_*,std::allocator<NGraphicAppearance::CPrimitive_*>_>
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+    std::vector<NGraphicAppearance::CPrimitive*> PrimHandles;
+#else
+    unsigned char PrimHandles[0xc];
+#endif                          // +0x18 vector<NGraphicAppearance::CPrimitive_*,std::allocator<NGraphicAppearance::CPrimitive_*>_>
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_HIDDENMATERIALS_TYPED
     // NF39 opt-in (row 0x00706860 GetHiddenMaterialNames): the Ego_r.pdb member type set<CCharString> (STLport 4.6, 0xC bytes, the
     // same layout as the opaque default); the landed body assigns it (_Rb_tree operator= 0x006B9E00) and reads its count +0x28.
@@ -94,8 +127,16 @@ public:
 #else
     unsigned char HiddenMaterialNames[0xc];                  // +0x24 set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>
 #endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+    std::vector<std::vector<CModifierEntry> > AppearanceModifiers;
+#else
     unsigned char AppearanceModifiers[0xc];                  // +0x30 vector<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>,std::allocator<std::vector<CTCHeroAttachableAppearanceModifiers::CModifierEntry,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierEntry>_>_>_>
+#endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+    std::vector<CModifierGraphic> Graphics;
+#else
     unsigned char Graphics[0xc];                             // +0x3c vector<CTCHeroAttachableAppearanceModifiers::CModifierGraphic,std::allocator<CTCHeroAttachableAppearanceModifiers::CModifierGraphic>_>
+#endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.
@@ -107,6 +148,13 @@ public:
 #endif
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+class CTCHeroAttachableAppearanceModifiers::CModifierEntry {
+    public:
+        long DefIndex;
+        bool Rendered;
+    };
+#endif
 
 FABLE_STATIC_ASSERT_AT(85, sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
 #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
@@ -115,7 +163,11 @@ FABLE_STATIC_ASSERT_AT(87, offsetof(CTCHeroAttachableAppearanceModifiers, __vfta
 #endif
 #endif
 FABLE_STATIC_ASSERT_AT(89, offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+FABLE_STATIC_ASSERT_AT(90, offsetof(CTCHeroAttachableAppearanceModifiers, _pad15) == 0x15);
+#else
 FABLE_STATIC_ASSERT_AT(90, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);
+#endif
 FABLE_STATIC_ASSERT_AT(91, offsetof(CTCHeroAttachableAppearanceModifiers, PrimHandles) == 0x18);
 FABLE_STATIC_ASSERT_AT(92, offsetof(CTCHeroAttachableAppearanceModifiers, HiddenMaterialNames) == 0x24);
 FABLE_STATIC_ASSERT_AT(93, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiers) == 0x30);

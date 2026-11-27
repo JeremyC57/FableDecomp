@@ -63,6 +63,9 @@ public:
 private:
 #ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITION_GETCOMPOSED_PASS26
     // Ego_r 0x009CBE40 and FableWin 0x02D8B9F0, retail 0x00B2AE60.
+#ifdef FABLE_RETAIL_PRELOAD_COMPLETED_BANK_PASS29
+    void PreloadCompletedBank();
+#endif
     unsigned long FindIndexInCompletedBank(const CEngineTextureMorph&) const;
 #endif
     // ?RenderToTexture@CEngineSurfaceCompositionManager@@AAEXAAVCTexture@@ABVC2DExtentsI@@_N2ABVCEngineTextureMorph@@ABV?$CArray@VCGraphicFrame@@@@J@Z

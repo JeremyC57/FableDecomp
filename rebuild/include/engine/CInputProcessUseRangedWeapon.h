@@ -8,6 +8,10 @@
 #include "rebuild_abi.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessUseRangedWeapon : public CInputProcessGameBase {
+#ifdef FABLE_RETAIL_RANGED_ATTACK_INPUT_PASS29
+private:
+    void ProcessRangedAttackInput(const CInputEvent& event, CProcessedInput& processed_input, const CThing& weapon);
+#endif
 public:
     CInputProcessUseRangedWeapon(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
 #ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE

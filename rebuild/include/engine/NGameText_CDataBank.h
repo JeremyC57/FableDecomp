@@ -68,6 +68,11 @@ public:
     void ReadFromDataStream(CDataInputStream& info_stream);
     unsigned long Sizeof() const;
 #endif
+#ifdef FABLE_RETAIL_SUBTITLED_MESSAGE_PASS29
+    const CCharString& GetNarrator() const { return Narrator; }
+    const CCharString& GetSpeechBank() const { return SpeechBank; }
+    const CArray<CTextTag>& GetTags() const { return Tags; }
+#endif
     CWideString GetText() const;                                                   // 0x009C7A40
     CCharString SpeechBank;                                                        // +0x1C
     CCharString Narrator;                                                          // +0x20

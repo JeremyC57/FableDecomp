@@ -47,6 +47,9 @@ public:
     CCharString GetTankardName();                                                                 // 0x007B8680
     bool BeingServed;                                                                             // +0x0c
     std::vector<CThingAICreature*> Occupants;                                                     // +0x10
+#ifdef FABLE_RETAIL_TAVERN_SERVING_PASS29
+private:
+#endif
     std::vector<CIntelligentPointer<CThingObject> > Tankards;                                     // +0x1c
     std::vector<CIntelligentPointer<CThingObject> > Food;                                         // +0x28
     std::vector<bool> SeatsCurrentlyUsed;                                                         // +0x34
@@ -60,7 +63,18 @@ public:
     long ActionPointMaidStrlen;                                                                   // +0x58
     bool AvailableForUse;                                                                         // +0x5c
 #endif
+#ifdef FABLE_RETAIL_TAVERN_SERVING_PASS29
+public:
+    enum ServingMode { SERVE_DRINK, SERVE_FOOD, REMOVE_FOOD };
+    bool GetSeatState(long index) {
+        FABLE_STATIC_ASSERT_AT(120, offsetof(CTCTavernTable, Tankards) == 0x1c);
+        FABLE_STATIC_ASSERT_AT(121, offsetof(CTCTavernTable, SeatsCurrentlyUsed) == 0x34);
+        FABLE_STATIC_ASSERT_AT(122, offsetof(CTCTavernTable, NumPeopleSeated) == 0x40);
+        FABLE_STATIC_ASSERT_AT(123, offsetof(CTCTavernTable, ActionPointTankardStrlen) == 0x54);
+        return SeatsCurrentlyUsed.size() > (unsigned long)index ? SeatsCurrentlyUsed[index] : false; }
+#else
     enum ServingMode { SERVING_MODE_0 = 0, SERVING_MODE_1 = 1, SERVING_MODE_2 = 2 };
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TAVERN_TABLE; }
     bool GetServingPoint(CThing& creature, C3DVector& pos, CRightHandedSet& rh_set, long& action_point_index, long& seat_index,
                          CThingObject** tankard, ServingMode mode, bool reserve);                  // 0x007B8CC0
@@ -122,10 +136,12 @@ public:
 #endif
 };
 #ifdef FABLE_RETAIL_CTCTAVERNTABLE_FULL_LAYOUT
+#ifndef FABLE_RETAIL_TAVERN_SERVING_PASS29
 FABLE_STATIC_ASSERT_AT(120, offsetof(CTCTavernTable, Tankards) == 0x1c);
 FABLE_STATIC_ASSERT_AT(121, offsetof(CTCTavernTable, SeatsCurrentlyUsed) == 0x34);
 FABLE_STATIC_ASSERT_AT(122, offsetof(CTCTavernTable, NumPeopleSeated) == 0x40);
 FABLE_STATIC_ASSERT_AT(123, offsetof(CTCTavernTable, ActionPointTankardStrlen) == 0x54);
+#endif
 FABLE_STATIC_ASSERT_AT(124, sizeof(CTCTavernTable) == 0x60);
 #endif
 #endif

@@ -41,6 +41,15 @@ float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistan
 // Layout: Ego_r complete original fields, native vector12/update36; size0x16c.
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
+#ifdef FABLE_RETAIL_EMITTER_CAMERA_ATTACHMENT_PASS29
+ CRightHandedSet GetCurrentOrientation() const;
+ const C3DVector& PeekEndPos() const { return PositionInterpolator.EndPosition; }
+ const CRightHandedSet& PeekEndOrientation() const { return OrientationInterpolator.EndOrientation; }
+ void SetPosition(const C3DPositionInterpolator&);
+#ifndef FABLE_RETAIL_CPARTICLEEMITTER_CREATE2D
+ void SetOrientation(const C3DOrientationInterpolator&);
+#endif
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEEMITTER_STARTFRAME_PASS23
  // Both original PDBs: StartFrame has a const reference; particle counts are const.
  void StartFrame(float,const CEnginePrimitivePrepareInfo&);

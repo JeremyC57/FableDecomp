@@ -265,6 +265,9 @@ public:
 #endif
 #endif
  NCameraModes::CTools& GetCameraTools(){return CamTools;}
+#ifdef FABLE_RETAIL_CAMERA_FRAME_UPDATE_PASS29
+ const NCameraModes::CTools& GetCameraTools() const { return CamTools; }
+#endif
  NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GETCAMERA
  // wf16 opt-in (row 0x00803D60): FableWin.pdb ?GetCamera@CGameCameraManager@@QAEAAVCCamera@@XZ / QBEABV, expanded in retail

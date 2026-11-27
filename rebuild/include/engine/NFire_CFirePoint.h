@@ -12,6 +12,9 @@ class CThing;
 namespace NFire {
 class CFirePoint {
 public:
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+    CFirePoint(CThing&, const CCharString&, long, long, long);
+#endif
     bool IsOnFire() const { return Resistance <= 0; }
     bool IsBurning() const { return Burning; }
     void SetAsBurning();                                                 // 0x00780540
@@ -22,6 +25,9 @@ public:
 private:
     void SetAsSmoldering();                                              // 0x007805D0
 public:
+#endif
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+private:
 #endif
     CCharString                 HelperName;                              // +0x00
     long                        HelperIndex;                             // +0x04

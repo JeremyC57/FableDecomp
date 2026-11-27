@@ -9,7 +9,11 @@ template<class _Predicate>inline unary_negate<_Predicate> not1(const _Predicate&
 #ifdef FABLE_RETAIL_STLP_COUNT_IF_CALLED_FASTCALL_PASS23
 // Original STLport difference_type result and /Gr call convention, native0065f6a6.
 template<class _InputIter,class _Predicate>
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+long FABLE_STDCALL count_if(_InputIter,_InputIter,_Predicate);
+#else
 typename iterator_traits<_InputIter>::difference_type FABLE_FASTCALL count_if(_InputIter,_InputIter,_Predicate);
+#endif
 #else
 template<class _InputIter,class _Predicate>inline typename iterator_traits<_InputIter>::difference_type count_if(_InputIter __first,_InputIter __last,_Predicate __pred){
  typename iterator_traits<_InputIter>::difference_type __n=0;
@@ -18,4 +22,25 @@ template<class _InputIter,class _Predicate>inline typename iterator_traits<_Inpu
 }
 #endif
 }
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+#ifdef _MSC_VER
+#pragma optimize("sy",on)
+#endif
+namespace std {
+template<> inline void __advance(list<CIntelligentPointer<CThingBuilding> >::iterator& i,long n,const bidirectional_iterator_tag&)
+{
+    if(n>0) while(n--) ++i; else while(n++) --i;
+}
+}
+namespace std {
+template<> inline long FABLE_STDCALL count_if(list<CIntelligentPointer<CThingAICreature> >::const_iterator first,list<CIntelligentPointer<CThingAICreature> >::const_iterator last,HasBuildingAsHomeOrWork predicate){
+    long count=0;
+    for(;first!=last;++first) if(predicate(*first)) ++count;
+    return count;
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
 #endif

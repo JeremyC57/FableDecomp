@@ -16,6 +16,12 @@ private:
     CManagedTexture(const CIVCountedPointer<CManagedTextureData>&);
 public:
 #endif
+#ifdef FABLE_RETAIL_TEXTURE_MIP_REDUCE_PASS29
+    CManagedTexture();
+    bool Release();
+    virtual ~CManagedTexture();
+    const CManagedTexture& operator=(const CManagedTexture& src);
+#endif
     void TouchTexture();
 #ifdef FABLE_RETAIL_CMANAGEDTEXTURE_GETTEXTURE
     // Retail opt-in (chunk 2004, row 0x009FED30): Ego_r.pdb ?GetTexture@CManagedTexture@@QAE?AV?$CCountedPointer@VCTexture@@@@XZ and

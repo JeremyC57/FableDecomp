@@ -46,6 +46,9 @@ public:
 #endif
  virtual unsigned long PeekSceneFilterFlags()const;
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
+#ifdef FABLE_RETAIL_RADIAL_WORLD_TRACK_PASS29
+ float PeekNearZ()const{return CameraDesc.NearZPlane;}
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_PEEKWINDOW
  // Opt-in (bwf2, row 0x00BA2350): FableWin.pdb ?PeekWindow@CEngineCamera@@QBEABVC2DBoxF@@XZ (9 debug instructions), inline.
  // Also wfA5, row 0x00B9AC30: inline in release, CameraDesc.Window +0x14 read in place (0x00B9B350).
@@ -117,6 +120,17 @@ public:
   const float one_over_z=1.0f/point.Z;
   point.X=WindowCenterX+one_over_z*HalfWindowWidth*point.X;
   point.Y=WindowCenterY-one_over_z*HalfWindowHeight*point.Y;
+ }
+#endif
+#ifdef FABLE_RETAIL_RADIAL_CAMERA_PROJECTION_PASS29
+ // FableWin 02c9f690 stores all three coordinates; native both calls expand.
+ // Inline-budget: The 580-byte native tracker expands both calls completely.
+ FABLE_FORCEINLINE
+ void TransformViewToScreen(const C3DVector& from,C3DVector& to) const {
+     const float invz = 1.0f / from.Z;
+     to.X = from.X * invz * HalfWindowWidth + WindowCenterX;
+     to.Y = WindowCenterY - from.Y * invz * HalfWindowHeight;
+     to.Z = ZBufferFactor * invz + ZBufferOffset;
  }
 #endif
 #ifdef FABLE_RETAIL_PROJECT_TEXT_PASS27

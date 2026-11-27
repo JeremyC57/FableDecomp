@@ -22,7 +22,11 @@ public:
 #else
  CPrimitive(EPrimitiveType type,long bank_index=0):Type(type),BankIndex(bank_index){}
 #endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+ ~CPrimitive() {}
+#else
  ~CPrimitive();
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(20, sizeof(NGraphicAppearance::CPrimitive)==16);

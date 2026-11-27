@@ -17,7 +17,12 @@
 class CThingCreatureBase;
 class CAIStateGroup_VersusEnemyBase : public CAIStateGroupBase {
 protected:
-    CIntelligentPointer<CThingCreatureBase> PTargetThing;              // +0x14
+#ifdef FABLE_RETAIL_VERSUS_ENEMY_ACTIONS_PASS29
+    virtual bool IsStillRunnable();
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;
+#else
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;
+#endif              // +0x14
 #ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSENEMYBASE_RTTI_DECLS
     // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
     // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual

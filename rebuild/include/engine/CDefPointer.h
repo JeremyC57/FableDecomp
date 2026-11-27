@@ -87,7 +87,11 @@ public:
     // 0x00F29FA0) add nothing. The FableWin debug body is 356 bytes (debug-only work this release build does not show), so its
     // length proves nothing either way. A counted handle on an EXISTING pointee is the copy constructor, not this one: landed rows
     // whose local CDefPointer models count in a raw-pointer constructor must use the copy constructor when they move here.
+#ifdef FABLE_RETAIL_SHIELD_CTOR_PASS29
+    FABLE_DEFPTR_INLINE CDefPointer(T* object) : Object(const_cast<CDefPointeeBase*>(static_cast<const CDefPointeeBase*>(object))) { }
+#else
     FABLE_DEFPTR_INLINE CDefPointer(T* object) : Object(object) { }
+#endif
 #endif
     FABLE_DEFPTR_INLINE ~CDefPointer() { Release(); }
     // Copy assignment (Codex pass 11 consolidation 2): retail reads other.Object again after the Release call --

@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+#include "engine/CSBConstraint.h"
+#include "engine/CWall.h"
+class CSBCCorridor : public CSBConstraint {
+public:
+    virtual bool Process(const CSteeringAgent*);
+    virtual ESB_TYPE GetType();
+    virtual void CreateLineList(std::vector<C3DVector>&);
+    virtual void Reset();
+private:
+    std::list<CWall> Walls;
+    C2DVector CurrentEndPoint;
+    float BestLeft, BestRight;
+};
+FABLE_STATIC_ASSERT(sizeof(CSBCCorridor)==0x2c);
+#else
 #pragma pack(push, 1)
 struct CSBCCorridor {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -25,12 +41,13 @@ struct CSBCCorridor {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSBCCorridor) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, Walls) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, CurrentEndPoint_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, CurrentEndPoint_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, BestLeft) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, BestRight) == 0x28);
+FABLE_STATIC_ASSERT_AT(28, sizeof(CSBCCorridor) == 0x2c);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CSBCCorridor, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CSBCCorridor, Walls) == 0x18);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CSBCCorridor, CurrentEndPoint_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CSBCCorridor, CurrentEndPoint_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CSBCCorridor, BestLeft) == 0x24);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CSBCCorridor, BestRight) == 0x28);
 
+#endif
 #endif // FABLE_ENGINE_CSBCCORRIDOR_H

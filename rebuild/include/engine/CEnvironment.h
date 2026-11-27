@@ -44,6 +44,10 @@ class CGameDefinitionManager;
 #pragma pack(push, 1)
 class CEnvironment {
 public:
+#ifdef FABLE_RETAIL_CREATEFISH_PASS29
+    float GetSnowStrength() const;
+    float GetMistStrength() const;
+#endif
 #if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
     // Ego_r.pdb CEnvironment::CEnvironmentGameTickState (Ego_r 0xcb0 bytes; retail 0xc20: the six 0x1f4-byte retail themes put Time at
     // +0xbb8, Update stores it at +0xc0c of the environment). Members after BlendedTheme in Ego_r order (pack 1). The assignment is

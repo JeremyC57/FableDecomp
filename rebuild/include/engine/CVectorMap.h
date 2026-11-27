@@ -84,6 +84,16 @@ public:
     // optimize("s") a plain inline Find is called out of line instead (0x005C552C, 0x005C36C2).
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_FIND_NAMES_PASS29
+    // Ego_d names the input val and the iterator found. The FableWin body tests end
+    // before calling Compare(val,found->first) and returns end on either failure.
+    iterator Find(const K& val) {
+        iterator found=LowerBound(val);
+        if(found!=this->end() && !Compare(val,found->first))
+            return found;
+        return this->end();
+    }
+#else
     iterator Find(const K& key) {
         iterator i=LowerBound(key);
 #ifdef FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND
@@ -94,6 +104,7 @@ public:
         return i==this->end() || key<i->first ? this->end() : i;
 #endif
     }
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     FABLE_FORCEINLINE
 #endif
@@ -337,6 +348,29 @@ typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>
     }
     return first;
 }
+#if defined(FABLE_RETAIL_UPDATE_CURFEW_PASS29) && defined(_MSC_VER)
+// Restore the non-const LowerBound owners at 0040f020 and 006804c0 to their default
+// /O2 /Oy flags around its original search, then reset with optimize("", on)
+// before any caller's function-level optimization.
+#include "engine/ETCInterfaceType.h"
+class CTCBase;
+#pragma optimize("ty", on)
+template<> inline __declspec(noinline)
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::iterator
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound(const ETCInterfaceType& key)
+{
+    iterator first=this->begin();
+    long count=this->end()-first;
+    while(count>0) {
+        long half=count/2;
+        iterator middle=first+half;
+        if(middle->first<key) { first=middle+1; count-=half+1; }
+        else count=half;
+    }
+    return first;
+}
+#pragma optimize("", on)
+#endif
 #if defined(FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_SPEED_OWNER_PASS27) && defined(_MSC_VER)
 // Fidelity: scaffolding, not retail. Restore the 0x004365B0 owner's default
 // /O2 /Oy flags around its original search, then reset with optimize("", on)

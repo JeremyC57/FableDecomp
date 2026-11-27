@@ -15,6 +15,11 @@ class CFishDef;
 class CTCFish : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_FISH; }
+#ifdef FABLE_RETAIL_CREATEFISH_PASS29
+    CDefPointer<const CFishDef> GetPDef() const { return PDef; }
+    void SetLength(float x) { Length=x; }
+    void SetWeight(float x) { Weight=x; }
+#endif
     float GetLength() const { return Length; }
     float GetWeight() const { return Weight; }
 #ifdef FABLE_RETAIL_CTCFISH_MOSTRECENTFISHWEIGHT

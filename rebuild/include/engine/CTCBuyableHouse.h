@@ -24,6 +24,9 @@ public:
 #if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
     void SetWifeLivingHere(CThing*);
 #endif
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+    CThing* GetWifeLivingHere()const{return WifeLivingHere.Get();}
+#endif
     bool GetOwnedByPlayer() const { return OwnedByPlayer; }
     bool GetRented() const { return Rented; }
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_ONINITIALACTIVATE

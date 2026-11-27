@@ -44,7 +44,18 @@ template <class K, class V, class C, class A> class map;
 #if defined(_MSC_VER)
 typedef unsigned __int64 FableNScriptUInt64;                           // the PDB's unsigned __int64 (thing unique IDs)
 enum EAIStateGroupType;
+#ifdef FABLE_RETAIL_CONVERSATION_CAMERA_PASS29
+enum ECameraOp {
+    CAM_OP_SPEAKEE_LEFT_ZOOM_ON_SPEAKER = 0,
+    CAM_OP_SPEAKEE_RIGHT_ZOOM_ON_SPEAKER = 1,
+    CAM_OP_SPEAKER_LEFT_ZOOM_ON_SPEAKEE = 2,
+    CAM_OP_SPEAKER_RIGHT_ZOOM_ON_SPEAKEE = 3,
+    CAM_OP_ZOOM_ON_SPEAKER_FACE = 4,
+    CAM_OP_ZOOM_ON_SPEAKEE_FACE = 5
+};
+#else
 enum ECameraOp;
+#endif
 enum EClothingCoversArea;
 enum ECreatureGroup;
 enum ECrime;
@@ -59,7 +70,11 @@ enum EHeroAbility;
 enum EHeroTitle;
 enum EHeroTrainableStatType;
 enum EMiniGameType;
+#ifdef FABLE_RETAIL_BE_EVIL_MORALITY_PASS29
+#include "engine/EMorality.h"
+#else
 enum EMorality;
+#endif
 enum EMusicSetType;
 enum EOpinion;
 enum EOpinionAttitudeType;
@@ -85,7 +100,18 @@ namespace NEntityEvents { enum EEventType; }
 #else
 typedef unsigned long long FableNScriptUInt64;
 enum EAIStateGroupType { };
+#ifdef FABLE_RETAIL_CONVERSATION_CAMERA_PASS29
+enum ECameraOp {
+    CAM_OP_SPEAKEE_LEFT_ZOOM_ON_SPEAKER = 0,
+    CAM_OP_SPEAKEE_RIGHT_ZOOM_ON_SPEAKER = 1,
+    CAM_OP_SPEAKER_LEFT_ZOOM_ON_SPEAKEE = 2,
+    CAM_OP_SPEAKER_RIGHT_ZOOM_ON_SPEAKEE = 3,
+    CAM_OP_ZOOM_ON_SPEAKER_FACE = 4,
+    CAM_OP_ZOOM_ON_SPEAKEE_FACE = 5
+};
+#else
 enum ECameraOp { };
+#endif
 enum EClothingCoversArea { };
 enum ECreatureGroup { };
 enum ECrime { };
@@ -100,7 +126,11 @@ enum EHeroAbility { };
 enum EHeroTitle { };
 enum EHeroTrainableStatType { };
 enum EMiniGameType { };
+#ifdef FABLE_RETAIL_BE_EVIL_MORALITY_PASS29
+#include "engine/EMorality.h"
+#else
 enum EMorality { };
+#endif
 enum EMusicSetType { };
 enum EOpinion { };
 enum EOpinionAttitudeType { };
@@ -113,7 +143,11 @@ enum EOpinionReactionType { };
 enum EScriptAIPriority { };
 #endif
 enum EScriptVillageAttitude { };
+#ifdef FABLE_RETAIL_ESCORT_TRADER_INIT_PASS29
+#include "engine/EScriptingStateGroups.h"
+#else
 enum EScriptingStateGroups { };
+#endif
 enum ESex { };
 enum ETargetingType { };
 #ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26

@@ -54,6 +54,11 @@ protected:
     static float GamePrimitiveDefaultFadeRangeRatio;                     // 0x013B8774
 #endif
 public:
+#ifdef FABLE_RETAIL_DRAW_LETTERBOX_PASS29
+    // FableWin method signatures and the consecutive retail calls in Draw.
+    float GetLetterBoxRatio() const;
+    float GetLetterBoxStrength() const;
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
     // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ,
     // out of line at 0x00434B50 (the row passes a hidden result slot: `push eax ; call 0x00434B50`). Declaration only, no layout change.
@@ -142,7 +147,11 @@ public:
     // call __ftol2 ; cmp al,0FFh`, 0x00439395..0x004393B2). Body of IsScreenFullyFadedOut from those bytes (descriptive). Needs
     // FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT and GetFadeInOutAlpha on CFadeInFadeOutBase (FABLE_RETAIL_CFADEINFADEOUTBASE_FADE). No layout change.
     unsigned char GetScreenFadeOutAlpha() const { return (unsigned char)(ScreenFadeOutInfo.GetFadeInOutAlpha() * 255.0f); }
+    #ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+    bool IsScreenFullyFadedOut() const { return ScreenFadeOutInfo.IsActive() && !ScreenFadeOutInfo.IsOpening() && !ScreenFadeOutInfo.IsClosing(); }
+#else
     bool IsScreenFullyFadedOut() const { return IsScreenFadeOut() && GetScreenFadeOutAlpha() == 255; }
+#endif
     // Two texts are on record for IsScreenFullyFadedOut (both descriptive, from row bytes): this one through GetScreenFadeOutAlpha
     // (wfA2 rows 0x00439070 / 0x00435530, which define FABLE_RETAIL_CFADEINFADEOUTBASE_FADE) and the member test below (wfA1 rows
     // 0x006D0830 / 0x006D1E30, FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN). The FADE opt-in that GetFadeInOutAlpha needs selects this one.

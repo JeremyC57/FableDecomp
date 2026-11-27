@@ -31,9 +31,17 @@ public:
  bool IsThingLineOfSight() const { return LineOfSight; }
  bool IsThingExtendedLineOfSight() const;
  bool IsThingIgnoreFOVLineOfSight() const;
+#ifdef FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29
+ bool IsThingSmelt() const { return Smelt; }
+#else
  bool IsThingSmelt() const;
+#endif
  bool IsThingHeard() const;
+#ifdef FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29
+ bool IsThingPerceived() const { return IsThingLineOfSight() || IsThingSmelt(); }
+#else
  bool IsThingPerceived() const;
+#endif
  bool IsPerceiving() const;
  bool IsPlayerLineOfSight() const;
  bool IsPlayerExtendedLineOfSight() const;
@@ -57,9 +65,17 @@ public:
  void SetThingExtendedLineOfSight(bool p0);
  void SetThingIgnoreFOVLineOfSight(bool p0);
  void UpdateHeroPerception(bool p0);
+#if defined(FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29) || defined(FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29)
+ const CThing* GetPerceivedThing() const;
+#else
  const CThing * GetPerceivedThing() const { return PerceivedThing.Get(); }
+#endif
  void SetPerceivedThing(const CThing * p0);
+#ifdef FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29
+ const C3DVector& GetAwarenessPosition() const { return LastPerceivedPos; }
+#else
  const C3DVector & GetAwarenessPosition() const;
+#endif
  const C3DVector & GetLastPerceivedPos() const;
  void SetThingToPerceive(const CThing * p0);
  void SetAsDirectlyAwareOfPerceivedThing() { if(GetPerceivedThing()) { DirectAwareness=true; FramesSinceDirectlyPerceivedThing=0; SetLastAwareInfo(); } }

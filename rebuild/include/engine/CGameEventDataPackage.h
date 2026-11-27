@@ -41,6 +41,15 @@ private:
     long          EndPos;                                                // +0x28
 };
 FABLE_STATIC_ASSERT_AT(22, sizeof(CGameEventDataPackage) == 0x2c);
+#ifdef FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_GETUHUGE_INLINE_PASS29
+// FableWin GetUHUGE and retail 0062bdbd..0062bdda: the typed reader expands its eight-byte GetData call.
+inline unsigned __int64 CGameEventDataPackage::GetUHUGE()
+{
+    unsigned __int64 value;
+    GetData(sizeof(value), &value);
+    return value;
+}
+#endif
 #else
 class CGameEventDataPackage;
 #endif

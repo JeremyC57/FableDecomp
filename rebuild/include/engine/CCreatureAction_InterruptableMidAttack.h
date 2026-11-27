@@ -7,7 +7,12 @@
 #include "engine/CCombatActionBase.h"
 class CCreatureAction_InterruptableMidAttack : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_VERSUS_ENEMY_ACTIONS_PASS29
+    CCreatureAction_InterruptableMidAttack(CThingCreatureBase&,CThing&);
+private:
+#else
     CCreatureAction_InterruptableMidAttack() : CCombatActionBase(150) { }
+#endif
     long InterruptTime;
 #ifdef FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_RTTI_DECLS
     // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement

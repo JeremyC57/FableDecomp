@@ -7,7 +7,11 @@
 // Needs FABLE_RETAIL_DEF_CLASS_BASE (engine/CParentDefClassBase.h).
 #include "engine/CParentDefClassBase.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_GENERATOR_CREATE_PASS29
+enum ECreatureGeneratorGenerateType { GENERATE_NORMAL,GENERATE_AMBUSH_DROP_IN,GENERATE_AMBUSH_JUMP_OUT,GENERATE_GENERATOR_ANIMATION,GENERATE_UNDEAD };
+#else
 enum ECreatureGeneratorGenerateType;                                     // MS forward enum
+#endif
 class CCreatureGenerationFamilyDef : public CParentDefClassBase {
 public:
 #ifdef FABLE_RETAIL_CCREATUREGENERATIONFAMILYDEF_TRANSFER

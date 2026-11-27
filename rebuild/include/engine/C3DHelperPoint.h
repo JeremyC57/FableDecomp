@@ -14,6 +14,10 @@ public:
     C3DHelperPoint() { }
     C3DHelperPoint(const C3DVector& position,unsigned long bone_index) : Position(position), BoneIndex(bone_index) { }
 #endif
+#if defined(FABLE_RETAIL_PHYSICS_FILE_COPY_CTORS_PASS29) && !defined(FABLE_RETAIL_C3DMESHSTATS_FILE_LOADER_PASS28)
+    // The file reader calls this constructor after the by-value getter.
+    C3DHelperPoint(const C3DVector&, unsigned long);
+#endif
     C3DVector Position;
     long BoneIndex;
 };

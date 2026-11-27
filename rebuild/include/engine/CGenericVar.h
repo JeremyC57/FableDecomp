@@ -8,7 +8,17 @@ enum EGenericVarType {
 };
 class CGenericVar {
 public:
+#ifdef FABLE_RETAIL_PROCESS_COMMAND_LINE_PASS29
+    virtual ~CGenericVar() {}
+    virtual void Init(const float&);
+    virtual void Init(const long&);
+    virtual void Init(const unsigned long&);
+    virtual void Init(const bool&);
+    virtual void Init(const CCharString&);
+    bool ReadFromParser(class CStringParser&);
+#else
     virtual ~CGenericVar();
+#endif
     float GetFloat() const { return ValFloat; }
 protected:
     EGenericVarType Type;

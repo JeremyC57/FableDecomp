@@ -10,6 +10,11 @@ enum EEnginePrimitiveBlendMode;
 enum EEnginePrimitiveBlendOp;
 class CEngineInternalPrimitiveParticleDecalGroup : public CEngineInternalPrimitiveParticleGroup {
 public:
+#ifdef FABLE_RETAIL_PARTICLE_GROUP_DESTRUCTOR_PASS29
+    CEngineInternalPrimitiveParticleDecalGroup();
+    virtual void Update(const CEnginePrimitive&,unsigned long);
+    virtual bool PrimTypeMatchesGroup(long);
+#endif
     unsigned long             DecalBankIndex;      // +0xac
     unsigned short            Flags;               // +0xb0
     EEnginePrimitiveBlendMode BlendMode;           // +0xb4
@@ -17,5 +22,5 @@ public:
     float                     StencilCubeHeight;   // +0xbc
     bool                      LandscapeDecal;      // +0xc0
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveParticleDecalGroup) == 0xc4);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CEngineInternalPrimitiveParticleDecalGroup) == 0xc4);
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEPARTICLEDECALGROUP_H

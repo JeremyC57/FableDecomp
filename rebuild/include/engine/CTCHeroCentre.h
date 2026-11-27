@@ -37,6 +37,9 @@ class CThing;
 class CHeroCentreDef;
 class CTCHeroCentre : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_HERO_CENTRE_ACTIVATE_PASS29
+    virtual void OnInitialActivate();
+#endif
     virtual bool HasFrameUpdate() const;                                 //  8 0x0077EB90
     virtual void FrameUpdate();                                          //  9 0x0077D5B0
     bool GetQuestCards(std::vector<CIntelligentPointer<CThing> >& cards) const;   // 0x0077DBC0
@@ -50,7 +53,7 @@ protected:
     std::vector<C3DVector>                     QuestCardPositions;       // +0x24
     bool                                       WaitingForTutorialToFinish;   // +0x30
 };
-FABLE_STATIC_ASSERT(sizeof(CTCHeroCentre) == 0x34);
+FABLE_STATIC_ASSERT_AT(53, sizeof(CTCHeroCentre) == 0x34);
 #else
 #pragma pack(push, 1)
 class CTCHeroCentre {

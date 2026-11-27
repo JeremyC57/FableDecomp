@@ -13,6 +13,11 @@
 #else
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_BREAK_SIEGE_TIMER_PASS29
+class CGameScriptInterfaceBase;
+extern CGameScriptInterfaceBase* pDSTGame; // Ego_r and FableWin S_PUB32; native pointer 0143e8f8.
+#endif
+
 class CTimer {
 public:
     CTimer();                                                            // 0x00CD4450
@@ -33,7 +38,7 @@ private:
 #endif
     long TimerIndex;                                                     // +0x00
 };
-FABLE_STATIC_ASSERT(sizeof(CTimer) == 0x4);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CTimer) == 0x4);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CTIMER_H

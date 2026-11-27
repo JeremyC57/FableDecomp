@@ -30,6 +30,9 @@ public:
     void SaveTable(bool);
     unsigned long GetTableRandomID(){return RandomID;}
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+    unsigned long GetStringCRC(long) const;
+#endif
     CCharString GetString(long pos) const;                               // 0x009D49B0
 #ifdef FABLE_RETAIL_CDEFSTRINGTABLE_ASCHARARRAY
     // Opt-in (chunk 1017, row 0x008365F0): Ego_r.pdb / FableWin.pdb ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (const; retail

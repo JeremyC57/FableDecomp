@@ -13,6 +13,12 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 #else
 #define FABLE_NOINLINE_BODY inline
 #endif
+#ifdef FABLE_RETAIL_REDEFINER_LIST_GENERATE_PASS29
+// Original Ego_d enumerators consulted by IsRedefinableControl.
+enum EControllerType { CONTROLLER_NONE, CONTROLLER_XBOX_PAD, CONTROLLER_KEYBOARD, CONTROLLER_MOUSE };
+enum EInputKey { KB_ESC = 1 };
+enum EMouseButtonControl { MOUSE_BUTTON_NULL_CONTROL = 0, MOUSE_MOVEMENT = 4, MOUSE_WHEEL_MOVEMENT = 5 };
+#endif
 enum EControllerType;                // Ego_r.pdb enums (MS forward declarations; enumerators not modelled)
 enum EInputKey;
 enum EXboxControllerButton;
@@ -46,6 +52,9 @@ public:
     // Retail opt-in (bwf1 / agentC2, row 0x00651B04): the inline default constructor (five zero words and a zero C2DVector).
     CActionInputControl() : GameAction((EGameAction)0), ControllerType((EControllerType)0), KeyboardKey((EInputKey)0),
         XboxButton((EXboxControllerButton)0), MouseButton((EMouseButtonControl)0), ControlDirection(0.0f, 0.0f) {}
+#endif
+#ifdef FABLE_RETAIL_REDEFINER_LIST_GENERATE_PASS29
+    bool IsDirectional() const { return GameAction==GAME_ACTION_MOVEMENT || GameAction==GAME_ACTION_BETTING; }
 #endif
     bool IsSameButton(const CActionInputControl& other) const;          // 0x00405DB0 (landed)
     bool IsSameActionAndButton(const CActionInputControl& other) const; // 0x0040EDA0 (no caller in retail)

@@ -28,7 +28,9 @@ public:
     // dword ptr [ecx+4]`) and the default Release, whose zero store follows the null test (0x0074653B `mov [esp+8],0` after the join).
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
-#if defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR)
+#if defined(FABLE_RETAIL_CTHINGMARKER_DRAW_PASS29)
+    ~CIVCountedPointer() { if (Object) Object->Release(); }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR)
     // Nested opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription, a `#pragma optimize("s")` TU): as
     // FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT (one level, so the size-mode inliner expands it), but with Release()'s null store
     // inside the null test: retail keeps it for the GetPGroupEntry temporary (0x00595F7C `and dword ptr [ebp+1D0h],0` after the
@@ -177,7 +179,12 @@ public:
     // Opt-in (chunk 2048): FableWin.pdb ?Get@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAV..@XZ (9 instructions / 17 bytes).
     T* Get() const { return static_cast<T*>(Object); }
 #endif
+#ifdef FABLE_RETAIL_TEXTURE_MIP_REDUCE_PASS29
+    // The original managed texture accessor reads its pointee only on the non-null path.
+    unsigned long GetRefCount() const { if (Object) return Object->GetRefCount(); return 0; }
+#else
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
+#endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
     // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds; needs FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT, the pointee deletes

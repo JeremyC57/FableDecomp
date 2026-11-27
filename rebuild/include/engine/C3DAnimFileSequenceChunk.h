@@ -29,6 +29,9 @@ void AddMatrix(const CMatrix3x4&);
 virtual ~C3DAnimFileSequenceChunk();
 #endif
 public:long GetParentIndex()const{return ParentIndex;}
+#ifdef FABLE_RETAIL_BUILDER_INTERSECTION_PASS29
+ void SetParentIndex(long);
+#endif
 #if defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_GETTERS) && defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX)
  // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): FableWin.pdb
  // ?GetBoneName@C3DAnimFileSequenceChunk@@QBE?BVCCharString@@XZ (by value: the row copy-constructs from +0x34, 0x00A4EFDE),

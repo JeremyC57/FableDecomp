@@ -24,6 +24,9 @@ public:
 
 #ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
 // Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+ const CEngineRenderInfoAnimatedMesh* PeekRenderInfo() const { return &RenderInfo; }
+#endif
  CEngineRenderInfoAnimatedMesh* GetRenderInfo(){return &RenderInfo;}
  bool SetupMesh(float,float);
 #endif

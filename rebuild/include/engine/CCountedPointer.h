@@ -467,7 +467,14 @@ template<> inline void CCountedPointer<const CFontBank>::ShareData(const CFontBa
 #endif
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY
 // ??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z = 0x00419463 (23 bytes, calls ShareData; owner row: optimize("s", on)).
-template<> inline CCountedPointer<CFontBank>& CCountedPointer<CFontBank>::operator=(const CCountedPointer<CFontBank>& other)
+template<>
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+#ifdef _MSC_VER
+// Inline-budget: The original subtitle parser calls the 23-byte font assignment at 00419463.
+__declspec(noinline)
+#endif
+#endif
+inline CCountedPointer<CFontBank>& CCountedPointer<CFontBank>::operator=(const CCountedPointer<CFontBank>& other)
 {
     ShareData(other.Data, other.Info);
     return *this;

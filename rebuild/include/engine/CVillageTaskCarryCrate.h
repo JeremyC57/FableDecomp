@@ -31,15 +31,20 @@ public:
     virtual void RemoveThingFromTask(const CThing &,bool &);
     bool IsBetterThan(const CVillageTaskCarryCrate *,const CThing &) const;
     bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+#ifdef FABLE_RETAIL_WAREHOUSE_MOVE_CRATES_PASS29
+    CThing* GetCrateStack() const { return PCrateStack.Get(); }
+    bool IsPickup() const { return Pickup; }
+#else
     CThing * GetCrateStack() const;
     bool IsPickup() const;
+#endif
 private:
     bool IsCreatureValidForTask(const CThing &) const;
 public:
     virtual ~CVillageTaskCarryCrate();
     CVillageTaskCarryCrate & operator=(const CVillageTaskCarryCrate &);
 };
-FABLE_STATIC_ASSERT(sizeof(CVillageTaskCarryCrate)==0x20);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CVillageTaskCarryCrate)==0x20);
 #else
 #pragma pack(push, 1)
 class CVillageTaskCarryCrate {
@@ -54,12 +59,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CVillageTaskCarryCrate) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, CreatureAssignedToTask) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, PCrateStack) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, Pickup) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, Priority) == 0x1c);
+FABLE_STATIC_ASSERT_AT(57, sizeof(CVillageTaskCarryCrate) == 0x20);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CVillageTaskCarryCrate, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CVillageTaskCarryCrate, CreatureAssignedToTask) == 0x8);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CVillageTaskCarryCrate, PCrateStack) == 0x10);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CVillageTaskCarryCrate, Pickup) == 0x18);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CVillageTaskCarryCrate, Priority) == 0x1c);
 
 #endif // FABLE_RETAIL_CVILLAGETASKCARRYCRATE
 #endif // FABLE_ENGINE_CVILLAGETASKCARRYCRATE_H

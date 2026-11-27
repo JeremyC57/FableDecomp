@@ -15,6 +15,9 @@ class CRGBColour;
 class C4DVector {
 public:
     float X,Y,Z,W;
+#ifdef FABLE_RETAIL_VECTOR_NORMALISE_PASS29
+    const C4DVector& operator/=(float scale) { X /= scale; Y /= scale; Z /= scale; W /= scale; return *this; }
+#endif
     C4DVector() { }
     C4DVector(float x,float y,float z,float w) : X(x),Y(y),Z(z),W(w) { }
     C4DVector(const C3DVector& v,float w) : X(v.X),Y(v.Y),Z(v.Z),W(w) { }

@@ -9,6 +9,10 @@ class CExplodingObjectDef;
 class CTCExplodingObject : public CTCBase {
 public:
     virtual void FrameUpdate();
+#ifdef FABLE_RETAIL_EXPLOSION_HITS_PASS29
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_EXPLODING_OBJECT;}
+    void SetCountdownTimer(long);
+#endif
 private:
     void Explode();
     float MaxDamage;
@@ -20,6 +24,6 @@ private:
     CDefPointer<const CExplodingObjectDef> PDef;
     CIntelligentPointer<CThing> PProximityParticle;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCExplodingObject)==0x30);
+FABLE_STATIC_ASSERT_AT(23, sizeof(CTCExplodingObject)==0x30);
 #endif
 #endif

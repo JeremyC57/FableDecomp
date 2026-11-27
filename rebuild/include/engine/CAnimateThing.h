@@ -56,6 +56,9 @@ public:
  const CAnimSet& PeekMainAnim()const{return CurrentAnim.MainAnimSet;}
  void Update(const CAnimateThingUpdate& update);                       // 0x0070E8B0
 #endif
+#ifdef FABLE_RETAIL_UPDATE_ACTION_ANIMATION_PASS29
+ void GetAllCombinationAnimsFromType(long,std::vector<CAnimSet*>&);
+#endif
  void GetAllCombinationAnims(std::vector<CAnimSet*>&);
 #ifdef FABLE_RETAIL_CANIMATETHING_REMOVE_COMBINATION_CALL_PASS24
  void RemoveCombinationAnim(const CAnimSet* anim);

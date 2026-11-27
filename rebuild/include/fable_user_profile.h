@@ -43,6 +43,13 @@ class CConfigOptionsDefaultsDef;                                         // chun
 template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
 {
+#ifdef FABLE_RETAIL_TUTORIAL_GIVE_PASS29
+public:
+    bool GiveTutorialForCategory(ETutorialCategory category,bool ignore_fading);
+    bool IsTutorialSystemEnabled() const;
+    bool IsTutorialCategoryGiven(ETutorialCategory category) const;
+private:
+#endif
 #ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28
 public:
     // FableWin 029ccb70/029ccbb0 and the native Update profile accesses.

@@ -24,7 +24,15 @@ private:
     unsigned char _pad_0x25[0x7c - 0x25];
 #else
 private:
-    unsigned char _pad_0xc[0x70];               // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#ifdef FABLE_RETAIL_LOCAL_DETAIL_RENDER_PASS29
+    unsigned char _pad_0xc[0x28 - 0xc];
+    long StippleAlphaMeshBias;
+    unsigned char _pad_0x2c[0x7c - 0x2c];
+public:
+    long GetStippleAlphaMeshBias() const { return StippleAlphaMeshBias; }
+#else
+    unsigned char _pad_0xc[0x70];
+#endif               // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 #endif
 };
 FABLE_STATIC_ASSERT_AT(20, sizeof(CEngineLocalDetailGenerator) == 0x7c);

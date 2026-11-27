@@ -56,7 +56,15 @@ private:
 #endif
     bool DirectionOverride;                                              // +0x2E
     C3DVector DirectionOverrideVector;                                   // +0x2F
+#ifdef FABLE_RETAIL_BATTLE_CHARGE_RUSH_PASS29
+    unsigned char _pad3b;
+    float DashDistance;
+    void RushForwards();
+    void SetupFacingDirection(C3DVector&);
+    void FinishMove(CThingCreatureBase&,bool);
+#else
     unsigned char _unmodelled_0x3B[0x40 - 0x3B];
+#endif
     long SpellLevel;                                                     // +0x40
 #ifdef FABLE_RETAIL_CTCBATTLECHARGE_CREATEHIT_PASS27
     CIntelligentPointer<CThing> PItemRemoved;
@@ -81,7 +89,15 @@ private:
     unsigned char _unmodelled_0x14[0x88 - 0x14];                         // +0x14 PDef .. PeopleHit (not modelled)
 #endif
     bool IsZTargetting;                                                  // +0x88
-    unsigned char _unmodelled_0x89[0x94 - 0x89];                         // +0x89 .. +0x93
+#ifdef FABLE_RETAIL_BATTLE_CHARGE_RUSH_PASS29
+    bool FakeCollideWithSomething;
+    unsigned char _pad8a[2];
+    long ChargeDelayFrameCount;
+    bool CompletedExitModes;
+    unsigned char _pad91[3];
+#else
+    unsigned char _unmodelled_0x89[0x94 - 0x89];
+#endif                         // +0x89 .. +0x93
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT_AT(38, sizeof(CTCBattleCharge) == 0x94);

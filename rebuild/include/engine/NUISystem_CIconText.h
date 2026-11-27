@@ -22,7 +22,11 @@
 class CFontBank;
 namespace NUISystem {
 enum ETextAlignement;                                                // MS forward enum (engine/NUISystem_CUIDef.h retail branch)
-enum EIconFlags;                                                     // MS forward enum (Ego_r.pdb NUISystem::EIconFlags)
+#ifdef FABLE_RETAIL_ICON_FLAGS_PASS29
+enum EIconFlags { ICON_INSIDE_TEXT = 1, ICON_RIGHT_JUSTIFIED = 2 };
+#else
+enum EIconFlags;
+#endif                                                     // MS forward enum (Ego_r.pdb NUISystem::EIconFlags)
 class CIconText : public CChangingStateComponent {
 public:
     struct CEmbeddedIcon {
@@ -88,5 +92,5 @@ protected:
     unsigned char NoRenderNextFrame;                                 // +0x1b0
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CIconText) == 0x1b4);
+FABLE_STATIC_ASSERT_AT(91, sizeof(NUISystem::CIconText) == 0x1b4);
 #endif

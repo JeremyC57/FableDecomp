@@ -8,6 +8,15 @@
 class CCardinalSpline {
 public:
  CCardinalSpline():Tension(0.5f),EndPointsConnected(false){}
+#ifdef FABLE_RETAIL_SCRIPTED_SPLINE_UPDATE_PASS29
+ CCardinalSpline(const CArray<C3DVector>& points,float tension=0.5f,bool end_points_connected=false)
+   : ControlPoints(points),Tension(tension),EndPointsConnected(end_points_connected){}
+ void DeleteControlPoint(long index){if(index>=0 && static_cast<unsigned long>(index)<ControlPoints.size()) ControlPoints.erase(ControlPoints.begin()+index);}
+#endif
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_SERIAL_PASS29
+ bool GetEndPointsConnected() const { return EndPointsConnected; }
+ void SetEndPointsConnected(bool value) { EndPointsConnected=value; }
+#endif
  float GetTension()const{return Tension;}
  void SetTension(const float t){Tension=t;}
  long GetControlPointCount()const{return ControlPoints.size();}

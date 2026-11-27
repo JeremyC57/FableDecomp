@@ -33,3 +33,6 @@ The package is `FableDecomp_pass29_checkpoint_1.zip` (5.6 MB, 4,055 entries). It
 4. Apply the rebased header tree (the scratch resolution and checker are reproducible from this note).
 5. Land with `vland.py --land`, filtering new bindings that would split an address (as p27 / p28).
 6. Settle 0x00C0B570's NF453 hold.
+
+## Outcome (2026-11-27)
+The owner asked to land the landable rows and fix the ones marked match that don't. 176 rows landed, and the rebased header tree was applied. Five rows got `// Retail-asm:` evidence. Seven rows were backed out and 0x00C6B260 is held. Details: `batches/2026-11-27_landing_p29/README.md`.

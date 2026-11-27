@@ -47,6 +47,9 @@ public:
  void SetFromRotationMatrix(const CMatrix3x4&);
  void SetIdentity(){X=0.0f;Y=0.0f;Z=0.0f;W=1.0f;}
 #endif
+#if defined(FABLE_RETAIL_KEYFRAME_MATRIX_ROWS_PASS29) && !defined(FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE)
+ void SetFromRotationMatrix(const CMatrix3x4&);
+#endif
  void SetFromAxisAngle(const C3DVector& axis,float angle);
 #ifdef FABLE_RETAIL_CQUATERNION_EQUALS
  // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb

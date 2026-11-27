@@ -102,6 +102,16 @@ protected:
     // ?CalculateVertices@CTCPhysicsRigidBody@@AAEXAAVCRigidBodyConfig@CRigidBody@@@Z (0x00759EC0). No layout change.
     CRigidBody Body;                                                // +0xa0
 private:
+#ifdef FABLE_RETAIL_RIGIDBODY_CHECK_COLLISIONS_PASS29
+protected:
+    virtual C2DBoxI GetPossibleCollidedWithArea() const;
+private:
+    enum ECollideState { PENETRATING, COLLIDING, CLEAR };
+    ECollideState CheckForCollisions(CRigidBody::CRigidBodyConfig&);
+#endif
+#ifdef FABLE_RETAIL_RIGID_INTEGRATE_PASS29
+    void Integrate(float delta_time);
+#endif
     void InitialiseBody();                                          // 0x0075B000
     void CalculateVertices(CRigidBody::CRigidBodyConfig& config);   // 0x00759EC0
 #ifdef FABLE_RETAIL_CTCPHYSICSRIGIDBODY_RESOLVECOLLISIONS

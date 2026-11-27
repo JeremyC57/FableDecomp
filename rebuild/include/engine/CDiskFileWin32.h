@@ -30,7 +30,11 @@ public:
     virtual void Write(const void*,long,CASuspendableProcess*);
     virtual void SetPosition(long);
     virtual void MovePosition(long);
+#ifdef FABLE_RETAIL_ANIMATION_EVENTS_LOAD_PASS29
+    virtual long GetPosition() const;
+#else
     virtual long GetPosition() const { return Position; }
+#endif
     virtual long GetLength() const { return Length; }
     virtual void SetLength(long);
 #ifdef FABLE_RETAIL_CDISKFILEWIN32_ISOPEN_INLINE

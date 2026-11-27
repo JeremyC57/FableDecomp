@@ -26,7 +26,37 @@ public:
     static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00EBEE30
     virtual void RegisterMain();                                         // 0x00EBCCD0
     virtual void Main();                                                 // 0x00EBCD70
-    class CVO_Woman;                                                     // Alloc 0x00EBE540
+#ifdef FABLE_RETAIL_ORACLE_WOMAN_REGISTRATION_PASS29
+    class CVO_Woman : public CEntityScriptBase {
+    public:
+        CVO_Woman(CV_OracleScript&, CScriptDataBase*, const CScriptThing&);
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_OracleScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+        virtual void Init();
+    protected:
+        CV_OracleScript& ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+    private:
+        bool SaidIntro;
+    };
+#elif defined(FABLE_RETAIL_ORACLE_WOMAN_PASS29)
+    class CVO_Woman : public CEntityScriptBase {
+    public:
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+        virtual void Init();
+    protected:
+        CV_OracleScript* ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+    private:
+        bool SaidIntro;
+    };
+#else
+    class CVO_Woman;
+#endif                                                     // Alloc 0x00EBE540
     class CVO_OracleMarker : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_OracleScript&, CScriptDataBase*, const CScriptThing&); // 0x00EBCE80
@@ -47,8 +77,8 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_OracleScript) == 0x48);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_OracleScript::CVO_OracleMarker) == 0x30);
+FABLE_STATIC_ASSERT_AT(50, sizeof(NScript::CV_OracleScript) == 0x48);
+FABLE_STATIC_ASSERT_AT(51, sizeof(NScript::CV_OracleScript::CVO_OracleMarker) == 0x30);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_ORACLESCRIPT_H

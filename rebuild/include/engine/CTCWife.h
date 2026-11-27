@@ -46,6 +46,13 @@ enum EWifeAppearanceCategories;                              // MS forward enum 
 #endif
 
 class CTCWife : public CTCBase {
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+public:
+    void ReceivedConfirmation(bool);
+#ifdef FABLE_RETAIL_MINION_INTERACTION_UPDATE_PASS29
+    void OnGreet();
+#endif
+#endif
 #ifdef FABLE_RETAIL_GREETING_PASS23
 public:
     // Both original PDB constructors: public CThing&; normal fixture lifetimes.

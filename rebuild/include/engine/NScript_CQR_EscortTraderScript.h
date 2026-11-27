@@ -92,4 +92,25 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQR_EscortTraderScript)==0x120);
+#ifdef FABLE_RETAIL_ESCORT_TRADER_INIT_PASS29
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQR_EscortTraderScript::CTraderToEscort : public CEntityScriptBase {
+public:
+    typedef CQR_EscortTraderScript TParentClass;
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Init();
+    virtual void Main();
+protected:
+    CQR_EscortTraderScript& ParentClass;                // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                // +0x18
+private:
+    long lastRandomSpeechFollowIdx1;                    // +0x1c
+    long lastRandomSpeechFollowIdx2;                    // +0x20
+    long lastRandomSpeechWaitIdx1;                      // +0x24
+    long lastRandomSpeechWaitIdx2;                      // +0x28
+};
+}
+#endif
 #endif

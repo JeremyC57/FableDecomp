@@ -16,12 +16,16 @@
 #include "engine/CBaseClassNonCopyable.h"
 class CTextureManager : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_TEXTURE_MIP_REDUCE_PASS29
+    bool ReduceMipmapLevel(class CGraphicFrame&, class CManagedTexture&, unsigned long);
+    bool AllocateTexture(class CManagedTexture&, unsigned long, unsigned long, long, const class CPixelFormat&, class CManagedTextureOwner*);
+#endif
     CTextureManager();                                       // 0x00A6A360
     virtual ~CTextureManager();                              // 0x00A6A440
 private:
     unsigned char Unmodeled_0x004[0x5d0];
 };
-FABLE_STATIC_ASSERT(sizeof(CTextureManager) == 0x5d4);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CTextureManager) == 0x5d4);
 #else
 
 #ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATETEXTURE

@@ -50,6 +50,9 @@ class CTexture;
 class CRGBColour;
 class CEngineSkyRenderer : public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_SKY_WORLDFRAME_PASS29
+    virtual void WorldFrameUpdate(bool time_for_full_update);
+#endif
     CEngineSkyRenderer(const CEngineInit& init);                         // 0x00B625E0
     virtual ~CEngineSkyRenderer();                                       // slot 0  0x00B621A0
     virtual unsigned long PeekSceneFilterFlags() const;                  // slot 10 ?PeekSceneFilterFlags@CEngineSkyRenderer@@UBEKXZ (Ego_r / FableWin; chunk 731)
@@ -89,6 +92,9 @@ public:
     bool               EnableClouds;                                     // +0x18c
     CDefPointer<const CSkyDef> PSkyDef;                                  // +0x190
 private:
+#ifdef FABLE_RETAIL_SKY_WORLDFRAME_PASS29
+    void KeepHistoryInRange(C2DVector* history, const float range) const;
+#endif
 #ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDCLOUDMESH
     // Ego_r and FableWin both record the private cloud mesh builder at retail 0x00B61DD0.
     void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);

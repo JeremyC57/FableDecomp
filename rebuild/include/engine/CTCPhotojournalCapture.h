@@ -6,6 +6,11 @@
 namespace NUISystem {class CComponent;}
 // Both original complete records; native ctor/dtor/alloc confirm48-byte retail layout.
 class CTCPhotojournalCapture : public CTCBase {
+#ifdef FABLE_RETAIL_PHOTOJOURNAL_CAPTION_PASS29
+public:
+ void OnCaptionEntered(const CWideString&);
+ void ClosePhotojournalCapture();
+#endif
 private:
  void CreateScreen();
  CWideString Description;
@@ -19,5 +24,5 @@ private:
  bool WasPlayerGuiOpen;
  long TakeScreenshotAfterFrames;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCPhotojournalCapture)==0x48);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CTCPhotojournalCapture)==0x48);
 #endif

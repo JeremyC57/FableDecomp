@@ -20,7 +20,23 @@ class CASoundManager;
 #ifdef FABLE_RETAIL_CSUBTITLE_STRUCT
 // Retail opt-in (NF132, q4100): Ego_r.pdb and FableWin.pdb key CSubTitle as a struct (`UCSubTitle@@`: ??0CSubTitle@@QAE@XZ,
 // ?clear@?$list@UCSubTitle@@...); the list's out-of-line clear 0x009BE060 is ?clear@?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAEXXZ.
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+#include "engine/NGameText_CDataBank.h"
+struct CSubTitle {
+    CIVCountedPointer<const NGameText::CTextEntry> TextEntry;
+    CWideString FormattedText;
+    CCharString Sound;
+    long FrameStart;
+    long FrameEnd;
+    float StartTime;
+    float EndTime;
+    CSubTitle() {}
+    CSubTitle(const CSubTitle& other);                  // 0x009BDE00
+};
+
+#else
 struct CSubTitle;
+#endif
 #else
 class CSubTitle;
 #endif
@@ -28,8 +44,14 @@ class CMovieSubtitles {
 public:
     CMovieSubtitles();                                                   // 0x009BDBA0 ??0CMovieSubtitles@@QAE@XZ
     void ParseSubtitles(const CWideString&);                             // 0x009BD460 ?ParseSubtitles@CMovieSubtitles@@QAEXABVCWideString@@@Z
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+    long GetFrameNumber(long mins,float secs) { float time=mins*60+secs; return (long)(Fps*time); }
+#endif
     void Play(float,bool);                                               // 0x009BD910 ?Play@CMovieSubtitles@@QAEXM_N@Z
     void SetTextBank(const NGameText::CDataBank* bank) { pTextBank = bank; }   // FableWin ?SetTextBank@CMovieSubtitles@@QAEXPBVCDataBank@NGameText@@@Z
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+protected:
+#endif
     std::list<CSubTitle>        SubTitles;                               // +0x00 (STLport list: 4 bytes)
     const NGameText::CDataBank* pTextBank;                               // +0x04
     long                        Fps;                                     // +0x08
@@ -43,6 +65,9 @@ public:
     // wide char = unsigned short -> SIIG) and the protected static CCountedPointer<CFontBank> PFont (Ego_d.pdb LF_STMEMBER; Ego_r.pdb
     // `dynamic initializer for 'CMovieSubtitles::PFont''), 0x013CA7F8 (also read by Play 0x009BD910, landed under the descriptive
     // extern g_pSubtitleFont). Statics only: no layout change.
+#ifdef FABLE_RETAIL_MOVIE_PARSE_PASS29
+public:
+#endif
     static unsigned int __fastcall GetCharWidthW(unsigned short c);             // 0x009BCEF0
 protected:
     static CCountedPointer<CFontBank> PFont;                             // 0x013CA7F8

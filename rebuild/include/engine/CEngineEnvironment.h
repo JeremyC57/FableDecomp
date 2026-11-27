@@ -40,11 +40,21 @@ public:
         return NextWindVector*(speed < min_speed ? min_speed : (speed > max_speed ? max_speed : speed));
     }
 #endif
+#ifdef FABLE_RETAIL_SKY_WORLDFRAME_PASS29
+    // FableWin constructs the return value by copying the scaled vector.
+    // Inline-budget: retail expands both calls in WorldFrameUpdate; ordinary inline leaves both calls.
+    FABLE_FORCEINLINE C3DVector GetClampedScaledCurrentWindVector(float scale, float min, float max) const
+    {
+        float speed = CurrentWindSpeed * scale;
+        return C3DVector(CurrentWindVector * (speed < min ? min : (speed > max ? max : speed)));
+    }
+#else
     FABLE_FORCEINLINE C3DVector GetClampedScaledCurrentWindVector(float scale, float min_speed, float max_speed) const
     {
         float speed = CurrentWindSpeed * scale;
         return CurrentWindVector * (speed < min_speed ? min_speed : (speed > max_speed ? max_speed : speed));
     }
+#endif
 private:
     float         CurrentInterpolation;                      // +0x0c
     float         BulletTimeInterpolation;                   // +0x10

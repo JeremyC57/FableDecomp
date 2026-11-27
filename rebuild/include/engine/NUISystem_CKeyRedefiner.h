@@ -20,7 +20,18 @@ public:
     CKeyRedefiner(long);
     CKeyRedefiner(const CKeyRedefiner&);
     virtual ~CKeyRedefiner();
+#ifdef FABLE_RETAIL_REDEFINER_LIST_GENERATE_PASS29
+    enum EGameActionSubType { ACTION_SUBTYPE_NONE, ACTION_SUBTYPE_1, ACTION_SUBTYPE_2,
+        ACTION_SUBTYPE_3, ACTION_SUBTYPE_4, ACTION_SUBTYPE_5, ACTION_SUBTYPE_6,
+        ACTION_SUBTYPE_7, ACTION_SUBTYPE_8, ACTION_SUBTYPE_9, ACTION_SUBTYPE_UP,
+        ACTION_SUBTYPE_DOWN, ACTION_SUBTYPE_LEFT, ACTION_SUBTYPE_RIGHT };
+    virtual void SetAction(const CActionInputControl&, const CCharString&);
+    EGameActionSubType GetSubType() const { return SubType; }
+    EGameAction GetAction() const { return Actions.front(); }
+    void AddAlias(EGameAction action) { Actions.push_back(action); }
+#else
     void AddAlias(EGameAction);
+#endif
 protected:
     CText* PActionText;                                     // +0x194
     CText* PKeyText;                                        // +0x198
@@ -29,6 +40,6 @@ protected:
     unsigned char Definition[0x1c];                         // +0x1a4 CActionInputControl (GameAction, ControllerType,
                                                             // KeyboardKey, XboxButton, MouseButton, ControlDirection)
 };
-FABLE_STATIC_ASSERT(sizeof(CKeyRedefiner)==0x1c0);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CKeyRedefiner)==0x1c0);
 }
 #endif

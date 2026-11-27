@@ -31,6 +31,10 @@ class CThing;
 #include "engine/CEnginePrimitiveHandle.h"
 #endif
 class CTCBulletTime : public CTCBase {
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+public: void CancelMove();
+#endif
+
 #if defined(FABLE_RETAIL_CTCBULLETTIME_CTOR) && !defined(FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23)
 public: CTCBulletTime(CThing&);                                          // 0x0079D360
 #endif

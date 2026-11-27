@@ -25,7 +25,11 @@ public:
     // GetTypeFromDefIndexPC 0x0059C447 returns 1 for the weapon categories, 0 for the clothing ones, 2 otherwise.
     // Enumerators as spelled in the LF_ENUMERATE records of Ego_r.pdb, Ego_d.pdb, FableWin.pdb and the Anniversary 360 PDB (2026-11-20).
     enum EItem_Menu_Type { MENU_TYPE_CLOTHING = 0, MENU_TYPE_WEAPONS = 1, MENU_TYPE_ITEMS = 2 };
-    void ResetTradeLists();                                                        // 0x0059D9AD ?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+#ifdef FABLE_RETAIL_TRADE_RESET_ORIGINAL_PASS29
+    void ResetInventoryTradeItems();
+#else
+    void ResetTradeLists();
+#endif                                                        // 0x0059D9AD ?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
     void InitialiseBuyableItems(std::vector<std::pair<long,long> >& items);        // 0x005A30A1
     bool AddBuyItemToListPC(NUISystem::CComponent* frame, long defIndex, long count, NUISystem::CList* list,
                             NUISystem::CViewport* viewport, bool a);               // 0x005A6CA1
@@ -240,7 +244,12 @@ public:
     long ItemSellCount;                                                            // +0x164
     long ItemBuyCount;                                                             // +0x168
     long ItemSellUniqueCount;                                                      // +0x16c
-    EInventoryCategoryIdentifier CategoryIdent;                                    // +0x170
+#ifdef FABLE_RETAIL_TRADE_CATEGORY_IDENT_PASS29
+    // Ego_r, Ego_d and FableWin give the namespace enum; retail writes the buy category to +0x170.
+    NInventory::EInventoryCategoryIdentifier CategoryIdent;
+#else
+    EInventoryCategoryIdentifier CategoryIdent;
+#endif                                    // +0x170
     NHeroInformationScreens::EScreenType PreviousScreenType;                       // +0x174
     bool WarningNeeded;                                                            // +0x178
     long TrophyUseNeeded;                                                          // +0x17c

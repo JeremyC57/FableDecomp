@@ -33,6 +33,11 @@ virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*) const;
 public:
 const char* GetChunkType() const { return ChunkType; }
 #endif
+#ifdef FABLE_RETAIL_CHUNK_READER_PASS29
+private:
+friend class CChunkedFileSuperChunk;
+void SetParent(CChunkedFileSuperChunk* parent) { Parent=parent; }
+#endif
 private:char ChunkType[5];CChunkedFileSuperChunk* Parent;};
 FABLE_STATIC_ASSERT_AT(31, sizeof(CChunkedFileChunk)==0x10);
 #endif

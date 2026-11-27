@@ -134,6 +134,9 @@ public:
     friend class CGraphicInfoFrame;
 #endif
     const CGraphicInfo* PeekGraphic(unsigned long) const;
+#ifdef FABLE_RETAIL_PRELOAD_COMPLETED_BANK_PASS29
+    void FrameEnd();
+#endif
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
 #if defined(FABLE_RETAIL_CGRAPHICDATABANK_TEXTUREMANAGERACCESS) || defined(FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT)

@@ -183,6 +183,9 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_PLUSASSIGN2D_PASS27
     const C3DVector& operator+=(const C2DVector& v) { X+=v.X; Y+=v.Y; return *this; }
 #endif
+#ifdef FABLE_RETAIL_AVOID_REGION_FRAME_PASS29
+    C3DVector operator-(const C2DVector& v) const {return C3DVector(X-v.X,Y-v.Y,Z);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ADD2D
     // Retail opt-in (Codex pass17): original non-const value return, donor01cf3ca0.
     // Fidelity: X value capture gives native006b0b97 operand order.
@@ -280,7 +283,10 @@ public:
     // layer (copy constructor) per use.
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{C3DVector result(X-other.X,Y-other.Y,Z-other.Z);return result;}
 #else
-#ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
+#ifdef FABLE_RETAIL_UPDATEAI_VECTOR_SUB_PASS29
+    // Ego_d formal coord and FableWin 0x019072B0 direct three-component return in UpdateAI.
+    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& coord) const { return C3DVector(X - coord.X, Y - coord.Y, Z - coord.Z); }
+#elif defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP)
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
 #elif defined(FABLE_RETAIL_C3DVECTOR_SUBTRACT_X_GROUP)
     // Retail opt-in (w24B, row 0x007DDA30 CTCCreatureFlyInCircles::QueueSwoop; chunk Q6 lesson 4): the X difference alone grouped. Same
@@ -299,6 +305,9 @@ public:
     // Opt-in (wfD6, row 0x00B01900 CPSCRenderMesh::AddToBoundingSphere): the named-result body, as SCALE_NAMED_RESULT. FableWin.pdb debug copy is
     // 34i/90b at /Od (this text SAME by fwsize; `return C3DVector(...)` is 28i/70b). Body only: default path unchanged.
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{C3DVector result(X+other.X,Y+other.Y,Z+other.Z);return result;}
+#elif defined(FABLE_RETAIL_CARRYABLE_POSE_PASS29)
+    // Bracket: GetCarriedPositionInfo schedules its address setup before the offset products.
+    FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,(Z+other.Z));}
 #elif defined(FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP)
     // Original addition signature and scalar components, donor018C0B60.
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector((X+other.X),(Y+other.Y),Z+other.Z);}
@@ -478,9 +487,14 @@ public:
 #else
     C3DVector Copy() const;                                              // 0x00C1BFF0
 #endif
+#elif defined(FABLE_RETAIL_CAMERA_CROSS_FORWARD_PASS29)
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& vector) const { return *this ^ vector; }
 #elif defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION)
     // Native007c14a3..14fb: retain the two component subtractions as source expression units.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_OPERATOR_PASS29)
+    // FableWin Cross at 01D8E950 delegates to operator^ at 01B40A20.
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& vector) const { return (*this) ^ vector; }
 #elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_ALL_GROUP_PASS23)
     // Original Cross components grouped individually; no arithmetic reassociation.
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),(X*other.Y-Y*other.X));}

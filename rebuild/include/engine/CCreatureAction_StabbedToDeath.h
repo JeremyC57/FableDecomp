@@ -19,6 +19,9 @@ class CCreatureActionBase;
 #pragma pack(push, 1)
 class CCreatureAction_StabbedToDeath : public CCreatureActionBase {
 public:
+#ifdef FABLE_RETAIL_STABTHING_PASS29
+    CCreatureAction_StabbedToDeath(CThingCreatureBase&);
+#endif
     virtual void PerformAction();                                         // slot 3 0x0087E830 ?PerformAction@CCreatureAction_StabbedToDeath@@UAEXXZ
     virtual void FinishAction();                                          // slot 4 0x0087E840 ?FinishAction@CCreatureAction_StabbedToDeath@@UAEXXZ
     virtual long GetAnimDelayTime() const;                                // slot 6 0x0087FE50 ?GetAnimDelayTime@CCreatureAction_StabbedToDeath@@UBEJXZ
@@ -28,7 +31,7 @@ public:
 public:
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_StabbedToDeath) == 0xa8);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CCreatureAction_StabbedToDeath) == 0xa8);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_StabbedToDeath {

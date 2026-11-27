@@ -12,6 +12,13 @@ public:
  static unsigned long FABLE_FASTCALL StatGetType();
  virtual unsigned long GetType()const;
  virtual void OnActivate();
+#ifdef FABLE_RETAIL_JACK_FLASH_FRAME_PASS29
+ virtual void FrameUpdate();
+private:
+ void Flash();
+ void ExtinguishFlames();
+#endif
+
 private:
  long Timer,BurnCounter;
  CAnimFilterOfGroup Filter;

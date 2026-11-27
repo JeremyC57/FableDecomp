@@ -53,6 +53,10 @@ public:
     CStringParser(const CStringParser&);
     bool SkipPastWholeString(const CCharString&);
     CCharString ReadAsStringUntilPastString(const CCharString&);
+#ifdef FABLE_RETAIL_COMPILE_DEFINITION_PASS29
+    // FableWin GetNoCharsIn returns the cursor word after a debug bounds check.
+    unsigned long GetNoCharsIn() const { return CursorPos.StringPos; }
+#endif
     unsigned long GetStringPos() const { return CursorPos.StringPos; }
     const CCharString& GetFilename() const { return Filename; }
     void (__fastcall *GetErrorCallback() const)(const CCharString&) { return ErrorCallback; }

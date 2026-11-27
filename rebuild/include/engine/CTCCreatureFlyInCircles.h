@@ -21,7 +21,12 @@ class CThingCreatureBase;
 #pragma pack(push, 1)
 class CTCCreatureFlyInCircles : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCCREATUREFLYINCIRCLES_UPDATESWOOP
+    // Ego_d TPI 0x2c165, original enum values. Retail stores 1 at 007dd947.
+    enum EFlyMode { eHover, eFly, eSwoop };
+#else
     enum EFlyMode { };                                                   // Ego_r.pdb member type (enumerators unnamed, see above)
+#endif
     CTCCreatureFlyInCircles(CThing& thing);                              // 0x007DDF90 ??0CTCCreatureFlyInCircles@@QAE@AAVCThing@@@Z
     virtual ~CTCCreatureFlyInCircles();                                  // slot 0 (scalar deleting 0x007DE420)
     virtual bool HasFrameUpdate() const;                                 // slot 8 0x007DE410
@@ -39,7 +44,12 @@ protected:
     void UpdateSwoop(C3DVector& position, C3DVector& facing);            // 0x007DD540 ?UpdateSwoop@..@@IAEXAAVC3DVector@@0@Z
     void UpdateFlight(C3DVector& position, C3DVector& facing);           // 0x007DD270 ?UpdateFlight@..@@IAEXAAVC3DVector@@0@Z
     void CheckForHits();                                                 // 0x007DD990 ?CheckForHits@CTCCreatureFlyInCircles@@IAEXXZ
+#ifdef FABLE_RETAIL_CTCCREATUREFLYINCIRCLES_UPDATESWOOP
+    // Ego_d TPI 0xac43 is an lvalue reference. FableWin's success-assert string uses Creature.GetTCGraphicAppearance().
+    CThingCreatureBase& Creature;
+#else
     CThingCreatureBase* Creature;                                        // +0x0c
+#endif
     C3DVector Centre;                                                    // +0x10
     float Speed;                                                         // +0x1c
     float DeltaSpeed;                                                    // +0x20
@@ -61,15 +71,19 @@ protected:
     long  LastExplodeTick;                                               // +0x74
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, Creature) == 0x0c);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, Mode) == 0x34);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, PBurninationEffect) == 0x3b);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, PSwoopTarget) == 0x44);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, SwoopSpline) == 0x4c);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, SwoopTargOffset) == 0x60);
-        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, SwoopDelta) == 0x70);
+#ifdef FABLE_RETAIL_CTCCREATUREFLYINCIRCLES_UPDATESWOOP
+        FABLE_STATIC_ASSERT(offsetof(CTCCreatureFlyInCircles, Centre) == 0x10);
+#else
+        FABLE_STATIC_ASSERT_AT(64, offsetof(CTCCreatureFlyInCircles, Creature) == 0x0c);
+#endif
+        FABLE_STATIC_ASSERT_AT(65, offsetof(CTCCreatureFlyInCircles, Mode) == 0x34);
+        FABLE_STATIC_ASSERT_AT(66, offsetof(CTCCreatureFlyInCircles, PBurninationEffect) == 0x3b);
+        FABLE_STATIC_ASSERT_AT(67, offsetof(CTCCreatureFlyInCircles, PSwoopTarget) == 0x44);
+        FABLE_STATIC_ASSERT_AT(68, offsetof(CTCCreatureFlyInCircles, SwoopSpline) == 0x4c);
+        FABLE_STATIC_ASSERT_AT(69, offsetof(CTCCreatureFlyInCircles, SwoopTargOffset) == 0x60);
+        FABLE_STATIC_ASSERT_AT(70, offsetof(CTCCreatureFlyInCircles, SwoopDelta) == 0x70);
     }
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CTCCreatureFlyInCircles) == 0x78);
+FABLE_STATIC_ASSERT_AT(74, sizeof(CTCCreatureFlyInCircles) == 0x78);
 #endif // FABLE_ENGINE_CTCCREATUREFLYINCIRCLES_H

@@ -1,0 +1,133 @@
+address	before	after	class	codex_spellings	codex_name_fix
+007070d0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00a03ce0	agree_descriptive	split_unknown	not_in_NAME_FIXES/codex:none	?SetAsCharReleased@CInputEvent@@QAEXGN@Z	
+00f281e0	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:nobind		
+0059d9ad	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?ResetInventoryTradeItems@CTCInventoryTrade@@QAEXXZ	
+00c5c980	agree_descriptive	split_unknown	in_NAME_FIXES/codex:sdk	?SpeakerIdToChannel@CSalSw2DVoice@@CA?AW4ChanId@@W4CSPEAKERID@@@Z	?SpeakerIdToChannel@CSalSw2DVoice@@CA?AW4ChanId@@W4CSPEAKERID@@@Z
+00ac7300	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+0080d300	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+007ea1a0	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:none	??A?$map@PAVCThing@@MU?$less@PAVCThing@@@std@@V?$allocator@U?$pair@QAVCThing@@M@std@@@3@@std@@QAEAAMABQAVCThing@@@Z	
+0084ccc0	agree_unverified	split_unknown	hash-only/codex:none	?GetNewCameraPosFromOcclusionParams@?A0x56e69699@@YI?AVC3DVector@@ABV2@0M0@Z	
+00c595e0	agree_descriptive	split_unknown	not_in_NAME_FIXES/codex:sdk	_expf	
+013bb6cc	agree_descriptive	split_unknown	hash-only/codex:none	?RUN_AWAY_STRING@?A0xb9f96da6@@3VCCharString@@A	
+013baf0c	agree_descriptive	split_unknown	hash-only/codex:none	?DECAPITATION_DUMMY_OBJECT_NAME@?A0x18886107@@3VCCharString@@A	
+00781670	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	??$find@VCDefString@@@?$_Rb_tree@VCDefString@@U?$pair@$$CBVCDefString@@J@std@@U?$_Select1st@U?$pair@$$CBVCDefString@@J@std@@@3@V?$CCompareDefString@J@@V?$allocator@U?$pair@$$CBVCDefString@@J@std@@@3@@	
+00c720c0	agree_descriptive	split_unknown	in_NAME_FIXES/codex:sdk	?CalcLevelEnvDecay@CSalOpenALVoice@@AAEX_JM@Z	?CalcLevelEnvDecay@CSalOpenALVoice@@AAEX_JM@Z
+013c5a70	agree_descriptive	split_unknown	not_in_NAME_FIXES/codex:none	?GFontTextureCacheUpdateFlag@?A0x0f23c9c3@@3_NA	
+00a6d0e0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+006d5af0	agree_unverified	split_unknown	hash-only/codex:none	?IsFacingCorrectDirectionForMovementToPos@?A0x47837005@@YI_NABVCThingAICreature@@ABVCBrainOutput@@ABVCTCLook@@ABVC3DVector@@@Z	
+00944470	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CAIFilter_ShouldStillBeWorkingInWarehouse@@QAE@V?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@V?$CIntelligentPointer@VCThingAICreature@@@@PBVCTCVillage@@@Z	
+0065ac0e	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?BuildingContainsPlayer@CTCVillage@@AAE_NPAVCThingBuilding@@@Z	
+007e92d0	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?UpdateMarkers@CTCAvoidRegionExit@@QAEXXZ	
+007a7bf0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?FinishMove@CTCBattleCharge@@AAEXAAVCThingCreatureBase@@_N@Z	
+0138e068	agree_descriptive	split_unknown	hash-only/codex:none	?numTextureCacheGlyphDatasPerChunk@?A0xb75a8b2d@@3KA	?numTextureCacheGlyphDatasPerChunk@?A0xfe46a155@@3KA
+0092a3f0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+0093b8b0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?IsStillRunnable@CAIStateGroup_SeekEnemy@@ABE_NXZ	
+00c72200	agree_unverified	split_unknown	in_NAME_FIXES/codex:nobind		?CalcLevelEnvelope@CSalOpenALVoice@@AAE_NPBU_CLEVELENVELOPE@@_N_J@Z
+013c82f8	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?g_PendingLoadedGlyphs@NStreamingFontBankGlobals@@3PAUPendingLoadedGlyph@@A	
+00c59960	agree_descriptive	split_unknown	in_NAME_FIXES/codex:sdk	?PanToGains@CSalBaseVoice@@KAXMAAM0@Z	?PanToGains@CSalBaseVoice@@KAXMAAM0@Z
+00709840	agree_std	split_unknown	in_NAME_FIXES/codex:none	?_M_insert_overflow@?$vector@VCModifierGraphic@CTCHeroAttachableAppearanceModifiers@@V?$allocator@VCModifierGraphic@CTCHeroAttachableAppearanceModifiers@@@std@@@std@@IAEXPAVCModifierGraphic@CTCHeroAtt	?_M_insert_overflow@?$vector@VCModifierGraphic@CTCHeroAttachableAppearanceModifiers@@V?$allocator@VCModifierGraphic@CTCHeroAttachableAppearanceModifiers@@@std@@@std@@IAEXPAVCModifierGraphic@CTCHeroAttachableAppearanceModifiers@@ABV34@ABU__false_type@2@I_N@Z
+00935c40	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+004127e0	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:none	?_M_push_back_aux_v@?$deque@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@IAEXABW4ETutorialCategory@@@Z	
+0091c220	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+013bb724	agree_descriptive	split_unknown	hash-only/codex:none	?PICK_UP_ANIM_NAME_LEVEL2@?A0x608a2c20@@3VCCharString@@A	
+00b21e90	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z	?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z
+006e0230	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00a2e9a0	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0C3DMeshVolume@@QAE@ABVC3DMeshFileConvexVolumeChunk@@PAVCMovableResourceMemoryPool@@@Z	??0C3DMeshVolume@@QAE@ABVC3DMeshFileConvexVolumeChunk@@PAVCMovableResourceMemoryPool@@@Z
+009e55a0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+013bb71c	agree_descriptive	split_unknown	hash-only/codex:none	?PICK_UP_ANIM_NAME_LEVEL1@?A0x608a2c20@@3VCCharString@@A	
+006b2be0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetSnowStrength@CEnvironment@@QBEMXZ	
+0096a3c0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetValidJumpPosition@CAIStateGroup_WhisperPotionCombat@@IAE_NAAVC3DVector@@@Z	
+008e7e10	agree_descriptive	split_fixable	in_NAME_FIXES/codex:pdb	?IsAllowedToHitBriarRose@CModeBriarRoseConcentrate@NCreatureMode@@QBEJXZ	?IsAllowedToHitBriarRose@CModeBriarRoseConcentrate@NCreatureMode@@QBEJXZ
+009137f0	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	?_M_initialize_map@?$_Deque_base@VCBezierCurve@@V?$allocator@VCBezierCurve@@@std@@@std@@IAEXI@Z	
+01375756	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?EnableUpdateAI@NGlobalConsole@@3_NA	
+013b861b	agree_descriptive	split_fixable	in_NAME_FIXES/codex:pdb	?GLeftAlignText@@3_NA	?GLeftAlignText@@3_NA
+00731be0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?SetAngle@CTCSpotLight@@QAEXM@Z	
+007703b0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CEnginePrimitiveWeaponTrail@@QAE@_KABV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@KKW4EWeaponTrailType@0@EMMMMW4E	
+00b21dd0	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAE@ABVCCardinalSpline@@@Z	??0CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAE@ABVCCardinalSpline@@@Z
+013bb6c4	agree_descriptive	split_unknown	hash-only/codex:none	?HEED_STRING@?A0xb9f96da6@@3VCCharString@@A	
+013bb6d0	agree_descriptive	split_unknown	hash-only/codex:none	?SEEN_MINOR_CRIME_STRING@?A0xb9f96da6@@3VCCharString@@A	
+00945410	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CCreatureAction_GetItemOutOfPocket@@QAE@AAVCThingCreatureBase@@J@Z	
+0068ef50	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+005dad10	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?IsBlockBrokenOnBlock@CTCWeapon@@QBE_NABVCThing@@PBV2@1@Z	
+006fd0b0	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?DeallocateUnusedMemory@?$CArray@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@@QAEXXZ	
+013c5a78	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?g_TailPendingLoadedGlyphs@NStreamingFontBankGlobals@@3KA	
+008bfda0	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z	??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z
+006c2170	agree_unverified	split_fixable	in_NAME_FIXES/codex:nobind		?Load@CObject@CLevelLoader@@AAEXAAVCASuspendableProcess@@@Z
+009ae150	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?CompileSubDefinition@CDefinitionManager@@IAEXVCCharString@@ABV2@J@Z	?CompileSubDefinition@CDefinitionManager@@IAEXVCCharString@@ABV2@J@Z
+00a2e470	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0C3DHelperPoint@@QAE@ABVC3DVector@@K@Z	??0C3DHelperPoint@@QAE@ABVC3DVector@@K@Z
+00749e40	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?CloneFromCreator@CTCCreatureGenerator@@QAEXABV1@@Z	
+0057a5be	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?SoberUp@CTCHeroStats@@QAEXXZ	
+00556a40	agree_unverified	split_fixable	in_NAME_FIXES/codex:nobind		?GenerateListItems@CRedefinerList@NUISystem@@IAEXABV?$vector@VCActionInputControl@@V?$allocator@VCActionInputControl@@@std@@@std@@@Z
+00a753f0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?CheckDebug@CContainmentVolume@@QBEXXZ	
+00887830	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z	?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z
+009a0f90	agree_unverified	split_unknown	hash-only/codex:none	?UpdateUseStreamingFontCacheEntry@?A0x0f23c9c3@@YIXAAUStreamingFontCacheBufferData@1@G@Z	
+013bb72c	agree_descriptive	split_unknown	hash-only/codex:none	?NAME_OF_BITCHIN_BOWL@?A0x86cdc273@@3VCCharString@@A	
+00692380	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?InitialiseActionPause@CCreatureActionBase@@AAEXXZ	
+013caa4c	agree_descriptive	split_unknown	hash-only/codex:none	?CLOSE_BRACKET@?A0x435bf837@@3VCCharString@@A	
+00734880	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:none	?GetBlockAbilityIterator@CTCCombat@@ABE_NAAU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatAbilityDataType@@U?$pair@V?$CCountedPointer@VCCombatAbilityData@@@@VCCombatAbility@@@std@@@std@@U?$_Const_traits@U?	
+006c5410	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CWitnessesSearchingDeed@@QAE@JW4EOpinionDeedType@@PAVCThingAICreature@@W4EOpinionPostDeedType@@PBVCFaction@@_N@Z	
+00b22670	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+006d1de0	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?ReceivedConfirmation@CTCWife@@QAEX_N@Z	?ReceivedConfirmation@CTCWife@@QAEX_N@Z
+00aaf590	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?SetParentIndex@C3DAnimFileSequenceChunk@@QAEXJ@Z	?SetParentIndex@C3DAnimFileSequenceChunk@@QAEXJ@Z
+007aa840	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?FinishMove@CTCAssassinRush@@AAEXAAVCThingCreatureBase@@@Z	
+00a73530	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	?push_back@?$vector@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VC3DMeshVolume@@@2@@Z	
+00886e80	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?CompactTextureSet@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXAAUCIDrawEnvironmentTextureSet@@J@Z	
+00a03cb0	agree_descriptive	split_unknown	not_in_NAME_FIXES/codex:none	?SetAsCharPressed@CInputEvent@@QAEXGN@Z	
+01375740	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?GEnableTutorials@NGlobalConsole@@3_NA	
+0138e06c	agree_descriptive	split_unknown	hash-only/codex:none	?glyphTextureCacheGlyphDataCacheChunk@?A0xb75a8b2d@@3KA	?glyphTextureCacheGlyphDataCacheChunk@?A0xfe46a155@@3KA
+01388a84	agree_descriptive	split_unknown	hash-only/codex:none	?JACK_FADE_UP_TIME@?A0xdf2a886e@@3JA	
+004c0c80	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+004cdc40	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?AddCameraTagFromText@CSubtitledMessage@@AAE_NMABVCCharString@@@Z	
+00705190	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetInterpolatedPickupOffsetAndOrientationAt@CTCCarryable@@ABEXABVC3DVector@@ABVCRightHandedSet@@AAV2@AAV3@_N@Z	
+00a2e490	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0C3DDummyObject@@QAE@ABVCMatrix3x4@@K@Z	??0C3DDummyObject@@QAE@ABVCMatrix3x4@@K@Z
+0042d45d	agree_std	split_fixable	not_in_NAME_FIXES/codex:pdb	??A?$map@VCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAEAAV?	
+00739a00	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CCreatureAction_BlockBroken@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	
+013bb6d4	agree_descriptive	split_unknown	hash-only/codex:none	?SEEN_MODERATE_CRIME_STRING@?A0xb9f96da6@@3VCCharString@@A	
+007b1a30	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+007aa9e0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetValidTeleportPos@CTCAssassinRush@@AAE?AVC3DVector@@PBVCTCPhysicsBase@@@Z	
+013bb6d8	agree_descriptive	split_unknown	hash-only/codex:none	?SEEN_SERIOUS_CRIME_STRING@?A0xb9f96da6@@3VCCharString@@A	
+007c3070	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetSoulEffect@CTCDrainLife@@QBEJXZ	
+013bb720	agree_descriptive	split_unknown	hash-only/codex:none	?PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL1@?A0x608a2c20@@3VCCharString@@A	
+00a6d670	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00781200	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CFirePoint@NFire@@QAE@AAVCThing@@ABVCCharString@@JJJ@Z	
+00aa7950	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?FindRegisteredSubChunkType@CChunkedFileSuperChunk@@ABEPBVCChunkedFileChunk@@PBD@Z	
+01397130	agree_descriptive	split_unknown	not_in_NAME_FIXES/codex:none	?ADDITIONAL_HEIGHT_TO_CHECK_Z_FROM@?A0x6483b908@@3VC3DVector@@A	
+0085b5b0	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	??$GetAllThings@VCThingGameObject@@V?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0xce4eaf62@@V	
+013bb6c8	agree_descriptive	split_unknown	hash-only/codex:none	?IGNORE_STRING@?A0xb9f96da6@@3VCCharString@@A	
+0087e7a0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@@Z	
+0085b2a0	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0x	
+008591e0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00a5fac0	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:none	?GetChar@CInkeyBuffer@@QAE_NPAGPA_N@Z	
+00872af0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00a66b70	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?EventScanStart@CMouse@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	
+00b20d30	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+013caa50	agree_descriptive	split_unknown	hash-only/codex:none	?SEPARATOR@?A0x435bf837@@3VCCharString@@A	
+013badac	agree_descriptive	split_unknown	hash-only/codex:none	?QUEST_CARD_POS_MARKER_NAME_PREFIX@?A0xe42b38e8@@3VCCharString@@A	
+0065ad37	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00843840	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	??0CCreatureAction_FillBucket@@QAE@AAVCThingAICreature@@@Z	??0CCreatureAction_FillBucket@@QAE@AAVCThingAICreature@@@Z
+013bda4c	agree_descriptive	split_unknown	hash-only/codex:none	?textureCacheMemOffset@?A0x0f23c9c3@@3KA	
+0080e670	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_IsNotList@@VCThingFil	
+0065f8b2	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	??$advance@U?$_List_iterator@V?$CIntelligentPointer@VCThingBuilding@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingBuilding@@@@@std@@@std@@J@std@@YAXAAU?$_List_iterator@V?$CIntelligentPointer@VC	
+004fd020	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?PostLoadInitialise@CWorldMap@@QAEXJ@Z	?PostLoadInitialise@CWorldMap@@QAEXJ@Z
+00bf9aa0	agree_unverified	split_fixable	in_NAME_FIXES/codex:pdb	?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z	?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z
+009a1020	agree_unverified	split_unknown	hash-only/codex:none	?InsertNewStreamingFontCacheEntry@?A0x0f23c9c3@@YIGAAUStreamingFontCacheBufferData@1@@Z	
+006d5d30	agree_unverified	split_fixable	in_NAME_FIXES/codex:nobind		?UpdateAI@CThingAICreature@@IAE_N_NABVCBrainOutput@@AAVC3DVector@@@Z
+0099f390	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?SetChar@CCharString@@QAEXJD@Z	
+0084d2f0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?IsCameraOcclusionFromTo@CBase@NCameraModes@@IBE_NABVC3DVector@@0AAV3@@Z	
+007dd540	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00733750	agree_unverified	split_unknown	not_in_NAME_FIXES/codex:none	?GetCombatAbilityData@CTCCombat@@ABE_NAAU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatAbilityDataType@@U?$pair@V?$CCountedPointer@VCCombatAbilityData@@@@VCCombatAbility@@@std@@@std@@U?$_Const_traits@U?$pa	
+013b860a	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?GUseCompiledAnimationEvents@@3_NA	
+0080cd40	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+0088b6e0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?EnableCreatureAutoPlacing@CAIBrain@@QAEXXZ	
+00855b50	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	??0CCreatureAction_BlockRespond@@QAE@AAVCThingCreatureBase@@0J@Z	
+006b2bf0	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:pdb	?GetMistStrength@CEnvironment@@QBEMXZ	
+00c3da60	agree_unverified	split_unknown	in_NAME_FIXES/codex:nobind		?Create2DSource@CCodaContext@@QAEPAVCCoda2DSource@@I@Z
+013bb728	agree_descriptive	split_unknown	hash-only/codex:none	?PUT_CRATE_IN_PILE_ANIM_NAME_LEVEL2@?A0x608a2c20@@3VCCharString@@A	
+00639e40	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+00c72130	agree_descriptive	split_unknown	in_NAME_FIXES/codex:sdk	?CalcLevelEnvAttack@CSalOpenALVoice@@AAEX_JM@Z	?CalcLevelEnvAttack@CSalOpenALVoice@@AAEX_JM@Z
+009d0880	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+0080ec50	agree_std	split_unknown	in_NAME_FIXES/codex:none	??$transform@PAV?$CIntelligentPointer@VCThing@@@@V?$back_insert_iterator@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@std@@VCGetThingFromIntelligentPointer@?A0xdff566aa@@@std@@YI?AV?$back	??$transform@PAV?$CIntelligentPointer@VCThing@@@@V?$back_insert_iterator@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@std@@VCGetThingFromIntelligentPointer@?A0xd9378dd8@@@std@@YI?AV?$back_insert_iterator@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@0@PAV?$CIntelligentPointer@VCThing@@@@0V10@VCGetThingFromIntelligentPointer@?A0xd9378dd8@@@Z
+007aac50	agree_unverified	split_fixable	not_in_NAME_FIXES/codex:nobind		
+006c91e0	agree_std	split_unknown	not_in_NAME_FIXES/codex:none	?push_back@?$list@VCWitnessesSearchingDeed@@V?$allocator@VCWitnessesSearchingDeed@@@std@@@std@@QAEXABVCWitnessesSearchingDeed@@@Z	
+013c5a74	agree_descriptive	split_fixable	not_in_NAME_FIXES/codex:pdb	?g_HeadPendingLoadedGlyphs@NStreamingFontBankGlobals@@3KA	

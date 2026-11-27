@@ -42,7 +42,11 @@ public:
  // Both original PDB public const getter; private original field at38.
  CEngineInternalPrimitiveBase* GetNextPrimitive() const {return NextPrimitive;}
 #endif
- virtual ~CEngineInternalPrimitiveBase();
+ #ifdef FABLE_RETAIL_PARTICLE_GROUP_DESTRUCTOR_PASS29
+    virtual ~CEngineInternalPrimitiveBase() { }
+#else
+    virtual ~CEngineInternalPrimitiveBase();
+#endif
  virtual void Update(const CEnginePrimitive&,unsigned long);
  virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_SETCHILDPRIMITIVE_ORDER // NF325: retail vftable 0x012A3D7C slot 7 = (K, CEnginePrimitiveHandle&, const CEnginePrimitive&, K), slot 8 = (K, const CEnginePrimitive&, K); VC7.1 lays an overloaded virtual pair out in reverse declaration order, so the three-argument one is declared first (emitted-vftable probe, NF325 evidence/probe_*.txt)
@@ -80,7 +84,13 @@ public:
  // CurrentInterpolationInfo (Ego_r.pdb / FableWin.pdb `dynamic initializer for 'CEngineInternalPrimitiveBase::CurrentInterpolationInfo''
  // 0x01224900; the object at 0x0143B8E0) and FableWin.pdb ?GetCurrentInterpolate@CEngineInternalPrimitiveBase@@QBEMXZ (inline: the
  // row reads `[InterpolationSet*12 + 0x0143B934]` in place, 0x00BF1942..0x00BF1948). No layout change.
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+private:
+#endif
  static CEngineInterpolationInfo CurrentInterpolationInfo;                    // 0x0143B8E0
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+public:
+#endif
  float GetCurrentInterpolate()const{return CurrentInterpolationInfo.InterpolationSetList[InterpolationSet].WFInterpolate;}
 #endif
  void SetEnable(bool enable){Enable=enable;}
@@ -169,7 +179,11 @@ class CEngineInterpolationInfo;
 #endif
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
+    #ifdef FABLE_RETAIL_PARTICLE_GROUP_DESTRUCTOR_PASS29
+    virtual ~CEngineInternalPrimitiveBase() { }
+#else
     virtual ~CEngineInternalPrimitiveBase();
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
     virtual void CollectStats(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long)const;
     void SetGridCell(CEngineSceneGridCell* cell){GridCell=cell;}

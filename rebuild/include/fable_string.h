@@ -140,6 +140,29 @@ public:
     // Original02F65050 calls DeallocateData then clears lengths, preserving both flag bits.
     ~CBasicString() { DeallocateData(); StringLength=0; DataLength=0; }
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29
+protected:
+    void SetString(const T*, unsigned long);
+public:
+    CBasicString(const T*);
+    // AllocStringData expands both block constructors at 0099eaa3.
+    FABLE_FORCEINLINE CBasicString(const T* string, unsigned long length)
+        : PData(0), StringLength(0), DataLength(0), UseFastExtend(1) { SetString(string, length); }
+    void Append(T, unsigned long);
+    void Truncate(unsigned long);
+#endif
+#if defined(FABLE_RETAIL_SHOP_STRING_DATA_CTORS26) && !defined(FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29)
+protected:
+    void SetString(const T*, unsigned long);
+public:
+    CBasicString(const T*);
+    // Retail 0099EAA3 expands the explicit-length data constructor and its member.
+    FABLE_FORCEINLINE CBasicString(const T* text, unsigned long length)
+        : PData(0), StringLength(0), DataLength(0), UseFastExtend(true)
+    {
+        SetString(text, length);
+    }
+#endif
     const T* PeekData() const { return PData; }
     unsigned long GetLength() const { return StringLength; }
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
@@ -244,6 +267,23 @@ bool CBasicString<T>::operator<(const CBasicString<T>& other) const
     }
     return result < 0;
 }
+#ifdef FABLE_RETAIL_MENU_BASICSTRING_SPEED_OWNER_PASS29
+// The native 00429950 lexicographic comparison keeps its speed setting in size-built menu code.
+template<> inline bool CBasicString<char>::operator<(const CBasicString<char>& other) const
+{
+    const char* b = other.PData;
+    const char* a = PData;
+    long result;
+    for (;;) {
+        if (*a == 0 && *b == 0) { result = 0; break; }
+        if (*a < *b) { result = -1; break; }
+        if (*a > *b) { result = 1; break; }
+        ++a;
+        ++b;
+    }
+    return result < 0;
+}
+#endif
 #endif
 #if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY) && defined(FABLE_RETAIL_CBASICSTRING_COMPARE_BODY)
 // NF220 opt-in (2026-11-21, q12383; rows 0x005A4CDD, ...). Fidelity: scaffolding, not retail. A size-compiled TU that calls
@@ -267,6 +307,16 @@ bool CBasicString<char>::operator==(const char* text) const { return Compare(PDa
 class CCharStringData
 { public:
     CBasicString<char> Data;
+#if defined(FABLE_RETAIL_SHOP_STRING_DATA_CTORS26) && !defined(FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29)
+    CCharStringData(const char* text) : Data(text), NoRefs(1) {}
+    FABLE_FORCEINLINE CCharStringData(const char* text, long length) : Data(text, length), NoRefs(1) {}
+#endif
+#ifdef FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29
+    CCharStringData(const char* string) : Data(string), NoRefs(1) { }
+    FABLE_FORCEINLINE CCharStringData(const char* string, long length) : Data(string, length), NoRefs(1) { }
+    void IncRef() { ++NoRefs; }
+#endif
+
 #ifdef FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
     // Both PDBs CCharStringData16members; native0099E9BA..99E9C8 count protocol.
     void DecRef() { --NoRefs; }
@@ -308,6 +358,11 @@ inline bool FABLE_FASTCALL GFStringsAreEqual(const wchar_t* a, const wchar_t* b)
 class CWideString
 {
 public:
+#if defined(FABLE_RETAIL_SUBTITLE_WRAP_BODY_PASS29) && !defined(FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24)
+    void SetAsSubString(const wchar_t* text, long length);
+    // FableWin 01913970 calls GetAsCharArray before indexing the UTF-16 text.
+    wchar_t GetChar(long index) const { return GetAsCharArray()[index]; }
+#endif
 #ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
     // Both original PDB PUBLIC/GDATA records; native string allocation category.
     static long MemTrackingID;
@@ -513,6 +568,10 @@ CWideString FABLE_FASTCALL operator+(
 class CCharString
 {
 public:
+#ifdef FABLE_RETAIL_ANIMATION_EVENTS_LOAD_PASS29
+    CCharString(class CAFile& file,long length);
+    bool FastCompare(const CCharString& other) const;
+#endif
 #ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
     // Both original PDB PUBLIC/GDATA records; native string allocation category.
     static long MemTrackingID;
@@ -604,6 +663,9 @@ public:
         if(!PStringData||!other.PStringData)return false;
         return PStringData->Data==other.PStringData->Data;
     }
+#ifdef FABLE_RETAIL_PROCESS_COMMAND_LINE_PASS29
+    bool operator!=(char) const;
+#endif
     bool operator!=(const CCharString&) const;
     bool operator!=(const char*) const;
     const CCharString& operator+=(const char*);
@@ -622,6 +684,9 @@ public:
     // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
     // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero CPU location (0x00E5EBD0 `test; je; mov eax,[eax+4];
     // dec eax`; the `PStringData ? ... : 0` form adds `jmp; xor eax,eax`, 1068v1064); 0x00521620 / 0x00522720 are byte-identical either way.
+#ifdef FABLE_RETAIL_COMPILE_DEFINITION_PASS29
+    void SetChar(long, char);
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_GETCHAR
     // Retail opt-in (Codex pass 17): original public const GetChar(long), FableWin024b1fc0.
     char GetChar(long index)const{return GetAsCharArray()[index];}
@@ -805,6 +870,20 @@ public:
 #endif
 
 protected:
+#ifdef FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29
+    void MakeOwnCopyOfData();
+    void SetString(const char*, long);
+    void SetString(const CCharString&);
+public:
+    static void FABLE_FASTCALL InitMemory();
+protected:
+#endif
+#if defined(FABLE_RETAIL_CCHARSTRING_SHOP_CONSTRUCTOR26) && !defined(FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29)
+    void SetString(const char*, long);
+public:
+    static void FABLE_FASTCALL InitMemory();
+protected:
+#endif
     void UnassignString();                                     // 0x0099E9B0 protected (Ego_r / FableWin: IAE)
     CCharStringData* AllocStringData(                          // 0x0099EA60 protected (Ego_r / FableWin: IAE)
         const char* text,
@@ -820,6 +899,9 @@ private:
 #endif
 };
 
+#ifdef FABLE_RETAIL_TAVERN_SERVING_PASS29
+long FABLE_FASTCALL GFCharStringToInt(const CCharString&);
+#endif
 CCharString FABLE_FASTCALL operator+(
     const CCharString& left,
     const char* right);
@@ -843,3 +925,107 @@ FABLE_STATIC_ASSERT_AT(565, sizeof(CWideStringData) == 0x10);
 FABLE_STATIC_ASSERT_AT(566, sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT_AT(567, sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT_AT(568, sizeof(CCharString) == 0x04);
+
+#ifdef FABLE_RETAIL_CCHARSTRING_FORMAT_PASS29
+inline void FABLE_FASTCALL CCharString::InitMemory() { ++NoStrings; }
+inline CCharString::CCharString() : PStringData(0) { InitMemory(); }
+inline void CCharString::UnassignString()
+{
+    CCharStringData* pstring_data = PStringData;
+    if (pstring_data) {
+        pstring_data->DecRef();
+        if (pstring_data->GetRefs() <= 0)
+            delete PStringData;
+        PStringData = 0;
+    }
+}
+inline CCharString::~CCharString() { UnassignString(); --NoStrings; }
+inline void CCharString::SetString(const CCharString& other)
+{
+    if (&other != this) {
+
+#ifdef _MSC_VER
+// The native SetString and MakeOwnCopyOfData paths call UnassignString out of line.
+#pragma inline_depth(0)
+#endif
+        if (PStringData) UnassignString();
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+        if (other.PStringData) {
+            PStringData = other.PStringData;
+            PStringData->IncRef();
+        }
+    }
+}
+inline CCharString::CCharString(const CCharString& other) : PStringData(0) { InitMemory(); SetString(other); }
+inline CCharStringData* CCharString::AllocStringData(const char* text, long length)
+{
+    if (length == -1) return new CCharStringData(text);
+    return new CCharStringData(text, length);
+}
+inline void CCharString::MakeOwnCopyOfData()
+{
+    if (PStringData && PStringData->GetRefs() > 1) {
+        CCharStringData* string_data = AllocStringData(PStringData->Data.PeekData(), -1);
+
+#ifdef _MSC_VER
+// The native SetString and MakeOwnCopyOfData paths call UnassignString out of line.
+#pragma inline_depth(0)
+#endif
+        UnassignString();
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+        PStringData = string_data;
+    }
+}
+inline void CCharString::SetString(const char* text,long length) {
+    if(PStringData) UnassignString();
+    if(text && *text) PStringData=AllocStringData(text,length);
+}
+inline const CCharString& CCharString::operator=(const char* text) {
+    SetString(text,-1);
+    return *this;
+}
+inline const CCharString& CCharString::operator+=(char ch)
+{
+    if (PStringData) {
+        MakeOwnCopyOfData();
+        PStringData->Data.Append(ch,1);
+    } else {
+        char text[2] = {ch, 0};
+        SetString(text, -1);
+    }
+    return *this;
+}
+inline void CCharString::Truncate(unsigned long length)
+{
+    if (static_cast<unsigned long>(GetLength()) > length) {
+        if (length == 0) *this = "";
+        else {
+            MakeOwnCopyOfData();
+            PStringData->Data.Truncate(length);
+        }
+    }
+}
+#include "engine/CArray.h"
+#include <stdarg.h>
+#include <stdio.h>
+inline void FABLE_CDECL CCharString::Sprintf(const char* string, ...) {
+    long buffer_char_length = strlen(string) + 1024;
+    CArray<char> buffer(buffer_char_length);
+    va_list arg_ptr;
+    va_start(arg_ptr,string);
+    #ifdef _MSC_VER
+    long no_chars = _vsnprintf(&buffer[0], buffer_char_length, string, arg_ptr);
+#else
+    long no_chars = vsnprintf(&buffer[0], buffer_char_length, string, arg_ptr);
+    if (no_chars >= buffer_char_length) no_chars = -1;
+#endif
+    va_end(arg_ptr);
+    buffer[buffer_char_length-1]=0;
+    if(no_chars<=buffer_char_length)SetString(&buffer[0],-1);
+}
+
+#endif

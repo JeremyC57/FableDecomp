@@ -369,7 +369,11 @@ public:
 #endif
 #if defined(FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE) || defined(FABLE_RETAIL_CTHING_HASTC_MATERIALISED)   // FABLE_RETAIL_CTHING_HASTC_MATERIALISED (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): same body, own opt-in; retail `and cl,1 ; mov [esp+13h],cl` at 0x007E2AC1 / 0x007E2B9E / 0x007E2C27. No layout change.
     // Native0076efeb and0076f1d6 materialise the component-presence boolean.
+#ifdef FABLE_RETAIL_WEAPON_TRAIL_DRAW_PASS29
+    bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#else
     bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
+#endif
 #else
 #if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHING_HASTC_FORCEINLINE)
     // FABLE_RETAIL_CTHING_HASTC_FORCEINLINE (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): the same __forceinline HasTC
@@ -701,6 +705,9 @@ public:
 #ifdef FABLE_RETAIL_CTHING_GETSERIALISATIONSECTIONNAME
     // Opt-in (row 0x00523CF0, for the same-TU CThingManager savers): FableWin.pdb ?GetSerialisationSectionName@CThing@@QBEABVCCharString@@XZ
     // (0x017BE742), inline in retail (the member +0x58 read in place). Member function only: no layout change.
+#ifdef FABLE_RETAIL_CREATOR_UPDATE_PASS29
+    void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
+#endif
     const CCharString& GetSerialisationSectionName() const { return SerialisationSectionName; }
 #endif
     void CreateUID();                                            // 0x004C7FF0 ?CreateUID@CThing@@QAEXXZ

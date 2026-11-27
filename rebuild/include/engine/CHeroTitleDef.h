@@ -17,7 +17,12 @@ public:
     // ?StatGetTypeName@CHeroTitleDef@@SI?AVCCharString@@XZ (inline in Ego_r.pdb and retail: GetSubDef<CHeroTitleDef> 0x005B1E5A builds the
     // name in place from the retail literal 0x0123586C "CHeroTitleDef"), as CTattooDef / CHairCardDef _TYPENAME. Lets the row use the shared
     // GetSubDef body (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY). Needs fable_string.h. No layout change.
+#ifdef FABLE_RETAIL_SHOP_TITLE_TYPENAME_PASS29
+    // Inline-budget: the native sub-definition lookup builds its type name at 005b1e64.
+    static FABLE_FORCEINLINE CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CHeroTitleDef", -1); }
+#else
     static CCharString __fastcall StatGetTypeName() { return CCharString("CHeroTitleDef", -1); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_GREETING_PASS23
     // Both original PDBs and native00683e83: signed title-group tag at +30.

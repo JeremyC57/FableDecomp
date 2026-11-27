@@ -9,6 +9,9 @@ public:CCoda2DSource();virtual ~CCoda2DSource();
 // Retail opt-in (Codex pass22): original SDK CodeView plus native00C3DA60 virtual Create.
 virtual bool Create(unsigned int);
 #endif
+#ifdef FABLE_RETAIL_CSALSW2D_CALCPARAMS_PASS29
+ const CODA2DSOURCE& Get2DParams() const { return m_2D; }
+#endif
 private:
  CODA2DSOURCE m_2D;
  _CSPEAKERGAINS m_SpeakerGains;
@@ -24,7 +27,7 @@ inline CCoda2DSource* CCodaSource::Get2D()const {
  return Is3D()?0:static_cast<CCoda2DSource*>(const_cast<CCodaSource*>(this));
 }
 #endif
-FABLE_STATIC_ASSERT(sizeof(CCoda2DSource)==444);
+FABLE_STATIC_ASSERT_AT(27,sizeof(CCoda2DSource)==444);
 #endif
 #endif
 #endif

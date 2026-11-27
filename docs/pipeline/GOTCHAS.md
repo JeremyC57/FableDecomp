@@ -579,3 +579,7 @@
 - A retail-reference caller census must also scan each caller object's whole symbol table, not only the relocations at retail offsets. A call outside the leaf section (0x006B7760) or a DIFFER row (0x00BF8810) still holds the old spelling (NF466).
 - s_unit_check: a qualified destructor call (`this->X::~X()`) used to match as the member's definition, which put an implicit thin member out of 'text order'. The definition patterns now exclude a preceding `.` / `->` (r470b).
 - `/DEFAULTLIB:"libcp"` in a row object came from the lane's /ML (`<new>` -> `use_ansi.h`), not the source. Since 2026-11-26 rows compile with `/D_USE_ANSI_CPP` (NF468 proof: `.drectve` only). Tests keep libcp (`new(std::nothrow)`). Re-take HEAD objects from before that date before comparing `.drectve`.
+- Anonymous-namespace symbols carry a per-TU hash (`?A0x<8 hex>@`): two rows naming one file-local symbol differ only there. `descriptive_check.py` and `naming_status.py` normalise it before comparing spellings (p29: 190 false splits).
+- `vland.py --land` does not write `rebuild/oracles/self_symbols.tsv`; add the landed selves yourself (address, leaf, grade, leaf).
+- A payload row with no catalog name needs `leaf` set, or the grader grades the TU's largest function (p29: 10 false DIFFER).
+- llvm-undname output is not a catalog name as is: drop the calling convention before a constructor's class (`__thiscall CFoo` Module) and the `class ` / `struct ` keywords inside template arguments.

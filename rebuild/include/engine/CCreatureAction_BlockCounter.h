@@ -21,6 +21,9 @@ class CCreatureActionBase;
 #pragma pack(push, 1)
 class CCreatureAction_BlockCounter : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+    CCreatureAction_BlockCounter(CThingCreatureBase&,CThingCreatureBase&);
+#endif
     virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00855DF0 ?Clone@CCreatureAction_BlockCounter@@UBEPAVCCreatureActionBase@@XZ
     virtual void Initialise();                                            // slot 12 0x00855920 ?Initialise@CCreatureAction_BlockCounter@@UAEXXZ
     virtual bool IsKnockdownStrike() const;                               // slot 19 0x00855D80 ?IsKnockdownStrike@CCreatureAction_BlockCounter@@UBE_NXZ
@@ -28,7 +31,7 @@ public:
 public:
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockCounter) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CCreatureAction_BlockCounter) == 0x114);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_BlockCounter {

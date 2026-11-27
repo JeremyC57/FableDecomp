@@ -18,7 +18,12 @@ class CPersistContext;
 #pragma pack(push, 1)
 class CCrateStackDef : public CSubDefClassBase {
 public:
-    virtual void Transfer(CPersistContext&);                              // slot 18 0x004DE9A1 ?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z
+#ifdef FABLE_RETAIL_WAREHOUSE_MOVE_CRATES_PASS29
+    static CCharString __fastcall StatGetTypeName(){return CCharString("CCrateStackDef",-1);}
+    virtual void Transfer(CPersistContext&);
+#else
+    virtual void Transfer(CPersistContext&);
+#endif                              // slot 18 0x004DE9A1 ?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z
     virtual void Copy(const CDefClassBase*);                              // slot 19 0x004E0E98 ?Copy@CCrateStackDef@@UAEXPBVCDefClassBase@@@Z
     virtual unsigned long GetSizeofClass();                               // slot 20 0x004D50B2 ?GetSizeofClass@CCrateStackDef@@UAEKXZ
 public:
@@ -27,10 +32,10 @@ public:
     long          Priority;                                  // +0x2c
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCrateStackDef) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCrateStackDef, _pad_0x25) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CCrateStackDef, StackType) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCrateStackDef, Priority) == 0x2c);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCrateStackDef) == 0x30);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCrateStackDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CCrateStackDef, StackType) == 0x28);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCrateStackDef, Priority) == 0x2c);
 #else
 #pragma pack(push, 1)
 class CCrateStackDef {

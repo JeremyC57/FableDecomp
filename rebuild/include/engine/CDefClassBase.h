@@ -69,6 +69,11 @@ public:
     // call: pair this with FABLE_RETAIL_CRESOURCE_ASSIGN (engine/CResource.h).
 #endif
     template <class T> bool GetSubDef(CDefPointer<const T>*) const;      // Ego_r ??$GetSubDef@V..@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBV..@@@@@Z
+#ifdef FABLE_RETAIL_COMPILE_DEFINITION_PASS29
+    bool IsSetup() const {return Setup;}
+    bool IsTemplate() const {return Template;}
+    void SetAsSetup(bool setup) {Setup=setup;}
+#endif
     bool AreDefaultValsApplied() const { return DefaultValsApplied; }    // FableWin.pdb ?AreDefaultValsApplied@CDefClassBase@@QBE_NXZ
     void SetDefaultValsApplied(bool value) { DefaultValsApplied = value; }   // FableWin.pdb ?SetDefaultValsApplied@CDefClassBase@@QAEX_N@Z
 #ifdef FABLE_RETAIL_DEF_CLASS_BASE_CTORS

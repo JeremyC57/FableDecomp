@@ -21,9 +21,26 @@ class CThingBaseDef;
 #ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
 class CWideString;
 #endif
+#ifdef FABLE_RETAIL_HERO_MORPH_SERIALISE_PASS29
+#include "engine/CTCAppearanceMorphBase.h"
+class CPersistContext;
+class CTCHeroMorph : public CTCAppearanceMorphBase {
+public:
+    virtual void OnSerialise(CPersistContext& context, bool in_game);
+private:
+    unsigned char _unmodelled_0c[0x10];
+    std::vector<CDefPointer<const CThingBaseDef> > Tattoos;
+    unsigned char _unmodelled_28[0x18];
+    float Strength, Berserk, Will, Skill, Age, Morality, Fatness, Tan;
+    bool Teenager;
+#else
 class CTCHeroMorph : public CTCBase {
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+    float GetMorphStrength(EHeroMorphType morph_type) const;
+#endif
 #ifdef FABLE_RETAIL_CTCHEROMORPH_KILLPARTICLES
     // p25Q opt-in (row 0x0051F0E0 CThingManager::CopyHeroToHero): Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ, out of line in retail at
     // 0x0071C260 (`mov ecx,<morph> ; call 0071C260h`, 0x0051F17B). Declaration only.

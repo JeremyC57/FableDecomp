@@ -171,6 +171,14 @@ public:
 #ifdef FABLE_RETAIL_CTCHEROSTATS_STAMINA
     // Retail opt-in (Codex pass 17): exact public float method in both donors.
     void ForceStaminaTo(float);
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+    void AddMoney(long amount, bool display_change);
+#endif
+
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+    void SoberUp();
+#endif
+
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MODIFYSTAMINA
     // Nested opt-in (w22 agent2027, row 0x007C6E50 CTCTurncoatSpell::FrameUpdate; needs FABLE_RETAIL_CTCHEROSTATS_STAMINA): Ego_r.pdb /
@@ -259,7 +267,15 @@ public:
     // BRIBE layout (Money +0x3C) as well -- Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z, out of line at 0x0057B327. Declaration only.
     void AddMoney(long amount, bool flag);                               // 0x0057B327
 #endif
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+    unsigned char _pad_0x40[0x108 - 0x40];
+    long TotalBribeAmount;
+    unsigned char _pad_0x10c[0x114 - 0x10c];
+    long GetTotalBribeAmount() const { return TotalBribeAmount; }
+    void SetTotalBribeAmount(long amount) { TotalBribeAmount = amount; }
+#else
     unsigned char _pad_0x40[0x114 - 0x40];
+#endif
     long TrainingStatus;                                                 // +0x114 EHeroTrainingStatus
     unsigned char _pad_0x118[0x1dc - 0x118];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_SERIALISE)
@@ -447,6 +463,9 @@ public:
     // Inline one-line getters (FableWin.pdb keeps an out-of-line copy of each, all `QBE..XZ` except GetMaxMoney `QAEJXZ`; Ego_r.pdb and
     // retail have none: the rows read the member in place, e.g. `mov edx,[edi+24h]` 0x005D3285 for GetNumberOfDecapitations).
     float GetFatness() const { return Fatness; }
+#ifdef FABLE_RETAIL_DECAPITATE_PASS29
+    void SetNumberOfDecapitations(long value){NumberOfDecapitations=value;}
+#endif
     long GetNumberOfDecapitations() const { return NumberOfDecapitations; }
     long GetMaximumMultiplier() const { return MaximumMultiplier; }
     long GetNumberOfLoversAcquired() const { return NumLoversAcquired; }
@@ -533,7 +552,17 @@ public:
     void SetFinePaid(long fine_paid) { FinePaid = fine_paid; }
     long GetTimesThrownOut() const { return TimesThrownOut; }
     void SetTimesThrownOut(long times_thrown_out) { TimesThrownOut = times_thrown_out; }
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+    void PrepareToKickHeroToMostRecentSafeRegion();
+    long GetMoney() const { return Money; }
+private:
+    unsigned char _pad_after_base[0x3c - sizeof(CTCBase)];
+    long Money;
+    unsigned char _pad_after_money[0x100 - 0x40];
+public:
+#else
     unsigned char _pad_after_base[0x100 - sizeof(CTCBase)];
+#endif
     long FinePaid;                                                       // +0x100
     long TimesThrownOut;                                                 // +0x104
     unsigned char _pad_0x108[0x1dc - 0x108];

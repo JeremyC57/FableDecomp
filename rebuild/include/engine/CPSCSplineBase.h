@@ -10,10 +10,29 @@
 namespace NParticleEngine {
 class CPSCSplineBase:public CPSCBase {
 public:
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_SERIAL_PASS29
+ class CSplineRandomOffsetData {
+ public:
+  CSplineRandomOffsetData(const CCardinalSpline&);
+  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+ private:
+  const CCardinalSpline& InitialSpline;
+  CCardinalSpline ThisSpline, PreviousSpline;
+  bool OffsetOnlyAtStartup, ResetEachFrame;
+  CArray<C3DVector> SplinePosOffsetLimits, SplinePosOffsetSpeed;
+ };
+#else
  class CSplineRandomOffsetData;
+#endif
  class CSplinePosParamData {
  public:
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_SERIAL_PASS29
+  CSplinePosParamData(const CCardinalSpline& spline):Spline(spline) { SplinePosParam.resize(Spline.GetControlPointCount()); }
+  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+  bool IsParamListValid() { return SplinePosParam.size()>0; }
+#else
   CSplinePosParamData(const CCardinalSpline&);
+#endif
 #ifdef FABLE_RETAIL_CPSCSPLINEBASE_UPDATE_PASS26
   // Both original PDBs, donor02f5e230, native00b20ba0.
   void Update(const CParticleUpdateParameters<unsigned long,unsigned long>& params,CCardinalSpline& spline);
@@ -25,6 +44,9 @@ public:
   void InterpolateTo(const CSplinePosParamData& other,float t);
 #endif
  private:
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_CLOSEST_PASS29
+  bool GetClosestParameterisedControlPoints(const CParticleUpdateParameters<unsigned long,unsigned long>& params, long start_pos_id, long end_pos_id, C3DVector& start_control_point, C3DVector& start_param_point, C3DVector& end_control_point, C3DVector& end_param_point);
+#endif
   void TransformPosToMaintainShape(C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&);
   const CParticleSystem* PParentParticleSystem;
   const CCardinalSpline& Spline;

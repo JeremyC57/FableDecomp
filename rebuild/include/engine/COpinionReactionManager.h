@@ -26,6 +26,10 @@ enum EOpinionAttitudeType;
 class CTCOpinionSource;
 #endif
 class COpinionReactionManager {
+#ifdef FABLE_RETAIL_BERSERK_CLEANUP_PASS29
+public: void ClearOpinionSource(CThing&, bool);
+private:
+#endif
 #ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
 public:
     const CThing* PeekThingOpinionSource() const { return PThingOpinionSource.Get(); }

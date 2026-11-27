@@ -30,10 +30,21 @@ FABLE_STATIC_ASSERT_AT(17, sizeof(CEngineTextureMorph) == 0x14);
 // `lea ecx,[esi+0Ch] ; call 0x005BC0D3`): declared here as an explicit specialisation, so only this instantiation leaves the TU and the other
 // vectors of the includer keep the inline STLport destructor. Needs engine/CArray.h.
 #include "engine/CArray.h"
-template<> std::vector<CEngineTextureMorph,std::allocator<CEngineTextureMorph> >::~vector();   // 0x005BC0D3
+#ifndef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+template<> std::vector<CEngineTextureMorph,std::allocator<CEngineTextureMorph> >::~vector();
+#endif   // 0x005BC0D3
 class CEngineTextureMorphSet {
 public:
-    CArray<CEngineTextureMorph> Morphs;                       // +0x00
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+    const CArray<CEngineTextureMorph>& PeekEngineMorphs() const { return Morphs; }
+#endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+protected:
+#endif
+    CArray<CEngineTextureMorph> Morphs;
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+public:
+#endif                       // +0x00
 #ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET_ADDTEXTUREMORPH_PASS26
     void AddTextureMorph(long original_texture,const CCompositeBlendDesc& blend);
 #endif
@@ -47,5 +58,19 @@ public:
 #endif
 };
 FABLE_STATIC_ASSERT_AT(30, sizeof(CEngineTextureMorphSet) == 0xC);
+#endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+// Retail destruction owners 005bbbce, 005bbf80 and 005bc0d3 are size-compiled.
+#if defined(_MSC_VER)
+#pragma optimize("s",on)
+#endif
+namespace std {
+template<> inline void _Destroy(CEngineTextureMorph* p) { p->~CEngineTextureMorph(); }
+template<> inline void FABLE_FASTCALL __destroy_aux(CEngineTextureMorph* first,CEngineTextureMorph* last,const __false_type&) {for(;first!=last;++first) _Destroy(&*first);}
+template<> inline vector<CEngineTextureMorph>::~vector(){_Destroy(this->_M_start,this->_M_finish);}
+}
+#if defined(_MSC_VER)
+#pragma optimize("t",on)
+#endif
 #endif
 #endif // FABLE_ENGINE_CENGINETEXTUREMORPH_H

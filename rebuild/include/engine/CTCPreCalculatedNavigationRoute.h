@@ -13,7 +13,14 @@ class CTCPreCalculatedNavigationRoute : public CTCBase {
     CIntelligentPointer<const CThing> PThingToCalculateRouteTo;
     unsigned __int64 ThingToCalculateRouteToUID;
     std::vector<std::pair<C2DVector, unsigned char> > Route;
+#ifdef FABLE_RETAIL_WAREHOUSE_MOVE_CRATES_PASS29
     void LoadRoute(CPersistContext& context, long version);
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_PRE_CALCULATED_NAVIGATION_ROUTE;}
+    C3DVector GetRouteDestination() const;
+#else
+    void LoadRoute(CPersistContext& context, long version);
+#endif
 };
 #endif
 #endif

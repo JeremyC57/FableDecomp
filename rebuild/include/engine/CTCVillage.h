@@ -33,6 +33,13 @@ class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+public: void OnHeroSlept();
+#endif
+#ifdef FABLE_RETAIL_COOKING_POT_MEAL_PASS29
+public:
+    bool IsEatTime() const;
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_PEEKMARKERS_PASS27
 public:
     // 00922860, FableWin: the original const list reference accessor, inline at native +70h.
@@ -141,11 +148,23 @@ public:
     // 0x0069D8D1 EndSecuritySweep (strict signature f448c9f6d17c6e3f in both exes) and its target 0x0069D86E InvalidateAndClear...;
     // FableWin.pdb has both (0x02161BAA / 0x021619D9). Declarations only.
     bool IsHeroMurderer();                                   // 0x0065A1FD
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+    void PayFines(long fine);
+    void SetFramePlayerLastSeenByGuard(long frame) { FramePlayerLastSeenByGuard=frame; }
+    float GetFrameForNextGuardGreeting() const { return (float)FrameForNextGuardGreeting; }
+    void SetFrameForNextGuardGreeting(float frame) { FrameForNextGuardGreeting=(long)frame; }
+#endif
     void ClearCrimes();                                      // 0x0065C2D0
     void EndSecuritySweep();                                 // 0x006590BF
 private:
     void InvalidateAndClearAllSecuritySweepTasks();          // 0x006590A0
 public:
+#endif
+#ifdef FABLE_RETAIL_GUARD_CRIMINAL_UPDATE_PASS29
+    CThingAICreature* GetGuardWarningHero() {return GuardWarningHero.Get();}
+    void SetGuardWarningHero(CThingAICreature*);
+    CCharString GetWarningStringForCurrentCrimes(long,bool&,long&)const;
+    void SetHeroAsEnemyBecauseOfCrime(){IsEnemyBecauseOfCrime=true;}
 #endif
     bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)
 #ifdef FABLE_RETAIL_CTCVILLAGE_INCREASEHEROENEMYOFGUARDS
@@ -178,6 +197,9 @@ public:
     // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?GetVillageLimbo@CTCVillage@@QBE_NXZ, inline in retail
     // (`mov cl,[eax+0B3h]` straight after GetPVillage 0x007EE540). +0xB3 is LaggyLimbo in the retail layout below (Ego_r.pdb +0x13F;
     // Limbo is +0xB2) -- which member the accessor returns is read from the retail byte offset only. Body only: no layout change.
+#ifdef FABLE_RETAIL_DEED_FRAME_PASS29
+    long GetFramePlayerLastSeenByGuard() const { return FramePlayerLastSeenByGuard; }
+#endif
     bool GetVillageLimbo() const { return LaggyLimbo; }
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_PATROLTASK
@@ -187,6 +209,9 @@ public:
     // ?SetPatrolTaskAsAcceptedByThing@CTCVillage@@QAE_NAAVCVillageTaskPatrol@@ABVCThing@@@Z (retail 0x0065852D, the catalog name). Declarations only.
     CVillageTaskPatrol* GetBestPatrolTaskForThing(const CThing& thing);                   // 0x00658E90
     bool SetPatrolTaskAsAcceptedByThing(CVillageTaskPatrol& task, const CThing& thing);  // 0x0065852D
+#ifdef FABLE_RETAIL_VILLAGE_PATROL_POSITION_PASS29
+    CVillageTaskPatrol* GetFirstUnAssignedPatrolTask();
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRATETASK
     // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb
@@ -231,6 +256,13 @@ public:
     void NotifyHasApologised();                              // 0x006585EE
     void CreateDummyVillagersIfNecessary();                  // 0x00658603
     bool GetIsHeroEnemyOfGuards();                           // 0x00658604
+#endif
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+private:
+    void UpdateCurfew();
+    bool BuildingContainsPlayer(CThingBuilding*);
+    bool HomeUsersAreAsleep(CThingBuilding*);
+    bool BuildingContainsCorrectVillagers(CThingBuilding*);
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CURFEW
     // Retail opt-in (chunk Q15 / w24A, row 0x0090C900): Ego_r.pdb ?IsCurfewTime@CTCVillage@@QBE_NXZ (0x00658DB3) and ?IsSociableTime@CTCVillage@@QBE_NXZ (0x00658D5D, landed; the row calls this one -- Q15 had bound IsCurfewTime to it). Declarations only.
@@ -337,7 +369,12 @@ public:
     long             MaxFrameToAssignTask;                   // +0xd0
     long             HeroEnemyOfGuardsUntil;                 // +0xd4
     long             LastFrameApologised;                    // +0xd8
+#ifdef FABLE_RETAIL_GUARD_CRIMINAL_UPDATE_PASS29
+    CIntelligentPointer<CThingAICreature> GuardWarningHero;
+#else
     unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
+#endif
+
     bool             CurrentIsHeroCriminal;                  // +0xe4
     unsigned char    _pad_0xe5[0x3];                         // +0xe5
 #ifdef FABLE_RETAIL_CTCVILLAGE_VSLOTS

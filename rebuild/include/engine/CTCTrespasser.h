@@ -18,6 +18,10 @@ class CThing;
 class CThingAICreature;
 #endif
 class CTCTrespasser : public CTCBase {
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+public: void ForceTrespass();
+#endif
+
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TRESPASSER; }
     virtual void LeavingRegion();                                        // slot 28 (+0x70)

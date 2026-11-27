@@ -30,6 +30,9 @@ public:
         CObject() : PLevelLoader(0) { }
         void SetAsLoading(const std::vector<CLevelFiles>& levelFiles, const std::set<CCharString>& loadableSections, long regionIndex);   // 0x006C27A0
     private:
+#ifdef FABLE_RETAIL_LEVEL_LOADER_OBJECT_LOAD_PASS29
+        void Load(CASuspendableProcess& suspendable_process);
+#endif
         std::set<CCharString>    LoadableSections;                      // +0x00
         CLevelLoader*            PLevelLoader;                          // +0x0c
         std::vector<CLevelFiles> RegionLevelFiles;                      // +0x10

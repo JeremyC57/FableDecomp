@@ -46,6 +46,10 @@ class CAIBrain
 #endif
 {
 public:
+
+#ifdef FABLE_RETAIL_AI_RELATIONSHIPS_PASS29
+    void EnableCreatureAutoPlacing();
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_CTOR_PASS23
     // Both original PDB constructor PUBLICs; declaration only, no layout change.
     CAIBrain(const CMainGameComponent&,CWorld&,CThingManager&,CPlayerManager&,CThingAICreature&,CDefPointer<const CBrainDef>);
@@ -133,16 +137,34 @@ public:
     CAIStateGroupBase*  PPendingStateGroup;                  // +0x40
 #ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
     CBrainOutput Output;                                     // +0x44
+#ifdef FABLE_RETAIL_VERSUS_ENEMY_ACTIONS_PASS29
+    const CBrainOutput& GetOutput() { return Output; }
+#else
     CBrainOutput& GetOutput() { return Output; }
+#endif
 #else
     unsigned char       Output[0x48];                        // +0x44 CBrainOutput
 #endif
     bool                OutputValid;                         // +0x8c
     bool                UpdatingStateGroup;                  // +0x8d
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+    bool HasStateGroupUpdated() const
+    {
+        FABLE_STATIC_ASSERT_AT(133, offsetof(CAIBrain, StateGroupUpdated) == 0x8e);
+        return StateGroupUpdated;
+    }
+private:
+    bool StateGroupUpdated;                                  // +0x8e
+public:
+#else
     bool                StateGroupUpdated;                   // +0x8e
+#endif
     bool                InitialisedCreaturePosition;         // +0x8f
     CDefPointeeBase*    PBrainDef_Object;                    // +0x90 CDefPointer<CBrainDef_const_>::Object
     unsigned char       UpdateZones[0xc];                    // +0x94 vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_>
+#ifdef FABLE_RETAIL_FLIGHT_PASS29
+    const CBrainUpdateZone* PeekPCurrentUpdateZone() const { return PCurrentUpdateZone; }
+#endif
     CBrainUpdateZone*   PCurrentUpdateZone;                  // +0xa0
     bool                OnKillCalled;                        // +0xa4
     unsigned char       _pad_0xa5[0x3];                      // +0xa5
@@ -181,7 +203,9 @@ FABLE_STATIC_ASSERT_AT(129, offsetof(CAIBrain, PPendingStateGroup) == 0x40);
 FABLE_STATIC_ASSERT_AT(130, offsetof(CAIBrain, Output) == 0x44);
 FABLE_STATIC_ASSERT_AT(131, offsetof(CAIBrain, OutputValid) == 0x8c);
 FABLE_STATIC_ASSERT_AT(132, offsetof(CAIBrain, UpdatingStateGroup) == 0x8d);
+#ifndef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
 FABLE_STATIC_ASSERT_AT(133, offsetof(CAIBrain, StateGroupUpdated) == 0x8e);
+#endif
 FABLE_STATIC_ASSERT_AT(134, offsetof(CAIBrain, InitialisedCreaturePosition) == 0x8f);
 FABLE_STATIC_ASSERT_AT(135, offsetof(CAIBrain, PBrainDef_Object) == 0x90);
 FABLE_STATIC_ASSERT_AT(136, offsetof(CAIBrain, UpdateZones) == 0x94);

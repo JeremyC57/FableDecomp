@@ -8,7 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CINPUTMANAGER_UPDATE_PASS29
+#pragma pack(push, 4)
+#else
 #pragma pack(push, 1)
+#endif
 class CChecksum {
 public:
     long Checksum1;                                          // +0x00

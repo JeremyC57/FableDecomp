@@ -46,6 +46,9 @@ template<class T,class Traits>struct _Deque_iterator:public _Deque_iterator_base
  typedef typename Traits::reference reference;typedef typename Traits::pointer pointer;
  _Deque_iterator(){}
  _Deque_iterator(const _Deque_iterator<T,_Nonconst_traits<T> >& x):_Deque_iterator_base<T>(x){}
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+ pointer operator->()const{return this->_M_cur;}
+#endif
  reference operator*()const{return *this->_M_cur;}
  _Deque_iterator& operator++(){this->_M_increment();return *this;}
  bool operator!=(const _Deque_iterator& other)const{return this->_M_cur!=other._M_cur;}
@@ -120,6 +123,16 @@ public:
  // NF86 per-TU opt-in (with stack::empty below): STLport 4.6 _deque.h `bool empty() const { return _M_finish == _M_start; }`, inline
  // (the iterator compare is the _M_cur compare in place, as in the FABLE_RETAIL_STLP_DEQUE_PASS22_POP spelling above). Body only.
  bool empty()const{return this->_M_finish._M_cur==this->_M_start._M_cur;}
+#endif
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+ typedef typename _Deque_base<T,A>::iterator iterator;
+ iterator begin(){return this->_M_start;}
+ iterator end(){return this->_M_finish;}
+ void clear();
+#endif
+#ifdef FABLE_RETAIL_FLIGHT_PASS29
+ reference front(){return *this->_M_start;}
+ size_type size()const{return this->_M_finish._M_subtract(this->_M_start);}
 #endif
  deque():_Deque_base<T,A>(A(),0){}
 #ifdef FABLE_RETAIL_STLP_DEQUE_COPY_CTOR

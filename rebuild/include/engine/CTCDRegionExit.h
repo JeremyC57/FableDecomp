@@ -30,6 +30,9 @@ public:
     bool IsActive() const { return Active; }
     const CCharString& GetDisplayName() const;                           // 0x00779260
 #endif
+#ifdef FABLE_RETAIL_AVOID_REGION_FRAME_PASS29
+    float GetRadius() const {return Radius;}
+#endif
     const CCharString& GetRegionName() const;
 private:
     bool             Active;                                             // +0x0c

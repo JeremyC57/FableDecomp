@@ -19,7 +19,12 @@ class CThing;
 class CTCCrateStack : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CRATE_STACK; }
-    long GetNumCrates() const;                                           // 0x007B6660
+#ifdef FABLE_RETAIL_WAREHOUSE_MOVE_CRATES_PASS29
+    void AddCrate(CThing*);
+    long GetNumCrates() const;
+#else
+    long GetNumCrates() const;
+#endif                                           // 0x007B6660
     CThing* GetNextCrate() const;                                        // 0x007B6750
     CThing* RemoveNextCrate();                                           // 0x007B6790
 #ifdef FABLE_RETAIL_CTCCRATESTACK_FILLSTACK

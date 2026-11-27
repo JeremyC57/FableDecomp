@@ -19,7 +19,16 @@ class CThing;
 class CAIStateGroup_VersusScorpionKing : public CAIStateGroup_VersusEnemyBase {
     bool                        GoClockwise;                           // +0x1C
     CIntelligentPointer<CThing> PArenaCentreThing;                     // +0x1D
-    bool FindChargeEvent();                                            // 0x00963810
+#ifdef FABLE_RETAIL_VERSUS_ENEMY_ACTIONS_PASS29
+    bool FindChargeEvent();
+    void GetChargeDodgePos(C3DVector&);
+protected:
+    virtual void Update();
+    virtual bool IsStillRunnable();
+private:
+#else
+    bool FindChargeEvent();
+#endif                                            // 0x00963810
     bool IsScorpionChargingAtMe();                                     // 0x00963880
 #ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSSCORPIONKING_RTTI_DECLS
     // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement

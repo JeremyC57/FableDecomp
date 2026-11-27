@@ -14,19 +14,30 @@
 // Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF325 NOTES).
 // Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
 #include "engine/CAIStateGroupBase.h"
+#ifdef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+#include "engine/CIntelligentPointer.h"
+#endif
 #pragma pack(push, 1)
 class CAIStateGroup_MazeBase : public CAIStateGroupBase {
 public:
     virtual void OnActivate();                                            // slot 2 0x009540F0 ?OnActivate@CAIStateGroup_MazeBase@@UAEXXZ
     virtual void OnReplace();                                             // slot 10 0x009540C0 ?OnReplace@CAIStateGroup_MazeBase@@UAEXXZ
 public:
+#ifdef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+protected:
+    CIntelligentPointer<CThing> PTargetThing;
+    bool HasEnemyBeenKnockedDown();
+#else
     unsigned char PTargetThing[0x8];                         // +0x14 CIntelligentPointer<CThing>
+#endif
     long          EnemyKnockDownFrame;                       // +0x1c
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeBase) == 0x20);
+#ifndef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, PTargetThing) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, EnemyKnockDownFrame) == 0x1c);
+#endif
 #else
 #pragma pack(push, 1)
 struct CAIStateGroup_MazeBase {
@@ -41,7 +52,7 @@ struct CAIStateGroup_MazeBase {
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeBase) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_MazeBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, PTargetThing) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeBase, EnemyKnockDownFrame) == 0x1c);
 #endif // FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_VIRTUAL_MODEL

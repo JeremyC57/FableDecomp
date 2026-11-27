@@ -13,6 +13,9 @@ class CInputManager;
 
 #pragma pack(push, 1)
 class CJoystick {
+#ifdef FABLE_RETAIL_CINPUTMANAGER_UPDATE_PASS29
+    friend class CInputManager;
+#endif
 public:
 #ifdef FABLE_RETAIL_CJOYSTICK
     // Retail opt-in (chunk 770, row 0x00AB6A90 ~CJoystickDX): the polymorphic retail class (RTTI .?AVCJoystick@@, no base; vtable

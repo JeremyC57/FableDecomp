@@ -15,6 +15,10 @@ class C3DMeshInfo;class C3DMeshStats;class C3DAnimationBlendState;class C3DAnima
 // Original complete120-byte class, both raw PDBs; native GetHelperPoint constructs
 // the object at frame48h and accesses Mesh+8/Info+Ch and its two matrices.
 class C3DMeshObject : public CBaseClass {
+#ifdef FABLE_RETAIL_CARRYABLE_POSE_PASS29
+public:
+ static CMatrix3x4 FABLE_FASTCALL GetRotationMatrixForTransformFromTo(const CRightHandedSet&,const CRightHandedSet&);
+#endif
 public:
  #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
  // Retail opt-in (row 0x004C0560 GetHelperPoint): ctor / IsAnimated expanded in place; dtor body visible (expanded at the
@@ -30,6 +34,10 @@ public:
  void GetDummyObjectPositionStatic(const CCharString&, long, C3DVector&, C3DVector&, C3DVector&) const;
 #endif
  bool HasHelperPoint(const CCharString&)const;
+#ifdef FABLE_RETAIL_GRAPHIC_DUMMY_PASS29
+ bool HasDummyObject(const CCharString&)const;
+ long GetNoDummyObjects(const CCharString&)const;
+#endif
  long GetNoHelperPoints(const CCharString&)const;
  #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
  bool IsAnimated()const { return Mesh->IsAnimated(); }

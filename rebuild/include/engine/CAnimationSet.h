@@ -44,6 +44,12 @@ public:
     TAnimMap::const_iterator FindFirstAnimWithName(const CCharString& name) const;                                   // 0x005DC020
     const CAnimationEntry& GetRandomAnim(const CCharString& name, unsigned long& seed, const CAnimFilterBase& filter,
                                          long avoidBankIndex) const;                                                 // 0x005DCC00
+#ifdef FABLE_RETAIL_CANIMATIONSET_QUERY_LOADED_PASS29
+private:
+    bool IsAnimLoaded(const CAnimationEntry&) const;
+    void BeginLoading(const CAnimationEntry&) const;
+public:
+#endif
     TAnimMap Anims;                                          // +0x00
 #else
     unsigned char Anims[0x10];                               // +0x00 CVectorMap<unsigned long,CAnimationEntry,...>
@@ -53,5 +59,5 @@ public:
     long          DefaultDelay;                              // +0x18
     unsigned char DefaultGroup[0x4];                         // +0x1c CDefString
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimationSet) == 0x20);
+FABLE_STATIC_ASSERT_AT(56, sizeof(CAnimationSet) == 0x20);
 #endif // FABLE_ENGINE_CANIMATIONSET_H

@@ -55,6 +55,9 @@ protected:
     // Chunk 792/793 (row 0x009A25D0 Render): Ego_r.pdb ?GlyphLookup@CStreamingFontBank@@IBEPAUCStreamingGlyphLookup@@G@Z, out of line
     // at 0x009A1140 (protected const, the 16-bit character).
     struct CStreamingGlyphLookup* GlyphLookup(unsigned short character) const;
+#ifdef FABLE_RETAIL_GLYPH_LOOKUP_PASS29
+    const CStreamingGlyph* FindGlyph(unsigned short ch) const;
+#endif
 public:
     // Chunk 793: Ego_r.pdb `dynamic initializer for 'CStreamingFontBank::AlphaMaskUVMul'` / `...AlphaMaskUVAdd'` (static C2DVector
     // members, Mul initialised first); retail 0x013CA2F8 (Mul: Render multiplies by it) and 0x013CA300 (Add: Render adds it), both

@@ -9,6 +9,15 @@
 class CExperienceDef;
 class CTCDExperienceOrb:public CTCDriverBase {public:
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_EXPERIENCE_ORB;}
+#ifdef FABLE_RETAIL_EXPERIENCE_ORB_CREATE_PASS29
+public:
+ static void FABLE_FASTCALL Create(CThing&);
+ static CThing* FABLE_FASTCALL Create(long,const C3DVector&);
+ void SetExperiencePoints(long);
+private:
+ void GetExperienceOrbsToCreateForTotalExperience(long,std::vector<long>&) const;
+public:
+#endif
  long GetExperiencePoints()const{return ExperiencePoints;}void OnCollected(CThing&);
 #ifdef FABLE_RETAIL_CTCDEXPERIENCEORB_STATGETDRIVERTYPE
  // Opt-in (NF107, round 10, row 0x0077ADF0 GetAllTCDsInRoughArea<CTCDExperienceOrb, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>,

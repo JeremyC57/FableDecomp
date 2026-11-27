@@ -32,6 +32,10 @@ class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHe
 class CHitParameters;
 #endif
 class CTCHeroExperience:public CTCBase{
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+public: void ResetExperiencePickUpMultiplier();
+#endif
+
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALEXPERIENCE
 public:
     // Ego_r.pdb / FableWin.pdb ?GetTotalExperience@CTCHeroExperience@@QBEJXZ (inline in retail).
@@ -71,6 +75,12 @@ private:
     void AddSuccessfulStrikeOfType(EDamageAttribute type,float damage,bool increase);   // 0x006D8790
 #endif
 public:
+#endif
+#ifdef FABLE_RETAIL_CREATEFISH_PASS29
+    long GetFishingLevel() const { return FishingLevel; }
+#endif
+#ifdef FABLE_RETAIL_CREATOR_UPDATE_PASS29
+    long GetRoughExperienceLevel() const;
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}
     const CHeroCombatDef& PeekHeroCombatDef()const{return *PHeroCombatDef;}

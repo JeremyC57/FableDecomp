@@ -73,6 +73,9 @@ public:
     // (out of line at 0x006384B0, the landed row; the tail jump at 0x0049C6F3). Declaration only.
     void GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const;   // 0x006384B0
 #endif
+#ifdef FABLE_RETAIL_LEVEL_LOADER_OBJECT_LOAD_PASS29
+    void AddGameMap(long);
+#endif
     bool IsToBePlacedInMapwho(const CTCMapwho&, const C3DVector&) const; // 0x00637F40
     void PlaceThing(CTCMapwho&, const C3DVector&);                       // 0x00637FC0
     void RemoveThing(CTCMapwho&);                                        // 0x00637A10
@@ -90,8 +93,8 @@ public:
     long Layer;
     CMapCellPosInfo TLPos,TRPos,BLPos,BRPos;
 };
-FABLE_STATIC_ASSERT(sizeof(CThingMapManager)==0x38);
-FABLE_STATIC_ASSERT(sizeof(CMapCellPosInfoGroup)==0x44);
+FABLE_STATIC_ASSERT_AT(93, sizeof(CThingMapManager)==0x38);
+FABLE_STATIC_ASSERT_AT(94, sizeof(CMapCellPosInfoGroup)==0x44);
 #endif
 }
 #else

@@ -8,6 +8,13 @@ private:EParsedItemType Type;union{long Integer;float Float;};CCharString String
 #ifdef FABLE_RETAIL_CPARSEDITEM
 // Retail class branch (Codex pass 13, row 0x009BB110): Ego_r TPI 0xC77F / FableWin 0xC4A2 mark the ctor, copy and dtor
 // compiler-generated (attrs 0x103), so the retail class declares none of them.
+#ifdef FABLE_RETAIL_SYMBOLMAP_ENUM_PASS29
+public:
+    EParsedItemType GetType() const { return Type; }
+#endif
+#ifdef FABLE_RETAIL_PROCESS_COMMAND_LINE_PASS29
+public: CCharString ConvertToString() const;
+#endif
 public:const CCharString& GetString() const;
 // chunk 751 (row 0x009BA650 CStringParser::ReadAsFloat): the Ego_r.pdb accessors ?IsFloat@CParsedItem@@QBE_NXZ,
 // ?IsInteger@CParsedItem@@QBE_NXZ, ?GetFloat@CParsedItem@@QBEMXZ, ?GetInteger@CParsedItem@@QBEJXZ (inline in retail: the

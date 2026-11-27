@@ -22,9 +22,12 @@ public:
     virtual void Copy(const CDefClassBase*);
     virtual unsigned long GetSizeofClass();
     virtual void Transfer(CPersistContext&);
+#ifdef FABLE_RETAIL_ARENA_WAVE_ASSIGNMENT_DECL_PASS29
+    CArenaWaveDef& operator=(const CArenaWaveDef&);
+#endif
     long NumWaveCreatures;                                                        // +0x28
     std::vector<CArenaCreatureDef, std::allocator<CArenaCreatureDef> > Creatures; // +0x2c
     bool ShortWave;                                                               // +0x38
 };
-FABLE_STATIC_ASSERT(sizeof(CArenaWaveDef) == 0x3c);
+FABLE_STATIC_ASSERT_AT(29, sizeof(CArenaWaveDef) == 0x3c);
 #endif

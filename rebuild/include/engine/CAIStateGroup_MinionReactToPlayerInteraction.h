@@ -13,6 +13,11 @@
 // 0x0128B1B8 (RTTI .?AVCAIStateGroup_MinionReactToPlayerInteraction@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionReactToPlayerInteraction); every other slot stays the base's.
 // Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF322 NOTES).
 #include "engine/CAIStateGroupBase.h"
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+class CThingPlayerCreature;
+template<class T> class CIntelligentPointer;
+enum EInteractionReactionType {INTERACTION_REACTION_FIRST=0,INTERACTION_REACTION_GOSSIP=0,INTERACTION_REACTION_WIFE=1,INTERACTION_REACTION_OPINION=2,INTERACTION_REACTION_TRADER=3,INTERACTION_REACTION_BRIBE=4,INTERACTION_REACTION_LAST=5};
+#endif
 class CThingAICreature;
 class CWorld;
 #pragma pack(push, 1)
@@ -25,6 +30,17 @@ public:
 static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
 #endif
 public:
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+    void UpdateWaitingForConfirmation(CIntelligentPointer<CThingPlayerCreature>&);
+#ifdef FABLE_RETAIL_MINION_INTERACTION_UPDATE_PASS29
+private:
+    const CMessageEvent* FindPlayerInteractionEvent() const;
+    bool IsTooFarFromThePlayer(const CThingPlayerCreature&) const;
+    bool IsTooNearToThePlayer(const CThingPlayerCreature&) const;
+    bool TestOrDoInteraction(bool,CThingPlayerCreature*);
+public:
+#endif
+#endif
     virtual bool IsTimingCritical() const;                                // slot 7 0x008FEC7D ?IsTimingCritical@CAIStateGroup_MinionReactToPlayerInteraction@@UBE_NXZ
     virtual void OnReplace();                                             // slot 10 0x0092ECC0 ?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ
     virtual bool IsRunnable();                                            // slot 11 0x00930A70 ?IsRunnable@CAIStateGroup_MinionReactToPlayerInteraction@@UAE_NXZ
@@ -32,10 +48,19 @@ public:
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x0092ECA0 ?InitStateGroup@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
 public:
     unsigned long NextReactionFrame[5];                      // +0x14
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+    EInteractionReactionType ReactionType;
+#else
     unsigned char ReactionType[0x4];                         // +0x28 EInteractionReactionType
+#endif
     bool          WaitingForConfirmation;                    // +0x2c
     bool          DidTraderInteraction;                      // +0x2d
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+    C3DVector PositionPlayerWasWhenWaitingForConfirmation;
+    unsigned char _pad3a[2];
+#else
     unsigned char PositionPlayerWasWhenWaitingForConfirmation[0xe]; // +0x2e C3DVector
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_CTOR
     // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
     // ctor row 0x008FEC6B defines it here and its TU emits ??_7CAIStateGroup_MinionReactToPlayerInteraction@@6B@ with retail's 14 slots (vftable 0x0128B1B8).

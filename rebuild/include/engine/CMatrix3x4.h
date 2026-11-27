@@ -29,6 +29,15 @@ template<class T> inline void FABLE_FASTCALL SWAP(T& a, T& b) { T temp = a; a = 
 #endif
 class CMatrix3x4 {
 public:
+#ifdef FABLE_RETAIL_KEYFRAME_MATRIX_ROWS_PASS29
+    bool Equals(const CMatrix3x4&) const;
+#ifndef FABLE_RETAIL_CMATRIX3X4_BILLBOARD
+    C3DVector GetTranslation() const { return C3DVector(E41,E42,E43); }
+#endif
+    C3DVector GetRowX() const { return C3DVector(E11,E12,E13); }
+    C3DVector GetRowY() const { return C3DVector(E21,E22,E23); }
+    C3DVector GetRowZ() const { return C3DVector(E31,E32,E33); }
+#endif
 #ifndef FABLE_RETAIL_CMATRIX3X4_TRAILING_DATA_PASS23
 #ifdef FABLE_RETAIL_CMATRIX3X4_DATA_UNION
     // Retail opt-in (Codex pass 17): original anonymous union and Data[4][3], both PDB TPI layouts.
@@ -54,6 +63,37 @@ public:
         E11*=scale.X; E12*=scale.X; E13*=scale.X;
         E21*=scale.Y; E22*=scale.Y; E23*=scale.Y;
         E31*=scale.Z; E32*=scale.Z; E33*=scale.Z;
+    }
+#endif
+#ifdef FABLE_RETAIL_RIGID_INTEGRATE_PASS29
+    void InitialiseSkewedSymmetric(const C3DVector& vector);
+    CMatrix3x4 operator*(const CMatrix3x4& matrix) const;
+
+    // Inline-budget: Integrate expands scalar multiplication, matrix addition and Add.
+    // Ordinary inline emits calls at the corresponding retail inline sites.
+    FABLE_FORCEINLINE CMatrix3x4 operator*(float scale) {
+        CMatrix3x4 result = *this;
+        result.PostScale(scale);
+        return result;
+    }
+    FABLE_FORCEINLINE CMatrix3x4 operator+(const CMatrix3x4& matrix) {
+        CMatrix3x4 result = *this;
+        result.Add(matrix);
+        return result;
+    }
+    FABLE_FORCEINLINE void Add(const CMatrix3x4& matrix) {
+        E11 += matrix.E11;
+        E12 += matrix.E12;
+        E13 += matrix.E13;
+        E21 += matrix.E21;
+        E22 += matrix.E22;
+        E23 += matrix.E23;
+        E31 += matrix.E31;
+        E32 += matrix.E32;
+        E33 += matrix.E33;
+        E41 += matrix.E41;
+        E42 += matrix.E42;
+        E43 += matrix.E43;
     }
 #endif
     CMatrix3x4() { }
@@ -582,6 +622,16 @@ public:
         point.Z+=E43;
     }
 #endif
+#ifdef FABLE_RETAIL_CARRYABLE_POSE_PASS29
+    // Inline-budget: native GetCarriedPositionInfo expands this basis transform between its two pickup queries.
+    FABLE_FORCEINLINE void TransformRightHandedSet(CRightHandedSet& rhset) const {
+        C3DVector up=rhset.GetUp();
+        C3DVector forward=rhset.GetForward();
+        TransformVector(up);
+        TransformVector(forward);
+        rhset.Init(up,forward);
+    }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMVECTOR
     // Chunk 756 (row 0x00A11C20 CPhysicsMeshObject::GetBoundingBoxXEdge): FableWin.pdb ?TransformVector@CMatrix3x4@@QBEXAAVC3DVector@@@Z
     // (0x01D9FFF0; no Ego_r.pdb or retail out-of-line copy): the rotation part in place through xx/yy/zz copies, each row
@@ -686,6 +736,12 @@ public:
     // Row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox (same workflow, a different author agent) arrived at the
     // same three lines independently and matches with them too (386 v 428 with the plain-inline default).
     FABLE_MATRIX_INLINE_PASS23 void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
+#ifdef FABLE_RETAIL_RADIAL_MATRIX_SUM_PASS29
+        // The tracker adds translation to the three coordinate products.
+        destination.X = E41 + (pSource.X * E11 + pSource.Y * E21 + pSource.Z * E31);
+        destination.Y = E42 + (pSource.X * E12 + pSource.Y * E22 + pSource.Z * E32);
+        destination.Z = E43 + (pSource.X * E13 + pSource.Y * E23 + pSource.Z * E33);
+#else
 #ifdef FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
     // FableWin 01D129F0 and matching PDB source lines 807–811 establish the coordinate-first products.
         destination.X = pSource.X * E11 + pSource.Y * E21 + pSource.Z * E31 + E41;
@@ -695,6 +751,7 @@ public:
         destination.X=E11*pSource.X+E21*pSource.Y+E31*pSource.Z+E41;
         destination.Y=E12*pSource.X+E22*pSource.Y+E32*pSource.Z+E42;
         destination.Z=E13*pSource.X+E23*pSource.Y+E33*pSource.Z+E43;
+#endif
 #endif // FABLE_RETAIL_CMATRIX3X4_ZSPRITE_SOURCE_GEOMETRY_PASS26
     }
 #elif defined(FABLE_RETAIL_CMATRIX3X4_TRANSFORMPOINT_COPY_SUMS)
@@ -792,9 +849,16 @@ public:
         E31 = a.E31 * matrix.E11 + a.E32 * matrix.E21 + a.E33 * matrix.E31;
         E32 = a.E31 * matrix.E12 + a.E32 * matrix.E22 + a.E33 * matrix.E32;
         E33 = a.E31 * matrix.E13 + a.E32 * matrix.E23 + a.E33 * matrix.E33;
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+// The expanded translation products in both bone transforms use this source ordering.
+        E41 = a.E43 * matrix.E31 + a.E42 * matrix.E21 + a.E41 * matrix.E11 + matrix.E41;
+        E42 = a.E43 * matrix.E32 + a.E42 * matrix.E22 + a.E41 * matrix.E12 + matrix.E42;
+        E43 = a.E43 * matrix.E33 + a.E42 * matrix.E23 + a.E41 * matrix.E13 + matrix.E43;
+#else
         E41 = a.E41 * matrix.E11 + a.E42 * matrix.E21 + a.E43 * matrix.E31 + matrix.E41;
         E42 = a.E41 * matrix.E12 + a.E42 * matrix.E22 + a.E43 * matrix.E32 + matrix.E42;
         E43 = a.E41 * matrix.E13 + a.E42 * matrix.E23 + a.E43 * matrix.E33 + matrix.E43;
+#endif
     }
     FABLE_MATRIX_INLINE_PASS23 float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
         float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);

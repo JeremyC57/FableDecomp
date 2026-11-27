@@ -52,6 +52,9 @@ public:
  ECreateDeviceSuccess SetExclusiveMode(bool exclusive);                                            // 0x009C0020
 #endif
  CDisplayManager(CSystemManager&);
+#ifdef FABLE_RETAIL_GLYPH_LOOKUP_PASS29
+ long GetFrameCounter() const { return FrameCounter; }
+#endif
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_ISVIEWPORTOFFSCREEN
@@ -247,4 +250,8 @@ private:
  CBusyResourceManager BusyResourceManager;float Gamma;bool m_bWantHiResScreenShot,m_bTakingScreenShot;
 };
 FABLE_STATIC_ASSERT_AT(166, sizeof(CDisplayManager)==0x2cc);
+#ifdef FABLE_RETAIL_REGION_DRAW_PASS29
+class CDisplayManager;
+extern CDisplayManager* GPDisplayManager;
+#endif
 #endif

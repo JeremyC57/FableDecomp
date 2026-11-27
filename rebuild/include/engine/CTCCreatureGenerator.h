@@ -59,6 +59,16 @@ public:
     void AddCreatureTriggerer(CThingCreatureBase&);                      // 0x0074AC80
     void RemoveCreatureTriggerer(CThingCreatureBase&);                   // 0x0074A1E0
 #endif
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+#if !defined(FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS)
+    void AddCreatureTriggerer(CThingCreatureBase&);
+#endif
+protected:
+    static long RegionCreationCount;
+    bool IsUndeadGenerator() const {return UndeadTriggered;}
+    void UpdateCreatureTrigger(long);
+public:
+#endif
     void InitialiseCreatureGenerator(bool);                  // 0x0074B770 ?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
     void DrawDebugInfo(const CEnginePrimitivePrepareInfo&);  // 0x0074BC20 ?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
 protected:
@@ -70,8 +80,21 @@ public:
     // needs engine/CArray.h, engine/CDefIndex.h and FABLE_RETAIL_STLP_LIST first) and the Ego_r.pdb / FableWin.pdb declarations
     // ?CreateCreaturesUndead@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z 0x0074AF50, ?HasHitCreationLimit@CTCCreatureGenerator@@QBE_NXZ
     // 0x0074A190, ?GetUndeadGenerationPoint@CTCCreatureGenerator@@IAE_NABVCThingCreatureBase@@AAVC3DVector@@@Z 0x0074A260.
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+protected:
+#endif
     CArray<CDefIndex> CreatureFamilies;                      // +0x0c
     std::list<CIntelligentPointer<CThing> > CreatedCreatures; // +0x18
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+public:
+#endif
+#ifdef FABLE_RETAIL_CREATOR_UPDATE_PASS29
+    const CArray<CDefIndex>& GetCreatureGeneratorFamilies() const {return CreatureFamilies;}
+    void SetCreatureGeneratorFamilies(const CArray<CDefIndex>& f) {CreatureFamilies=f;}
+    void SetAsReadyToInitialise(bool b) {ReadyToInitialise=b;}
+    void CloneFromCreator(const CTCCreatureGenerator& other);
+    void SetAsActive(bool active);
+#endif
     bool HasHitCreationLimit() const;                        // 0x0074A190
 #ifdef FABLE_RETAIL_CTCCREATUREGENERATOR_GETNUMGENERATEDCREATURES
     // NF41 opt-in (2026-11-16, row 0x0074A100): Ego_r.pdb 0x0075C1D0 / FableWin.pdb 0x02519000
@@ -90,12 +113,18 @@ public:
     // NF98 opt-in (round 8, q11261 / q11262, row 0x0074ACE0 UpdateUndead): CreatureTriggerers typed as Ego_r.pdb names it (the same 0xC
     // bytes; needs FABLE_RETAIL_CTCCREATUREGENERATOR_UNDEAD before it for the typed CreatedCreatures) and Ego_r.pdb 0x0075DA90 /
     // FableWin.pdb 0x025194C0 ?UpdateUndead@CTCCreatureGenerator@@IAEXXZ (protected; retail 0x0074ACE0). No layout change.
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+protected:
+#endif
     std::vector<CIntelligentPointer<CThingCreatureBase> > CreatureTriggerers;   // +0x1c
 protected:
     void UpdateUndead();                                     // 0x0074ACE0
 public:
 #else
     unsigned char    CreatureTriggerers[0xc];                // +0x1c vector<CIntelligentPointer<CThingCreatureBase> >
+#endif
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+protected:
 #endif
     TGenerationParameters GenParams;                         // +0x28
     bool             Active;                                 // +0x4c

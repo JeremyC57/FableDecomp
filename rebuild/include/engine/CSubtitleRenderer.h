@@ -208,6 +208,9 @@ private:
     // Ego_r.pdb / FableWin.pdb ?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z (private const), out of line
     // at 0x0048E062 (`push [esp+4] ; mov ecx,[esp+0Ch] ; call CFontBank::GetVStringWidth 0x0043E4D0 ; ret 8`; landed under the wrong name
     // global_operatornew_0048e062.cpp). Declaration only (a row may carry the body `return font.GetVStringWidth(text);` under auto_inline(off)).
+#ifdef FABLE_RETAIL_DRAW_BUTTON_TEXT_PASS29
+    bool DrawButtonText(const C2DVector& br_pos, bool drawn_box);
+#endif
     float GetTextWidthFromText(const CWideString& text, const CFontBank& font) const;   // 0x0048E062
     // Ego_r.pdb / FableWin.pdb ?DrawButtonGraphics@CSubtitleRenderer@@AAE_NABVCEnginePrimitivePrepareInfo@@AAV?$vector@VCEnginePrimitiveHandle@@
     // V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@ABVC2DVector@@_N@Z (private), retail 0x0048E78E (`ret 10h`). Parameter names descriptive.
@@ -255,6 +258,10 @@ public:
     // (0x0187F200; no Ego_r.pdb copy, inline in retail: Activate tests the CPlayerGui singleton's byte +0xF6 = SubtitleRenderer +0x18 +
     // InCutscene +0xDE in place, 0x0056AD6B, right after the +0xFD IsDisplayingText test). Member function only: no layout change.
     bool IsInCutscene() const { return InCutscene; }
+#ifdef FABLE_RETAIL_TUTORIAL_GIVE_PASS29
+    bool IsAllowedToSetText(bool) const;
+    void SetText(const CFontBank&,const CCharString&,const CCharString&,const CCharString&,const CCharString&,const CCharString&,unsigned long,float,bool,bool);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SKIPPABLEWHILEPAUSED
     // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw): FableWin.pdb ?IsCutsceneSkippableWhilePaused@CSubtitleRenderer@@QBE_NXZ,
@@ -358,6 +365,18 @@ public:
 private:
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_PROCESSHIGHLIGHT_PASS28
     void ProcessEmbeddedHighlightTags(); // Ego_r and FableWin, retail 0x00491AD2
+#endif
+#ifdef FABLE_RETAIL_SUBTITLE_TEXT_DRAW_PASS29
+    C2DBoxF DrawTextPrimitives(const CEnginePrimitivePrepareInfo&, const C2DBoxF&, const C2DBoxF&);
+    void DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo&, const C2DBoxF&);
+    void DrawTextEmbeddedHighlights(const CEnginePrimitivePrepareInfo&, const C2DBoxF&);
+    void Draw2DText(const C2DVector&, const CWideString&, const CFontBank&, const CRGBColour&, bool, float, float, bool);
+    bool GetVisibleText(const CWideString&, CWideString&);
+#endif
+#ifdef FABLE_RETAIL_SUBTITLE_WRAP_BODY_PASS29
+    CWideString WordWrapText(const C2DBoxF&, const CFontBank&, const CWideString&) const;
+    static unsigned int FABLE_FASTCALL GetCharWidthW(unsigned short);
+    static const CFontBank* PWordWrapFont;
 #endif
     float GetBlackBarHeight() const;                                     // 0x0048DBC3
     void FormatTextForVWindow(const C2DBoxF& vwindow, const CFontBank& font, const CWideString& text, CWideString& formatted_text,

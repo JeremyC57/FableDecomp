@@ -13,6 +13,11 @@ enum EFishingStage {};
 #endif
 class CTCFishing:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CREATEFISH_PASS29
+protected:
+ bool CreateFish(bool using_fishing_spot);
+public:
+#endif
  CIntelligentPointer<CThing> PFish;
  EFishingStage Stage;
  bool StageInitialised;

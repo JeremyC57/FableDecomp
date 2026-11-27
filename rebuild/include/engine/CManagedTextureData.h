@@ -17,6 +17,11 @@ public:
     // Chunk Q28 (row 0x00A69B70): FableWin.pdb ?SetOwner@CManagedTextureData@@QAEXPAVCManagedTextureOwner@@@Z (inline in retail: the
     // `mov [ebx+30h],ecx` store at 0x00A69BD8) and Ego_r.pdb / FableWin.pdb ?CreateTexture@CManagedTextureData@@QAE_NKKJABVCPixelFormat@@@Z
     // (retail 0x00A697A0). No layout change.
+#ifdef FABLE_RETAIL_TEXTURE_MIP_REDUCE_PASS29
+    bool IsAllocated() const { return Allocated; }
+    CManagedTextureOwner* GetOwner() { return Owner; }
+    void SetLocked(bool locked) { Locked = locked; }
+#endif
     void SetOwner(CManagedTextureOwner* owner) { Owner = owner; }
     bool CreateTexture(unsigned long width, unsigned long height, long mip_levels, const class CPixelFormat& format);   // 0x00A697A0
 #endif

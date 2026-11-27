@@ -11,11 +11,14 @@ class CExpressionDef;
 class CTCExpression : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_EXPRESSION; }
+#ifdef FABLE_RETAIL_EXPRESSION_INIT_PASS29
+    void SetPDef(const CDefPointer<const CExpressionDef>& def){PDef=def;}
+#endif
     bool HasDef() const { return !PDef.IsNull(); }
     const CExpressionDef& PeekDef() const { return *PDef; }
     CDefPointer<const CExpressionDef> GetPDef() const { return PDef; }
 private:
     CDefPointer<const CExpressionDef> PDef;                              // +0x0c
 };
-FABLE_STATIC_ASSERT(sizeof(CTCExpression) == 16);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CTCExpression) == 16);
 #endif

@@ -131,6 +131,13 @@ public:
     // (retail 0x00A26C60, hidden result; the retail branch above declares the same). Declaration only, no layout change.
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
 #endif
+#ifdef FABLE_RETAIL_CANIMATIONSET_QUERY_LOADED_PASS29
+    bool IsLoaded() const;
+#endif
+#ifdef FABLE_RETAIL_UPDATE_ACTION_ANIMATION_PASS29
+    bool IsLoading() const;
+    bool IsLoaded() const;
+#endif
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_LOADING
     // Retail opt-in (agentNF9, the CThingCreatureBase preload rows 0x00663140 / 0x006631C0 / 0x00663610): Ego_r.pdb / FableWin.pdb
     // ?TouchAnimation@C3DAnimationInfo@@QBEXXZ (out of line at 0x00A26A50) and ?BeginLoading@C3DAnimationInfo@@QBEX_N@Z (0x00A26730),

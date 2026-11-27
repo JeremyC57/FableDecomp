@@ -13,6 +13,10 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_DemonDoorsScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_DEMON_DOORS_REGISTRATION_PASS29
+    CV_DemonDoorsScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void RegisterMain();
     virtual void Main();
     // Original Ego_r TPI10567 and native call00e712e8 ->00e6f040.
@@ -20,6 +24,9 @@ public:
     // Init and OnPersist are inherited from CScriptBase.
     class CDF_BeEvil : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_DEMON_DOORS_REGISTRATION_PASS29
+        CDF_BeEvil(CV_DemonDoorsScript&, CScriptDataBase*, const CScriptThing&);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_DemonDoorsScript&, CScriptDataBase*, const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
     private:

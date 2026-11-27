@@ -62,6 +62,9 @@ public:
 #else
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
 #endif
+#ifdef FABLE_RETAIL_WATER_SUBPATCH_LOAD_PASS29
+    bool Load(class CDataInputStream& stream, unsigned short width, unsigned short height, long world_x, long world_y, float min_z, float max_z);
+#endif
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08
     CVertexBufferWin32*  VertexBuffer;                       // +0x0c

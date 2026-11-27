@@ -21,17 +21,30 @@ enum EEventType;                                                         // MS f
 // NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); slots 0..4 as the landed GetEvent rows (0x007AFB90) declare them.
 class CEventBase {
 public:
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+    CEventBase() : WorldFrame(0) {}
+    virtual ~CEventBase() {}
+    virtual EEventType GetType() const = 0;
+#else
     virtual ~CEventBase();                                               // slot 0
     virtual EEventType GetType() const;                                  // slot 1
+#endif
     virtual void OnAdd(const CTCEntityEvents& events);                   // slot 2
     virtual long GetLifeTime() const;                                    // slot 3
     virtual bool IsReadyToDie() const;                                   // slot 4
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+protected:
+#endif
     long WorldFrame;                                                     // +0x04
 };
 #endif
 class CEventExpressionPerformedTo : public CEventBase {
 public:
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+    static EEventType FABLE_FASTCALL StatGetType() { return EVENT_EXPRESSION_PERFORMED_TO; }
+#else
     static EEventType __fastcall StatGetType() { return (EEventType)3; }
+#endif
     CDefPointer<const CExpressionDef> GetPExpressionDef() const { return PExpressionDef; }
 #ifdef FABLE_RETAIL_CEVENTEXPRESSIONPERFORMEDTO_GETTERS
     // NF67 opt-in (round 7, rows 0x00921440 / 0x00966290): FableWin.pdb ?GetPPerformedBy@CEventExpressionPerformedTo@NEntityEvents@@QBEPAVCThingCreatureBase@@XZ,

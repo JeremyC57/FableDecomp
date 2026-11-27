@@ -73,6 +73,11 @@ private:
  C3DVector PosAskedToGetTo;
  const CANavQuadTreeNode * LastNavigableNodeVisited;
  std::list<CNavWayPoint,std::allocator<CNavWayPoint> > Route;
+#ifdef FABLE_RETAIL_CREATURE_NAV_ROUTE_PASS29
+public:
+ const std::list<CNavWayPoint>* GetRoute() {return &Route;}
+private:
+#endif
  std::list<CNavWayPoint>::iterator CullFront;
  std::list<CNavWayPoint>::iterator CullBack;
  C2DVector LastWayPointVisited;

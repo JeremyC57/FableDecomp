@@ -306,9 +306,21 @@ public:
     void TransferIn(CPersistContext&,CStringParser&,unsigned __int64&);
     void TransferOut(CPersistContext&,CCharString&,const unsigned __int64&);
 };
+#if defined(FABLE_RETAIL_SYMBOLMAP_ENUM_TRAIT_OWNER_PASS29) && defined(_MSC_VER)
+#pragma optimize("s",on)
+#pragma optimize("y",off)
+#endif
 template<class T> inline void CPersistTraits<T>::TransferIn(CPersistContext& context,CStringParser& parser,T& value) {
     long result; CPersistTraitsSLONG::TransferIn(context,parser,result); value=(T)result;
 }
+#ifdef FABLE_RETAIL_SYMBOLMAP_ENUM_TRAIT_OWNER_PASS29
+template<> inline void CPersistTraits<long>::TransferIn(CPersistContext& context,CStringParser& parser,long& value) {
+    long result; CPersistTraitsSLONG::TransferIn(context,parser,result); value=result;
+}
+#endif
+#if defined(FABLE_RETAIL_SYMBOLMAP_ENUM_TRAIT_OWNER_PASS29) && defined(_MSC_VER)
+#pragma optimize("",on)
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_CLASS
 // Retail opt-in (chunk 1020, row 0x0067E290 CDegradableDef::Transfer): CPersistTraits<bool> is an explicit class specialisation in
 // retail -- Ego_r.pdb / FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@_N@@QAEXAAVCDataOutputStream@@AB_N@Z takes `const bool&` where
@@ -543,6 +555,13 @@ template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInput
 
 #if defined(FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE) && !defined(FABLE_PASS22_CPSCLIGHT_VECTOR_TRAITS_BODY)
 #define FABLE_PASS22_CPSCLIGHT_VECTOR_TRAITS_BODY
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_SPLINE_TRAITS_SIZE_PASS29)
+#pragma optimize("y",off)
+#pragma optimize("s",on)
+#endif
 inline void CPersistTraits<C3DVector>::TransferBinaryIn(CMemoryDataInputStream& is,C3DVector& value) {value=is.Read3DVector();}
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_SPLINE_TRAITS_SIZE_PASS29)
+#pragma optimize("",on)
+#endif
 inline void CPersistTraits<C3DVector>::TransferBinaryOut(CDataOutputStream& os,const C3DVector& value) {os.Write3DVector(value);}
 #endif

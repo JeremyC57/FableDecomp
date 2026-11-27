@@ -9,7 +9,15 @@ class CWorld;
 #ifdef FABLE_RETAIL_CCOMBATMANAGER
 class C3DVector; class CThing; enum ECombatZone;
 #endif
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+class CCombatActionBase; class CThingCreatureBase;
+#endif
 class CCombatManager:public CBaseClassNonCopyable {
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+public:
+    CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);
+    void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase& combatant, bool action_plugged_in);
+#endif
 public:
 #ifdef FABLE_RETAIL_COMBAT_DEFENDER_ZONE_PASS23
  // Original FableWin02412a40 and both PDBs; native006e92c0, expanded at006e99b0.

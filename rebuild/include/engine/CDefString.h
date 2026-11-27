@@ -132,6 +132,9 @@ public:
 #ifdef FABLE_RETAIL_CDEFSTRING_TRANSFER
  // Opt-in (chunk 765, row 0x005DBED0): Ego_r.pdb / FableWin.pdb ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z, out of line
  // in retail at 0x0044FC00 (the only PDB spelling of the four bound to it). Declaration only.
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+ unsigned long GetCRC() const { return GDefStringTable.GetStringCRC(TablePos); }
+#endif
  void TransferBinaryIn(CDataInputStream& stream);                       // 0x0044FC00
 #endif
 #ifdef FABLE_RETAIL_CDEFSTRING_EQ_CHARSTRING

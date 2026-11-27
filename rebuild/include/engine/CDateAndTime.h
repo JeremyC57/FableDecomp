@@ -16,7 +16,11 @@ class CDateAndTime {protected:long Year;unsigned long Month,Day,Hour,Minute,Seco
 #ifdef FABLE_RETAIL_CDATEANDTIME_VALID
 public: bool IsValid() const; // original PDB declaration; native 0x009E9C60
 #endif
-public: CDateAndTime(const _SYSTEMTIME& time); _FILETIME ToFileTime() const;};
+public: CDateAndTime(const _SYSTEMTIME& time); _FILETIME ToFileTime() const;
+#ifdef FABLE_RETAIL_PHOTOJOURNAL_CAPTION_PASS29
+ CCharString ToString() const;
+#endif
+};
 #elif !defined(FABLE_RETAIL_CDATEANDTIME_CTOR)
 #ifdef FABLE_RETAIL_CDATEANDTIME_LESS
 // Retail opt-in (agentC24, row 0x0058F9BC CTCInventory::OpenPCPhotojournal): Ego_r.pdb / FableWin.pdb ??MCDateAndTime@@QBE_NABV0@@Z,

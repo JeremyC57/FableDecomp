@@ -213,6 +213,9 @@ public:
     };
     class COF_MainGates : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_DEMON_DOORS_REGISTRATION_PASS29
+        COF_MainGates(CPersonalScript_GlobalThingsScript&, CScriptDataBase*, const CScriptThing&);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CPersonalScript_GlobalThingsScript&, CScriptDataBase*, const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
     private:

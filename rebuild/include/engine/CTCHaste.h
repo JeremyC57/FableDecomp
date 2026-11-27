@@ -9,6 +9,58 @@
 // out-of-line _Rb_tree::insert_unique 0x00580D21) of one value_type temporary, then the private
 // ?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ 0x00800020. Plain inline: an out-of-line copy exists in Ego_r.
 #include "stlport/fable_map.h"
+#ifdef FABLE_RETAIL_CTCBERSERK_INITABILITY_PASS29
+// The native void*/float map owner uses size optimization. The retail placement copy and predecessor are expanded in these members.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+namespace std {
+typedef pair<void* const,float> BerserkMapValue;
+typedef _Select1st<BerserkMapValue> BerserkSelect;
+typedef _Rb_tree<void*,BerserkMapValue,BerserkSelect,less<void*>,allocator<BerserkMapValue> > BerserkTree;
+template<> inline _Rb_tree_node<BerserkMapValue>* BerserkTree::_M_create_node(const BerserkMapValue& x){_Link_type p=this->_M_header.allocate(1);std::_Construct(&p->_M_value_field,x);return p;}
+template<> inline _Rb_tree_iterator<BerserkMapValue,_Nonconst_traits<BerserkMapValue> > BerserkTree::_M_insert(_Rb_tree_node_base* raw_x,_Rb_tree_node_base* raw_y,const BerserkMapValue& value,_Rb_tree_node_base* raw_w) {
+    _Link_type w=(_Link_type)raw_w;
+    _Link_type x=(_Link_type)raw_x;
+    _Link_type y=(_Link_type)raw_y;
+    _Link_type z;
+    if(y==this->_M_header._M_data || (w==0 && (x!=0 || _M_key_compare(BerserkSelect()(value),_S_key(y))))) {
+        z=_M_create_node(value);
+        _S_left(y)=z;
+        if(y==this->_M_header._M_data) {_M_root()=z;_M_rightmost()=z;}
+        else if(y==_M_leftmost()) _M_leftmost()=z;
+    } else {
+        z=_M_create_node(value);
+        _S_right(y)=z;
+        if(y==_M_rightmost()) _M_rightmost()=z;
+    }
+    _S_parent(z)=y;
+    _S_left(z)=0;
+    _S_right(z)=0;
+    _Rb_global_inst::_Rebalance(z,this->_M_header._M_data->_M_parent);
+    ++_M_node_count;
+    return iterator(z);
+}
+template<> inline pair<_Rb_tree_iterator<BerserkMapValue,_Nonconst_traits<BerserkMapValue> >,bool> BerserkTree::insert_unique(const BerserkMapValue& v) {
+    _Link_type y=this->_M_header._M_data;
+    _Link_type x=_M_root();
+    bool comp=true;
+    while(x!=0) {
+        y=x;
+        comp=_M_key_compare(BerserkSelect()(v),_S_key(x));
+        x=comp?_S_left(x):_S_right(x);
+    }
+    iterator j=iterator(y);
+    if(comp)
+        if(j==begin()) return pair<iterator,bool>(_M_insert(y,y,v),true);
+        else j._M_node=_Rb_global_inst::_M_decrement(j._M_node);
+    if(_M_key_compare(_S_key(j._M_node),BerserkSelect()(v)))
+        return pair<iterator,bool>(_M_insert(x,y,v),true);
+    return pair<iterator,bool>(j,false);
+}
+}
+#endif
+
 #ifdef FABLE_RETAIL_CTCHASTE_SETACTIONSPEEDMULTIPLIER_FORCEINLINE
 #include "fable_compiler.h"   // FABLE_FORCEINLINE (NF61 opt-in below)
 #endif

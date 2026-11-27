@@ -22,6 +22,9 @@ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_BERSERK
 long GetWeaponTrailAttack() const;                                       // 0x0078BED0
 long GetWeaponTrailKnockDown() const;                                    // 0x0078BEE0
 #endif
+#ifdef FABLE_RETAIL_CTCBERSERK_INITABILITY_PASS29
+public: void InitAbility();
+#endif
 public:void PlayHitEffectAtPos(const C3DVector& pos)const;
 #ifdef FABLE_RETAIL_CTCBERSERK_CTOR
  // Nested opt-in (agent1022, row 0x0078C210): Ego_r.pdb / FableWin.pdb ??0CTCBerserk@@QAE@AAVCThing@@@Z (retail 0x0078C210, `ret 4`,

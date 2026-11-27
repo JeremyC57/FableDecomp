@@ -37,6 +37,10 @@ public:
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_ORIGINAL_TYPES
     typedef CArray<CPrimitiveIterator> TPrimitiveIteratorLookup;
     typedef std::list<long> TPrimitiveFreeIDList;
+#ifdef FABLE_RETAIL_PARTICLE_GROUP_DESTRUCTOR_PASS29
+protected:
+    CEngineInternalPrimitiveParticleGroup(EEnginePrimitiveType,unsigned long);
+#endif
     TPrimitiveList Primitives;
     TPrimitiveIteratorLookup PrimitiveIDToIterator;
     TPrimitiveFreeIDList FreePrimitiveIDs;

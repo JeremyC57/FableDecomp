@@ -75,6 +75,22 @@ protected:
 private:
  CNodeHeader* FindNode(CNodeHeader* node, unsigned long* key);
  unsigned long AddNewKey(unsigned long* key);
+#ifdef FABLE_RETAIL_TREEFILER_CONVERT_PASS29
+ CNodeHeader* AllocNode(bool is_leaf,long key_offset,long key_bit_start,long key_bit_count,unsigned long* key) {
+    unsigned long size=sizeof(CNodeHeader);
+    if(is_leaf) size+=KeySize*sizeof(unsigned long);
+    else size+=sizeof(CNodeHeader*)<<key_bit_count;
+    CNodeHeader* node=reinterpret_cast<CNodeHeader*>(new unsigned char[size]);
+    node->IsLeaf=is_leaf;node->KeyBitCount=(unsigned char)key_bit_count;
+    node->KeyBitStart=(unsigned char)key_bit_start;node->KeyOffset=(unsigned char)key_offset;
+    node->ChildListHead=0;node->ChildListTail=0;node->PrevSibling=0;node->NextSibling=0;node->Parent=0;node->Entry=0;
+    if(is_leaf) {
+        unsigned long* dest=(unsigned long*)(node+1);
+        for(long n=0;n<KeySize;++n) dest[n]=key[n];
+    } else memset(node+1,0,sizeof(CNodeHeader*)<<key_bit_count);
+    return node;
+ }
+#endif
 #ifdef FABLE_RETAIL_CENGINETREEFILER_ADDNODEAUTOEXPANDTREE
  // NF41 opt-in (2026-11-16, row 0x00BF3030 AddNewKey): Ego_r.pdb 0x00AAA590 / FableWin.pdb 0x02EF1A60
  // ?AddNodeAutoExpandTree@CEngineTreeFilerBase@@AAEPAUCNodeHeader@1@PAU21@0@Z (private), retail 0x00BF2E50: links the new leaf

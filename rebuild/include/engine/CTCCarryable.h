@@ -43,9 +43,22 @@ private:
 public:
 #endif
     bool          ForceFragility;                                    // +0x0c
+#ifdef FABLE_RETAIL_CARRYABLE_POSE_PASS29
+    bool GetCarriedPositionInfo(C3DVector&,CRightHandedSet&,bool,float) const;
+private:
+    void GetInterpolatedPickupOffsetAndOrientation(C3DVector&,CRightHandedSet&,bool,float) const;
+    void GetInterpolatedPickupOffsetAndOrientationAt(const C3DVector&,const CRightHandedSet&,C3DVector&,CRightHandedSet&,bool) const;
+#endif
     CTCCarrying*  PCarryingTC;                                       // +0x10
-    float         OffsetCoordRelativeToAttachToDummy[3];             // +0x14 C3DVector
+#ifdef FABLE_RETAIL_CARRYABLE_POSE_PASS29
+    C3DVector OffsetCoordRelativeToAttachToDummy;
+#else
+    float         OffsetCoordRelativeToAttachToDummy[3];
+#endif             // +0x14 C3DVector
     float         OffsetAmount;                                      // +0x20
+#ifdef FABLE_RETAIL_CARRYABLE_POSE_PASS29
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYABLE_VSLOTS3
 // agentFAM05 (2026-11-11): retail virtual overrides this declaration lacks, declaration only (needs the polymorphic FABLE_RETAIL_CTCBASE; no layout
 // change). Slots of the TLC vtable 0x0123B35C (agentFAM03 proof, re-verified by agentFAM05); Ego_r / FableWin spellings.

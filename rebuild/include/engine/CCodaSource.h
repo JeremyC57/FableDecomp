@@ -18,6 +18,9 @@ public:
 #ifdef FABLE_RETAIL_CCODACONTEXT_CREATE3D
  CCodaSource();
 #endif
+#ifdef FABLE_RETAIL_CSALSW2D_CALCPARAMS_PASS29
+ bool IsStereoFilter() const { return (m_ffStatus & 0x10000) != 0; }
+#endif
  virtual ~CCodaSource();
 #ifndef FABLE_RETAIL_CCODACONTEXT_PROCESS
  #ifndef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS

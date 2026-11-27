@@ -14,6 +14,13 @@
 #if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 extern "C" __declspec(dllimport) int __stdcall IsDebuggerPresent(void);
 #endif
+#if defined(FABLE_RETAIL_CARRAY_RELEASE_INDEX_PASS29) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#include "fable_string.h"
+#include "engine/CDebugManager.h"
+extern CDebugManager* GPLibDebugManager;
+CCharString FABLE_FASTCALL GFIntToCharString(long);
+extern "C" __declspec(dllimport) int __stdcall IsDebuggerPresent(void);
+#endif
 #ifdef FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 // Both original TPI records:23 real methods, generated assignment omitted.
 // Inverse LF_METHOD overload groups: measured VC71 reversal supports this
@@ -48,9 +55,38 @@ public:
  }
 #else
  typename std::vector<T>::reference operator[](unsigned int index) { return std::vector<T>::operator[](index); }
+#ifdef FABLE_RETAIL_CARRAY_RELEASE_INDEX_PASS29
+ // FableWin's const overload checks index<size() and forwards to the mutable vector subscript.
+ // Inferred: retail disables the diagnostic and indexes through a signed iterator displacement.
+ typename std::vector<T>::const_reference operator[](unsigned int index) const {
+#if defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+#define FABLE_CARRAY_INDEX_DIAGNOSTIC \
+        (!GPLibDebugManager || GPLibDebugManager->DoErrorMessage( \
+            CCharString("index<size()"), \
+            CCharString("Illegal index ") + GFIntToCharString(index) + " in array of size " + GFIntToCharString(this->size()), \
+            CWideString(L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\bbblibrary\\lib_array.hpp"), 29, NDebugManager::ERROR_TYPE_CRITICAL) == true)
+#ifdef GAME_COMP_DEBUG
+    if (!(index < this->size()) && FABLE_CARRAY_INDEX_DIAGNOSTIC) {
+        if (IsDebuggerPresent())
+            __debugbreak();
+    }
+#else
+    (void)(false && (!(index < this->size()) &&
+        (FABLE_CARRAY_INDEX_DIAGNOSTIC && IsDebuggerPresent() && (__debugbreak(), true))));
+#endif
+#undef FABLE_CARRAY_INDEX_DIAGNOSTIC
+#endif
+#ifdef GAME_COMP_DEBUG
+    return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
+#else
+    return this->begin()[static_cast<ptrdiff_t>(index)];
+#endif
+ }
+#else
  typename std::vector<T>::const_reference operator[](unsigned int index) const {
   return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
  }
+#endif
 #endif
  typename std::vector<T>::iterator Find(const T& value);
  typename std::vector<T>::const_iterator Find(const T& value) const;

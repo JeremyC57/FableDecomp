@@ -28,7 +28,17 @@ inline float __stdcall WrapAngle(float angle)   // 0x00C0B4C0
 class CCodaFrame;                               // libpk/CCodaFrameStreamer.h
 #endif
 
+#ifdef FABLE_RETAIL_RAMPED_PARAM_SET_TARGET_PASS29
+// Descriptive: these three libpk names are used by landed caller and callee rows. No GameCODA or engine PDB owns libpk.
+float FABLE_STDCALL WrapAngle(float angle);
+class CMatrix3x4;
+void FABLE_FASTCALL InvertMatrix3x4(CMatrix3x4* out, const CMatrix3x4& matrix);
+#endif
 struct CRampedParam {                           // 0x34-byte ramped audio parameter
+#ifdef FABLE_RETAIL_RAMPED_PARAM_SET_TARGET_PASS29
+    void SetImmediate(float value);
+    void SetTarget(float target,float rate,float time);
+#endif
     float m_value;                              // +0x00 current value
     float m_target;                             // +0x04 target value
     float m_targetRate;                         // +0x08 rate on arrival

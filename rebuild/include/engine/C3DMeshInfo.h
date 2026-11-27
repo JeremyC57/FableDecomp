@@ -27,6 +27,10 @@ class CGraphicDataBank;
 #endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_LOCAL_DETAIL_MESH_CTOR_PASS29
+    // Ego_r and FableWin agree on this public constructor with two unsigned longs and a mesh bank.
+    C3DMeshInfo(unsigned long, unsigned long, CMeshDataBank*);
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_ISLOADED
     // Chunk Q28 (row 0x004BE3E0 CTCGraphicAppearance::IsResourcesLoaded): Ego_r.pdb ?IsLoaded@C3DMeshInfo@@QBE_NXZ (retail 0x00A23E40)
     // and ?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z (retail 0x00A256F0), both out of line. Declarations only: no layout change.

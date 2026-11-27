@@ -20,10 +20,17 @@
 namespace NCreatureMode {
 class CModeDragonBase : public CTCCreatureModeManager::CModeBase {
 public:
+#ifdef FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+    CModeDragonBase(CThing& thing, const CCharString& group_name);
+#endif
     virtual const CAnimFilterBase& GetAnimFilter() const;   // slot 4, 0x00741D50
     virtual void OnActivate();                               // slot 5, 0x008E7290
     virtual void OnDeactivate();                             // slot 6, 0x008E72B0
+#ifdef FABLE_RETAIL_DRAGONBASE_DONOR_PROTECTED_PASS29
+protected:
+#else
     // Members public, as in the generated layout below (the asserts read them at namespace scope).
+#endif
     CAnimFilterOfGroup Filter;                               // +0x1c
     CIntelligentPointer<CThing> PTarget;                     // +0x28
 };
@@ -75,8 +82,10 @@ FABLE_STATIC_ASSERT_AT(48, offsetof(CModeDragonBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(50, offsetof(FABLE_CMODEDRAGONBASE_T, holder) == 0x4);
 FABLE_STATIC_ASSERT_AT(51, offsetof(FABLE_CMODEDRAGONBASE_T, active) == 0x18);
 #endif
+#ifndef FABLE_RETAIL_DRAGONBASE_DONOR_PROTECTED_PASS29
 FABLE_STATIC_ASSERT_AT(52, offsetof(FABLE_CMODEDRAGONBASE_T, Filter) == 0x1c);
 FABLE_STATIC_ASSERT_AT(53, offsetof(FABLE_CMODEDRAGONBASE_T, PTarget) == 0x28);
+#endif
 
 #if defined(FABLE_RETAIL_CMODEDRAGONBASE_MODEBASE) && defined(FABLE_RETAIL_CMODEDRAGONBASE_ONDEACTIVATE_INLINE) && defined(FABLE_RETAIL_CMODEBASE_ONDEACTIVATE_INLINE)
 // NF92 opt-in (round 7, q11224: rows 0x008E72B0 and 0x008E74F0): the one body of NCreatureMode::CModeDragonBase::OnDeactivate (Ego_r.pdb

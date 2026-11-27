@@ -16,10 +16,13 @@ public:
  bool JustReleased;
  long SpellDelayFrames;
  virtual void FrameUpdate();
+#ifdef FABLE_RETAIL_DRAIN_PULSE_PASS29
+ long GetSoulEffect() const;
+#endif
 private:
  void DoDrain(CThingCreatureBase*);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDrainLife)==0x30);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CTCDrainLife)==0x30);
 #endif
 #endif
 // Retail opt-in (Codex pass22): complete original component,retail vector12,original private DoDrain signature.

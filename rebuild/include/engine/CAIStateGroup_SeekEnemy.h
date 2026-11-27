@@ -31,12 +31,22 @@ public:
     virtual bool IsRunnable();                                            // slot 11 0x0093B740 ?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ
     virtual void Update();                                                // slot 12 0x0093B9F0 ?Update@CAIStateGroup_SeekEnemy@@UAEXXZ
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x0093B6F0 ?InitStateGroup@CAIStateGroup_SeekEnemy@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+#ifdef FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29
+private:
+    bool IsStillRunnable() const;
+    CIntelligentPointer<CThing> PEnemy;
+#else
 public:
     unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThing>
+#endif
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_SEEK_ENEMY_UPDATE_PASS29
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekEnemy)==0x1c);
+#else
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekEnemy) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekEnemy, PEnemy) == 0x14);
+#endif
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

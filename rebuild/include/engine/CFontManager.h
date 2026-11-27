@@ -8,6 +8,9 @@
 // 2026-11-01). No PDB data symbol names it; `PFontManager` is the spelling the landed rows already bind (0x0064560D, 0x0065431D,
 // 0x0042DDB3).
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_FONT_PENDING_PASS29
+#include "engine/CStreamingFontBank.h"
+#endif
 class CCharString;
 class CFontBank;
 class CFontManager {
@@ -33,7 +36,17 @@ public:
     bool GetLoadFontGlyphsAsynchronously() const { return LoadFontGlyphsAsynchronously; }
 #endif
 private:
-    unsigned char _pad_0x00[0x38];                                       // +0x00 vptr .. NumberAsyncGlyphsPending
+#ifdef FABLE_RETAIL_FONT_PENDING_PASS29
+    unsigned char _pad_0x00[0x34];
+protected:
+    // The donor reads the address directly in Preload at 02FB7A9B.
+    friend bool CStreamingFontBank::Preload(const CWideString&,bool) const;
+    unsigned long NumberAsyncGlyphsPending;
+private:
+#else
+    unsigned char _pad_0x00[0x38];
+#endif
+                                           // +0x00 vptr .. NumberAsyncGlyphsPending
     bool LoadFontGlyphsAsynchronously;                                   // +0x38
 #endif
 };

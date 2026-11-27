@@ -10,6 +10,9 @@
 #endif
 // Both original PDBs: CThingGameObject base, no added data; retail RTTI agrees.
 class CThingMarker : public CThingGameObject { public:static long __fastcall StatGetType(){return 11;}
+#ifdef FABLE_RETAIL_CTHINGMARKER_DRAW_PASS29
+public: virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
+#endif
 #ifdef FABLE_RETAIL_CTHINGMARKER
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingMarker@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();

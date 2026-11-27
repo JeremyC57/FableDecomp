@@ -113,6 +113,9 @@ public:
     // Nested opt-in (chunk 1013b, row 0x00B41770 PeekInterpolatedWaterHeight): Ego_r.pdb / FableWin.pdb ?PeekHasWater@CEngineMap@@QBE_NJJ@Z
     // (retail 0x00B412A0), ?PeekHasWaterFast@..@@QBE_NJJ@Z (0x00B40260), ?PeekWaterDepth@..@@QBEMJJ@Z (0x00B40BD0) and the row itself.
     bool PeekHasWater(long x, long y) const;
+#ifdef FABLE_RETAIL_MAP_WATER_TYPE_PASS29
+    EWaterType PeekWaterType(long mapx,long mapy) const;
+#endif
     bool PeekHasWaterFast(long x, long y) const;
     float PeekWaterDepth(long x, long y) const;
     float PeekInterpolatedWaterHeight(long x, long y, long radius) const;

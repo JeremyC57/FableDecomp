@@ -25,7 +25,12 @@ public:
     template<class T> void GetComponent(const T** out)const;
 #endif
     // Ego_r.pdb / FableWin.pdb ?StatRegisterClass@CAnimationEntry@@SIXXZ (static __fastcall; retail 0x005DD670, one caller 0x0044E907).
+#ifdef FABLE_RETAIL_EXPL_RESPONSE_PASS29
+    template<class T> void GetComponent(T** out);
     static void __fastcall StatRegisterClass();
+#else
+    static void __fastcall StatRegisterClass();
+#endif
     static std::map<CCharString, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByToken;          // 0x013B8C1C
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByType;      // 0x013B8C28
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentDefaults;     // 0x013B8C38
@@ -89,6 +94,16 @@ template<class T> void CAnimationEntry::GetComponent(const T** pp_component) con
         it = RegisteredComponentDefaults.Find(typ);
     const CAnimComponentBase* panim_comp_base = it->second.Get();
     *pp_component = static_cast<const T*>(panim_comp_base);
+}
+#endif
+#ifdef FABLE_RETAIL_EXPL_RESPONSE_PASS29
+template<class T> void CAnimationEntry::GetComponent(T** pp_component) {
+    EAnimComponent typ=T::StatGetType();
+    CVectorMap<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >::iterator it;
+    if (Components.IsNull() || (it=Components->Map.Find(typ))==Components->Map.end())
+        it=RegisteredComponentDefaults.Find(typ);
+    CAnimComponentBase* panim_comp_base=it->second.Get();
+    *pp_component=static_cast<T*>(panim_comp_base);
 }
 #endif
 #endif // FABLE_ENGINE_CANIMATIONENTRY_H

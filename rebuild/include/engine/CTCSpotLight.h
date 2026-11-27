@@ -28,6 +28,11 @@ struct CSpotLightInfo;
 namespace NGraphicAppearance { class CPrimitive; }
 class CTCSpotLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent {
 public:
+#ifdef FABLE_RETAIL_JACK_FLASH_FRAME_PASS29
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_SPOT_LIGHT;}
+ void SetAngle(float);
+#endif
+
     struct CSpotLightInfo {
         float Angle;                                         // +0x00
         float Width;                                         // +0x04

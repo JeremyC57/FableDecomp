@@ -11,6 +11,9 @@ public:
     CCreatureAction_CombatIdle() : CCombatActionBase(50) { }
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTION_COMBATIDLE_MAZE
+#ifdef FABLE_RETAIL_WHISPER_POTION_COMBAT_PASS29
+    CCreatureAction_CombatIdle(CThingCreatureBase& creature, CThingCreatureBase& target); // 0x00906AC0
+#else
 #ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
     CCreatureAction_CombatIdle(CThingCreatureBase& creature, CThingCreatureBase& target)
         : CCombatActionBase(creature, target, 50, CSoundPair()) { }
@@ -19,6 +22,7 @@ public:
     virtual bool IsToFaceTargetAtStart() const;                          // 0x006F5940
 #else
     CCreatureAction_CombatIdle(CThingCreatureBase& creature, CThingCreatureBase& target); // 0x00906AC0
+#endif
 #endif
 #endif
 };

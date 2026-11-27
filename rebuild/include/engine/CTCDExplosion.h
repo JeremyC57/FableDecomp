@@ -12,9 +12,37 @@ public: CTCDExplosion(CThing&);
 private:
     float DamageRadius,PhysicsRadius,MaxDamage;
     long FireDamage,ExplosionLifeTimer;
+#ifdef FABLE_RETAIL_EXPLOSION_HITS_PASS29
+    C3DVector StartPos,EndPos;
+#else
     unsigned char StartPos[12],EndPos[12];
+#endif
     CDefPointer<const CExplosionDef> PExplosionDef;
+#ifdef FABLE_RETAIL_DYNAMIC_EXPLOSION_PASS29
+    bool CreatedEmitter, NeedToTriggerExplosion;
+    std::vector<std::pair<CIntelligentPointer<CThing>, long> > Emitters;
+    long ExplosionEvolutionTimer, CurrentExplosionRing;
+    std::vector<CIntelligentPointer<CThing> > HitThings, ImmuneThings, SpecifiedThingsToHit;
+    void UpdateDynamicExplosion();
+    void UpdateDynamicHitThings(float inner_radius, float outer_radius);
+#else
+#ifdef FABLE_RETAIL_EXPLOSION_HITS_PASS29
+    bool CreatedEmitter,NeedToTriggerExplosion;
+    std::vector<std::pair<CIntelligentPointer<CThing>,long> > Emitters;
+    long ExplosionEvolutionTimer,CurrentExplosionRing;
+    std::vector<CIntelligentPointer<CThing> > HitThings,ImmuneThings,SpecifiedThingsToHit;
+    void GiveDamageToThing(CThingGameObject&);
+    void UpdateHitThings(const C3DVector&,const C3DVector&);
+    float GetDistanceFromMeAsRatioOfDamageRadius(const CThing&) const;
+#else
     unsigned char _pad_0x3c[0x3c];
+#endif
+#endif
+#if defined(FABLE_RETAIL_DYNAMIC_EXPLOSION_PASS29) && defined(FABLE_RETAIL_EXPLOSION_HITS_PASS29)
+    void GiveDamageToThing(CThingGameObject&);
+    void UpdateHitThings(const C3DVector&,const C3DVector&);
+    float GetDistanceFromMeAsRatioOfDamageRadius(const CThing&) const;
+#endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_EXPLOSION; }
     CDefPointer<const CExplosionDef> GetPExplosionDef() const { return PExplosionDef; }
@@ -43,5 +71,5 @@ public:
     virtual bool IsDriverType(long type) const;
 #endif // FABLE_RETAIL_CTCDEXPLOSION_DRIVERSLOTS
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDExplosion)==0x78);
+FABLE_STATIC_ASSERT_AT(46, sizeof(CTCDExplosion)==0x78);
 #endif

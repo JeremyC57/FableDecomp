@@ -111,6 +111,18 @@ private:
  EUnsheatheWeaponType UnsheathingWeaponType;
  typedef std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility> TCombatAbilityData;
  typedef std::multimap<ECombatAbilityDataType,TCombatAbilityData> TCombatAbilityList;
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+ bool GetCombatAbilityData(TCombatAbilityList::const_iterator&,ECombatAbilityInterfaceType) const;
+ bool GetBlockAbilityIterator(TCombatAbilityList::const_iterator&,EWeaponClass) const;
+ bool IsToBlock(const CHitParameters&) const;
+public:
+ bool IsBlocking() const {return Blocking;}
+ bool IsStartingToBlock() const {return StartingToBlock;}
+ void SetBlocking();
+ void SetBlocked(CThing&);
+ void SetMeleeFlourishValid(bool);
+private:
+#endif
  TCombatAbilityList CombatAbilities;
 #ifdef FABLE_RETAIL_CTCCOMBAT_GETHITCOUNTERATTACK
  // Opt-in (p25N, row 0x00733CF0): Ego_r.pdb / FableWin.pdb the private non-const

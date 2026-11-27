@@ -17,6 +17,11 @@ class CTCShop;                                                           // chun
 class COpinionDeed;
 #endif
 class CTCShopKeeper : public CTCBase {
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+public:
+    CCharString GetFriendlynessIndicator();
+    void OpenShoppingInterface();
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCSHOPKEEPER_CTOR_PASS23
     // Both original PDB constructor PUBLICs; declaration only, no layout change.
@@ -36,6 +41,9 @@ public:
     // ?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ (0x00798F50, landed) / ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ (0x00798D30: Ego_r
     // orders GetHint 0x0079E7C0 before GetShopTC 0x0079E900, as retail; the body returns a CCharString built from one literal).
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP_KEEPER; }
+#ifdef FABLE_RETAIL_OPEN_CLOSE_SHOP_PASS29
+    bool GetAreOtherPeopleInShop(bool);
+#endif
     CTCShop* GetShopTC() const;                                          // 0x00798F50
     CCharString GetHint();                                               // 0x00798D30
 #endif

@@ -9,6 +9,10 @@ class C3DVector;
 #endif
 class C3DCoordI : public C2DCoordI {
 public:
+#ifdef FABLE_RETAIL_C3DCOORDI_CTOR_WEATHER_PASS29
+    C3DCoordI() {}
+    C3DCoordI(long x, long y, long z) : C2DCoordI(x,y), Z(z) {}
+#endif
     long Z;                                                  // +0x08
 #ifdef FABLE_RETAIL_C3DCOORDI_OPERATOR_PLUS_EQUALS
     // Retail opt-in (row 0x00A13BE0): Ego_r.pdb ??YC3DCoordI@@QAEABV0@ABVC3DVector@@@Z (out of line, const reference result).
@@ -19,5 +23,5 @@ public:
     const C3DCoordI& operator-=(const C3DVector& v);         // 0x00A13C20
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DCoordI) == 12);
+FABLE_STATIC_ASSERT_AT(22, sizeof(C3DCoordI) == 12);
 #endif

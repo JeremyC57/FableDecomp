@@ -68,6 +68,41 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_WHITE_BALVERINE_GUARDS_PASS29
+class CScriptDataBase;
+namespace NScript {
+class CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1 : public CEntityScriptBase {
+public:
+    CWB_Guard1(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&);
+    CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();
+    virtual void Init();
+    virtual void OnPredicateFail();
+protected:
+    CQ_WhiteBalverineKnotholeGladeScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+};
+}
+namespace NScript {
+class CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2 : public CEntityScriptBase {
+public:
+    CWB_Guard2(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&);
+    CQ_SunnyvaleMasterData* GetMasterData() { return PMasterData; }
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+private:
+    virtual void Main();
+    virtual void Init();
+    virtual void OnPredicateFail();
+protected:
+    CQ_WhiteBalverineKnotholeGladeScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+};
+}
+#endif
 #ifdef FABLE_RETAIL_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_CKG_CHIEF
 // Retail opt-in (chunk 833; p25A row 0x00E17840): the CKG_Chief entity script (Ego_r.pdb CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief, 28 bytes = the landed
 // Alloc 0x00E17750's new size: ParentClass +0x14, PMasterData +0x18). Entity vtable 0x012E0B98 (stored by the Alloc; read from retail .rdata):
@@ -88,7 +123,7 @@ protected:
     CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief) == 0x1c);
+FABLE_STATIC_ASSERT_AT(91, sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief) == 0x1c);
 #endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_H

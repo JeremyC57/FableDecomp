@@ -55,6 +55,16 @@ public:
     virtual void PrepareToRender(bool = true) const = 0;                 // slot 3
     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A0B20
     virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const = 0;   // slot 5
+#ifdef FABLE_RETAIL_ICONTEXT_FONT_INLINE_PASS29
+#ifdef FABLE_RETAIL_ICONTEXT_WIDTH_PAREN_PASS29
+    // Inferred: the parenthesized return retains the local scheduling of the folded scalar width.
+    // InitIcons 005430FB reuses one PFont load across 00543110 and 00543127.
+    float GetStringWidth(const wchar_t* text) const { return (GetStringExtents(text, false).X); }
+#else
+    float GetStringWidth(const wchar_t* text) const { return GetStringExtents(text, false).X; }
+#endif
+    C2DExtentsF GetStringExtents(const CWideString& text, bool spaces) const { return GetStringExtents(text.GetAsCharArray(), spaces); }
+#endif
 #ifdef FABLE_RETAIL_CFONTBANK_STRING_HELPERS
     // Retail opt-in (chunk 784, row 0x00491AD2 CSubtitleRenderer::ProcessEmbeddedHighlightTags): the out-of-line FableWin.pdb
     // non-virtual helpers ?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z (0x0048DAA2: slot 1 with the string's
@@ -79,6 +89,10 @@ public:
     // copy 0x0043E4D0 (`return GetVStringExtents(text).X;`). Retail expands it in that row: GetVStringExtents 0x00437210 is called
     // first and its X is copied into a float temporary (0x0064695F..0x0064696C) before the rest of the caller's expression.
     // Not with FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH (the declaration-only form below: defining both is a redefinition error).
+#ifdef FABLE_RETAIL_SUBTITLE_WIDTH_DRAW_PASS29
+    // Inline-budget: DrawTextPrimitives expands GetVStringWidth and calls GetVStringExtents at 004903D5.
+    FABLE_FORCEINLINE
+#endif
     float GetVStringWidth(const CWideString& text) const { return GetVStringExtents(text).X; }
 #endif
 #ifdef FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH

@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CAPPEARANCEMODIFIERDEF_H
 #define FABLE_ENGINE_CAPPEARANCEMODIFIERDEF_H
 #include "engine/CSubDefClassBase.h"
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+#include "engine/CAppearanceModifierGraphics.h"
+#endif
 #include "engine/EClothingSuitPart.h"
 #include "stlport/fable_containers.h"
 class CAppearanceModifierScalingDef;
@@ -14,7 +17,11 @@ public:
     // inline in the release build; the "CAppearanceModifierDef" literal the landed GetSubDef<CAppearanceModifierDef> 0x0057FF92 passes.
     static CCharString __fastcall StatGetTypeName() { return CCharString("CAppearanceModifierDef", -1); }
 #endif
+#ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+    unsigned char HideMaterials[12]; CAppearanceModifierGraphics MorphGraphics;long CoversBodyAreaFlags;bool IsRemoveable;long HeroSuit;EClothingSuitPart SuitPart;long AppearanceType;
+#else
     unsigned char HideMaterials[12],MorphGraphics[12];long CoversBodyAreaFlags;bool IsRemoveable;long HeroSuit;EClothingSuitPart SuitPart;long AppearanceType;
+#endif
     float SoundRadiusMultiplier,VisibilityMultiplier;long ArmourDefIndex;float OveralProtectionWeighting,Scariness,Attractiveness,Goodstrength;
     float GetTypeBalancedAttractiveness(const std::vector<CAppearanceModifierScalingDef>&)const;
     float GetTypeBalancedScariness(const std::vector<CAppearanceModifierScalingDef>&)const;

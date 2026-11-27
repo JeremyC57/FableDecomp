@@ -21,7 +21,18 @@ template<class V> class CCompareString { };
 #endif
 class CSymbolMap : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_SYMBOLMAP_ENUM_PASS29
+protected:
+    // Ego_r 00B36F60 / FableWin 03094580; protected member at retail 009E55A0.
+    bool ParseEnum(CStringParser& parser);
+    // Ego_r 00B36950 / FableWin 03094E50; cdecl instance varargs, retail 009E4F80.
+    void __cdecl Error(const CWideString&,long,const char*,...);
+public:
+#endif
     CSymbolMap();
+#ifdef FABLE_RETAIL_ANIMATION_EVENTS_LOAD_PASS29
+    bool LoadFromFile(const CWideString&);
+#endif
     virtual ~CSymbolMap();
 #if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_CURRENTFILENAME)
     // agentFAM09 opt-in (row 0x01224190, its dynamic initializer): Ego_r.pdb / FableWin.pdb `dynamic initializer for

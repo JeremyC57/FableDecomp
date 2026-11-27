@@ -80,6 +80,12 @@ public:
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
     // Both original complete records/PUBLICs; select existing INSTANTIATEDEF for its genuine nested records.
     void SaveBinaryDefinitions(CDataOutputStream&);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+public:
+    bool LoadBinaryDefinitions(CDataInputStream&);
+protected:
+    void ClearInstantiatedDefs();
+#endif
 protected:
     void CompressDefinitionBlock(CMemoryDataOutputStream&,CArray<unsigned short>&,unsigned long);
 public:
@@ -118,6 +124,11 @@ public:
 #endif
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const;
 protected:
+#ifdef FABLE_RETAIL_COMPILE_DEFINITION_PASS29
+    CDefPointer<CDefClassBase> GetPDefFromInstantiationName(const CCharString&);
+    void CompileSubDefinition(CCharString,const CCharString&,long);
+    void CompileDefinition(CStringParser&,const CCharString&,const CCharString&);
+#endif
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long);
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
     // Retail opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): the two nested records (Ego_r TPI
@@ -140,7 +151,11 @@ protected:
     };
     class CInstantiatedDefInfo {
     public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+        CInstantiatedDefInfo() {}
+#else
         CInstantiatedDefInfo();                                          // FableWin 0x0305D840 (declaration only)
+#endif
         CInstantiatedDefInfo(CDefString class_name, CDefString instantiation_name, unsigned long class_index, const CDefPointer<CDefClassBase>& pdef)
             : ClassName(class_name), InstantiationName(instantiation_name), ClassIndex(class_index), PDef(pdef) { }   // FableWin 0x03061650
         CDefString ClassName;                                            // +0x00
@@ -148,6 +163,9 @@ protected:
         unsigned long ClassIndex;                                        // +0x08
         CDefPointer<CDefClassBase> PDef;                                 // +0x0c
     };
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+    CDefClassInfo* GetPDefClassInfo(unsigned long crc);
+#endif
     CDefClassInfo* GetPDefClassInfo(const CCharString& name);            // 0x009AD580
     bool InstantiateDef(const CCharString& class_name, const CCharString& instantiation_name, bool is_template);   // 0x009ADC90
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_CLASSINFO_QUERIES
@@ -196,7 +214,12 @@ protected:
 #else
     unsigned char PSymbolMap[8],PDefinitionSymbolMap[8];
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_LOADBINARY_PASS29
+    CVectorMap<unsigned long,long> NameCRCToIndexMap;
+    CVectorMap<unsigned long,CDefClassInfo> DefClassInfo;
+#else
     unsigned char NameCRCToIndexMap[16],DefClassInfo[16];
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_SAVEBINARY_PASS23
     CArray<unsigned char> CompressedDefData;

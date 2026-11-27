@@ -1,0 +1,12 @@
+row	source_symbol	evidence
+00723e50	?SetRHSetAsFlushOnNormal@CTCPhysicsStandard@@UAEXABVC3DVector@@@Z	Ego_r 0073ade0 and FableWin 02526f60
+008f45f0	?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	Ego_r 0091a4a0 and FableWin 02af6380
+008a9880	?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@@Z	Ego_r 008e8100 and FableWin 02a74e10
+00e7fd50	?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ	Ego_r 00edf460 and FableWin 039edd60
+00446d10	?IsControlInputSharedBetweenGameActions@CGamePlayerInterface@@QBE_NABV?$vector@W4EGameAction@@V?$allocator@W4EGameAction@@@std@@@std@@@Z	Ego_r 00444240 and FableWin 01a98fc0
+004b2ca0	?GetActiveQuestSectionNames@CQuestManager@@QBEXAAV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z	Ego_r 004b8660 and FableWin 01c52a50
+0077dc40	?OnInitialActivate@CTCHeroCentre@@UAEXXZ	Ego_r 00787330 and FableWin 026414b0
+005dcd10	?GetRandomLoadedAnim@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@AAK_NABVCAnimFilterBase@@@Z	Ego_r 0063c760 and FableWin 01fa1fe0
+007808b0	?InitFirePoints@CTCFlammable@@AAEXXZ	Ego_r 00594a20 and FableWin 01f50110
+00c5ca60	?CalcParams@CSalSw2DVoice@@QAEXPBVCCoda2DSource@@I@Z	GameCODA 2.10 SalSw2DVoice.obj / 858-byte procedure and landed caller 00c5acb0; nf165 queue documents both.
+00741d60	??_GCModeDragonBase@NCreatureMode@@UAEPAXI@Z	The retail vtable for NCreatureMode::CModeDragonBase at 012684E0 holds 00741D60 in slot 0 and 00741D50 in slot 4. For NCreatureMode::CModeExplosiveForcePushed, the retail table at 012770B4 holds 00868100 in slot 0. The two original Ego_r destructor PROC records both start at 0083E040, providing direct evidence of linker folding in that build. FableWin has a distinct CModeDragonBase scalar deleting destructor PROC at 024C0C30 in tc_creature_mode_manager.obj. Retail and both original PDBs therefore establish CModeDragonBase for this row. The shared header's Filter at +0x1C and PTarget at +0x28 match the native destructor addresses. PExplosion is specific to CModeExplosiveForcePushed. The baseline also truncated the native body in its comments. The pass package's 69-byte extent includes the final ret 4.

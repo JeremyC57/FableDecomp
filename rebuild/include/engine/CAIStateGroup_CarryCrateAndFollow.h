@@ -18,6 +18,9 @@
 class CThing;
 class CAIStateGroup_CarryCrateAndFollow : public CAIStateGroupBase {
 public:
+#ifdef FABLE_RETAIL_CARRYCRATE_UPDATE_PASS29
+    virtual void Update();
+#endif
     virtual void OnReplace();                                            // slot 10 0x00966030
 #ifdef FABLE_RETAIL_CAISTATEGROUP_CARRYCRATEANDFOLLOW_EXPRESSION
     // NF67 opt-in (round 7, row 0x00966290): Ego_r.pdb / FableWin.pdb

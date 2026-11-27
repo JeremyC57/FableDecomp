@@ -21,6 +21,9 @@ class CCreatureActionBase;
 #pragma pack(push, 1)
 class CCreatureAction_Ambush : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_GENERATOR_CREATE_PASS29
+    CCreatureAction_Ambush(CThingCreatureBase&,CThing&,const C3DVector&);
+#endif
     virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C02D0 ?Clone@CCreatureAction_Ambush@@UBEPAVCCreatureActionBase@@XZ
     virtual void Initialise();                                            // slot 12 0x008BEEE0 ?Initialise@CCreatureAction_Ambush@@UAEXXZ
     virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008BFF90 ?IsMovementUsingPhysics@CCreatureAction_Ambush@@UBE_NXZ
@@ -30,10 +33,10 @@ public:
     float         JumpDest_Z;                                // +0x11c C3DVector::Z
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_Ambush) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Ambush, JumpDest_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Ambush, JumpDest_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_Ambush, JumpDest_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_Ambush) == 0x120);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_Ambush, JumpDest_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CCreatureAction_Ambush, JumpDest_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CCreatureAction_Ambush, JumpDest_Z) == 0x11c);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_Ambush {

@@ -11,6 +11,10 @@
 #endif
 #include "engine/CTCBase.h"
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_DRAIN_PULSE_PASS29
+class CCharString;
+extern const CCharString MAIN_FOCAL_POSITION_NAME;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FLARE
 #include "engine/NGraphicAppearance_CPrimitive.h"
 class CEnginePrimitive;
@@ -53,6 +57,9 @@ class CEnginePrimitivePrepareInfo; class C3DPositionInterpolator; class C3DOrien
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
 #include "engine/NGraphicAppearance_CMeshInfo.h"
 class C3DAnimationInterpolator;class C3DMeshObject;
+#ifdef FABLE_RETAIL_GRAPHIC_DUMMY_PASS29
+class CMeshDataBank;
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
 class CCharString;
@@ -84,6 +91,10 @@ class CAGraphicAppearanceComponent;
 enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
 #endif
 class CTCGraphicAppearance : public CTCBase {
+#ifdef FABLE_RETAIL_CTHINGMARKER_DRAW_PASS29
+public: void Draw(const CEnginePrimitivePrepareInfo&,const C3DPositionInterpolator&,const C3DOrientationInterpolator&);
+#endif
+
 #if defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_CAMERAFOCALPOS) && !(defined(FABLE_RETAIL_CTCGRAPHICAPPEARANCE_STATIC_FOCAL) && defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST))
     // Opt-in (w24A, row 0x00872110): FableWin.pdb ?GetCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z, out of
     // line at 0x004C12D0 (landed), alone -- without the STATIC_FOCAL / UPDATE_LIST chain that also declares it. Declaration only.
@@ -180,6 +191,9 @@ public:
  // ?SetMainGraphic@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEngineGraphic@@@Z, inline in retail (the 14-byte copy into +0x44,
  // `lea eax,[ebx+44h]` then three dwords and a word, 0x0082D72A), and ?SetScale@..@@QAEXM@Z (out of line at 0x004BFA50; declared
  // here unless FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SCALE already does). No layout change.
+#ifdef FABLE_RETAIL_GENERATOR_FRAME_PASS29
+ FABLE_FORCEINLINE
+#endif
  void SetMainGraphic(const CEngineGraphic& graphic){MainGraphic=graphic;}
 #ifndef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SCALE
  void SetScale(float scale);                                // 0x004BFA50
@@ -200,6 +214,12 @@ public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
     // Retail opt-in (Codex pass17): original methods/access/signatures, both PDBs and debug full helper.
     void GetAllMeshes(std::vector<CMeshInfo>&)const;
+#ifdef FABLE_RETAIL_GRAPHIC_DUMMY_PASS29
+    bool GetDummyObjectAssumingObjectAt(const CCharString&,const C3DVector&,const CRightHandedSet&,long,unsigned long,C3DVector&,CRightHandedSet&)const;
+protected:
+    static CMeshDataBank* PMeshBank;
+    void GetMeshObjectAssumingObjectAt(const CMeshInfo&,const C3DVector&,const CRightHandedSet&,C3DMeshObject&)const;
+#endif
 protected:
     bool IsToReduceLODForDummiesAndHelpers()const;
     bool IsResourcesLoadedForMesh(const CMeshInfo&,bool)const;
@@ -219,6 +239,9 @@ public:
     float GetFadeDistance() const;
     CPrimitive* AddPersistentPrimitive(const CPrimitive&);
     void SetPrimitiveGraphics(CPrimitive*,const CEnginePrimitive&,unsigned short);
+#ifdef FABLE_RETAIL_HERO_MODIFIER_DRAW_PASS29
+    void RemovePrimitive(CPrimitive*);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETATTACHEDPRIMITIVEGRAPHICS
     // Retail opt-in (agentNF41, row 0x004BD690): Ego_r.pdb 0x004C0F30 ?SetAttachedPrimitiveGraphics@CTCGraphicAppearance@NGraphicAppearance@@
@@ -357,7 +380,11 @@ public:
     // ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z, out of line in
     // retail (0x004C08C0; catalog name agrees; the row pushes 1.0f, the set, the position, 0, 0, the name). Declaration only.
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& orientation,
+#if defined(FABLE_RETAIL_JACK_FLASH_FRAME_PASS29) || defined(FABLE_RETAIL_CTCCREATUREFLYINCIRCLES_UPDATESWOOP)
+                        float scale = 1.0f) const;
+#else
                         float scale) const;                  // 0x004C08C0
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_USEOBJECT_PASS24
     // Ego_r and FableWin agree on the const prefix lookup. Native 0x006A03EB calls it.

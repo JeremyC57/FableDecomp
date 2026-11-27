@@ -31,6 +31,18 @@ public:
     virtual void Update();                                                // slot 12 0x00932B50 ?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00932960 ?InitStateGroup@CAIStateGroup_MinionGuardReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
 public:
+#ifdef FABLE_RETAIL_GUARD_CRIMINAL_UPDATE_PASS29
+private:
+    CIntelligentPointer<CThingPlayerCreature> PHero;
+    C3DVector PositionPlayerWasWhenWarned;
+    long WarningsGiven, FrameWarningStarted, DeedLastWarnedAbout;
+public:
+    static void CheckGuardLayout(){
+        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal,PHero)==0x14);
+        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal,PositionPlayerWasWhenWarned)==0x1c);
+        FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal,DeedLastWarnedAbout)==0x30);
+    }
+#else
     unsigned char PHero[0x8];                                // +0x14 CIntelligentPointer<CThingPlayerCreature>
     float         PositionPlayerWasWhenWarned_X;             // +0x1c C3DVector::X
     float         PositionPlayerWasWhenWarned_Y;             // +0x20 C3DVector::Y
@@ -38,16 +50,20 @@ public:
     long          WarningsGiven;                             // +0x28
     long          FrameWarningStarted;                       // +0x2c
     long          DeedLastWarnedAbout;                       // +0x30
+#endif
+
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionGuardReactToCriminal) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PHero) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Z) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CAIStateGroup_MinionGuardReactToCriminal) == 0x34);
+#ifndef FABLE_RETAIL_GUARD_CRIMINAL_UPDATE_PASS29
+FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PHero) == 0x14);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CAIStateGroup_MinionGuardReactToCriminal, PositionPlayerWasWhenWarned_Z) == 0x24);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_MinionGuardReactToCriminal, WarningsGiven) == 0x28);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_MinionGuardReactToCriminal, FrameWarningStarted) == 0x2c);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CAIStateGroup_MinionGuardReactToCriminal, DeedLastWarnedAbout) == 0x30);
+#endif
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

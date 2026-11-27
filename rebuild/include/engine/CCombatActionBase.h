@@ -307,6 +307,13 @@ protected:
     float GetTimeThroughCurrentAnimation() const;
     float GetLastTimeThroughCurrentAnimation() const;
 #endif
+#ifdef FABLE_RETAIL_DAMAGE_ACTION_PASS29
+    void PerformPossibleDamageAction(float);
+    void ProcessPossibleCreatureStrikeEvent(float,const std::pair<C3DVector,C3DVector>&,const std::pair<C3DVector,C3DVector>&,CThingGameObject&);
+    void ProcessPossibleProneThingsStrikeEvent(float,const std::pair<C3DVector,C3DVector>&,const std::pair<C3DVector,C3DVector>&,CThingGameObject&);
+    void ProcessPossibleShotStrikeEvent(float,const std::pair<C3DVector,C3DVector>&,const std::pair<C3DVector,C3DVector>&,CThingGameObject&);
+    void ProcessPossibleObjectStrikeEvent(float,const std::pair<C3DVector,C3DVector>&,const std::pair<C3DVector,C3DVector>&,CThingGameObject&);
+#endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
     CIntelligentPointer<const CThing> PCameraPoint;                      // +0xb0

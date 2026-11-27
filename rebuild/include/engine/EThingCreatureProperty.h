@@ -2,6 +2,11 @@
 #define FABLE_ENGINE_ETHINGCREATUREPROPERTY_H
 #ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
 // Both original type streams give this value.
-enum EThingCreatureProperty { THING_CREATURE_PROPERTY_FIREFLY=4 };
+enum EThingCreatureProperty {
+#ifdef FABLE_RETAIL_GUARD_HEALTH_PRECISION_PASS29
+    THING_CREATURE_PROPERTY_GUARD=3,
+#endif
+    THING_CREATURE_PROPERTY_FIREFLY=4
+};
 #endif
 #endif

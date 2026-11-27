@@ -42,7 +42,11 @@ public:
     // Retail opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb 0x0070E0C0
     // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@K_NW4EDialogueLayer@NSpeechGainManager@@00@Z (retail 0x006E3B60). The
     // nested result enum's enumerator names are descriptive (the landed callers' spellings): 0 started, 1 failed for good.
+#ifdef FABLE_RETAIL_AI_SPEECH_ENUM_PASS29
+    enum ESpeechPlaybackResult { ESPR_OK, ESPR_FAIL, ESPR_WAITING };
+#else
     enum ESpeechPlaybackResult { SPEECH_PLAYBACK_STARTED, SPEECH_PLAYBACK_FAILED_FINAL, SPEECH_PLAYBACK_FAILED_RETRY };
+#endif
     ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B60
 #ifdef FABLE_RETAIL_CTCTALK_PLAYSPEECH_OVERLOADS
     // NF56 opt-in (rows 0x006E3AB0 / 0x006E3B10, queue q10426): the three public PlaySpeech overloads, Ego_r.pdb / FableWin.pdb in this

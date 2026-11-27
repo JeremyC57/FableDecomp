@@ -10,6 +10,9 @@ class CThingCreatureBase;
 class CEnginePrimitivePrepareInfo;
 #endif
 class CTCWeaponTrail : public CTCBase {
+#ifdef FABLE_RETAIL_DAMAGE_ACTION_PASS29
+public: bool GetLastWeaponTrailPoints(std::vector<std::pair<C3DVector,C3DVector> >&,long) const;
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
 public: static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
 public: virtual ETCInterfaceType GetInterfaceType() const;
@@ -62,8 +65,13 @@ private:
     long NoTrails;
     long NoProjectileTrails;
     long WeaponTrailGraphicIndex;
+#ifdef FABLE_RETAIL_WEAPON_TRAIL_DRAW_PASS29
+    mutable CEnginePrimitiveHandle ProjectileWeaponTrailHandle;
+    mutable std::vector<CEnginePrimitiveHandle> WeaponTrailHandles;
+#else
     CEnginePrimitiveHandle ProjectileWeaponTrailHandle;
     std::vector<CEnginePrimitiveHandle> WeaponTrailHandles;
+#endif
     CEnginePrimitiveWeaponTrail::EWeaponTrailType TrailType;
     std::vector<bool> ActiveTrail;
     std::vector<long> InactiveTicks;
@@ -73,5 +81,5 @@ private:
     long MinProjectileTrailTimer;
     bool WeaponTrailActive;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCWeaponTrail)==108);
+FABLE_STATIC_ASSERT_AT(76, sizeof(CTCWeaponTrail)==108);
 #endif

@@ -1,0 +1,71 @@
+address	old	new
+00446d10	_global::ProcessCombatInput_MapInputsToActions	CGamePlayerInterface::IsControlInputSharedBetweenGameActions
+004b2ca0	_global::WorldMap_BuildLoadSectionsList	CQuestManager::GetActiveQuestSectionNames
+004c0c80	CTCGraphicAppearance::GetDummyObjectAssumingObjectAt	NGraphicAppearance::CTCGraphicAppearance::GetDummyObjectAssumingObjectAt
+004ce550	CSubtitledMessage::CSubtitledMessage	__thiscall CSubtitledMessage::CSubtitledMessage
+0051eda0	CEntityRuntimePersistence::SaveToGameStateScript	NThingManager::CEntityRuntimePersistence::SaveToGameStateScript
+00533d30	CComponent::GetSize	NUISystem::CComponent::GetSize
+0054d660	CFrontEndList::Initialise	NUISystem::CFrontEndList::Initialise
+00556a40	CRedefinerList::CRedefinerList::RefreshScriptThings	NUISystem::CRedefinerList::GenerateListItems
+005dcd10	_global::CTCInventoryAbilities_GetRandomAbility	CAnimationSet::GetRandomLoadedAnim
+00625160	CCompressedMemoryDataInputStream::`vector_deleting_destructor'	NUISystem::CUIStateDef::`scalar deleting destructor'
+00644677	CDrawLetterBoxBlackBars::Draw	NPlayerGui::CDrawLetterBoxBlackBars::Draw
+00681cd0	CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero::SetOpinionReactionMask
+006c2170	CObject::Load	CLevelLoader::CObject::Load
+006fa4e0	CManager::Load	NAnimationEvents::CManager::Load
+00707440	CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw	CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw
+00725f10	CThingSearchTools::GetAllThingsInRoughArea	CThingSearchTools::GetAllThingsInRoughArea<class CThingCreatureBase, class std::vector<class CThingCreatureBase *, class std::allocator<class CThingCreatureBase *>>, class CThingFilter_IsNot>
+00741d60	CModeExplosiveForcePushed::`scalar_deleting_destructor'	NCreatureMode::CModeDragonBase::`scalar deleting destructor'
+0077dc40	_global::CTCCampfire_BuildPlayerRegion	CTCHeroCentre::OnInitialActivate
+0079e5f0	CTCPhysicalShieldSpell::CTCPhysicalShieldSpell	__thiscall CTCPhysicalShieldSpell::CTCPhysicalShieldSpell
+0079f970	CLightningBeam::UpdatePositions	CTCWillLightning::CLightningBeam::UpdatePositions
+007c22f0	CTCShotDefinitionBase::OnHitByMelee	NThingShot::CTCShotDefinitionBase::OnHitByMelee
+007e9460	CTCAvoidRegionExit::CTCAvoidRegionExit::vfunc_9	CTCAvoidRegionExit::FrameUpdate
+00846710	CCreatureAction_PerformExpression::?Initialise@CCreatureAction_PerformExpression@@UAEXXZ	CCreatureAction_PerformExpression::Initialise
+0084d2f0	CBase::IsCameraOcclusionFromTo	NCameraModes::CBase::IsCameraOcclusionFromTo
+00867200	CCombatAction_GenericResponseToExplosion::?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	CCombatAction_GenericResponseToExplosion::Initialise
+00872af0	CZTargetNew::GetCameraPosition	NCameraModes::CZTargetNew::GetCameraPosition
+0087ee70	CCombatAction_StabThing::CCombatAction_StabThing::PerformAction	CCombatAction_StabThing::PerformAction
+00886e80	CBlendedEnvironmentTheme::CompactTextureSet	NEnvironmentInternal::CBlendedEnvironmentTheme::CompactTextureSet
+008873c0	CBlendedEnvironmentTheme::SetAsWeightedBlendOfThemes	NEnvironmentInternal::CBlendedEnvironmentTheme::SetAsWeightedBlendOfThemes
+00887b70	CBlendedEnvironmentTheme::Blend	NEnvironmentInternal::CBlendedEnvironmentTheme::Blend
+008a9880	CGameScriptInterface::?ScreenFilterFadeTo@CGameScriptInterface@@UBEPAXMMMMMABVCRGBFloatColour@@ABV?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@@Z	CGameScriptInterface::ScreenFilterFadeTo
+008f45f0	CCreatureAction_DragonSwoop::?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	CCreatureAction_DragonSwoop::FrameUpdate
+0090cc40	CAIStateGroup_MinionGossip::?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	CAIStateGroup_MinionGossip::IsRunnable
+009101c0	CAIStateGroup_MinionListenToStory::?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	CAIStateGroup_MinionListenToStory::Update
+00921990	CAIStateGroup_MinionFollowThing::?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	CAIStateGroup_MinionFollowThing::Update
+00926ed0	CAIStateGroup_OpenAndCloseShop::?Update@CAIStateGroup_OpenAndCloseShop@@UAEXXZ	CAIStateGroup_OpenAndCloseShop::Update
+00930480	CAIStateGroup_MinionReactToPlayerInteraction::?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	CAIStateGroup_MinionReactToPlayerInteraction::Update
+00932b50	CAIStateGroup_MinionGuardReactToCriminal::?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ	CAIStateGroup_MinionGuardReactToCriminal::Update
+0093b9f0	CAIStateGroup_SeekEnemy::CAIStateGroup_SeekEnemy::Update	CAIStateGroup_SeekEnemy::Update
+0093ef30	CAIStateGroup_VillageTaskPatrol::?InitCreaturePosition@CAIStateGroup_VillageTaskPatrol@@UAE_NXZ	CAIStateGroup_VillageTaskPatrol::InitCreaturePosition
+00940bf0	CAIStateGroup_KidWatchHopscotch::?Update@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	CAIStateGroup_KidWatchHopscotch::Update
+00955c90	CAIStateGroup_MazeTutorialBattle::CAIStateGroup_MazeTutorialBattle::Update	CAIStateGroup_MazeTutorialBattle::Update
+00962d50	CAIStateGroup_VersusRockTroll::?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	CAIStateGroup_VersusRockTroll::Update
+00963a50	CAIStateGroup_VersusScorpionKing::CAIStateGroup_VersusScorpionKing::Update	CAIStateGroup_VersusScorpionKing::Update
+009663a0	CAIStateGroup_CarryCrateAndFollow::CAIStateGroup_CarryCrateAndFollow::Update	CAIStateGroup_CarryCrateAndFollow::Update
+0096b100	CAIStateGroup_WhisperPotionCombat::CAIStateGroup_WhisperPotionCombat::Update	CAIStateGroup_WhisperPotionCombat::Update
+009a2000	CStreamingFontBank::?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	CStreamingFontBank::Preload
+009ebdd0	CConsoleCommandBase::?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	CConsoleCommandBase::ProcessCommandLine
+009f57a0	CInputManager::?Update@CInputManager@@UAEXXZ	CInputManager::Update
+00a19430	CNavigatorFlyer::?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	CNavigatorFlyer::GetRandomNavigablePos
+00a25040	CMeshBankStateBlock::CMeshBankStateBlock::CreateCRC	CMeshBankStateBlock::CreateCRC
+00a5c360	_global::GFNormalise3DVectors	NVectorMath::GFNormalise3DVectors
+00a880c0	CSBCCorridor::?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	CSBCCorridor::Process
+00ac7300	COptimisedPrimitive::FindTextureTangent	QuadricOptimiserInternals::COptimisedPrimitive::FindTextureTangent
+00b20d30	CSplinePosParamData::GetClosestParameterisedControlPoints	NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetClosestParameterisedControlPoints
+00b50fb0	CEngineWeatherSettings::CEngineWeatherSettings	__thiscall CEngineWeatherSettings::CEngineWeatherSettings
+00b62440	CEngineSkyRenderer::CEngineSkyRenderer::WorldFrameUpdate	CEngineSkyRenderer::WorldFrameUpdate
+00bba1e0	_global::CGuiControlTreePane_OnFileLoadComplete	CEngineInternalPrimitiveParticleGroup::`scalar deleting destructor'
+00c0b570	CAngleInterpolator::SetTarget	CRampedParam::SetTarget
+00c3da60	CCombatActionManager::CreateEnvironmentCombatAction	CCodaContext::Create2DSource
+00c40d10	CEffectOwner_00c40750::CommitProperties	CCodaEnvironment::Commit
+00c461e0	CMatrix::CMatrix::InterpolateViewport	CAmbientCube::InterpolateLevel
+00c5ca60	_global::CTCHeroStats_UpdateSoundAndVisuals	CSalSw2DVoice::CalcParams
+00c72200	CAudioSource::CAudioSource::UpdateGainState	CSalOpenALVoice::CalcLevelEnvelope
+00c76120	CCombFilter::Blend	CFloatReflection::Process
+00c89850	CReverbFilterTap::ProcessRamp	CFloatShortReverbModule::ProcessInput
+00d20a40	CQ_BreakSiegeScript::WatchForOpenGates	NScript::CQ_BreakSiegeScript::WatchForOpenGates
+00e7de60	CFisherman::IdleChatter	NScript::CV_FishermanScript::CFisherman::IdleChatter
+00e7fd50	NScript::CV_FishingCompetitionScript::RefreshCompetition	NScript::CV_FishingCompetitionScript::GenerateSignText
+00f281e0	std::vector<CArenaWaveDef>::_M_fill_insert	std::vector<class CArenaWaveDef, class std::allocator<class CArenaWaveDef>>::_M_fill_insert

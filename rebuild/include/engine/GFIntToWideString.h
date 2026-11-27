@@ -7,10 +7,15 @@
 // 0x00435E4C..; that row also calls the COMDAT once, 0x00435D9D): default constructor, Sprintf(L"%d") 0x0099BA70, copy into the
 // result, destructor (VC7.1 has no named-return optimisation).
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_GFINTTOWIDESTRING_DECL_ONLY_PASS29
+// The console style-card UI imports the speed-built 00405f00 instance.
+CWideString FABLE_FASTCALL GFIntToWideString(long value);
+#else
 inline CWideString FABLE_FASTCALL GFIntToWideString(long value)
 {
     CWideString text;
     text.Sprintf(L"%d",value);
     return text;
 }
+#endif
 #endif // FABLE_ENGINE_GFINTTOWIDESTRING_H

@@ -41,6 +41,9 @@ public:
         void Activate();                                                 // 0x007A1380 (Ego_r.pdb ?Activate@CLightningBeam@CTCWillLightning@@QAEXXZ)
         void Deactivate(CIntelligentPointer<CThingCreatureBase> player); // 0x0079FE90
         bool AllChildrenInactive();                                      // Ego_r.pdb ?AllChildrenInactive@CLightningBeam@CTCWillLightning@@QAE_NXZ
+#ifdef FABLE_RETAIL_LIGHTNING_BEAM_POSITIONS_PASS29
+        bool IsTemporary() { return m_bTemporary; }
+#endif
         void UpdatePositions();                                          // Ego_r.pdb ?UpdatePositions@CLightningBeam@CTCWillLightning@@QAEXXZ
         void FrameUpdate(CIntelligentPointer<CThingCreatureBase> player, unsigned long* seed);   // 0x007A1B20
 #endif

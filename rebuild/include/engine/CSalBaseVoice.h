@@ -21,6 +21,9 @@ public: virtual int EAXGet(const _GUID *,int ,void * ,int );
 protected: virtual void InitPlay();
 protected: virtual void SetPlayBuffer(const CSalBuffer &,bool );
 protected:
+#ifdef FABLE_RETAIL_CSALSW2D_CALCPARAMS_PASS29
+ static void FABLE_CDECL PanToGains(float,float&,float&);
+#endif
  static int FABLE_CDECL TimeToFrames(float);
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
  bool IsStarting() const { return (m_ffStatus & 1) != 0; }

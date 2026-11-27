@@ -28,11 +28,16 @@ public:
     virtual bool IsUsingAnimationMovement() const;                        // slot 57 0x008F5660 ?IsUsingAnimationMovement@CCreatureAction_DragonSwoop@@UBE_NXZ
     virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008F5670 ?IsMovementUsingPhysics@CCreatureAction_DragonSwoop@@UBE_NXZ
 public:
+#ifdef FABLE_RETAIL_DRAGON_SWOOP_PASS29
+    // Ego_r class layout and FableWin 02AF63xx access three adjacent C3DVector members.
+    C3DVector SwoopPoints[3];
+#else
     unsigned char SwoopPoints[0x24];                         // +0x114 C3DVector[3]
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonSwoop) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonSwoop, SwoopPoints) == 0x114);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CCreatureAction_DragonSwoop) == 0x138);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CCreatureAction_DragonSwoop, SwoopPoints) == 0x114);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_DragonSwoop {

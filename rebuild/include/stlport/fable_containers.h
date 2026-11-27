@@ -32,7 +32,7 @@
 // out of line. The same FABLE_FORCEINLINE as FABLE_RETAIL_AUGMENTATION_PARTICLES applies to those two wrappers, nothing else.
 #include "fable_compiler.h"
 #endif
-#if defined(FABLE_RETAIL_STLP_LIST_CREATE_NODE_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
+#if defined(FABLE_RETAIL_STLP_CUISTATE_MAP_GETSIZE_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_CREATE_NODE_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP) || defined(FABLE_RETAIL_STLP_LIST_SORT) || defined(FABLE_RETAIL_STLP_POP_HEAP_AUX_PASS22)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -279,7 +279,12 @@ template<class Input,class Output> __forceinline Output __copy_ptrs(Input first,
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
 template<class Input,class Output> inline Output FABLE_FASTCALL __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
 #else
+#ifdef FABLE_RETAIL_WATER_BYTE_RESIZE_SPELLINGS_PASS29
+// Inline-budget: range erase at 00485B18 expands POD tag dispatch before __copy_trivial.
+template<class Input,class Output> FABLE_FORCEINLINE Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __true_type&) {
+#endif
 #endif
 #endif
     return (Output)__copy_trivial(first,last,result);
@@ -298,10 +303,20 @@ template<class I,class O> inline O __copy_aux(I first,I last,O result,const __fa
 // pointer ranges, dispatched on the element's trivial-assignment trait: a POD range through __copy_trivial (the inline `last == first`
 // test and memmove 0x00BFEAE6 at 0x00A30084), a non-POD one through __copy<I,O,int> (0x00A31150 / 0x00A311B0 for the
 // pair<unsigned long, C3DHelperPoint / C3DDummyObject> ranges).
+#ifdef FABLE_RETAIL_WATER_BYTE_RESIZE_SPELLINGS_PASS29
+// Inline-budget: range erase expands the pointer copy wrapper at 00485B18.
+template<class T> FABLE_FORCEINLINE T* copy(T* first,T* last,T* result) {
+#else
 template<class T> inline T* copy(T* first,T* last,T* result) {
+#endif
     return __copy_ptrs(first,last,result,typename __type_traits<T>::has_trivial_assignment_operator());
 }
+#ifdef FABLE_RETAIL_WATER_BYTE_RESIZE_SPELLINGS_PASS29
+// Inline-budget: range erase expands the pointer copy wrapper at 00485B18.
+template<class T> FABLE_FORCEINLINE T* copy(const T* first,const T* last,T* result) {
+#else
 template<class T> inline T* copy(const T* first,const T* last,T* result) {
+#endif
     return __copy_ptrs(first,last,result,typename __type_traits<T>::has_trivial_assignment_operator());
 }
 #endif
@@ -474,7 +489,15 @@ template<class I> inline void _Destroy(I first,I last) {
 #pragma auto_inline(on)
 #endif
 // _uninitialized.h
-#ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
+#if defined(FABLE_RETAIL_QUEST_SECTION_OVERFLOW_PASS29)
+// Inline-budget: the native 316-byte non-POD overflow expands the guarded STLport placement-copy loops.
+template<class I,class O> FABLE_FORCEINLINE O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+    O cur = result;
+    for (; first != last; ++first, ++cur)
+        if (cur) _Construct(&*cur, *first);
+    return cur;
+}
+#elif defined(FABLE_STLP_OUTOFLINE_UNINIT_COPY)
 // Opt-in (chunk 760, row 0x00CBC130 vector::_M_insert_overflow): like FABLE_STLP_OUTOFLINE_UNINIT_FILL_N below, the retail TU keeps
 // the non-POD __uninitialized_copy instantiation out of line as a __fastcall COMDAT (0x00CB9B00, called twice with the tag
 // temporary passed by address); the same-TU noinline body gives that shape.
@@ -533,7 +556,13 @@ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T*
     return (T*)__copy_trivial(first,last,result);
 }
 #endif
-#ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
+#if defined(FABLE_RETAIL_QUEST_SECTION_OVERFLOW_PASS29)
+// Inline-budget: the native 316-byte non-POD overflow expands the guarded STLport placement-copy loops.
+template<class I,class N,class T> FABLE_FORCEINLINE I FABLE_FASTCALL __uninitialized_fill_n(I first,N n,const T& value,const __false_type&) {
+    for(;n>0;--n,++first) if(first) _Construct(first,value);
+    return first;
+}
+#elif defined(FABLE_STLP_OUTOFLINE_UNINIT_FILL_N)
 // Opt-in (2026-11-03, chunk 719 row 0x00501150): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
 // (0x00513570 ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YI...ABU__false_type@0@@Z, called
 // from the inlined vector(n) with the tag homed in a dead argument slot); the same-TU noinline body gives that shape (EXTRA_RULES
@@ -567,7 +596,11 @@ template<class I,class N,class T> FABLE_FORCEINLINE I __uninitialized_fill_n(I f
 // Native00B8EE20 has first/count in ECX/EDX and value/tag on stack,RET8.
 template<class I,class N,class T> inline I FABLE_FASTCALL __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
 #else
+#if defined(FABLE_RETAIL_GROUP_REMAP_PASS29) || defined(FABLE_RETAIL_CHUNK_READER_PASS29)
+template<class I,class N,class T> inline I FABLE_FASTCALL __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#else
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+#endif
 #endif
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
@@ -597,7 +630,11 @@ template<class I,class N,class T> __declspec(noinline) I __fastcall uninitialize
 }
 #pragma auto_inline(on)
 #else
+#if defined(FABLE_RETAIL_GROUP_REMAP_PASS29) || defined(FABLE_RETAIL_CHUNK_READER_PASS29)
+template<class I,class N,class T> inline I FABLE_FASTCALL uninitialized_fill_n(I first,N n,const T& x) {
+#else
 template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,const T& x) {
+#endif
     typedef typename iterator_traits<I>::value_type Value;
     typedef typename __type_traits<Value>::is_POD_type IsPOD;
     return __uninitialized_fill_n(first,n,x,IsPOD());
@@ -654,6 +691,41 @@ public:
 template<class _Tp1,class _Tp2> inline allocator<_Tp2>& __stl_alloc_rebind(allocator<_Tp1>& a,const _Tp2*) { return (allocator<_Tp2>&)(a); }
 #endif
 };
+#ifdef FABLE_RETAIL_ICON_REVERSE_ITERATOR_PASS29
+// STLport 4.6.2 _iterator_base.h, _iterator.h and _vector.h; FableWin 02264640 uses rbegin/rend.
+template<class _Category, class _Tp, class _Distance, class _Pointer, class _Reference> struct iterator {
+    typedef _Category iterator_category;
+    typedef _Tp value_type;
+    typedef _Distance difference_type;
+    typedef _Pointer pointer;
+    typedef _Reference reference;
+};
+template<class _Iterator> class reverse_iterator :
+    public iterator<typename iterator_traits<_Iterator>::iterator_category,
+                    typename iterator_traits<_Iterator>::value_type,
+                    typename iterator_traits<_Iterator>::difference_type,
+                    typename iterator_traits<_Iterator>::pointer,
+                    typename iterator_traits<_Iterator>::reference> {
+protected:
+    _Iterator current;
+    typedef reverse_iterator<_Iterator> _Self;
+public:
+    typedef typename iterator_traits<_Iterator>::reference reference;
+    typedef _Iterator iterator_type;
+    reverse_iterator() {}
+    explicit reverse_iterator(iterator_type __x) : current(__x) {}
+    reverse_iterator(const _Self& __x) : current(__x.current) {}
+    iterator_type base() const { return current; }
+    reference operator*() const { _Iterator __tmp = current; return *--__tmp; }
+    _Self& operator++() { --current; return *this; }
+};
+template<class _Iterator> inline bool FABLE_FASTCALL operator==(const reverse_iterator<_Iterator>& __x,const reverse_iterator<_Iterator>& __y) {
+    return __x.base() == __y.base();
+}
+template<class _Iterator> inline bool FABLE_FASTCALL operator!=(const reverse_iterator<_Iterator>& __x,const reverse_iterator<_Iterator>& __y) {
+    return !(__x == __y);
+}
+#endif
 template<class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
 public:
@@ -721,6 +793,11 @@ public:
 #ifdef FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE
 protected:
     // Original STLport4.6.2 _vector.h lines125..168: these are in-class members.
+    
+#ifdef FABLE_RETAIL_SHARED_CONTROLS_PASS29
+    // Inline-budget: retail expands this vector operation inside IsControlInputSharedBetweenGameActions.
+    FABLE_FORCEINLINE
+#endif
     void _M_insert_overflow(iterator __position,const _Tp& __x,const __false_type&,size_type __fill_len,bool __atend) {
         const size_type __old_size=size();
         const size_type __len=__old_size+(max)(__old_size,__fill_len);
@@ -865,6 +942,14 @@ public:
 #endif
 #endif
     _Alloc get_allocator() const { return _Alloc(this->_M_end_of_storage); }
+#ifdef FABLE_RETAIL_ICON_REVERSE_ITERATOR_PASS29
+    typedef std::reverse_iterator<iterator> reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+    reverse_iterator rbegin() { return reverse_iterator(end()); }
+    const_reverse_iterator rbegin() const { return const_reverse_iterator(end()); }
+    reverse_iterator rend() { return reverse_iterator(begin()); }
+    const_reverse_iterator rend() const { return const_reverse_iterator(begin()); }
+#endif
     iterator begin() { return this->_M_start; }
     const_iterator begin() const { return this->_M_start; }
     iterator end() { return this->_M_finish; }
@@ -881,6 +966,9 @@ public:
     // expands it (0x0074AFBC..0x0074AFE1: size test, `push "vector" ; call puts ; call abort`, then `[begin + n*4]`).
     void _M_range_check(size_type n) const { if (n >= size_type(this->_M_finish-this->_M_start)) { puts("vector"); abort(); } }
     const _Tp& at(size_type n) const { _M_range_check(n); return *(this->_M_start+n); }
+#ifdef FABLE_RETAIL_GENERATOR_CREATE_PASS29
+    _Tp& at(size_type n) { _M_range_check(n); return (*this)[n]; }
+#endif
 #endif
     bool empty() const { return this->_M_start==this->_M_finish; }
 #ifdef FABLE_RETAIL_STLP_VECTOR_SWAP_OUTOFLINE
@@ -965,6 +1053,11 @@ public:
             _M_insert_overflow(finish, x, _IsPODType(), 1, true);
     }
 #else
+    
+#ifdef FABLE_RETAIL_SHARED_CONTROLS_PASS29
+    // Inline-budget: retail expands this vector operation inside IsControlInputSharedBetweenGameActions.
+    FABLE_FORCEINLINE
+#endif
     void push_back(const _Tp& x) {
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish,x); ++this->_M_finish;
@@ -1089,7 +1182,7 @@ public:
 #else
     void resize(size_type n) { resize(n,_Tp()); }
 #endif
-#ifdef FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE
+#if defined(FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE) || defined(FABLE_RETAIL_GROUP_REMAP_PASS29) || defined(FABLE_RETAIL_CHUNK_READER_PASS29)
 protected: // Original Ego_r/FableWin _M_fill_insert access; native0075BB00 is IAEX.
 #endif
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
@@ -1289,6 +1382,27 @@ template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::r
 // insert(pos, n, x) saw _M_fill_insert's body (stl/_vector.c lines 61-86, reproduced here) and VC7.1 still kept the call out of
 // line. The visible body changes the caller's CPU location allocation: 0x00AC2BE0 PartitionSpace matches only with it (2775v2791
 // declaration-only; retail's _M_fill_insert<bool> is 0x004676EF).
+#ifdef FABLE_RETAIL_ARENA_FILL_UNINITIALIZED_COPY_PASS29
+// STLport 4.6.2 _uninitialized.h. Dispatch on the value type of the output iterator.
+template<class I, class O> inline O uninitialized_copy(I first, I last, O result) {
+    typedef typename iterator_traits<O>::value_type Value;
+    typedef typename __type_traits<Value>::is_POD_type IsPOD;
+    return __uninitialized_copy(first, last, result, IsPOD());
+}
+#endif
+#ifdef FABLE_RETAIL_ARENA_INSERT_ADVANCE_PASS29
+// STLport 4.6.2 _iterator_base.h. Raw pointers take the random-access overload.
+template<class I, class N> inline void __advance(I& it, N n, const random_access_iterator_tag&) {
+    it += n;
+}
+#ifndef FABLE_RETAIL_STLP_ADVANCE
+template<class I, class N> inline void advance(I& it, N n) {
+    __advance(it, n, typename iterator_traits<I>::iterator_category());
+}
+#else
+template<class I, class N> inline void advance(I&, N);
+#endif
+#endif
 template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterator position,size_type n,const _Tp& x) {
     if(n!=0) {
         if(size_type(this->_M_end_of_storage._M_data-this->_M_finish)>=n) {
@@ -1303,8 +1417,16 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterato
             } else {
                 uninitialized_fill_n(this->_M_finish,n-elems_after,x_copy);
                 this->_M_finish+=n-elems_after;
+#ifdef FABLE_RETAIL_ARENA_FILL_UNINITIALIZED_COPY_PASS29
+                std::uninitialized_copy(position,old_finish,this->_M_finish);
+#else
                 __uninitialized_copy(position,old_finish,this->_M_finish,_IsPODType());
+#endif
+#ifdef FABLE_RETAIL_ARENA_INSERT_ADVANCE_PASS29
+                std::advance(this->_M_finish, elems_after);
+#else
                 this->_M_finish+=elems_after;
+#endif
                 fill(position,old_finish,x_copy);
             }
         } else _M_insert_overflow(position,x,_IsPODType(),n,false);
@@ -1327,7 +1449,11 @@ template<class _T1,class _T2> struct pair {
 #endif
     pair(const _T1& a,const _T2& b):first(a),second(b) { }
     pair(const pair& p):first(p.first),second(p.second) { }
+#if defined(FABLE_RETAIL_UPDATE_ACTION_ANIMATION_PASS29) && defined(_MSC_VER)
+    template<class U1,class U2> __declspec(noinline) pair(const pair<U1,U2>& p):first(p.first),second(p.second){}
+#else
     template<class U1,class U2> pair(const pair<U1,U2>& p):first(p.first),second(p.second){}
+#endif
 };
 template<class _T1,class _T2> inline pair<_T1,_T2> __cdecl make_pair(const _T1& a,const _T2& b) { return pair<_T1,_T2>(a,b); }
 #ifdef FABLE_RETAIL_STLP_MAKE_PAIR_ARRAYS
@@ -1406,7 +1532,7 @@ template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_
     _List_iterator operator--(int) { _List_iterator tmp=*this; this->_M_decr(); return tmp; }
 #endif
 };
-#ifdef FABLE_RETAIL_STLP_LIST_REVERSE
+#if defined(FABLE_RETAIL_STLP_LIST_REVERSE) && !defined(FABLE_RETAIL_ICON_REVERSE_ITERATOR_PASS29)
 // Per-TU opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): STLport 4.6 _iterator.h reverse_iterator, the part
 // list::rbegin() users need. operator* decrements a copy of `current` (`mov eax,[hdr+4] ; mov eax,[eax+8]`), operator++
 // decrements `current` itself; the action's last parameters are read as `*it`, `*++it` (0x0041F9B3 / 0x0041F9ED).
@@ -1505,12 +1631,18 @@ public:
         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
     }
 #endif
-#ifdef FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#if defined(FABLE_RETAIL_SUBTITLE_LIST_BASE_PASS29)
+    // Inline-budget: the list and its base both expand this destruction sequence at native 004046B0.
+    FABLE_FORCEINLINE ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
+#elif defined(FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE)
     // Retail opt-in (Codex pass19): native008fada0 calls0048ca60 base destructor.
 #ifdef _MSC_VER
     __declspec(noinline)
 #endif
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
+#elif defined(FABLE_RETAIL_CONSOLE_COMMENT_LIST_OWNER_PASS29)
+    // Inline-budget: both 004046b0 destructor spellings expand clear/free in full.
+    FABLE_FORCEINLINE ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
 #elif !defined(FABLE_RETAIL_STLP_LIST_DTOR_IN_LIST)
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
 #endif
@@ -2795,6 +2927,32 @@ template<> inline void vector<NUISystem::CComponent*,allocator<NUISystem::CCompo
 #pragma optimize("", on)
 #endif
 
+#ifdef FABLE_RETAIL_OPINION_REACTION_MASK_PASS29
+// Native00451583 has a frame and calls00450ccc _Vector_base before its byte fill loop.
+// Inline-budget: plain uninitialized_fill_n emitted a call in the 49-byte native constructor.
+// These two STLport bool fill bodies expand at the constructor; the constructor is ordinary inline.
+template<> FABLE_FORCEINLINE bool* fill_n<bool*,unsigned int,bool>(bool* first,unsigned int n,const bool& x) { for(;n>0;--n,++first)*first=x;return first; }
+template<> FABLE_FORCEINLINE bool* uninitialized_fill_n<bool*,unsigned int,bool>(bool* first,unsigned int n,const bool& x) {
+ typedef __type_traits<bool>::is_POD_type IsPOD;
+ return __uninitialized_fill_n(first,n,x,IsPOD());
+}
+}
+
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#pragma optimize("y",off)
+#endif
+namespace std {
+template<> inline vector<bool,allocator<bool> >::vector(unsigned int n,const bool& value,const allocator<bool>& a)
+    : _Vector_base<bool,allocator<bool> >(n,a) {
+    this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+namespace std {
+#endif
 #ifdef FABLE_RETAIL_STLP_BOOL_FILL_OWNER_PASS26
 // Native00451583 has a frame and calls00450ccc _Vector_base before its byte fill loop.
 // Same original STLport bodies; specialize only the bool fill helper and constructor.
@@ -2831,4 +2989,80 @@ template<> inline void __destroy_aux<pair<long,CCharString>*>(pair<long,CCharStr
 #pragma optimize("", on)
 #endif
 }
+#ifdef FABLE_RETAIL_HEAD_DEED_PASS29
+// The native list<long> out-of-line functions use the size profile.
+namespace std {
+#ifdef _MSC_VER
+#pragma optimize("s", on)
+#endif
+template<> inline _List_node<long>* list<long>::_M_create_node(const long& value) {
+    _List_node<long>* node = this->_M_node.allocate(1);
+    new ((void*)&node->_M_data) long(value);
+    return node;
+}
+template<> inline list<long>::iterator list<long>::erase(iterator position) {
+        _List_node_base* next_node=position._M_node->_M_next;
+        _List_node_base* prev_node=position._M_node->_M_prev;
+        _List_node<long>* n=(_List_node<long>*)position._M_node;
+        prev_node->_M_next=next_node;
+        next_node->_M_prev=prev_node;
+        _Destroy(&n->_M_data);
+        this->_M_node.deallocate(n,1);
+        return iterator(next_node);
+    }
+template<> inline list<long>::iterator list<long>::insert(iterator position, const long& x) {
+
+        _List_node<long>* tmp=_M_create_node(x);
+        _List_node_base* n=position._M_node;
+        _List_node_base* p=n->_M_prev;
+        tmp->_M_next=n;tmp->_M_prev=p;p->_M_next=tmp;n->_M_prev=tmp;
+        return iterator(tmp);
+    }
+template<> inline void list<long>::push_front(const long& x) { insert(begin(),x); }
+template<> inline void list<long>::pop_front() { erase(begin()); }
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+}
+#endif
+
+#ifdef FABLE_RETAIL_WATER_BYTE_RESIZE_SPELLINGS_PASS29
+namespace std {
+// Fidelity: scaffolding, not retail. The 00485B18 erase owner sets optimize("s", on).
+// This block ends with optimize("", on). Set TU optimization pragmas after this header.
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_WATER_BYTE_ERASE_OWNER_PASS29)
+#pragma optimize("s", on)
+#endif
+template<> inline vector<unsigned char>::iterator vector<unsigned char>::erase(iterator first,iterator last) {
+    iterator result=std::copy(last,this->_M_finish,first);
+    _Destroy(result,this->_M_finish); this->_M_finish=result; return first;
+}
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_WATER_BYTE_ERASE_OWNER_PASS29)
+#pragma optimize("", on)
+#endif
+
+// Fidelity: scaffolding, not retail. Owner 00486189 selects size optimization.
+// This block ends with optimize("", on). Set any TU optimization pragma after including this header.
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_VECTOR_BYTE_RESIZE_VALUE_OWNER_PASS29)
+#pragma optimize("s", on)
+#endif
+template<> inline void vector<unsigned char>::resize(size_type n,const unsigned char& x) {
+    if (n < size()) erase(begin()+n,end());
+    else insert(end(), n-size(), x);
+}
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_VECTOR_BYTE_RESIZE_VALUE_OWNER_PASS29)
+#pragma optimize("", on)
+#endif
+// Fidelity: scaffolding, not retail. Owner 004861df selects size optimization.
+// This block ends with optimize("", on). Set any TU optimization pragma after including this header.
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_VECTOR_BYTE_RESIZE_ONE_OWNER_PASS29)
+#pragma optimize("s", on)
+#endif
+// Inline-budget: the water Load call expands both resize overloads at 00BFDB8E..00BFDBCE.
+template<> FABLE_FORCEINLINE void vector<unsigned char>::resize(size_type n) { resize(n,unsigned char()); }
+#if defined(_MSC_VER) && defined(FABLE_RETAIL_VECTOR_BYTE_RESIZE_ONE_OWNER_PASS29)
+#pragma optimize("", on)
+#endif
+}
+#endif
 #endif

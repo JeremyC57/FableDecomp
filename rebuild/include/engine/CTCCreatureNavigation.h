@@ -24,8 +24,34 @@ template <class _Tp, class _Alloc> class vector;
 template <class _T1, class _T2> struct pair;
 }
 #endif
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+#include "engine/C3DVector.h"
+#include "engine/ENavigatorReturn.h"
+class CNavigationInput;
+#endif
 class CTCCreatureNavigation : public CTCBase {
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+public:
+    class CCreatureNavOutput {
+    public:
+        ENavigatorReturn NavResult;
+        C3DVector MovementVector;
+    };
+    void SetGotNavigationTarget(bool has_target) { GotNavigationTarget = has_target; }
+    bool HasGotNavigationTarget() const { return GotNavigationTarget; }
+    void SetNavigationTarget(const CNavigationInput& nav_target);
+    CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& nav_input, bool force_los,
+                                          bool avoid_dynamic_obstacles, bool reduce_speed_when_near,
+                                          bool fail_on_dynamic_blockage, bool ignore_path_preferability);
+#endif
 private:
+#ifdef FABLE_RETAIL_CREATURE_NAV_ROUTE_PASS29
+    static bool DrawNavRoutes;
+public:
+    virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
+    unsigned long GetNavigatorType() const {return PNavigator->GetType();}
+private:
+#endif
     CNavigatorBase* PNavigator;                              // +0x0c
     unsigned char   PossibleNavigators[0xc];                 // +0x10 vector<CNavigatorBase_*,std::allocator<CNavigatorBase_*>_>
     unsigned char   NavigationTarget[0x18];                  // +0x1c CNavigationInput
@@ -55,7 +81,14 @@ public:
     CTCCreatureNavigation(CThing&);
     virtual ~CTCCreatureNavigation();
 #endif
+#ifdef FABLE_RETAIL_MOVETOTHINGPROXIMITY_PASS29
+    class CCreatureNavOutput {public: ENavigatorReturn NavResult; C3DVector MovementVector;};
+    CCreatureNavOutput GetNextNavPosOnRoute(const class CNavigationInput&,bool,bool,bool,bool,bool);
+#endif
     void InterruptNavigation();
+#ifdef FABLE_RETAIL_VILLAGE_PATROL_POSITION_PASS29
+    float FindPosZAt(const C3DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
     void SetAsAbleToMoveThroughSolidObjects(bool);                     // 0x006CB9D0
 #endif

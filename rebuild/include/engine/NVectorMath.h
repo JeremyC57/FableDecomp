@@ -10,5 +10,8 @@ void GFClear4DVectors(C4DVector* vectors, unsigned long count, const C4DVector& 
 void GFNormalise3DVectors(const C4DVector* source, unsigned long source_stride, C4DVector* destination,
                           unsigned long destination_stride, unsigned long count);                       // 0x00A5C360 ?GFNormalise3DVectors@NVectorMath@@YAXPBVC4DVector@@KPAV2@KK@Z
 }
+#ifdef FABLE_RETAIL_VECTOR_NORMALISE_PASS29
+extern bool GEnableSIMD;
+#endif
 extern bool g_SSEAvailable;                                              // 0x013D2880 ?g_SSEAvailable@@3_NA (established spelling)
 #endif

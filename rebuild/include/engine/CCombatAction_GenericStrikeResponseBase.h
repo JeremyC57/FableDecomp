@@ -37,7 +37,11 @@ protected:
 #endif
     bool MoveOnHitOverride,CreateDustEffect;
     long FrameForDust;
+#ifdef FABLE_RETAIL_GENERIC_STRIKE_RESPONSE_PASS29
+    C3DVector DustTravelDirection;
+#else
     unsigned char DustTravelDirection[12];
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEBASE_RTTI_DECLS
     // Opt-in (NF324, 2026-11-24): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
     // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual

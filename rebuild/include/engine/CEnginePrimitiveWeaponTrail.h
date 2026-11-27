@@ -18,6 +18,9 @@ public:
         C3DVector Bottom;
         float CreationTime;
     };
+#ifdef FABLE_RETAIL_WEAPON_TRAIL_DRAW_PASS29
+    CEnginePrimitiveWeaponTrail(unsigned __int64,const std::list<CWeaponTrailEntry>&,unsigned long,unsigned long,EWeaponTrailType,unsigned char,float,float,float,float,EEngineInterpolationSet);
+#endif
     std::list<CWeaponTrailEntry> Trail;
     unsigned long GraphicIndex;
     unsigned long GraphicFrame;
@@ -28,6 +31,6 @@ public:
     float CurrentTime;
     float FallOffTime;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveWeaponTrail::CWeaponTrailEntry)==28);
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveWeaponTrail)==48);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CEnginePrimitiveWeaponTrail::CWeaponTrailEntry)==28);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CEnginePrimitiveWeaponTrail)==48);
 #endif

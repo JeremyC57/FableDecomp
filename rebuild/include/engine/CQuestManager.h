@@ -134,6 +134,10 @@ public:
     void SetCreatureGenerationEnabledDuringScript(const class CCharString& script_name, bool enabled);   // 0x004B3810
 private:
 #endif
+#ifdef FABLE_RETAIL_EXPRESSION_INIT_PASS29
+public: void SetExpressionPerformed(const CCharString&);
+private:
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_CTOR_PASS23
  // Both original PDB PUBLICs: original three-reference constructor.
 public: CQuestManager(class CWorld&,class CScriptInfoManager&,class CGameScriptInterface&);
@@ -160,6 +164,10 @@ public:
     void DeactivateAllQuests();                                         // 0x004B4450
 #endif
 public:
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SECTIONNAMES_PASS29
+    // Ego_r 004B8660, FableWin 01C52A50; retail 004B2CA0, with a set reference.
+    void GetActiveQuestSectionNames(std::set<CCharString>&) const;
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ISQUESTACTIVE
     // Retail opt-in (chunk 2016, row 0x0061AD60): Ego_r.pdb 0x004B4930 / FableWin.pdb 0x01C53CE0 ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z,
     // out of line in retail at 0x004AF610 (called on the singleton's PClass object word 0x013B89FC, 0x0061B103). Declaration only.
@@ -175,6 +183,10 @@ public:
     // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
     class CActiveQuest {
     public:long GetID()const{return ID;}
+#ifdef FABLE_RETAIL_CQUESTMANAGER_SECTIONNAMES_PASS29
+        // FableWin 01C50510; retail accesses the CCharString member at +0x30.
+        const CCharString& GetSerialisationSectionName() const { return QuestName; }
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_COMPLETE_PASS26
         // FableWin 0x01C5B430 and Ego_d quest_manager.obj, native +0x24.
         void SetPersistent(bool persistent) { Persistent = persistent; }

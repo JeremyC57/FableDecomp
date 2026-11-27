@@ -686,7 +686,11 @@ public:
     unsigned char       _pad_0x79d[0x3];                     // +0x79d
     CDefPointeeBase*    PControlsDef_Object;                 // +0x7a0 CDefPointer<CControlsDef_const_>::Object
     long                ControlsDefIndex;                    // +0x7a4
+#ifdef FABLE_RETAIL_SHARED_CONTROLS_PASS29
+    CVectorMap<EGameAction, CCountedPointer<const CInputTypeBase> > Controls;
+#else
     unsigned char       Controls[0x10];                      // +0x7a8 CVectorMap<EGameAction,CCountedPointer<CInputTypeBase_const_>,CKeyPairCompareLess<EGameAction,CCountedPointer<CInputTypeBase_const_>_>_>
+#endif
     unsigned char       AssignableSpecialMoveButtons[0xc];   // +0x7b8 vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSITEMBUTTONS_TYPED
     std::vector<CCountedPointer<const CInputTypeBase> > QuickAccessItemButtons;   // +0x7c4 (NF94 opt-in)

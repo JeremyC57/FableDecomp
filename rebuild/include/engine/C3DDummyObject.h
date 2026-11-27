@@ -9,6 +9,10 @@
 #include "engine/CMatrix3x4.h"
 class C3DDummyObject {
 public:
+#if defined(FABLE_RETAIL_PHYSICS_FILE_COPY_CTORS_PASS29) && !defined(FABLE_RETAIL_C3DDUMMYOBJECT_TRANSFORMCTOR)
+    // The file reader calls this constructor after the by-value getter.
+    C3DDummyObject(const CMatrix3x4&, unsigned long);
+#endif
     C3DDummyObject();                                                    // 0x00A2E4B0
 #ifdef FABLE_RETAIL_C3DDUMMYOBJECT_TRANSFORMCTOR
     // FableWin constructor, inlined at 0x00A2FA30.

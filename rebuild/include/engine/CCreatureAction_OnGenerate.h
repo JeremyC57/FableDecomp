@@ -17,6 +17,11 @@ public:
     // its base chain declares (clang override probe, made-up-name control fails): no new slot.
     // 0x0074DC00: ?IsToEvadeAllHits@CCreatureAction_OnGenerate@@UBE_NXZ (FableWin.pdb)
 public:
+#ifdef FABLE_RETAIL_GENERATOR_CREATE_PASS29
+    virtual CCreatureActionBase* Clone() const;
+    virtual void Initialise();
+    virtual bool IsToFaceTargetAtStart() const;
+#endif
     virtual bool IsToEvadeAllHits() const;
     // 0x0074DC10: ?GetAnimationTransitionInTime@CCreatureAction_OnGenerate@@UBEJXZ (FableWin.pdb)
     virtual long GetAnimationTransitionInTime() const;

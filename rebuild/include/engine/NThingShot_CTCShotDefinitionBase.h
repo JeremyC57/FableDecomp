@@ -69,6 +69,9 @@ public:
     // Original donor call graph0270d6c7/027096fc; access through named const pointer getter.
     const CThing* GetPTargetThing()const{return PTargetThing.Get();}
 #endif
+#ifdef FABLE_RETAIL_SHOT_ONHIT_PASS29
+    bool IsMultiArrowShotType() const { return MultiArrowShotType; }
+#endif
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_UPDATE
     // NF66 opt-in (row 0x006666A0 CThingCreatureBase::WorldUpdate): Ego_r.pdb ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ (public,

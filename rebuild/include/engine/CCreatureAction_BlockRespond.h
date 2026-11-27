@@ -21,6 +21,9 @@ class CCreatureActionBase;
 #pragma pack(push, 1)
 class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase {
 public:
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+    CCreatureAction_BlockRespond(CThingCreatureBase&,CThingCreatureBase&,long);
+#endif
     virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00855E50 ?Clone@CCreatureAction_BlockRespond@@UBEPAVCCreatureActionBase@@XZ
     virtual void Initialise();                                            // slot 12 0x00855500 ?Initialise@CCreatureAction_BlockRespond@@UAEXXZ
     virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x00855D40 ?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ
@@ -35,13 +38,13 @@ public:
     unsigned char _pad_0x132[0x2];                           // +0x132
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockRespond) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, UseHitPos) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_X) == 0x125);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Y) == 0x129);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Z) == 0x12d);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, FaceTargetAtStart) == 0x131);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, _pad_0x132) == 0x132);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CCreatureAction_BlockRespond) == 0x134);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CCreatureAction_BlockRespond, UseHitPos) == 0x124);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CCreatureAction_BlockRespond, HitPos_X) == 0x125);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CCreatureAction_BlockRespond, HitPos_Y) == 0x129);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CCreatureAction_BlockRespond, HitPos_Z) == 0x12d);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureAction_BlockRespond, FaceTargetAtStart) == 0x131);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CCreatureAction_BlockRespond, _pad_0x132) == 0x132);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_BlockRespond {

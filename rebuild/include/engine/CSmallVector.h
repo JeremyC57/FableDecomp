@@ -13,6 +13,13 @@ void __cdecl operator delete[](void*);                                  // 0x00B
 template <class T, long N> class CSmallVector {
 public:
     CSmallVector() : Start(0), Size(0) { }
+#ifdef FABLE_RETAIL_ANIMATION_EVENTS_LOAD_PASS29
+    CSmallVector(const CSmallVector&);
+    CSmallVector& operator=(const CSmallVector& other) { if (&other != this) Copy(other); return *this; }
+protected:
+    void Copy(const CSmallVector& other);
+public:
+#endif
     ~CSmallVector() { delete [] Start; Start = 0; Size = 0; }
     T* begin() { return Start; }
     T* end() { return Start + Size; }

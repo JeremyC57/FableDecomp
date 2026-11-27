@@ -29,6 +29,15 @@ class CWorld;
 
 class CAIStateGroup_ApprenticeHero : public CAIStateGroupBase {     // vtable 0x0128AEC4
 public:
+
+#ifdef FABLE_RETAIL_APPRENTICE_PRACTICE_PASS29
+protected:
+    static CThingAICreature* PracticeOpponent1;
+    static CThingAICreature* PracticeOpponent2;
+protected:
+    bool PracticeAgainstApprentice();
+public:
+#endif
     CAIStateGroup_ApprenticeHero();                                      // 0x008FE862
 protected:
     virtual bool InitCreaturePosition();                                 // slot 3  0x00929EA0

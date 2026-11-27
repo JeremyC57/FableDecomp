@@ -6,6 +6,9 @@
 // Original Ego_r TPI19b94/234c1; native00683b00 reads+0/+4; native006c5d8d destroys PTarget+18.
 class COpinionDeed {
 public:
+#ifdef FABLE_RETAIL_POST_DEED_PASS29
+ COpinionDeed(EOpinionDeedType, long, const C3DVector&, const CThing*, bool, bool, long);
+#endif
  EOpinionDeedType DeedType;
  long DeedHandle;
  C3DVector Position;
@@ -17,5 +20,5 @@ public:
  bool IsCrime;
  long ExtraData;
 };
-FABLE_STATIC_ASSERT(sizeof(COpinionDeed)==0x28);
+FABLE_STATIC_ASSERT_AT(20, sizeof(COpinionDeed)==0x28);
 #endif

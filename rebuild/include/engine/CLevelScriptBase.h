@@ -38,6 +38,9 @@ public:
 #ifndef FABLE_RETAIL_CLEVELSCRIPTBASE
     virtual ~CLevelScriptBase();
 #endif
+#if defined(FABLE_RETAIL_DEMON_DOORS_REGISTRATION_PASS29) && defined(FABLE_RETAIL_CLEVELSCRIPTBASE)
+    virtual ~CLevelScriptBase();
+#endif
     T* GetMasterData();
 #ifdef FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
     CGameScriptInterfaceBase& Game; // Original public reference, retail40.

@@ -41,6 +41,9 @@ private:
     // private const ABE ApplyBoneMorphDisplacement 0x00A9DFA0 / ApplyParentTransformations 0x00A9E1E0 / ApplyBoneMorphScaling 0x00A9D750, and
     // private AAE CombineBaseAnimations 0x00A9F1D0 / CombineBlendedBaseAnimations 0x00A9F2F0.
 public:
+#ifdef FABLE_RETAIL_DEBUG_BONE_PASS29
+    void CalcBlendedMeshTransformations(const C3DAnimationBlendState&,const C3DAnimationBlendState&,float,const C3DVector*,const C3DMesh2&,CMatrix3x4*,unsigned long);
+#endif
     void CalcBlendedMeshTransformations(const C3DAnimationBlendState& start_blend, const C3DAnimationBlendState& end_blend, float blend,
                                         const C3DVector* bone_morph, const C3DMesh2& mesh, CMatrix4x4* matrices,
                                         unsigned long matrix_count, bool transpose);

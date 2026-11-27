@@ -44,6 +44,12 @@ public:
     // Both PDBs and native 0082d2d0, caller 0090bc1c.
     CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
 #endif
+#ifdef FABLE_RETAIL_UPDATE_CURFEW_PASS29
+    bool GetForceOpen(){return ForceOpenCount!=0;}
+    bool GetOverrideAutomaticLocking(){return OverrideAutomaticLocking;}
+    bool IsUnlocked() const;
+    bool IsDoorBlockedBy(CThing*);
+#endif
     bool IsPointInside(const C3DVector&) const;
 #ifdef FABLE_RETAIL_CTHINGBUILDING_DEFINITION
     // Retail opt-in (agentNF9). Spellings: Ego_r.pdb / FableWin.pdb name sets, all `@CThingBuilding@@`; Ego_r donor order

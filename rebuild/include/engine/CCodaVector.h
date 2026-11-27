@@ -11,6 +11,10 @@ class CCodaVector:public _CVECTOR {public:
  CCodaVector(float a,float b,float c){x=a;y=b;z=c;}
  CCodaVector(const _CVECTOR& v){x=v.x;y=v.y;z=v.z;}
  CCodaVector& operator=(const CCodaVector& v){x=v.x;y=v.y;z=v.z;return *this;}
+#ifdef FABLE_RETAIL_CCODAVECTOR_ENV_SCALE_PASS29
+ // GameCODA CodeView Scale(float) and the debug CodaEnvironment.obj component writes at offsets 0, 4 and 8.
+ void Scale(float fScale){x *= fScale; y *= fScale; z *= fScale;}
+#endif
  void Set(float a,float b,float c){x=a;y=b;z=c;}
  void Zero(){x=y=z=0.0f;}
 #ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT

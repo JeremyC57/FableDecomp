@@ -24,6 +24,9 @@ public:
     virtual unsigned long GetSizeofClass();                               // slot 20 0x004D5C89 ?GetSizeofClass@CFishDef@@UAEKXZ
 public:
     unsigned char _pad_0x25[0x3];                    // +0x25 (tail of the flat member that straddles the base end)
+#ifdef FABLE_RETAIL_CREATEFISH_PASS29
+    static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CFishDef"); }
+#endif
     float         MinLength;                                 // +0x28
     float         MaxLength;                                 // +0x2c
     float         MinWeight;                                 // +0x30
@@ -38,20 +41,20 @@ public:
     long          InfoText;                                  // +0x54
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CFishDef) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, _pad_0x25) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinLength) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxLength) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinWeight) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxWeight) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MinSpeed) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxSpeed) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullSeconds) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullSeconds) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, BasePullWaitSeconds) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, MaxRandomPullWaitSeconds) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, Level) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CFishDef, InfoText) == 0x54);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CFishDef) == 0x58);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CFishDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CFishDef, MinLength) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CFishDef, MaxLength) == 0x2c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CFishDef, MinWeight) == 0x30);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CFishDef, MaxWeight) == 0x34);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CFishDef, MinSpeed) == 0x38);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CFishDef, MaxSpeed) == 0x3c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CFishDef, BasePullSeconds) == 0x40);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CFishDef, MaxRandomPullSeconds) == 0x44);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CFishDef, BasePullWaitSeconds) == 0x48);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CFishDef, MaxRandomPullWaitSeconds) == 0x4c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CFishDef, Level) == 0x50);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CFishDef, InfoText) == 0x54);
 #else
 #pragma pack(push, 1)
 class CFishDef {

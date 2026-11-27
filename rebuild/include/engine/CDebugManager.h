@@ -18,8 +18,24 @@ struct _RTL_CRITICAL_SECTION_DEBUG;
 struct _iobuf;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CARRAY_DEBUG_MESSAGE_PASS29
+class CCharString;
+class CWideString;
+namespace NDebugManager {
+enum EErrorType {
+    ERROR_TYPE_CRITICAL = 1,
+    ERROR_TYPE_WARNING,
+    ERROR_TYPE_ASSET,
+    ERROR_TYPE_SCRIPT,
+    MAX_NO_ERROR_TYPES
+};
+}
+#endif
 class CDebugManager {
 public:
+#ifdef FABLE_RETAIL_CARRAY_DEBUG_MESSAGE_PASS29
+    bool DoErrorMessage(const CCharString&, const CCharString&, const CWideString&, unsigned long, NDebugManager::EErrorType);
+#endif
     CSystemManager*              SystemManager;              // +0x00
     bool                         Valid;                      // +0x04
     bool                         Exclusive;                  // +0x05
@@ -49,31 +65,31 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDebugManager) == 0x270);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, SystemManager) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, Valid) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, Exclusive) == 0x5);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, Verbose) == 0x6);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, CanDoVerbose) == 0x7);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_DebugInfo) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_LockCount) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_RecursionCount) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_OwningThread) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_LockSemaphore) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_SpinCount) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogMessages) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogErrors) == 0x21);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogFile) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ProjectDirectory) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ErrorDisplayInfo) == 0x236);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, PExclusiveAssert) == 0x23c);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, WinInstance) == 0x240);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, WinHandle) == 0x244);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ErrorsOff) == 0x248);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, LoggedErrorsOff) == 0x254);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, NoErrorsOff) == 0x260);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ApplicationName_PStringData) == 0x264);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, VerboseMessage_PStringData) == 0x268);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ErrorsInProgress) == 0x26c);
+FABLE_STATIC_ASSERT_AT(52, sizeof(CDebugManager) == 0x270);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CDebugManager, SystemManager) == 0x0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CDebugManager, Valid) == 0x4);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CDebugManager, Exclusive) == 0x5);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CDebugManager, Verbose) == 0x6);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CDebugManager, CanDoVerbose) == 0x7);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CDebugManager, DebugManagerCriticalSection_DebugInfo) == 0x8);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CDebugManager, DebugManagerCriticalSection_LockCount) == 0xc);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CDebugManager, DebugManagerCriticalSection_RecursionCount) == 0x10);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CDebugManager, DebugManagerCriticalSection_OwningThread) == 0x14);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CDebugManager, DebugManagerCriticalSection_LockSemaphore) == 0x18);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CDebugManager, DebugManagerCriticalSection_SpinCount) == 0x1c);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CDebugManager, LogMessages) == 0x20);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CDebugManager, LogErrors) == 0x21);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CDebugManager, LogFile) == 0x24);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CDebugManager, ProjectDirectory) == 0x28);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CDebugManager, ErrorDisplayInfo) == 0x236);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CDebugManager, PExclusiveAssert) == 0x23c);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CDebugManager, WinInstance) == 0x240);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CDebugManager, WinHandle) == 0x244);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CDebugManager, ErrorsOff) == 0x248);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CDebugManager, LoggedErrorsOff) == 0x254);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CDebugManager, NoErrorsOff) == 0x260);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CDebugManager, ApplicationName_PStringData) == 0x264);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CDebugManager, VerboseMessage_PStringData) == 0x268);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CDebugManager, ErrorsInProgress) == 0x26c);
 
 #endif // FABLE_ENGINE_CDEBUGMANAGER_H

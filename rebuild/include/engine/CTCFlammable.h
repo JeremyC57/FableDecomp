@@ -18,6 +18,11 @@ class CFlammableDef;
 #endif
 // Declared callable interface only; no instance is constructed or sized by this row.
 class CTCFlammable:public CTCBase {public:
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+private:
+ void InitFirePoints();
+public:
+#endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_FLAMMABLE;}
 #ifdef FABLE_RETAIL_CTCFLAMMABLE_GETCLOSESTFIREPOINTTO
  // Retail opt-in (p25Q, row 0x00780430; needs FABLE_RETAIL_CTCFLAMMABLE_FIREPOINTS): Ego_r.pdb
@@ -37,6 +42,9 @@ public:
  bool IsOnFire()const { return FireResistance <= 0; } void SetOnFire();
  virtual void FrameUpdate();                        // slot 9, 0x00780D80
  void ExtinguishFire();                             // 0x00780C80
+#ifdef FABLE_RETAIL_FLAMMABLE_INIT_FIRE_POINTS_PASS29
+private:
+#endif
  CDefPointer<const CFlammableDef> PDef;             // +0x0c
  std::vector<NFire::CFirePoint> FirePoints;         // +0x10
  bool  Burning;                                     // +0x1c

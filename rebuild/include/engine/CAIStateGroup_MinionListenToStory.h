@@ -38,6 +38,15 @@ public:
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT_AT(34, sizeof(CAIStateGroup_MinionListenToStory) == 0x14);
+#elif defined(FABLE_RETAIL_MINION_LISTEN_STORY_PASS29)
+// Codex pass 29 view (row 0x009101C0 Update): only the members that row needs.
+#include "engine/CAIStateGroupBase.h"
+class CAIStateGroup_MinionListenToStory:public CAIStateGroupBase {
+protected:
+    virtual void Update();
+    bool SitDown();
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionListenToStory)==0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

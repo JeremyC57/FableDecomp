@@ -36,12 +36,25 @@ class CMessageEvent;                                                     // chun
 class CEngineGraphic;
 #endif
 class CThingAICreature : public CThingCreatureBase {
+#ifdef FABLE_RETAIL_AI_CREATURE_ONHIT_PASS29
+public: virtual void OnHit(CHitParameters&);
+protected: virtual bool IsNewAttackerGreaterThreat(const CThingCreatureBase&,const CThingCreatureBase&)const;
+#endif
+
+#ifdef FABLE_RETAIL_AI_RELATIONSHIPS_PASS29
+public: virtual void InitialActivate();
+private:
+#endif
+
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 protected:
  virtual const CEngineGraphic * GetCurrentGraphic() const;
 public:
  virtual bool FeelsGravity() const;
  virtual float GetFOV() const;
+#ifdef FABLE_RETAIL_FLIGHT_PASS29
+ virtual float GetMaxFlyingSpeed(const C3DVector&) const;
+#endif
 #endif
 
 public:
@@ -253,7 +266,15 @@ private:
     std::list<CEnginePrimitiveHandle> DebugRenderHandles;                // +0x194
     unsigned long MoodSprite;                                            // +0x198
     unsigned long MoodSpriteCounter;                                     // +0x19C
-    unsigned char _pad_0x1a0[0x8];                                       // +0x1A0 PCurrentBrainOutput (opaque)
+#ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
+protected:
+    bool UpdateAI(bool brain_updated,const class CBrainOutput& brain_output,C3DVector& to_pos);
+    void UpdateAITurning(const C3DVector& desired_movement_vector);
+private:
+    CCountedPointer<CBrainOutput> PCurrentBrainOutput;
+#else
+    unsigned char _pad_0x1a0[0x8];
+#endif                                       // +0x1A0 PCurrentBrainOutput (opaque)
     CCountedPointer<CAIBrain> PBrain;                                    // +0x1A8
     unsigned char _pad_0x1b0[0x18];                                      // +0x1B0 WFTimeLastDamaged .. MaxFlyingSpeed (opaque)
 #else

@@ -38,6 +38,11 @@ const CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPo
 const CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>&) const;   // 0x00AA7FF0
 unsigned long CountSubChunksOfType(const char*) const;   // 0x00AA7EA0
 #endif
+#ifdef FABLE_RETAIL_CHUNK_READER_PASS29
+private:
+const CChunkedFileChunk* FindRegisteredSubChunkType(const char* type) const;
+public:
+#endif
 virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;

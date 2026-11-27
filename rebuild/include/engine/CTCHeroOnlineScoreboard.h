@@ -36,7 +36,11 @@ public:
 #endif
     enum ENetworkSuccess { ENS_SUCCESS=1000, ENS_FAILURE=1001, ENS_PENDING=1002 };
 #else
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+    enum EOnlineScoreboardActivity { OSA_BRIBES = 37 };
+#else
     enum EOnlineScoreboardActivity { };
+#endif
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_ONLINE_SCOREBOARD; }
 #ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_SHOWSCOREBOARD

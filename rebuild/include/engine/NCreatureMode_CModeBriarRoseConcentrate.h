@@ -9,6 +9,11 @@ class CThingCreatureBase;
 class CBriarRoseDef;
 namespace NCreatureMode {
 class CModeBriarRoseConcentrate:public CModeStandBase {
+#ifdef FABLE_RETAIL_AI_CREATURE_ONHIT_PASS29
+public: bool IsImposter()const{return Imposter;}
+long IsAllowedToHitBriarRose()const;
+#endif
+
 public:
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODEBRIARROSECONCENTRATE_CTOR
     // NF147 opt-in (row 0x008C1C30 CCreatureAction_BriarRoseConcentrateInto::Initialise): Ego_r.pdb 0x00830DF0 / FableWin.pdb 0x0280A420

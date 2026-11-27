@@ -9,7 +9,13 @@
 #define FABLE_RETAIL_CANAVQUADTREENODE
 #endif
 #include "engine/CANavQuadTreeNode.h"
-template <class T, int N> class CSmallVector {                                    // Ego_r.pdb CSmallVector<T,N>: Start +0, Size +4
+template <class T, int N> class CSmallVector {
+#ifdef FABLE_RETAIL_FLYER_RANDOM_PASS29
+public:
+    long size() const { return Size; }
+    const T& operator[](unsigned long index) const { return Start[index]; }
+#endif
+                                    // Ego_r.pdb CSmallVector<T,N>: Start +0, Size +4
 #ifdef FABLE_RETAIL_CSMALLVECTOR_ITERATORS_PASS23
 public:
  typedef T* iterator;typedef const T* const_iterator;

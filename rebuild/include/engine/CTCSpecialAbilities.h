@@ -16,6 +16,10 @@
 #include "stlport/fable_containers.h"
 class CThingCreatureBase;class C3DVector;
 class CTCSpecialAbilities:public CTCBase {
+#ifdef FABLE_RETAIL_BED_GLOBAL_UPDATE_PASS29
+public: void SetUsingBed(bool value) { UsingBed=value; }
+#endif
+
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
 #ifdef FABLE_RETAIL_DIVINE_WRATH_CTOR_PASS28
  // FableWin 0267D580, with both member stores inlined in retail at 0078EE1A.
@@ -136,6 +140,7 @@ FABLE_STATIC_ASSERT_AT(52, sizeof(CTCSpecialAbilities)==0x28);
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
 class CTCSpecialAbilities : public CTCBase {
+
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SPECIAL_ABILITIES; }
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_STRAFE_CALLS_PASS24

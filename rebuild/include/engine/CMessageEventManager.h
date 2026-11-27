@@ -70,4 +70,47 @@ private:
  std::list<CMessageEvent> Messages;
 };
 FABLE_STATIC_ASSERT_AT(77, sizeof(CMessageEventManager)==8);
+#ifdef FABLE_RETAIL_MINION_CONFIRMATION_PASS29
+// Fidelity: scaffolding, not retail. Physical list<CMessageEvent>::erase owner 004937cb uses size optimization.
+// The block ends with optimize("", on). Include before any row-head optimization pragma.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+namespace std {
+template<> inline list<CMessageEvent>::iterator
+list<CMessageEvent>::erase(iterator position) {
+    _List_node_base* next_node=position._M_node->_M_next;
+    _List_node_base* prev_node=position._M_node->_M_prev;
+    _List_node<CMessageEvent>* n=(_List_node<CMessageEvent>*)position._M_node;
+    prev_node->_M_next=next_node;
+    next_node->_M_prev=prev_node;
+    _Destroy(&n->_M_data);
+    this->_M_node.deallocate(n,1);
+    return iterator(next_node);
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+// Fidelity: scaffolding, not retail. The landed RemoveMessage owner 00493b5b uses size optimization with its frame pointer.
+// The block ends with optimize("", on). Include before any row-head optimization pragma.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#pragma optimize("y",off)
+#endif
+inline void CMessageEventManager::RemoveMessage(const CMessageEvent* pevent)
+{
+    for (std::list<CMessageEvent>::iterator it = Messages.begin(); it != Messages.end(); ++it) {
+        const CMessageEvent& event = *it;
+        if (&event == pevent) {
+            Messages.erase(it);
+            return;
+        }
+    }
+}
+
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
 #endif

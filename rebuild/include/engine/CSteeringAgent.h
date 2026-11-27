@@ -38,6 +38,10 @@ private:
 public:
 #ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28
     CSteeringAgent(const CNavigatorExternalInterface* navigator, bool dummy);
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+    float GetForwardNavigationWidthExtension() const {return NavigatorInterface->GetForwardNavigationWidthExtension();}
+    C2DVector GetOrientation() const {return NavigatorInterface->PeekNavigatorOrientation();}
+#endif
     float GetDistCutoff() const { return DistCutoff; }
     const C2DVector& GetGoal() const { return Goal; }
     bool IsDead() const { return NavigatorInterface->IsDead(); }
@@ -54,6 +58,11 @@ public:
  bool GetAddWaypoint(){return AddWaypoint;}
  float& GetBestDistLeft(){return BestDistLeft;}
  float& GetBestDistRight(){return BestDistRight;}
+#endif
+#ifdef FABLE_RETAIL_STEERING_PROCESS_PASS29
+ float GetCurrentMaxSpeed() const { return CurrentMaxSpeed; }
+ float GetProximityForDirectApproach() const { return NavigatorInterface->GetProximityForDirectApproach(); }
+ void SetPathFailed() { FailPath = true; }
 #endif
  bool HasFailedPath() {return FailPath;}
  void Reset() {TimeSinceBestApproach=0;HasWanderedDuringThisSection=false;AvoidDynamicObstaclesUntilNextWaypoint=true;FailPath=false;}

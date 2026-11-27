@@ -1,5 +1,11 @@
 #ifndef FABLE_ENGINE_ESCRIPTAIPRIORITY_H
 #define FABLE_ENGINE_ESCRIPTAIPRIORITY_H
+#if defined(FABLE_RETAIL_PHASE1_GUARD_PASS29) && !defined(FABLE_RETAIL_PHASE1_ARCHER_PASS26)
+enum EScriptAIPriority {
+    SCRIPT_AI_PRIORITY_LOWEST, SCRIPT_AI_PRIORITY_LOW, SCRIPT_AI_PRIORITY_MEDIUM,
+    SCRIPT_AI_PRIORITY_HIGH, SCRIPT_AI_PRIORITY_HIGHEST
+};
+#endif
 #ifdef FABLE_RETAIL_PHASE1_ARCHER_PASS26
 // Both original enum records define five increasing priorities; the archer requests four.
 enum EScriptAIPriority {

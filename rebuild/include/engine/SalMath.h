@@ -31,10 +31,27 @@ static FABLE_FORCEINLINE int sal_ftoi(float value)
     return result;
 }
 
+#ifdef FABLE_RETAIL_SAL_FRAME_FLOAT_TO_INT_PASS29
+// SalFrame.obj, both SDK builds: file-static int sal_round(float), called at retail 00C6B385.
+#ifdef _MSC_VER
+#pragma optimize("y", on)
+#endif
+static int sal_round(float value)
+{
+    int result;
+    LIBPK_FTOL(result, value)
+    ;
+    return result;
+}
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+#else
 static FABLE_FORCEINLINE int sal_round(float value)
 {
     return FtoL(value);
 }
+#endif
 
 static int sal_gainToLevel(const float fGain)
 {

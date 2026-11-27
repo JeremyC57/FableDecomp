@@ -24,17 +24,27 @@ public:
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+protected:
+    bool IsStillRunnable();
+#endif
 public:
     virtual void OnActivate();                                            // slot 2 0x00954190 ?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
     virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x0090080B ?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ
     virtual bool IsRunnable();                                            // slot 11 0x00954AB0 ?IsRunnable@CAIStateGroup_MazeTutorialBattle@@UAE_NXZ
     virtual void Update();                                                // slot 12 0x00955C90 ?Update@CAIStateGroup_MazeTutorialBattle@@UAEXXZ
+#ifdef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+protected:
+#else
 public:
+#endif
     long          FrameOfLastShield;                         // +0x20
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTutorialBattle) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeTutorialBattle, FrameOfLastShield) == 0x20);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CAIStateGroup_MazeTutorialBattle) == 0x24);
+#ifndef FABLE_RETAIL_MAZE_TUTORIAL_PASS29
+FABLE_STATIC_ASSERT_AT(37, offsetof(CAIStateGroup_MazeTutorialBattle, FrameOfLastShield) == 0x20);
+#endif
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

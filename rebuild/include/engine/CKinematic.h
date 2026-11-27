@@ -14,7 +14,16 @@ public:
     }
 #endif
     CKinematic() { }
+#ifdef FABLE_RETAIL_STEER_KINEMATIC_CONSTRUCTOR_PASS29
+    CKinematic(const C2DVector& vector) { SetVector(vector); }
+#else
+#ifdef FABLE_RETAIL_SB_CORRIDOR_PASS29
+    // FableWin constructs Vector first, then invokes the original SetVector.
+    CKinematic(const C2DVector& vector) { SetVector(vector); }
+#else
     CKinematic(const C2DVector& vector) : Vector(vector) { }
+#endif
+#endif
     const C2DVector& GetVector() const { return Vector; }
     void SetVector(const C2DVector& vector) { Vector = vector; }
 private:

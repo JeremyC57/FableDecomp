@@ -18,7 +18,12 @@ namespace NUISystem {
 enum ETextAlignement;                                            // MS forward enum (?GetAlignment@CText@NUISystem@@UBE?AW4ETextAlignement@2@XZ)
 class CText : public CTextContainer {
 public:
+#ifdef FABLE_RETAIL_UI_TEXT_GETVALUE_MUTABLE_PASS29
+    // FableWin 0228ad10, primary CText vtable slot 142. The return is const, the method is mutable.
+    virtual const CWideString& GetValue();
+#else
     virtual const CWideString& GetValue() const;                                   // slot 142 0x0054FF10
+#endif
     virtual void SetValue(const CCharString& value, bool a, bool b);               // slot 145 0x0054F370
     virtual void SetValue(const CWideString& value, bool a, bool b);               // slot 144 0x0054F410
     virtual void SetValue(unsigned long textId, const CWideString& value, bool a); // slot 143 0x0054FBC0

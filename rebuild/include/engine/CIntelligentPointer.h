@@ -33,7 +33,12 @@ public:
     CBaseObject* GetPItem() const;                                       // 0x00A01B50
     void SetPItem(CBaseObject* item);                                    // 0x00A01B90
 private:
+#ifdef FABLE_RETAIL_GUARD_FRAMEUPDATE_PASS29
+    void ClearData() const;
+    mutable CBaseObjectPointer* PData;
+#else
     CBaseObjectPointer* PData;                                           // +0x04
+#endif
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
@@ -134,6 +139,10 @@ public:
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN
     CIntelligentPointer(const CIntelligentPointer& item) {SetPointer(item.GetPointer());}
 #else
+#ifdef FABLE_RETAIL_AI_SPEECH_COPY_INLINE_PASS29
+    // Inline-budget: all four by-value look targets expand this copy, including 00980e30.
+    FABLE_FORCEINLINE
+#endif
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 #endif
 #endif
@@ -225,5 +234,17 @@ template<class T,class U> inline bool FABLE_FASTCALL operator==(const CIntellige
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_RAW
 // FableWin01cfe990, exact free comparison: pointer first, raw base item second.
 template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& pointer,const CBaseObject* item) { return pointer.GetPItem()==item; }
+#endif
+#ifdef FABLE_RETAIL_WELL_POINTER_CTOR_OWNER_PASS29
+// Fidelity: scaffolding, not retail. Size owner 0065E133 sets optimize("s",on).
+// The restore below uses optimize("",on); include this header before any TU-specific modes.
+class CThingObject;
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+template<> inline CIntelligentPointer<CThingObject>::CIntelligentPointer(CThingObject* pointer) { SetPointer(pointer); }
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
 #endif
 #endif

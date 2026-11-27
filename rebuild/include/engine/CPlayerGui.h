@@ -347,7 +347,13 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     void ToggleLiveGui();                                                 // 0x00438310
 #endif
     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
+#ifdef FABLE_RETAIL_REGION_DRAW_PASS29
+    bool GetDrawGuiFlag() const {return DrawGui;}
+#endif
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
+#ifdef FABLE_RETAIL_TUTORIAL_GIVE_PASS29
+    void AddGuildSealMessage(const CCharString&,long,bool);
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_PEEKGUIDEF
     // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb 0x0044B230 / FableWin.pdb 0x01A80EA0 ?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ
     // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.

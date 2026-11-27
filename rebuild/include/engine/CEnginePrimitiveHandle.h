@@ -10,6 +10,10 @@
 #include "engine/CIVCountedPointer.h"
 class CEnginePrimitiveHandle : public CBaseClass {
 public:
+#ifdef FABLE_RETAIL_MORPHING_SPRITE_DRAW_PASS29
+    // Inline-budget: this Draw expands the original handle constructor at the native submission sites.
+    FABLE_FORCEINLINE
+#endif
     CEnginePrimitiveHandle() { }
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_COPY_DECL
     // NF61 opt-in (round 7, row 0x005BBBA5 map<long, CEnginePrimitiveHandle>::_M_create_node): the copy constructor, out of line in
@@ -56,10 +60,11 @@ public:
         Data=other.Data;return *this;
     }
 #endif
-#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_DECL_ONLY)
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_DECL_ONLY) || defined(FABLE_RETAIL_ICONTEXT_CLEAR_OUTOFLINE_PASS29)
     // Retail opt-in (NF432, row 0x00644627 NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary): FableWin.pdb ?Clear@CEnginePrimitiveHandle@@QAEXXZ,
     // declaration only. That TU only takes Clear's address for mem_fun_ref (`push 41BE70h`) and calls retail's out-of-line copy
     // 0x0041BE70 through for_each; an inline body here would add a pick-any Clear copy that differs from 0x0041BE70 (44 v 57 bytes).
+    // Codex pass 29 (FABLE_RETAIL_ICONTEXT_CLEAR_OUTOFLINE_PASS29, CIconText rows): the same declaration-only Clear.
     void Clear();                                                        // 0x0041BE70
 #elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE)
     // Nested opt-in (bwf2, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): the same Clear text as below, FABLE_FORCEINLINE. Retail

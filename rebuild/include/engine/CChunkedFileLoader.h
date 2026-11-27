@@ -14,6 +14,10 @@ public:
 protected:
     void LoadChunkedFile(class CChunkedFile&, class CDataInputStream&);   // 0x00AA79C0
 #endif
+#ifdef FABLE_RETAIL_CHUNK_READER_PASS29
+public:
+int GetReadUnknownChunkTypes() const { return ReadUnknownChunkTypes; }
+#endif
 private:
     int ReadUnknownChunkTypes;      // +0x04
     char SupportedFileType[5];      // +0x08

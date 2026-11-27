@@ -9,7 +9,36 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-#ifdef FABLE_RETAIL_CCONSOLECOMMANDBASE_GETFORMATTEDNAME
+#if defined(FABLE_RETAIL_PROCESS_COMMAND_LINE_PASS29)
+#include "engine/CGenericVar.h"
+#include "stlport/fable_containers.h"
+class CConsole {public: void SendMessageToUser(const CCharString&);};
+class CConsoleCommandParameters {
+    std::vector<EGenericVarType> ParamTypes;
+public:
+    long GetSize() const {return ParamTypes.size();}
+    CGenericVar GetCorrectlyTypedParameter(long) const;
+    CCharString GetParameterTypeAsString(long) const;
+};
+class CConsoleInputBase {
+public:
+    virtual ~CConsoleInputBase();
+protected:
+    virtual bool ProcessCommandLine(const CCharString&,CConsole&) = 0;
+    virtual CCharString GetFormattedName() const = 0;
+    virtual CCharString GetTypeAsString() const = 0;
+    virtual CCharString GetHelp() = 0;
+    const CCharString& GetName() const {return Name;}
+private:
+    CCharString Name;
+};
+class CConsoleCommandBase : public CConsoleInputBase {
+protected:
+    virtual bool ProcessCommandLine(const CCharString&,CConsole&);
+    virtual void CallCommandFunction(const std::vector<CGenericVar>&) const = 0;
+    CConsoleCommandParameters ParamTypes;
+};
+#elif defined(FABLE_RETAIL_CCONSOLECOMMANDBASE_GETFORMATTEDNAME)
 // Partial retail mode (NF202, 2026-11-20, q12225, row 0x009EA3A0): declares only what the formatted-name member reads. Both PDBs:
 // CConsoleCommandBase : CConsoleInputBase (FableWin ?GetName@CConsoleInputBase@@IBEABVCCharString@@XZ, Name at +0x04 after the vptr;
 // retail vtables 0x0122E5B0 / 0x0122E638 per row 0x00414F30), ParamTypes +0x08 (CConsoleCommandParameters, a 12-byte STLport vector),

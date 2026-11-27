@@ -22,6 +22,10 @@ union UInputEventData {                                                  // 32 b
 };
 class CInputEvent {
 public:
+#ifdef FABLE_RETAIL_CINPUTMANAGER_UPDATE_PASS29
+    void SetAsCharPressed(wchar_t character,double time);
+    void SetAsCharReleased(wchar_t character,double time);
+#endif
     CInputEvent();                                                       // 0x00A04410 ??0CInputEvent@@QAE@XZ
     ~CInputEvent();                                                      // 0x00A03B30 ??1CInputEvent@@QAE@XZ
 #ifdef FABLE_RETAIL_CINPUTEVENT_COPY
@@ -77,6 +81,22 @@ public:
     void SetAsMiddleMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime); // 0x00A03DC0 (stores type 8)
     void SetAsExtraMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime,
                                    long button);                                                                          // 0x00A03F20
+#endif
+#ifdef FABLE_RETAIL_INPUT_EVENT_UNION_PASS29
+    class UInputEventData {
+    public:
+        union {
+            EInputKey Key;
+            struct { C3DVector HeldMouseMovement, MouseMovement; C2DVector MousePos; };
+            wchar_t Char;
+            struct { C2DVector JoystickPos; unsigned char JoystickButton; float JoystickButtonPressure; };
+        };
+        FABLE_FORCEINLINE UInputEventData(const UInputEventData& o) {
+            Key=o.Key; HeldMouseMovement.X=o.HeldMouseMovement.X; HeldMouseMovement.Y=o.HeldMouseMovement.Y; HeldMouseMovement.Z=o.HeldMouseMovement.Z; MouseMovement.X=o.MouseMovement.X; MouseMovement.Y=o.MouseMovement.Y; MouseMovement.Z=o.MouseMovement.Z;
+            MousePos.X=o.MousePos.X; MousePos.Y=o.MousePos.Y; Char=o.Char; JoystickPos.X=o.JoystickPos.X; JoystickPos.Y=o.JoystickPos.Y;
+            JoystickButton=o.JoystickButton; JoystickButtonPressure=o.JoystickButtonPressure;
+        }
+    };
 #endif
     UInputEventData  Data;                                               // +0x00
     EInputDeviceType DeviceType;                                         // +0x20

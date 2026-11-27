@@ -1,6 +1,15 @@
 #ifndef FABLE_ENGINE_NCREATUREMODE_H
 #define FABLE_ENGINE_NCREATUREMODE_H
+#ifdef FABLE_RETAIL_WHISPER_POTION_COMBAT_PASS29
+class CThing;
+namespace NCreatureMode { bool FABLE_FASTCALL IsAbleToBeAttacked(const CThing&); }
+#endif
+
 // Original Ego_r TPI enum0x191c7; native OnHit compares DAZED67 and SLEEP_BED13.
+#ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+class CThing;
+namespace NCreatureMode { bool FABLE_FASTCALL IsToDeflectAllHits(const CThing&); }
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
 #include "fable_compiler.h"
 class CThing;

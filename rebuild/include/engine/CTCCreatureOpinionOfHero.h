@@ -114,6 +114,10 @@ public:
 #endif
 
 class CTCCreatureOpinionOfHero : public CTCBase {
+#ifdef FABLE_RETAIL_AI_CREATURE_ONHIT_PASS29
+public: bool OnHit(bool);
+#endif
+
 public:
 #ifdef FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
     template<class Filter> const COpinionDeed* FindMostRecentDeed(EOpinionDeedType, const Filter&,long*,bool) const;
@@ -138,6 +142,10 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x00686680
     virtual CCharString GetClassTypeName() const;                        // 22 0x00686690
     virtual bool IsComponentSerialisable() const;                        // 23 0x006866C0
+#ifdef FABLE_RETAIL_OPINION_REACTION_MASK_PASS29
+public:
+    void SetOpinionReactionMask(long reaction_mask_def);
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     void AdjustOpinionTransient(EOpinion,float,long,long,float,bool);
     void SetOpinionReactionMask(const CCharString&);
@@ -229,6 +237,9 @@ public:
     // ?GetHeadPendingDeed@CTCCreatureOpinionOfHero@@QAEPBVCOpinionDeed@@XZ (non-const member returning a const deed), out of line in
     // retail at 0x00683770 (called with ecx = the component, result tested and kept, 0x00960C1C), and the inline interface number.
     // Declarations only, no layout change.
+    #ifdef FABLE_RETAIL_HEAD_DEED_PASS29
+    bool IsGuardOnLevel() const;
+#endif
     const COpinionDeed* GetHeadPendingDeed();                            // 0x00683770
 #if !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM) && !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_GREET)
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }

@@ -273,7 +273,14 @@ public:
     float MinimumZSpriteAsMeshDistance;                                  // +0x90
     float MaximumZSpriteAsMeshDistance;                                  // +0x94
 protected:
+#ifdef FABLE_RETAIL_LOCAL_DETAIL_RENDER_PASS29
+    bool DrawDistanceInvalid;
+    unsigned char _pad_0x99[0xb0 - 0x99];
+public:
+    float IsDrawDistanceInvalid() { return DrawDistanceInvalid; }
+#else
     unsigned char _pad_0x98[0xb0 - 0x98];
+#endif
 public:
     float MipmapSizeMultiplier;                                          // +0xb0
     float GetZSpriteDrawDistanceFactor() { return ZSpriteDrawDistanceFactor; }

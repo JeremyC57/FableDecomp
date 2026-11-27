@@ -266,6 +266,9 @@ def table_spellings(text):
     return by
 
 
+ANON = re.compile(r"\?A0x[0-9a-fA-F]{8}@")   # per-TU anonymous-namespace hash (see the merge in main)
+
+
 def norm(sym):
     """one spelling per address for the compiler's deleting-dtor alias pair: the vector form ??_E is reported as ??_G."""
     return "??_G" + sym[4:] if sym.startswith("??_E") else sym
@@ -367,6 +370,18 @@ def main():
             ls, how = resolve_leaf(libmeasured[t], sp)
             self_leaf, self_how = (norm(ls), "full") if ls else (libmeasured[t], "full")
         if self_leaf: sp.setdefault(self_leaf, set()).add("self")
+        # The anonymous-namespace tag ?A0x<8 hex>@ is a per-translation-unit hash (from the source path): two rows naming one
+        # file-local global or function spell it with different hashes. Merge such spellings (prefer the PDB one, then the
+        # registered best guess, then the self) so a hash difference alone is not counted as a split (Codex p29 landing).
+        if any("?A0x" in s for s in sp):
+            groups = collections.defaultdict(list)
+            for s in sp: groups[ANON.sub("?A0x@", s)].append(s)
+            dsym = descr.get(t.lower().replace("0x", "").zfill(8), "")
+            for g in groups.values():
+                if len(g) < 2: continue
+                rep = next((s for s in g if s in pdb), None) or (dsym if dsym in g else None) or (self_leaf if self_leaf in g else g[0])
+                for s in g:
+                    if s != rep: sp[rep] |= sp.pop(s)
         if t in ent and self_how != "full": unmeasured[self_how] += 1
         if not sp:
             status[t] = "unmeasured"

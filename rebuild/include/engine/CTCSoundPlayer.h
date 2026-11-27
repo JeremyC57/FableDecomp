@@ -36,6 +36,12 @@ public:
  // Both original PDB PUBLICs: original CThing& constructor.
 public: CTCSoundPlayer(CThing&);
 #endif
+#ifdef FABLE_RETAIL_EXPRESSION_INIT_PASS29
+    unsigned long PlayAttachedDialogue(unsigned long,bool,bool,bool,bool);
+#endif
+#ifdef FABLE_RETAIL_CTCBERSERK_INITABILITY_PASS29
+public: void SetExtraTag(const CCharString& tag) { ExtraTag = tag; }
+#endif
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSOUNDEVENT
     // Retail opt-in (hand3c3, row 0x0078A690 CTCHeroRangedAttacks::FrameUpdate): ?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z
@@ -99,6 +105,10 @@ public:
 protected:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;
     CCharString VoiceName,ExtraTag;
+#ifdef FABLE_RETAIL_BERSERK_CLEANUP_PASS29
+public: void SetExtraTag(const CCharString& tag) { ExtraTag=tag; }
+protected:
+#endif
     short AnimCriteriaClipDistance;
     long LastMaterialIndex;
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS

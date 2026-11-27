@@ -25,7 +25,11 @@ public:
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
     long GetType()const{return Type;}
 #endif
+    #ifdef FABLE_RETAIL_PARTICLE_GROUP_DESTRUCTOR_PASS29
+    virtual ~CEnginePersistentPrimitiveBase() { }
+#else
     virtual ~CEnginePersistentPrimitiveBase();
+#endif
     virtual void CollectStats(std::map<unsigned long,unsigned long,
         std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,
         EEnginePrimitiveStatIndex, unsigned long) const = 0;
@@ -35,7 +39,7 @@ protected:
 private:
     long Type;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePersistentPrimitiveBase) == 12);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CEnginePersistentPrimitiveBase) == 12);
 #endif
 #else
 #ifndef FABLE_ENGINE_CENGINEPERSISTENTPRIMITIVEBASE_H
@@ -57,9 +61,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEnginePersistentPrimitiveBase) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePersistentPrimitiveBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEnginePersistentPrimitiveBase, Type) == 0x8);
+FABLE_STATIC_ASSERT_AT(60, sizeof(CEnginePersistentPrimitiveBase) == 0xc);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CEnginePersistentPrimitiveBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CEnginePersistentPrimitiveBase, Type) == 0x8);
 
 #endif // FABLE_ENGINE_CENGINEPERSISTENTPRIMITIVEBASE_H
 #endif

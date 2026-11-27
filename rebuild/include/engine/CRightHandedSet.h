@@ -4,7 +4,11 @@
 // Ego_r original class0x9f08: protected Up+0,Forward+12,size24.
 // Native CThingCreatureBase::OnHit gets GetRHSet then reads Forward at+12.
 #ifndef FABLE_RETAIL_CRIGHTHANDEDSET
+#ifdef FABLE_RETAIL_AI_CREATURE_ONHIT_PASS29
+class CRightHandedSet { protected: C3DVector Up,Forward; public: CRightHandedSet(const CRightHandedSet&); const C3DVector& GetForward() const { return Forward; } };
+#else
 class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; } };
+#endif
 #else
 // Retail opt-in (chunk 734, row 0x004A1CB0): Ego_r.pdb / FableWin.pdb ?GetUp@CRightHandedSet@@QBEABVC3DVector@@XZ (inline) and
 // ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ, out of line at 0x0049CE00 (landed: Forward x Up) and expanded in

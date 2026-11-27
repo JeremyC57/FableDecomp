@@ -101,6 +101,10 @@ FABLE_STATIC_ASSERT_AT(60, sizeof(CGraphicFrameData)==0x1b);   // (60: the name 
 class CGraphicFrame {
 public:
 #ifdef FABLE_RETAIL_CGRAPHICFRAME_GETTEXTURE
+#ifdef FABLE_RETAIL_TEXTURE_MIP_REDUCE_PASS29
+    bool IsAlpha() const { return FrameData->Alpha != 0; }
+    bool IsBooleanAlpha() const { return FrameData->BooleanAlpha != 0; }
+#endif
     CTexture* GetTexture() const { return FrameData->GetTexture(); }
 #ifdef FABLE_RETAIL_CGRAPHICFRAMEDATA_TEXTUREQUADUVS
     unsigned long GetWidth() const { return FrameData->GetWidth(); }      // FableWin.pdb ?GetWidth@CGraphicFrame@@QBEKXZ (02d120f0)
