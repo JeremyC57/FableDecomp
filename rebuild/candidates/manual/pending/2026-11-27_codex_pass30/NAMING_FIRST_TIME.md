@@ -31,6 +31,8 @@ Pass 29's 184 rows matched, but the names did not land with them:
 `rows/<addr>/NAMES_TO_USE.tsv` is the answer key cut to the row. It has one line for the row itself (SELF) and one for each retail call, jump and data target the row's retail bytes reference. Look up anything the row adds beyond these (an inline callee's own callees, a vftable's slots) in `NAME_ANSWERS.tsv` by address.
 
 ## 2. Verdicts
+**PROVEN means:** exactly one landed spelling, and that spelling is a real PDB / std name. The tracker matches by name, not by body, so a PROVEN line is strong but not infallible. When your row's own evidence (its Ego_d record, an Ego_r / FableWin call-site signature, or FableWin's /Od call target) shows the call goes to a different function, that evidence wins. Spell what it says, put both names and the evidence in `NAME_CONFLICTS.tsv`, and respell the landed binders, because you created a new disagreement (section 4).
+
 - **PROVEN:** one spelling, in a PDB name set, or a std / CRT / compiler / high-confidence library-signature name. Spell `use_this_spelling` exactly.
 - **PROVEN_RTTI:** retail RTTI puts the address in a vftable slot whose PDB name is known. Spell it exactly.
 - **PROVEN_LANDED_WRONG:** the PDB spelling is known, but the landed rows in `landed_wrong` spell it otherwise. Spell the PDB name, then do section 4 for those rows.
@@ -65,9 +67,12 @@ PROVEN_LANDED_WRONG targets are different. The split already exists, and spellin
 - Matching your rows comes first.
 
 For each landed row you fix:
-1. **Find every landed row with the old spelling.** Use `landed_wrong` and `names/state/reloc_bindings.tsv`, then grep each landed source and object for the old spelling. The binding table misses callers, so the grep is required.
+1. **Find every landed row with the old spelling.**
+   - Start with `landed_binders` (NAMES_TO_USE.tsv / NAME_ANSWERS.tsv) and `names/state/reloc_bindings.tsv`.
+   - The sources and tests of every landed row that binds one of these rows' non-proven targets are in `landed/<addr>/` (`landed/INDEX.tsv` gives their catalog paths, flags and locks), as they stand at repo commit @@BASE_COMMIT@@.
+   - Grep them for the old spelling: the binding table misses callers. For a landed row not shipped, give its address in NAME_CONFLICTS.tsv.
 2. **Check the lock.** If a row is in `names/state/LOCKS.tsv` (another lane holds it) or in `names/state/T3_PORT_QUEUE.tsv` (held), do not edit it. Write it to `NAME_CONFLICTS.tsv` instead. These are the only lines that queue.
-3. **Otherwise return a RESPELL unit:** `respell/<landed addr>/<addr>.cpp` (the landed source, changed only as far as the spelling needs) and `<addr>_test.cpp`. Also add a `BINDINGS.tsv` line: action, old symbol -> new symbol, target, witness <landed addr>.
+3. **Otherwise return a RESPELL unit:** `respell/<landed addr>/<addr>.cpp` (the `landed/` source, changed only as far as the spelling needs) and `<addr>_test.cpp`. Grade it on your final include tree like any row. Also add a `BINDINGS.tsv` line: action, old symbol -> new symbol, target, witness <landed addr>.
    - **A spelling-only change** (a declaration or callee name) must keep the bytes: same grade, and the object differs only in that symbol.
    - **A landed row that models the callee on a stand-in local class or a made-up free function** needs a port onto the shared header, `include/engine/<Class>.h`, with an add-only opt-in if one is missing.
      - Regrade the port like any row: MATCH / RELOCATION_MATCH with its test, and the pick-any check.

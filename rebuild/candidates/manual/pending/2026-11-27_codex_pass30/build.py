@@ -86,8 +86,10 @@ def sec_of(va):
     return None
 def row_targets(a):
     va = int(a, 16); nm_, b0, sz, raw, rsz = next(s_ for s_ in SECS if s_[1] <= va < s_[1] + s_[2])
-    code = EXE[raw + va - b0: raw + va - b0 + LN[a]]; out = []
+    code = EXE[raw + va - b0: raw + va - b0 + LN[a]]; out = []; end = va; pad = None
     for ins in CS.disasm(code, va):
+        end = ins.address + ins.size
+        if pad is None and ins.mnemonic in ('ret', 'jmp') and code[end - va: end - va + 2] in (b'\xcc\xcc', b'\x90\x90'): pad = end   # VC7.1 pads with int3 after a function
         for op in ins.operands:
             v = None
             if op.type == capstone.x86.X86_OP_IMM: v = op.imm & 0xffffffff
@@ -95,23 +97,33 @@ def row_targets(a):
             elif op.type == capstone.x86.X86_OP_MEM and op.mem.disp and (op.mem.disp & 0xffffffff) >= 0x401000: v = op.mem.disp & 0xffffffff
             if v is None or not (0x401000 <= v < 0x1600000) or va <= v < va + LN[a] or not sec_of(v): continue
             kind = 'call' if ins.mnemonic == 'call' else ('jmp' if ins.mnemonic.startswith('j') else ('data' if sec_of(v) != '.text' else 'code-ref'))
-            out.append((kind, ins.address, v))
+            out.append((kind + ('(after-padding)' if pad and ins.address >= pad else ''), ins.address, v))
+    DECODED[a] = end - va; PAD[a] = pad
     return out
+DECODED = {}; PAD = {}
+NEED_LANDED = set()   # landed rows a RESPELL may have to edit: binders of every non-proven target the rows reference
 def names_to_use(a):
-    lines = ['kind\tat\ttarget\tverdict\tuse_this_spelling\tbasis\tlanded_wrong\thint_spellings']
+    lines = ['kind\tat\ttarget\tverdict\tuse_this_spelling\tbasis\tlanded_wrong\thint_spellings\tlanded_binders (sources in landed/)']
     s_ = ANS.get(a)
-    lines.append('\t'.join(['SELF', f'0x{int(a,16):08X}', a] + (s_[1:6] if s_ else ['NOT_NAMED_YET', '', 'no landed code names this address yet: settle the self from the PDB evidence in ROW.md', '', ''])))
+    lines.append('\t'.join(['SELF', f'0x{int(a,16):08X}', a] + (s_[1:6] + [s_[10]] if s_ else ['NOT_NAMED_YET', '', 'no landed code names this address yet: settle the self from the PDB evidence in ROW.md', '', '', ''])))
+    if s_ and s_[10]: NEED_LANDED.update(s_[10].split(','))
     seen = set()
     for kind, at, v in row_targets(a):
         k = f'{v:08x}'
         if (kind, k) in seen: continue
         seen.add((kind, k)); s_ = ANS.get(k)
-        if s_: lines.append('\t'.join([kind, f'0x{at:08X}', k] + s_[1:6]))
+        if s_:
+            lines.append('\t'.join([kind, f'0x{at:08X}', k] + s_[1:6] + [s_[10] if s_[1] not in ('PROVEN', 'PROVEN_RTTI') else '']))
+            if s_[1] not in ('PROVEN', 'PROVEN_RTTI') and s_[10]: NEED_LANDED.update(s_[10].split(','))
         else:
             c = containing_landed(v) if sec_of(v) == '.text' else None
             if kind in ('call', 'jmp') and c and c != k: continue          # a branch into another function's body: not a symbol
             lines.append('\t'.join([kind, f'0x{at:08X}', k, 'NOT_NAMED_YET', '', 'no landed code names this target yet (string / float literal, switch table, or an unnamed function / global): '
-                                     'name it from the PDB tables (docs/NAMING_FIRST_TIME.md 2) or spell the literal', '', '']))
+                                     'name it from the PDB tables (docs/NAMING_FIRST_TIME.md 3) or spell the literal', '', '', '']))
+    if PAD.get(a) and any('(after-padding)' in x.split('\t')[0] for x in lines[1:]):
+        lines.append('\t'.join(['NOTE', f'0x{PAD[a]:08X}', '', 'PAST_PADDING?', '', 'a return / jump followed by int3 or nop padding ends here: lines marked (after-padding) may lie past the function (the extent is an estimate); confirm the true end first', '', '', '']))
+    if DECODED[a] < LN[a] - 16:
+        lines.append('\t'.join(['NOTE', f'0x{int(a,16) + DECODED[a]:08X}', '', 'PARTIAL', '', f'decoding stopped {LN[a] - DECODED[a]} B before the extent end (padding, a jump table or data, or the estimated extent runs past the function): targets after this point are not listed', '', '', '']))
     return lines
 catn = collections.defaultdict(list)
 for a_, (n_, l_) in cat.items(): catn[n_].append(a_)
@@ -267,7 +279,11 @@ for a, ln, grade, path, en, ob, summary, extras in sel:
         o.write(f"- Best grade on record: {grade}" + (" (never graded: the draft is a starting point only and the length is an estimate to the next function start; find the true end first)" if grade == 'UNGRADED' else '') + "\n")
         o.write(f"\n## Where it stands (UNMATCHED_ROWS.tsv)\n{summary}\n")
         ntu = names_to_use(a); open(f'{d}/NAMES_TO_USE.tsv', 'w').write('\n'.join(ntu) + '\n')
-        vc = collections.Counter(x.split('\t')[3] for x in ntu[1:])
+        vc = collections.Counter(x.split('\t')[3] for x in ntu[1:] if not x.startswith('NOTE'))
+        sv = ntu[1].split('\t')
+        if 'NAME CONFLICT' in summary and sv[3] in ('PROVEN', 'PROVEN_RTTI', 'PROVEN_LANDED_WRONG', 'REGISTERED_GUESS'):
+            o.write(f"- **NAME CONFLICT settled by names/answers/NAME_ANSWERS.tsv ({sv[3]}):** the self is `{sv[4]}`; the other spelling above is wrong.\n")
+        for x in [x for x in ntu if x.startswith('NOTE')]: o.write('- **NAMES_TO_USE.tsv note:** ' + x.split('\t')[5] + '.\n')
         o.write("\n## Names to use (`NAMES_TO_USE.tsv`, from names/answers/NAME_ANSWERS.tsv; rules: docs/NAMING_FIRST_TIME.md)\n"
                 f"- {len(ntu) - 1} lines (the row itself + each retail call / jump / data target): " + ', '.join(f'{k} {n}' for k, n in vc.most_common()) + ".\n"
                 "- PROVEN / PROVEN_RTTI / REGISTERED_GUESS: spell `use_this_spelling` exactly. PROVEN_LANDED_WRONG: spell the PDB name (fixing the listed landed rows is "
@@ -292,6 +308,22 @@ for a, ln, grade, path, en, ob, summary, extras in sel:
         o.write("\n## Landed neighbours (usually the same TU: reuse their includes, opt-ins, pragmas, flags)\n" + '\n'.join(nl) + "\n")
         if pl: o.write("\n## Earlier files on record for this address\n" + '\n'.join(pl) + "\n")
 open(f'{OUT}/ROWS.tsv', 'w').write('\n'.join(rowsout) + '\n')
+# pass 30: the landed rows a RESPELL unit may edit (binders of the rows' non-proven targets), with their tests, as they stand at BASE
+nl_ = 0
+os.makedirs(f'{OUT}/landed', exist_ok=True)
+with open(f'{OUT}/landed/INDEX.tsv', 'w') as ix:
+    ix.write('address\tsource\ttest\tflags\tlock\n')
+    for b_ in sorted(NEED_LANDED):
+        e_ = ent.get(b_)
+        if not e_: continue
+        src = f"{R}/rebuild/src/compiled/{e_['Source']}"; tst = f"{R}/rebuild/tests/{e_.get('TestSource', '')}"
+        if not os.path.exists(src): continue
+        os.makedirs(f'{OUT}/landed/{b_}', exist_ok=True); shutil.copy(src, f'{OUT}/landed/{b_}/{b_}.cpp')
+        if e_.get('TestSource') and os.path.exists(tst): shutil.copy(tst, f'{OUT}/landed/{b_}/{b_}_test.cpp')
+        lk_ = open(f'{S}/w22/nflocks/{b_}/owner').read().strip() if os.path.exists(f'{S}/w22/nflocks/{b_}/owner') else ''
+        ix.write(f"{b_}\t{e_['Source']}\t{e_.get('TestSource', '')}\t{e_.get('CompilerFlags', '')}\t{'' if lk_ == 'released' else lk_}\n"); nl_ += 1
+print('landed rows shipped for respells', nl_)
+BASE = subprocess.run(['git', '-C', R, 'rev-parse', '--short=10', 'HEAD'], capture_output=True, text=True).stdout.strip()
 
 def cp(src, dst):
     if os.path.exists(src): os.makedirs(os.path.dirname(dst), exist_ok=True); shutil.copy(src, dst)
@@ -401,6 +433,7 @@ cp(f'{P}/batches/2026-11-27_landing_p29/logs/REGISTRY_REMOVED.tsv', f'{OUT}/less
 for fn in ('README.md', 'STATUS.tsv', 'RULINGS_NEEDED.tsv', 'REJECTED.tsv'):
     cp(f'{P}/pending/2026-11-27_nf479_handback/{fn}', f'{OUT}/lessons/codex_pass29_name_fixes_NF479_{fn}')
 LINK = os.environ.get('EGOD_PDB_LINK', '(ask the maintainer for the Ego_d.pdb link)')
-for p in ('PROMPT_CODEX.md', 'README_CODEX.md'): open(f'{OUT}/{p}', 'w').write(open(f'{HERE}/{p}').read().replace('@@EGOD_PDB_LINK@@', LINK))
+for p in ('PROMPT_CODEX.md', 'README_CODEX.md'): open(f'{OUT}/{p}', 'w').write(open(f'{HERE}/{p}').read().replace('@@EGOD_PDB_LINK@@', LINK).replace('@@BASE_COMMIT@@', BASE))
+for p in ('names/README.md', 'docs/NAMING_FIRST_TIME.md'): open(f'{OUT}/{p}', 'w').write(open(f'{OUT}/{p}').read().replace('@@BASE_COMMIT@@', BASE))
 print('rows', len(rowsout) - 1)
 if MISSING: raise SystemExit('build FAILED: %d missing source(s): %s' % (len(MISSING), ' | '.join(MISSING)))

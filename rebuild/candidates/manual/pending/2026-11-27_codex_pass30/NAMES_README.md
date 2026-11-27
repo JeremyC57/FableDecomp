@@ -3,7 +3,7 @@
 Rules for using these tables: `docs/NAMING_FIRST_TIME.md`.
 
 - **answers/ (spell these):**
-  - `NAME_ANSWERS.tsv`: one line per retail address the landed tree names. It gives the verdict (PROVEN, PROVEN_RTTI, PROVEN_LANDED_WRONG, REGISTERED_GUESS, FOLDED, UNSETTLED), `use_this_spelling`, its basis, the landed rows that spell it wrong, hint spellings for unsettled addresses, and lock owners. Built from the naming tracker by `tools/name_answers.py` at the commit named in README_CODEX.md.
+  - `NAME_ANSWERS.tsv`: one line per retail address the landed tree names. It gives the verdict (PROVEN, PROVEN_RTTI, PROVEN_LANDED_WRONG, REGISTERED_GUESS, FOLDED, UNSETTLED), `use_this_spelling`, its basis, the landed rows that spell it wrong, hint spellings for unsettled addresses, and lock owners. Built from the naming tracker by `tools/name_answers.py` at repo commit @@BASE_COMMIT@@. `same_spelling_at` lists inline copies (one per TU); `landed_binders` lists every landed row naming the address.
   - `descriptive_names.tsv`: the registered best guesses, each with its basis.
   - `ESTABLISHED_SPELLINGS.tsv`: data spellings proven by hand.
 - **pdb/ (evidence):**

@@ -15,6 +15,9 @@ relocations + each row's own Leaf) and its verdict. This turns the verdict into 
                     hints only. Find the original name (docs/NAMING_FIRST_TIME.md section 2); else register a best guess.
 `held` marks a landed row that is reserved or held (lock owner other than `released`, e.g. CODEX29 / COORD_HOLD_*): it cannot be
 respelt in this pass; report its wrong spelling in NAME_CONFLICTS.tsv instead.
+`same_spelling_at`: other addresses with the same usable spelling (per-TU copies of an inline function; retail keeps one copy per TU).
+`landed_binders`: every landed row whose object names this address (the rows a respell of it has to move). A PDB `??_E` vftable alias is given as
+`??_G` (retail has only scalar deleting destructors, GOTCHAS NF424).
 """
 import json, os, re, sys
 
@@ -82,15 +85,26 @@ for t, r in sorted(rec.items()):
         if why:   # demoted: a compiler-name shape (??_7) does not prove the class inside it
             verdict, basis, use = 'UNSETTLED', f'not proven ({why}); tracker said {st}', ''
         elif placeholder(use): bad.append((t, verdict, use))
+    if use.startswith('??_E') and verdict != 'UNSETTLED':   # retail has no vector deleting destructor (GOTCHAS, NF424): the PDB's ??_E is ??_G here
+        use = '??_G' + use[4:]; basis += '; the PDB vftable alias ??_E is spelt ??_G (retail has only scalar deleting destructors)'
+    binders = sorted({(t if x == 'self' else x) for _, w in sp for x in w})
     wl = []
     for s, w in wrong:
         ws = [x for x in w if x != 'self']
         if 'self' in w: ws.append(t)
         wl.append(s + ' @ ' + ','.join((x + ('[held:' + lock_of(x) + ']' if lock_of(x) else '')) for x in ws))
     rows.append([t, verdict, use, basis, ' || '.join(wl), r.get('spellings', '') if verdict in ('UNSETTLED', 'FOLDED') else '',
-                 r.get('catalog', ''), 'y' if r.get('landed') == 'y' else 'n', lock_of(t)])
+                 r.get('catalog', ''), 'y' if r.get('landed') == 'y' else 'n', lock_of(t), ','.join(binders)])
+# one spelling at several addresses: per-TU copies of an inline function (retail keeps one per TU) or a shared name; list the others
+from collections import defaultdict
+at = defaultdict(list)
+for x in rows:
+    if x[1] in ('PROVEN', 'PROVEN_RTTI', 'PROVEN_LANDED_WRONG', 'REGISTERED_GUESS') and x[2]: at[x[2]].append(x[0])
+for x in rows:
+    o_ = [a for a in at.get(x[2], []) if a != x[0]] if x[2] else []
+    x.insert(9, (','.join(o_[:8]) + (f' (+{len(o_) - 8})' if len(o_) > 8 else '')) if o_ else '')
 with open(out_path, 'w') as o:
-    o.write('address\tverdict\tuse_this_spelling\tbasis\tlanded_wrong (spelling @ landed rows that carry it)\thint_spellings (UNSETTLED / FOLDED only)\tcatalog_name\tself_landed\tself_lock\n')
+    o.write('address\tverdict\tuse_this_spelling\tbasis\tlanded_wrong (spelling @ landed rows that carry it)\thint_spellings (UNSETTLED / FOLDED only)\tcatalog_name\tself_landed\tself_lock\tsame_spelling_at (inline copies: one per TU)\tlanded_binders (every landed row naming this address)\n')
     for x in rows: o.write('\t'.join(c.replace('\t', ' ') for c in x) + '\n')
 from collections import Counter
 print('lines', len(rows), dict(Counter(x[1] for x in rows)))

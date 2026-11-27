@@ -27,7 +27,10 @@ Partial progress counts: hand back every row's best text and its residue, even w
 
 `docs/NAMING_AND_HEADERS.md` covers headers and the pick-any rules.
 
+**Base:** this package is the project tree at repo commit @@BASE_COMMIT@@ (include/, names/, landed/).
+
 ## What changed since pass 29
+- **`landed/`** holds the source and test of every landed row that binds a non-proven target of these rows (`landed/INDEX.tsv`). These are the rows a RESPELL unit may edit.
 - **Pass 29:** 176 of its 184 matched rows landed (`lessons/codex_pass29_landing_README.md`), and its 341 header paths are in `include/`.
   - Seven rows were backed out. Two callees clashed with registered best guesses, and `_expf` clashed with `?exp@@YAMM@Z`. Two
     anonymous-namespace globals clashed with named globals. Two best guesses met held binders. One `??_7` had 25 slots where retail has 31.
