@@ -1484,3 +1484,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-27 B->A: claiming 0x00C62370 GetRandomPointInSphere. Descriptive name, not a PDB symbol (none in Ego_r, FableWin or Ego_d). The landed caller 0x00C62530 already binds ?GetRandomPointInSphere@@YG?AVC3DVector@@M@Z here. Retail body is 118 bytes. Not in any RESERVED.tsv. Manifest label Quaternion_FromAxisAngle is propagated.
 
 2026-11-27 B->A: landed 0x00C62370 GetRandomPointInSphere (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 118 (was: length estimate 128). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. The catalog label Quaternion_FromAxisAngle is queued in NAME_FIXES.tsv. SetLungedThisFrame 0x00C62350 is defined in this TU with the same body as the landed row so the three calls stay out of line.
+
+2026-11-27 B->A: claiming 0x00947EB0 CAIStateGroup_GoToPub::GetObjectWithScriptName. PDB leaf ?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z in Ego_r (0x0096E1B0) and FableWin (0x02BC4810). Retail body is 242 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
