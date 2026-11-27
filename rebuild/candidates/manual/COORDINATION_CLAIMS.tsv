@@ -644,3 +644,4 @@ date	account	item	kind	status	note
 2026-11-27	B	0x008082C0	author	claimed	std::__adjust_heap for the first-person targeting comparator; retail 317 bytes
 2026-11-27	B	0x008082C0	author	done	landed RELOCATION_MATCH PASS: std::__adjust_heap, 317 bytes
 2026-11-27	B	0x00C1BF00	author	claimed	BuildViewMatrix (descriptive; no PDB symbol); retail 174 bytes
+2026-11-27	B	0x00C1BF00	author	done	landed RELOCATION_MATCH PASS: BuildViewMatrix, 174 bytes

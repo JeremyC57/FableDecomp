@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c1bf00	BuildViewMatrix	No symbol in Ego_r.pdb (egor_pdb_names.tsv) or FableWin.pdb (fablewin_pdb_names.tsv). libpk / camera code, no RTTI. Retail 174 bytes: right = up x forward (C3DVector::CrossProduct 0x00C25860), columns right/up/forward, translation = -dot(position) (C3DVector::DotProduct 0x00C256A0), then SetViewMatrix 0x00C1D1C0. The name is descriptive.	C3DMeshObject_UpdateQuadricMatrix (manifest/functions.tsv; propagated). UNMATCHED length estimate was 176, retail extent 174.
