@@ -38617,3 +38617,5 @@ __TI2?AVCBankFileException@@	01369470	009d0880
 ??0?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@QAE@ABV01@@Z	00f25d20	00f281e0
 ?_M_insert_overflow@?$vector@VCArenaWaveDef@@V?$allocator@VCArenaWaveDef@@@std@@@std@@IAEXPAVCArenaWaveDef@@ABV3@ABU__false_type@2@I_N@Z	00f28400	00f281e0
 ?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z	009f32a0	00f36d30
+??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@@Z	00978a00	00978b90
+??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@QBE_NPBVCThing@@0@Z	00978790	00978b90

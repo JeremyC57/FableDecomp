@@ -405167,6 +405167,13 @@ $catalog = @(
         TestSource = '00/f3/CTriangleStripifier2_BuildCacheOptimizedVertexList_00f3ba70_test.cpp'
         PassPattern = '00f3ba70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00978b90'
+        Module = 'std'
+        Source = '00/97/std_adjustheap_00978b90.cpp'
+        TestSource = '00/97/std_adjustheap_00978b90_test.cpp'
+        PassPattern = '00978b90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

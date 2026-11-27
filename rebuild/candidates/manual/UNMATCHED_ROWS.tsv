@@ -358,7 +358,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00971b60	CAIStateGroup_JackOfBladesBase	GetDistantPos	368	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/00971b60.cpp	original
 00973900	CAIStateGroup_JackOfBladesBase	SummonPillarsOld	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00973900.cpp	original
 00975bb0	CAIStateGroup_JackOfBladesStage1	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	4720	reserved (acctB B24A, 2026-11-24; was: parked)	DIFFER(4612v4707)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00975bb0.cpp	original
-00978b90	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A::CThingCompare_InDirectionOfAndNearestToH	192	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand627/differ/00978b90.cpp	original
+00978b90	std	__adjust_heap	142	landed (acctB lane, 2026-11-27, RELOCATION_MATCH; was: parked; was: _Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A::CThingCompare_InDirectionOfAndNearestToHeuristicBitch>, length 192)		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand627/differ/00978b90.cpp	original
 0097a1b0	CAIStateGroup_CreatureTakeCover	MoveFromCoverToFiringPosition	1152	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/0097a1b0.cpp	original
 0097e380	CAIStateGroupBase	AIAction_MoveToThingProximity	1296	parked	DIFFER(1240v1286)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/hdr/0097e380.cpp	original
 00980bd0	CAIStateGroupBase	AIAction_SpeakToTarget	1248	parked	DIFFER(1212v1233)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand312/differ/00980bd0.cpp	original
