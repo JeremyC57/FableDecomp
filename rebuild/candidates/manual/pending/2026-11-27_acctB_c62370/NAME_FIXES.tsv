@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c62370	?GetRandomPointInSphere@@YG?AVC3DVector@@M@Z	Descriptive name, not a PDB name. No symbol in Ego_r, FableWin or Ego_d. The landed caller CAmbientTrigger::Play 0x00C62530 binds this symbol here. Retail 118 bytes: phi = u*2pi, theta = acos(2u-1), r = u*radius.	Quaternion_FromAxisAngle (functions.tsv; propagated)

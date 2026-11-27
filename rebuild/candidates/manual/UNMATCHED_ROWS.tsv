@@ -581,7 +581,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c5f6a0	_global	Audio_ExpandADPCM_Mono	336	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand595/differ/00c5f6a0.cpp	original
 00c604e0	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	1104	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00c604e0.cpp	original
 00c61d10	CAmbientEvent	Trigger	592	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand687/differ/00c61d10.cpp	original
-00c62370	_global	Quaternion_FromAxisAngle	128	reserved (acctB lane, 2026-11-27; was: parked)	egod e16 (descriptive name GetRandomPointInSphere, libpk, no PDB): RELOCATION_MATCH + test PASS but strict headers reject its local C3DVector model (SHARED_HEADER_AVAILABLE): libpk calls operator+ 0x0	0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c62370.cpp	original
+00c62370	_global	GetRandomPointInSphere	118	landed (acctB lane, 2026-11-27, RELOCATION_MATCH; was: parked; was: Quaternion_FromAxisAngle, length 128)	descriptive name, not a PDB name	0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c62370.cpp	original
 00c64420	CEaxContext	SetPrimaryFXSlotID	432	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand601/differ/00c64420.cpp	original
 00c69a70	NScript::CQ_GuildTrainingSkillScript	NScript::CQ_GuildTrainingSkillScript::AllocateMemory	240	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand342/differ/00c69a70.cpp	original
 00c6ad10	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	96	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand443/differ/00c6ad10.cpp	original

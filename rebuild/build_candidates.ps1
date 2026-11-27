@@ -405195,6 +405195,13 @@ $catalog = @(
         TestSource = '00/a6/std_insertunique_00a614b0_test.cpp'
         PassPattern = '00a614b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c62370'
+        Module = '_global'
+        Source = '00/c6/global_GetRandomPointInSphere_00c62370.cpp'
+        TestSource = '00/c6/global_GetRandomPointInSphere_00c62370_test.cpp'
+        PassPattern = '00c62370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
