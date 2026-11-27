@@ -556,7 +556,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c0b7b0	_global	AnimationCurve_UpdateWithDelta	208	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand431/differ/00c0b7b0.cpp	original
 00c0bf9b	_global	CCharString_CopyRange_FromOffset	69	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/00c0bf9b/	original
 00c12e50	_global	Combat_ExecuteSequenceAction	752	parked	Codex pass 23 (whole parent in the 0x012117A5 draft): 741/741, 13 bytes differ (one offset-store order)	2	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012117a5/012117a5.cpp	original
-00c1bf00	_global	C3DMeshObject_UpdateQuadricMatrix	176	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c1bf00.cpp	original
+00c1bf00	_global	C3DMeshObject_UpdateQuadricMatrix	176	reserved (acctB lane, 2026-11-27; was: parked)		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c1bf00.cpp	original
 00c1c460	_global	ParticleMorphs_UpdateEditor	448	parked	RELOCATION_MATCH (Codex pass 23, whole parent in the 0x01212472 draft); naming-blocked	2	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/01212472/01212472.cpp	original
 00c20580	CSoundPlayParameterOverride	ApplyTo	352	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand595/differ/00c20580.cpp	original
 00c20720	CSoundEvent	CheckState	48	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand434/differ/00c20720.cpp	original

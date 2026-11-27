@@ -643,3 +643,4 @@ date	account	item	kind	status	note
 2026-11-27	A	AUTH30B: takes over the 16 AUTH30 rows plus 0x00D04AE0 (R1 control) and the Alloc rows 0x00D05910 / 0x00D05FE0 (R2 ports), under the 2026-11-27 advisor rulings in EXTRA_RULES	authoring	claimed	Claude agent AUTH30B; locks AUTH30B in nflocks (AUTH30 locks moved)
 2026-11-27	B	0x008082C0	author	claimed	std::__adjust_heap for the first-person targeting comparator; retail 317 bytes
 2026-11-27	B	0x008082C0	author	done	landed RELOCATION_MATCH PASS: std::__adjust_heap, 317 bytes
+2026-11-27	B	0x00C1BF00	author	claimed	BuildViewMatrix (descriptive; no PDB symbol); retail 174 bytes
