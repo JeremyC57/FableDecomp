@@ -1,4 +1,5 @@
 // CPersistContext::TransferObjectSaveText(const char* name, CPersistContext::TransferableComponentGenericType* component) -- text save of a component: "<name> ", the component's own text, then ";\r\n"
+// Leaf: ?TransferObjectSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BAD60, length 59 bytes (+ int3 padding).
 // Callees: CCharString::operator+=(const char*) @ 0x0099F100 three times on PStringToSaveTo (+0x20); the component's
 // virtual slot 0 (`call [edx]`) with (this context, PStringToSaveTo). Literals " " @ 0x01258C1C, ";\r\n" @ 0x012353B8.
@@ -16,6 +17,14 @@ class CMemoryDataInputStream;
 class CDataOutputStream;
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
+// NF479 (Codex pass 29 name fixes): the object is the global class CPersistContext_TransferableComponentGenericType, by reference, and the
+//   member is protected (Ego_r / FableWin ?TransferObjectSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z;
+//   was the public nested-struct pointer form).
+class CPersistContext;
+class CCharString;
+class CPersistContext_TransferableComponentGenericType { public:
+    virtual void TransferSaveText(CPersistContext* context, CCharString* text);   // slot 0
+};
 class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
@@ -32,16 +41,14 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    struct TransferableComponentGenericType {
-        virtual void TransferSaveText(CPersistContext* context, CCharString* text);   // slot 0
-    };
-    void TransferObjectSaveText(const char* name, TransferableComponentGenericType* component);
+protected:
+    void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& component);
 };
 
-void CPersistContext::TransferObjectSaveText(const char* name, TransferableComponentGenericType* component)
+void CPersistContext::TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& component)
 {
     *PStringToSaveTo += name;
     *PStringToSaveTo += " ";
-    component->TransferSaveText(this, PStringToSaveTo);
+    component.TransferSaveText(this, PStringToSaveTo);
     *PStringToSaveTo += ";\r\n";
 }

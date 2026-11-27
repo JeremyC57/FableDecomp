@@ -1,5 +1,7 @@
-// CCombatManager::SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed) -- report an attempted action to the creature's current combat sequence: performed -> finish it and notify; not performed -> finish it unless it can continue, else (still running) reset the attacker's sequence
-// Leaf: SetCreatureAsAttemptedToPerformedAction
+// CCombatManager::SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase& creature, bool performed) -- report an attempted action to the creature's current combat sequence: performed -> finish it and notify; not performed -> finish it unless it can continue, else (still running) reset the attacker's sequence
+// Leaf: ?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z
+// NF479 (Codex pass 29 name fixes): the creature is a non-const reference (Ego_r / FableWin / Ego_d ?SetCreatureAsAttemptedToPerformedAction
+//   @CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z; was ABV). Body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA540, 169 bytes (176 with padding), `ret 8`.
 // Callees: the creature test 0x00662410, the combatant map's find 0x006F0250, CCombatSequenceBase::OnActionPerformed
 //   0x008B0600, CCombatManager 0x006EA2C0 (thiscall, the creature; resets the attacker's sequence), the sequence's virtual
@@ -81,10 +83,10 @@ class CCombatManager { public:
     }
     // Naming (NF439 gen, 2026-11-25): callee 0x006EA2C0 binds its PDB spelling ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z (T1 target; was ?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z).
     private: void PerformSequenceReset(CThingCreatureBase& creature); public:
-    void SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed);
+    void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase& creature, bool performed);
 };
 
-void CCombatManager::SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed)
+void CCombatManager::SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase& creature, bool performed)
 {
     if (!creature.IsInMeleeAsAttacker())
         return;

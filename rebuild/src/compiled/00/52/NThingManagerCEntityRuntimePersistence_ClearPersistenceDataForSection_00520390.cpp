@@ -19,8 +19,9 @@ class CWideStringData;
 template<class T>class FABLE_MS_BITFIELDS CBasicString {public:T*PData;unsigned long StringLength;unsigned long DataLength:31;bool UseFastExtend:1;unsigned long GetLength()const{return StringLength;}};
 class CCharStringData {public:CBasicString<char>Data;long NoRefs;};
 #pragma pack(pop)
-extern const unsigned long CUnprovenGlobal_0129a168[256];
-class CCharString {public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);long GetLength()const{if(!PStringData)return 0;return PStringData->Data.GetLength();}operator const char*()const{if(!PStringData)return "";return PStringData->Data.PData;}FABLE_FORCEINLINE unsigned long GetCRC()const{unsigned long length=GetLength();const char*data=*this;unsigned long crc=0;if(!length)return 0;for(unsigned long i=0;i<length;++i)crc=CUnprovenGlobal_0129a168[static_cast<unsigned char>(data[i])^(crc&255)]^(crc>>8);return crc;}};
+// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
+extern const unsigned long CRC32TAB[256];          // 0x0129A168 (was CUnprovenGlobal_0129a168)
+class CCharString {public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);long GetLength()const{if(!PStringData)return 0;return PStringData->Data.GetLength();}operator const char*()const{if(!PStringData)return "";return PStringData->Data.PData;}FABLE_FORCEINLINE unsigned long GetCRC()const{unsigned long length=GetLength();const char*data=*this;unsigned long crc=0;if(!length)return 0;for(unsigned long i=0;i<length;++i)crc=CRC32TAB[static_cast<unsigned char>(data[i])^(crc&255)]^(crc>>8);return crc;}};
 class CWideString {public:CWideStringData*PStringData;CWideString();CWideString(const CWideString&);~CWideString();const CWideString&operator=(const CWideString&);};
 #ifdef _MSC_VER
 typedef unsigned __int64 ThingIdentifier;

@@ -1,7 +1,9 @@
 // CSubtitleRenderer::WordWrapText(const C2DBoxF& box, ..., const CWideString& text) -- break the text into lines that fit the box width, each followed by "\n"; a line starting with ',' is pulled back onto the previous line (",\n")
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: WordWrapText
+// Leaf: ?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z
+// NF479 (Codex pass 29 name fixes): the self is the private const Ego_r / FableWin / Ego_d PUBLIC ?WordWrapText@CSubtitleRenderer@@ABE
+//   ?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z (font by const reference; was the public non-const QAE form taking CFontBank*).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DC8B, 265 bytes, `ret 10h` (hidden CWideString result + three arguments; the
 //   second argument is never read). Called from 0x0048F543.
 // Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetAsCharArray() 0x0099AF10,
@@ -44,11 +46,11 @@ CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);    // 
 const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* text, unsigned int width, const wchar_t** lineEnd);   // 0x00A10390
 
 class CSubtitleRenderer {
-public:
-    CWideString WordWrapText(const C2DBoxF& box, CFontBank* font, const CWideString& text);
+private:
+    CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;
 };
 
-CWideString CSubtitleRenderer::WordWrapText(const C2DBoxF& box, CFontBank* font, const CWideString& text)
+CWideString CSubtitleRenderer::WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const
 {
     CWideString wrapped;
     const wchar_t* line = text.GetAsCharArray();

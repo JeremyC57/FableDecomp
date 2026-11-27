@@ -1,0 +1,2 @@
+address	symbol	status	leaf_given	current_line
+0048dc8b	?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	RELOCATION_MATCH	?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	0048dc8b | ?WordWrapText@CSubtitleRenderer@@QAE?AVCWideString@@ABVC2DBoxF@@PAVCFontBank@@ABV2@@Z | RELOCATION_MATCH | WordWrapText

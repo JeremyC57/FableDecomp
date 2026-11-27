@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?CompactTextureSet@CBlendedEnvironmentTheme@@QAEXAAUCIDrawEnvironmentTextureSet@@J@Z	00886e80	00887830	NF479 b4 catch-up to the landed self spelling of 0x00886E80 (HEAD row): witness 00887830 now binds ?CompactTextureSet@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXAAUCIDrawEnvironmentTextureSet@@J@Z, which has a line at this target; no landed object still references ?CompactTextureSet@CBlendedEnvironmentTheme@@QAEXAAUCIDrawEnvironmentTextureSet@@J@Z

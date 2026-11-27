@@ -1,0 +1,123 @@
+addr       parity           behav  name
+004014a0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+004014a0   RELOCATION_MATCH PASS   Calc
+00520390   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00520390   RELOCATION_MATCH PASS   ClearPersistenceDataForSection
+0099ee20   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099ee20   WARN RELOC_ALIAS: _toupper -> 00bfed16 is the import thunk 'MSVCR71.DLL::toupper'
+0099ee20   RELOCATION_MATCH PASS   GetAsUpperCase
+0099f450   RELOCATION_MATCH PASS   RemoveWhiteSpaceBegin
+0099f4d0   RELOCATION_MATCH PASS   RemoveWhiteSpaceEnd
+0099f690   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099f690   WARN STANDIN_LEAF ??H@YI?AVCCharString@@PBDABV0@@Z (catalog operator+(const char*, const CCharString&); names another function)
+0099f690   RELOCATION_MATCH PASS   operator+(const char*, const CCharString&)
+0099f830   RELOCATION_MATCH PASS   GFIntToCharString
+0099f8b0   RELOCATION_MATCH PASS   GFUIntToCharString
+0099f930   RELOCATION_MATCH PASS   GFUHUGEToCharString
+0099f9b0   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099f9b0   RELOCATION_MATCH PASS   GFBoolToCharString
+0099fa50   RELOCATION_MATCH PASS   CCharString
+0099fa90   RELOCATION_MATCH PASS   GFByteSizeToCharString
+009b05f0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009b05f0   WARN SHARED_HEADER_AVAILABLE CChecksumCacheFile (engine/CChecksumCacheFile.h)
+009b05f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b05f0   WARN RELOC_NAME: ?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z -> 00999c50 labelled 'CAFile::StartFileScan'
+009b05f0   WARN RELOC_NAME: ?InsertGrow@CFileChecksumMap@@QAEXPAUCFileChecksum@@ABU2@ABUSScalarTag@@K_N@Z -> 009b71b0 labelled 'std::vector<std::pair<CCharString, unsigned long>, std::allocator<std::pair<CCharString, unsigned long>>>::_M_insert_overflow'
+009b05f0   WARN RELOC_NAME: ?SortFileChecksums@@YIXPAUCFileChecksum@@0UCKeyPairCompareLess@@@Z -> 009b8ef0 labelled '_global::Sort_SElement8_009b8ef0'
+009b05f0   RELOCATION_MATCH PASS   CheckDependencies
+009cc0b0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009cc0b0   RELOCATION_MATCH PASS   GetRandomValidationValue
+009d1320   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+009d1320   WARN SHARED_HEADER_AVAILABLE CBankFileEntryUpdateData (engine/CBankFileEntryUpdateData.h)
+009d1320   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray (engine/CPackedUIntArray.h)
+009d1320   WARN SHARED_HEADER_AVAILABLE CChecksumCacheFile (engine/CChecksumCacheFile.h)
+009d1320   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+  WARN leaf '?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z' matches no symbol in 009d1320.obj; graded the largest function
+  WARN leaf '?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z' matches no symbol in 009d1320.obj; graded the largest function
+009d1320   RELOCATION_MATCH PASS   UpdateEntry
+009d4db0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+009d4db0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+009d4db0   RELOCATION_MATCH PASS   CDefStringTable
+00a00950   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00a00950   RELOCATION_MATCH PASS   Calc
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineVideoOptions (engine/CEngineVideoOptions.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter (engine/CEngineScreenEffectColourFilter.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b24690   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b24690   WARN RELOC_NAME: ?OnVideoOptionsChanged@CEngineVideoOptionsSink@@QAEXXZ -> 00b2f740 labelled '_global::SetMemberConst_00b2f740'
+00b24690   RELOCATION_MATCH PASS   SetVideoOptions
+00b26360   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b26360   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b26360   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b26360   RELOCATION_MATCH PASS   Initialise
+00b42a90   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42a90   RELOCATION_MATCH PASS   ~CEngineMap
+00b42b10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b42b10   RELOCATION_MATCH PASS   DeleteMap
+00b42d10   WARN SHARED_HEADER_AVAILABLE CDrawMapInfo (engine/CDrawMapInfo.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CIDrawWorldMap (engine/CIDrawWorldMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b42d10   RELOCATION_MATCH PASS   AddMap
+00bdda80   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00bdda80   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bdda80   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00bdda80   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00bdda80   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bdda80   RELOCATION_MATCH PASS   RenderUpdate
+00bdebf0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bdebf0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00bdebf0   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00bdebf0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bdebf0   RELOCATION_MATCH PASS   Update
+00bdedd0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00bdedd0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bdedd0   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00bdedd0   RELOCATION_MATCH PASS   Load
+00be2740   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00be2740   RELOCATION_MATCH PASS   PeekFadeEnd
+
+WINS: 26
+  004014a0 RELOCATION_MATCH CCRC::?Calc@CCRC@@
+  00520390 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?ClearPersistenceDataForSection@CEntityRuntimePersistence@NThingManager@@QAEXABVCCharString@@@Z
+  0099ee20 RELOCATION_MATCH CCharString::GetAsUpperCase
+  0099f450 RELOCATION_MATCH CCharString::RemoveWhiteSpaceBegin
+  0099f4d0 RELOCATION_MATCH CCharString::RemoveWhiteSpaceEnd
+  0099f690 RELOCATION_MATCH _global::??H@YI?AVCCharString
+  0099f830 RELOCATION_MATCH _global::?GFIntToCharString@@YI?AVCCharString@@J@Z
+  0099f8b0 RELOCATION_MATCH _global::?GFUIntToCharString@@YI?AVCCharString@@K@Z
+  0099f930 RELOCATION_MATCH _global::?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z
+  0099f9b0 RELOCATION_MATCH _global::?GFBoolToCharString@@YI?AVCCharString@@_N@Z
+  0099fa50 RELOCATION_MATCH CCharString::??0CCharString@
+  0099fa90 RELOCATION_MATCH _global::?GFByteSizeToCharString@@YI?AVCCharString@@KJ@Z
+  009b05f0 RELOCATION_MATCH CDefinitionManager::CheckDependencies
+  009cc0b0 RELOCATION_MATCH CBankFile::GetRandomValidationValue
+  009d1320 RELOCATION_MATCH CBankFile::?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z
+  009d4db0 RELOCATION_MATCH CDefStringTable::??0CDefStringTable@@QAE@XZ
+  00a00950 RELOCATION_MATCH CCRC::?Calc@CCRC@@
+  00b24690 RELOCATION_MATCH CEngine::?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b42a90 RELOCATION_MATCH CEngineMap::??1CEngineMap@@QAE@XZ
+  00b42b10 RELOCATION_MATCH CEngineWorldMap::?DeleteMap@CEngineWorldMap
+  00b42d10 RELOCATION_MATCH CEngineWorldMap::AddMap
+  00bdda80 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate
+  00bdebf0 RELOCATION_MATCH CQuadTreeElement::?Update@CQuadTreeElement
+  00bdedd0 RELOCATION_MATCH CLocalDetailCacheMap::CObjectTypeCollectionPalette::Load
+  00be2740 RELOCATION_MATCH CLocalDetailObjectCollectionType::?PeekFadeEnd@CLocalDetailObjectCollectionType@@QBEMXZ

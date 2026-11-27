@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z -> ?GetStyleCardsListUIComponentPC@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z	00589402	0058a729	NF479 b5 Codex p29 line 43: 0058a729
+delete	?GetPBestTargetToFaceForCreature@@YIPBVCThing@@PAVCThingCreatureBase@@@Z	0097e140	009804a0	NF479 b5 Codex p29 line 108: witness 009804a0 now binds ?GetPBestTargetToFaceForCreature@?A0x9dd55740@@YIPAVCThing@@ABVCThingCreatureBase@@@Z, which has a line at this target (?A0x hash stripped); no landed object still references ?GetPBestTargetToFaceForCreature@@YIPBVCThing@@PAVCThingCreatureBase@@@Z

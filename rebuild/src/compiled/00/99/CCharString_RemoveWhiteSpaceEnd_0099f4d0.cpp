@@ -19,7 +19,6 @@ class CCharStringData { public:                      // 17 bytes
     long          NoRefs;                     // +0x0d
 };
 #pragma pack(pop)
-extern long g_CCharStringInstanceCount;       // 0x013BD800
 extern char g_EmptyCharString[];              // 0x0129AAF4
 
 class CCharString {
@@ -28,7 +27,7 @@ public:
     ~CCharString()                            // 0x0099EAE0, inlined
     {
         UnassignString();
-        --g_CCharStringInstanceCount;
+        --NoStrings;
     }
     const CCharString& operator=(const CCharString& other)   // 0x0099EFB0, inlined
     {
@@ -48,6 +47,10 @@ public:
     const char* GetText() const { return PStringData == 0 ? g_EmptyCharString : PStringData->PData; }
     void RemoveWhiteSpaceBegin();
     void RemoveWhiteSpaceEnd();
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 void CCharString::RemoveWhiteSpaceEnd()

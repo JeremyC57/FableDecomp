@@ -175,8 +175,6 @@ symbol	target
 ?GFXToY@@YIMM@Z	009e23f0
 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ	00a14480
 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ	00c258d0
-?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z	005850fd
-?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z	00589402
 ?GetTargetPosition@CThingAICreature@@QBE?AVC3DVector@@XZ	006a9520
 ?GetTargetPosition@CThingAICreature@@QBE?AVC3DVector@@XZ	0082fe60
 ?IsKeyHeld@CManager@NUISystem@@QAE_NW4EUsedKeys@12@@Z	0041e10d

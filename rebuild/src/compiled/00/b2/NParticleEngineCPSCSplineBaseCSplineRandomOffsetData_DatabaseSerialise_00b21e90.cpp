@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext& context, bool) -- persist the two flags, the offset count (the arrays sized to at least the initial spline's point count), each offset limit/speed by indexed name, then snapshot or clear the previous spline
-// Leaf: DatabaseSerialise@CSplineRandomOffsetData
+// Leaf: ?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z
 // Flags: /d2inlS84
 // Inline-budget: /d2inlS84 -- retail expands the vector<C3DVector> erase's random-access __copy (DeleteAllControlPoints, the only __copy site:
 //   0x00B220B6; the function calls 0x0074CA20 nowhere) where the default budget calls it; sweep (NF138 / NF144 / NF147): /d2inlS60 DIFFER(582v619),
@@ -58,6 +58,7 @@ FABLE_FORCEINLINE void SaveValue(CPersistContext& context, const char* name, T& 
 }
 
 namespace NParticleEngine {
+class CEmitterDatabaseSerialiseInfo;   // NF479: the PDB parameter (Ego_r / FableWin ?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z; was bool, unused)
 class CPSCSplineBase { public:
     class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;          // +0x00
@@ -67,11 +68,11 @@ class CPSCSplineBase { public:
         bool              ResetEachFrame;         // +0x2D
         CArray<C3DVector> SplinePosOffsetLimits;  // +0x30
         CArray<C3DVector> SplinePosOffsetSpeed;   // +0x3C
-        void DatabaseSerialise(CPersistContext& context, bool transfer);
+        void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);
     };
 };
 
-void CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext& context, bool)
+void CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo&)
 {
     context.Transfer("OffsetOnlyAtStartup", OffsetOnlyAtStartup, false);
     context.Transfer("ResetEachFrame", ResetEachFrame, false);

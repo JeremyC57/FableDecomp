@@ -39,7 +39,9 @@ class CEngineCamera { public:
 class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long primitiveTypeMask, float fadeDistance);   // 0x00B597E0
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }   // 0x01436E88
 
 class CLocalDetailCacheMap { public:
     class CObjectCacheGroupCollection { public:
@@ -76,7 +78,7 @@ void CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate(float lodDistance, CEn
     double length = delta.GetLength();
     float distance = (float)length;
     float nearDistance = distance - BoundingSphere.Radius;
-    if (g_pLocalDetailGenerator->ModifyFadeDistanceForVideoOptions(PrimitiveTypeMask, MaxFadeDistance) < nearDistance)
+    if (NEngineInternal::GPLocalDetailGenerator->ModifyFadeDistanceForVideoOptions(PrimitiveTypeMask, MaxFadeDistance) < nearDistance)
         return;
     camera->ClipSphere(BoundingSphere.Center, BoundingSphere.Radius, &clipFlags);
     if (clipFlags & 0x40)

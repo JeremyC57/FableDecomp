@@ -2,7 +2,7 @@
 // live-instance counter, (dead) release of the null block, then LoadFromFile(file, 0, length).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099FA50, length 52 bytes.
 // Callees: CCharString::UnassignString @ 0x0099E9B0, CCharString::LoadFromFile @ 0x0099F2E0.
-// Globals: g_CCharStringInstanceCount @ 0x013BD800. Same prologue shape as the landed (const char*, long)
+// Globals: CCharString::NoStrings @ 0x013BD800. Same prologue shape as the landed (const char*, long)
 // constructor @ 0x0099EBF0: the `if (PStringData) UnassignString();` is an inlined Unassign() helper
 // that VC7.1 keeps even though the member was just zeroed.
 // CCharString model (Ego_r.pdb layout, byte-exact with retail): a 4-byte handle on a 17-byte shared
@@ -27,7 +27,6 @@ class CCharStringData { public:                        // 17 bytes
 #pragma pack(pop)
 class CAFile;
 class CASuspendableProcess;
-extern long g_CCharStringInstanceCount;         // 0x013BD800
 
 class CCharString {
 public:
@@ -35,12 +34,16 @@ public:
     CCharString(CAFile& file, long length);
     protected: void UnassignString(); public:                      // 0x0099E9B0
     void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length); // 0x0099F2E0
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharString::CCharString(CAFile& file, long length)
     : PStringData(0)
 {
-    ++g_CCharStringInstanceCount;
+    ++NoStrings;
     if (PStringData != 0)
         UnassignString();
     LoadFromFile(file, 0, length);

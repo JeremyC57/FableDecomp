@@ -113,7 +113,9 @@ namespace NEngineInternal { extern CEngineScreenEffectDisplacementRenderer* GPSc
 namespace NEngineInternal { extern CEngineScreenEffectOutlineGlow* GPScreenEffectOutlineGlow; }   // 0x01436E3C ?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A (Anniversary publics; type: ctor 0x00B891B0 / RTTI)
 extern CEngineScreenEffectColourFilter*         g_pColourFilter;                     // 0x01436E40
 extern CEngineWeatherRenderer*                  g_pEngineWeatherRenderer;            // 0x01436E44
-extern CEngineEnvironment*                      g_pEngineEnvironment_01436e48;       // 0x01436E48
+// NF479 (Codex pass 29 name fixes): ?GPEngineEnvironment@NEngineInternal@@3PAVCEngineEnvironment@@A (raw Ego_r / FableWin / Ego_d PDB
+//   publics; was g_pEngineEnvironment_01436e48).
+namespace NEngineInternal { extern CEngineEnvironment* GPEngineEnvironment; }        // 0x01436E48
 extern CEngineBillboardGenerator*               g_pEngineBillboardGenerator;         // 0x01436E4C
 namespace NEngineInternal { extern CEngineSkyRenderer* GPSkyRenderer; }                // 0x01436E50
 extern CEngineWaterRenderer*                    g_pEngineWaterRenderer;              // 0x01436E54
@@ -126,7 +128,9 @@ namespace NEngineInternal { extern CEngineSubPrimitiveRenderer* GPSubPrimitiveRe
 namespace NEngineInternal { extern CEnginePrimitiveRenderer2D* GPPrimitiveRenderer2D; }        // 0x01436E7C
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }          // 0x01436E80
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }          // 0x01436E84
-extern CEngineLocalDetailGenerator*             g_pLocalDetailGenerator;             // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator*             GPLocalDetailGenerator; }             // 0x01436E88
 namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                   // 0x01436E8C
 extern CEngineStateBlocks*                      g_pEngineStateBlocks;                // 0x01436E90
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                  // 0x01436E98
@@ -172,7 +176,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineResourceManager(init, memory_init), NEngineInternal::GPResourceManager, 1);
     AddEngineComponent(new CEngineOcclusionManager(), NEngineInternal::GPOcclusionManager, 0);
     AddEngineComponent(new CEnginePrimitiveOcclusionManager(), g_pPrimitiveOcclusionManager, 0);
-    AddEngineComponent(new CEngineEnvironment(), g_pEngineEnvironment_01436e48, 0);
+    AddEngineComponent(new CEngineEnvironment(), NEngineInternal::GPEngineEnvironment, 0);
     AddEngineComponent(new CEngineCamera(true), NEngineInternal::GPCamera, 0);
     AddEngineComponent(new CEngineStateBlocks(), g_pEngineStateBlocks, 0);
     AddEngineComponent(new CEngineBillboardGenerator(), g_pEngineBillboardGenerator, 0);
@@ -194,7 +198,7 @@ bool CEngine::Initialise(const CEngineInit& init)
         AddEngineComponent(new CEngineLandscapeRenderer(memory_init), NEngineInternal::GPLandscapeRenderer, 0);
         AddEngineComponent(new CEngineSkyRenderer(init), NEngineInternal::GPSkyRenderer, 0);
         AddEngineComponent(new CEngineWeatherRenderer(), g_pEngineWeatherRenderer, 0);
-        AddEngineComponent(new CEngineLocalDetailGenerator((init.InitFlags & 4) != 0), g_pLocalDetailGenerator, 0);
+        AddEngineComponent(new CEngineLocalDetailGenerator((init.InitFlags & 4) != 0), NEngineInternal::GPLocalDetailGenerator, 0);
         AddEngineComponent(new CEngineScreenEffectColourFilter(init), g_pColourFilter, 0);
         AddEngineComponent(new CEngineScreenEffectGlowRenderer(init), g_pGlowRenderer_01436e34, 0);
         AddEngineComponent(new CEngineScreenEffectRadialBlurRenderer(init), g_pRadialBlurRenderer_01436e30, 0);

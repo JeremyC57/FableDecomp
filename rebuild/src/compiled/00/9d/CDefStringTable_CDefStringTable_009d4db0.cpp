@@ -16,14 +16,15 @@ struct SYSTEMTIME_ {
     unsigned short wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds;
 };
 extern "C" __declspec(dllimport) void __stdcall GetSystemTime(SYSTEMTIME_* time);   // import 0x0143FE18
-extern const unsigned long g_crc32Table[256];      // 0x0129A168
+// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
+extern const unsigned long CRC32TAB[256];          // 0x0129A168 (was g_crc32Table)
 
 inline unsigned long GetCRC32(const void* data, unsigned long size)
 {
     unsigned long value = 0;
     const unsigned char* bytes = (const unsigned char*)data;
     for (unsigned long i = 0; i < size; ++i)
-        value = g_crc32Table[bytes[i] ^ (value & 0xff)] ^ (value >> 8);
+        value = CRC32TAB[bytes[i] ^ (value & 0xff)] ^ (value >> 8);
     return value;
 }
 

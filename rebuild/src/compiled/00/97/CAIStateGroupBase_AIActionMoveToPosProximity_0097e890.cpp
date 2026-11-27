@@ -129,7 +129,10 @@ class CThingCreatureBase : public CThingPhysical { public:
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0
 };
-CThing* __fastcall GetPBestTargetToFaceForCreature(CThingCreatureBase* creature);   // 0x0097E140
+// NF479 (Codex pass 29 name fixes): the callee is the anonymous-namespace helper of the CAIStateGroupBase TU, Ego_r / FableWin / Ego_d
+//   ?GetPBestTargetToFaceForCreature@?A0xbf588e90@@YIPAVCThing@@ABVCThingCreatureBase@@@Z (const reference, non-const result); this TU's
+//   anonymous-namespace hash differs (one spelling after the ?A0x strip, advisor ruling 2026-11-20). Was the global PAV form.
+namespace { CThing* __fastcall GetPBestTargetToFaceForCreature(const CThingCreatureBase& creature); }   // 0x0097E140
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -218,7 +221,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
     input.MovementType = anim;
     input.Speed = 0.0f;
     do {
-        CThing* faceTarget = GetPBestTargetToFaceForCreature(GetCreature());
+        CThing* faceTarget = GetPBestTargetToFaceForCreature(*GetCreature());
         if (GetCreature()->HasTC(0x43))
             ((CTCLook*)GetCreature()->GetTC(0x43))->TrackNearestInterestingThing(true);
         CTCCreatureNavigation* navigation;

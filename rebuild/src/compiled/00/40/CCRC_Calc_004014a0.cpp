@@ -13,7 +13,8 @@
 // separate from the loop test (both `test esi,esi` survive); the running value stays in eax.
 // An earlier lane already landed this body as Global_CCRC_Calc_004014a0.cpp (fable_crc.h); this
 // TU is self-contained.
-extern unsigned long g_CRCTable[256];             // 0x0129A168
+// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
+extern const unsigned long CRC32TAB[256];          // 0x0129A168 (was the non-const ?g_CRCTable@@3PAKA)
 
 struct CCRC {
     static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long byteCount);
@@ -25,7 +26,7 @@ unsigned long __fastcall CCRC::Calc(unsigned long seed, const void* data, unsign
     {
         const unsigned char* bytes = static_cast<const unsigned char*>(data);
         for (unsigned long index = 0; index < byteCount; ++index)
-            seed = g_CRCTable[bytes[index] ^ (seed & 0xFF)] ^ (seed >> 8);
+            seed = CRC32TAB[bytes[index] ^ (seed & 0xFF)] ^ (seed >> 8);
     }
     return seed;
 }

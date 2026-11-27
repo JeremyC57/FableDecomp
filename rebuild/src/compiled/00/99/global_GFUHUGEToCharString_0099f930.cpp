@@ -7,7 +7,7 @@
 //   not a CCharString static (the forge name "CCharString::FromUInt64" is descriptive). FINDINGS chunk 409.
 // Callees: CCharString::Sprintf(const char*, ...) @ 0x0099F1F0 (varargs member: __cdecl with `this` pushed first),
 //          CCharString::UnassignString @ 0x0099E9B0 (twice: the copy's inlined assignment and the local's destructor).
-// Globals: g_CCharStringInstanceCount @ 0x013BD800 (+1 per constructor, -1 per destructor). Literal "%I64u" @ 0x0129AB04.
+// Globals: CCharString::NoStrings @ 0x013BD800 (+1 per constructor, -1 per destructor). Literal "%I64u" @ 0x0129AB04.
 // Shape: a `__fastcall` function returning the class by value: the hidden result pointer arrives in ecx (esi) and the
 // 64-bit argument stays on the stack (`ret 8`). The named local is default-constructed (null block, counter++),
 // formatted, then copied out through the inline copy constructor (null block, counter++, the self-test and the
@@ -15,15 +15,14 @@
 // destroyed through the inline destructor (UnassignString, counter--). Same inline shapes as the landed
 // copy constructor @ 0x0099EC30 and destructor @ 0x0099EAE0.
 class CCharStringData;
-extern long g_CCharStringInstanceCount;        // 0x013BD800
 
 class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
-    CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
+    CCharString() : PStringData(0) { ++NoStrings; }
     CCharString(const CCharString& other) : PStringData(0)
     {
-        ++g_CCharStringInstanceCount;
+        ++NoStrings;
         if (&other != this) {
             if (PStringData != 0)
                 UnassignString();
@@ -34,9 +33,13 @@ public:
             }
         }
     }
-    ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
+    ~CCharString() { UnassignString(); --NoStrings; }
     protected: void UnassignString(); public:                      // 0x0099E9B0
     void __cdecl Sprintf(const char* format, ...);   // 0x0099F1F0
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value)

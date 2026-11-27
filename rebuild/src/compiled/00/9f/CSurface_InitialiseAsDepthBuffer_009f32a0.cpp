@@ -1,4 +1,5 @@
 // CSurface::InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelFormat& format, ESurfaceMultisampleType multisample, bool) -- release any held surface, then CreateDepthStencilSurface on the render device; true on success
+// Leaf: ?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F32A0, length 107 bytes (+5 int3 padding). `ret 10h` (the trailing bool is unused;
 // Discard and MultisampleQuality are pushed as constant 0).
 // Callees: GFGetSystemManager @ 0x009A4EC0 (device = system +0x60 -> +0x58); IDirect3DSurface9::Release (vtable +8);
@@ -39,6 +40,9 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 #include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (name-fix NF29, both PDBs ?GD3DFormats@@3QBVCD3DFormatInfo@@B: was the local SPixelFormatInfo table g_pixelFormatInfo)
+// NF479 (Codex pass 29 name fixes): the multisample parameter is the shared 4-byte enum ESurfaceMultisampleType (Ego_r / FableWin / Ego_d
+//   ?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z; was long). Bytes unchanged.
+#include "engine/ESurfaceMultisampleType.h"
 class CPixelFormat { public: long m_format; };
 class C2DExtentsI { public: long Width, Height; };
 
@@ -55,10 +59,10 @@ class CSurface { public:                               // vtable 0x0122F84C, 0x1
             AllocationSource = 0;
         }
     }
-    bool InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelFormat& format, long multisample, bool);
+    bool InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelFormat& format, ESurfaceMultisampleType multisample, bool);
 };
 
-bool CSurface::InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelFormat& format, long multisample, bool)
+bool CSurface::InitialiseAsDepthBuffer(const C2DExtentsI& size, const CPixelFormat& format, ESurfaceMultisampleType multisample, bool)
 {
     Uninitialise();
     IDirect3DDevice9* device = GFGetSystemManager()->m_pRender->m_pDevice;

@@ -4,20 +4,19 @@
 // Callees: CCharString::Sprintf(const char*, ...) @ 0x0099F1F0 (varargs member: `__cdecl` with `this` pushed first;
 // landed as "Format_vsnprintf"), CCharString::UnassignString() @ 0x0099E9B0 (the copy's inlined assignment and the
 // local's destructor).
-// Globals: g_CCharStringInstanceCount @ 0x013BD800. Literal "%u" @ 0x0129AB00.
+// Globals: CCharString::NoStrings @ 0x013BD800. Literal "%u" @ 0x0129AB00.
 // Shape: the landed GFUHUGEToCharString (0x0099F930, catalog "CCharString::FromUInt64") with an unsigned 32-bit argument; sibling of GFIntToCharString 0x0099F830: named
 // local default-constructed, formatted, copied out through the inline copy constructor (no NRVO) and destroyed.
 // Leaf: ?GFUIntToCharString@@YI?AVCCharString@@K@Z
 class CCharStringData;
-extern long g_CCharStringInstanceCount;        // 0x013BD800
 
 class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
-    CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
+    CCharString() : PStringData(0) { ++NoStrings; }
     CCharString(const CCharString& other) : PStringData(0)
     {
-        ++g_CCharStringInstanceCount;
+        ++NoStrings;
         if (&other != this) {
             if (PStringData != 0)
                 UnassignString();
@@ -28,9 +27,13 @@ public:
             }
         }
     }
-    ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
+    ~CCharString() { UnassignString(); --NoStrings; }
     protected: void UnassignString(); public:                      // 0x0099E9B0
     void Sprintf(const char* format, ...);      // 0x0099F1F0
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharString __fastcall GFUIntToCharString(unsigned long value)

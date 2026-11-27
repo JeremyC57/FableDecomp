@@ -1,0 +1,3 @@
+address	mangled
+006ea540	?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z
+009f32a0	?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z

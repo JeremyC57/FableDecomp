@@ -84,7 +84,9 @@ extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
 #include "engine/CEnginePrimitiveRenderer.h"   // ?SetDrawDistanceQuality@CEnginePrimitiveRenderer@@QAEXW4EEngineVideoOptionQuality@@ABVCEngineVideoOptionsDef@@@Z 0x00B32010
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The primitive renderer is the shared engine/CEnginePrimitiveRenderer.h retail class (SetDrawDistanceQuality, PASS22_DRAWDISTANCE).
-extern CEngineLocalDetailGenerator*     g_pLocalDetailGenerator;  // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator*     GPLocalDetailGenerator; }  // 0x01436E88
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }       // 0x01436E98
 namespace NEngineInternal { extern CEngine* GPEngine; }                // 0x01436EA4
 namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
@@ -118,8 +120,8 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     NEngineInternal::GPResourceManager->ResizeHiresTextureMemory(NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.TextureDetail]->HiresTextureMemory);
     CEngineVideoOptionsDef* meshDef = NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
     NEngineInternal::GPPrimitiveRenderer->SetDrawDistanceQuality(VideoOptions.MeshDetail, *meshDef);
-    if (g_pLocalDetailGenerator)
-        g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(*meshDef);
+    if (NEngineInternal::GPLocalDetailGenerator)
+        NEngineInternal::GPLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(*meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();
     if (SmartRestoreComponentVideoMemory() != SMART_RESTORE_OK)
         result = false;

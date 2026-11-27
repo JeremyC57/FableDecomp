@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+delete	?CUnprovenGlobal_0129a168@@3QBKB	0129a168	00520390	NF479 b3 Codex p29 line 6: witness 00520390 now binds ?CRC32TAB@@3QBKB, which has a line at this target; no landed object still references ?CUnprovenGlobal_0129a168@@3QBKB
+delete	?g_CRCTable@@3QBKB	0129a168	009b05f0	NF479 b3 Codex p29 line 6: witness 009b05f0 now binds ?CRC32TAB@@3QBKB, which has a line at this target; no landed object still references ?g_CRCTable@@3QBKB
+delete	?g_crc32Table@@3QBKB	0129a168	009cc0b0	NF479 b3 Codex p29 line 6: witness 009cc0b0 now binds ?CRC32TAB@@3QBKB, which has a line at this target; no landed object still references ?g_crc32Table@@3QBKB
+delete	?Table@CCRC@@2QBKB	0129a168	00a00950	NF479 b3 Codex p29 line 6: witness 00a00950 now binds ?CRC32TAB@@3QBKB, which has a line at this target; no landed object still references ?Table@CCRC@@2QBKB
+delete	?g_pLocalDetailGenerator_01436e88@@3PAVCEngineLocalDetailGenerator@@A	01436e88	00be2740	NF479 b3 Codex p29 line 135: witness 00be2740 now binds ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A, which has a line at this target; no landed object still references ?g_pLocalDetailGenerator_01436e88@@3PAVCEngineLocalDetailGenerator@@A

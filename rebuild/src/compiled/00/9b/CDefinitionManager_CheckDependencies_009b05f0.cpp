@@ -52,7 +52,8 @@ public:
     void Open(const CWideString& path);                 // 0x00A60D40
     unsigned long GetChecksum(CWideString const&a0);   // 0x00A60FB0 (Ego_r.pdb ?GetChecksum@CChecksumCacheFile@@QAEKABVCWideString@@@Z)
 };
-extern const unsigned long g_CRCTable[256];             // 0x0129A168
+// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
+extern const unsigned long CRC32TAB[256];          // 0x0129A168 (was g_CRCTable)
 struct SScalarTag { SScalarTag() { } };
 struct CFileChecksum {
     CCharString   first;
@@ -125,7 +126,7 @@ inline unsigned long UpdateCRC(unsigned long crc, const void* data, unsigned lon
 {
     const unsigned char* bytes = (const unsigned char*)data;
     for (unsigned long i = 0; i < length; ++i)
-        crc = (crc >> 8) ^ g_CRCTable[bytes[i] ^ (crc & 0xff)];
+        crc = (crc >> 8) ^ CRC32TAB[bytes[i] ^ (crc & 0xff)];
     return crc;
 }
 struct CWideStringVector {

@@ -1,0 +1,3 @@
+address	old_name	new_name	reason
+00687d10	CInputManager::GetButtonPressureForEvent	CInputProcessGameBase::GetButtonPressureForEvent	NF479 b4 Codex p29 line 2: the self is now ?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z (Ego_r / FableWin / Ego_d publics)
+00887830	CBlendedEnvironmentTheme::BlendTextureSets	NEnvironmentInternal::CBlendedEnvironmentTheme::BlendTextureSets	NF479 b4 Codex p29 line 139: the self is now in NEnvironmentInternal (Ego_r / FableWin / Ego_d publics), the namespace 0x00886E80's landed CompactTextureSet catalog name already uses

@@ -1,4 +1,5 @@
 // CLocalDetailPrimitiveBase::ClipPrimitive(CLocalDetailObjectCollectionType* type, CEngineCamera* camera, bool skipDistanceTest, unsigned long clipFlags) -- false when the primitive's bounding sphere lies beyond the collection's fade-out distance from the camera (unless the distance test is skipped), else the camera's sphere clip: visible unless the "outside" clip bit (bit 6) comes back set
+// Leaf: ?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF9AA0, length 160 bytes.
 // Callees: CLocalDetailObjectCollectionType::PeekFadeEnd() @ 0x00BE2740, CEngineCamera::ClipSphere(const C3DVector&, float, unsigned long*) const @ 0x00B30480.
@@ -23,21 +24,22 @@ class CLocalDetailPrimitiveBase { public:
     unsigned char _pad00[0x20];
     C3DVector     m_centre;                        // +0x20
     float         m_radius;                        // +0x2c
-    bool ClipPrimitive(CLocalDetailObjectCollectionType* type, CEngineCamera* camera, bool skipDistanceTest, unsigned long clipFlags);
+    // NF479: Ego_r / FableWin ?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z
+    bool ClipPrimitive(const CLocalDetailObjectCollectionType* type, const CEngineCamera& camera, bool skipDistanceTest, unsigned long clipFlags);
 };
 
-bool CLocalDetailPrimitiveBase::ClipPrimitive(CLocalDetailObjectCollectionType* type, CEngineCamera* camera, bool skipDistanceTest, unsigned long clipFlags)
+bool CLocalDetailPrimitiveBase::ClipPrimitive(const CLocalDetailObjectCollectionType* type, const CEngineCamera& camera, bool skipDistanceTest, unsigned long clipFlags)
 {
     if (!skipDistanceTest)
     {
         C3DVector d;
-        d.X = camera->m_position.X - m_centre.X;
-        d.Y = camera->m_position.Y - m_centre.Y;
-        d.Z = camera->m_position.Z - m_centre.Z;
+        d.X = camera.m_position.X - m_centre.X;
+        d.Y = camera.m_position.Y - m_centre.Y;
+        d.Z = camera.m_position.Z - m_centre.Z;
         float range = type->PeekFadeEnd() + m_radius;
         if (range * range < d.Z * d.Z + d.Y * d.Y + d.X * d.X)
             return false;
     }
-    camera->ClipSphere(m_centre, m_radius, &clipFlags);
+    camera.ClipSphere(m_centre, m_radius, &clipFlags);
     return ((SClipFlags*)&clipFlags)->Outside ? false : true;
 }

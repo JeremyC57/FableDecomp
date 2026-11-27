@@ -4,7 +4,7 @@
 // Callees: operator new @ 0x00BFEA1A (0x11-byte CCharStringData), CBasicString<char>::CBasicString(const char*) @
 // 0x009A0590, CCharString::operator+=(const CCharString&) @ 0x0099F0A0, CCharString::UnassignString() @ 0x0099E9B0
 // (inside the inlined copy and the local's destructor).
-// Globals: g_CCharStringInstanceCount @ 0x013BD800 (+1 per constructor, -1 per destructor).
+// Globals: CCharString::NoStrings @ 0x013BD800 (+1 per constructor, -1 per destructor).
 // Shape: `CCharString result(left); result += right; return result;` -- the (const char*, long = -1) constructor is
 // inlined with its AllocStringData (the landed 0x0099EA60 body; length -1 keeps only the `new CCharStringData(text)`
 // arm: operator new, null test, CBasicString(text), NoRefs = 1); no NRVO, so the return copies through the inline
@@ -12,7 +12,6 @@
 // inline destructor calls UnassignString and decrements the count.
 // Layout (landed CCharString model): CCharStringData = packed CBasicString<char> (13 bytes) + NoRefs +0xD.
 // Leaf: ??H@YI?AVCCharString
-extern long g_CCharStringInstanceCount;                 // 0x013BD800
 
 #pragma pack(push, 1)
 struct CBasicStringChar {                               // CBasicString<char>, 13 bytes
@@ -38,13 +37,13 @@ public:
     CCharStringData* PStringData;                       // +0x00
     CCharString(const char* text, long length = -1) : PStringData(0)
     {
-        ++g_CCharStringInstanceCount;
+        ++NoStrings;
         if (text != 0 && *text != 0)
             PStringData = AllocStringData(text, length);
     }
     CCharString(const CCharString& other) : PStringData(0)
     {
-        ++g_CCharStringInstanceCount;
+        ++NoStrings;
         if (&other != this) {
             if (PStringData != 0)
                 UnassignString();
@@ -55,7 +54,7 @@ public:
             }
         }
     }
-    ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
+    ~CCharString() { UnassignString(); --NoStrings; }
     CCharStringData* AllocStringData(const char* text, long length)   // 0x0099EA60 (inlined here)
     {
         if (length == -1)
@@ -64,6 +63,10 @@ public:
     }
     protected: void UnassignString(); public:                              // 0x0099E9B0
     const CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharString __fastcall operator+(const char* left, const CCharString& right)

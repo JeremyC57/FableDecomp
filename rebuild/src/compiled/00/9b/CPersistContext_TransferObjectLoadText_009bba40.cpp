@@ -1,5 +1,5 @@
 // CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item) -- text load of a named object: on a copy of the context's parser, for every occurrence of the name (until the context is finished) let the object read itself, then require the closing ";" (cleaning the consumed text out of the source string with spaces, newlines kept) or report the error
-// Leaf: ?TransferObjectLoadText@CPersistContext@
+// Leaf: ?TransferObjectLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BBA40, 417 bytes + padding (`ret 8`). Callees: CStringParser(const CStringParser&) @ 0x0046381B,
 // CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0, CStringParser 0x009B9C00 (SkipPastWholeString), ReadAsSymbol
 // @ 0x009BA790, CBasicString<char>::operator== @ 0x004115A0, CPersistContext::PersistError @ 0x009BAA90, the comment list dtor 0x004046B0,
@@ -66,7 +66,10 @@ class CStringParser : public CBaseClass { public:                  // retail 0x2
     CCharString ReadAsSymbol();                 // 0x009BA790
 };
 class CPersistContext;
-struct CPersistContext_TransferableObjectBase {
+// NF479 (Codex pass 29 name fixes): the object's class is CPersistContext_TransferableComponentGenericType and the member is protected (Ego_r /
+//   FableWin ?TransferObjectLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z; was the public
+//   struct CPersistContext_TransferableObjectBase form).
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void v00();
     virtual void TransferIn(CPersistContext* context, CStringParser* parser);   // slot 1 (+4)
 };
@@ -90,10 +93,12 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
     void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);
+protected:
+    void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item);
+public:
 };
 
-void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item)
+void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item)
 {
     CStringParser parser(*PParser);
     long nameLength = strlen(name);

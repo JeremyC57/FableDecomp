@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099F9B0, 145 bytes (+ int3 padding). PDB name (Ego_r):
 // `?GFBoolToCharString@@YI?AVCCharString@@_N@Z` = `CCharString __fastcall GFBoolToCharString(bool)`.
 // Callees: CCharString::UnassignString @ 0x0099E9B0, operator new @ 0x00BFEA1A (null-checked),
-// CBasicString<char>::CBasicString(const char*) @ 0x009A0590. Globals: g_CCharStringInstanceCount @ 0x013BD800.
+// CBasicString<char>::CBasicString(const char*) @ 0x009A0590. Globals: CCharString::NoStrings @ 0x013BD800.
 // Literals: "TRUE" @ 0x0122D6D4, "FALSE" @ 0x0122D6CC.
 // Shape: a `__fastcall` free function returning the class by value: the hidden result pointer arrives in ecx (esi),
 // the bool in dl. GFBoolToCharString lives in the CCharString translation unit (0x0099E4B0..0x0099FA80), so the
@@ -35,7 +35,6 @@ class CCharStringData { public:                        // 17 bytes
     CCharStringData(const char* text, unsigned long length) : Data(text, length), NoRefs(1) { }
 };
 #pragma pack(pop)
-extern long g_CCharStringInstanceCount;         // 0x013BD800
 
 class CCharString {
 public:
@@ -43,6 +42,10 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (inlined here)
     protected: void UnassignString(); public:                      // 0x0099E9B0
     protected: CCharStringData* AllocStringData(const char* text, long length); public:   // 0x0099EA60 (inlined here)
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharStringData* CCharString::AllocStringData(const char* text, long length)
@@ -55,7 +58,7 @@ CCharStringData* CCharString::AllocStringData(const char* text, long length)
 CCharString::CCharString(const char* text, long length)
     : PStringData(0)
 {
-    ++g_CCharStringInstanceCount;
+    ++NoStrings;
     if (PStringData != 0)
         UnassignString();
     if (text != 0 && text[0] != '\0')

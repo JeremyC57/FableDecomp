@@ -5,7 +5,9 @@
 class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long detailClassMask, float distance);   // 0x00B597E0
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator_01436e88;   // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was g_pLocalDetailGenerator_01436e88).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }   // 0x01436E88
 
 class CLocalDetailObjectCollectionType { public:
     unsigned char _pad00[0x20];
@@ -17,5 +19,5 @@ class CLocalDetailObjectCollectionType { public:
 
 float CLocalDetailObjectCollectionType::PeekFadeEnd() const
 {
-    return g_pLocalDetailGenerator_01436e88->ModifyFadeDistanceForVideoOptions(1 << m_detailClass, m_fadeEnd);
+    return NEngineInternal::GPLocalDetailGenerator->ModifyFadeDistanceForVideoOptions(1 << m_detailClass, m_fadeEnd);
 }

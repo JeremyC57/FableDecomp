@@ -1,0 +1,2 @@
+address	claimed_symbol	reason
+0097e140	?GetPBestTargetToFaceForCreature@?A0x8192627f@@YIPAVCThing@@ABVCThingCreatureBase@@@Z	Codex line 108: the anonymous-namespace hash ?A0x8192627f is in no PDB (Ego_r / FableWin / Ego_d give ?A0xbf588e90); hashes are per-TU and compared stripped (EXTRA_RULES 2026-11-20). The stripped spelling is right and already landed (self done-already; binders moved in b5)

@@ -127,7 +127,9 @@ class CEngineLocalDetailGenerator {
 public:
     const CLocalDetailObjectCollectionType* RegisterObjectCollectionType(const CLocalDetailObjectCollectionType& type);   // 0x00B59C70
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }   // 0x01436E88
 
 namespace CLocalDetailCacheMap {
 
@@ -145,7 +147,7 @@ void CObjectTypeCollectionPalette::Load(CDataInputStream& stream)
     for (; count > 0; --count) {
         CLocalDetailObjectCollectionType type;
         type.Load(stream, flag);
-        const CLocalDetailObjectCollectionType* registered = g_pLocalDetailGenerator->RegisterObjectCollectionType(type);
+        const CLocalDetailObjectCollectionType* registered = NEngineInternal::GPLocalDetailGenerator->RegisterObjectCollectionType(type);
         Entries.push_back(registered);
     }
 }

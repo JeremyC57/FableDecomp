@@ -1,0 +1,22 @@
+addr       parity           behav  name
+0048dc8b   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0048dc8b   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0048dc8b   RELOCATION_MATCH PASS   WordWrapText
+0048e012   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+0048e012   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+0048e012   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0048e012   RELOCATION_MATCH PASS   GetCharWidthW
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0048f50c   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0048f50c   RELOCATION_MATCH PASS   FormatTextForVWindow
+
+WINS: 3
+  0048dc8b RELOCATION_MATCH CSubtitleRenderer::?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z
+  0048e012 RELOCATION_MATCH CSubtitleRenderer::GetCharWidthW
+  0048f50c RELOCATION_MATCH CSubtitleRenderer::?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z

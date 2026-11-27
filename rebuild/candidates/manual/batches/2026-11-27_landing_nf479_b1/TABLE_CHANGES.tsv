@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?WordWrapText@CSubtitleRenderer@@QBE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z -> ?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	0048dc8b	0048f50c	NF479 b1 Codex p29 line 41: private const PDB spelling (Ego_r + FableWin + Ego_d)
+replace	?g_pWordWrapFont@@3PBVCFontBank@@B -> ?PWordWrapFont@CSubtitleRenderer@@0PBVCFontBank@@B	013b87ac	0048f50c	NF479 b1 Codex p29 line 39: private static data member (Ego_r + FableWin + Ego_d PUBLIC); 0x0048E012 binds the same symbol (no table line of its own)

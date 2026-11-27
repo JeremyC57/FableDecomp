@@ -8,24 +8,16 @@
 // Retail bytes:  mov eax,[esp+4] ; mov ecx,[ecx+24h] ; push eax ; call CGamePlayerInterface::GetButtonPressureForEvent ; ret 4
 // Forwards the event to the player interface held at +0x24 and returns its float result (the
 // callee @ 0x00445800 is a manifest-named __fastcall returning float; its label is untrusted).
-class CInputEvent;
-
-struct CGamePlayerInterfaceCalls {
-};
-
-struct CInterfaceOwner_Retail {
-    unsigned char              _pad_0x00[0x24];
-    CGamePlayerInterfaceCalls* Interface;   // +0x24
-    float GetButtonPressureForEvent(CInputEvent* event);
-};
-
-// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
-//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
-//   0x00445800 ?GetButtonPressureForEvent@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z (was ?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z)
+// NF479 (Codex pass 29 name fixes): this is the const member ?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z (Ego_r
+//   0x006B2E20 / FableWin 0x021D4160 publics; both PDBs, NAME_FIXES_QUEUE land1122p26), on the retail view of engine/CInputProcessGameBase.h
+//   (PGamePlayerInterface at +0x24); was the stand-in CInterfaceOwner_Retail::GetButtonPressureForEvent(CInputEvent*). Bytes unchanged.
+// Leaf: ?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_COMBAT_INPUT_PASS26
+#include "engine/CInputProcessGameBase.h"
 class CGamePlayerInterface { public: float GetButtonPressureForEvent(CInputEvent const&) const; };
-float CInterfaceOwner_Retail::GetButtonPressureForEvent(CInputEvent* event)
+float CInputProcessGameBase::GetButtonPressureForEvent(const CInputEvent& event) const
 {
-    // The named float local is what stops VC7.1 turning this into a sibling-call `jmp`.
-    float pressure = reinterpret_cast<const CGamePlayerInterface*>(this->Interface)->GetButtonPressureForEvent(*(event));
+    float pressure = PGamePlayerInterface->GetButtonPressureForEvent(event);
     return pressure;
 }

@@ -1,0 +1,2 @@
+address	symbol	reason
+013b87ac	?g_pWordWrapFont@@3PBVCFontBank@@B	proven: ?PWordWrapFont@CSubtitleRenderer@@0PBVCFontBank@@B is in the raw Ego_r, FableWin and Ego_d PDB publics; both landed binders move (NF479 b1)

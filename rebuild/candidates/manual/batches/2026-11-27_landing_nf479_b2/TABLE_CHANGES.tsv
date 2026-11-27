@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXPAVCThingCreatureBase@@_N@Z	006ea540	007e5b90	NF479 b2 Codex p29 line 156: witness 007e5b90 now binds ?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z, which has a line at this target; no landed object still references ?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXPAVCThingCreatureBase@@_N@Z

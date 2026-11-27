@@ -90,7 +90,8 @@ class CTCWeapon { public:
 
 class CCombatManager { public:
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);           // 0x006EB600 (Ego_r + FableWin AAV)
-    void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase* creature, bool performed);   // 0x006EA540
+    // NF479: Ego_r / FableWin / Ego_d ?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z (was PAV)
+    void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase& creature, bool performed);   // 0x006EA540
 };
 class CWorld { public:
     unsigned char _pad00[0x4c];
@@ -140,7 +141,7 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
                 if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(*action))
                     performed = true;
                 CWorld* world = (&GetWorld());
-                world->PCombatManager->SetCreatureAsAttemptedToPerformedAction(creature, performed);
+                world->PCombatManager->SetCreatureAsAttemptedToPerformedAction(*creature, performed);
             }
         }
     }

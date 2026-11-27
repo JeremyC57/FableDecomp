@@ -40,7 +40,9 @@ namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer
 class CEngineLocalDetailGenerator { public:
     void DeleteMap(CEngineMap* map);            // 0x00B59840
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;    // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }    // 0x01436E88
 class CEngineStaticMapFileBlockManager { public:
     unsigned char _body[0x14];                  // AsyncBankEntry (CCountedPointer) +0x00, Blocks (STLport map) +0x08
     void Reset();                               // 0x00BE05D0
@@ -73,6 +75,6 @@ CEngineMap::~CEngineMap()
     if (LandscapeMap)
         NEngineInternal::GPLandscapeRenderer->DeleteMap(this);
     if (LocalDetailCacheMap)
-        g_pLocalDetailGenerator->DeleteMap(this);
+        NEngineInternal::GPLocalDetailGenerator->DeleteMap(this);
     FileBlockManager.Reset();
 }

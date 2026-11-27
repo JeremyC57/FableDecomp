@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00687d10   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00687d10   WARN STANDIN_LEAF ?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z (catalog CInputManager::GetButtonPressureForEvent; names another function)
+00687d10   RELOCATION_MATCH PASS   GetButtonPressureForEvent
+006d1de0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006d1de0   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+006d1de0   RELOCATION_MATCH PASS   ReceivedConfirmation
+00759870   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00759870   WARN SHARED_HEADER_AVAILABLE CThingPhysicsMeshInfo (engine/CThingPhysicsMeshInfo.h)
+00759870   WARN SHARED_HEADER_AVAILABLE CTCPhysicsRigidBody (engine/CTCPhysicsRigidBody.h)
+00759870   RELOCATION_MATCH PASS   GetPossibleCollidedWithArea
+00887830   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00887830   WARN SHARED_HEADER_AVAILABLE CIDrawEnvironmentTextureSet (engine/CIDrawEnvironmentTextureSet.h)
+00887830   WARN SHARED_HEADER_AVAILABLE CBlendedEnvironmentTheme (engine/CBlendedEnvironmentTheme.h)
+00887830   RELOCATION_MATCH PASS   BlendTextureSets
+008bfda0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bfda0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bfda0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_Ambush (engine/CCreatureAction_Ambush.h)
+008bfda0   RELOCATION_MATCH PASS   CCreatureAction_Ambush
+009bad60   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009bad60   RELOCATION_MATCH PASS   TransferObjectSaveText
+009bba40   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009bba40   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009bba40   RELOCATION_MATCH PASS   TransferObjectLoadText
+00a2e470   WARN SHARED_HEADER_AVAILABLE C3DHelperPoint (engine/C3DHelperPoint.h)
+00a2e470   MATCH            PASS   C3DHelperPoint
+00a2e490   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a2e490   WARN SHARED_HEADER_AVAILABLE C3DDummyObject (engine/C3DDummyObject.h)
+00a2e490   MATCH            PASS   C3DDummyObject
+00b201d0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b201d0   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00b201d0   WARN RELOC_NAME: ?GetInverseSystemTransform@CParticleSystem@NParticleEngine@@QBEPBVCMatrix3x4@@XZ -> 00af3da0 labelled 'CVertexBufferWin32::DoSizeof'
+00b201d0   RELOCATION_MATCH PASS   GetInverseSystemTransformWithTranslate
+00b21e90   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00b21e90   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b21e90   RELOCATION_MATCH PASS   DatabaseSerialise
+00bf9aa0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00bf9aa0   RELOCATION_MATCH PASS   ClipPrimitive
+
+WINS: 12
+  00687d10 RELOCATION_MATCH CInputManager::?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z
+  006d1de0 RELOCATION_MATCH CTCWife::?ReceivedConfirmation@CTCWife@@QAEX_N@Z
+  00759870 RELOCATION_MATCH CTCPhysicsRigidBody::?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@MBE?AVC2DBoxI@@XZ
+  00887830 RELOCATION_MATCH CBlendedEnvironmentTheme::?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z
+  008bfda0 RELOCATION_MATCH CCreatureAction_Ambush::??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z
+  009bad60 RELOCATION_MATCH CPersistContext::?TransferObjectSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
+  009bba40 RELOCATION_MATCH CPersistContext::?TransferObjectLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
+  00a2e470 MATCH C3DHelperPoint::??0C3DHelperPoint@@QAE@ABVC3DVector@@K@Z
+  00a2e490 MATCH C3DDummyObject::??0C3DDummyObject@@QAE@ABVCMatrix3x4@@K@Z
+  00b201d0 RELOCATION_MATCH NParticleEngine::CParticleSystem::?GetInverseSystemTransformWithTranslate@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+  00b21e90 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z
+  00bf9aa0 RELOCATION_MATCH CLocalDetailPrimitiveBase::?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z

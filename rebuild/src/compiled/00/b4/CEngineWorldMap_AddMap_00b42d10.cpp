@@ -57,7 +57,9 @@ namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer
 class CEngineLocalDetailGenerator { public:
     void CreateMap(CEngineMap* map);                // 0x00B59800
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }   // 0x01436E88
 
 struct _List_node {
     _List_node* _M_next;
@@ -134,7 +136,7 @@ void CEngineWorldMap::AddMap(long mapIndex, long flags)
     MapList[mapIndex] = new CEngineMap(info.PMap, info.PosX, info.PosY, info.ExtentsX, info.ExtentsY, info.UID, info.StaticMeshName, false);
     NEngineInternal::GPLandscapeRenderer->CreateMap(MapList[mapIndex], flags);
     if (!(flags & 1))
-        g_pLocalDetailGenerator->CreateMap(MapList[mapIndex]);
+        NEngineInternal::GPLocalDetailGenerator->CreateMap(MapList[mapIndex]);
     CEngineMap* map = MapList[mapIndex];
     if (!map->IsInVisibleMapList) {
         VisibleMapList.push_front(map);

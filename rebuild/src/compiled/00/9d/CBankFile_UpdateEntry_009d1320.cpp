@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1320, 726 bytes (`ret 0x18`, esp frame 0x20).
 // Callees: CPackedUIntArray::operator[] @ 0x00A629F0, virtual IsDiskFile (slot 17, +0x44), CCharString copy ctor
 //          @ 0x0099EC30 / dtor @ 0x0099EAE0 / ToWideString @ 0x0099E480, CWideString dtor @ 0x0099B510,
-//          CChecksumCacheFile::GetChecksum @ 0x00A60FB0, g_crc32Table @ 0x0129A168, malloc @ 0x00BFEA0E / free
+//          CChecksumCacheFile::GetChecksum @ 0x00A60FB0, CRC32TAB @ 0x0129A168, malloc @ 0x00BFEA0E / free
 //          @ 0x00BFEA14 (CArray<char> storage), CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0,
 //          operator delete[] @ 0x00BFEB1C / new[] @ 0x00BFEB22 (inlined SetInfo, landed 0x009CC6F0),
 //          InternalResizeEntryData @ 0x009D1260, WriteEntryData @ 0x009CD330, virtual NotifyEntryUpdated (slot 13, +0x34).
@@ -24,7 +24,8 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
 void __cdecl operator delete[](void* block);          // 0x00BFEB1C
 void* __cdecl operator new[](unsigned int size);      // 0x00BFEB22
-extern const unsigned long g_crc32Table[256];         // 0x0129A168
+// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
+extern const unsigned long CRC32TAB[256];             // 0x0129A168 (was g_crc32Table)
 class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
@@ -165,7 +166,7 @@ void CBankFile_Retail::UpdateEntry(unsigned long index, CDataInputStream& data, 
             unsigned long crc = ChecksumCache.GetChecksum(filename.ToWideString());
             const unsigned char* bytes = (const unsigned char*)&crc;
             for (unsigned long b = 0; b < sizeof(crc); ++b)
-                checksum = g_crc32Table[bytes[b] ^ (checksum & 0xff)] ^ (checksum >> 8);
+                checksum = CRC32TAB[bytes[b] ^ (checksum & 0xff)] ^ (checksum >> 8);
         }
     }
     Checksums[index] = checksum;

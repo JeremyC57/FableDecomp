@@ -1,4 +1,5 @@
 // NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4*) -- the inverse of the system transform including its translation (minus the inverse rotation applied to the forward translation), with every rotation row scaled by the system's Scale
+// Leaf: ?GetInverseSystemTransformWithTranslate@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- re-graded unchanged against the registered retry oracle (the earlier x87-order DIFFER no longer reproduces)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B201D0, length 240 bytes (`ret 4`; manifest label correct).
@@ -21,26 +22,26 @@ class CParticleSystem { public:
     unsigned char m_pad00[0x60];
     C3DVector     Scale;                           // +0x60
     const CMatrix3x4* GetInverseSystemTransform() const;    // 0x00AF3DA0
-    void GetInverseSystemTransformWithTranslate(CMatrix3x4* result);
+    void GetInverseSystemTransformWithTranslate(CMatrix3x4& result) const;   // NF479: Ego_r / FableWin ?GetInverseSystemTransformWithTranslate@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
 private:
     const CMatrix3x4& PeekEmitterTransform() const;         // 0x00AF3D80 ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ
 };
 
-void CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4* result)
+void CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4& result) const
 {
     CMatrix3x4 transform = PeekEmitterTransform();
-    *result = *GetInverseSystemTransform();
-    result->m[9]  = -(result->m[0] * transform.m[9] + result->m[3] * transform.m[10] + result->m[6] * transform.m[11]);
-    result->m[10] = -(result->m[1] * transform.m[9] + result->m[4] * transform.m[10] + result->m[7] * transform.m[11]);
-    result->m[11] = -(result->m[2] * transform.m[9] + result->m[5] * transform.m[10] + result->m[8] * transform.m[11]);
-    result->m[0] *= Scale.X;
-    result->m[1] *= Scale.Y;
-    result->m[2] *= Scale.Z;
-    result->m[3] *= Scale.X;
-    result->m[4] *= Scale.Y;
-    result->m[5] *= Scale.Z;
-    result->m[6] *= Scale.X;
-    result->m[7] *= Scale.Y;
-    result->m[8] *= Scale.Z;
+    result = *GetInverseSystemTransform();
+    result.m[9]  = -(result.m[0] * transform.m[9] + result.m[3] * transform.m[10] + result.m[6] * transform.m[11]);
+    result.m[10] = -(result.m[1] * transform.m[9] + result.m[4] * transform.m[10] + result.m[7] * transform.m[11]);
+    result.m[11] = -(result.m[2] * transform.m[9] + result.m[5] * transform.m[10] + result.m[8] * transform.m[11]);
+    result.m[0] *= Scale.X;
+    result.m[1] *= Scale.Y;
+    result.m[2] *= Scale.Z;
+    result.m[3] *= Scale.X;
+    result.m[4] *= Scale.Y;
+    result.m[5] *= Scale.Z;
+    result.m[6] *= Scale.X;
+    result.m[7] *= Scale.Y;
+    result.m[8] *= Scale.Z;
 }
 }

@@ -4,7 +4,7 @@
 // the Ego_r PDB name is `?GFByteSizeToCharString@@YI?AVCCharString@@KJ@Z` (= `CCharString __fastcall (unsigned long, long)`).
 // Callees: GFIntToCharString(long) @ 0x0099F830 ("%d"), GFFloatToCharString(double, long) @ 0x009A08B0,
 // operator+(const CCharString&, const char*) @ 0x0099F600 (all `__fastcall`, hidden result pointer in ecx),
-// CCharString::UnassignString @ 0x0099E9B0. Globals: g_CCharStringInstanceCount @ 0x013BD800.
+// CCharString::UnassignString @ 0x0099E9B0. Globals: CCharString::NoStrings @ 0x013BD800.
 // Literals " bytes" @ 0x0129AB0C, " KB" @ 0x0129AB14, " MB" @ 0x0129AB18; floats 2^32 @ 0x0122DCB4 (the unsigned
 // conversion fix-up), 1/1024 @ 0x01230008, 1/1048576 @ 0x0122ED60 (the power-of-two divisions become multiplies).
 // Shape: hidden result in ecx (esi), size in edx, decimals on the stack. Each `return a + "suffix"` pushes the literal
@@ -14,15 +14,18 @@
 // the temporary) is an unused local of the large-size block; the
 // small-size return is written last, which puts its block at the function end like retail.
 class CCharStringData;
-extern long g_CCharStringInstanceCount;         // 0x013BD800
 
 class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
-    CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
+    CCharString() : PStringData(0) { ++NoStrings; }
     CCharString(const CCharString& other);      // 0x0099EC30
-    ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
+    ~CCharString() { UnassignString(); --NoStrings; }
     protected: void UnassignString(); public:                      // 0x0099E9B0
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600

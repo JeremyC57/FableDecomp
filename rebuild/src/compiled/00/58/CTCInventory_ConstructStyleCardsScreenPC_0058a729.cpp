@@ -52,7 +52,9 @@ class CTCInventory { public:
     void*   __vftable;                            // +0x00
     CThing* PThing;                               // +0x04 CTCBase owner
 
-    void GetStyleCardsListUIComponent(long a, long b, long c, NUISystem::CComponent* parent);   // 0x00589402
+    // NF479 (Codex pass 29 name fixes): 0x00589402 is the PC variant ?GetStyleCardsListUIComponentPC@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z
+    //   (Ego_r / FableWin / Ego_d publics); GetStyleCardsListUIComponent without PC is 0x005850FD.
+    void GetStyleCardsListUIComponentPC(long a, long b, long c, NUISystem::CComponent* parent);   // 0x00589402
     void ConstructStyleCardsScreenPC(long a, long b, long c, NUISystem::CComponent* parent);
 };
 
@@ -60,5 +62,5 @@ void CTCInventory::ConstructStyleCardsScreenPC(long a, long b, long c, NUISystem
 {
     NUISystem::CManager::GetInstance()->SetActiveInventory(this);
     NUISystem::CManager::GetInstance()->SetActiveThing(PThing);
-    GetStyleCardsListUIComponent(a, b, c, parent);
+    GetStyleCardsListUIComponentPC(a, b, c, parent);
 }

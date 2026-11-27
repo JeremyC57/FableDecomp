@@ -37,10 +37,12 @@ class CFontBank {
 public:
     C2DExtentsF GetVStringExtents(const CWideString& text) const;   // 0x00437210
 };
-extern const CFontBank* g_pWordWrapFont;                    // 0x013B87AC
 
-
+// NF479 (Codex pass 29 name fixes): the word-wrap font is the private static ?PWordWrapFont@CSubtitleRenderer@@0PBVCFontBank@@B
+//   (0x013B87AC; Ego_r / FableWin / Ego_d PUBLIC, was the free ?g_pWordWrapFont@@3PBVCFontBank@@B). The self's spelling is unchanged.
 class CSubtitleRenderer {
+private:
+    static const CFontBank* PWordWrapFont;                  // 0x013B87AC
 public:
     static unsigned int __fastcall GetCharWidthW(wchar_t16 character);
 };
@@ -49,5 +51,5 @@ unsigned int __fastcall CSubtitleRenderer::GetCharWidthW(wchar_t16 character)
 {
     CWideString text;
     text.Sprintf(L"%c", character);   // L"%c" @ 0x01238154
-    return (unsigned int)g_pWordWrapFont->GetVStringExtents(text).Width;
+    return (unsigned int)PWordWrapFont->GetVStringExtents(text).Width;
 }

@@ -106,7 +106,10 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-const CThing* __fastcall GetPBestTargetToFaceForCreature(CThingCreatureBase* creature);   // 0x0097E140
+// NF479 (Codex pass 29 name fixes): the callee is the anonymous-namespace helper of the CAIStateGroupBase TU, Ego_r / FableWin / Ego_d
+//   ?GetPBestTargetToFaceForCreature@?A0xbf588e90@@YIPAVCThing@@ABVCThingCreatureBase@@@Z (const reference, non-const result); this TU's
+//   anonymous-namespace hash differs (one spelling after the ?A0x strip, advisor ruling 2026-11-20). Was the global PAV form.
+namespace { CThing* __fastcall GetPBestTargetToFaceForCreature(const CThingCreatureBase& creature); }   // 0x0097E140
 extern const float DELTA_NOTIONAL_ZERO;                     // 0x0129BA3C
 struct CAIFilterBase {
     virtual bool Check() const;                 // slot 0
@@ -148,7 +151,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPoi
     bool startedMoving = false;
     EAIActionReturn result;
     do {
-        const CThing* faceTarget = GetPBestTargetToFaceForCreature(GetCreature());
+        const CThing* faceTarget = GetPBestTargetToFaceForCreature(*GetCreature());
         if (!IS_THING_ALIVE(threat) || !filter->Check())
             return AI_ACTION_ABORTED;
         result = AIAction_MoveToThingProximity(AI_ACTION_REPEAT_POLL, threat, proximity, moving, MOVEMENT_RUN, true, false,

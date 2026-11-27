@@ -37,7 +37,9 @@ namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer
 class CEngineLocalDetailGenerator { public:
     void DeleteMap(CEngineMap* map);                // 0x00B59840
 };
-extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
+// NF479 (Codex pass 29 name fixes): ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A (raw Ego_r / FableWin /
+//   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
+namespace NEngineInternal { extern CEngineLocalDetailGenerator* GPLocalDetailGenerator; }   // 0x01436E88
 
 struct _List_node {
     _List_node* _M_next;
@@ -132,8 +134,8 @@ void CEngineWorldMap::DeleteMap(long index)
         UnlinkMapFromWorld(MapList[index], index);
     if (NEngineInternal::GPLandscapeRenderer)
         NEngineInternal::GPLandscapeRenderer->DeleteMap(MapList[index]);
-    if (g_pLocalDetailGenerator)
-        g_pLocalDetailGenerator->DeleteMap(MapList[index]);
+    if (NEngineInternal::GPLocalDetailGenerator)
+        NEngineInternal::GPLocalDetailGenerator->DeleteMap(MapList[index]);
     delete MapList[index];
     MapList[index] = 0;
     while (!MapList.empty() && MapList[MapList.size() - 1] == 0)

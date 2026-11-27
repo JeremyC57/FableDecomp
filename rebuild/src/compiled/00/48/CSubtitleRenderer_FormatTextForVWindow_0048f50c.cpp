@@ -1,4 +1,7 @@
 // Leaf: ?FormatTextForVWindow@CSubtitleRenderer@@ABEXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z
+// NF479 (Codex pass 29 name fixes): the word-wrap font is the private static ?PWordWrapFont@CSubtitleRenderer@@0PBVCFontBank@@B
+//   (0x013B87AC; Ego_r / FableWin / Ego_d PUBLIC, was the free ?g_pWordWrapFont@@3PBVCFontBank@@B) and WordWrapText is the private
+//   const ?WordWrapText@CSubtitleRenderer@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z (0x0048DC8B; Ego_r + FableWin, was QBE).
 // Naming wave 35c (caller respell): calls 0x0048DAE0 as the Ego_r.pdb template instance ??$GFLimit@MMM@@YIXAAMABM1@Z (was the
 //   non-template ?GFLimit@@YIXAAMABM1@Z); the same-TU stand-in body is now that template's.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -37,7 +40,6 @@ public:
     C2DExtentsF GetVStringExtents(const CWideString& text) const;   // 0x00437210
     float GetVFontMaxHeight() const { return GFAYToVY(GetMaxHeight()); }
 };
-extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 
 void __fastcall WordWrap_SetOption(unsigned int option, unsigned int value);   // ?WordWrap_SetOption@@YIXII@Z (Ego_r.pdb + FableWin.pdb; name-fix 2026-11-12) // 0x00A0FDB0
 void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar),
@@ -72,8 +74,9 @@ public:
     // Ego_r.pdb ?GetCharWidthW@CSubtitleRenderer@@CII_W@Z: a static __fastcall (private in the PDB; declared as the
     // landed 0x0048E012 declares it so both files bind the same symbol). Only its address is taken here.
     static unsigned int __fastcall GetCharWidthW(wchar character);   // 0x0048E012
-    CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;   // 0x0048DC8B
     private:
+    static const CFontBank* PWordWrapFont;                   // 0x013B87AC
+    CWideString WordWrapText(const C2DBoxF& box, const CFontBank& font, const CWideString& text) const;   // 0x0048DC8B
     void FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                               C2DBoxF& outBox) const;
     public:
@@ -92,7 +95,7 @@ template <class T, class TMin, class TMax> void __fastcall GFLimit(T&, const TMi
 void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText,
                                              C2DBoxF& outBox) const
 {
-    g_pWordWrapFont = &font;
+    PWordWrapFont = &font;
     WordWrap_SetOption(0, 1);
     WordWrap_SetCallback(GetCharWidthW, 0);
     outText = WordWrapText(box, font, text);

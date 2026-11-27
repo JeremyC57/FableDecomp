@@ -1,4 +1,5 @@
 // CCreatureAction_Ambush::CCreatureAction_Ambush(CThingCreatureBase*, CThing*, const C3DVector&) -- base CCombatActionBase(owner, target, 250, zeroed CSoundPair), own vtable (0x0127FF14), JumpDest copied from the argument
+// Leaf: ??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BFDA0, length 96 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30
@@ -26,11 +27,12 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
 class CCreatureAction_Ambush : public CCombatActionBase { public:   // vtable 0x0127FF14
     C3DVector JumpDest;                     // +0x114
     virtual void v00();
-    CCreatureAction_Ambush(CThingCreatureBase* owner, CThing* target, const C3DVector& jumpDest);
+    // NF479: Ego_r / FableWin ??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z (references; was pointers)
+    CCreatureAction_Ambush(CThingCreatureBase& owner, CThing& target, const C3DVector& jumpDest);
 };
 
-CCreatureAction_Ambush::CCreatureAction_Ambush(CThingCreatureBase* owner, CThing* target, const C3DVector& jumpDest)
-    : CCombatActionBase(owner, target, 250, CSoundPair())
+CCreatureAction_Ambush::CCreatureAction_Ambush(CThingCreatureBase& owner, CThing& target, const C3DVector& jumpDest)
+    : CCombatActionBase(&owner, &target, 250, CSoundPair())
     , JumpDest(jumpDest)
 {
 }

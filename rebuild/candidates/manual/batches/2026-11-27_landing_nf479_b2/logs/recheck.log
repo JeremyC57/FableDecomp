@@ -1,0 +1,27 @@
+addr       parity           behav  name
+006ea540   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea540   WARN RELOC_NAME: ?OnActionPerformed@CCombatSequenceBase@@QAEXXZ -> 008b0600 labelled 'CGameScriptThing::DecrementScriptCounter'
+006ea540   RELOCATION_MATCH PASS   SetCreatureAsAttemptedToPerformedAction
+007e5b90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007e5b90   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e5b90   RELOCATION_MATCH PASS   FrameUpdate
+009f32a0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+009f32a0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009f32a0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009f32a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009f32a0   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+009f32a0   RELOCATION_MATCH PASS   InitialiseAsDepthBuffer
+
+WINS: 3
+  006ea540 RELOCATION_MATCH CCombatManager::?SetCreatureAsAttemptedToPerformedAction@CCombatManager@@QAEXAAVCThingCreatureBase@@_N@Z
+  007e5b90 RELOCATION_MATCH CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate
+  009f32a0 RELOCATION_MATCH CSurface::?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z

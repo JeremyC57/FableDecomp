@@ -1,0 +1,28 @@
+addr       parity           behav  name
+0058a729   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0058a729   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+0058a729   RELOCATION_MATCH PASS   ConstructStyleCardsScreenPC
+0097e890   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097e890   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097e890   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0097e890   RELOCATION_MATCH PASS   AIAction_MoveToPosProximity
+009804a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+009804a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009804a0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+009804a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009804a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009804a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009804a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+009804a0   RELOCATION_MATCH PASS   AIAction_FleeToThingProximity
+
+WINS: 3
+  0058a729 RELOCATION_MATCH CTCInventory::?ConstructStyleCardsScreenPC@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z
+  0097e890 RELOCATION_MATCH CAIStateGroupBase::?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+  009804a0 RELOCATION_MATCH CAIStateGroupBase::AIAction_FleeToThingProximity

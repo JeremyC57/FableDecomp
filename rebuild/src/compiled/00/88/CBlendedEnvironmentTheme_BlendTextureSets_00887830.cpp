@@ -1,4 +1,5 @@
 // CBlendedEnvironmentTheme::BlendTextureSets(const CIDrawEnvironmentTextureSet& from, const CIDrawEnvironmentTextureSet& to, CIDrawEnvironmentTextureSet& result, float blend) -- lay both sets' textures side by side in the result (to's after from's), weight to's blends by `blend` and from's by 1 - blend, then compact the result
+// Leaf: ?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00887830, 498 bytes (512 with padding), `ret 10h`.
 // Callees: CArray<long>::resize(n, const long&) 0x004428F0 and CArray<float>::resize(n, const float&) 0x00442770
 //   (catalog "vector<unsigned int>::resize", as the landed COpinionSet::TransferBinaryIn), CompactTextureSet
@@ -19,14 +20,19 @@ struct CIDrawEnvironmentTextureSet {
     CArray<long>  Textures;                    // +0x00
     CArray<float> Blends;                      // +0x0c
 };
+// NF479 (Codex pass 29 name fixes): the class is NEnvironmentInternal::CBlendedEnvironmentTheme and both members are const (Ego_r / FableWin
+//   ?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z and
+//   ?CompactTextureSet@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXAAUCIDrawEnvironmentTextureSet@@J@Z, the spelling 0x008873C0 binds).
+namespace NEnvironmentInternal {
 struct CBlendedEnvironmentTheme {
-    void CompactTextureSet(CIDrawEnvironmentTextureSet& set, long count);   // 0x00886E80
+    void CompactTextureSet(CIDrawEnvironmentTextureSet& set, long count) const;   // 0x00886E80
     void BlendTextureSets(const CIDrawEnvironmentTextureSet& from, const CIDrawEnvironmentTextureSet& to,
-                          CIDrawEnvironmentTextureSet& result, float blend);
+                          CIDrawEnvironmentTextureSet& result, float blend) const;
 };
+}
 
-void CBlendedEnvironmentTheme::BlendTextureSets(const CIDrawEnvironmentTextureSet& from, const CIDrawEnvironmentTextureSet& to,
-                                                CIDrawEnvironmentTextureSet& result, float blend)
+void NEnvironmentInternal::CBlendedEnvironmentTheme::BlendTextureSets(const CIDrawEnvironmentTextureSet& from, const CIDrawEnvironmentTextureSet& to,
+                                                CIDrawEnvironmentTextureSet& result, float blend) const
 {
     long count = from.Textures.size();
     result.Textures.resize(count * 2, 0);

@@ -1,0 +1,14 @@
+address	mangled
+00687d10	?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z
+006d1de0	?ReceivedConfirmation@CTCWife@@QAEX_N@Z
+00759870	?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@MBE?AVC2DBoxI@@XZ
+00887830	?BlendTextureSets@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXABUCIDrawEnvironmentTextureSet@@0AAU3@M@Z
+008bfda0	??0CCreatureAction_Ambush@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVC3DVector@@@Z
+009ae150	?CompileSubDefinition@CDefinitionManager@@IAEXVCCharString@@ABV2@J@Z
+009bad60	?TransferObjectSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
+009bba40	?TransferObjectLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableComponentGenericType@@@Z
+00a2e470	??0C3DHelperPoint@@QAE@ABVC3DVector@@K@Z
+00a2e490	??0C3DDummyObject@@QAE@ABVCMatrix3x4@@K@Z
+00b201d0	?GetInverseSystemTransformWithTranslate@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+00b21e90	?DatabaseSerialise@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z
+00bf9aa0	?ClipPrimitive@CLocalDetailPrimitiveBase@@QAE_NPBVCLocalDetailObjectCollectionType@@ABVCEngineCamera@@_NK@Z

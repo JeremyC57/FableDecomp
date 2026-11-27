@@ -1,5 +1,8 @@
 // CTCPhysicsRigidBody::GetPossibleCollidedWithArea() -- the integer box around the position that the body can touch: the position's XY plus/minus three times the mesh's bounding-circle radius, orientation-validated
-// Leaf: GetPossibleCollidedWithArea
+// Leaf: ?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@MBE?AVC2DBoxI@@XZ
+// NF479 (Codex pass 29 name fixes): the self is the protected const virtual ?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@MBE?AVC2DBoxI@@XZ
+//   (Ego_r 0x00768850 / FableWin 0x025BFF50 publics; retail vftable 0x0126996C slot 97). The slot-93 call is const as in both PDBs
+//   (?GetPhysicsMeshInfo@CTCPhysicsRigidBody@@UBEPBVCThingPhysicsMeshInfo@@XZ); a virtual-slot call emits no symbol.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759870, 124 bytes. CTCPhysicsRigidBody vtable 0x0126996C slot 97.
 // Callees: virtual slot 93 (+0x174, GetPhysicsMeshInfo), _ftol @ 0x00BFEA70 (four times), C2DBoxI::ValidateOrientationAndFlip()
@@ -48,15 +51,17 @@ struct CTCPhysicsRigidBody {
     virtual void v078(); virtual void v079(); virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083();
     virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
     virtual void v090(); virtual void v091(); virtual void v092();
-    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const;   // slot 93 (+0x174)
     virtual void v094(); virtual void v095(); virtual void v096();
-    virtual C2DBoxI GetPossibleCollidedWithArea();   // slot 97 (+0x184)
+protected:
+    virtual C2DBoxI GetPossibleCollidedWithArea() const;   // slot 97 (+0x184)
+public:
     void*     ParentThing;                      // +0x04
     unsigned char _pad08[0x4];
     C3DVector Position;                         // +0x0c
 };
 
-C2DBoxI CTCPhysicsRigidBody::GetPossibleCollidedWithArea()
+C2DBoxI CTCPhysicsRigidBody::GetPossibleCollidedWithArea() const
 {
     float radius = GetPhysicsMeshInfo()->BoundingCircleRadius * 3.0f;
     C2DBoxI box;

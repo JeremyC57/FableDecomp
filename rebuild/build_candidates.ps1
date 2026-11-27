@@ -127824,7 +127824,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00687d10'
-        Module = 'CInputManager'
+        Module = 'CInputProcessGameBase'
         Source = '00/68/CInputManager_GetButtonPressureForEvent_00687d10.cpp'
         TestSource = '00/68/CInputManager_GetButtonPressureForEvent_00687d10_test.cpp'
         PassPattern = '00687d10_TEST PASS'
@@ -257538,7 +257538,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00887830'
-        Module = 'CBlendedEnvironmentTheme'
+        Module = 'NEnvironmentInternal::CBlendedEnvironmentTheme'
         Source = '00/88/CBlendedEnvironmentTheme_BlendTextureSets_00887830.cpp'
         TestSource = '00/88/CBlendedEnvironmentTheme_BlendTextureSets_00887830_test.cpp'
         PassPattern = '00887830_TEST PASS'

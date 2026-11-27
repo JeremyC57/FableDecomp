@@ -20,7 +20,6 @@ extern "C" int __cdecl toupper(int c);                 // 0x00BFEE10
 void __cdecl operator delete(void* block);             // 0x00BFE9BC (operator new 0x00BFEA1A is the implicit declaration)
 void __cdecl operator delete[](void* block);           // 0x00BFEB1C
 
-extern long g_CCharStringInstanceCount;                // 0x013BD800
 
 #pragma pack(push, 1)
 struct CBasicStringChar {                              // CBasicString<char>, 13 bytes
@@ -51,7 +50,7 @@ public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other) : PStringData(0)
     {
-        ++g_CCharStringInstanceCount;
+        ++NoStrings;
         if (&other != this) {
             if (PStringData)
                 UnassignString();
@@ -67,7 +66,7 @@ public:
             if (--PStringData->NoRefs <= 0)
                 delete PStringData;
         }
-        --g_CCharStringInstanceCount;
+        --NoStrings;
     }
     protected: void UnassignString(); public:                             // 0x0099E9B0
     protected:
@@ -85,6 +84,10 @@ public:
     long GetLength() const { return PStringData ? (long)PStringData->Data.StringLength : 0; }
     const char& GetChar(long i) const { return PStringData->Data.PData[i]; }
     CCharString GetAsUpperCase() const;
+protected:
+    // NF479 (Codex pass 29 name fixes): the live-string count at 0x013BD800 is the protected static ?NoStrings@CCharString@@1JA (raw
+    //   Ego_r / FableWin / Ego_d PDB publics; was the free ?g_CCharStringInstanceCount@@3JA).
+    static long NoStrings;                    // 0x013BD800
 };
 
 #pragma auto_inline(off)

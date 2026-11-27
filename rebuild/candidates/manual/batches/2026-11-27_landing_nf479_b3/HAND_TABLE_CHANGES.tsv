@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+rewitness	?g_CRCTable@@3PAKA	0129a168	00409fd0	NF479 b3 Codex p29 line 6: 004014a0 moved onto ?CRC32TAB@@3QBKB; 00409fd0 still binds ?g_CRCTable@@3PAKA (HEAD symbol table)
+rewitness	?g_CCharStringInstanceCount@@3JA	013bd800	0099ed10	NF479 b3 Codex p29 line 126: 0099f450 moved onto ?NoStrings@CCharString@@1JA; 0099ed10 still binds ?g_CCharStringInstanceCount@@3JA (HEAD symbol table)
+rewitness	?g_pLocalDetailGenerator@@3PAVCEngineLocalDetailGenerator@@A	01436e88	00bdeb50	NF479 b3 Codex p29 line 135: 00bdedd0 moved onto ?GPLocalDetailGenerator@NEngineInternal@@3PAVCEngineLocalDetailGenerator@@A; 00bdeb50 still binds ?g_pLocalDetailGenerator@@3PAVCEngineLocalDetailGenerator@@A (HEAD symbol table)
+rewitness	?g_pEngineEnvironment_01436e48@@3PAVCEngineEnvironment@@A	01436e48	00b54e30	NF479 b3 Codex p29 line 64: 00b26360 moved onto ?GPEngineEnvironment@NEngineInternal@@3PAVCEngineEnvironment@@A; 00b54e30 still binds ?g_pEngineEnvironment_01436e48@@3PAVCEngineEnvironment@@A (HEAD symbol table)

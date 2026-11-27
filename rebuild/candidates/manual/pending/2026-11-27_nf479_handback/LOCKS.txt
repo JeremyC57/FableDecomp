@@ -1,0 +1,441 @@
+# NF479 locks (2026-11-27). Section 1: final owner of every address this agent claimed (NF479 = held for an ACCEPT batch); section 2: before-state of every address screened.
+# address	before	final	why
+004014a0	released	NF479	ACCEPT batch row / target
+0048dc8b	(none)	NF479	ACCEPT batch row / target
+0048e012	(none)	NF479	ACCEPT batch row / target
+0048f50c	released	NF479	ACCEPT batch row / target
+004fcfe0	(none)	released	claimed, released (not in an ACCEPT batch)
+00520390	(none)	NF479	ACCEPT batch row / target
+00556a40	CODEX29	released	claimed, released (not in an ACCEPT batch)
+005850fd	CODEX29	released	claimed, released (not in an ACCEPT batch)
+0058a729	released	NF479	ACCEPT batch row / target
+00687d10	(none)	NF479	ACCEPT batch row / target
+006c20b0	(none)	released	claimed, released (not in an ACCEPT batch)
+006c2170	CODEX29	released	claimed, released (not in an ACCEPT batch)
+006d1de0	(none)	NF479	ACCEPT batch row / target
+006d5d30	CODEX29	released	claimed, released (not in an ACCEPT batch)
+006ea540	(none)	NF479	ACCEPT batch row / target
+00741d60	CODEX29	released	claimed, released (not in an ACCEPT batch)
+00759870	(none)	NF479	ACCEPT batch row / target
+007c3220	CODEX29	released	claimed, released (not in an ACCEPT batch)
+007e5b90	released	NF479	ACCEPT batch row / target
+00843840	(none)	released	claimed, released (not in an ACCEPT batch)
+0086bb60	(none)	released	claimed, released (not in an ACCEPT batch)
+00887830	(none)	NF479	ACCEPT batch row / target
+008bfda0	(none)	NF479	ACCEPT batch row / target
+0097e890	released	NF479	ACCEPT batch row / target
+009804a0	released	NF479	ACCEPT batch row / target
+00993ee0	released	NF479	ACCEPT batch row / target
+0099ee20	(none)	NF479	ACCEPT batch row / target
+0099f450	(none)	NF479	ACCEPT batch row / target
+0099f4d0	(none)	NF479	ACCEPT batch row / target
+0099f690	released	NF479	ACCEPT batch row / target
+0099f830	(none)	NF479	ACCEPT batch row / target
+0099f8b0	(none)	NF479	ACCEPT batch row / target
+0099f930	released	NF479	ACCEPT batch row / target
+0099f9b0	released	NF479	ACCEPT batch row / target
+0099fa50	released	NF479	ACCEPT batch row / target
+0099fa90	released	NF479	ACCEPT batch row / target
+009a1140	CODEX29	released	claimed, released (not in an ACCEPT batch)
+009ae150	released	NF479	ACCEPT batch row / target
+009b05f0	released	NF479	ACCEPT batch row / target
+009bad60	(none)	NF479	ACCEPT batch row / target
+009bba40	(none)	NF479	ACCEPT batch row / target
+009cc0b0	(none)	NF479	ACCEPT batch row / target
+009d1320	(none)	NF479	ACCEPT batch row / target
+009d4db0	(none)	NF479	ACCEPT batch row / target
+009f32a0	(none)	NF479	ACCEPT batch row / target
+00a00950	(none)	NF479	ACCEPT batch row / target
+00a2e470	(none)	NF479	ACCEPT batch row / target
+00a2e490	(none)	NF479	ACCEPT batch row / target
+00a2e9a0	(none)	released	claimed, released (not in an ACCEPT batch)
+00b201d0	(none)	NF479	ACCEPT batch row / target
+00b21e90	released	NF479	ACCEPT batch row / target
+00b24690	released	NF479	ACCEPT batch row / target
+00b26360	released	NF479	ACCEPT batch row / target
+00b27ee0	(none)	released	claimed, released (not in an ACCEPT batch)
+00b42a90	(none)	NF479	ACCEPT batch row / target
+00b42b10	(none)	NF479	ACCEPT batch row / target
+00b42d10	(none)	NF479	ACCEPT batch row / target
+00b5c120	CODEX29	released	claimed, released (not in an ACCEPT batch)
+00bdda80	released	NF479	ACCEPT batch row / target
+00bdebf0	released	NF479	ACCEPT batch row / target
+00bdedd0	(none)	NF479	ACCEPT batch row / target
+00be2740	(none)	NF479	ACCEPT batch row / target
+00bf9aa0	released	NF479	ACCEPT batch row / target
+00c3da60	CODEX29	released	claimed, released (not in an ACCEPT batch)
+01223ec0	(none)	released	claimed, released (not in an ACCEPT batch)
+0122a5e0	(none)	released	claimed, released (not in an ACCEPT batch)
+# section 2: before-state
+004014a0	released
+004016b0	released
+00403510	(none)
+00404500	(none)
+004046b0	released
+004057a0	released
+0040efb0	(none)
+0040f020	(none)
+0040fe60	(none)
+00412020	released
+004120c0	released
+00414ef0	(none)
+0041735a	(none)
+0041c9c0	released
+0041d21b	(none)
+00429fe3	(none)
+0042a990	(none)
+0042ab33	(none)
+0043020a	(none)
+0043151d	(none)
+00433040	(none)
+00438570	(none)
+00443cf0	(none)
+00445bd0	(none)
+00445c30	(none)
+00445cb0	(none)
+004477c0	(none)
+00447ce0	(none)
+00451e11	(none)
+0045228f	(none)
+004522f4	(none)
+00452b4d	(none)
+00455c1d	released
+004568bc	(none)
+00456903	(none)
+00457e03	(none)
+00458a4f	(none)
+0045ce22	(none)
+00464d23	(none)
+0046c3b9	(none)
+004859ad	released
+00485b18	(none)
+00485b44	released
+0048da62	released
+0048dc8b	(none)
+0048e012	(none)
+0048f50c	released
+00492381	released
+00497890	released
+0049dd50	(none)
+004b8110	(none)
+004c73d0	released
+004c9b80	(none)
+004d0f80	released
+004fcbb0	(none)
+004fcfe0	(none)
+004fd020	(none)
+004ff490	(none)
+00501d30	(none)
+00520390	(none)
+00529f30	(none)
+00546140	(none)
+0054ff10	released
+00556930	(none)
+00556a40	CODEX29
+00557000	(none)
+0056c820	(none)
+005850fd	CODEX29
+00589402	(none)
+0058a729	released
+005b1dd9	(none)
+005b2ea7	(none)
+005b30bb	(none)
+005bf2c6	(none)
+005d82f3	(none)
+005d85de	(none)
+005dcf70	released
+005e0de0	(none)
+00638310	(none)
+00643f13	released
+00655fe9	(none)
+0067c200	(none)
+00685d90	(none)
+00687d10	(none)
+006925e0	(none)
+00692c80	released
+00694d10	(none)
+00699090	(none)
+006a4d00	(none)
+006a68f0	(none)
+006a8d30	(none)
+006ac910	(none)
+006af2b0	released
+006c20b0	(none)
+006c2170	CODEX29
+006c2710	(none)
+006cba20	(none)
+006d1de0	(none)
+006d41f0	released
+006d5d30	CODEX29
+006d6260	released
+006dba50	(none)
+006e11f0	released
+006e3180	(none)
+006e7b80	(none)
+006e7bd0	(none)
+006ea540	(none)
+006f0810	released
+00706e00	(none)
+007086f0	(none)
+00708b60	(none)
+00708ba0	(none)
+00708c20	(none)
+00709350	(none)
+00709840	(none)
+0070d8c0	(none)
+0070d8e0	(none)
+00713740	released
+007190c0	(none)
+007190f0	(none)
+00719150	(none)
+00719cb0	(none)
+007275c0	(none)
+007283f0	(none)
+00728ff0	(none)
+00739dd0	(none)
+0073a6e0	(none)
+00741d60	CODEX29
+0074d120	(none)
+00759870	(none)
+0075b8d0	released
+0075f6a0	(none)
+00762440	released
+00762d80	released
+00762e10	released
+00764e90	released
+007892ea	(none)
+00789e60	released
+00799120	(none)
+007b5ca0	(none)
+007c1000	released
+007c21a0	released
+007c3220	CODEX29
+007e5230	(none)
+007e5b90	released
+007f1b70	released
+0080d970	(none)
+0080d9e0	(none)
+0080ec50	(none)
+00820e20	(none)
+008326a0	released
+0083b7f0	(none)
+00843840	(none)
+00867f60	(none)
+0086bb60	(none)
+00887830	(none)
+008902e0	released
+00898bb0	released
+008b4820	(none)
+008b8cb0	(none)
+008bfda0	(none)
+008c9f40	(none)
+008d7730	released
+008da890	released
+008db030	released
+008e7e10	(none)
+008ec3f0	(none)
+008ed590	(none)
+008f5ba0	(none)
+008f7bd0	released
+008fe880	(none)
+008fea79	(none)
+00905070	(none)
+009050a0	(none)
+00905440	(none)
+00905470	(none)
+009054a0	(none)
+00907670	released
+0090c870	(none)
+0090e090	(none)
+0090ee20	(none)
+00927be0	(none)
+0092ecd0	(none)
+0092ed40	(none)
+0092fab0	released
+00930a70	(none)
+00934920	released
+00935160	(none)
+0093f930	(none)
+009533e0	released
+00954cd0	(none)
+00956590	(none)
+0096a7a0	(none)
+0097e140	released
+0097e890	released
+009804a0	released
+0098cec0	(none)
+00993ca0	(none)
+00993eb0	released
+00993ee0	released
+00993fd0	released
+009950f0	(none)
+0099a300	(none)
+0099af10	(none)
+0099e4b0	released
+0099ea60	released
+0099eae0	COORD_HOLD_NF453
+0099ebf0	(none)
+0099ec30	released
+0099ee20	(none)
+0099f450	(none)
+0099f4d0	(none)
+0099f690	released
+0099f830	(none)
+0099f8b0	(none)
+0099f930	released
+0099f9b0	released
+0099fa50	released
+0099fa90	released
+009a0300	(none)
+009a0590	(none)
+009a05e0	(none)
+009a0b00	(none)
+009a0c90	(none)
+009a0e70	(none)
+009a1090	(none)
+009a1140	CODEX29
+009a1660	released
+009a25d0	released
+009a3640	released
+009a3c20	(none)
+009a4160	(none)
+009ae150	released
+009b05f0	released
+009bad60	(none)
+009bba40	(none)
+009bedc0	released
+009cc0b0	(none)
+009d1320	(none)
+009d3b70	(none)
+009d4db0	(none)
+009d5060	(none)
+009e5c90	released
+009e63f0	(none)
+009e6530	released
+009e6fa0	released
+009e7bd0	released
+009eb590	released
+009f32a0	(none)
+00a00620	released
+00a00950	(none)
+00a20e10	(none)
+00a2e470	(none)
+00a2e490	(none)
+00a2e9a0	(none)
+00a379c0	(none)
+00a3fd40	(none)
+00a46420	released
+00a70ff0	(none)
+00a9c910	(none)
+00a9c980	(none)
+00a9c9a0	(none)
+00a9d480	released
+00aa09f0	(none)
+00aac7f0	(none)
+00aaf590	(none)
+00ab3550	released
+00b15b20	(none)
+00b17f70	released
+00b201d0	(none)
+00b21dd0	released
+00b21e90	released
+00b22310	released
+00b230e0	(none)
+00b23170	released
+00b231e0	(none)
+00b23240	(none)
+00b23b90	(none)
+00b24690	released
+00b26360	released
+00b27ee0	(none)
+00b31d10	(none)
+00b42a90	(none)
+00b42b10	(none)
+00b42d10	(none)
+00b52b30	(none)
+00b564c0	(none)
+00b59760	(none)
+00b5a160	(none)
+00b5c120	CODEX29
+00b61aa0	(none)
+00b63010	released
+00b665e0	released
+00b77e20	released
+00b86a10	(none)
+00b98560	released
+00b990b0	(none)
+00b99d90	(none)
+00bb1760	(none)
+00bceb40	(none)
+00bd8b30	released
+00bdda80	released
+00bdebf0	released
+00bdedd0	(none)
+00be2740	(none)
+00bf9aa0	released
+00c08170	(none)
+00c0b380	(none)
+00c0b570	COORD_HOLD_NF453
+00c25ff0	(none)
+00c35ec0	released
+00c36430	(none)
+00c38600	(none)
+00c3a950	released
+00c3da60	CODEX29
+00c461e0	CODEX29
+00c52e40	(none)
+00c59960	released
+00c5c980	(none)
+00c6b240	(none)
+00c6b260	CODEX29
+00c6b3a0	(none)
+00c6b490	(none)
+00c720c0	released
+00c72130	(none)
+00c72200	CODEX29
+00c72e00	released
+00c74360	released
+00cb6400	(none)
+00cd27b4	(none)
+00cd44e0	(none)
+00cd45c0	(none)
+00cd4600	(none)
+00cd4fd0	(none)
+00d37530	released
+00dbeb20	released
+00dc21f0	released
+00e39140	NF464
+00e50e40	released
+00eea7c0	(none)
+00f25f60	(none)
+00f25f90	(none)
+00f37390	(none)
+01223ec0	(none)
+01224900	(none)
+01229480	(none)
+0122a5e0	(none)
+0122aad0	released
+0129a168	(none)
+01375550	COORD_HOLD_NF453
+0138e068	(none)
+0138e06c	(none)
+013b861b	(none)
+013b87ac	(none)
+013bd800	(none)
+013bda34	(none)
+013bda38	(none)
+013bda3c	(none)
+013bda70	(none)
+013c5a98	(none)
+013c7ac8	(none)
+013d2880	(none)
+01436e1c	(none)
+01436e48	(none)
+01436e88	(none)
+01436e8c	(none)
+01436ea0	(none)
+0143b8e0	(none)
+0143bc78	(none)
+0143bc7c	released
+0143bc7d	(none)
+0143e8ec	(none)
