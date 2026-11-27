@@ -650,3 +650,4 @@ date	account	item	kind	status	note
 2026-11-27	B	0x00C62370	author	claimed	GetRandomPointInSphere (descriptive; no PDB symbol); retail 118 bytes
 2026-11-27	B	0x00C62370	author	done	landed RELOCATION_MATCH PASS: GetRandomPointInSphere, 118 bytes
 2026-11-27	B	0x00947EB0	author	claimed	CAIStateGroup_GoToPub::GetObjectWithScriptName; PDB leaf in Ego_r and FableWin; retail 242 bytes
+2026-11-27	B	0x00947EB0	author	done	landed RELOCATION_MATCH PASS: GetObjectWithScriptName, 242 bytes
