@@ -1,0 +1,3 @@
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+EQ  006e7ab0 53 ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ 

@@ -1,0 +1,24 @@
+# leaf ?Main@CBanditWalker@CPersonalScript_EmptyScript@NScript@@EAEXXZ  source_a=no  source a unavailable: reloc_identity RELOC_UNCHECKED (leaf 768 bytes v retail 727; no single object block of the retail length)
+EQ        EQ                 00e95380 c        pickany      1 leaf=n reach=n ?Return@TRetVoid@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+EQ        EQ                 006e70a0 c        pickany     36 leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??0CPredicateBase@NScript@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1CPredicateBase@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ        EQ                 006e7a60 b        pickany     18 leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+EQ        EQ                 004aa840 b,c      pickany     66 leaf=y reach=y ??1CScriptThing@@UAE@XZ
+EQ        EQ                 004ab170 c        pickany     87 leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z
+EQ        EQ                 007e72a0 b        pickany     26 leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+EQ        EQ                 00e241b0 a2,b     strong      84 leaf=y reach=y ??1CIsThingAlive@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+EQ        EQ                 00ef5b50 b        pickany     33 leaf=n reach=n ??1?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     55 leaf=n reach=n ??1?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??_G?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     75 leaf=n reach=n ??_G?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??$?VVCIsThingAlive@NScript@@V01@@NScript@@YI?AV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@0@ABVCIsThingAlive@0@0@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ??$?VV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@1@@NScript@@YI?AV?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@0@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@0@ABVCIsThingAlive@0@@Z

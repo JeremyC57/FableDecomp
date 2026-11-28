@@ -1,0 +1,24 @@
+# leaf ?Main@CDF_DoDamage@CV_DemonDoorsScript@NScript@@EAEXXZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+EQ        EQ                 006e70a0 c        pickany     36 leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??0CPredicateBase@NScript@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1CPredicateBase@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ        EQ                 00cbe09a b        pickany     25 leaf=n reach=n ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z
+EQ        EQ                 00cbe0b3 b,c      pickany     13 leaf=n reach=n ??1CWideScreenMagicPauseEntities@@QAE@XZ
+EQ        EQ                 00e95380 c        pickany      1 leaf=n reach=n ?Return@TRetVoid@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+EQ        EQ                 006e7a60 b        pickany     18 leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ
+EQ        EQ                 006e7ab0 b        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ?Get@?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ
+EQ        EQ                 007e72a0 b        pickany     26 leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+EQ        EQ                 007e74d0 a,b      pickany     66 leaf=y reach=y ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+EQ        EQ                 006e7b60 a,b      pickany     26 leaf=y reach=y ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+EQ        EQ                 006e7b80 a,b      pickany     66 leaf=y reach=y ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ

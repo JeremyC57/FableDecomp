@@ -1,0 +1,12 @@
+EQ  009f2e20 32 ?Uninitialise@CSurface@@QAEXXZ 
+EQ  009f2f90 39 ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ 
+NEQ 00415bd0 24 ?GetWidth@CSurface@@QBEKXZ not referenced by the leaf
+NEQ 00415bf0 24 ?GetHeight@CSurface@@QBEKXZ not referenced by the leaf
+EQ  009f2dc0 10 ?Unlock@CSurface@@QBEXXZ 
+EQ  0047ce40 46 ?fill@std@@YIXPAE0ABE@Z 
+NEQ 0099a300 5 ??1CAFile@@UAE@XZ not referenced by the leaf
+EQ  00401630 30 ??1CDiskFileWin32@@UAE@XZ 
+EQ  009f3010 144 ?ReadOnlyLock@CSurface@@QBE?AVCSurfaceLockedRect@@K@Z 
+EQ  009f3230 107 ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z 
+EQ  005136b0 77 ??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z 
+EQ  00514e20 77 ??0?$CArray@E@@QAE@I@Z 

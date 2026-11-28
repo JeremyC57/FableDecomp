@@ -1,0 +1,8 @@
+# leaf ?_M_fill_insert@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXPAVCHeroSoulsCreatureDef@@IABV3@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     36 leaf=n reach=n ??_GCDefPointeeBase@@UAEPAXI@Z
+EQ        EQ                 00f27060 a,b      pickany     57 leaf=y reach=y ??0CHeroSoulsCreatureDef@@QAE@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany     54 leaf=n reach=n ??_GCHeroSoulsCreatureDef@@UAEPAXI@Z
+NEQ       NEQ                00f27a10 a        pickany    371 leaf=y reach=y ?_M_insert_overflow@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXPAVCHeroSoulsCreatureDef@@ABV3@ABU__false_type@2@I_N@Z
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=y ??0CSubDefClassBase@@QAE@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany     36 leaf=n reach=n ??_GCSubDefClassBase@@UAEPAXI@Z
+EQ        EQ                 00f273b0 b        pickany     50 leaf=n reach=y ?_M_clear@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXXZ

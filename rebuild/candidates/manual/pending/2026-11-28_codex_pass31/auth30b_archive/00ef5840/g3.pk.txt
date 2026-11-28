@@ -1,0 +1,5 @@
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  00e241b0 84 ??1CIsThingAlive@NScript@@UAE@XZ 
+NEQ 00ef5b50 27 ??1?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@UAE@XZ not referenced by the leaf

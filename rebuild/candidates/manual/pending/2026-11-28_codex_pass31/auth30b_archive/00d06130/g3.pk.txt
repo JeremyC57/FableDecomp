@@ -1,0 +1,9 @@
+EQ  00cbe09a 25 ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 
+EQ  00cbe0b3 13 ??1CWideScreenMagicPauseEntities@@QAE@XZ 
+NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ not referenced by the leaf
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+EQ  00e241b0 84 ??1CIsThingAlive@NScript@@UAE@XZ 

@@ -1,0 +1,19 @@
+# leaf ?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z  source_a=yes  
+EQ        EQ                 00e95380 c        pickany      1 leaf=n reach=n ?Return@TRetVoid@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??0CPredicateBase@NScript@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      7 leaf=n reach=n ??1CPredicateBase@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ        EQ                 00cd4450 b,c      pickany     23 leaf=n reach=n ??0CTimer@@QAE@XZ
+EQ        EQ                 00cd4470 a,b      pickany     20 leaf=y reach=y ??1CTimer@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??4CTimer@@QAEAAV0@J@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ?GetTime@CTimer@@QBEJXZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??8CTimer@@QBE_NJ@Z
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CCountedPointer@VCScriptThing@@@@QBEPAVCScriptThing@@XZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CCountedPointer@VCScriptThing@@@@QBE_NXZ
+EQ        EQ                 004aa840 a,b,c    pickany     66 leaf=y reach=y ??1CScriptThing@@UAE@XZ
+EQ        EQ                 004ab170 c        pickany     87 leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     15 leaf=n reach=n ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ
+NOADDR    NOADDR                    - -        pickany     28 leaf=n reach=n ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z
+EQ        EQ                 00e241b0 b        pickany     84 leaf=n reach=n ??1CIsThingAlive@NScript@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     46 leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z

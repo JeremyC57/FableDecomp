@@ -1,0 +1,9 @@
+EQ  0042d9d0 9 ??0CDefString@@QAE@XZ 
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  0042d9e0 29 ??0CDefClassBase@@AAE@XZ 
+EQ  006313a0 27 ??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z 
+EQ  00431f60 45 ??4CResource@@QAEAAV0@ABV0@@Z 
+NEQ 00431f10 102 ??4CDefClassBase@@QAEAAV0@ABV0@@Z not referenced by the leaf
+EQ  00431ed0 49 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z 
+EQ  00430300 33 ??1CParentDefClassBase@@UAE@XZ 
+EQ  00430370 51 ??0CParentDefClassBase@@QAE@XZ 

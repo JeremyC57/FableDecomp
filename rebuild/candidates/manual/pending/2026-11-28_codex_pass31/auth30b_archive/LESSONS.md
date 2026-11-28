@@ -1,0 +1,12 @@
+# AUTH30 lessons (one line each)
+- Measure Codex's draft on our gates first: 12 of 16 drafts already give RELOCATION_MATCH; every one is held by a pick-any copy, a strong duplicate, or a row device, not by the leaf.
+- A copy reached only through a vftable (??_G) is invisible to pickany_vs_retail and pk_all (GOTCHAS 524); vtchk.py (tools/) compares slot bodies and found the blockers in rows 1, 7, 8, 9 and 10.
+- Before calling a NEQ copy new, compile the landed HEAD rows that define it (head/): 7 NEQ copies here were identical to a HEAD copy (debt: GetWidth, GetHeight, ~_List_base<CComponent*>, the movie ??_G, ??_GCIsThingAlive 39, ??1CIsThingAlive 14, ??_GCBaseClass 30), 4 were new against a HEAD witness (??_GCSurface 58, ??4CDefClassBase 102, ??_GCScriptThing 46, ??_GCIsThingAlive 46), and 4 had no witness.
+- A Codex draft that defines another landed row's strong function (Alloc, GetParentScript, ~CIsThingAlive, other scripts' Main) adds an LNK2005; check pk_all's `strong` column for every non-self symbol.
+- To make a TU emit an entity's vftable (and through it an inline Main) without a strong Alloc, an anonymous-namespace helper that only constructs the entity is enough (00d05a60 g4, 00d06130 g1: RELOCATION_MATCH); it needs a scaffolding ruling.
+- Codex's row-local inline_depth specialisations hide residues: removing them for the header's own opt-in (00ef5840 g2) turned a 3-site residue into one precise call-v-expand difference.
+- RTTI-less NScript vftables sit back to back; take the slot count from the PDB field list, not from the gap to the next table.
+- pk_all needs the lane environment (env.sh) or it reports "no leaf (FileNotFoundError)".
+- applyp: an add-only check by substring gives false negatives on split lines; use a line diff and hand-check balanced #if blocks.
+- A behaviour test for an inline Main reached through a vftable: drop the fixture's own copy of Main, pass the row object to vt.py, and check that the test LINK_FAILs without it; then the PASS exercises our object (00d05a60, 00d06130).
+- Codex's "implicit destructor" probes that reach the retail length do so by coincidence: compiler-generated destructors drop the derived vptr stores retail has (00ef5840 g3).

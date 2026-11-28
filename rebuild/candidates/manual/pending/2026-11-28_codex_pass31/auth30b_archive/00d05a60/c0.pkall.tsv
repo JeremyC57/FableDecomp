@@ -1,0 +1,21 @@
+# leaf ?Main@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=n ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR    NOADDR                    - -        strong       4 leaf=n reach=n ?GetParentScript@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@UBEPAVCScriptBase@@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+EQ        EQ                 00ce1000 b        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ
+EQ        EQ                 00cdee00 a2,b     pickany     11 leaf=n reach=n ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z
+EQ        EQ                 004aa840 a,b,c    pickany     66 leaf=y reach=y ??1CScriptThing@@UAE@XZ
+EQ        EQ                 004ab170 c        pickany     87 leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z
+EQ        EQ                 00cdedb0 b        pickany     78 leaf=n reach=n ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z
+NOADDR    NOADDR                    - -        pickany     35 leaf=n reach=n ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCEntityScriptBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??0CAssassin2@CQ_BanditCampBossBattleScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCAssassin2@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+EQ        EQ                 006e7ab0 a,b      pickany     53 leaf=y reach=y ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ
+EQ        EQ                 006e70a0 c        pickany     36 leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+EQ        EQ                 007e74d0 a,b      pickany     66 leaf=y reach=y ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     46 leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     45 leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ        EQ                 00d05910 b        strong     145 leaf=n reach=n ?Alloc@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z

@@ -1,0 +1,9 @@
+# leaf ?Main@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ  source_a=no  source a unavailable: reloc_identity RELOC_UNCHECKED (leaf 1842 bytes v retail 1400; no single object block of the retail length)
+EQ        EQ                 006e70a0 c        pickany     36 leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany    104 leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ        EQ                 004aa840 b,c      pickany     66 leaf=y reach=y ??1CScriptThing@@UAE@XZ
+EQ        EQ                 004ab170 c        pickany     87 leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     53 leaf=y reach=y ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ

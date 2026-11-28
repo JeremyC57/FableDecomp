@@ -1,0 +1,262 @@
+sub esp, X
+push ebx
+mov ebx, ecx
+mov eax, dword ptr [ebx + X]
+push edi
+xor edi, edi
+cmp eax, edi
+mov dword ptr [esp + X], ebx
+jle X
+fld dword ptr [ebx + X]
+push esi
+fcomp dword ptr [X]
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+fnstsw ax
+test ah, 5
+jp X
+mov esi, dword ptr [ebx + 4]
+test dword ptr [esi + X], X
+je X
+lea eax, [esp + X]
+add esi, X
+push eax
+mov ecx, esi
+mov dword ptr [esp + X], X
+call X
+mov esi, dword ptr [esi + 4]
+cmp eax, esi
+je X
+cmp dword ptr [eax], X
+jle X
+mov eax, esi
+mov ecx, dword ptr [eax + 4]
+mov eax, dword ptr [ebx + X]
+cmp eax, edi
+jbe X
+push eax
+call X
+test al, al
+jne X
+mov ecx, dword ptr [X]
+mov dword ptr [esp + X], ecx
+mov ecx, dword ptr [X]
+call X
+sub eax, dword ptr [ebx + X]
+mov dword ptr [esp + X], eax
+fild dword ptr [esp + X]
+fild dword ptr [esp + X]
+fmul dword ptr [X]
+fcompp 
+fnstsw ax
+test ah, 5
+jp X
+call X
+fstp dword ptr [ebx + X]
+jmp X
+mov al, byte ptr [ebx + X]
+test al, al
+push ebp
+je X
+lea edx, [esp + X]
+push edx
+mov ecx, ebx
+call X
+test al, al
+je X
+mov ecx, dword ptr [esp + X]
+sub ecx, dword ptr [esp + X]
+mov eax, X
+imul ecx
+sar edx, 1
+mov eax, edx
+shr eax, X
+add eax, edx
+push eax
+lea ecx, [esp + X]
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+call X
+mov ecx, dword ptr [esp + X]
+mov esi, dword ptr [esp + X]
+sub ecx, esi
+mov eax, X
+imul ecx
+sar edx, 1
+mov ecx, edx
+shr ecx, X
+xor ebp, ebp
+add ecx, edx
+je X
+xor ebx, ebx
+lea edi, [ebx + esi]
+push edi
+lea ecx, [esp + X]
+call X
+mov ecx, dword ptr [esp + X]
+lea edx, [esp + X]
+push edx
+call X
+lea ecx, [esp + X]
+mov esi, eax
+call X
+test esi, esi
+jle X
+push X
+push 0
+push 0
+push 0
+push esi
+push 0
+push X
+lea ecx, [esp + X]
+mov dword ptr [esp + X], 0
+mov dword ptr [esp + X], 0
+call X
+fld dword ptr [edi + 8]
+mov dword ptr [esp + X], X
+fst dword ptr [esp + X]
+mov ecx, dword ptr [esp + X]
+fstp dword ptr [esp + X]
+push esi
+mov dword ptr [esp + X], X
+mov eax, dword ptr [esp + X]
+mov dword ptr [esp + X], ecx
+mov ecx, dword ptr [esp + X]
+push X
+mov dword ptr [esp + X], eax
+call X
+test eax, eax
+je X
+mov edx, dword ptr [eax + X]
+mov dword ptr [esp + X], edx
+lea eax, [esp + X]
+push eax
+lea ecx, [esp + X]
+call X
+mov ecx, dword ptr [esp + X]
+mov esi, dword ptr [esp + X]
+sub ecx, esi
+mov eax, X
+imul ecx
+sar edx, 1
+mov ecx, edx
+shr ecx, X
+inc ebp
+add ecx, edx
+add ebx, X
+cmp ebp, ecx
+jb X
+mov ebx, dword ptr [esp + X]
+xor edi, edi
+mov ebp, dword ptr [esp + X]
+push X
+mov ecx, ebp
+call X
+mov ecx, dword ptr [esp + X]
+mov esi, dword ptr [esp + X]
+sub ecx, esi
+mov eax, X
+imul ecx
+sar edx, 3
+mov eax, edx
+shr eax, X
+add eax, edx
+je X
+mov edi, eax
+lea esp, [esp]
+push 0
+push 1
+push 0
+push 0
+push esi
+mov ecx, ebp
+mov byte ptr [ebx + X], 1
+call X
+add esi, X
+dec edi
+jne X
+mov esi, dword ptr [esp + X]
+xor edi, edi
+cmp esi, edi
+je X
+push esi
+call X
+add esp, 4
+jmp X
+mov al, byte ptr [ebx + X]
+test al, al
+je X
+lea edx, [esp + X]
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+mov dword ptr [esp + X], edi
+mov edi, dword ptr [esp + X]
+push edx
+push X
+mov ecx, edi
+call X
+mov eax, dword ptr [esp + X]
+mov ecx, dword ptr [esp + X]
+sub eax, ecx
+sar eax, 2
+xor esi, esi
+test eax, eax
+mov ebp, eax
+jbe X
+mov ecx, dword ptr [ecx + esi*4]
+fld dword ptr [X]
+fld dword ptr [ecx + X]
+fucompp 
+fnstsw ax
+test ah, X
+jp X
+push ecx
+mov ecx, edi
+call X
+dec ebp
+jmp X
+push 0
+call X
+mov eax, dword ptr [esp + X]
+mov ecx, dword ptr [esp + X]
+sub eax, ecx
+inc esi
+sar eax, 2
+cmp esi, eax
+jb X
+xor eax, eax
+cmp ebp, eax
+jne X
+mov byte ptr [ebx + X], al
+mov dword ptr [ebx + X], eax
+mov dword ptr [ebx + X], eax
+cmp ecx, eax
+je X
+push ecx
+call X
+add esp, 4
+xor edi, edi
+pop ebp
+mov ebx, dword ptr [esp + X]
+mov esi, dword ptr [esp + X]
+cmp esi, ebx
+je X
+mov ecx, esi
+call X
+add esi, X
+cmp esi, ebx
+jne X
+mov eax, dword ptr [esp + X]
+cmp eax, edi
+pop esi
+je X
+push eax
+call X
+add esp, 4
+pop edi
+pop ebx
+add esp, X
+ret 8

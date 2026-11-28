@@ -1,0 +1,20 @@
+# leaf ?Main@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@EAEXXZ  source_a=yes  
+EQ        EQ                 00e95380 c        pickany      1 leaf=n reach=n ?Return@TRetVoid@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??4CBaseClass@@QAEAAV0@ABV0@@Z
+EQ        EQ                 00cd4450 b,c      pickany     23 leaf=n reach=n ??0CTimer@@QAE@XZ
+EQ        EQ                 00cd4470 a,b      pickany     20 leaf=y reach=y ??1CTimer@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??4CTimer@@QAEAAV0@J@Z
+NOADDR    NOADDR                    - -        pickany     20 leaf=n reach=n ?GetTime@CTimer@@QBEJXZ
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??C?$CCountedPointer@VCScriptThing@@@@QBEPAVCScriptThing@@XZ
+NOADDR    NOADDR                    - -        pickany     10 leaf=n reach=n ?IsNull@?$CCountedPointer@VCScriptThing@@@@QBE_NXZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=y ?ReleaseData@?$CCountedPointer@VCScriptThing@@@@QAEXXZ
+EQ        EQ                 007044d0 b,c      pickany     67 leaf=n reach=n ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z
+EQ        EQ                 00704580 b        pickany     72 leaf=n reach=n ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+NEQ       NEQ                008ab980 a,b,c    pickany     51 leaf=y reach=y ??4CScriptThing@@QAEAAV0@ABV0@@Z
+EQ        EQ                 004aa980 b,c      pickany     18 leaf=n reach=n ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ
+EQ        EQ                 004ab130 b        pickany     28 leaf=n reach=n ?IsAlive@CScriptThing@@UBE_NXZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+EQ        EQ                 006e7b40 b        pickany     26 leaf=n reach=n ??0CScriptThing@@QAE@XZ
+EQ        EQ                 004aa840 a,b,c    pickany     66 leaf=y reach=y ??1CScriptThing@@UAE@XZ
+EQ        EQ                 004ab170 c        pickany     87 leaf=n reach=n ??_GCScriptThing@@UAEPAXI@Z

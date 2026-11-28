@@ -1,0 +1,4 @@
+EQ  00cd4450 23 ??0CTimer@@QAE@XZ 
+EQ  00cd4470 20 ??1CTimer@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  00e241b0 84 ??1CIsThingAlive@NScript@@UAE@XZ 

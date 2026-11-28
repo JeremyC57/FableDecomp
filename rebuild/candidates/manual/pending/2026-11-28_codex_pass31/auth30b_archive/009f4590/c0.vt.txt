@@ -1,0 +1,22 @@
+VFTABLE ??_7CSurface@@6B@ class CSurface obj_slots 1 retail_vtables ['0x122f84c'] bound
+  retail 0x122f84c slots 1 agree 1 / 1 COUNT OK
+    0 agree    ??_GCSurface@@UAEPAXI@Z ret=0x41c9c0 body58 NEQ relocs ['??_7CSurface@@6B@@+a->5d6452', '??3@YAXPAX@Z@+2d->8c0e96bd']
+VFTABLE ??_7CDiskFileWin32@@6B@ class CDiskFileWin32 obj_slots 16 retail_vtables ['0x122d06c'] bound
+  retail 0x122d06c slots 16 agree 16 / 16 COUNT OK
+    0 agree    ??_GCDiskFileWin32@@UAEPAXI@Z ret=0x4016b0 body51 EQ relocs EQ
+    1 agree    ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z ret=0x99a6a0
+    2 agree    ?Close@CDiskFileWin32@@UAEXXZ ret=0x99a920
+    3 agree    ?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z ret=0x99a960
+    4 agree    ?Write@CDiskFileWin32@@UAEXPBXJPAVCASuspendableProcess@@@Z ret=0x99aa90
+    5 agree    ?SetPosition@CDiskFileWin32@@UAEXJ@Z ret=0x99abf0
+    6 agree    ?MovePosition@CDiskFileWin32@@UAEXJ@Z ret=0x99ac90
+    7 agree    ?GetPosition@CDiskFileWin32@@UBEJXZ ret=0x99abd0
+    8 agree    ?SetLength@CDiskFileWin32@@UAEXJ@Z ret=0x99a560
+    9 agree    ?GetLength@CDiskFileWin32@@UBEJXZ ret=0x401670 body4 EQ relocs EQ
+   10 agree    ?IsOpen@CDiskFileWin32@@UBE_NXZ ret=0x401680
+   11 agree    ?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ ret=0x401690
+   12 agree    ?IsIOFinished@CAFile@@UBE_NXZ ret=0x401650
+   13 agree    ?GetAlignment@CAFile@@UBEJXZ ret=0x401660
+   14 agree    ?Clone@CDiskFileWin32@@UBEPAVCAFile@@XZ ret=0x99ae00
+   15 agree    ?GetFileInformation@CDiskFileWin32@@UAE?AVCFileInformation@@XZ ret=0x99a5a0
+SUMMARY {'agree': 17, 'body_NEQ': 1}

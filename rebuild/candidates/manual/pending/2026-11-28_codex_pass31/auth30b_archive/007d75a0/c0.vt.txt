@@ -1,0 +1,94 @@
+VFTABLE ??_7CDefPointeeBase@@6B@ class CDefPointeeBase obj_slots 10 retail_vtables ['0x1230ba0'] bound
+  retail 0x1230ba0 slots 10 agree 10 / 10 COUNT OK
+    0 agree    ??_GCDefPointeeBase@@UAEPAXI@Z ret=0x42d9a0 body36 EQ relocs EQ
+    1 agree    ?Delete@CIVCountedPointeeBase@@UBEXXZ ret=0x42d930
+    2 agree    ?UnloadResource@CResource@@UAE_NXZ ret=0x42d940
+    3 agree    ?GetUnloadableMemory@CResource@@UBEKXZ ret=0x9fbef0
+    4 agree    ?IsResourceLoaded@CResource@@UBE_NXZ ret=0x42d950
+    5 agree    ?OnResourceLoaded@CResource@@UAEXXZ ret=0x42d960
+    6 agree    ?CanAbortResourceLoad@CResource@@UBE_NJ@Z ret=0x42d970
+    7 agree    ?OnResourceLoadAborted@CResource@@UAEXXZ ret=0x42d980
+    8 agree    ?GetDebugMemoryInUse@CResource@@UBEKXZ ret=0x9fbf00
+    9 agree    ?ResetDebugMemoryInUse@CResource@@UAEXXZ ret=0x9fbf10
+VFTABLE ??_7CDefClassBase@@6B@ class CDefClassBase obj_slots 25 retail_vtables ['0x1230bcc'] bound
+  retail 0x1230bcc slots 25 agree 25 / 25 COUNT OK
+    0 agree    ??_GCDefClassBase@@UAEPAXI@Z ret=0x42dab0 body36 EQ relocs EQ
+    1 agree    ?Delete@CIVCountedPointeeBase@@UBEXXZ ret=0x42d930
+    2 agree    ?UnloadResource@CDefClassBase@@UAE_NXZ ret=0x9ace90
+    3 agree    ?GetUnloadableMemory@CResource@@UBEKXZ ret=0x9fbef0
+    4 agree    ?IsResourceLoaded@CResource@@UBE_NXZ ret=0x42d950
+    5 agree    ?OnResourceLoaded@CResource@@UAEXXZ ret=0x42d960
+    6 agree    ?CanAbortResourceLoad@CResource@@UBE_NJ@Z ret=0x42d970
+    7 agree    ?OnResourceLoadAborted@CResource@@UAEXXZ ret=0x42d980
+    8 agree    ?GetDebugMemoryInUse@CResource@@UBEKXZ ret=0x9fbf00
+    9 agree    ?ResetDebugMemoryInUse@CResource@@UAEXXZ ret=0x9fbf10
+   10 agree    ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ ret=0x42da10
+   11 agree    ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z ret=0x42da20
+   12 agree    ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z ret=0x42da30
+   13 agree    ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z ret=0x42da40
+   14 agree    ?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z ret=0x42da60
+   15 agree    ?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z ret=0x42da50
+   16 agree    ?IsParentDef@CDefClassBase@@UBE_NXZ ret=0x42da70
+   17 agree    ?PostTransfer@CDefClassBase@@UAEXXZ ret=0x42da80
+   18 agree    __purecall ret=0xbfea08
+   19 agree    __purecall ret=0xbfea08
+   20 agree    __purecall ret=0xbfea08
+   21 agree    ?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z ret=0x9acab0
+   22 agree    ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z ret=0x9acb20
+   23 agree    ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z ret=0x42da90
+   24 agree    ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyP ret=0x42daa0
+VFTABLE ??_7CParentDefClassBase@@6B@ class CParentDefClassBase obj_slots 25 retail_vtables ['0x1230cbc'] bound
+  retail 0x1230cbc slots 25 agree 25 / 25 COUNT OK
+    0 agree    ??_GCParentDefClassBase@@UAEPAXI@Z ret=0x4303f0 body54 EQ relocs EQ
+    1 agree    ?Delete@CIVCountedPointeeBase@@UBEXXZ ret=0x42d930
+    2 agree    ?UnloadResource@CDefClassBase@@UAE_NXZ ret=0x9ace90
+    3 agree    ?GetUnloadableMemory@CResource@@UBEKXZ ret=0x9fbef0
+    4 agree    ?IsResourceLoaded@CResource@@UBE_NXZ ret=0x42d950
+    5 agree    ?OnResourceLoaded@CResource@@UAEXXZ ret=0x42d960
+    6 agree    ?CanAbortResourceLoad@CResource@@UBE_NJ@Z ret=0x42d970
+    7 agree    ?OnResourceLoadAborted@CResource@@UAEXXZ ret=0x42d980
+    8 agree    ?GetDebugMemoryInUse@CResource@@UBEKXZ ret=0x9fbf00
+    9 agree    ?ResetDebugMemoryInUse@CResource@@UAEXXZ ret=0x9fbf10
+   10 agree    ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ ret=0x4303b0
+   11 agree    ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z ret=0x4303c0
+   12 agree    ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z ret=0x9b00d0
+   13 agree    ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z ret=0x9b0170
+   14 agree    ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z ret=0x9ad4a0
+   15 agree    ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z ret=0x9ad510
+   16 agree    ?IsParentDef@CParentDefClassBase@@UBE_NXZ ret=0x4303d0
+   17 agree    ?PostTransfer@CDefClassBase@@UAEXXZ ret=0x42da80
+   18 agree    __purecall ret=0xbfea08
+   19 agree    __purecall ret=0xbfea08
+   20 agree    __purecall ret=0xbfea08
+   21 agree    ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z ret=0x9b0200
+   22 agree    ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z ret=0x9aed70
+   23 agree    ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z ret=0x42da90
+   24 agree    ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V? ret=0x4303e0
+VFTABLE ??_7CCardDef@@6B@ class CCardDef obj_slots 25 retail_vtables ['0x1243a44'] bound
+  retail 0x1243a44 slots 25 agree 25 / 25 COUNT OK
+    0 agree    ??_GCCardDef@@UAEPAXI@Z ret=0x4ec0d4 body28 EQ relocs EQ
+    1 agree    ?Delete@CIVCountedPointeeBase@@UBEXXZ ret=0x42d930
+    2 agree    ?UnloadResource@CDefClassBase@@UAE_NXZ ret=0x9ace90
+    3 agree    ?GetUnloadableMemory@CResource@@UBEKXZ ret=0x9fbef0
+    4 agree    ?IsResourceLoaded@CResource@@UBE_NXZ ret=0x42d950
+    5 agree    ?OnResourceLoaded@CResource@@UAEXXZ ret=0x42d960
+    6 agree    ?CanAbortResourceLoad@CResource@@UBE_NJ@Z ret=0x42d970
+    7 agree    ?OnResourceLoadAborted@CResource@@UAEXXZ ret=0x42d980
+    8 agree    ?GetDebugMemoryInUse@CResource@@UBEKXZ ret=0x9fbf00
+    9 agree    ?ResetDebugMemoryInUse@CResource@@UAEXXZ ret=0x9fbf10
+   10 agree    ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ ret=0x4303b0
+   11 agree    ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z ret=0x4303c0
+   12 agree    ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z ret=0x9b00d0
+   13 agree    ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z ret=0x9b0170
+   14 agree    ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z ret=0x9ad4a0
+   15 agree    ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z ret=0x9ad510
+   16 agree    ?IsParentDef@CParentDefClassBase@@UBE_NXZ ret=0x4303d0
+   17 agree    ?PostTransfer@CDefClassBase@@UAEXXZ ret=0x42da80
+   18 agree    ?Transfer@CCardDef@@UAEXAAVCPersistContext@@@Z ret=0x4ec0b3
+   19 agree    ?Copy@CCardDef@@UAEXPBVCDefClassBase@@@Z ret=0x4ec0f0
+   20 agree    ?GetSizeofClass@CCardDef@@UAEKXZ ret=0x4ec0af
+   21 agree    ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z ret=0x9b0200
+   22 agree    ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z ret=0x9aed70
+   23 agree    ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z ret=0x42da90
+   24 agree    ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V? ret=0x4303e0
+SUMMARY {'agree': 85}

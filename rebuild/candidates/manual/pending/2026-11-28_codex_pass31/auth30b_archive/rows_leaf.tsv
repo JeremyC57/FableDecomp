@@ -1,0 +1,16 @@
+009f3da0	582	?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z	// Flags: (none)
+005458a0	621	?AssignSpell@CSpellContainer@NUISystem@@UAEJAAV?$CCountedPointer@VCComponent@NUISystem@@@@K@Z	// Flags: none
+007d75a0	465	?GetRandomCard@CTCTavernGameCardPairs@@UAEXAAJ0JJ@Z	// Flags: none
+00e0ca50	1223	?Main@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@EAEXXZ	// Flags: /O2 /Oy
+00d06130	1400	?Main@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ	// Flags: /O2 /Oy
+00d05a60	1400	?Main@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ	// Flags:
+00f277f0	493	?_M_fill_insert@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXPAVCHeroSoulsCreatureDef@@IABV3@@Z	// Flags: /Og- /d2vol5
+00d2d1a0	620	?Main@CBattleMinion@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ	// Flags: /O2 /Oy
+009f4590	864	?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z	// Flags: /O2 /Oy /Gr /GS
+00da71e0	1549	?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z	// Flags: /O2 /Oy /d2inlS64
+00e70460	1665	?Main@CDF_BeEvil@CV_DemonDoorsScript@NScript@@EAEXXZ	// Flags:
+00ebe620	1482	?Main@CVO_Woman@CV_OracleScript@NScript@@EAEXXZ	// Flags:
+006e3b90	816	?Update@CTCTalk@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z	// Flags: none
+00ef5840	727	?Main@CBanditWalker@CPersonalScript_EmptyScript@NScript@@EAEXXZ	// Flags: none
+00ee91e0	613	?Main@CGlobal_DebugCycleThroughSpeechScript@NScript@@UAEXXZ	// Flags: none
+00723e50	310	?SetRHSetAsFlushOnNormal@CTCPhysicsStandard@@UAEXABVC3DVector@@@Z	// Flags: (none)

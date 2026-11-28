@@ -1,0 +1,2 @@
+EQ  00f27060 57 ??0CHeroSoulsCreatureDef@@QAE@ABV0@@Z 
+EQ  00f273b0 50 ?_M_clear@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXXZ 

@@ -1,0 +1,6 @@
+EQ  00ce1000 53 ??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ 
+EQ  00cdee00 11 ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  00cdedb0 78 ??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z 
+EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+EQ  00d05fe0 145 ?Alloc@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z 

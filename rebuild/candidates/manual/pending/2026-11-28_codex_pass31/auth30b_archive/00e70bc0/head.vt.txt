@@ -1,0 +1,51 @@
+VFTABLE ??_7CScriptGameResourceObjectBase@@6B@ class CScriptGameResourceObjectBase obj_slots 2 retail_vtables ['0x126008c'] bound
+  retail 0x126008c slots 2 agree 2 / 2 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z ret=0x6e70a0 body36 EQ relocs EQ
+    1 agree    ?Validate@CBaseObject@@UBEXXZ ret=0x99a400
+VFTABLE ??_7CPredicateBase@NScript@@6B@ class NScript::CPredicateBase obj_slots 3 retail_vtables ['0x12c2ff4'] bound
+  retail 0x12c2ff4 slots 3 agree 3 / 3 COUNT OK
+    0 agree    __purecall ret=0xbfea08
+    1 agree    __purecall ret=0xbfea08
+    2 agree    ??_GCPredicateBase@NScript@@UAEPAXI@Z ret=0xcddb40 body31 EQ relocs EQ
+VFTABLE ??_7CIsThingAlive@NScript@@6B@ class NScript::CIsThingAlive obj_slots 3 retail_vtables ['0x12c32f0'] bound
+  retail 0x12c32f0 slots 10 agree 2 / 3 COUNT DIFF
+    0 agree    ??RCIsThingAlive@NScript@@UBE_NXZ ret=0xcdf120
+    1 unknown(unchecked) ?Clone@CIsThingAlive@NScript@@UBEPAVCPredicateBase@2@XZ ret=0xcdf130
+    2 agree    ??_GCIsThingAlive@NScript@@UAEPAXI@Z ret=0xcdf160 body30 NEQ relocs ['??1CIsThingAlive@NScript@@UAE@XZ@+4->794f5b6', '??3@YAXPAX@Z@+11->8f2366b']
+VFTABLE ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ class CScriptGameResourceObjectScriptedThingBase obj_slots 30 retail_vtables ['0x127094c'] bound
+  retail 0x127094c slots 30 agree 30 / 30 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z ret=0x7e7520 body87 EQ relocs EQ
+    1 agree    ?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ ret=0x7e72c0
+    2 agree    ?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScri ret=0x7e72d0
+    3 agree    ?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptTh ret=0x7e72e0
+    4 agree    ?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEn ret=0x7e72f0
+    5 agree    ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEn ret=0x7e7300
+    6 agree    ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@ ret=0x7e7310
+    7 agree    ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z ret=0x7e7320
+    8 agree    ?StopFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z ret=0x7e7330
+    9 agree    ?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@ ret=0x7e7340
+   10 agree    ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7360
+   11 agree    ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7370
+   12 agree    ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ret=0x7e7490
+   13 agree    ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSel ret=0x7e7390
+   14 agree    ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelec ret=0x7e7380
+   15 agree    ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCC ret=0x7e73a0
+   16 agree    ?Converse@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@PBD@Z ret=0x7e73b0
+   17 agree    ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCh ret=0x7e73c0
+   18 agree    ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z ret=0x7e73d0
+   19 agree    ?PlayCombatAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111 ret=0x7e73e0
+   20 agree    ?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N1 ret=0x7e73f0
+   21 agree    ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7400
+   22 agree    ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAE ret=0x7e7410
+   23 agree    ?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXAAVCScriptThing ret=0x7e7420
+   24 agree    ?DropGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7430
+   25 agree    ?UnsheatheWeapons@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7440
+   26 agree    ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ret=0x7e7450
+   27 agree    ?IsFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ret=0x7e7460
+   28 agree    ?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1 ret=0x7e7470
+   29 agree    ?Wait@CScriptGameResourceObjectScriptedThingBase@@UAEXM@Z ret=0x7e7480
+VFTABLE ??_7CScriptGameResourceObjectMovieBase@@6B@ class CScriptGameResourceObjectMovieBase obj_slots 2 retail_vtables ['0x1260ef4'] bound
+  retail 0x1260ef4 slots 2 agree 2 / 2 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z ret=0x6e7bd0 body87 EQ relocs EQ
+    1 agree    ?Validate@CBaseObject@@UBEXXZ ret=0x99a400
+SUMMARY {'agree': 39, 'unknown(unchecked)': 1, 'body_NEQ': 1}

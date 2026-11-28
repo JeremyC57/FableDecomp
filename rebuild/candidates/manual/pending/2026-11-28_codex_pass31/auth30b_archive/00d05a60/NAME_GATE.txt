@@ -1,0 +1,22 @@
+00d05a60 AUTH30_00d05a60 RELOCATION_MATCH
+OK   004aa840 +318   split_fixable    ??1CScriptThing@@UAE@XZ   [landed: ??1CScriptThing@@QAE@XZ,??1CScriptThingCopy@@UAE@XZ,??1CScriptThingParam@@UAE@XZ,??1CScriptThingRuntime@@UAE@XZ,??1ScriptMethods@@UAE@XZ,??1ScriptThingCopy@@QAE]
+OK   004abe90 +21    split_fixable    ??0CScriptThing@@QAE@ABV0@@Z   [landed: ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z,??0CElement12_004abe90@@QAE@ABU0@@Z,??0CScriptThing@@QAE@PAX@Z,??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z,??0CSc]
+OK   006e7ab0 +399   split_fixable    ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ   [landed: ??1CMovieImpPointer@@QAE@XZ,??1CResourcePImp@@QAE@XZ]
+OK   007e7390 +33e   agree_pdb        ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+OK   007e7450 +347   split_fixable    ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ   [landed: ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ]
+OK   007e7490 +2f2   agree_pdb        ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+OK   007e74d0 +11a   split_fixable    ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ   [landed: ??1CScriptGameResourceObjectScriptedThingBase@@QAE@XZ,?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ]
+OK   0099a380 +292   split_fixable    ??0CBaseObject@@IAE@XZ   [landed: ??0CVillageTask@@QAE@XZ]
+OK   0099a430 +4d5   split_fixable    ??1CBaseObject@@MAE@XZ   [landed: ??1CBaseObjectDtor@@UAE@XZ]
+OK   0099eae0 +1e7   split_fixable    ??1CCharString@@QAE@XZ   [landed: ??1CCharString2@@QAE@XZ,??1CCharString@N006d41f0@@QAE@XZ,??1CCharString@NErase005dcf70@@QAE@XZ,??1CCharString@NFactory007f1b70@@QAE@XZ,??1CCharString@NManager00]
+OK   0099ebf0 +156   split_fixable    ??0CCharString@@QAE@PBDJ@Z   [landed: ??0CCharString2@@QAE@HH@Z,??0CCharString@@QAE@PBDH@Z,??0CCharString@NFactory007f1b70@@QAE@PBDH@Z,??0CCharString@X_006e11f0@@QAE@PBDH@Z,??0CRetailString@@QAE@PBD]
+OK   00cd23b9 +75    agree_pdb        ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+OK   00cd2770 +105   agree_pdb        ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+OK   00d05a60 self   agree_pdb        ?Main@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+OK   00f35b10 +2d    split_fixable    ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z   [landed: ?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z,?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEX]
+OK   00f35b30 +142   agree_pdb        ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+OK   0126008c +3a1   split_fixable    ??_7CScriptGameResourceObjectBase@@6B@   [landed: ??_7CScriptGameResourceObjectBaseDtor@@6B@]
+OK   01260ef4 +2a5   agree_pdb        ??_7CScriptGameResourceObjectMovieBase@@6B@
+OK   0127094c +68    agree_pdb        ??_7CScriptGameResourceObjectScriptedThingBase@@6B@
+OK   012c32f0 +f     agree_pdb        ??_7CIsThingAlive@NScript@@6B@
+NAME_GATE PASS

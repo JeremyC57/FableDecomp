@@ -1,0 +1,8 @@
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+EQ  00704430 25 ??0?$CCountedPointer@VCScriptThing@@@@QAE@ABV0@@Z 
+EQ  007e70e0 53 ?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ 
+EQ  004abe90 33 ??0CScriptThing@@QAE@ABV0@@Z 
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+NEQ 00e241b0 14 ??1CIsThingAlive@NScript@@UAE@XZ not referenced by the leaf

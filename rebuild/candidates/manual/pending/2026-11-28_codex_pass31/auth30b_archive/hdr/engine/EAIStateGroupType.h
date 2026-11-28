@@ -1,0 +1,5 @@
+#ifndef FABLE_ENGINE_EAISTATEGROUPTYPE_H
+#define FABLE_ENGINE_EAISTATEGROUPTYPE_H
+// Ego_d LF_ENUM and both release/debug donor signatures.
+enum EAIStateGroupType { AI_STATE_NONE=0, AI_STATE_FIGHTING=1, AI_STATE_FOLLOWING=2, AI_STATE_MISC=3 };
+#endif

@@ -1,0 +1,9 @@
+EQ  00cd4450 23 ??0CTimer@@QAE@XZ 
+EQ  00cd4470 20 ??1CTimer@@QAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+NEQ 008ab980 51 ??4CScriptThing@@QAEAAV0@ABV0@@Z LEAF-REFERENCED
+EQ  004aa980 18 ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ 
+EQ  004ab130 28 ?IsAlive@CScriptThing@@UBE_NXZ 
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 

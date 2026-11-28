@@ -1,0 +1,150 @@
+VFTABLE ??_7CScriptThing@@6B@ class CScriptThing obj_slots 79 retail_vtables ['0x1238c8c'] bound
+  retail 0x1238c8c slots 79 agree 79 / 79 COUNT OK
+    0 agree    ??_GCScriptThing@@UAEPAXI@Z ret=0x4ab170 body87 EQ relocs EQ
+    1 agree    ?GetName@CScriptThing@@UBEABVCCharString@@XZ ret=0x4aa8b0
+    2 agree    ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ ret=0x4aa8d0
+    3 agree    ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ ret=0x4aa900
+    4 agree    ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z ret=0x4aa930
+    5 agree    ?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ ret=0x4aa940
+    6 agree    ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ ret=0x4aa980
+    7 agree    ?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ ret=0x4aa9a0
+    8 agree    ?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ ret=0x4aa9e0
+    9 agree    ?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ ret=0x4aaa10
+   10 agree    ?GetAngleXY@CScriptThing@@UBEMXZ ret=0x4aaa40
+   11 agree    ?GetPThing@CScriptThing@@UBEPAVCThing@@XZ ret=0x4aaa60
+   12 agree    ?GetPThingUniqueID@CScriptThing@@UBE_KXZ ret=0x4aaa70
+   13 agree    ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ ret=0x4aaa90
+   14 agree    ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ ret=0x4aaaa0
+   15 agree    ?IsSneaking@CScriptThing@@UBE_NXZ ret=0x4aaab0
+   16 agree    ?IsAwareOfHero@CScriptThing@@UBE_NXZ ret=0x4aaac0
+   17 agree    ?MsgIsTriggeredBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aaad0
+   18 agree    ?MsgIsKilledBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aaaf0
+   19 agree    ?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ ret=0x4abe60
+   20 agree    ?MsgIsUsedBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aab10
+   21 agree    ?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aab30
+   22 agree    ?MsgIsHitByWithFlourish@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aab50
+   23 agree    ?MsgIsHitByWithDecapitate@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aab70
+   24 agree    ?MsgIsHitByWithWeapon@CScriptThing@@UBE_NABVCCharString@@0@Z ret=0x4aab90
+   25 agree    ?MsgIsHitByWithProjectileWeapon@CScriptThing@@UBE_NABVCCharString@@AAM@Z ret=0x4aabb0
+   26 agree    ?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ ret=0x4abec0
+   27 agree    ?MsgIsTalkedToBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aabd0
+   28 agree    ?MsgWhoTalkedToMe@CScriptThing@@UBE?AV1@XZ ret=0x4abf00
+   29 agree    ?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z ret=0x4aabf0
+   30 agree    ?MsgWhoExpressedToMe@CScriptThing@@UBE?AV1@XZ ret=0x4abf40
+   31 agree    ?MsgHowLongWasExpressionPerformed@CScriptThing@@UBEJXZ ret=0x4aac10
+   32 agree    ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aac20
+   33 agree    ?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ ret=0x4abf80
+   34 agree    ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z ret=0x4aac40
+   35 agree    ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z ret=0x4aac60
+   36 agree    ?MsgReceivedInventoryItem@CScriptThing@@UBE_NXZ ret=0x4aac80
+   37 agree    ?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z ret=0x4aaca0
+   38 agree    ?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ ret=0x4aacc0
+   39 agree    ?MsgPerformedAnyAggressiveSpecialAbility@CScriptThing@@UBE_NXZ ret=0x4aace0
+   40 agree    ?MsgPerformedAnyNonAggressiveSpecialAbility@CScriptThing@@UBE_NXZ ret=0x4aad00
+   41 agree    ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z ret=0x4aad20
+   42 agree    ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aad40
+   43 agree    ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aad60
+   44 agree    ?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aad80
+   45 agree    ?MsgOpenedChest@CScriptThing@@UBE_NXZ ret=0x4aada0
+   46 agree    ?MsgHitEnemyWithMeleeWeapon@CScriptThing@@UBE_NXZ ret=0x4aadc0
+   47 agree    ?MsgHitFriendWithMeleeWeapon@CScriptThing@@UBE_NXZ ret=0x4aade0
+   48 agree    ?MsgHitEnemyWithRangedWeapon@CScriptThing@@UBE_NXZ ret=0x4aae00
+   49 agree    ?MsgHitFriendWithRangedWeapon@CScriptThing@@UBE_NXZ ret=0x4aae20
+   50 agree    ?MsgHitEnemyWithBareHands@CScriptThing@@UBE_NXZ ret=0x4aae40
+   51 agree    ?MsgHitFriendWithBareHands@CScriptThing@@UBE_NXZ ret=0x4aae60
+   52 agree    ?MsgAttackedWithMeleeWeaponWithoutHittingAnything@CScriptThing@@UBE_NXZ ret=0x4aae80
+   53 agree    ?MsgAttackedWithBareHandsWithoutHittingAnything@CScriptThing@@UBE_NXZ ret=0x4aaea0
+   54 agree    ?MsgTalkedToAnyone@CScriptThing@@UBE_NXZ ret=0x4aaec0
+   55 agree    ?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z ret=0x4aaee0
+   56 agree    ?MsgPerformedFlourish@CScriptThing@@UBE_NXZ ret=0x4aaf00
+   57 agree    ?MsgPerformedSuccessfulFlourish@CScriptThing@@UBE_NXZ ret=0x4aaf20
+   58 agree    ?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z ret=0x4aaf40
+   59 agree    ?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z ret=0x4aaf60
+   60 agree    ?MsgIsKicked@CScriptThing@@UBE_NXZ ret=0x4aaf80
+   61 agree    ?IsUnconscious@CScriptThing@@UBE_NXZ ret=0x4aafa0
+   62 agree    ?IsUsable@CScriptThing@@UBE_NXZ ret=0x4aafc0
+   63 agree    ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z ret=0x4aafe0
+   64 agree    ?IsOpenDoor@CScriptThing@@UBE_NXZ ret=0x4ab000
+   65 agree    ?IsSummonedCreature@CScriptThing@@UBE_NXZ ret=0x4ab020
+   66 agree    ?SetAsUsable@CScriptThing@@UAEX_N@Z ret=0x4ab040
+   67 agree    ?SetFriendsWithEverythingFlag@CScriptThing@@UAEX_N@Z ret=0x4ab060
+   68 agree    ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ ret=0x4ab080
+   69 agree    ?SetActivationTriggerStatus@CScriptThing@@UAEX_N@Z ret=0x4ab0a0
+   70 agree    ?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z ret=0x4ab0c0
+   71 agree    ?UpdateThingAttachment@CScriptThing@@UAEXXZ ret=0x4ab0e0
+   72 agree    ?IncrementScriptCounter@CScriptThing@@UAEXXZ ret=0x4ab0f0
+   73 agree    ?DecrementScriptCounter@CScriptThing@@UAEXXZ ret=0x4ab100
+   74 agree    ?GetScriptCounter@CScriptThing@@UAEJXZ ret=0x4ab110
+   75 agree    ?IsAlive@CScriptThing@@UBE_NXZ ret=0x4ab130
+   76 agree    ?IsDead@CScriptThing@@UBE_NXZ ret=0x4aa890
+   77 agree    ?IsNull@CScriptThing@@UBE_NXZ ret=0x4ab150
+   78 agree    ?IsEqualTo@CScriptThing@@MBE_NABV1@@Z ret=0x4aa8a0
+VFTABLE ??_7CEntityScriptBase@@6B@ class CEntityScriptBase obj_slots 7 retail_vtables ['0x12c3224'] bound
+  retail 0x12c3224 slots 7 agree 7 / 7 COUNT OK
+    0 agree    ??_GCEntityScriptBase@@UAEPAXI@Z ret=0xcdebf0 body30 EQ relocs EQ
+    1 agree    __purecall ret=0xbfea08
+    2 agree    ?Init@CEntityScriptBase@@UAEXXZ ret=0xcdebb0
+    3 agree    __purecall ret=0xbfea08
+    4 agree    ?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z ret=0xcdebc0
+    5 agree    ?OnPredicateFail@CEntityScriptBase@@UAEXXZ ret=0xcdebd0
+    6 agree    ?OnInterrupted@CEntityScriptBase@@UAEXXZ ret=0xcdebe0
+VFTABLE ??_7CAssassin3@CQ_BanditCampBossBattleScript@NScript@@6B@ class NScript::CQ_BanditCampBossBattleScript::CAssassin3 obj_slots 7 retail_vtables ['0x12c8d84'] placed(3 slots)
+  retail 0x12c8d84 slots 7 agree 6 / 7 COUNT OK
+    0 agree    ??_GCAssassin3@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z ret=0xd06090 body30 EQ relocs EQ
+    1 unknown(unchecked) ?Main@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ ret=0xd06130 body1491 NEQ relocs ['??1?$CCountedPointer@VCScriptGameResourc@+11a->7e74d0', '??_7CScriptGameResourceObjectBase@@6B@@+126->14245c8b', '??1CBaseObject@@MAE@XZ@+12b->d062fa', '?IsActiveThreadTerminating@CEntityScript@+152->e8f886d2', '??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@@+15d->20244c8d', '??0CCharString@@QAE@PBDJ@Z@+166->252cec67', '??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@@+185->1c24448d', '??0CCharString@@QAE@PBDJ@Z@+18e->252cec8f', '??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@@+1b0->1824448d', '??0CCharString@@QAE@PBDJ@Z@+1b9->8a9dedfb', '??1CCharString@@QAE@XZ@+1f7->14f4bfb4', '??1CCharString@@QAE@XZ@+20c->14f4bfc9', '??1CCharString@@QAE@XZ@+221->84d0864c', '?IsActiveThreadTerminating@CEntityScript@+230->6ad1c3a5', '??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@@+246->2424448d', '??0CCharString@@QAE@PBDJ@Z@+24f->251cf0ef', '??1CCharString@@QAE@XZ@+267->84d08692', '?IsActiveThreadTerminating@CEntityScript@+276->cf5c242e', '?IsActiveThreadTerminating@CEntityScript@+291->ca101ead', '??0CBaseObject@@IAE@XZ@+2a2->f530881a', '??_C@_00CNPNBAHC@?$AA@@+2a9->68247c89', '??_7CScriptGameResourceObjectMovieBase@@@+2b5->44e8bff', '??0CCharString@@QAE@PBDJ@Z@+2c2->20901a', '??1CCharString@@QAE@XZ@+2e0->8bd06419', '?GetScriptThing@CScriptGameResourceObjec@+302->1f34312', '__real@00000000@+312->244c8ddb', '??1CScriptThing@@UAE@XZ@+328->6ad0ce5d', '??_C@_0BN@FLPJCKAF@TEXT_QST_009_ASSASSIN@+33e->ffae0f1e', '?Speak@CScriptGameResourceObjectScripted@+34e->4f5bf4a7', '?IsPerformingScriptTask@CScriptGameResou@+357->e99eefa7', '?IsActiveThreadTerminating@CEntityScript@+36b->aee01587', '?IsPerformingScriptTask@CScriptGameResou@+37c->a3557470', '?IsActiveThreadTerminating@CEntityScript@+387->45973446', '??1?$CCountedPointer@VCScriptGameResourc@+3a9->d18bc6', '??_7CScriptGameResourceObjectBase@@6B@@+3b1->c0840022', '?IsActiveThreadTerminating@CEntityScript@+3bf->ca0ef1db', '??0CBaseObject@@IAE@XZ@+3d0->f5408948', '??_C@_00CNPNBAHC@?$AA@@+3d7->78247c89', '??_7CScriptGameResourceObjectMovieBase@@@+3e3->44e8bff', '??0CCharString@@QAE@PBDJ@Z@+3f0->229548', '??1CCharString@@QAE@XZ@+40e->8bd06547', '?GetScriptThing@CScriptGameResourceObjec@+430->1f34440', '__real@00000000@+440->244c8ddb', '??1CScriptThing@@UAE@XZ@+456->6ad0cf8b', '??_C@_0BO@JDCIEJOO@TEXT_QST_009_ASSASSIN@+46c->ffae0df0', '?Speak@CScriptGameResourceObjectScripted@+47c->119f2d7', '?IsPerformingScriptTask@CScriptGameResou@+485->8becb8b8', '?IsActiveThreadTerminating@CEntityScript@+49b->aedee6b7', '?IsPerformingScriptTask@CScriptGameResou@+4ac->8f5575a0', '?IsActiveThreadTerminating@CEntityScript@+4b7->91d03576', '??1?$CCountedPointer@VCScriptGameResourc@+4d4->ca0e8df0', '??_7CScriptGameResourceObjectBase@@6B@@+4dc->488a1446', '??1CBaseObject@@MAE@XZ@+4e5->d06256', '??1?$CCountedPointer@VCScriptGameResourc@+50f->ca0e532b', '??_7CScriptGameResourceObjectBase@@6B@@+514->48244c8d', '??1?$CCountedPointer@VCScriptGameResourc@+536->9ff16a', '??_7CScriptGameResourceObjectBase@@6B@@+53b->5ec', '??1?$CCountedPointer@VCScriptGameResourc@+55a->68f4ab55', '??_7CScriptGameResourceObjectBase@@6B@@+55f->e8012600', '??1CBaseObject@@MAE@XZ@+56c->7e74d0', '??1?$CCountedPointer@VCScriptGameResourc@+575->cd93cf6d', '??1CBaseObject@@MAE@XZ@+582->8bf4d10d', '??1?$CCountedPointer@VCScriptGameResourc@+59f->8e207af7', '??_7CScriptGameResourceObjectBase@@6B@@+5a4->2406c708', '??1CBaseObject@@MAE@XZ@+5b1->c7e08b31', '??1?$CCountedPointer@VCScriptGameResourc@+5ba->89e4c577', '??1CBaseObject@@MAE@XZ@+5c7->6b08db32']
+    2 agree    ?Init@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ ret=0xd060b0
+    3 agree    ?GetParentScript@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@UBEPAVCScriptBase@@XZ ret=0xd06080
+    4 agree    ?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z ret=0xcdebc0
+    5 agree    ?OnPredicateFail@CEntityScriptBase@@UAEXXZ ret=0xcdebd0
+    6 agree    ?OnInterrupted@CEntityScriptBase@@UAEXXZ ret=0xcdebe0
+VFTABLE ??_7CScriptGameResourceObjectMovieBase@@6B@ class CScriptGameResourceObjectMovieBase obj_slots 2 retail_vtables ['0x1260ef4'] bound
+  retail 0x1260ef4 slots 2 agree 2 / 2 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z ret=0x6e7bd0 body46 NEQ relocs ['??1?$CCountedPointer@VCScriptGameResourc@+7->ff8af09b', '??_7CScriptGameResourceObjectBase@@6B@@+f->75003883', '??1CBaseObject@@MAE@XZ@+14->ff76c473', '??3@YAXPAX@Z@+21->c4f17c46']
+    1 agree    ?Validate@CBaseObject@@UBEXXZ ret=0x99a400
+VFTABLE ??_7CScriptGameResourceObjectBase@@6B@ class CScriptGameResourceObjectBase obj_slots 2 retail_vtables ['0x126008c'] bound
+  retail 0x126008c slots 2 agree 2 / 2 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z ret=0x6e70a0 body36 EQ relocs EQ
+    1 agree    ?Validate@CBaseObject@@UBEXXZ ret=0x99a400
+VFTABLE ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ class CScriptGameResourceObjectScriptedThingBase obj_slots 30 retail_vtables ['0x127094c'] bound
+  retail 0x127094c slots 30 agree 30 / 30 COUNT OK
+    0 agree    ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z ret=0x7e7520 body46 NEQ relocs ['??1?$CCountedPointer@VCScriptGameResourc@+7->ff9ae9eb', '??_7CScriptGameResourceObjectBase@@6B@@+f->75003883', '??1CBaseObject@@MAE@XZ@+14->ff86bdc3', '??3@YAXPAX@Z@+21->c5017586']
+    1 agree    ?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ ret=0x7e72c0
+    2 agree    ?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScri ret=0x7e72d0
+    3 agree    ?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptTh ret=0x7e72e0
+    4 agree    ?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEn ret=0x7e72f0
+    5 agree    ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEn ret=0x7e7300
+    6 agree    ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@ ret=0x7e7310
+    7 agree    ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z ret=0x7e7320
+    8 agree    ?StopFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z ret=0x7e7330
+    9 agree    ?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@ ret=0x7e7340
+   10 agree    ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7360
+   11 agree    ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7370
+   12 agree    ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ret=0x7e7490
+   13 agree    ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSel ret=0x7e7390
+   14 agree    ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelec ret=0x7e7380
+   15 agree    ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCC ret=0x7e73a0
+   16 agree    ?Converse@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@PBD@Z ret=0x7e73b0
+   17 agree    ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCh ret=0x7e73c0
+   18 agree    ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z ret=0x7e73d0
+   19 agree    ?PlayCombatAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111 ret=0x7e73e0
+   20 agree    ?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N1 ret=0x7e73f0
+   21 agree    ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7400
+   22 agree    ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAE ret=0x7e7410
+   23 agree    ?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXAAVCScriptThing ret=0x7e7420
+   24 agree    ?DropGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7430
+   25 agree    ?UnsheatheWeapons@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ret=0x7e7440
+   26 agree    ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ret=0x7e7450
+   27 agree    ?IsFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ret=0x7e7460
+   28 agree    ?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1 ret=0x7e7470
+   29 agree    ?Wait@CScriptGameResourceObjectScriptedThingBase@@UAEXM@Z ret=0x7e7480
+VFTABLE ??_7CIsThingAlive@NScript@@6B@ class NScript::CIsThingAlive obj_slots 3 retail_vtables ['0x12c32f0'] bound
+  retail 0x12c32f0 slots 10 agree 2 / 3 COUNT DIFF
+    0 agree    ??RCIsThingAlive@NScript@@UBE_NXZ ret=0xcdf120
+    1 unknown(unchecked) ?Clone@CIsThingAlive@NScript@@UBEPAVCPredicateBase@2@XZ ret=0xcdf130
+    2 agree    ??_GCIsThingAlive@NScript@@UAEPAXI@Z ret=0xcdf160 body45 EQ relocs EQ
+VFTABLE ??_7CPredicateBase@NScript@@6B@ class NScript::CPredicateBase obj_slots 3 retail_vtables ['0x12c2ff4'] bound
+  retail 0x12c2ff4 slots 3 agree 3 / 3 COUNT OK
+    0 agree    __purecall ret=0xbfea08
+    1 agree    __purecall ret=0xbfea08
+    2 agree    ??_GCPredicateBase@NScript@@UAEPAXI@Z ret=0xcddb40 body31 EQ relocs EQ
+SUMMARY {'agree': 131, 'unknown(unchecked)': 2, 'body_NEQ': 3}
