@@ -1465,3 +1465,39 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-27 A: AUTH30B started (fresh authoring agent, brief $S/w22/auth30/BRIEF_B.md); AUTH30 locks moved to AUTH30B, plus 0x00D04AE0 and the Alloc rows 0x00D05910 / 0x00D05FE0.
 - 2026-11-27 A: AUTH30B paused by the owner mid round 4 (0x00D06130 2/4 EQ explained; r4e header route RELOCATION_MATCH 1400, ungated; was starting the R2 Alloc/ctor overlay). Locks stay AUTH30B; scratch $S/w22/auth30/ kept for resume.
 - 2026-11-28 A: Codex pass 30 landed: 45 rows, 152 respell units, 282 headers; 7 rows + 28 units backed out for name splits; 55 reserved (RESERVED.tsv). Catalog audit recorded, no full rebuild.
+
+2026-11-27 B->A: landed 0x00978B90 std::__adjust_heap (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 142 (was: length estimate 192). PDB Dinkumware spelling ??$_Adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xffab493a@@@std@@YIX... is in Ego_r (0x0099FF00) and FableWin (0x02C176F0). The bytes are the STLport __adjust_heap body, same as the landed twin 0x0097AF70. Manifest respell note is in NAME_FIXES.tsv. Callees: operator() 0x00978790 and __push_heap 0x00978A00.
+
+2026-11-27 B->A: claiming 0x008082C0 std::__adjust_heap for pair<C3DVector, long> and the first-person targeting comparator. PDB Dinkumware spelling ??$_Adjust_heap@PAU?$pair@VC3DVector@@J@std@@HU12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x58ed6966@@@std@@YIX... is in Ego_r (0x00801CA0) and FableWin (0x024E24A0). Retail body is 317 bytes. Not in any RESERVED.tsv.
+
+2026-11-27 B->A: landed 0x008082C0 std::__adjust_heap (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 317 (was: length estimate 432). PDB Dinkumware spelling ??$_Adjust_heap@PAU?$pair@VC3DVector@@J@std@@HU12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x58ed6966@@@std@@YIX... is in Ego_r (0x00801CA0) and FableWin (0x024E24A0). The bytes are the STLport __adjust_heap body, called by the landed __make_heap 0x00808CF0. Manifest already uses the Dinkumware _Adjust_heap label; the reconstruction spelling is noted in NAME_FIXES.tsv. Callees: GetCompareValueForPoint 0x007F9660 and __push_heap 0x00807620.
+
+2026-11-27 B->A: claiming 0x00C1BF00. No symbol in Ego_r.pdb or FableWin.pdb. Descriptive name BuildViewMatrix. The catalog label C3DMeshObject_UpdateQuadricMatrix is propagated. Retail body is 174 bytes. Not in any RESERVED.tsv.
+
+2026-11-27 B->A: landed 0x00C1BF00 BuildViewMatrix (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 174 (was: length estimate 176). No symbol in Ego_r.pdb or FableWin.pdb; the name is descriptive and the propagated catalog label C3DMeshObject_UpdateQuadricMatrix is queued in NAME_FIXES.tsv. Callees: CrossProduct 0x00C25860, DotProduct 0x00C256A0, InvertMatrix3x4 0x00C1D1C0. The local C3DVector is required because the shared header inlines Dot.
+
+2026-11-27 B->A: claiming 0x00A614B0 std::_Rb_tree hinted insert_unique for map<CWideString, CChecksumCacheFile::CEntry>. Retail body is 634 bytes. The only caller is the landed operator[] 0x00A617E0. Not in any RESERVED.tsv. Manifest label BinaryTree_Insert_RBTree is a placeholder.
+
+2026-11-27 B->A: landed 0x00A614B0 std::_Rb_tree hinted insert_unique (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 634 (was: length estimate 640). The end() arm uses `(char*)_M_rightmost() += 0x10`. operator++ 0x00A60780, operator-- 0x00A60890 and _M_insert 0x00A61270 are same-TU and match those landed rows. The value insert_unique stays a declaration so this TU does not emit a second body of 0x00A61360. Manifest name is already insert_unique, the same as landed 0x00A61360. PDB Dinkumware _Insert / insert for this map (debug counterparts, not a retail respell): Ego_r 0x00C002D0 and 0x00C01260, FableWin 0x033A99A0, 0x033A9BA0 and 0x033AAEA0.
+
+2026-11-27 B->A: naming check on this set. 0x00978B90 and 0x008082C0 stay std::__adjust_heap: EXTRA_RULES 2026-11-20 gives STL instances the STLport header spelling, and landed 0x0097AF70 / 0x00CB68C0 are already __adjust_heap. The Dinkumware _Adjust_heap symbols are the debug-build counterparts. NAME_FIXES now asks for the functions.tsv labels to move from _Adjust_heap<...> to __adjust_heap. 0x00A614B0 stays insert_unique for the same reason. 0x00C1BF00 BuildViewMatrix is a descriptive name (no PDB symbol), recorded in descriptive_names.tsv. Its callee bindings now use the landed InvertMatrix3x4 and the class-keyed DotProduct.
+
+2026-11-27 B->A: claiming 0x00C62370 GetRandomPointInSphere. Descriptive name, not a PDB symbol (none in Ego_r, FableWin or Ego_d). The landed caller 0x00C62530 already binds ?GetRandomPointInSphere@@YG?AVC3DVector@@M@Z here. Retail body is 118 bytes. Not in any RESERVED.tsv. Manifest label Quaternion_FromAxisAngle is propagated.
+
+2026-11-27 B->A: landed 0x00C62370 GetRandomPointInSphere (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 118 (was: length estimate 128). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. The catalog label Quaternion_FromAxisAngle is queued in NAME_FIXES.tsv. SetLungedThisFrame 0x00C62350 is defined in this TU with the same body as the landed row so the three calls stay out of line.
+
+2026-11-27 B->A: claiming 0x00947EB0 CAIStateGroup_GoToPub::GetObjectWithScriptName. PDB leaf ?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z in Ego_r (0x0096E1B0) and FableWin (0x02BC4810). Retail body is 242 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00947EB0 CAIStateGroup_GoToPub::GetObjectWithScriptName (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 242 (was: length estimate 256). PDB leaf in Ego_r (0x0096E1B0) and FableWin (0x02BC4810). functions.tsv already uses that name. Shared list and header GFRandom, same shape as landed 0x00929FC0.
+
+2026-11-27 B->A: claiming 0x00991C10 CASoundManager::RegisterAtmosSoundBank. Descriptive name, not a PDB name: no symbol in Ego_r or FableWin. Retail string "Register Atmos Sound Bank". The landed caller 0x00417A58 already binds the unsigned-long spelling. Retail body is 338 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00991C10 CASoundManager::RegisterAtmosSoundBank (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 338 (was: length estimate 496). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. functions.tsv label CMainGameComponent_RegisterSoundBank is queued in NAME_FIXES.tsv. NeedsSort is volatile because retail re-reads the byte it just stored.
+
+2026-11-27 B->A: claiming 0x00C6BE60 SAL_CalcMacroFxGains. Descriptive name, not a PDB name: no symbol in Ego_r or FableWin. The landed caller 0x00C54C10 already binds this spelling. Retail body is 226 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00C6BE60 SAL_CalcMacroFxGains (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 226 (was: length estimate 256). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. functions.tsv label Audio_ComputeFrequencyResponse is queued in NAME_FIXES.tsv. The column subtract is before GetFrequencyTableEntry.
+
+2026-11-27 B->A: claiming 0x00AF2640 NParticleEngine::CPSCBase::GetCurrentPosition. PDB leaf in Ego_r (0x00AB5930) and FableWin (0x02F104C0). Retail body is 313 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00AF2640 NParticleEngine::CPSCBase::GetCurrentPosition (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 313 (was: length estimate 320). PDB leaf in Ego_r (0x00AB5930) and FableWin (0x02F104C0). World-space sibling of 0x00AF2780: GetSystemTransform when owner flag bit 0x40 is set.

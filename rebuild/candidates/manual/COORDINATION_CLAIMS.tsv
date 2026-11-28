@@ -636,6 +636,24 @@ date	account	item	kind	status	note
 2026-11-26	B	0x008EEB40	author	done	landed MATCH PASS: Mass::ForceToVel, 146 bytes
 2026-11-26	B	0x006C9350	author	claimed	CPersistTraits<pair<long, COpinionDeed*>>::TransferIn; manifest still says CAtmosBankEntry
 2026-11-26	B	0x006C9350	author	done	landed RELOCATION_MATCH PASS: opinion-deed pair TransferIn, 312 bytes
+2026-11-27	B	0x00978B90	author	claimed	std::__adjust_heap for the ffab493a direction comparator; retail 142 bytes
+2026-11-27	B	0x00978B90	author	done	landed RELOCATION_MATCH PASS: std::__adjust_heap, 142 bytes
 2026-11-27	A	Codex pass 30: the 100 largest parked rows no Codex pass has had (pending/2026-11-27_codex_pass30/RESERVED.tsv)	authoring	claimed	reserved for Codex; Claude agents off them; locks CODEX30 in nflocks
 2026-11-27	A	AUTH30: the 16 Codex pass 29 rows Codex held (4 DIFFER, 4 pick-any, 6 vftable, 2 source review), released from CODEX29	authoring	claimed	Claude agent AUTH30; locks AUTH30 in nflocks
 2026-11-27	A	AUTH30B: takes over the 16 AUTH30 rows plus 0x00D04AE0 (R1 control) and the Alloc rows 0x00D05910 / 0x00D05FE0 (R2 ports), under the 2026-11-27 advisor rulings in EXTRA_RULES	authoring	claimed	Claude agent AUTH30B; locks AUTH30B in nflocks (AUTH30 locks moved)
+2026-11-27	B	0x008082C0	author	claimed	std::__adjust_heap for the first-person targeting comparator; retail 317 bytes
+2026-11-27	B	0x008082C0	author	done	landed RELOCATION_MATCH PASS: std::__adjust_heap, 317 bytes
+2026-11-27	B	0x00C1BF00	author	claimed	BuildViewMatrix (descriptive; no PDB symbol); retail 174 bytes
+2026-11-27	B	0x00C1BF00	author	done	landed RELOCATION_MATCH PASS: BuildViewMatrix, 174 bytes
+2026-11-27	B	0x00A614B0	author	claimed	std::_Rb_tree hinted insert_unique for the checksum-cache map; retail 634 bytes
+2026-11-27	B	0x00A614B0	author	done	landed RELOCATION_MATCH PASS: hinted insert_unique, 634 bytes
+2026-11-27	B	0x00C62370	author	claimed	GetRandomPointInSphere (descriptive; no PDB symbol); retail 118 bytes
+2026-11-27	B	0x00C62370	author	done	landed RELOCATION_MATCH PASS: GetRandomPointInSphere, 118 bytes
+2026-11-27	B	0x00947EB0	author	claimed	CAIStateGroup_GoToPub::GetObjectWithScriptName; PDB leaf in Ego_r and FableWin; retail 242 bytes
+2026-11-27	B	0x00947EB0	author	done	landed RELOCATION_MATCH PASS: GetObjectWithScriptName, 242 bytes
+2026-11-27	B	0x00991C10	author	claimed	CASoundManager::RegisterAtmosSoundBank (descriptive; no PDB symbol); retail 338 bytes
+2026-11-27	B	0x00991C10	author	done	landed RELOCATION_MATCH PASS: RegisterAtmosSoundBank, 338 bytes
+2026-11-27	B	0x00C6BE60	author	claimed	SAL_CalcMacroFxGains (descriptive; no PDB symbol); retail 226 bytes
+2026-11-27	B	0x00C6BE60	author	done	landed RELOCATION_MATCH PASS: SAL_CalcMacroFxGains, 226 bytes
+2026-11-27	B	0x00AF2640	author	claimed	NParticleEngine::CPSCBase::GetCurrentPosition; PDB leaf in Ego_r and FableWin; retail 313 bytes
+2026-11-27	B	0x00AF2640	author	done	landed RELOCATION_MATCH PASS: GetCurrentPosition, 313 bytes

@@ -405534,6 +405534,69 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '006cbe80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00978b90'
+        Module = 'std'
+        Source = '00/97/std_adjustheap_00978b90.cpp'
+        TestSource = '00/97/std_adjustheap_00978b90_test.cpp'
+        PassPattern = '00978b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008082c0'
+        Module = 'std'
+        Source = '00/80/std_adjustheap_008082c0.cpp'
+        TestSource = '00/80/std_adjustheap_008082c0_test.cpp'
+        PassPattern = '008082c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1bf00'
+        Module = '_global'
+        Source = '00/c1/global_BuildViewMatrix_00c1bf00.cpp'
+        TestSource = '00/c1/global_BuildViewMatrix_00c1bf00_test.cpp'
+        PassPattern = '00c1bf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a614b0'
+        Module = 'std'
+        Source = '00/a6/std_insertunique_00a614b0.cpp'
+        TestSource = '00/a6/std_insertunique_00a614b0_test.cpp'
+        PassPattern = '00a614b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62370'
+        Module = '_global'
+        Source = '00/c6/global_GetRandomPointInSphere_00c62370.cpp'
+        TestSource = '00/c6/global_GetRandomPointInSphere_00c62370_test.cpp'
+        PassPattern = '00c62370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00947eb0'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_GetObjectWithScriptName_00947eb0.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_GetObjectWithScriptName_00947eb0_test.cpp'
+        PassPattern = '00947eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00991c10'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_RegisterAtmosSoundBank_00991c10.cpp'
+        TestSource = '00/99/CASoundManager_RegisterAtmosSoundBank_00991c10_test.cpp'
+        PassPattern = '00991c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6be60'
+        Module = '_global'
+        Source = '00/c6/global_SALCalcMacroFxGains_00c6be60.cpp'
+        TestSource = '00/c6/global_SALCalcMacroFxGains_00c6be60_test.cpp'
+        PassPattern = '00c6be60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2640'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetCurrentPosition_00af2640.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetCurrentPosition_00af2640_test.cpp'
+        PassPattern = '00af2640_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
