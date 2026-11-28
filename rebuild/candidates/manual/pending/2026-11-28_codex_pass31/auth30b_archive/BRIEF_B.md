@@ -38,3 +38,6 @@ header edits go in your overlay `$S/w22/auth30/hdr/` as add-only opt-ins. Never 
 Update `$S/w22/auth30/STATUS.tsv` (one line per row: state, best grade, gates), write `$S/w22/auth30/ROUND4.md` (findings per task,
 with grades and evidence), `NAME_CONFLICTS.tsv`, and for each row ready to land a folder `$S/w22/auth30/land/<addr>/` with the row
 source, test, header overlay diff, LEAF and flags. Final message: a short table of rows and what the coordinator should land.
+
+# 2026-11-28 (A): this brief is superseded for a resume. 12 of its rows match and are held by A (A_MATCHED_HOLD); 4 went to Codex pass 31
+# (CODEX31). Its work is archived in rebuild/candidates/manual/pending/2026-11-28_codex_pass31/auth30b_archive/.

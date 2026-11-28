@@ -244,6 +244,17 @@ for a, ln, grade, path, en, ob, summary, extras in sel:
         if os.path.isdir(f) or not f.endswith(('.cpp', '.h', '.md', '.txt')) or SKIP.search(os.path.basename(f)): continue
         rel = f.split('/pending/')[1].split('/'); dst = '__'.join(rel)
         os.makedirs(f'{d}/prior', exist_ok=True); shutil.copy(f, f'{d}/prior/{dst}'); pl.append(f'- prior/{dst}')
+    # pass 31: notes inside address-named folders (B's notes/<addr>/, the paused agent's archive/<addr>/, Codex <addr>/ folders),
+    # the README beside a rows/ draft folder, the hand3c HANDOFF for the asm rows, and TERMINAL.md files
+    for f in sorted(set(glob.glob(f'{P}/pending/**/{a}/**/*', recursive=True) + glob.glob(f'{P}/batches/**/{a}/**/*', recursive=True))):
+        if os.path.isdir(f) or not f.endswith(('.cpp', '.h', '.md', '.txt', '.tsv')) or SKIP.search(os.path.basename(f)) or os.path.getsize(f) > 400000: continue
+        rel = f.split('/manual/')[1].split('/'); dst = '__'.join(rel)
+        if os.path.exists(f'{d}/prior/{dst}'): continue
+        os.makedirs(f'{d}/prior', exist_ok=True); shutil.copy(f, f'{d}/prior/{dst}'); pl.append(f'- prior/{dst}')
+    for f in ([os.path.join(os.path.dirname(os.path.dirname(f'{R}/{path}')), 'README.md')] if '/rows/' in path or '/held_needs_owner/' in path else []) + \
+             ([f'{P}/pending/2026-11-19_authoring_handoff/hand3c/HANDOFF.md'] if '/hand3c/' in path or a in ('006e5a00','0087cfe0','008d5aa0','00988e80','00a475c0','00b079b0') else []):
+        if os.path.exists(f):
+            dst = '__'.join(f.split('/manual/')[1].split('/')); os.makedirs(f'{d}/prior', exist_ok=True); shutil.copy(f, f'{d}/prior/{dst}'); pl.append(f'- prior/{dst}')
     shutil.copy(f'{R}/{path}', f'{d}/best_draft.cpp')
     fold = os.path.dirname(f'{R}/{path}'); hf = []
     for p_ in sorted(glob.glob(f'{fold}/*.md') + glob.glob(f'{fold}/NOTES*')):

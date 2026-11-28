@@ -18,10 +18,13 @@ hold, bounds skip, old A reservation, the landed naked_asm row 0x009BEF80).
 ## Review
 The advisor reviewed the dossier (owner delegated). The selected draft per row is the holder's selected checkpoint, not the newest
 file (STATUS.tsv best for AUTH30B, B's folder file, the Codex folder main, else UNMATCHED closest_version). Every draft was regraded at
-the base with no flag / pragma sweep (GRADES_AT_BASE.json): 41 DIFFER, 7 no longer compile (first error in ISSUES.tsv), 7 no object
-within 5 minutes, 1 unreadable object, 1 asm-only. Extents were measured to the next known start with padding trimmed.
+the base with no flag / pragma sweep (GRADES_AT_BASE.json): 41 DIFFER, 7 do not compile (6 turn on FABLE_RETAIL_* opt-ins that never landed; their
+lane overlays ship as hdr_overlay_optins*; 1 unexplained), 7 where cl.exe did not terminate (5 minutes, earlier 15, ~99% CPU; not a
+size effect), 1 unreadable object, 1 asm-only. Extents were measured to the next known start with padding trimmed.
 
 ## Release
-Claims released by appended lines (B's, A's and Codex's original lines untouched); locks CODEX29, AUTH30B (16), COORD_HOLD_NF453 moved;
+Claims: the lander reads each claim line on its own, so 33 open lines naming only these rows (or rows since landed) were flipped to
+`released` in place with a bracketed note; 8 lines that also name other unlanded rows keep those, with these rows taken out (spelled
+0xHHHH-HHHH in the note); release lines were appended too; locks CODEX29, AUTH30B (16), COORD_HOLD_NF453 moved;
 earlier RESERVED.tsv lines annotated; UNMATCHED_ROWS statuses updated. The paused agent's work is in auth30b_archive/ (scratch held the
 only copy). The package is built by build.py (derived from pass 30) with NAME_ANSWERS from the tracker at this commit.

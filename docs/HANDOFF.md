@@ -5,6 +5,19 @@ naming debt, the order of work). This session's details: `docs/journal/2026-11/2
 of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the end of `docs/pipeline/GOTCHAS.md`. Agent rules:
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
+## Account A, 2026-11-28 (Codex pass 30 landed; catalog relabel; Codex pass 31 handed out)
+- **Codex pass 30 landed** (`batches/2026-11-28_landing_p30/README.md`): 45 rows, 152 respell units, 282 headers; 7 rows + 28 units
+  backed out for name splits; 55 rows stay reserved CODEX30 (43 primary-matching with link holds). Progress 99.13% of known functions,
+  94.74% of retail function bytes.
+- **Catalog relabel** (`batches/2026-11-28_catalog_relabel`): 78 catalog-only names moved to their proven leaves; the other 5,794 catalog /
+  leaf mismatches and 12 name conflicts are saved in `pending/2026-11-28_catalog_name_review/` (owner: for later).
+- **Unlanded list:** `rebuild/candidates/manual/UNMATCHED_NOW.tsv` (504 known functions not counted genuine, by group and body match),
+  rebuilt by `coordinator/unmatched_now_build.py` + `unmatched_now_group.py`.
+- **Codex pass 31** (`pending/2026-11-28_codex_pass31/README.md`): the owner released 82 held rows; 57 go to Codex (CODEX31, ISSUES.tsv),
+  16 match at HEAD and are held by A (A_MATCHED_HOLD; gate work, the 00D05A60 / 00D06130 inline-Main ruling), 9 are interior addresses
+  (owner item: drop them from functions.tsv). The paused AUTH30B agent's work is archived there; its brief names rows it no longer holds.
+- **Open:** the naming / header inventory of landed rows (first counts: 28,194 rows redefine a class that has a shared header; 20,060
+  define a PDB class that has no header yet).
 ## Account A, 2026-11-25 to 27 (naming paused except NF479, Codex p29's name fixes; Codex pass 29 checkpoint 1 landed)
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
 - **Naming:** 35,948 of 64,151 done (56.04%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names, and 223 vendor names libsig proved, owner 2026-11-26); 37,965 (59.18%) with the 2,017 registered best guesses (NF454 registered 1,821; 11 removed by Codex p29's PDB/SDK callers, 1 by NF479). Landed today:

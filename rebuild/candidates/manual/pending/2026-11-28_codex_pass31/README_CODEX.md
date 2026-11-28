@@ -15,10 +15,12 @@ words: "readable clean c++ that is portable and byte matches retail code and beh
 - **Size:** 183,289 bytes in all, 61 to 14,510 B each.
 - **`ISSUES.tsv` comes first:** one line per row with the grade of its draft at this base, the best grade on record, and the issue classes
   found by review (several can apply):
-  - **HEADER_DRIFT (7):** the draft no longer compiles here; the first error is quoted. A header changed under it (the pass 30 landing
-    changed 220 headers). Restore the missing declaration through a `FABLE_RETAIL_*` opt-in, then regrade.
-  - **COMPILE_TIMEOUT (7):** no object within 5 minutes on our Linux / Wine lane. These are the largest drafts; they may just be slow.
-    Grade them in your own setup first.
+  - **MISSING_OPT_IN (6):** the draft turns on `FABLE_RETAIL_*` opt-ins that never landed in include/ (it was graded with a lane
+    overlay). The macros are listed; the overlay headers we found ship as `hdr_overlay_optins*/`. Port their blocks onto include/ as
+    add-only patches, re-add the rest from the draft's notes, then regrade.
+  - **SRC_FAIL (1):** 0x005AC10E does not compile here and no missing opt-in explains it (first error quoted).
+  - **COMPILE_NO_TERMINATE (7):** cl.exe ran 5 minutes (earlier 15) at about 99% CPU without finishing on our Linux / Wine lane.
+    Size does not explain it, since 5-6 KB drafts compiled normally; look for runaway inline or template expansion first.
   - **REGRESSED (1):** 0x00BE4FE0 matched on 2026-11-24 and differs here; find the header change.
   - **ASM (8):** retail uses instructions no VC7.1 C++ spelling emits. Follow docs/ASM_RULES.md; such a row lands only with owner approval.
     0x009BEF80 is landed as `naked_asm` and needs genuine C++.
@@ -71,7 +73,7 @@ Each row folder has:
 - **`prior/`:** every earlier file.
 - **`handback_*`:** the notes of the folder the draft came from. Search them for the address.
 
-Work the HEADER_DRIFT and REGRESSED rows first (they were close), then `ROWS.tsv` order, unless a TU group is faster together (rows sharing an Ego_d object, `egod_tu.txt`).
+Work the MISSING_OPT_IN and REGRESSED rows first (they were close), then `ROWS.tsv` order, unless a TU group is faster together (rows sharing an Ego_d object, `egod_tu.txt`).
 
 ## Evidence sources (each name needs two)
 - **You already have the three PDBs**: Ego_d.pdb (@@EGOD_PDB_LINK@@), Ego_r.pdb and FableWin.pdb. The shared "debug tlc" folder also

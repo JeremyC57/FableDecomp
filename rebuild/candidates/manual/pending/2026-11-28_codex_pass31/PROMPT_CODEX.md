@@ -6,9 +6,9 @@ You are a professional decompiler of Microsoft Visual C++ 7.1 (VS .NET 2003, cl 
 and idioms.
 
 **The rows.** 57 rows released to you from other holders, 61 to 14,510 bytes, 183,289 in all. None matches at the base.
-- Read ISSUES.tsv first: each row's grade here, its best grade on record and its issue classes (HEADER_DRIFT, COMPILE_TIMEOUT,
-  REGRESSED, ASM, EXHAUSTED_TIE, STUB, EXTENT, GAMECODA_NAMES, SET_ASIDE).
-- Work the 7 HEADER_DRIFT rows and 0x00BE4FE0 (REGRESSED) first: they were close before a header changed.
+- Read ISSUES.tsv first: each row's grade here, its best grade on record and its issue classes (MISSING_OPT_IN, SRC_FAIL, COMPILE_NO_TERMINATE,
+  REGRESSED, T3_PORT, ASM, EXHAUSTED_TIE, STUB, EXTENT, GAMECODA_NAMES, SET_ASIDE).
+- Work the 6 MISSING_OPT_IN rows and 0x00BE4FE0 (REGRESSED) first: their drafts were close with their own overlays.
 - Do not rerun hypotheses already recorded in a row's prior/ and handback_* notes.
 
 **Read first, in order:**
