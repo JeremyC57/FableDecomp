@@ -36,7 +36,7 @@ EXTRAS = {}   # pass 30: no per-row overlays (the drafts on record compile again
 for s_ in sel:
     if s_[0] in EXTRAS: s_[7] = ';'.join(x for x in (s_[7], EXTRAS[s_[0]]) if x)
 for s in sel:
-    assert s[0] not in cat, s[0] + ' already landed'
+    assert s[0] not in cat or s[0] == '009bef80', s[0] + ' already landed'   # pass 31: 0x009BEF80 is a landed naked_asm row to replace
     if s[3].endswith('.test.cpp') and os.path.exists(f"{R}/{s[3][:-9]}.cpp"): s[3] = s[3][:-9] + '.cpp'   # pass 28: the record names the test
 
 t = open(f'{R}/rebuild/build_candidates.ps1', encoding='utf-8-sig').read()
@@ -252,7 +252,7 @@ for a, ln, grade, path, en, ob, summary, extras in sel:
     bf = []
     for ex in [x for x in extras.split(';') if x]:
         kind, rest = ex.split(':', 1); src, dst = rest.split('=')
-        base = {'N': f'{P}/pending', 'W': S}[kind]
+        base = {'N': f'{P}/pending', 'W': S, 'R': R}[kind]
         sp = f'{base}/{src}'
         if os.path.isdir(sp): copy_tree_clean(sp, f'{d}/{dst}'); bf.append(f'{dst}/ (header overlay: drop these files over include/ for this row only)')
         elif os.path.exists(sp):
@@ -363,6 +363,11 @@ for b in ('2026-11-22_landing_auth24_createeffectonhit', '2026-11-22_landing_aut
     cp(f'{P}/batches/{b}/README.md', f'{OUT}/lessons/{b}.md')
 # pass 28: why each row was stuck and how Codex unstuck it (lessons + authoring checklist; next passes copy this line forward)
 cp(f'{R}/docs/pipeline/CODEX_P28_LESSONS.md', f'{OUT}/lessons/CODEX_P28_LESSONS.md')
+# pass 31: the issues table, the pass 30 landing record, the paused agent's lessons and the current unlanded list
+cp(f'{HERE}/ISSUES.tsv', f'{OUT}/ISSUES.tsv')
+cp(f'{P}/batches/2026-11-28_landing_p30/README.md', f'{OUT}/lessons/codex_pass30_landing_README.md')
+for fn in ('LESSONS.md', 'PAIR_FACTS.md', 'BRIEF_B.md'): cp(f'{HERE}/auth30b_archive/{fn}', f'{OUT}/lessons/auth30b_{fn}')
+cp(f'{P}/UNMATCHED_NOW.tsv', f'{OUT}/docs/UNMATCHED_NOW.tsv')
 cp(f'{P}/batches/2026-11-22_landing_p28/README.md', f'{OUT}/lessons/codex_pass28_landing_README.md')
 for fn in ('PER_ROW.md', 'PER_ROW.tsv', 'CAUSE_MATRIX.tsv'): cp(f'{P}/batches/2026-11-22_landing_p28/lessons/{fn}', f'{OUT}/lessons/p28_{fn}')
 cp(f'{HERE}/NAMING_AND_HEADERS.md', f'{OUT}/docs/NAMING_AND_HEADERS.md')

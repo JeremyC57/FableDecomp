@@ -6,7 +6,7 @@ address	length	name	status
 0055dc00	496	CreateScreen	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 0057b43f	836	RenderHeroDrunkenness	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 005cda50	366	GlobalUpdate	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
-005f59c7	2652	ConstructPCExpressionsList	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
+005f59c7	2652	ConstructPCExpressionsList	reserved (Codex pass 26, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
 005fd5e0	992	ConstructRegionDescriptionQuests	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 0062b070	1872	EAOpenHeroInformationScreen	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 0062fe60	832	CUIDef	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
@@ -83,7 +83,7 @@ address	length	name	status
 00b439c0	368	PeekLandscapeHeight	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00b8ccf0	496	CEngineEnvironment::WorldFrameUpdate	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00b8d0d0	432	CEngineOcclusionManager::InitializeOcclusionBuffers	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
-00baa870	4608	RenderFromSortList	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
+00baa870	4608	RenderFromSortList	reserved (Codex pass 26, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
 00be95f0	816	UpdateWorldFrameState	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00becde0	560	CRandomAppearanceMorph::UpdateMorphArray	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00bf2240	1600	SetupOutlineSmoothFillStates	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
@@ -93,7 +93,7 @@ address	length	name	status
 00c76dd0	192	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00cddcb0	1488	Main	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00e96110	1360	Main	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
-00eb5750	1536	State	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
+00eb5750	1536	State	reserved (Codex pass 26, 2026-11-21; Account B agents off it); released 2026-11-28; bytes match at HEAD, held by A for landing
 00f04000	640	Main	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00f35c60	320	PerlinNoise	reserved (Codex pass 26, 2026-11-21; Account B agents off it)
 00f3cf50	688	CalcSectionPolyMask	reserved (Codex pass 26, 2026-11-21; Account B agents off it)

@@ -1,9 +1,9 @@
 address	length	name	status
-0064fdb4	2593	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
-0078fd60	9280	FrameUpdate	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
-00795300	9312	FrameUpdate	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
+0064fdb4	2593	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28; bytes match at HEAD, held by A for landing
+0078fd60	9280	FrameUpdate	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
+00795300	9312	FrameUpdate	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
 00b0dc20	5616	Update	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
 00c4f600	9216	PropertySerializer_GetPropertyTypeCode	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
-00d01630	5184	Main	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
-00e20600	14512	Main	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
-00f1eed0	9264	PlayWave	reserved (Codex pass 25, 2026-11-21; Account B agents off it)
+00d01630	5184	Main	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
+00e20600	14512	Main	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31
+00f1eed0	9264	PlayWave	reserved (Codex pass 25, 2026-11-21; Account B agents off it); released 2026-11-28 to Codex pass 31

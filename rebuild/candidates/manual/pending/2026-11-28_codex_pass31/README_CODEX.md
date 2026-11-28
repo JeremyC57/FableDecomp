@@ -1,4 +1,4 @@
-# FableDecomp -- Codex hand-off pass 30 (2026-11-27): the 100 largest parked rows
+# FableDecomp -- Codex hand-off pass 31 (2026-11-28): 57 released rows that do not match yet
 
 ## Who you are and what is asked
 You are a professional decompiler of Microsoft Visual C++ 7.1 output (Visual Studio .NET 2003, `cl` 13.10.3077 RTM). For every row in
@@ -8,14 +8,27 @@ SHA-1 `39fd416ba23a91a89713ec80c789f57ddb22e2c8`, ImageBase 0x400000).
 Write it the way the original Lionhead / Big Blue Box engineers wrote it: their classes, member names, headers and idioms. The owner's
 words: "readable clean c++ that is portable and byte matches retail code and behaves the same as retail."
 
-**These 100 rows are reserved for you** (`RESERVED.tsv` in the repo's `pending/2026-11-27_codex_pass30/`).
-- **Size:** 120,543 bytes in all, 752 to 2,288 B each. These are the largest parked rows that no Codex pass has had.
-- **Drafts:** every row has a draft on record, but none is close.
-  - 18 rows have a DIFFER grade, and their drafts are stubs 1,135 to 1,554 B short.
-  - 82 rows were never graded. Their length is an estimate to the next function start, so find the true end of the function first.
-  - Treat every draft as a starting point only.
-- **Evidence:** 69 rows have Ego_d records; 84 have Ego_r and 86 have FableWin procedure records.
-- **Name conflicts:** 17 rows are flagged NAME CONFLICT in ROW.md. Settle those names first.
+**These 57 rows are reserved for you** (`RESERVED.tsv` in the repo's `pending/2026-11-28_codex_pass31/`).
+- **What they are:** every unlanded row that was claimed, locked or reserved elsewhere (account B, an earlier Codex pass, a paused
+  authoring agent, account A) and does not match at the base. The owner released them all to this pass. Rows whose bytes already match
+  were left out.
+- **Size:** 183,289 bytes in all, 61 to 14,510 B each.
+- **`ISSUES.tsv` comes first:** one line per row with the grade of its draft at this base, the best grade on record, and the issue classes
+  found by review (several can apply):
+  - **HEADER_DRIFT (7):** the draft no longer compiles here; the first error is quoted. A header changed under it (the pass 30 landing
+    changed 220 headers). Restore the missing declaration through a `FABLE_RETAIL_*` opt-in, then regrade.
+  - **COMPILE_TIMEOUT (7):** no object within 5 minutes on our Linux / Wine lane. These are the largest drafts; they may just be slow.
+    Grade them in your own setup first.
+  - **REGRESSED (1):** 0x00BE4FE0 matched on 2026-11-24 and differs here; find the header change.
+  - **ASM (8):** retail uses instructions no VC7.1 C++ spelling emits. Follow docs/ASM_RULES.md; such a row lands only with owner approval.
+    0x009BEF80 is landed as `naked_asm` and needs genuine C++.
+  - **EXHAUSTED_TIE (11):** earlier passes graded many hypotheses; read `prior/` and `handback_*` first and bring a new mechanism.
+  - **STUB (4):** the body on record was never fully reconstructed.
+  - **EXTENT (11):** the ledger length is shorter than the bytes up to the next known start: check where the function really ends.
+  - **GAMECODA_NAMES (4):** GameCODA / libpk names; pass 30 backed out a cluster there for name splits.
+  - **SET_ASIDE (1):** 0x00723E50 was set aside by the owner after four rounds; only with new evidence.
+- **Drafts:** `rows/<addr>/best_draft.cpp` is the selected checkpoint of the last holder (not an alternate), graded at this base.
+  `hdr_overlay/` in a row folder is the header overlay that draft was graded with.
 
 Partial progress counts: hand back every row's best text and its residue, even when it does not match.
 
@@ -29,15 +42,12 @@ Partial progress counts: hand back every row's best text and its residue, even w
 
 **Base:** this package is the project tree at repo commit @@BASE_COMMIT@@ (include/, names/, landed/).
 
-## What changed since pass 29
-- **`landed/`** holds the source and test of every landed row that binds a non-proven target of these rows (`landed/INDEX.tsv`). These are the rows a RESPELL unit may edit.
-- **Pass 29:** 176 of its 184 matched rows landed (`lessons/codex_pass29_landing_README.md`), and its 341 header paths are in `include/`.
-  - Seven rows were backed out. Two callees clashed with registered best guesses, and `_expf` clashed with `?exp@@YAMM@Z`. Two
-    anonymous-namespace globals clashed with named globals. Two best guesses met held binders. One `??_7` had 25 slots where retail has 31.
-  - Five rows were missing their own `// Retail-asm:` line.
-  - Its 159 NAME_FIXES lines took a separate agent pass. 47 rows landed and 100 lines are still blocked, mostly landed rows on stand-in
-    models that need a port (`lessons/codex_pass29_name_fixes_NF479_README.md`).
-  - Pass 30's rules move that work into your pass.
+## What changed since pass 30
+- **Pass 30 landed 45 rows and 152 respell units** with 282 headers (`lessons/codex_pass30_landing_README.md`). 7 rows and 28 units were
+  backed out because their names would split against landed rows that need a port first. Its 43 primary-matching rows with link holds
+  stay reserved for that pass.
+- **78 catalog names were relabelled** to their rows' proven leaves (catalog text only).
+- **`lessons/auth30b_*.md`:** what the paused authoring agent learned on its rows (pick-any copies, strong duplicates, inline Main devices).
 - **`names/` is split** into `answers/` (spell these), `pdb/` (evidence), `state/` (what the tree binds; `LOCKS.tsv` lists rows you may not
   edit) and `hints/` (not evidence). `names/README.md` describes each folder.
 - **`NAME_ANSWERS.tsv`** gives the verdict and the spelling to use for all 64,151 addresses the landed code names:
@@ -54,14 +64,14 @@ Each row folder has:
 - **`ROW.md`:** extent, best grade, where it stands, **names to use** (the non-proven targets listed), **naming evidence** (Ego_d name, mangled candidates from Ego_r and FableWin,
   queued name fixes), **headers** (the class headers and their opt-in macros), callers, and landed same-TU neighbours.
 - **`best_draft.cpp`:** the draft on record. Regrade it first on the package headers.
-- **Ego_d evidence (69 rows):** `egod_locals.txt`, `egod_lines.txt`, `egod_tu.txt`, described below. Where ROW.md says **Check the
+- **Ego_d evidence (7 rows):** `egod_locals.txt`, `egod_lines.txt`, `egod_tu.txt`, described below. Where ROW.md says **Check the
   Ego_d identity**, the record found by name may be another overload: confirm the signature first.
-- **PDB procedure records (84 Ego_r, 86 FableWin):** `ego_r_proc.txt`, `fablewin_proc.txt`, the function's records in Ego_r.pdb / FableWin.pdb.
+- **PDB procedure records (50 Ego_r, 50 FableWin):** `ego_r_proc.txt`, `fablewin_proc.txt`, the function's records in Ego_r.pdb / FableWin.pdb.
 - **`neighbours/`:** landed rows of the same TU. Copy their includes, opt-ins, pragmas and flags first.
 - **`prior/`:** every earlier file.
 - **`handback_*`:** the notes of the folder the draft came from. Search them for the address.
 
-Work in `ROWS.tsv` order (largest first) unless a TU group is faster together (rows sharing an Ego_d object, `egod_tu.txt`).
+Work the HEADER_DRIFT and REGRESSED rows first (they were close), then `ROWS.tsv` order, unless a TU group is faster together (rows sharing an Ego_d object, `egod_tu.txt`).
 
 ## Evidence sources (each name needs two)
 - **You already have the three PDBs**: Ego_d.pdb (@@EGOD_PDB_LINK@@), Ego_r.pdb and FableWin.pdb. The shared "debug tlc" folder also

@@ -7,17 +7,17 @@ address	length	name	status
 0078ecd0	2048	CTCDivineWrath	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 007ebea0	2160	OnActionUse	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 008101f0	1920	FrameUpdate	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
-00850a80	2576	IsValidOverride	parked, still reserved (Codex pass 28 DIFFER; next Codex pass)
+00850a80	2576	IsValidOverride	parked, still reserved (Codex pass 28 DIFFER; next Codex pass); released 2026-11-28 to Codex pass 31
 008664f0	2032	?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
-00879900	3776	Update	parked, still reserved (Codex pass 28 DIFFER; next Codex pass)
+00879900	3776	Update	parked, still reserved (Codex pass 28 DIFFER; next Codex pass); released 2026-11-28 to Codex pass 31
 008e8060	1792	OnActivate	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
-00a2f740	4912	InitialiseFromFileData	parked, still reserved (Codex pass 28 DIFFER; next Codex pass)
+00a2f740	4912	InitialiseFromFileData	parked, still reserved (Codex pass 28 DIFFER; next Codex pass); released 2026-11-28 to Codex pass 31
 00a87960	1824	CSBIAgents::Process	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00ab7c20	1920	CStaticFontBank::Render	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00b19c60	2528	PreparePrimitives	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00bbe090	2464	RenderSingleSpriteTrail	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00be6880	1776	BuildDefaultSection	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
-00d07490	2192	Main	parked, still reserved (Codex pass 28 DIFFER; next Codex pass)
+00d07490	2192	Main	parked, still reserved (Codex pass 28 DIFFER; next Codex pass); released 2026-11-28 to Codex pass 31
 00d43db0	1808	Main	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00dc08c0	3760	WatchForGateTimer	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved
 00dfd600	2096	AttackPeople	landed (Codex pass 28, landing p28 2026-11-22); no longer reserved

@@ -1,12 +1,12 @@
 address	length	name	status
-00723e50	310	CCharacter_UpdateOrientation	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00723e50	310	CCharacter_UpdateOrientation	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28 to Codex pass 31
 0062bd80	354	EAControlledCreatureStrafe	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0091c220	419	IsTargetInLineOfSight	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00644677	454	Draw	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 008f45f0	493	?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00935c40	502	GoToWell	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0068ef50	550	ProcessRangedAttackInput	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-009f3da0	582	CopyToMemoryB8G8R8A8	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+009f3da0	582	CopyToMemoryB8G8R8A8	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 0075aaf0	593	CheckForCollisions	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00726980	595	PerformForcedMovement	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 006d5d30	897	UpdateAI	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -15,7 +15,7 @@ address	length	name	status
 0093ef30	1161	?InitCreaturePosition@CAIStateGroup_VillageTaskPatrol@@UAE_NXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00707440	1253	CTCHeroAttachableAppearanceModifiers::OnAppearanceDraw	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00f03980	1434	Main	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00e70460	1665	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00e70460	1665	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00533d30	1750	GetSize	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00b20d30	578	GetClosestParameterisedControlPoints	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 008f1e30	692	EnterGame	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -42,13 +42,13 @@ address	length	name	status
 00926ed0	1373	?Update@CAIStateGroup_OpenAndCloseShop@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00556a40	1457	CRedefinerList::RefreshScriptThings	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0077a890	707	Create	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00c0b570	435	SetTarget	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00c0b570	435	SetTarget	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 00c76120	641	Blend	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00e7fd50	784	RefreshCompetition	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00bf1ee0	855	SetupOverlayAlphaBlendingStates	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0074c130	1202	FrameUpdate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009afb90	1344	LoadBinaryDefinitions	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00ebe620	1482	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00ebe620	1482	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 008dec80	1665	FrameUpdate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 005850fd	1678	GetStyleCardsListUIComponent	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00c89850	588	ProcessRamp	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -66,7 +66,7 @@ address	length	name	status
 00980bd0	1233	AIAction_SpeakToTarget	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00932b50	1671	?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009130d0	954	AIAction_RandomFlyToPos	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-009a2000	982	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+009a2000	982	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 00846710	1192	?Initialise@CCreatureAction_PerformExpression@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00929fc0	242	GetObjectWithScriptName	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00446d10	473	ProcessCombatInput_MapInputsToActions	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -86,7 +86,7 @@ address	length	name	status
 00683770	902	GetHeadPendingDeed	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00c5ca60	858	CTCHeroStats_UpdateSoundAndVisuals	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00930480	1513	?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00c461e0	163	CMatrix::InterpolateViewport	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00c461e0	163	CMatrix::InterpolateViewport	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 00639e40	930	GlobalDraw	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00bfd7c0	1231	Load	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00aa8830	889	ReadFromFile	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -99,7 +99,7 @@ address	length	name	status
 006c6e80	1251	FrameUpdate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a90d60	413	RemapBoneIndices	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009a08b0	491	GFFloatToCharString	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00c72200	770	CAudioSource::UpdateGainState	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00c72200	770	CAudioSource::UpdateGainState	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 005502e0	1288	Draw	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00887b70	1769	Blend	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007c3220	1138	DoDrain	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -107,18 +107,18 @@ address	length	name	status
 0077dc40	626	CTCCampfire_BuildPlayerRegion	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0080cd40	876	UpdateHitThings	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00872af0	971	GetCameraPosition	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00ee91e0	613	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00ee91e0	613	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28 to Codex pass 31
 007a8700	1243	RushForwards	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 006e0230	576	UpdateEmitterCameraAttachment	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00625160	70	`vector_deleting_destructor'	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00625160	70	`vector_deleting_destructor'	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 0076e6a0	951	DrawAddWeaponTrails	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00b2c010	993	PreloadCompletedBank	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0074b2b0	1208	CreateCreatures	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00ef5840	727	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00ef5840	727	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28 to Codex pass 31
 008873c0	1131	SetAsWeightedBlendOfThemes	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009ebdd0	1625	?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007070d0	868	UpdateGraphics	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00da71e0	1549	GuardChatter	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00da71e0	1549	GuardChatter	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00f36d30	419	EndShutdown	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 008633b0	917	ReorientBodyYZForSlopes	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00940bf0	1563	?Update@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -131,26 +131,26 @@ address	length	name	status
 009a1140	918	GlyphLookup	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0084d2f0	1181	IsCameraOcclusionFromTo	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00e50910	1328	WatchForQuestCardConditions	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-005458a0	621	AssignSpell	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+005458a0	621	AssignSpell	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00a25040	990	CMeshBankStateBlock::CreateCRC	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00d05a60	1400	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
-00d06130	1400	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00d05a60	1400	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
+00d06130	1400	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 0088edc0	1564	CameraDoConversation	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00554740	1572	Draw	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a880c0	1768	?Process@CSBCCorridor@@UAE_NPBVCSteeringAgent@@@Z	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00867200	1182	?Initialise@CCombatAction_GenericResponseToExplosion@@UAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00bf2b50	682	ConvertListToTree	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 006cc270	1085	DrawPreparePrimitivesForRendering	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00a19430	1165	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00a19430	1165	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 005dcd10	608	CTCInventoryAbilities_GetRandomAbility	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0087ee70	1219	CCombatAction_StabThing::PerformAction	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007aac50	1336	RushForwards	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009ae7c0	1456	CompileDefinition	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00734c60	1639	SetStruck	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00bba1e0	82	CGuiControlTreePane_OnFileLoadComplete	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-009f4590	864	SaveAsTGA	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+009f4590	864	SaveAsTGA	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00b40670	1125	PeekWaterType	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00e0ca50	1223	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00e0ca50	1223	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00955c90	970	CAIStateGroup_MazeTutorialBattle::Update	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a6d0e0	984	GetHelperDataFromFileData	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0055d810	998	OnCaptionEntered	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -164,7 +164,7 @@ address	length	name	status
 00963a50	1695	CAIStateGroup_VersusScorpionKing::Update	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007b1a30	1145	CreateFish	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007c99f0	1123	FrameUpdate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00d2d1a0	620	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00d2d1a0	620	Main	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00aaf1e0	904	InitialiseFromMatrix	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009d0880	1635	ReadFileInformation	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00962d50	1679	?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
@@ -173,25 +173,25 @@ address	length	name	status
 00943cf0	1541	MoveCrates	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 0093b9f0	1012	CAIStateGroup_SeekEnemy::Update	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a69f70	955	ReduceMipmapLevel	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00c6b260	315	FloatToLongConvert_Vectorized	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+00c6b260	315	FloatToLongConvert_Vectorized	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 00f281e0	481	_M_fill_insert	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 009456a0	1006	GetFoodFromCookingPot	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007ef710	1244	Decapitate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-006e3b90	816	CThingCreatureBase_UpdatePhonemeAnimation	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+006e3b90	816	CThingCreatureBase_UpdatePhonemeAnimation	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28 to Codex pass 31
 0080d300	1097	UpdateDynamicExplosion	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a12450	870	GetPointIntersectionFromTo	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00a120d0	886	GetSphereIntersectionFromTo	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007808b0	923	InitFirePoints	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-00f277f0	493	_M_fill_insert	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+00f277f0	493	_M_fill_insert	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00ab2160	960	GetIntersection	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 007055d0	1326	GetCarriedPositionInfo	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00725f10	590	GetAllThingsInRoughArea	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00921990	1651	?Update@CAIStateGroup_MinionFollowThing@@MAEXXZ	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 004ce550	1281	CSubtitledMessage	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-007d75a0	465	GetRandomCard	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30)
+007d75a0	465	GetRandomCard	released to AUTH30 (owner 2026-11-27: Claude authoring agent on the rows Codex held; lock AUTH30); released 2026-11-28; bytes match at HEAD, held by A for landing
 00b5c120	821	UpdateWorldPositionTracking	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00759f80	975	Integrate	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
-009f57a0	1072	?Update@CInputManager@@UAEXXZ	reserved (Codex pass 29, 2026-11-25; Claude agents off it)
+009f57a0	1072	?Update@CInputManager@@UAEXXZ	reserved (Codex pass 29, 2026-11-25; Claude agents off it); released 2026-11-28 to Codex pass 31
 008651b0	1161	SetHitNotification	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00ea2080	1682	ControlMainBalverines	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
 00428494	1062	CreateMenuEntryComponent	landed (Codex pass 29 checkpoint 1, 2026-11-27; batches/2026-11-27_landing_p29)
