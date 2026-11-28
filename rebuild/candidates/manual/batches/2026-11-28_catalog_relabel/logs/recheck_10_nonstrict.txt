@@ -1,0 +1,55 @@
+addr       parity           behav  name
+005be8f3   WARN SHARED_HEADER_AVAILABLE CTCTrophy (engine/CTCTrophy.h)
+005be8f3   RELOCATION_MATCH PASS   CreateInventoryObject
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00645ce9   WARN RELOC_NAME: ?g_pGameUI@@3PAUCGameUI@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00645ce9   RELOCATION_MATCH PASS   DrawStatBox
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49a20   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d49a20   RELOCATION_MATCH PASS   RunSaveXPCutscene2
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49d50   RELOCATION_MATCH PASS   RunCeremonyCutscene
+0079c6d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079c6d0   RELOCATION_MATCH PASS   GetBulletTimeElapsedTicks
+00446220   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00446220   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00446220   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00446220   RELOCATION_MATCH PASS   GetInputProcessEventFromUpdate
+00a62b70   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray (engine/CPackedUIntArray.h)
+00a62b70   RELOCATION_MATCH PASS   CountBits
+00547be0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00547be0   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00547be0   MATCH            PASS   GetSize
+00bbf380   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteGroup (engine/CEnginePrimitiveManagerParticleSpriteGroup.h)
+00bbf380   RELOCATION_MATCH PASS   BuildBuffers
+009ec5e0   WARN SHARED_HEADER_AVAILABLE CConsole (engine/CConsole.h)
+009ec5e0   RELOCATION_MATCH PASS   AddInput
+
+WINS: 10
+  005be8f3 RELOCATION_MATCH NInventory::CTCInventoryBase::?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z
+  00645ce9 RELOCATION_MATCH NPlayerGui::CStatBar::?DrawStatBox@CStatBar@NPlayerGui@@MAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@JJJABVCWideString@@E_N4@Z
+  00d49a20 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d49d50 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?RunCeremonyCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  0079c6d0 RELOCATION_MATCH CTCBulletTime::?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ
+  00446220 RELOCATION_MATCH CGamePlayerInterface::?GetInputProcessEventFromUpdate@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z
+  00a62b70 RELOCATION_MATCH CPackedUIntArray::?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z
+  00547be0 MATCH NUISystem::CMovie::?GetSize@CMovie@NUISystem@@UBE?AVC2DVector@@XZ
+  00bbf380 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
+  009ec5e0 RELOCATION_MATCH CConsole::?AddInput@CConsole@@QAEXPAVCConsoleInputBase@@@Z

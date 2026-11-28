@@ -1,0 +1,112 @@
+addr       parity           behav  name
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   RELOCATION_MATCH PASS   Initialise
+004df554   RELOCATION_MATCH PASS   ~_Vector_base
+004f97b3   RELOCATION_MATCH PASS   map
+00523860   RELOCATION_MATCH PASS   SetGamePersistentSaveData
+0052e470   RELOCATION_MATCH PASS   ConvertX
+0052e4d0   RELOCATION_MATCH PASS   ConvertY
+0053822b   RELOCATION_MATCH PASS   GetDataFromDef
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+005793e8   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@Z -> 00578ff5 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+005793e8   RELOCATION_MATCH PASS   clear
+00595a03   MATCH            PASS   CanStartAttractMode
+005bcfe2   MATCH            PASS   GetPreviousOccupiedSlot
+005bd0f7   RELOCATION_MATCH PASS   HighlightPreviousItem
+005bdf08   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInInventory
+005be8f3   WARN SHARED_HEADER_AVAILABLE CTCTrophy (engine/CTCTrophy.h)
+005be8f3   HEADER_POLICY    -      CreateInventoryObject
+005bf221   WARN RELOC_NAME: ??$find_if@PAVCItem@NInventory@@VCIsSameItemType@@@std@@YIPAVCItem@NInventory@@PAV12@0VCIsSameItemType@@@Z -> 005c190b labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005bf221   RELOCATION_MATCH PASS   RemoveItem
+006314c0   RELOCATION_MATCH PASS   __copy
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00645ce9   HEADER_POLICY    -      DrawStatBox
+006bbed0   MATCH            PASS   CallCommandFunction
+007bbb3b   RELOCATION_MATCH PASS   InitMovement
+0085ed90   WARN STANDIN_LEAF ?resize@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@QAEXI@Z (catalog std::vector<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> >,std::allocator<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> > > >::resize; names another function)
+0085ed90   RELOCATION_MATCH PASS   resize
+00872110   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00872110   RELOCATION_MATCH PASS   UpdateAutoGoBehind
+008f9320   WARN RELOC_ALIAS: ___WSAFDIsSet@8 -> 00c003ec is the import thunk 'WSOCK32.DLL::#151'
+008f9320   WARN RELOC_ALIAS: __itoa -> 00bfed34 is the import thunk 'MSVCR71.DLL::_itoa'
+008f9320   RELOCATION_MATCH PASS   Receive
+009c7be0   RELOCATION_MATCH PASS   IsLoaded
+009c8630   RELOCATION_MATCH PASS   BeginLoadingText
+009efeb0   MATCH            PASS   CallCommandFunction
+00a4b7b0   MATCH            PASS   IsInRange
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49a20   HEADER_POLICY    -      RunSaveXPCutscene2
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49d50   HEADER_POLICY    -      RunCeremonyCutscene
+00e1feb0   RELOCATION_MATCH PASS   ResetTraderRandomSpeechTime
+006c9c60   RELOCATION_MATCH PASS   Transfer
+005f8e6d   RELOCATION_MATCH PASS   __pop_heap_aux
+0079c6d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079c6d0   HEADER_POLICY    -      GetBulletTimeElapsedTicks
+004d1600   RELOCATION_MATCH PASS   sort_heap
+00446220   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00446220   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00446220   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00446220   HEADER_POLICY    -      GetInputProcessEventFromUpdate
+00537776   RELOCATION_MATCH PASS   CanMove
+00a62b70   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray (engine/CPackedUIntArray.h)
+00a62b70   HEADER_POLICY    -      CountBits
+00547be0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00547be0   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00547be0   HEADER_POLICY    -      GetSize
+007621c0   RELOCATION_MATCH PASS   UpdateSelectedPoint
+00bbf380   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteGroup (engine/CEnginePrimitiveManagerParticleSpriteGroup.h)
+00bbf380   HEADER_POLICY    -      BuildBuffers
+00733b70   RELOCATION_MATCH PASS   PlayCombatStrikeSounds
+009ec5e0   WARN SHARED_HEADER_AVAILABLE CConsole (engine/CConsole.h)
+009ec5e0   HEADER_POLICY    -      AddInput
+
+WINS: 31
+  00405650 RELOCATION_MATCH NUISystem::CIME::?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z
+  004df554 RELOCATION_MATCH std::_Vector_base<CSteeringAgent const*,std::allocator<CSteeringAgent const*> >::??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
+  004f97b3 RELOCATION_MATCH std::map<EDamageAttribute,float,std::less<EDamageAttribute>,std::allocator<std::pair<EDamageAttribute const,float> > >::??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QAE@ABV01@@Z
+  00523860 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QAEXJPBXK@Z
+  0052e470 RELOCATION_MATCH NUISystem::CUIScreenUnitConverter::?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z
+  0052e4d0 RELOCATION_MATCH NUISystem::CUIScreenUnitConverter::?ConvertY@CUIScreenUnitConverter@NUISystem@@SIMM@Z
+  0053822b RELOCATION_MATCH NUISystem::CList::?GetDataFromDef@CList@NUISystem@@QAEXXZ
+  00541390 RELOCATION_MATCH NUISystem::CDynamicList::?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
+  005793e8 RELOCATION_MATCH std::_Rb_tree<EHeroTrainableStatType,std::pair<EHeroTrainableStatType const,NUISystem::CComponent*>,std::_Select1st<std::pair<EHeroTrainableStatType const,NUISystem::CComponent*> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<EHeroTrainableStatType const,NUISystem::CComponent*> > >::?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXXZ
+  00595a03 MATCH NUISystem::CFrontEndManager::?CanStartAttractMode@CFrontEndManager@NUISystem@@QAE_NXZ
+  005bcfe2 MATCH NInventory::CCategory::?GetPreviousOccupiedSlot@CCategory@NInventory@@ABEJJ@Z
+  005bd0f7 RELOCATION_MATCH NInventory::CCategory::?HighlightPreviousItem@CCategory@NInventory@@QAEXXZ
+  005bdf08 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005bf221 RELOCATION_MATCH NInventory::CCategory::?RemoveItem@CCategory@NInventory@@QAEXJJ@Z
+  006314c0 RELOCATION_MATCH std::??$__copy@PBVCUIStateDef@NUISystem@@PAV12@H@std@@YIPAVCUIStateDef@NUISystem@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+  006bbed0 MATCH CConsoleCommand<CGameTimeManager>::?CallCommandFunction@?$CConsoleCommand@VCGameTimeManager@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  007bbb3b RELOCATION_MATCH NThingShot::CTCShotDefinitionProjectile::?InitMovement@CTCShotDefinitionProjectile@NThingShot@@MAEXXZ
+  0085ed90 RELOCATION_MATCH std::vector<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> >,std::allocator<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> > > >::?resize@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@QAEXI@Z
+  00872110 RELOCATION_MATCH NCameraModes::CStringAndCageBase::?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
+  008f9320 RELOCATION_MATCH LHNetworkLib::LSocket::?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@ABU52@@Z
+  009c7be0 RELOCATION_MATCH NGameText::CDataBankTextEntry::?IsLoaded@CDataBankTextEntry@NGameText@@QBE_NXZ
+  009c8630 RELOCATION_MATCH NGameText::CDataBank::?BeginLoadingText@CDataBank@NGameText@@QBEXK@Z
+  009efeb0 MATCH CConsoleCommand<CConsole>::?CallCommandFunction@?$CConsoleCommand@VCConsole@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  00a4b7b0 MATCH NBBBMaths::?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z
+  00e1feb0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ
+  006c9c60 RELOCATION_MATCH CPersistContext::??$Transfer@V?$CIntelligentPointer@VCThing@@@@@CPersistContext@@QAEXPBDAAV?$CIntelligentPointer@VCThing@@@@@Z
+  005f8e6d RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@JW4EHeroAbility@@@std@@U12@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@std@@YIXPAU?$pair@JW4EHeroAbility@@@0@00V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@Z
+  004d1600 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@MVCCharString@@@std@@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@0V?$CKeyPairCompareLess@MVCCharString@@@@@Z
+  00537776 RELOCATION_MATCH NUISystem::CList::?CanMove@CList@NUISystem@@UAE?AVC2DVector@@ABV3@@Z
+  007621c0 RELOCATION_MATCH NShape::CShape::?UpdateSelectedPoint@CShape@NShape@@QAE_NABVC3DVector@@@Z
+  00733b70 RELOCATION_MATCH CTCCombat::?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ

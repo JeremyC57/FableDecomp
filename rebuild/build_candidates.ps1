@@ -17762,7 +17762,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005793e8'
-        Module = '_global'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType,std::pair<EHeroTrainableStatType const,NUISystem::CComponent*>,std::_Select1st<std::pair<EHeroTrainableStatType const,NUISystem::CComponent*> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<EHeroTrainableStatType const,NUISystem::CComponent*> > >'
         Source = '00/57/CTCCarryable_OnKill_005793e8.cpp'
         TestSource = '00/57/CTCCarryable_OnKill_005793e8_test.cpp'
         PassPattern = 'AUTO_TINY_005793e8_TEST PASS'
@@ -25995,7 +25995,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00595a03'
-        Module = 'CFrontEndManager'
+        Module = 'NUISystem::CFrontEndManager'
         Source = '00/59/CFrontEndManager_CanStartAttractMode_00595a03.cpp'
         TestSource = '00/59/CFrontEndManager_CanStartAttractMode_00595a03_test.cpp'
         PassPattern = 'AUTO_TINY_00595a03_TEST PASS'
@@ -31043,7 +31043,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e4d0'
-        Module = 'CUIScreenUnitConverter'
+        Module = 'NUISystem::CUIScreenUnitConverter'
         Source = '00/52/CUIScreenUnitConverter_ConvertY_0052e4d0.cpp'
         TestSource = '00/52/CUIScreenUnitConverter_ConvertY_0052e4d0_test.cpp'
         PassPattern = 'OK_0x0052e4d0'
@@ -31071,7 +31071,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052e470'
-        Module = 'CUIScreenUnitConverter'
+        Module = 'NUISystem::CUIScreenUnitConverter'
         Source = '00/52/CUIScreenUnitConverter_ConvertX_0052e470.cpp'
         TestSource = '00/52/CUIScreenUnitConverter_ConvertX_0052e470_test.cpp'
         PassPattern = 'OK_0x0052e470'
@@ -33213,7 +33213,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004df554'
-        Module = '_global'
+        Module = 'std::_Vector_base<CSteeringAgent const*,std::allocator<CSteeringAgent const*> >'
         Source = '00/4d/CActiveFile_OnReadFinished_004df554.cpp'
         TestSource = '00/4d/CActiveFile_OnReadFinished_004df554_test.cpp'
         PassPattern = '004df554_TEST PASS'
@@ -184606,14 +184606,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bbed0'
-        Module = 'CConsoleCommand'
+        Module = 'CConsoleCommand<CGameTimeManager>'
         Source = '00/6b/CConsoleCommand_vfunc5_006bbed0.cpp'
         TestSource = '00/6b/CConsoleCommand_vfunc5_006bbed0_test.cpp'
         PassPattern = '006bbed0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009efeb0'
-        Module = 'CConsoleCommand'
+        Module = 'CConsoleCommand<CConsole>'
         Source = '00/9e/CConsoleCommand_vfunc5_009efeb0.cpp'
         TestSource = '00/9e/CConsoleCommand_vfunc5_009efeb0_test.cpp'
         PassPattern = '009efeb0_TEST PASS'
@@ -192549,7 +192549,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bf221'
-        Module = 'CCategory'
+        Module = 'NInventory::CCategory'
         Source = '00/5b/CCategory_RemoveItem_005bf221.cpp'
         TestSource = '00/5b/CCategory_RemoveItem_005bf221_test.cpp'
         PassPattern = '005bf221_TEST PASS'
@@ -198628,7 +198628,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c7be0'
-        Module = 'CDataBankTextEntry'
+        Module = 'NGameText::CDataBankTextEntry'
         Source = '00/9c/CDataBankTextEntry_IsLoaded_009c7be0.cpp'
         TestSource = '00/9c/CDataBankTextEntry_IsLoaded_009c7be0_test.cpp'
         PassPattern = '009c7be0_TEST PASS'
@@ -198663,7 +198663,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c8630'
-        Module = 'CDataBank'
+        Module = 'NGameText::CDataBank'
         Source = '00/9c/CDataBank_BeginLoadingText_009c8630.cpp'
         TestSource = '00/9c/CDataBank_BeginLoadingText_009c8630_test.cpp'
         PassPattern = '009c8630_TEST PASS'
@@ -220389,7 +220389,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1feb0'
-        Module = 'CQR_EscortTraderScript'
+        Module = 'NScript::CQR_EscortTraderScript'
         Source = '00/e1/CQREscortTraderScript_ResetTraderRandomSpeechTime_00e1feb0.cpp'
         TestSource = '00/e1/CQREscortTraderScript_ResetTraderRandomSpeechTime_00e1feb0_test.cpp'
         PassPattern = '00e1feb0_TEST PASS'
@@ -222847,7 +222847,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bcfe2'
-        Module = 'CCategory'
+        Module = 'NInventory::CCategory'
         Source = '00/5b/CCategory_GetPreviousOccupiedSlot_005bcfe2.cpp'
         TestSource = '00/5b/CCategory_GetPreviousOccupiedSlot_005bcfe2_test.cpp'
         PassPattern = '005bcfe2_TEST PASS'
@@ -236783,7 +236783,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00405650'
-        Module = 'CIME'
+        Module = 'NUISystem::CIME'
         Source = '00/40/CIME_Initialise_00405650.cpp'
         TestSource = '00/40/CIME_Initialise_00405650_test.cpp'
         PassPattern = '00405650_TEST PASS'
@@ -237057,7 +237057,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00523860'
-        Module = 'CEntityRuntimePersistence'
+        Module = 'NThingManager::CEntityRuntimePersistence'
         Source = '00/52/CEntityRuntimePersistence_SetGamePersistentSaveData_00523860.cpp'
         TestSource = '00/52/CEntityRuntimePersistence_SetGamePersistentSaveData_00523860_test.cpp'
         PassPattern = '00523860_TEST PASS'
@@ -237120,7 +237120,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00541390'
-        Module = 'CDynamicList'
+        Module = 'NUISystem::CDynamicList'
         Source = '00/54/CDynamicList_GetDataFromDef_00541390.cpp'
         TestSource = '00/54/CDynamicList_GetDataFromDef_00541390_test.cpp'
         PassPattern = '00541390_TEST PASS'
@@ -250247,7 +250247,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bdf08'
-        Module = 'CTCInventoryBase'
+        Module = 'NInventory::CTCInventoryBase'
         Source = '00/5b/CTCInventoryBase_GetNumberOfItemsOfTypeInInventory_005bdf08.cpp'
         TestSource = '00/5b/CTCInventoryBase_GetNumberOfItemsOfTypeInInventory_005bdf08_test.cpp'
         PassPattern = '005bdf08_TEST PASS'
@@ -255207,7 +255207,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bd0f7'
-        Module = 'CCategory'
+        Module = 'NInventory::CCategory'
         Source = '00/5b/CCategory_HighlightPreviousItem_005bd0f7.cpp'
         TestSource = '00/5b/CCategory_HighlightPreviousItem_005bd0f7_test.cpp'
         PassPattern = '005bd0f7_TEST PASS'
@@ -270040,7 +270040,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d49a20'
-        Module = 'CQ_GuildTrainingScript'
+        Module = 'NScript::CQ_GuildTrainingScript'
         Source = '00/d4/CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20.cpp'
         TestSource = '00/d4/CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20_test.cpp'
         PassPattern = '00d49a20_TEST PASS'
@@ -270573,7 +270573,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053822b'
-        Module = 'CList'
+        Module = 'NUISystem::CList'
         Source = '00/53/CList_GetDataFromDef_0053822b.cpp'
         TestSource = '00/53/CList_GetDataFromDef_0053822b_test.cpp'
         PassPattern = '0053822b_TEST PASS'
@@ -272303,7 +272303,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00645ce9'
-        Module = 'CStatBar'
+        Module = 'NPlayerGui::CStatBar'
         Source = '00/64/CStatBar_DrawStatBox_00645ce9.cpp'
         TestSource = '00/64/CStatBar_DrawStatBox_00645ce9_test.cpp'
         PassPattern = '00645ce9_TEST PASS'
@@ -273890,7 +273890,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f97b3'
-        Module = 'map<EDamageAttribute,float>'
+        Module = 'std::map<EDamageAttribute,float,std::less<EDamageAttribute>,std::allocator<std::pair<EDamageAttribute const,float> > >'
         Source = '00/4f/map_map_004f97b3.cpp'
         TestSource = '00/4f/map_map_004f97b3_test.cpp'
         PassPattern = '004f97b3_TEST PASS'
@@ -274907,7 +274907,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d49d50'
-        Module = 'CQ_GuildTrainingScript'
+        Module = 'NScript::CQ_GuildTrainingScript'
         Source = '00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp'
         TestSource = '00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50_test.cpp'
         PassPattern = '00d49d50_TEST PASS'
@@ -283144,7 +283144,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006314c0'
-        Module = '_global'
+        Module = 'std'
         Source = '00/63/global_CopyCConfigOptionsDefaultsDef006314c0_006314c0.cpp'
         TestSource = '00/63/global_CopyCConfigOptionsDefaultsDef006314c0_006314c0_test.cpp'
         PassPattern = '006314c0_TEST PASS'
@@ -300839,7 +300839,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a4b7b0'
-        Module = '_global'
+        Module = 'NBBBMaths'
         Source = '00/a4/global_GFWorld3DDistanceSmallerThan_00a4b7b0.cpp'
         TestSource = '00/a4/global_GFWorld3DDistanceSmallerThan_00a4b7b0_test.cpp'
         PassPattern = '00a4b7b0_TEST PASS'
@@ -369066,7 +369066,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f9320'
-        Module = 'LSocket'
+        Module = 'LHNetworkLib::LSocket'
         Source = '00/8f/LSocket_Receive_008f9320.cpp'
         TestSource = '00/8f/LSocket_Receive_008f9320_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
@@ -394468,7 +394468,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005be8f3'
-        Module = 'CTCInventoryBase'
+        Module = 'NInventory::CTCInventoryBase'
         Source = '00/5b/CTCInventoryBase_CreateInventoryObject_005be8f3.cpp'
         TestSource = '00/5b/CTCInventoryBase_CreateInventoryObject_005be8f3_test.cpp'
         PassPattern = '005be8f3_TEST PASS'
@@ -397891,7 +397891,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00872110'
-        Module = 'CStringAndCageBase'
+        Module = 'NCameraModes::CStringAndCageBase'
         Source = '00/87/CStringAndCageBase_UpdateAutoGoBehind_00872110.cpp'
         TestSource = '00/87/CStringAndCageBase_UpdateAutoGoBehind_00872110_test.cpp'
         PassPattern = '00872110_TEST PASS'
@@ -400205,7 +400205,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007bbb3b'
-        Module = 'CTCShotDefinitionProjectile'
+        Module = 'NThingShot::CTCShotDefinitionProjectile'
         Source = '00/7b/CTCShotDefinitionProjectile_InitMovement_007bbb3b.cpp'
         TestSource = '00/7b/CTCShotDefinitionProjectile_InitMovement_007bbb3b_test.cpp'
         PassPattern = '007bbb3b_TEST PASS'
@@ -403869,7 +403869,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085ed90'
-        Module = 'std::vector<std::vector<NThingMap::CThingMapCell> >'
+        Module = 'std::vector<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> >,std::allocator<std::vector<NThingMap::CThingMapCell,std::allocator<NThingMap::CThingMapCell> > > >'
         Source = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90.cpp'
         TestSource = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90_test.cpp'
         PassPattern = '0085ed90_TEST PASS'

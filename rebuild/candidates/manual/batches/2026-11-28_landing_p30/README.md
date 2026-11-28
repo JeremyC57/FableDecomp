@@ -37,5 +37,5 @@ split names against landed rows that need a port first. After the back-out the n
 
 ## Catalog audit (no full rebuild)
 57,384 entries, 0 missing sources, 0 duplicate addresses. 3 tests never print PASS (004DF3EB, 009FCCF0, 004DA5E2);
-350 pass lines are not literal in their test; about 4,110 catalog names differ from the source leaf
-(`logs/catalog_name_vs_leaf_audit.tsv`, crude, pre-existing naming work).
+350 pass lines are not literal in their test. The "about 4,110" catalog-name / leaf count in
+`logs/catalog_name_vs_leaf_audit.tsv` was crude and is superseded: see `pending/2026-11-28_catalog_name_review/`.
