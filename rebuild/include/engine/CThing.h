@@ -48,6 +48,17 @@ namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
 #include "engine/GFDebugPDynamicCast.h"
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+// FableWin 01DA98E0 stores the checked result and asserts "new_val!=NULL" before returning it.
+// The release cast has no RTTI call. Its named result affects the caller's register allocation.
+#include "fable_assert.h"
+template<class From, class To>
+inline To* FABLE_FASTCALL GFDebugDynamicCast(From* val, To*) {
+    To* new_val = static_cast<To*>(val);
+    FABLE_RETAIL_ASSERT(new_val != NULL);
+    return new_val;
+}
+#else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL)
 // Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
 template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
@@ -58,6 +69,7 @@ template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From*
 // tc_force_pushed.obj instantiates GFDebugDynamicCast<CThingCreatureBase,CThingPhysical>. Identical body.
 template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
 #endif
+#endif // FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
 #ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
 #endif
@@ -874,6 +886,21 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
 
+#ifdef FABLE_RETAIL_SCORPION_KING_ACTIVATE_PASS30
+// Inline-budget: 008DD28F and 008DD330 expand HasTC. The separately emitted
+// same-TU GetTCDriver copy has the size-optimized form of 007890EA.
+#include "engine/CTCDPhysicalObstruction.h"
+#pragma optimize("s",on)
+template<> inline
+bool CThing::GetTCDriver<CTCDPhysicalObstruction>(CTCDPhysicalObstruction** result) {
+    if(HasTC(CTCDPhysicalObstruction::StatGetInterfaceType())) {
+        *result=GFDebugPDynamicCast(PTCDriver,(CTCDPhysicalObstruction*)0);
+        return true;
+    }
+    return false;
+}
+#pragma optimize("",on)
+#endif
 #ifdef FABLE_RETAIL_CTHING_GETTCDRIVER_PHYSOBSTRUCTION_SIZE_OWNER
 // Fidelity: scaffolding, not retail (B24A7, row 0x00975BB0; size-pragma rule 2026-11-20, pattern of
 // FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26): the genuine GETTCDRIVER body specialised in the scope of its landed owner
@@ -890,5 +917,27 @@ bool CThing::GetTCDriver<CTCDPhysicalObstruction>(CTCDPhysicalObstruction** resu
     return false;
 }
 #pragma optimize("",on)
+#endif
+#if defined(FABLE_RETAIL_TARGET_INFO_PASS30) && defined(FABLE_RETAIL_CTHING_HASTC_SPEED_OWNER_PASS27)
+#ifdef _MSC_VER
+#pragma optimize("s", off)
+#pragma optimize("ty", on)
+#endif
+// The original 004118C0 and inlined TargetInfo calls use the bitset member.
+inline bool CThing::HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTHING_IS_THING_ALIVE_PASS30
+// FableWin and Ego_r both name the pointer-reference parameter thing.
+// The FableWin call resolves to CThing::IsDead. Retail tests the bit at +0x91.
+template <class T>
+inline bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing)
+{
+    if (thing != 0 && thing->IsDead() == 0)
+        return true;
+    return false;
+}
 #endif
 #endif

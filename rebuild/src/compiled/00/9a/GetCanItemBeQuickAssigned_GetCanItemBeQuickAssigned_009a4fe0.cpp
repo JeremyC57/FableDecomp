@@ -1,3 +1,10 @@
-struct C_009a4fe0 { char pad[0xdf]; unsigned char f; unsigned char M(); };
-// Leaf: ?M@C_009a4fe0@@QAEEXZ
-unsigned char C_009a4fe0::M(){ return this->f; }
+// Flags: 
+// Leaf: ?IsMouseButton2Pressed@CSystemManager@@QAE_NXZ
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+#include "engine/CSystemManager.h"
+
+bool CSystemManager::IsMouseButton2Pressed()
+{
+    return MouseButton2Pressed;
+}

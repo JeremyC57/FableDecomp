@@ -1,104 +1,66 @@
-// CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, EHeroAttachableAppearanceModifierType type) const -- whether any worn modifier of the type has an appearance def covering one of the body areas
-// Leaf: IsWearingAppearanceModifierCoveringBodyArea
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00706450, length 185 bytes (+ int3 padding). __fastcall, `ret 8`.
-//         Ego_r.pdb: `?IsWearingAppearanceModifierCoveringBodyArea@CTCHeroAttachableAppearanceModifiers@@QBE_NJW4EHero
-//         AttachableAppearanceModifierType@@@Z`. Label: the catalog's "CTCGold::GetGold" is propagated; the row sits in the
-//         appearance-modifier TU (0x00706370 / 0x00706880 AddAppearanceModifier) and its caller (CTCHeroStats, 0x0057D462)
-//         passes (def +0x40 flags, 2).
-// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const
-//          T>*) const @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const T>*) const @
-//          0x0057FF92, the defs' virtual slot 1 (destroy on the last release).
-// Shape: a pointer walk over AppearanceModifiers[type] (end re-read each pass); per entry two CDefPointer locals (the thing
-//        def in the dead `type` slot, the appearance def in the push-ecx word) tested in one `&&` chain, their inline
-//        destructors (`dec [reg+4] ; jne`) duplicated on the `return true` path (the appearance def's null test folded away
-//        after the flag read). GetDef and GetSubDef are same-TU noinline stand-in bodies that write only the out slot, so
-//        the defs are held in registers and eax is re-zeroed each pass instead of a hoisted ebx zero.
-// Layout: local model -- engine/CTCHeroAttachableAppearanceModifiers.h carries the 16-byte PDB containers; retail
-//         AppearanceModifiers +0x30 (12-byte vector of 12-byte vectors of 8-byte CModifierEntry {def index, ...});
-//         retail CAppearanceModifierDef::CoversBodyAreaFlags +0x40 (PDB +0x48).
-template<class T> class CDefPointer {
-public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
+// Flags: 
+// 00706450 CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea
+// Leaf: ?IsWearingAppearanceModifierCoveringBodyArea@CTCHeroAttachableAppearanceModifiers@@QBE_NJW4EHeroAttachableAppearanceModifierType@@@Z
+#define FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
+#define FABLE_RETAIL_CTCAPPEARANCEMORPHBASE
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGOBJECTDEF_SIZE_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CAPPEARANCEMODIFIERDEF_STATGETTYPENAME
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CVECTORMAP_CONST_LOWERBOUND_SPEED_OWNER_PASS27
+#define FABLE_RETAIL_STLP_BITSET_TEST_SPEED_OWNER_PASS27
+// Inline-budget: both calls expand HasTC and call bitset::test. Ordinary inline kept HasTC out of line at both sites.
+#define FABLE_RETAIL_CTHING_HASTC_FORCEINLINE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CBASE_CLASS_LAYOUT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHEROSTATS
+#define FABLE_RETAIL_CTCHEROSTATS_SERIALISE
+#define FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
+#define FABLE_RETAIL_CHEROSTATSDEF_APPEARANCESCALING
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER_PEEKHEROSTATSDEF
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_COVERS
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
+#define FABLE_RETAIL_CTCHEROMORPH
+#define FABLE_RETAIL_HERO_MORPH_SERIALISE_PASS29
+#define FABLE_RETAIL_CTATTOODEF
+#define FABLE_RETAIL_CTATTOODEF_MEMBERS
+#define FABLE_RETAIL_CTATTOODEF_TYPEBALANCED
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#define FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CDEFPOINTER
+#define FABLE_RETAIL_CTHINGOBJECTDEF
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
 
-class CDefClassBase {
-public:
-    virtual void v00();
-    virtual void Destroy() const;                   // slot 1
-    mutable long RefCount;                          // +0x04
-    template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 for CAppearanceModifierDef
-};
-void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
+#include "engine/CThing.h"
+#include "engine/CHeroStatsDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThingObjectDef.h"
+#include "engine/CAppearanceModifierDef.h"
+#include "engine/CTCHeroAttachableAppearanceModifiers.h"
+
+#include "engine/CTattooDef.h"
+#include "engine/CWorld.h"
+
+bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, EHeroAttachableAppearanceModifierType type) const
 {
-    void* def = Find_CDefClassBase_GetSubDef(this);
-    if (!def)
-        return false;
-    out->Object = (const T*)def;
-    return true;
-}
-#pragma auto_inline(on)
-
-class CAppearanceModifierDef : public CDefClassBase {
-public:
-    unsigned char _pad08[0x40 - 0x08];
-    long CoversBodyAreaFlags;                       // +0x40
-};
-class CThingObjectDef : public CDefClassBase { };
-
-class CDefinitionManager {
-public:
-    template<class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
-};
-void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
-{
-    void* def = Lookup_CDefinitionManager_GetDef(this, index);
-    if (!def)
-        return false;
-    out->Object = (const T*)def;
-    return true;
-}
-#pragma auto_inline(on)
-class CGameDefinitionManager : public CDefinitionManager { };
-
-template <class T> struct CRetailVector {           // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-};
-
-struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
-    long DefIndex;                                  // +0x00 global def index
-    long Data;                                      // +0x04
-};
-
-class CThing;
-class CTCBase
-{
-public:
-    virtual void v00();
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
-};
-
-class CTCHeroAttachableAppearanceModifiers : public CTCBase {
-public:
-    CThing* ParentThing;                            // +0x04 (CTCBase)
-    unsigned char _pad08[0x30 - 0x08];
-    CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
-    bool IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, long type) const;
-};
-
-bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, long type) const
-{
-    const CRetailVector<CModifierEntry>& entries = AppearanceModifiers._M_start[type];
-    for (const CModifierEntry* it = entries._M_start; it != entries._M_finish; ++it) {
+    const std::vector<CModifierEntry>& entries = AppearanceModifiers[type];
+    for (const CModifierEntry* it = entries.begin(); it != entries.end(); ++it) {
         CDefPointer<const CThingObjectDef> thingDef;
         CDefPointer<const CAppearanceModifierDef> appearanceDef;
         if (GetDefinitionManager().GetDef(it->DefIndex, &thingDef) && thingDef->GetSubDef(&appearanceDef) && (appearanceDef->CoversBodyAreaFlags & bodyAreaFlags))
@@ -106,3 +68,9 @@ bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBo
     }
     return false;
 }
+// Fidelity: VC7.1 instantiates the visible GetSubDef<CAppearanceModifierDef>
+// at the end of this TU. Its 162-byte native owner uses a frame and size mode.
+#ifdef _MSC_VER
+#pragma optimize("y",off)
+#pragma optimize("s",on)
+#endif

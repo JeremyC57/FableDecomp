@@ -16,6 +16,9 @@
 class CEngineInit;
 class CEnginePrimitiveOcclusionManager : public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+    void StartNewScene();
+#endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
     void SetAsOccluded(class CEnginePrimitiveOcclusionInfo&)const;
 #endif

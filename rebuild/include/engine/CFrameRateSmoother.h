@@ -14,6 +14,9 @@ class CFrameRateSmoother : public CInitBaseClass {
 public:
     CFrameRateSmoother();                                    // 0x00419747
     virtual ~CFrameRateSmoother();
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30
+    bool Init(long, long);  // FableWin and Ego_r, native 0049BA70.
+#endif
     unsigned char Times[0xC];                                // +0x08 CArray<float>
     long          MaxNoTimes;                                // +0x14
     long          NoTimes;                                   // +0x18
@@ -22,5 +25,5 @@ public:
     long          LastTime;                                  // +0x24
     double        SmoothedTime;                              // +0x28
 };
-FABLE_STATIC_ASSERT(sizeof(CFrameRateSmoother) == 0x30);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CFrameRateSmoother) == 0x30);
 #endif // FABLE_ENGINE_CFRAMERATESMOOTHER_H

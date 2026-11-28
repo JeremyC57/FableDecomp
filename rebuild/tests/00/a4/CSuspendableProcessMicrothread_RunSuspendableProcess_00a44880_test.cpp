@@ -1,125 +1,80 @@
-#include "fable_compiler.h"
-#ifndef _MSC_VER
-#define __fastcall
-#define __cdecl
-#define __declspec(x)
-#define __forceinline inline
-#endif
-extern "C" int __cdecl printf(const char* format, ...);
-// CSuspendableProcessMicrothread::RunSuspendableProcess() -- run this process's microthread: from inside another process, stack both and yield to the scheduler; from the main thread, stack it and keep switching to the top process until the stack is empty
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00A44880, 172 bytes (+ int3 padding), public virtual (PDB
-//   `?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ`).
-// Leaf: ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
-// Callees: vector<CASuspendableProcess*>::push_back @ 0x00A44C20 (landed as the generic PushBack_dword body), empty() @ 0x00A44930,
-//   back() @ 0x00A44A70, pop_back() @ 0x00A44A80 (out-of-line COMDAT copies; manifest labels propagated), YieldMicrothread
-//   @ 0x00A44690 (landed name; Ego_r.pdb `?InternalSuspend@CSuspendableProcessMicrothread@@KIXXZ`), GFGetTime @ 0x009E1BC0
-//   (`__fastcall`, double), InternalSwitchToProcess(CSuspendableProcessMicrothread&) @ 0x00A44660 (static `__fastcall`).
-// Globals: the running process @ 0x013D2838 (landed name g_pScriptRunner), the process stack @ 0x013D2828 (12-byte vector).
-// Shape: an UNOPTIMISED TU (`#pragma optimize("", off)`, as the landed ctor 0x00A44740 / Restart 0x00A447D0 /
-//   SuspendSuspendableProcess 0x00A44840): `this` spilled to [ebp-48h], every inline vector member called out of line, each
-//   pointer handed to push_back through its own conversion temporary, the empty() bool widened with `movzx`, the slice start
-//   time stored straight from the x87 double.
-#pragma optimize("", off)
-struct MicroThreadInfo;
-double __fastcall GFGetTime();                     // 0x009E1BC0
-void YieldMicrothread();                           // 0x00A44690
-
+#include <vector>
+#include <stdio.h>
+static int failures, ticks, suspensions, switches, max_inject;
+static int order[64];
+static void check(bool expr) { if (!expr) ++failures; }
 class CASuspendableProcess {
 public:
-    virtual ~CASuspendableProcess();               // 0x00A44610
-    bool  Running;                                 // +0x04
-    bool  StopRunning;                             // +0x05
-    bool  TerminateUsingExceptions;                // +0x06
-    float TimeProcessSliceStarted;                 // +0x08
-    float TimesliceLength;                         // +0x0c
+    CASuspendableProcess() : TimeProcessSliceStarted(-1.0f) { }
+    static CASuspendableProcess* PActiveProcess;
+    float TimeProcessSliceStarted;
 };
-
-template <class T> struct vector {                 // STLport vector: 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void push_back(const T& x);                    // 0x00A44C20 (for T = CASuspendableProcess*)
-    bool empty() const;                            // 0x00A44930
-    T& back();                                     // 0x00A44A70
-    void pop_back();                               // 0x00A44A80
-};
-
 class CSuspendableProcessMicrothread : public CASuspendableProcess {
 public:
-    MicroThreadInfo* PMicrothread;                 // +0x10
-    virtual ~CSuspendableProcessMicrothread();
-    virtual void RunSuspendableProcess();
-    static void __fastcall InternalSwitchToProcess(CSuspendableProcessMicrothread& process);   // 0x00A44660
+    CSuspendableProcessMicrothread(int id=0) : number(id) { }
+    void RunSuspendableProcess();
+    static std::vector<CSuspendableProcessMicrothread*> ProcessStack;
+    static void InternalSuspend();
+    static void InternalSwitchToProcess(CSuspendableProcessMicrothread&);
+    int number;
 };
-
-// behaviour-test stubs for the out-of-line vector members (specialised before first use)
-template <> void vector<CASuspendableProcess*>::push_back(CASuspendableProcess* const& x) { *_M_finish++ = x; }
-template <> bool vector<CASuspendableProcess*>::empty() const { return _M_start == _M_finish; }
-template <> CASuspendableProcess*& vector<CASuspendableProcess*>::back() { return *(_M_finish - 1); }
-template <> void vector<CASuspendableProcess*>::pop_back() { --_M_finish; }
-extern CSuspendableProcessMicrothread*  g_pScriptRunner;     // 0x013D2838
-extern vector<CASuspendableProcess*>    g_ProcessStack;      // 0x013D2828
-FABLE_FORCEINLINE void StartTimeslice(CASuspendableProcess* process)
-{
-    long reserved[12];     // never touched: models retail's 0x30 untouched inlinee frame bytes (contents unknown)
-    process->TimeProcessSliceStarted = (float)GFGetTime();
+CASuspendableProcess* CASuspendableProcess::PActiveProcess=0;
+std::vector<CSuspendableProcessMicrothread*> CSuspendableProcessMicrothread::ProcessStack;
+static CSuspendableProcessMicrothread jobs[12];
+static CSuspendableProcessMicrothread* outer;
+double GFGetTime() { ++ticks; return 10.0+ticks*0.5; }
+void CSuspendableProcessMicrothread::InternalSuspend() {
+    ++suspensions;
+    check(PActiveProcess==outer && ProcessStack.size()>=2);
+    check(ProcessStack[ProcessStack.size()-2]==outer);
+    PActiveProcess=0;
+}
+void CSuspendableProcessMicrothread::InternalSwitchToProcess(CSuspendableProcessMicrothread& next) {
+    check(!PActiveProcess && ticks==switches+1 && switches<64);
+    check(outer->TimeProcessSliceStarted==(float)(10.0+ticks*0.5));
+    order[switches++]=next.number;
+    if(max_inject>0) { --max_inject;ProcessStack.push_back(&jobs[max_inject+1]); }
 }
 
 void CSuspendableProcessMicrothread::RunSuspendableProcess()
 {
-    if (g_pScriptRunner != 0) {
-        CSuspendableProcessMicrothread* previous = g_pScriptRunner;
-        g_ProcessStack.push_back(g_pScriptRunner);
-        g_ProcessStack.push_back(this);
-        YieldMicrothread();
-        g_pScriptRunner = previous;
+    if (PActiveProcess != 0) {
+        CASuspendableProcess* pold_process = PActiveProcess;
+        ProcessStack.push_back(static_cast<CSuspendableProcessMicrothread*>(PActiveProcess));
+        ProcessStack.push_back(this);
+        InternalSuspend();
+        PActiveProcess = pold_process;
     } else {
-        g_ProcessStack.push_back(this);
-        while (!g_ProcessStack.empty()) {
-            CSuspendableProcessMicrothread* next = static_cast<CSuspendableProcessMicrothread*>(g_ProcessStack.back());
-            g_ProcessStack.pop_back();
-            StartTimeslice(this);
-            InternalSwitchToProcess(*next);
+        ProcessStack.push_back(this);
+        while (!ProcessStack.empty()) {
+            CSuspendableProcessMicrothread* process = ProcessStack.back();
+            ProcessStack.pop_back();
+            TimeProcessSliceStarted = (float)GFGetTime();
+            InternalSwitchToProcess(*process);
         }
     }
 }
-
-// ---- behaviour-test stubs ----
-static CASuspendableProcess* g_items[16];
-vector<CASuspendableProcess*> g_ProcessStack;
-CSuspendableProcessMicrothread* g_pScriptRunner;
-CASuspendableProcess::~CASuspendableProcess() { }
-CSuspendableProcessMicrothread::~CSuspendableProcessMicrothread() { }
-static int g_yields, g_switches, g_time;
-static CSuspendableProcessMicrothread* g_order[8];
-static CSuspendableProcessMicrothread* g_spawnA;
-static CSuspendableProcessMicrothread* g_spawnB;
-void YieldMicrothread() { ++g_yields; g_pScriptRunner = 0; }
-double __fastcall GFGetTime() { return (double)(++g_time) + 0.5; }
-void __fastcall CSuspendableProcessMicrothread::InternalSwitchToProcess(CSuspendableProcessMicrothread& process)
-{
-    g_order[g_switches++] = &process;
-    if (g_switches == 1) {            // the first process spawns two more
-        g_ProcessStack.push_back(g_spawnA);
-        g_ProcessStack.push_back(g_spawnB);
+int main(){
+    int i;for(i=0;i<12;++i)jobs[i].number=i;
+    for(int buffered=0;buffered<=4;++buffered)for(int count=0;count<=4;++count){
+        outer=&jobs[0];suspensions=switches=ticks=0;
+        CSuspendableProcessMicrothread::ProcessStack.clear();
+        CASuspendableProcess::PActiveProcess=0;
+        for(i=0;i<buffered;++i)CSuspendableProcessMicrothread::ProcessStack.push_back(&jobs[7+i]);
+        max_inject=count;
+        outer->RunSuspendableProcess();
+        check(!suspensions && ticks==1+count+buffered && switches==ticks && order[0]==0);
+        for(i=0;i<count;i++)check(order[i+1]==count-i);
+        for(i=0;i<buffered;i++)check(order[1+count+i]==7+buffered-1-i);
+        check(CSuspendableProcessMicrothread::ProcessStack.empty());
+        CASuspendableProcess::PActiveProcess=outer;
+        for(i=0;i<buffered;++i)CSuspendableProcessMicrothread::ProcessStack.push_back(&jobs[7+i]);
+        CSuspendableProcessMicrothread& other=jobs[count+1];
+        other.RunSuspendableProcess();
+        check(CASuspendableProcess::PActiveProcess==outer && suspensions==1 && switches==ticks);
+        check(CSuspendableProcessMicrothread::ProcessStack.size()==(unsigned int)buffered+2);
+        check(CSuspendableProcessMicrothread::ProcessStack.back()==&other);
     }
-}
-int main()
-{
-    int ok = 1;
-    CSuspendableProcessMicrothread self, other, a, b;
-    g_spawnA = &a; g_spawnB = &b; a.TimeProcessSliceStarted = b.TimeProcessSliceStarted = -1.0f;
-    g_ProcessStack._M_start = g_ProcessStack._M_finish = g_items; g_ProcessStack._M_end_of_storage = g_items + 16;
-    // A: called from inside another process
-    g_pScriptRunner = &other;
-    self.RunSuspendableProcess();
-    if (g_yields != 1 || g_pScriptRunner != &other || g_ProcessStack._M_finish - g_ProcessStack._M_start != 2 ||
-        g_items[0] != &other || g_items[1] != &self) { ok = 0; printf("caseA\n"); }
-    // B: from the main thread -> run until the stack is empty, newest first
-    g_ProcessStack._M_finish = g_items; g_pScriptRunner = 0;
-    self.RunSuspendableProcess();
-    if (g_switches != 3 || g_order[0] != &self || g_order[1] != &b || g_order[2] != &a || !g_ProcessStack.empty() ||
-        self.TimeProcessSliceStarted != 3.5f || b.TimeProcessSliceStarted != -1.0f || a.TimeProcessSliceStarted != -1.0f) { ok = 0; printf("caseB %d\n", g_switches); }
-    if (ok) printf("00a44880_TEST PASS\n");
-    return ok ? 0 : 1;
+    if(failures){printf("failed %d\n",failures);return 1;}
+    puts("00a44880_TEST PASS");return 0;
 }

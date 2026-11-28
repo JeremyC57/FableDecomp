@@ -35,6 +35,10 @@ private:
     bool Locked;unsigned char _pad_0x19[3];unsigned char ScriptAIPriority[4]; // EScriptAIPriority follows aligned at+1c.
     unsigned char AttitudeTags[4]; // std::list<std::pair<long,EConversationAttitude> >.
 public:
+#ifdef FABLE_RETAIL_CTC_SCRIPTED_CONTROL_DIE_PASS30
+    // Original public override, FableWin and retail scripted control slot 13.
+    virtual void OnDie();
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SCRIPTED_CONTROL; } bool IsActive() const;
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CLEANUPALLACTIONS
     // Retail opt-in (p25F, row 0x00714370): the landed 0x00713630 ?CleanupAllActions@CTCScriptedControl@@QAEXXZ.

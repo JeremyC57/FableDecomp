@@ -1,3 +1,4 @@
+// Flags: 
 // CTCClock::PlaySoundW(const CCharString& name) -- play the clock's named sound: look up the "STF_<name>" / "STL_<name>" first/last sample ids in the clock definition's sound map and, when both exist, play a random sample of that range through the owner's sound player
 // Leaf: ?PlaySoundW@CTCClock@@IAEXABVCCharString@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -61,6 +62,9 @@ class CTCSoundPlayer { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached);   // 0x0066B280
 };
 
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CSoundMap { public:                              // STLport map<CCharString, long>
     struct _Node {
         long        _M_color;
@@ -72,14 +76,13 @@ class CSoundMap { public:                              // STLport map<CCharStrin
     };
     _Node*        _M_header;                    // +0x00 end()
     unsigned long _M_node_count;                // +0x04
-    _Node* _M_find(const CCharString& key) const;   // 0x0042B467
 };
 class CClockDef { public:
     unsigned char _pad00[0x28];
     CSoundMap     Sound;                        // +0x28
     long GetSound(const CCharString& name) const
     {
-        CSoundMap::_Node* it = Sound._M_find(name);
+        CSoundMap::_Node* it = reinterpret_cast<CSoundMap::_Node*>(reinterpret_cast<const std::map<CCharString,long>*>(&Sound)->find(name)._M_node);
         if (it != Sound._M_header)
             return it->second;
         return 0;

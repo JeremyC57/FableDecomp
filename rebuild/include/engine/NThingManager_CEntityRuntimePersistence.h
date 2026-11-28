@@ -31,6 +31,10 @@ public:
         unsigned __int64 UID;
         bool GamePersistent;
         unsigned long SectionNameCRC;
+#ifdef FABLE_RETAIL_ENTITY_LOAD_BINARY_PASS30
+        CPersistedDeadEntity() : UID(0), GamePersistent(false), SectionNameCRC(0) {}
+#endif
+
     };
 #ifdef FABLE_RETAIL_ENTITY_SAVE_SCRIPT_PASS29
     // Public member in both original PDBs. Retail 0051EDA0 writes the thing manager script.
@@ -43,6 +47,10 @@ public:
     void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520390
 #endif
     void LoadFromGameStateBinary(CPersistContext&);
+#ifdef FABLE_RETAIL_ENTITY_LOAD_BINARY_PASS30
+    void SetGamePersistentSaveDataCompressed(long, const void*, unsigned long, unsigned long);
+#endif
+
 #ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_DEAD
     // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): Ego_r.pdb / FableWin.pdb
     // ?IsEntityPersistedAsDead@CEntityRuntimePersistence@NThingManager@@QBE_N_K@Z, inline in retail (`lea esi,[ebx+0B8h] ; call

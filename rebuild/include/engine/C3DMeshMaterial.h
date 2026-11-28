@@ -9,6 +9,9 @@ public:
  void LoadBinary(class CMemoryDataInputStream&,const class CGraphicDataBank*);
 #endif
 #if defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) || defined(FABLE_RETAIL_C3DMESHMATERIAL_MAPBANKINDICES)
+#ifdef FABLE_RETAIL_MESH_PRELOAD_CALLS_PASS30
+    bool IsDegenerateTriangles() const { return DegenerateTriangles; }
+#endif
     unsigned long GetDiffuseMapBankIndex() const{return DiffuseMapBankIndex;}
     unsigned long GetBumpMapBankIndex() const{return BumpMapBankIndex;}
 #endif

@@ -73,6 +73,11 @@ public:
     // stores into BlockedNode in place, 0x00A77241..0x00A772A1). No layout change.
     static CNavBlockedQuadTreeNode* __fastcall GetBlockedNode() { return &BlockedNode; }
 #endif
+#ifdef FABLE_RETAIL_NAV_ACTIVATE_MAP_PASS30
+    bool IsActivated() const { return Activated; }
+    void Activate();
+    void LinkToNeighbouringMaps(const class CNavigatorManager&);
+#endif
 #ifdef FABLE_RETAIL_CNAVQUADTREE_SMALLESTNODESIZE
     // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ,
     // retail 0x00A76320 (static __fastcall, `fld 0.5 ; ret`; landed siblings 0x00A15140 / 0x00A472F0 bind the same spelling; called
@@ -84,6 +89,19 @@ public:
     // the stack, layer in ecx, level in edx); it fills the static BlockedNode (Position +4, QuadTreeLevel +0xC, NavLayer +0xD).
     // The landed callers 0x00A15140 / 0x00A472F0 already bind this spelling. Declaration only.
     static void __fastcall SetBlockedNode(float x, float y, long navLayer, long level);   // 0x00A76340
+#endif
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+    const std::vector<C2DBoxF>& GetDetailedAreas() const { return DetailedAreas; }
+    bool IsAreaAllSamePreferability(const CANavQuadTreeNode* node) const;
+#endif
+#ifdef FABLE_RETAIL_NAV_AREA_INITIALISE_PASS30
+    void Initialise(const class CNavigationAreaInit& init);
+    unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+private:
+    void CalculateNeighbours(std::vector<CANavQuadTreeNode*>&) const;
+    void InitialiseLines(std::vector<std::list<C2DLineF> >&,const std::vector<C2DLineF>&) const;
+    bool IsActionPointReachable(const CNavigationPosition&) const;
+public:
 #endif
     virtual ~CNavQuadTree();                                             // slot 0
     const CANavQuadTreeNode* GetNodeAt(const C2DVector& pos, long layer) const;          // 0x00A770B0

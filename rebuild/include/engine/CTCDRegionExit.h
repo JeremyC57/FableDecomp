@@ -27,6 +27,9 @@ public:
     // ?IsActive@CTCDRegionExit@@QBE_NXZ (inline in retail: `cmp byte ptr [ecx+0Ch],0` at 0x0064DE34) and
     // ?GetDisplayName@CTCDRegionExit@@QBEABVCCharString@@XZ (out of line, 0x00779260). No layout change.
     // (GetRegionName 0x007791F0 is declared above, outside this opt-in, since Account A's respell.)
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+    bool IsHiddenOnMiniMap() const { return HiddenOnMiniMap; }
+#endif
     bool IsActive() const { return Active; }
     const CCharString& GetDisplayName() const;                           // 0x00779260
 #endif

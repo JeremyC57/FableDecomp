@@ -6,6 +6,9 @@
 #ifdef FABLE_RETAIL_C2DBOXF_SETTLPOS
 #include "engine/C2DVector.h"
 #endif
+#ifdef FABLE_RETAIL_C2DBOXF_CLOCK_CORNERS_OWNER_PASS30
+class C2DVector;
+#endif
 // Original public fields and user default constructor from Ego_r TPI.
 class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
 #ifdef FABLE_RETAIL_C2DBOXF_SETTLPOS
@@ -55,6 +58,10 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  float GetTLY() const { return TLY; }
  float GetBRX() const { return BRX; }
  float GetBRY() const { return BRY; }
+#ifdef FABLE_RETAIL_C2DBOXF_GETTRPOS_PASS30
+ // FableWin 020DDAA0 and retail 00643970: return the top-right corner by value.
+ class C2DVector GetTRPos() const;
+#endif
 #if defined(FABLE_RETAIL_C2DBOXF_EXTENT_NAMED)
  // Overlay opt-in (wfA4, row 0x00BAA870): FableWin ?GetWidth@C2DBoxF@@QBEMXZ / ?GetHeight@C2DBoxF@@QBEMXZ are 13i/30b and 13i/31b at /Od,
  // two instructions more than the one-expression body (11i/22b): the difference stored in a named local and returned.
@@ -107,9 +114,23 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  // temporaries, 0x00537D9E..0x00537DAA and 0x00537DC1..0x00537DCA, and passes them to ContainsPoint). Bodies follow the class.
  class C2DVector GetTLPos() const;
  class C2DVector GetBRPos() const;
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+ class C2DVector GetTRPos() const;
+ class C2DVector GetBLPos() const;
+#endif
 #endif
 #endif
 };
+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_GETTRPOS_PASS30)
+#include "engine/C2DVector.h"
+#ifdef _MSC_VER
+#pragma optimize("ty", on)
+#endif
+inline C2DVector C2DBoxF::GetTRPos() const { return C2DVector(BRX, TLY); }
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+#endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CENTRE)
 #include "engine/C2DVector.h"
 inline C2DBoxF::C2DBoxF(const C2DVector& centre,float radius):TLX(centre.X-radius),TLY(centre.Y-radius),BRX(centre.X+radius),BRY(centre.Y+radius){}
@@ -147,7 +168,17 @@ inline C2DBoxF::C2DBoxF(const C2DVector& top_left,const C2DExtentsF& extents):TL
 #include "fable_compiler.h"
 FABLE_FORCEINLINE C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
 #else
+#if defined(FABLE_RETAIL_C2DBOXF_CLOCK_CORNERS_OWNER_PASS30) && defined(_MSC_VER)
+// Inline-budget: the clock ctor calls the native 34-byte corners owner.
+// Its visible input reads allow the caller to reuse the screen-vector slot.
+#pragma auto_inline(off)
+#pragma optimize("ty",on)
+#endif
 inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
+#if defined(FABLE_RETAIL_C2DBOXF_CLOCK_CORNERS_OWNER_PASS30) && defined(_MSC_VER)
+#pragma optimize("",on)
+#pragma auto_inline(on)
+#endif
 #endif
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_MOVE)
@@ -168,6 +199,10 @@ inline void C2DBoxF::SetTLPos(const C2DVector& pos) { TLX = pos.X; TLY = pos.Y; 
 #include "engine/C2DVector.h"
 inline C2DVector C2DBoxF::GetTLPos() const { return C2DVector(TLX,TLY); }
 inline C2DVector C2DBoxF::GetBRPos() const { return C2DVector(BRX,BRY); }
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+inline C2DVector C2DBoxF::GetTRPos() const { return C2DVector(BRX,TLY); }
+inline C2DVector C2DBoxF::GetBLPos() const { return C2DVector(TLX,BRY); }
+#endif
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CONTAINSPOINT_INLINE)
 // Opt-in (wfB6, row 0x005379F5 NUISystem::CList::ComputeChildrenVisibility): ?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z is an

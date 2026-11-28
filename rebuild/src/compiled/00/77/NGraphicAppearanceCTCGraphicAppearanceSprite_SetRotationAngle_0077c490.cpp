@@ -1,3 +1,4 @@
+// Flags: 
 // NGraphicAppearance::CTCGraphicAppearanceSprite::SetRotationAngle(float amount) -- flag the owner's appearance as changed, store the per-frame rotation amount and pick a random starting angle in [0,1)
 // Leaf: ?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C490, length 56 bytes (64 with padding). Callees:
@@ -14,9 +15,7 @@
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 class CThing;
 
-struct CRandomGenerator {
-    float FloatRandom(float max);                       // 0x004978A0
-};
+#include "engine/GFFloatRandom.h"
 
 class CWorld {
 public:
@@ -68,8 +67,8 @@ void CTCGraphicAppearanceSprite::SetRotationAngle(float amount)
 {
     ParentThing->GetTCGraphicAppearance()->SetAsChanged(4);
     RotationAmountPerFrame = amount;
-    CRandomGenerator* random = ((CRandomGenerator*)((CWorld*)&(GetWorld()))->GetWorldSeed());
-    RotationAngle = random->FloatRandom(1.0f);
+    unsigned long* random = GetWorld().GetWorldSeed();
+    RotationAngle = GFFloatRandom(1.0f,random);
 }
 
 }

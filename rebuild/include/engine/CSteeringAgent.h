@@ -70,6 +70,9 @@ public:
  void SetProximityForArrival(float proximity) {ProximityForArrival=proximity;}
  void SetGoal(const C2DVector &, const C2DVector &);
  bool IsCurrentNavigabilityBetter();
+#ifdef FABLE_RETAIL_NAV_WIDTH_PASS30
+    float GetMaxDist() { return GetRadius(false) * 10.0f; }
+#endif
 #ifdef FABLE_RETAIL_CSTEERINGAGENT_ACCESSORS
  // Retail opt-in (chunk Q17, row 0x00A87700 CSBCAgents::Process): the FableWin.pdb inline accessors (no Ego_r.pdb or Fable.exe copy),
  // the bodies the landed CSBAgents::Process 0x00A873E0 models: ?GetTarget@CSteeringAgent@@QBEPBV1@XZ (slot 14 GetPThingToNotAvoid),

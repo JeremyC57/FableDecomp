@@ -10,9 +10,53 @@
 #include "engine/CANavQuadTreeNode.h"
 class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 public:
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+public:
+    virtual bool HasNeighbours() const;
+public:
+    virtual long GetRegionID() const;
+public:
+    virtual ENavQuadTreeNodeType GetNodeType() const;
+protected:
+    virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;
+protected:
+#ifndef FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE_RTTI_DECLS
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+#endif
+protected:
+#ifndef FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE_RTTI_DECLS
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+#endif
+protected:
+    virtual bool RemoveRegionZero();
+protected:
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+protected:
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;
+protected:
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;
+protected:
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);
+public:
+#endif
 #ifdef FABLE_RETAIL_NAV_NODETYPE_ORIGINAL_POLYMORPHISM_PASS23
     // Both original PDBs: concrete override; native129dd3c+18 ->00a7d940 returns2.
     virtual ENavQuadTreeNodeType GetNodeType()const;
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30
+    // Concrete final overrides of the pure slots in the 0x0129CBBC base table.
+    virtual bool HasNeighbours() const;
+    virtual long GetRegionID() const;
+protected:
+    virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+    virtual bool RemoveRegionZero();
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);
+public:
 #endif
     CNavBlockedQuadTreeNode(unsigned char, unsigned char);                               // 0x00A768C0
     const CNavBlockedQuadTreeNode& operator=(const CNavBlockedQuadTreeNode&);            // 0x00A76240

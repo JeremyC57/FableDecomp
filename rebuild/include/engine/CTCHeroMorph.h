@@ -30,13 +30,22 @@ public:
 private:
     unsigned char _unmodelled_0c[0x10];
     std::vector<CDefPointer<const CThingBaseDef> > Tattoos;
+#ifdef FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
+    unsigned char _unmodelled_28[0x0c];
+    long FrameTattoosChanged;
+    unsigned char _unmodelled_38[8];
+#else
     unsigned char _unmodelled_28[0x18];
+#endif
     float Strength, Berserk, Will, Skill, Age, Morality, Fatness, Tan;
     bool Teenager;
 #else
 class CTCHeroMorph : public CTCBase {
 #endif
 public:
+#ifdef FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
+    long GetFrameTattoosLastChanged() const { return FrameTattoosChanged; }
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
 #ifdef FABLE_RETAIL_HERO_MODIFIER_GRAPHICS_PASS29
     float GetMorphStrength(EHeroMorphType morph_type) const;

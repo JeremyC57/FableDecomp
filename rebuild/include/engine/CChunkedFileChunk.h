@@ -38,6 +38,10 @@ private:
 friend class CChunkedFileSuperChunk;
 void SetParent(CChunkedFileSuperChunk* parent) { Parent=parent; }
 #endif
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+public:
+CChunkedFileSuperChunk* GetParent() { return Parent; } // FableWin 034C5EF0.
+#endif
 private:char ChunkType[5];CChunkedFileSuperChunk* Parent;};
 FABLE_STATIC_ASSERT_AT(31, sizeof(CChunkedFileChunk)==0x10);
 #endif

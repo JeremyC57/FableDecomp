@@ -12,6 +12,10 @@
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_QUEUE_PASS23
 #include "engine/CNavigatorQueueManager.h"
 #endif
+#ifdef FABLE_RETAIL_NAV_ACTIVATE_MAP_PASS30
+#include "engine/CNavQuadTreeMap.h"
+#include "stlport/fable_containers.h"
+#endif
 class CNavigatorManagerExternalInterface;
 
 #pragma pack(push, 1)
@@ -38,6 +42,13 @@ public:
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_SAMEMAP
     // Retail opt-in (Codex pass18): both PDBs QBE_NABVC2DVector@@0@Z, native00a14fd0.
     bool IsInSameMap(const class C2DVector&,const class C2DVector&) const;
+#endif
+#ifdef FABLE_RETAIL_NAV_ACTIVATE_MAP_PASS30
+    void ActivateNavigationMap(long);
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_PASS30
+    void OutputWorld(const class C2DVector&, unsigned char);
+    const class CANavQuadTreeNode* GetNextNeighbour(const CANavQuadTreeNode&, const CANavQuadTreeNode*, const C2DVector&, bool*);
 #endif
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_GETNODEAT
     // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb
@@ -77,9 +88,19 @@ public:
     unsigned char                       _pad_0x10[0x4];      // +0x10
     unsigned char                       _pad_0x14[0x4];      // +0x14
     unsigned char                       _pad_0x18[0x4];      // +0x18
+#ifdef FABLE_RETAIL_NAVIGATOR_SEED_PASS30
+    // FableWin 03241fe0 and Ego_r identify the unsigned-long pointer returned from Seed.
+    unsigned long* Seed;
+    unsigned long* GetSeed() const { return Seed; }
+#else
     void*                               Seed;                // +0x1c ulong *
+#endif
     long                                NumberOfNodeExaminationsLeftThisFrame; // +0x20
+#ifdef FABLE_RETAIL_NAV_ACTIVATE_MAP_PASS30
+    std::list<CNavQuadTreeMap> QuadTrees;
+#else
     unsigned char                       QuadTrees[0x4];      // +0x24 list<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap>_>
+#endif
     CNavigatorManagerExternalInterface* PInterface;          // +0x28
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_QUEUE_PASS23
     CNavigatorQueueManager& GetNavigatorQueueManager() {return QueueManager;}

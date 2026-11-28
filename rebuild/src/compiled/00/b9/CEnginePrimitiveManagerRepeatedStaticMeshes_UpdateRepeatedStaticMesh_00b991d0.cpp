@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?UpdateRepeatedStaticMesh@CEnginePrimitiveManagerRepeatedStaticMeshes_Methods@@QAEXABVCEnginePrimitiveHandle@@ABUCAddMeshDesc@NEnginePrimitiveManagerRepeatedStaticMeshes@@@Z
 // CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh(const CEnginePrimitiveHandle&, const NEnginePrimitiveManagerRepeatedStaticMeshes::CAddMeshDesc&) -- replace a repeated-static-mesh primitive's descriptor fields, derived fade values, and conditional mesh load
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail body: 0x00B991D0, 0x127 bytes. Native callers: 0x00B9AB96 (new repeated-mesh primitive) and 0x00B31FE6 (renderer forwards to manager at +0x290).
@@ -94,7 +96,6 @@ class CEnginePrimitiveRenderer;
 namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer; }   // 0x01436E80 (the engine's primitive-renderer component; Codex name fix 2026-11-10)
 // The members read here are modelled by the local SViewRecord_01436E80 view of that object (name debt: the shared
 // engine/CEnginePrimitiveRenderer.h retail branch).
-extern float g_fReciprocal255_01231724;               // 0x01231724
 
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
     void UpdateRepeatedStaticMesh(const CEnginePrimitiveHandle& handle,
@@ -128,7 +129,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UpdateRepeatedStaticMe
         (desc.FadeDist.MaxDrawDistance - desc.FadeDist.FadeBeginDistance) + 1.0f;
     primitive->AlphaTransformMult = 1.0f /
         (desc.FadeDist.FadeBeginDistance - desc.FadeDist.MaxDrawDistance);
-    float alpha = (float)desc.AlphaRef * g_fReciprocal255_01231724;
+    float alpha = (float)desc.AlphaRef * (1.0f/255.0f);
     base->FadeDistance_MaxDrawDistance = (1.0f - alpha) * desc.FadeDist.MaxDrawDistance +
         alpha * desc.FadeDist.FadeBeginDistance;
     base->FadeDistance_FadeBeginDistance = desc.FadeDist.FadeBeginDistance;

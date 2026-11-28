@@ -7,6 +7,11 @@
 class CCombatAbility {
 public:CCombatAbility():RepeatTimer(-1),ActiveTimer(-1){}
 private:long RepeatTimer;long ActiveTimer;
+
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30
+public:
+ bool IsUsable() const;
+#endif
 #ifdef FABLE_RETAIL_CCOMBATABILITY_MEMBERS
 // Opt-in (p25N, rows 0x00733090 / 0x007330A0 / 0x007330C0 / 0x007330E0 / 0x007332F0 and their caller 0x00733CF0): Ego_r.pdb / FableWin.pdb
 // ?IsActive@CCombatAbility@@QBE_NXZ (Ego_r 0x0074B240; retail 0x00733090), ?SetAsActive@CCombatAbility@@QAEXABVCCombatAbilityData@@@Z
@@ -15,7 +20,11 @@ private:long RepeatTimer;long ActiveTimer;
 // names. Ego_d.pdb puts them all in tc_combat.cpp (line-table file id 3264, the file of CTCCombat::UpdateGetHitCounterAttack 0x00733CF0), so
 // the tc_combat.cpp rows define them. Declarations only: no layout change.
 public:
+#ifdef FABLE_RETAIL_CCOMBATABILITY_ISUSABLE_OWNER_PASS30
+ bool IsActive() const { return ActiveTimer >= 0; }
+#else
  bool IsActive() const;                                                  // 0x00733090
+#endif
  bool IsValid(const class CCombatAbilityData& combat_ability, unsigned long* prandom_seed) const;   // 0x007332F0
  void SetAsActive(const class CCombatAbilityData& combat_ability);      // 0x007330A0
  void SetAsFinished(const class CCombatAbilityData& combat_ability);    // 0x007330C0

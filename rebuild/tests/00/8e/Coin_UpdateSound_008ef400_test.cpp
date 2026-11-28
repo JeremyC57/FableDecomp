@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cmath>
-static const unsigned int g_InvalidSoundHandle = 0xFFFFFFFFu;
+static const unsigned long INVALID_SAMPLE_ID = 0xFFFFFFFFu;
 class CTCSoundPlayer { public:
     int Stops; int Plays; unsigned int NextHandle; char LastName[64]; float Pitch; float Volume; unsigned int LastSound;
     void StopAttachedSound(unsigned int) { ++Stops; }
@@ -19,10 +19,10 @@ class Coin { public:
         if (Thing == 0) return;
         CTCSoundPlayer* player = Thing->Player;
         if (Velocity.GetLengthSquared() == 0.0f) {
-            if (Sound != g_InvalidSoundHandle) { player->StopAttachedSound(Sound); Sound = g_InvalidSoundHandle; }
+            if (Sound != INVALID_SAMPLE_ID) { player->StopAttachedSound(Sound); Sound = INVALID_SAMPLE_ID; }
             return;
         }
-        if (Sound == g_InvalidSoundHandle) Sound = player->PlaySound("TAVERN_GAME_COIN_SLIDE", false, 0, 0, -1);
+        if (Sound == INVALID_SAMPLE_ID) Sound = player->PlaySound("TAVERN_GAME_COIN_SLIDE", false, 0, 0, -1);
         player->SetSpecificSamplePitch(Sound, 1.0f);
         player->SetSpecificSampleVolume(Sound, muted ? 0.0f : 1.0f);
     }
@@ -31,7 +31,7 @@ int main()
 {
     CTCSoundPlayer p; p.Stops = 0; p.Plays = 0; p.NextHandle = 17; p.LastName[0] = 0; p.Pitch = 0.0f; p.Volume = -1.0f; p.LastSound = 0;
     CThing t; t.Player = &p;
-    Coin c; c.Velocity.X = 0.0f; c.Velocity.Y = 0.0f; c.Thing = 0; c.Sound = g_InvalidSoundHandle;
+    Coin c; c.Velocity.X = 0.0f; c.Velocity.Y = 0.0f; c.Thing = 0; c.Sound = INVALID_SAMPLE_ID;
     c.UpdateSound(false);
     if (p.Plays != 0 || p.Stops != 0) { std::printf("008ef400_TEST FAIL\n"); return 1; }
     c.Thing = &t; c.Velocity.X = 0.5f;
@@ -41,7 +41,7 @@ int main()
     if (p.Plays != 1 || std::fabs(p.Volume - 1.0f) > 1e-6f || p.LastSound != 17) { std::printf("008ef400_TEST FAIL\n"); return 1; }
     c.Velocity.X = 0.0f;
     c.UpdateSound(false);
-    if (p.Stops != 1 || c.Sound != g_InvalidSoundHandle) { std::printf("008ef400_TEST FAIL\n"); return 1; }
+    if (p.Stops != 1 || c.Sound != INVALID_SAMPLE_ID) { std::printf("008ef400_TEST FAIL\n"); return 1; }
     c.UpdateSound(false);
     if (p.Stops != 1) { std::printf("008ef400_TEST FAIL\n"); return 1; }
     std::printf("008ef400_TEST PASS\n");

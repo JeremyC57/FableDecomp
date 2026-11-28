@@ -119,6 +119,9 @@ FABLE_STATIC_ASSERT_AT(101, offsetof(CEngineInternalPrimitive2DStaticMesh, MaskO
 #include "engine/C3DBoundingSphere.h"
 #include "engine/C3DVector.h"
 #include "engine/C4DVector.h"
+#ifdef FABLE_RETAIL_STATIC_2D_TRANSFORM_PASS30
+#include "engine/C3DOrientationInterpolator.h"
+#endif
 #ifdef _MSC_VER
 enum EEngine2DLayer;
 #else
@@ -145,7 +148,11 @@ public:
     C2DBoxF           ClipBox;                                                                              // +0xb0
     EEngine2DLayer    Layer;                                                                                // +0xc0
     C3DBoundingSphere BoundingSphere;                                                                       // +0xc4
+#ifdef FABLE_RETAIL_STATIC_2D_TRANSFORM_PASS30
+    C3DOrientationInterpolator Orientation;
+#else
     unsigned char     Orientation[52];                                                                      // +0xd4 C3DOrientationInterpolator
+#endif
     C3DVector         WorldPos;                                                                             // +0x108
     unsigned long     AlphaMaskBankIndex;                                                                   // +0x114
     CGraphicDataBank* AlphaMaskGraphicBank;                                                                 // +0x118

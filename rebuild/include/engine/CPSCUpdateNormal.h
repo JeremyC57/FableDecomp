@@ -10,6 +10,10 @@ namespace NParticleEngine {
 class CParticleEmitter;
 class CPSCUpdateNormal:public CPSCBase {
 public:
+#ifdef FABLE_RETAIL_CPSCUPDATENORMAL_COLLECT_PARAMS_PASS30
+ // Ego_r psc_update_normal.cpp and retail slot 10 (0x00B0F210).
+ virtual void CollectUpdateParameters(CParticleUpdateParameters<unsigned long,unsigned long>&,const unsigned long&);
+#endif
 #ifdef FABLE_RETAIL_CPSCUPDATENORMAL_UPDATE_ADD
  virtual void UpdateAddParticle(CParticleSystem&,const CParticleUpdateParameters<unsigned long,unsigned long>&,C3DVector,C3DVector,float);
 #endif

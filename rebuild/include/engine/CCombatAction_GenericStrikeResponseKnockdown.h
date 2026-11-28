@@ -7,6 +7,9 @@
 class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase {
 public:
     CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase&,const CThing*,const C3DVector&,const C3DVector&);
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+    CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase&,const CThing*,const CCharString&);  // 0x00867A70
+#endif
 #ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28
     virtual void Initialise();
 #endif
@@ -106,19 +109,19 @@ public:
     unsigned char    _pad_0x13b[0x1];                        // +0x13b
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x13c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x12d);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x131);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, _pad_0x13b) == 0x13b);
+FABLE_STATIC_ASSERT_AT(109, sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x13c);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x114);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x118);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x120);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x124);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x128);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x12c);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x12d);
+FABLE_STATIC_ASSERT_AT(117, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x131);
+FABLE_STATIC_ASSERT_AT(118, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CCombatAction_GenericStrikeResponseKnockdown, _pad_0x13b) == 0x13b);
 #else
 #pragma pack(push, 1)
 class CCombatAction_GenericStrikeResponseKnockdown {

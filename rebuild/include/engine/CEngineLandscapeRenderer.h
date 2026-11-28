@@ -58,7 +58,14 @@ struct CLandscapeTheme {                                                 // Ego_
     float      WaterHeight;                                              // +0x34
 };
 class CEngineLandscapeRenderer : public CEngineComponent {
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_LOADFOREGROUND_PASS30
+    // FableWin 0x02C887C0 and Ego_r 0x009A90E0: original private member.
+    bool LoadForegroundTextures(bool loading_new_scene);
+#endif
 public:
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_LOADFOREGROUND_PASS30
+    virtual bool LoadNewScene(const CEngineComponentLoadNewSceneParams&);  // FableWin 02C86C50, retail vtable slot 3.
+#endif
     struct CLandscapeSettings {                                          // Ego_r.pdb, 0x4c bytes
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_CTOR
         // Retail opt-in (wfE7, row 0x00B69000): FableWin.pdb ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ (/Od 14 instructions:

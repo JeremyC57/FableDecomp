@@ -155,11 +155,17 @@ public:
     // The body is in engine/CGraphicInfo.h (it needs the complete CGraphicInfo / CGraphicDataBank).
     bool GetFrame(CGraphicFrame& frame, unsigned long mipmap_level, unsigned long flags) const;
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ISLOADING_PASS30
+    bool IsLoading() const;
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING
     // Opt-in (chunk 2048): Ego_r.pdb / FableWin.pdb ?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z 0x009FE620 (const), and the inline
     // loaded test RenderSunFlare expands (`mov eax,[f+8] ; test ; mov edi,[eax+1Ch] ; test ; setne`): Data set and its frame initialised.
     void BeginLoading(unsigned long mipmap_level, unsigned long flags) const;   // 0x009FE620
     bool IsFrameDataLoaded() const;   // descriptive name (no PDB name found): Data set and its frame initialised
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+    bool IsLoaded() const { return IsFrameDataLoaded(); }     // FableWin 02D477A0, same original test.
+#endif
 #endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_GETVOLUMETEXTURE
     // NF39 opt-in (row 0x009FFB20 CGraphicInfo::GetVolumeTexture, the Frames forwarder): Ego_r.pdb 0x00B5CAA0 / FableWin.pdb 0x03126C40
@@ -249,6 +255,13 @@ private:
     unsigned long TouchedFrame;
     const CGraphicInfoFrame* GraphicInfoFrame;
 };
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ISLOADING_PASS30
+// FableWin 0x02C93E80 tests Data.Get() before consulting CFrameData.
+inline bool CGraphicInfoFrame::IsLoading() const
+{
+    return Data.Get() ? Data->IsLoading() : false;
+}
+#endif
 FABLE_STATIC_ASSERT_AT(218, sizeof(CGraphicInfoFrame)==0x10);
 FABLE_STATIC_ASSERT_AT(219, sizeof(CGraphicInfoFrame::CFrameData)==0x44);
 

@@ -1,6 +1,7 @@
+// Flags: 
 // C3DMeshLODInfo::ConvertToMeshStats() -- turns this LOD into the stats-only LOD 4: the mesh drops its geometry, the resource is unlinked, re-sized and re-added to the owner's resource list, which then frees space
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A24870, length 113 bytes.
-// Leaf: ConvertToMeshStats
+// Leaf: ?ConvertToMeshStats@C3DMeshLODInfo_Methods@@QAEXXZ
 // Callees: 0x00A8B3A0 C3DMesh2::ConvertToMeshStats, 0x009FC440 CResource::RemoveFromList (`if (m_pList)
 // m_pList->Remove(this)`, propagated label "CTCActivationTrigger::OnKill"), 0x00A893C0 C3DMesh2::Sizeof,
 // 0x009D5620 CBankFileAsyncData::Sizeof, 0x009FBF20 CResource::SetResourceSize, 0x009FBFE0
@@ -32,7 +33,7 @@ class CBankFileAsyncData { public: unsigned long Sizeof() const; };   // 0x009D5
 
 class CResource;
 class CResourceList { public:
-    void AddResource(CResource* resource);               // 0x009FBFE0
+    void AddResource(CResource& resource);               // 0x009FBFE0
     bool MakeFreeSpace(unsigned long bytes);             // 0x009FC4F0
 };
 struct CMeshInfoOwner {                                  // the bank owning the mesh infos
@@ -62,6 +63,6 @@ void C3DMeshLODInfo_Methods::ConvertToMeshStats()
     RemoveFromList();
     SetResourceSize(Sizeof());
     CResourceList* list = &MeshInfo->m_pOwner->ResourceList;
-    list->AddResource((CResource*)this);
+    list->AddResource(*this);
     list->MakeFreeSpace(0);
 }

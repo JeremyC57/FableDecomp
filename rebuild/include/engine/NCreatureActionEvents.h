@@ -16,6 +16,10 @@ public:
  virtual bool SetDataFromString(const CCharString&)=0;
 protected:
  CActionEventBase():Finished(false){}
+#ifdef FABLE_RETAIL_ACTION_EVENT_SHOT_PASS30
+ // FableWin 0x02837100 and the inlined +0x0C receiver in Dispatch.
+ CThingCreatureBase& GetThing() { return *PThing; }
+#endif
 private:
  bool Finished;long ActivationFrame;CThingCreatureBase*PThing;CGameCameraManager*PCameraManager;
 };

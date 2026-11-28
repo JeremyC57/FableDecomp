@@ -1,5 +1,8 @@
+// Flags: 
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_LOADFOREGROUND_PASS30
 // CEngineLandscapeRenderer::LoadNewScene(const CEngineComponentLoadNewSceneParams&) -- update loaded maps and foreground textures; return false if any update failed
-// Leaf: ?LoadNewScene@CEngineLandscapeRendererCallView@@QAE_NABVCEngineComponentLoadNewSceneParams@@@Z
+// Leaf: ?LoadNewScene@CEngineLandscapeRenderer@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z
 // Retail 0x00B684F0, 273 bytes. Vtable 0x012A2B54 slot 3 confirms the owner.
 // Actual CEngineLandscapeRenderer, CEngineComponent and CEngineLandscapeMap PDB headers are included.
 // Native scene-state projections: global 0x01436E8C +0x2c is the sentinel list of map-counted-pointer records;
@@ -50,12 +53,6 @@ struct CEngineLandscapeMemoryManagerCallView : CEngineLandscapeMemoryManager
     void ClearTexturePool(); // 0x00BD9CE0
 };
 
-struct CEngineLandscapeRendererCallView : CEngineLandscapeRenderer
-{
-    bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);
-    bool LoadForegroundTextures(bool forceLoad); // 0x00B68070
-};
-
 class CEngineComponentParams
 { public:
     float FrameInterpolation;
@@ -76,9 +73,9 @@ class CEngineComponentLoadNewSceneParams
 
 namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }   // 0x01436E8C
 
-bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNewSceneParams& params)
+bool CEngineLandscapeRenderer::LoadNewScene(const CEngineComponentLoadNewSceneParams& params)
 {
-    if (!reinterpret_cast<CEngineComponent*>(this)->PeekRenderEnabled())
+    if (!PeekRenderEnabled())
         return false;
 
     bool updatePending = false;
@@ -87,7 +84,7 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
         global->MemoryManager)->ClearTexturePool();
 
     CEngineWorldMap* const sceneState = NEngineInternal::GPEngineWorldMap;
-    const bool updateBackgroundLOD = Settings[0x34] != 0;   // +0x63c: CLandscapeSettings at +0x608 in the retail header (not MeshBuilder)
+    const bool updateBackgroundLOD = Settings.EnableUpdate;   // +0x63c: CLandscapeSettings at +0x608 in the retail header (not MeshBuilder)
     std::list<CEngineMap*>* const maps = &sceneState->VisibleMapList;
 
     if (updateBackgroundLOD && (params.Flags & 2u) == 0)
@@ -98,7 +95,7 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
                 reinterpret_cast<CEngineLandscapeMapCallView*>((*it)->GetLandscapeMap());
             const LS_LOADING_STATUS status =
                 map->UpdateBackgroundLOD(
-                    *reinterpret_cast<CLandscapeGPUUpdateQueue*>(GPUUpdateQueue),
+                    GPUUpdateQueue,
                     1.0e30f,
                     true);
             if (status == LS_LOADING_FAILED)
@@ -131,7 +128,7 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
     }
 
     bool foregroundLoaded =
-        reinterpret_cast<CEngineLandscapeRendererCallView*>(this)->LoadForegroundTextures(true);
+        LoadForegroundTextures(true);
     foregroundLoaded |= updatePending;
     return foregroundLoaded;
 }

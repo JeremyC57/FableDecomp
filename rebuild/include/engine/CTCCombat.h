@@ -32,6 +32,13 @@ void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(co
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+ void SetIsInMiddleOfFlourishAction(bool active) { IsInMiddleOfFlourishAction = active; }
+#endif
+#ifdef FABLE_RETAIL_ACTION_EVENT_SHOT_PASS30
+ // FableWin 0x02838040 and the native override load at +0x7C.
+ long GetShotTypeOverride() const { return ShotOverrideType; }
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_PASS22_UNSHEATHING
  // FableWin0240E270 named accessor; retail006EC929 reads UnsheathingWeaponType+0x6c.
  EUnsheatheWeaponType GetUnsheathingWeaponType()const{return UnsheathingWeaponType;}
@@ -113,7 +120,23 @@ private:
  typedef std::multimap<ECombatAbilityDataType,TCombatAbilityData> TCombatAbilityList;
 #ifdef FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
  bool GetCombatAbilityData(TCombatAbilityList::const_iterator&,ECombatAbilityInterfaceType) const;
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30
+ bool GetBlockAbilityIterator(TCombatAbilityList::iterator&,EWeaponClass);
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_CONST_ITERATOR_OWNER_PASS30
  bool GetBlockAbilityIterator(TCombatAbilityList::const_iterator&,EWeaponClass) const;
+#else
+ bool GetBlockAbilityIterator(TCombatAbilityList::const_iterator& it,EWeaponClass weapon_class) const {
+    TCombatAbilityList::iterator found(0);
+    if (const_cast<CTCCombat*>(this)->GetBlockAbilityIterator(found,weapon_class)) {
+        it=found;
+        return true;
+    }
+    return false;
+ }
+#endif
+#else
+ bool GetBlockAbilityIterator(TCombatAbilityList::const_iterator&,EWeaponClass) const;
+#endif
  bool IsToBlock(const CHitParameters&) const;
 public:
  bool IsBlocking() const {return Blocking;}
@@ -159,6 +182,9 @@ private:
 #endif
  CCombatManager& GetCombatManager(){return CombatManager;}
  CThingCreatureBase& GetParentCreature(){return *ParentCreature;}
+#if defined(FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30) && !defined(FABLE_RETAIL_CTCCOMBAT_STRIKESOUNDS)
+ const CThingCreatureBase& GetParentCreature() const{return *ParentCreature;}
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_STRIKESOUNDS
  // Opt-in (hand4a, row 0x00733B70): Ego_r.pdb ?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ (public; retail 0x00733B70) and the private
  // const accessors ?GetParentCreature@CTCCombat@@ABEABVCThingCreatureBase@@XZ (FableWin 0x024FBF80) / ?GetPHeroCombatDef@CTCCombat@@ABE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ

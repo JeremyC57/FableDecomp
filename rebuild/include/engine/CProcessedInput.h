@@ -2,12 +2,21 @@
 #ifndef FABLE_ENGINE_CPROCESSEDINPUT_H
 #define FABLE_ENGINE_CPROCESSEDINPUT_H
 #include "engine/CGameEvent.h"
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+#ifdef _MSC_VER
+enum EProcessedEventType;
+#else
+enum EProcessedEventType{};
+#endif
+enum EGameEventPriority { GAME_EVENT_PRIORITY_NULL, GAME_EVENT_PRIORITY_MIN, GAME_EVENT_PRIORITY_LOW, GAME_EVENT_PRIORITY_MEDIUM, GAME_EVENT_PRIORITY_HIGH, GAME_EVENT_PRIORITY_MAX };
+#else
 #ifdef _MSC_VER
 enum EProcessedEventType;
 enum EGameEventPriority;
 #else
 enum EProcessedEventType{};
 enum EGameEventPriority{};
+#endif
 #endif
 // Layout: complete original Ego19e51/FW1a841,size176.
 class CProcessedInput{
@@ -29,7 +38,7 @@ public:
  EProcessedEventType GetType() const;
  CProcessedInput();
 };
-FABLE_STATIC_ASSERT(sizeof(CProcessedInput)==176);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CProcessedInput)==176);
 #endif
 #else
 #ifndef FABLE_ENGINE_CPROCESSEDINPUT_H
@@ -63,12 +72,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CProcessedInput) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Player) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Type) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CProcessedInput, GameEvents) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CProcessedInput, NoGameEvents) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CProcessedInput) == 0xb0);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CProcessedInput, Player) == 0x0);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CProcessedInput, Type) == 0x4);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CProcessedInput, GameEvents) == 0x8);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CProcessedInput, NoGameEvents) == 0xa8);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CProcessedInput, Priority) == 0xac);
 
 #endif // FABLE_ENGINE_CPROCESSEDINPUT_H
 

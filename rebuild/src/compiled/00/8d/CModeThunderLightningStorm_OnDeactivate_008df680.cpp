@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?OnDeactivate@CModeThunderLightningStorm@@UAEXXZ
 // NCreatureMode::CModeThunderLightningStorm::OnDeactivate, retail 0x008DF680.
 // PDB identity: egor 200?? / debug address pending; assigned RTTI slot 6.
 #include "fable_compiler.h"
@@ -116,7 +118,7 @@ struct CModeThunderLightningStorm : CModeStandBase {
 class CTCSoundPlayer { public:
     void StopAttachedSound(unsigned long); // 0x0066ADD0
 };
-extern long g_InvalidSoundHandle_0129D25C;
+extern const unsigned long INVALID_SAMPLE_ID;
 
 template<class T> static void KillLive(CIntelligentPointer<T>& item)
 {
@@ -150,10 +152,10 @@ void CModeThunderLightningStorm::OnDeactivate()
         ParentThing->RemoveTC((ETCInterfaceType)0xee);
 
     long sound=LoopingSound;
-    if (sound != g_InvalidSoundHandle_0129D25C) {
+    if (sound != INVALID_SAMPLE_ID) {
         if (ParentThing->HasTC(0x10))
             ParentThing->GetTC(0x10)->StopAttachedSound(sound);
-        LoopingSound = g_InvalidSoundHandle_0129D25C;
+        LoopingSound = INVALID_SAMPLE_ID;
     }
 
     HitThings.clear();

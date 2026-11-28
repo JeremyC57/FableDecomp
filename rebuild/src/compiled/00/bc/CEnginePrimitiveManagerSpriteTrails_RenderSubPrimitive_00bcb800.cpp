@@ -1,5 +1,6 @@
+// Flags: 
 // CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass) -- draw one sprite trail: inside a render-state capture block with vertex shaders on and pixel shaders off, apply the trail vertex shader and the global state block, set the fixed tracked states, then when the trail's graphic frame is available bind its texture to stage 0, set the texture-stage states, reset the world transform and render the trail
-// Leaf: RenderSubPrimitive
+// Leaf: ?RenderSubPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEXAAVCEngineSubPrimitiveBase@@J@Z
 // Layout: local models -- render core / capture block / shader-enable saver as the matched ShowGlowTexture 0x00B61690; the
 //   counted CGraphicFrame and its frame-data release as the landed CGraphicFrame::operator= 0x0041C0E0; the D3D9 device's
 //   SetTexture (slot 65) through the core's stage-0 texture cache (+0x3D00, device +0x3CF0, active texture count +0x3CB8).
@@ -131,16 +132,9 @@ struct CRenderStateCaptureBlock {
 class CVertexShader;
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
-struct CStateBlockOwnerBase {                      // 0x20 bytes
-    virtual void v00();
-    unsigned char _pad04[0x1c];
-};
-struct CEngineStateBlock {
-    virtual void Apply();                          // slot 0
-};
-struct CEngineStateBlockManager : CStateBlockOwnerBase, CEngineStateBlock {
-};
-extern CEngineStateBlockManager* g_pEngineStateBlock_01436e90;   // 0x01436E90
+#define FABLE_RETAIL_CENGINESTATEBLOCKS
+#include "engine/CEngineStateBlocks.h"
+namespace NEngineInternal { extern CEngineStateBlocks* GPEngineStateBlocks; } // 0x01436E90
 
 struct SCountBlock {
     long  m_references;
@@ -246,7 +240,7 @@ void CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(CEngineSubPrimitive
     CRenderStateCaptureBlock capture;
     CScopedShadersEnable shaders(true, false);
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(VertexShader, false);
-    g_pEngineStateBlock_01436e90->Apply();
+    NEngineInternal::GPEngineStateBlocks->AddSmoothAlphaMode.Apply();
     SetStateConst(g_pRenderManagerCore->m_state2854, 0, g_pRenderManagerCore);
     SetStateConst(g_pRenderManagerCore->m_state2890, g_renderStateDefault_01396fb8, g_pRenderManagerCore);
     CGraphicFrame frame;

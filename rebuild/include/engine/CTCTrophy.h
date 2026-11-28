@@ -32,6 +32,10 @@ public:
 #ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TROPHY; }
 #endif
+#ifdef FABLE_RETAIL_WALLMOUNT_PERFORM_PASS30
+    // FableWin 0x01DD4610 reads Mountable; retail expands it at 0x00848176.
+    bool IsMountable() const { return Mountable; }
+#endif
     CTCTrophy(CThing&);                                                  // 0x006DDAE0
     virtual ~CTCTrophy();                                                // 0x006DDB80
     static CTCBase* __fastcall Alloc(CThing&);

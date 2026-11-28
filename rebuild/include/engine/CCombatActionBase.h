@@ -96,7 +96,14 @@ protected:
  void SetupCombatAnimation();
  void ResetMeleeCombatAbilityEffects();
  void SetPMeleeAbility(CDefPointer<CMeleeCombatAbilityDef const > p0);
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+protected:
+ CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeAbility() const { return PMeleeAbilityDef; }
+public:
+ CCountedPointer<CAnimationEntry>& GetPAnimationEntry() { return PAnimEntry; }
+#else
  CDefPointer<CMeleeCombatAbilityDef const > GetPMeleeAbility() const;
+#endif
  virtual void OnAnimationLoaded();
  CIntelligentPointer<CThing> PTarget;
  CIntelligentPointer<CThing const > PCameraPoint;
@@ -130,7 +137,7 @@ public:
  virtual ~CCombatActionBase();
  CCombatActionBase & operator=(const CCombatActionBase & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CCombatActionBase)==276);
+FABLE_STATIC_ASSERT_AT(133, sizeof(CCombatActionBase)==276);
 #else
 #include "engine/CCreatureActionBase.h"
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
@@ -316,6 +323,13 @@ protected:
 #endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
+#ifdef FABLE_RETAIL_ACTION_EVENT_SHOT_PASS30
+public:
+    // FableWin 0x02838020 expands the intelligent pointer at native +0xA8.
+    const CThing* GetTarget() const { return PTarget.Get(); }
+    CThing* GetWeaponUsedInStrikeAction() const;  // 0x00857070
+protected:
+#endif
     CIntelligentPointer<const CThing> PCameraPoint;                      // +0xb0
     CDefPointer<const CMeleeCombatAbilityDef> PMeleeAbilityDef;          // +0xb8
     std::list<CCountedPointer<CStrikeEvent> > StrikeEvents;              // +0xbc

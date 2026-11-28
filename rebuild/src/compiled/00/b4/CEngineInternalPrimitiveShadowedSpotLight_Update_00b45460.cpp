@@ -1,3 +1,4 @@
+// Flags: 
 // Leaf: ?Update@CEngineInternalPrimitiveShadowedSpotLight@@UAEXABVCEnginePrimitive@@K@Z
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test runs a simplified algorithm (divides by 255, never uses g_ByteToFloat); signature differs from PDB; comment still says DIFFER)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -26,7 +27,6 @@ struct CEnginePrimitiveShadowedSpotLight : CEnginePrimitive {
     float ConeRadius;                                   // +0x30
     unsigned long LightingChannelMask;                  // +0x34
 };
-extern const float g_OneOver255;                        // 0x01231724 = 1/255
 class CEngineInternalPrimitiveShadowedSpotLight { public:
     unsigned char _base00[0x8];
     unsigned long UpdateParam;                          // +0x0c (descriptive)
@@ -45,7 +45,7 @@ void CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive& p
     UpdateParam = param;
     WorldPos = light.WorldPos;
     Radius = light.Radius;
-    Colour.Set(light.Colour.Red * g_OneOver255, light.Colour.Green * g_OneOver255, light.Colour.Blue * g_OneOver255, light.Colour.Alpha * g_OneOver255);
+    Colour.Set(light.Colour.Red * (1.0f/255.0f), light.Colour.Green * (1.0f/255.0f), light.Colour.Blue * (1.0f/255.0f), light.Colour.Alpha * (1.0f/255.0f));
     SpotRadius = light.SpotRadius;
     Direction = light.Direction;
     ConeRadius = light.ConeRadius;

@@ -112,6 +112,13 @@ class CEngineLocalLightArray;
 #endif
 class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_LIGHT_CACHE_SPHERE_PASS30
+    CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere& sphere, long max_lights,
+                                               const CEnginePrimitiveThemeChannelDesc& theme_channel);
+private:
+    CEngineLocalLightArray* LookupSmallObjectLightCache(float x, float y, long max_lights);
+public:
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTINGNOCLIP
     // egod opt-in (e08, row 0x00B45CF0): Ego_r.pdb / FableWin.pdb
     // ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z (Ego_d parameter
@@ -170,6 +177,10 @@ public:
     // Opt-in (chunk 2048): FableWin.pdb ?PeekSunVector@CEngineLightingManager@@QBEABVC3DVector@@XZ (inline; RenderSunFlare reads +0x18..+0x20).
     const C3DVector& PeekSunVector() const { return SunVector; }
 #endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+    // The FableWin PeekMoonVector returns this member, retail reads +0x24.
+    const C3DVector& PeekMoonVector() const { return MoonVector; }
+#endif
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);   // ?CreateInternalPrimitive@CEngineLightingManager@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;                      // ?GetSupportedTypes@CEngineLightingManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // ?RenderPrimitive@CEngineLightingManager@@UAE?AW4ERendered@@...@Z
@@ -182,6 +193,12 @@ public:
     // (donor 0x009BC860; reloc_bindings.tsv binds 0x00B46B90 to it). Declaration only.
     CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long maxLights,
                                                   const CEnginePrimitiveThemeChannelDesc& channel);   // 0x00B46B90
+#ifdef FABLE_RETAIL_GET_OPINIONS_LIGHT_CACHE_PASS30
+    CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere&, long, const CEnginePrimitiveThemeChannelDesc&);
+private:
+    CEngineLocalLightArray* LookupSmallObjectLightCache(float, float, long);
+public:
+#endif
 #endif
     void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
     void DisablePointLights();                                           // 0x00B44D50

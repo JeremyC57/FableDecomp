@@ -6,7 +6,7 @@
 // behaviour test of SecondsToMixBlocks (0x00C59B00): seconds * 44100 / block frames, truncated toward zero
 #ifdef _MSC_VER
 // libpk's inline-assembly truncation helper
-__forceinline long FloatToLongTrunc(float value)
+inline long FloatToLongTrunc(float value)
 {
     long result;
     value = value - 0.5f;

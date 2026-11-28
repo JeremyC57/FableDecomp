@@ -11,6 +11,13 @@
 class CInputProcessMain : public CInputProcessGameBase {
 public:
     CInputProcessMain(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+private:
+    void HandleDebugCameraAction(CProcessedInput& input);
+    static void FABLE_FASTCALL AddManualCameraEvent(unsigned char on, CProcessedInput& input);
+    static void FABLE_FASTCALL AddUnbindCameraEvent(unsigned char on, CProcessedInput& input);
+public:
+#endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
     // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x0123758C, 9 counted function slots
     // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the

@@ -29,6 +29,9 @@ template <class _T1, class _T2> struct pair;
 #include "engine/ENavigatorReturn.h"
 class CNavigationInput;
 #endif
+#ifdef FABLE_RETAIL_CREATURE_NAV_NEXT_POS_PASS30
+#include "engine/campfire_types.h"
+#endif
 class CTCCreatureNavigation : public CTCBase {
 #ifdef FABLE_RETAIL_AI_CREATURE_UPDATE_PASS29
 public:
@@ -54,7 +57,11 @@ private:
 #endif
     CNavigatorBase* PNavigator;                              // +0x0c
     unsigned char   PossibleNavigators[0xc];                 // +0x10 vector<CNavigatorBase_*,std::allocator<CNavigatorBase_*>_>
+#ifdef FABLE_RETAIL_CREATURE_NAV_NEXT_POS_PASS30
+    CNavigationInput NavigationTarget;                      // +0x1c
+#else
     unsigned char   NavigationTarget[0x18];                  // +0x1c CNavigationInput
+#endif
     float           Speed;                                   // +0x34
     unsigned char   PThingToNotAvoid[0x8];                   // +0x38 CIntelligentPointer<CThing_const_>
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
@@ -91,6 +98,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_GHOST_SWORD_ADD_PASS27
     void SetAsAbleToMoveThroughSolidObjects(bool);                     // 0x006CB9D0
+#endif
+#ifdef FABLE_RETAIL_CREATURE_NAV_FLEE_COVER_PASS30
+    // Ego_r 0x00701A60 and FableWin 0x02478E80, native 0x006CBE80.
+    bool GetNearestFleePositionBehindCover(const C3DVector& threat_pos, C3DVector& pos) const;
 #endif
 #ifdef FABLE_RETAIL_KID_EVADE_PASS23
     // Original PDB const member and donor02b68d59; native006cb840 receives a reference output.

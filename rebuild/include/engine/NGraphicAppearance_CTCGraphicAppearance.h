@@ -203,7 +203,12 @@ public:
 public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
     // Retail opt-in (Codex pass17): both original PDBs; native004c0560 signature.
+#ifdef FABLE_RETAIL_SCORPION_KING_ACTIVATE_PASS30
+    // FableWin source expressions at lines 2127 and 2142 omit the 1.0f scale.
+    bool GetHelperPoint(const CCharString&,long,unsigned long,C3DVector&,float = 1.0f) const;
+#else
     bool GetHelperPoint(const CCharString&,long,unsigned long,C3DVector&,float) const;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_GETFOCALPOSIFLOADED
     // Nested opt-in (NF108 2026-11-19, row 0x004C11D0): Ego_r.pdb 0x004C2870 + FableWin.pdb
     // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (const, reference), out of line at 0x004C11D0

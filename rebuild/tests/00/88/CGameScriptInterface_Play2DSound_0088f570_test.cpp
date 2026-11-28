@@ -80,7 +80,7 @@ struct CEngine_Retail {
 };
 extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
 extern CGameState_Retail* g_pGameState;             // 0x013B8394
-extern long               g_InvalidSoundHandle;     // 0x0129D25C
+extern const unsigned long INVALID_SAMPLE_ID;     // 0x0129D25C
 class CWorld;
 struct CPlayerManager_Retail;
 struct CDefinitionManager_Retail;
@@ -102,7 +102,7 @@ long CGameScriptInterface::Play2DSound(const CCharString& symbol) const
         init.GainFaderBits = 0x8010;
         return g_pGameState->GetSoundPlayer()->PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
     }
-    return g_InvalidSoundHandle;
+    return INVALID_SAMPLE_ID;
 }
 
 // ---- stubs and driver ----
@@ -120,7 +120,7 @@ long CASoundBank_Retail::GetSoundIndexFromSymbol(const CCharString& s) { g_symbo
 static CASoundBank_Retail g_bank;
 static CEngine_Retail g_engine;
 CEngine_Retail* g_pEngine = &g_engine;
-long g_InvalidSoundHandle = -77;
+extern const unsigned long INVALID_SAMPLE_ID = 0xffffffffUL;
 static int g_plays = 0; static CASoundBank_Retail* g_pbBank; static long g_pbSample; static bool g_pbLoop, g_pbAttached; static CSoundInit g_pbInit;
 struct TestPlayer : CSoundPlayer_Retail {
     virtual void v000() { } virtual void v001() { } virtual void v002() { }
@@ -142,7 +142,7 @@ int main()
     CGameScriptInterface gsi;
     CCharString sym("X", -1);
     g_index = 0;
-    CHECK(gsi.Play2DSound(sym) == -77);
+    CHECK(gsi.Play2DSound(sym) == 0xffffffffUL);
     CHECK(g_symbol == &sym && g_plays == 0 && g_getPlayer == 0);
     g_index = 9;
     CHECK(gsi.Play2DSound(sym) == 1234);

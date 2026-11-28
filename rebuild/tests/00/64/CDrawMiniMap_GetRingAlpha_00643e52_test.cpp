@@ -39,7 +39,7 @@ int main()
     unsigned char c = GetRingAlpha_model(buf);
 
     if (a == 235 && b == 10 && c == 0)
-        printf("BEHAVIOR_OK\n");
+        printf("00643e52_TEST PASS\n");
     else
         printf("BEHAVIOR_FAIL a=%d b=%d c=%d\n", a, b, c);
     return 0;

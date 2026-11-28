@@ -18,6 +18,10 @@ virtual int IsSuperChunk() const;
 virtual const CChunkedFileSuperChunk* GetAsSuperChunk() const;
 virtual CChunkedFileSuperChunk* GetAsSuperChunk();
 void RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>&);   // 0x00AA87E0 (FableWin QAE; chunk 725b)
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+void RemoveSubChunk(const CCountedPointer<CChunkedFileChunk>&); // 00AA8280.
+void RemoveSubChunksOfType(const char*); // 00AA82C0.
+#endif
 #ifdef FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK_ADDSUBCHUNK
 // NF192 opt-in (2026-11-20, q4362, row 0x00AC0C00 C3DMeshFileMaterialChunk::CreateMap): the landed row 0x00AA84F0's Leaf
 // ?AddSubChunk@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z (Ego_r.pdb / FableWin.pdb). Declaration only.

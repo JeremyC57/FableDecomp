@@ -1,5 +1,6 @@
+// Flags: 
 // std::vector<pair<long,float> >::insert(iterator pos, const value_type& x) -- STLport single-element insert: append, shift the tail up one slot, or grow through _M_insert_overflow; returns begin() + offset
-// Leaf: ?insert@
+// Leaf: ?insert@?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@QAEPAU?$pair@JM@2@PAU32@ABU32@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B5ED0, length 220 bytes (+ int3 padding), thiscall `ret 8`.
 // Callees: vector<pair<long,float> >::_M_insert_overflow(pointer, const T&, const __false_type&, size_type, bool)
 //   @ 0x006B5BE0 (declared only).
@@ -48,7 +49,9 @@ FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __re
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
 
-template <class _Tp>
+template <class T> class allocator { };
+
+template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector {
 public:
     typedef _Tp* iterator;
@@ -58,8 +61,10 @@ public:
     _Tp* _M_end_of_storage;                             // +0x08
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
+protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);      // 0x006B5BE0
+public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         size_type __n = __position - begin();

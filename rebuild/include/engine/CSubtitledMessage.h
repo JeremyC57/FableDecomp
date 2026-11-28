@@ -1,5 +1,13 @@
 #pragma once
 #ifdef FABLE_RETAIL_CSUBTITLEDMESSAGE_PASS29
+#ifdef FABLE_RETAIL_SUBTITLE_GETMESSAGES_PASS30
+#include "engine/ETextGroupSelectionMethod.h"
+#include "engine/CVectorMap.h"
+#include "fable_string.h"
+namespace NGameText { class CTextEntry; }
+template<class T> class CDefPointer;
+class CGlobalDef;
+#endif
 class CASoundBank;
 #ifdef FABLE_RETAIL_SUBTITLED_MESSAGE_PASS29
 enum EConversationAttitude {CONVERSATION_ATTITUDE_NULL = 0, CONVERSATION_ATTITUDE_NEUTRAL = 1, CONVERSATION_ATTITUDE_LOVE = 2, CONVERSATION_ATTITUDE_ANGER = 3, CONVERSATION_ATTITUDE_FEAR = 4, CONVERSATION_ATTITUDE_GLEE = 5, CONVERSATION_ATTITUDE_SADNESS = 6, CONVERSATION_ATTITUDE_RIDICULE = 7, CONVERSATION_ATTITUDE_FRIENDLY = 8, CONVERSATION_ATTITUDE_BELLIGERENT = 9, CONVERSATION_ATTITUDE_CAGED = 10, CONVERSATION_ATTITUDE_HOLDING_SWORD = 11, MAX_CONVERSATION_ATTITUDES = 12};
@@ -16,6 +24,9 @@ enum EConversationCameraView { VIEW_WIDE = 0, VIEW_MEDIUM = 1, VIEW_CLOSE = 2 };
 
 class CSubtitledMessage {
 public:
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30
+    static void FABLE_FASTCALL Initialise();  // 004CDB10.
+#endif
     class CCameraTag {
     public:
         NConversationTypes::EConversationProtagonist    CameraPositionPerson;   // +0x00
@@ -27,6 +38,15 @@ public:
     };
 #ifdef FABLE_RETAIL_SUBTITLED_MESSAGE_PASS29
     CSubtitledMessage(const NGameText::CTextEntry&);
+#endif
+#ifdef FABLE_RETAIL_SUBTITLE_GETMESSAGES_PASS30
+    CSubtitledMessage(const CWideString&);
+    CSubtitledMessage(const CSubtitledMessage&);
+    static void FABLE_FASTCALL GetMessagesFromTextName(CArray<CSubtitledMessage>&, const char*, const char*, ETextGroupSelectionMethod);
+    static CSubtitledMessage FABLE_FASTCALL GetMessageFromTextIndex(unsigned long, const char*);
+private:
+    static long LastReturnedIndex;
+    static CCharString MostRecentGroupQueried;
 #endif
 private:
     CASoundBank* PSpeechBank;
@@ -43,6 +63,10 @@ private:
     bool AddCameraTagFromIndex(long, float, CDefPointer<const CGlobalDef>);
 #endif
     bool AddCameraTagFromText(float time, const CCharString& text);
+#ifdef FABLE_RETAIL_SUBTITLE_GETMESSAGES_PASS30
+public:
+    ~CSubtitledMessage();
+#endif
 };
 
 

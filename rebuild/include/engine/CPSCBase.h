@@ -24,7 +24,14 @@ public:
        // ~CBaseClassNonCopyable as in retail ??_GCPSCUpdateNormal 0x00B0F990 / ~CPSCUpdateNormal 0x00B0CA90.
 };
 template<class K,class V>class CParticleUpdateParamDesc:public CBaseClass {
+#ifdef FABLE_RETAIL_ORBIT_UPDATE_PARAMS_PASS30
+public:
+    CParticleUpdateParamDesc(CParticleUpdateParamCallback<K,V>* callback, V index)
+        : Callback(callback), Index(index) {}
+    // The original descriptor inherits the base destructor.
+#else
 public: virtual ~CParticleUpdateParamDesc();
+#endif
 #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_CTOR
  // Opt-in (hand3c, row 0x00B103F0 CPSCEmitterGeneric ctor): FableWin.pdb ??0?$CParticleUpdateParamDesc@KK@NParticleEngine@@QAE@XZ
  // 0x02F4E710 (/Od: CBaseClass(), vptr, Callback = 0; Index left alone), inline in retail (0x00B10407 call CBaseClass(),

@@ -1,82 +1,79 @@
-// Behaviour test for CInputProcessMain::HandleDebugCameraAction (0x00687ED0): the events and priority per player mode.
-#include <cstdio>
-#ifndef _MSC_VER
-#define __fastcall
-#define __stdcall
-#define __cdecl
-#define __forceinline inline
-#define __declspec(x)
-#endif
-#ifndef _MSC_VER
-#define __int64 long long
-#endif
-class CProcessedInput { public:
-    long Priority; int Events[8]; int NoEvents;
-    void SetPriority(long priority) { Priority = priority; }
-};
-void __fastcall AddManualCameraEvent_0B(bool on, CProcessedInput& input) { input.Events[input.NoEvents++] = on ? 0xB1 : 0xB0; }
-void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input) { input.Events[input.NoEvents++] = on ? 0xC1 : 0xC0; }
-
-class CPlayer { public:
-    unsigned char _pad000[0x220];
-    bool          UsingFreeCamera;                 // +0x220
-    long Mode;
-    long GetCurrentMode() { return Mode; }
-};
-class CInputProcessMain { public:
-    virtual void v00() {}
-    void*    PPlayerInterface;                     // +0x04 (CAInputProcess)
-    unsigned char InputProcessListPos[0xc];        // +0x08
-    void*    World;                                // +0x14 (CInputProcessGameBase)
-    CPlayer* MyPlayer;                             // +0x18
-    void HandleDebugCameraAction(CProcessedInput& input);
-};
-
+// Leaf: ?HandleDebugCameraAction@CInputProcessMain@@AAEXAAVCProcessedInput@@@Z
+// Flags:
+#define FABLE_RETAIL_PROCESS_ROLLING_PASS30
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_ISSPELLMODE
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_EXPRESSION_FRAME
+#include "engine/CPlayer.h"
+#include "engine/CProcessedInput.h"
+#include "engine/CInputProcessMain.h"
+#include "engine/EPlayerMode.h"
 void CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input)
 {
     switch (MyPlayer->GetCurrentMode()) {
-    case 19:
-        AddManualCameraEvent_0B(false, input);
-        input.SetPriority(5);
+    case PLAYER_MODE_CONTROL_CAMERA:
+        CInputProcessMain::AddManualCameraEvent(false, input);
+        input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         break;
-    case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 23:
+    case PLAYER_MODE_NAVIGATE_INVENTORY:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_CLOTHING:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_WEAPONS:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_ABILITIES_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_MAP_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_MAGIC_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_STATS_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_EXPERIENCE_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_TRADE_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_QUESTS_SCREEN:
+    case PLAYER_MODE_NAVIGATE_IN_GAME_MENU:
         break;
-    case 1:
-        if (MyPlayer->UsingFreeCamera) {
-            AddManualCameraEvent_0C(false, input);
-            input.SetPriority(5);
+    case PLAYER_MODE_CONTROL_CREATURE:
+        if (MyPlayer->IsUsingFreeCamera()) {
+            AddUnbindCameraEvent(false, input);
+            input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         } else {
-            AddManualCameraEvent_0B(true, input);
-            AddManualCameraEvent_0C(true, input);
-            input.SetPriority(5);
+            CInputProcessMain::AddManualCameraEvent(true, input);
+            AddUnbindCameraEvent(true, input);
+            input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         }
         break;
     default:
-        AddManualCameraEvent_0B(true, input);
-        AddManualCameraEvent_0C(true, input);
-        input.SetPriority(5);
+        CInputProcessMain::AddManualCameraEvent(true, input);
+        AddUnbindCameraEvent(true, input);
+        input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         break;
     }
 }
 
-static int Run(CInputProcessMain& p, CPlayer& player, long mode, bool freeCam, CProcessedInput& in)
-{
-    player.Mode = mode; player.UsingFreeCamera = freeCam; in.Priority = -1; in.NoEvents = 0;
-    p.HandleDebugCameraAction(in);
-    return in.NoEvents;
-}
-int main()
-{
-    static CPlayer player; CInputProcessMain p; p.MyPlayer = &player; CProcessedInput in;
-    int bad = 0;
-    if (Run(p, player, 19, false, in) != 1 || in.Events[0] != 0xB0 || in.Priority != 5) bad = 1;
-    if (Run(p, player, 1, true, in) != 1 || in.Events[0] != 0xC0 || in.Priority != 5) bad = 2;
-    if (Run(p, player, 1, false, in) != 2 || in.Events[0] != 0xB1 || in.Events[1] != 0xC1 || in.Priority != 5) bad = 3;
-    if (Run(p, player, 7, true, in) != 0 || in.Priority != -1) bad = 4;
-    if (Run(p, player, 23, false, in) != 0 || Run(p, player, 13, false, in) != 0) bad = 5;
-    if (Run(p, player, 2, false, in) != 2 || Run(p, player, 0, false, in) != 2 || Run(p, player, 40, true, in) != 2 || in.Priority != 5) bad = 6;
-    if (Run(p, player, 14, false, in) != 2 || Run(p, player, 3, false, in) != 2) bad = 7;
-    if (bad) { std::printf("00687ed0_TEST FAIL\n"); return 1; }
-    std::printf("00687ed0_TEST PASS\n");
-    return 0;
+#include <stdio.h>
+#include <string.h>
+static unsigned long camera[256], main_obj[32], output[44];
+static int mode,log_count,priority;
+static unsigned long calls[3];
+EPlayerMode CPlayer::GetCurrentMode() const {return static_cast<EPlayerMode>(mode);}
+void FABLE_FASTCALL CInputProcessMain::AddManualCameraEvent(unsigned char on,CProcessedInput&) {calls[log_count++]=11+100*on;}
+void FABLE_FASTCALL CInputProcessMain::AddUnbindCameraEvent(unsigned char on,CProcessedInput&) {calls[log_count++]=12+100*on;}
+#ifndef FABLE_ROLL_REAL_PRIORITY
+void CProcessedInput::SetPriority(EGameEventPriority p) {Priority=p;}
+#endif
+void CInputProcessMain::ProcessInput(const CInputEvent&,CProcessedInput& input) {HandleDebugCameraAction(input);}
+int main() {
+    main_obj[0x18/4]=reinterpret_cast<unsigned long>(camera);
+    unsigned long event[16]={0};
+    for(mode=0;mode<48;++mode)for(int b=0;b<2;++b){
+        reinterpret_cast<unsigned char*>(camera)[0x220]=b!=0;
+        log_count=0;output[0xac/4]=0;
+        reinterpret_cast<CInputProcessMain*>(main_obj)->CInputProcessMain::ProcessInput(*reinterpret_cast<CInputEvent*>(event),*reinterpret_cast<CProcessedInput*>(output));
+        bool skip=(mode>=4&&mode<=13)||mode==23;
+        if(output[0xac/4]!=(skip?0:5))return 1;
+        if(skip) {if(log_count!=0)return 2;}
+        else if(mode==19) {if(log_count!=1||calls[0]!=11)return 3;}
+        else if(mode==1&&b) {if(log_count!=1||calls[0]!=12)return 4;}
+        else if(log_count!=2||calls[0]!=111||calls[1]!=112)return 5;
+    }
+    puts("00687ed0_TEST PASS"); return 0;
 }

@@ -1,35 +1,83 @@
-// Behaviour test for CEngineLightingManager::GetLightsInSphereFast @ 0x00B46B90.
-#include <cstdio>
-class CEngineLocalLightArray { public: int id; };
-class C3DBoundingSphere { public: float X, Y, Z, Radius; };
-class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; };
-static const float g_limit = 4.0f;
-static CEngineLocalLightArray g_cached = { 1 }, g_full = { 2 };
-static int g_cacheCalls = 0, g_fullCalls = 0, g_cacheHit = 1; static float g_minX, g_minY; static long g_mask;
-class CEngineLightingManager { public:
-    bool EnableLightCache;
-    CEngineLocalLightArray* LookupSmallObjectLightCache(float x, float y, long m) { ++g_cacheCalls; g_minX = x; g_minY = y; g_mask = m; return g_cacheHit ? &g_cached : 0; }
-    CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere&, long, const CEnginePrimitiveThemeChannelDesc&) { ++g_fullCalls; return &g_full; }
-    CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long layerMask, const CEnginePrimitiveThemeChannelDesc& theme)
-    {
-        if (sphere.Radius + sphere.Radius <= g_limit && theme.ChannelIndex0 == 0 && theme.ChannelBlendFactor == 0 && EnableLightCache) {
-            CEngineLocalLightArray* lights = LookupSmallObjectLightCache(sphere.X - sphere.Radius, sphere.Y - sphere.Radius, layerMask);
-            if (lights) return lights;
-        }
-        return GetLightsInSphere(sphere, layerMask, theme);
+#ifdef FABLE_LIGHT_OPINION_LINK
+// Leaf: ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+// Flags: none
+#define FABLE_RETAIL_GET_OPINIONS_LIGHT_CACHE_PASS30
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
+#include "engine/C3DBoundingSphere.h"
+#include "engine/CEngineLightingManager.h"
+
+#else
+// Leaf: ?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+// Flags: none
+#define FABLE_RETAIL_GET_OPINIONS_LIGHT_CACHE_PASS30
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_LIGHTSINSPHERE
+#include "engine/C3DBoundingSphere.h"
+#include "engine/CEngineLightingManager.h"
+
+CEngineLocalLightArray* CEngineLightingManager::GetLightsInSphereFast(const C3DBoundingSphere& sphere, long layerMask,
+                                                                      const CEnginePrimitiveThemeChannelDesc& theme)
+{
+    if (sphere.Radius + sphere.Radius <= 2.0f && theme.ChannelIndex0 == 0
+        && theme.ChannelBlendFactor == 0 && EnableLightCache) {
+        CEngineLocalLightArray* lights =
+            LookupSmallObjectLightCache(sphere.Center.X - sphere.Radius, sphere.Center.Y - sphere.Radius, layerMask);
+        if (lights)
+            return lights;
     }
-};
+    return GetLightsInSphere(sphere, layerMask, theme);
+}
+
+#endif
+#include <stdio.h>
+static unsigned long managerData[512], cacheTag, fullTag;
+static long layer, cacheCalls, fullCalls;
+static float minX, minY;
+static bool cacheHit;
+static const C3DBoundingSphere* expectedSphere;
+static const CEnginePrimitiveThemeChannelDesc* expectedTheme;
+static int issues;
+CEngineLocalLightArray* CEngineLightingManager::LookupSmallObjectLightCache(float x,float y,long m)
+{
+    if(m!=layer || x!=minX || y!=minY) ++issues;
+    ++cacheCalls;
+    return cacheHit ? reinterpret_cast<CEngineLocalLightArray*>(&cacheTag) : 0;
+}
+CEngineLocalLightArray* CEngineLightingManager::GetLightsInSphere(const C3DBoundingSphere& s,long m,
+                                                                const CEnginePrimitiveThemeChannelDesc& t)
+{
+    if(m!=layer || &s!=expectedSphere || &t!=expectedTheme) ++issues;
+    ++fullCalls;
+    return reinterpret_cast<CEngineLocalLightArray*>(&fullTag);
+}
 int main()
 {
-    CEngineLightingManager m; m.EnableLightCache = true;
-    C3DBoundingSphere s = { 10, 20, 30, 2 }; CEnginePrimitiveThemeChannelDesc t = { 0, 5, 0, 0 };
-    int ok = m.GetLightsInSphereFast(s, 7, t) == &g_cached && g_minX == 8 && g_minY == 18 && g_mask == 7 && g_fullCalls == 0;
-    s.Radius = 2.5f; ok = ok && m.GetLightsInSphereFast(s, 7, t) == &g_full && g_cacheCalls == 1;   // 5 > 4
-    s.Radius = 1; t.ChannelIndex0 = 1; ok = ok && m.GetLightsInSphereFast(s, 7, t) == &g_full && g_cacheCalls == 1;
-    t.ChannelIndex0 = 0; t.ChannelBlendFactor = 9; ok = ok && m.GetLightsInSphereFast(s, 7, t) == &g_full && g_cacheCalls == 1;
-    t.ChannelBlendFactor = 0; m.EnableLightCache = false; ok = ok && m.GetLightsInSphereFast(s, 7, t) == &g_full && g_cacheCalls == 1;
-    m.EnableLightCache = true; g_cacheHit = 0; ok = ok && m.GetLightsInSphereFast(s, 7, t) == &g_full && g_cacheCalls == 2 && g_fullCalls == 5;
-    if (!ok) { std::printf("00b46b90_TEST FAIL\n"); return 1; }
-    std::printf("00b46b90_TEST PASS\n");
-    return 0;
+    C3DBoundingSphere sphere;
+    CEnginePrimitiveThemeChannelDesc theme;
+    CEngineLightingManager* light=reinterpret_cast<CEngineLightingManager*>(managerData);
+    expectedSphere=&sphere; expectedTheme=&theme;
+    int cases=0;
+    for (int config=0;config<32;++config) {
+        for(int r=0;r<5;++r) {
+            sphere.Center.X=3; sphere.Center.Y=-4; sphere.Radius=0.5f+0.25f*r;
+            minX=sphere.Center.X-sphere.Radius; minY=sphere.Center.Y-sphere.Radius;
+            theme.ChannelIndex0=static_cast<unsigned char>(config&1);
+            theme.ChannelIndex1=static_cast<unsigned char>(config&2);
+            theme.ChannelBlendFactor=static_cast<unsigned char>(config&4);
+            reinterpret_cast<unsigned char*>(managerData)[0xa6]=(config&8)!=0;
+            layer=config-13; cacheHit=(config&16)!=0; cacheCalls=fullCalls=0;
+            bool tryCache=r<=2 && !(config&5) && (config&8);
+            void* expected=tryCache && cacheHit ? &cacheTag : &fullTag;
+            if(light->GetLightsInSphereFast(sphere,layer,theme)!=expected ||
+               cacheCalls!=int(tryCache) || fullCalls!=int(!(tryCache && cacheHit))) ++issues;
+            ++cases;
+        }
+    }
+    if(issues) return 1;
+    printf("00b46b90_TEST PASS\n"); return 0;
 }

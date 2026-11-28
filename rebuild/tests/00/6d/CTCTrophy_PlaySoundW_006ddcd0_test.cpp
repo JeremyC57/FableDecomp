@@ -27,7 +27,7 @@ class CThing { public:
         return false;
     }
 };
-static unsigned long g_InvalidSoundHandle = 0xFFFFFFFFUL;
+static const unsigned long INVALID_SAMPLE_ID = 0xFFFFFFFFUL;
 class CTCTrophy { public:
     CThing* Thing;
     unsigned long PlaySoundW(const CCharString& name)
@@ -35,7 +35,7 @@ class CTCTrophy { public:
         CSoundComponent* sound;
         if (Thing->HasTC(16) && Thing->GetInterface(&sound, 16))
             return sound->PlaySound(name, true, 0, 0, -1);
-        return g_InvalidSoundHandle;
+        return INVALID_SAMPLE_ID;
     }
 };
 int main()

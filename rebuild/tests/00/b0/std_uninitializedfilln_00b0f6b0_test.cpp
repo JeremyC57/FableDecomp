@@ -1,50 +1,58 @@
-#include <cstdio>
-#include <new>
-struct __false_type { __false_type() {} };
-static int g_stringCopies = 0;
-static int g_arrayCopies = 0;
-class CCharString { public:
-    const char* PStringData;
-    CCharString(const char* s) : PStringData(s) {}
-    CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_stringCopies; }
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_GETUPDATEPARAM
+#define FABLE_RETAIL_CVECTORMAP_CTOR
+// 00b0f6b0 std::__uninitialized_fill_n
+// Leaf: ??$__uninitialized_fill_n@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@IU12@@std@@YIPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Flags: /Gr
+#define FABLE_RETAIL_ORBIT_UPDATE_PARAMS_PASS30
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/CParticleUpdateParameters.h"
+
+typedef NParticleEngine::CParticleUpdateParamDesc<unsigned long,unsigned long> ParamDesc;
+typedef std::pair<unsigned long,ParamDesc> ParamEntry;
+template ParamEntry* std::__uninitialized_fill_n(ParamEntry*,unsigned int,const ParamEntry&,const std::__false_type&);
+
+#include <stdio.h>
+#include <stdlib.h>
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+namespace NParticleEngine {
+template<class K,class V> CParticleUpdateParamCallback<K,V>::~CParticleUpdateParamCallback() {}
+template<class K,class V> bool CParticleUpdateParamCallback<K,V>::GetUpdateParam(C3DVector&,V,float,bool,const CParticleUpdateParameters<K,V>&,unsigned long) { return false; }
+class FillProbe : public CParticleUpdateParamCallback<unsigned long,unsigned long> {
+public:
+    unsigned long expected;
+    unsigned int calls;
+    bool GetUpdateParam(C3DVector&,unsigned long index,float,bool,const CParticleUpdateParameters<unsigned long,unsigned long>&,unsigned long) {
+        ++calls;
+        return index == expected;
+    }
 };
-struct SRec { long a, b, c; SRec(long s) : a(s), b(s + 1), c(s + 2) {} SRec(const SRec& o) : a(o.a), b(o.b), c(o.c) {} };
-struct CPoly {
-    virtual long Kind() const { return 7; }
-    long a, b;
-    CPoly(long s) : a(s), b(s + 1) {}
-    CPoly(const CPoly& o) : a(o.a), b(o.b) {}
-};
-struct SElem {
-    long m0; CPoly poly;
-    SElem(long s) : m0(s), poly(s + 1) {}
-    SElem(const SElem& o) : m0(o.m0), poly(o.poly) {}
-    bool Check(long s) const { return m0 == s && poly.a == s + 1 && poly.b == s + 2 && poly.Kind() == 7; }
-};
-namespace stl {
-template <class T> T* uninitialized_fill_n(T* first, unsigned long n, const T& x, const __false_type&)
-{
-    T* cur = first;
-    for (; n > 0; --n, ++cur)
-        new (cur) T(x);
-    return cur;
-}
 }
 int main()
 {
-    unsigned char buffer[sizeof(SElem) * 5];
-    SElem* first = (SElem*)buffer;
-    SElem x(100);
-    SElem* end = stl::uninitialized_fill_n(first, 5, x, __false_type());
-    bool ok = end == first + 5;
-    unsigned long i = 0;
-    for (; i < 5; ++i)
-        if (!first[i].Check(100))
-            ok = false;
-    SElem* none = stl::uninitialized_fill_n(first, 0, x, __false_type());
-    if (none != first)
-        ok = false;
-    if (!ok) { std::printf("00b0f6b0_TEST FAIL\n"); return 1; }
-    std::printf("00b0f6b0_TEST PASS\n");
+    using namespace NParticleEngine;
+    CParticleUpdateParameters<unsigned long,unsigned long> params;
+    FillProbe probe;
+    probe.expected = 23;
+    probe.calls = 0;
+    ParamEntry value(31, ParamDesc(&probe,probe.expected));
+    ParamEntry* data = static_cast<ParamEntry*>(malloc(4 * sizeof(ParamEntry)));
+    if (data == 0) return 1;
+    for (unsigned int count = 0; count != 5; ++count) {
+        if (std::__uninitialized_fill_n(data,count,value,std::__false_type()) != data + count) return 2;
+        for (unsigned int i = 0; i < count; ++i) {
+            C3DVector output(0,0,0);
+            if (data[i].first != 31 || !data[i].second.GetUpdateParam(output,0,false,params,0)) return 3;
+            data[i].~ParamEntry();
+        }
+    }
+    free(data);
+    if (probe.calls != 10) return 4;
+    puts("00b0f6b0_TEST PASS");
     return 0;
 }

@@ -1,5 +1,6 @@
+// Flags: 
 // CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, ERenderPassType pass) -- render one weapon trail inside a render-state capture block: pixel shaders off, the engine component at 0x01436E90 prepares its state, two tracked render states set (0 and the global default), the trail drawn, pixel shaders restored to their previous state and the capture block closed
-// Leaf: RenderSubPrimitive
+// Leaf: ?RenderSubPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAEXAAVCEngineSubPrimitiveBase@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCD490, length 368 bytes (with int3 padding; body 0x16a), `ret 8` (virtual).
 // PDB: ?RenderSubPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z.
 // Callees: CShaderRenderManager::DisablePixelShaders @ 0x00988190 / EnablePixelShaders @ 0x00988110 (global @ 0x01436E14,
@@ -21,8 +22,7 @@ class CEngineSubPrimitiveBase;
 //   inline setters ZBufferWriteEnable(false) (+0x2854) and PolyCullMode (+0x2890) [POLY_CULL_NONE] through D3DPolyCullModeTable
 //   0x01396FB0; the capture open / RestoreCaptureBlock pair on 0x013CB508 is a CRenderStateScopedCaptureBlock
 //   (engine/CRenderStateCaptureBlock.h). Was a local CRenderStateManager / CTrackedRenderState model typed onto g_pRenderManagerCore
-//   and g_pRenderStateManager, and g_renderStateDefault_01396fb8. 0x01436E90 (g_pEngineComponent_01436e90) is outside the GP family
-//   and left.
+//   and g_pRenderStateManager, and g_renderStateDefault_01396fb8. 0x01436E90 is the shared GPEngineStateBlocks singleton. Its AddSmoothAlphaMode is at +0x20.
 #define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
 #include "engine/CRenderManager.h"
 #include "engine/CRenderStateCaptureBlock.h"
@@ -36,14 +36,9 @@ class CShaderRenderManager { public:
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }   // 0x01436E14
 
-struct CRenderStatePreparer {
-    virtual void Apply();                          // slot 0
-};
-struct CEngineComponent_01436e90 {
-    unsigned char        _pad[0x20];
-    CRenderStatePreparer RenderState;              // +0x20
-};
-extern CEngineComponent_01436e90* g_pEngineComponent_01436e90;   // 0x01436E90
+#define FABLE_RETAIL_CENGINESTATEBLOCKS
+#include "engine/CEngineStateBlocks.h"
+namespace NEngineInternal { extern CEngineStateBlocks* GPEngineStateBlocks; } // 0x01436E90
 
 class CEngineInternalPrimitiveWeaponTrail;
 class CEngineSubPrimitiveBase {
@@ -66,7 +61,7 @@ void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CEngineSubPrimitive
     bool pixelShaders = NEngineInternal::GPShaderRenderManager->PixelShadersEnabled;
     if (pixelShaders)
         NEngineInternal::GPShaderRenderManager->DisablePixelShaders();
-    g_pEngineComponent_01436e90->RenderState.Apply();
+    NEngineInternal::GPEngineStateBlocks->AddSmoothAlphaMode.Apply();
     NEngineInternal::GPRenderManager->SetZBufferWriteEnable(false);
     NEngineInternal::GPRenderManager->SetPolyCullMode(POLY_CULL_NONE);
     RenderWeaponTrail(*subPrimitive.Parent);

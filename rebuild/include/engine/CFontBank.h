@@ -72,6 +72,9 @@ public:
     // ?GetStringWidth@CFontBank@@QBEMABVCWideString@@@Z (0x0048DA62). Declarations only: no layout change.
     C2DExtentsF GetStringExtents(const CWideString& text, bool) const;   // 0x0048DAA2
     float GetStringWidth(const CWideString& text) const;                 // 0x0048DA62
+#elif defined(FABLE_RETAIL_CFONTBANK_ICONTEXT_FIT_PASS30)
+    // Original debug helper and retail slot-1 width dispatch used by FitInWindow.
+    float GetStringWidth(const CWideString& text) const;
 #endif
 #ifdef FABLE_RETAIL_CFONTBANK_STRINGWIDTH_TEXT
     // Retail opt-in (chunk 2010, row 0x00492381 CSubtitleRenderer::ProcessEmbeddedGraphicTags): FableWin.pdb ?GetStringWidth@CFontBank@@QBEMPB_W@Z,
@@ -134,6 +137,21 @@ protected:
     CFontManager* PManager;                                              // +0x0C
 };
 FABLE_STATIC_ASSERT_AT(74, sizeof(CFontBank) == 0x10);
+#ifdef FABLE_RETAIL_CFONTBANK_ICONTEXT_FIT_PASS30
+// Inline-budget: 0048DA62 keeps a frame pointer in its 39-byte out-of-line copy.
+// The row bytes have an identical expansion without these owner-copy settings.
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#endif
+inline float CFontBank::GetStringWidth(const CWideString& text) const
+{
+    return GetStringExtents(text.GetAsCharArray(), false).X;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #else
 class CCharStringData;
 class CFontManager;

@@ -81,6 +81,12 @@ private:
  unsigned int m_nSw2DVoicesPlaying;
  unsigned int m_nSw3DVoicesPlaying;
  unsigned int m_nHwVoicesPlaying;
+#ifdef FABLE_RETAIL_CSALBUFFER_USE_PORT30
+ // Native CSalBuffer::Use tests the platform hardware pointer. The SDK symbol is private.
+ // Inferred: friendship allows the native direct use without changing the proven method access.
+ friend class CSalBuffer;
+ bool IsHwCreated() const { return m_pHw != 0; }
+#endif
  CSalHw *m_pHw;
 };
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS

@@ -1,63 +1,31 @@
-// NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue() -- fade multiplier for the component: 1 unless fading is enabled; otherwise the normalised age is eased in (half-cosine table) before the packed fade-in end and eased out after the packed fade-out start
+// Flags: 
 // Leaf: ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ
-// Naming wave 35c (caller respell): calls 0x00AEAA00 under its PDB name NParticleEngine::GetOneOverTickRate (?GetOneOverTickRate@NParticleEngine@@YIMXZ; no arguments, so the __fastcall call site is unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A750, 0x1C8 bytes (padded to 464), `ret`, float in st0.
-// Callees: 0x00AEAA00 (the particle clock, float). Data: the 1025-entry cosine table at 0x013CD550, 1/1023 at 0x01266300,
-//   0.5f 0x0122F59C, the table scale 0x01230010, 2^32 0x0122DCB4.
-// Layout: local model: packed fade word +0x0C (bits 0-9 fade-in end, 10-19 fade-out start, bit 25 enabled), lifetime
-//   float +0x18, frame count long +0x98.
-// Retail-asm: 0x00B0A848 / 0x00B0A8CC (fistp at 0x00B0A850 / 0x00B0A8D4) `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
-// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
-// NF261 (2026-11-22, q12742): the two table-cosine scales are VC7.1 pooled float literals, not globals: retail multiplies by 0x0122F59C
-//   (0.5f, 0x3F000000) and then by 0x01230010 (1024.0f, 0x44800000; 94 references in Fable.exe) at 0x00B0A832 / 0x00B0A838 and 0x00B0A8B6 /
-//   0x00B0A8BC. The HEAD row's made-up extern `g_cosTableScale` (?g_cosTableScale@@3MB) bound the 0.5f site (0x0122F59C) and its literal 0.5f
-//   bound the 1024.0f site (crossed, by c2's operand order); both are now literals in retail's order, in two statements as the
-//   landed GFSmoothFadeValue body 0x00AF9000 spells them (one expression `x * 0.5f * 1024.0f` folds to 512.0f: graded DIFFER 444v456).
-#include "fable_compiler.h"
-extern float GFastCosTable[1025];                  // 0x013CD550 ?GFastCosTable@@3PAMA
-extern const float g_fadeScale;                     // 0x01266300
-namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
-// the engine's inline-assembly float-to-long helper, expanded in place (VC7.1 homes the by-value parameter in a frame
-// word, often a dead argument slot, and reloads it for the bare dword fistp)
-#include "engine/GFFloatToLongNear.h"
-FABLE_FORCEINLINE float TableCos01(float x)
-{
-    float scaled = x * 0.5f;
-    scaled = scaled * 1024.0f;
-    long whole = GFFloatToLongNear(scaled - 0.5f);
-    float frac = scaled - (float)whole;
-    long index = whole & 0x3ff;
-    return 0.5f - ((1.0f - frac) * GFastCosTable[index] + frac * GFastCosTable[index + 1]) * 0.5f;
-}
+// Retail-asm: existing GFFloatToLongNear expands fld and fistp at 00B0A84C / 00B0A850 and 00B0A8D0 / 00B0A8D4.
+#define FABLE_RETAIL_CPSCUPDATENORMAL_NO_CONTAINERS
+#define FABLE_RETAIL_PARTICLE_FADE_VALUE_PASS30
+#include "engine/CPSCUpdateNormal.h"
+#include "engine/NParticleEngine_GFSmoothFadeValue.h"
+
 namespace NParticleEngine {
-class CPSCUpdateNormal { public:
-    unsigned char _pad00[0x0c];
-    unsigned long FadeBits;                         // +0x0c
-    unsigned char _pad10[0x08];
-    float         Lifetime;                         // +0x18
-    unsigned char _pad1c[0x98 - 0x1c];
-    long          Frame;                            // +0x98 (multiplied as an integer operand: fimul)
-    protected: float GetCurrentFadeValue() const;
-};
 float CPSCUpdateNormal::GetCurrentFadeValue() const
 {
-    if (!(FadeBits & 0x2000000))
+    if (!UseSystemLifeSecs)
         return 1.0f;
     float age = 0.0f;
-    if (Lifetime > 0.0f) {
-        age = (NParticleEngine::GetOneOverTickRate() * Frame) / Lifetime;
+    if (SystemLifeSecs > 0.0f) {
+        age = (NParticleEngine::GetOneOverTickRate() * LifeTimer) / SystemLifeSecs;
         if (age < 0.0f)
             age = 0.0f;
         else if (age > 1.0f)
             age = 1.0f;
     }
-    float fadeIn = (float)(FadeBits & 0x3ff) * g_fadeScale;
-    float fadeOut = (float)((FadeBits >> 10) & 0x3ff) * g_fadeScale;
+    float fadeIn = (float)FadeInEndInteger * 0.001f;
+    float fadeOut = (float)FadeOutBeginInteger * 0.001f;
     float result = 1.0f;
     if (age < fadeIn)
-        result = TableCos01(age / fadeIn);
+        result = GFSmoothFadeValue(age / fadeIn);
     if (age > fadeOut)
-        result *= TableCos01((1.0f - age) / (1.0f - fadeOut));
+        result *= GFSmoothFadeValue((1.0f - age) / (1.0f - fadeOut));
     return result;
 }
 }

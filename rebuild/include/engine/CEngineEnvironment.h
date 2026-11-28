@@ -24,6 +24,10 @@ class CEngineInit;
 #endif
 class CEngineEnvironment : public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_ENVIRONMENT_FRAMESTART_PASS30
+    // Ego_r and FableWin name the public virtual. Dispatch is slot 1 in the retail environment table.
+    virtual void FrameStart(const CEngineComponentParams& params);
+#endif
     CEngineEnvironment();                      // 0x00B8CEE0 ??0CEngineEnvironment@@QAE@XZ
 #ifdef FABLE_RETAIL_CENGINEENVIRONMENT_WORLDFRAMEUPDATE_PASS26
     // Pass26 00b8ccf0; Ego_r/FableWin virtual WorldFrameUpdate(bool) override.

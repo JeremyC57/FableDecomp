@@ -1464,3 +1464,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-27 A: advisor rulings (owner delegated) for AUTH30 recorded in EXTRA_RULES: R1 in-class Main via the shared-header opt-in, R2 nf88 Alloc form, movie ??_G as debt, inline-leaf flag test, R3 strong duplicates; Codex pass 30 rule 7 amendment written.
 - 2026-11-27 A: AUTH30B started (fresh authoring agent, brief $S/w22/auth30/BRIEF_B.md); AUTH30 locks moved to AUTH30B, plus 0x00D04AE0 and the Alloc rows 0x00D05910 / 0x00D05FE0.
 - 2026-11-27 A: AUTH30B paused by the owner mid round 4 (0x00D06130 2/4 EQ explained; r4e header route RELOCATION_MATCH 1400, ungated; was starting the R2 Alloc/ctor overlay). Locks stay AUTH30B; scratch $S/w22/auth30/ kept for resume.
+- 2026-11-28 A: Codex pass 30 landed: 45 rows, 152 respell units, 282 headers; 7 rows + 28 units backed out for name splits; 55 reserved (RESERVED.tsv). Catalog audit recorded, no full rebuild.

@@ -22,6 +22,9 @@ protected:
  bool LMBOn,MMBOn,RMBOn,Filtering;
  C3DVector LastUpdateMovement; CCountedPointer<CSurface> CursorGraphic;
  void ResetNonExclusiveMouse();
+#ifdef FABLE_RETAIL_NONEXCLUSIVE_MOUSE_EVENT_PASS30
+ bool GetNonExclusiveModeDeviceMouseEvent(class CMouseEvent* event);
+#endif
 public:
  CMouseDX(CInputManagerDX&,bool);
  virtual ~CMouseDX();
@@ -43,5 +46,5 @@ public:
  virtual bool IsMMBDown()const;
  virtual bool IsRMBDown()const;
 };
-FABLE_STATIC_ASSERT(sizeof(CMouseDX)==0x4860);
+FABLE_STATIC_ASSERT_AT(46, sizeof(CMouseDX)==0x4860);
 #endif

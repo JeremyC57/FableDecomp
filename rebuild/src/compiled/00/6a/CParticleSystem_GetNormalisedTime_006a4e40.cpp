@@ -1,15 +1,16 @@
-// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_zeroTime (table ?g_zeroTime@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
-//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
+// CThingPhysical::GetHealthPercentage at 0x006A4E40.
+// Leaf: ?GetHealthPercentage@CThingPhysical@@QBEMXZ
+// Flags: /O2 /Oy
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGPHYSICAL_HEALTH_PERCENTAGE
+#include "engine/CThingPhysical.h"
 
-struct CParticleSystem {
-    char pad[0xb0];
-    float totalTime;   /* +0xb0 */
-    float elapsed;     /* +0xb4 */
-};
-
-float __fastcall CParticleSystem_GetNormalisedTime(const CParticleSystem* self)
+float CThingPhysical::GetHealthPercentage() const
 {
-    if (self->totalTime > 0.0f)
-        return self->elapsed / self->totalTime;
+    if (MaxHealth > 0.0f)
+        return Health / MaxHealth;
     return 0.0f;
 }

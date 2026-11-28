@@ -6,8 +6,38 @@
 // ?GetBoneScaling@C3DSkeletalMorphTarget@@QBEXAAVC3DVector@@K@Z (0x00A44CD0).
 #include "engine/CCountedPointer.h"
 class C3DVector;
+#ifdef FABLE_RETAIL_SKELETAL_MORPH_FILE_PASS30
+#include "engine/C3DVector.h"
+#include "engine/CArray.h"
+// Both engine PDBs identify the element. The target copies five 32-bit words.
+class C3DSkeletalBoneMorph {
+public:
+    C3DSkeletalBoneMorph(const CCharString& bone_name, const C3DVector& scaling);
+    const CCharString& GetName() const { return BoneName; }
+    const C3DVector& GetScaling() const { return Scaling; }
+    static bool FABLE_FASTCALL CompareCRCs(const C3DSkeletalBoneMorph& lhs, const C3DSkeletalBoneMorph& rhs);
+private:
+    CCharString BoneName;
+    unsigned long BoneNameCRC;
+    C3DVector Scaling;
+};
+// Retail ends each live CArray through its vector base's destructor at 006C39A0.
+namespace std {
+template<> vector<C3DSkeletalBoneMorph>::~vector();
+}
+#endif
 class C3DSkeletalMorphTarget {
 public:
+#ifdef FABLE_RETAIL_SKELETAL_MORPH_FILE_PASS30
+    void Initialise(const CCharString& name, const CArray<C3DSkeletalBoneMorph>& morph_list);
+#ifndef FABLE_RETAIL_C3DSKELETALMORPHTARGET_LAYOUT
+    const CArray<C3DSkeletalBoneMorph>& GetBoneMorphs() const { return BoneMorphs; }
+private:
+    CCharString Name;
+    CArray<C3DSkeletalBoneMorph> BoneMorphs;
+public:
+#endif
+#endif
     void GetBoneScaling(C3DVector& scaling, unsigned long bone_name_crc) const;      // 0x00A44CD0
 #ifdef FABLE_RETAIL_C3DSKELETALMORPHTARGET_LAYOUT
     // NF62 opt-in (2026-11-17, row 0x006C3620 CSkeletalMorphResourceManager::GetMorphTarget, `push 10h ; call new`): Ego_r.pdb / FableWin.pdb

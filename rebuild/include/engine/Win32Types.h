@@ -67,6 +67,9 @@ FABLE_STATIC_ASSERT_AT(48, sizeof(RTL_CRITICAL_SECTION) == 0x18);
 typedef struct tagPOINT {long x,y;} POINT;
 typedef struct tagRECT {long left,top,right,bottom;} RECT;
 extern "C" __declspec(dllimport) int __stdcall GetCursorPos(POINT*);
+#if defined(FABLE_RETAIL_NONEXCLUSIVE_MOUSE_EVENT_PASS30) || defined(FABLE_RETAIL_KEYBOARD_MAINTAINED_TIME_PASS30)
+extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();
+#endif
 extern "C" __declspec(dllimport) int __stdcall ClientToScreen(HWND,POINT*);
 extern "C" __declspec(dllimport) int __stdcall GetClientRect(HWND,RECT*);
 #endif
@@ -85,5 +88,9 @@ extern "C" __declspec(dllimport) unsigned long __stdcall SleepEx(unsigned long, 
 typedef void (__stdcall* LPOVERLAPPED_COMPLETION_ROUTINE)(unsigned long, unsigned long, _OVERLAPPED*);
 extern "C" __declspec(dllimport) int __stdcall ReadFileEx(void*, void*, unsigned long, _OVERLAPPED*, LPOVERLAPPED_COMPLETION_ROUTINE);
 extern "C" __declspec(dllimport) int __stdcall WriteFileEx(void*, const void*, unsigned long, _OVERLAPPED*, LPOVERLAPPED_COMPLETION_ROUTINE);
+#endif
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+// Platform SDK WinBase.h, FableWin CFileObject destructor and native kernel32 IAT.
+extern "C" __declspec(dllimport) void* __stdcall GlobalFree(void*);
 #endif
 #endif // FABLE_ENGINE_WIN32_TYPES_H

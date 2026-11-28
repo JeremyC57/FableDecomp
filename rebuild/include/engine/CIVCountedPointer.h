@@ -28,6 +28,10 @@ public:
     // dword ptr [ecx+4]`) and the default Release, whose zero store follows the null test (0x0074653B `mov [esp+8],0` after the join).
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
+#if defined(FABLE_RETAIL_PROJECTILE_COUNTED_DTOR_PASS30)
+    // Inline-budget: retail expands the smart pointer destructor inside the 93-byte handle destructor.
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
+#else
 #if defined(FABLE_RETAIL_CTHINGMARKER_DRAW_PASS29)
     ~CIVCountedPointer() { if (Object) Object->Release(); }
 #elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR)
@@ -61,6 +65,7 @@ public:
     }
 #else
     ~CIVCountedPointer() { Release(); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
     // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, as the landed CPSCLight::Kill 0x00B19C20 / ~CPSCLight 0x00B1AEB0): FableWin.pdb
@@ -175,6 +180,10 @@ public:
 #endif
 #endif
     bool IsNull() const { return Object == 0; }
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+    // FableWin 03188D70. The intrusive pointer returns its object as a reference.
+    T& operator*() const { return *static_cast<T*>(Object); }
+#endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_GET
     // Opt-in (chunk 2048): FableWin.pdb ?Get@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAV..@XZ (9 instructions / 17 bytes).
     T* Get() const { return static_cast<T*>(Object); }
@@ -186,6 +195,15 @@ public:
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
 #endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
+#if defined(FABLE_RETAIL_PROJECTILE_COUNTED_RELEASE_PASS30)
+    // Inline-budget: retail expands pointee release and pointer clearing in both handle destructor variants.
+    FABLE_FORCEINLINE void Release() {
+        if (Object) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+#else
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
     // Nested opt-in (chunk 2048, row 0x00B64FA0 RenderClouds; needs FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT, the pointee deletes
     // itself): FableWin.pdb ?Release@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEXXZ (0x01D2FB90) is 17 debug instructions /
@@ -244,6 +262,7 @@ public:
             Object = 0;
         }
     }
+#endif
 #endif
 #else
     void Release() {

@@ -19,11 +19,11 @@ struct OutE {
 };
 struct B {
     long StartTriangle, TriangleCount; Box BoundingBox; Sphere BoundingSphere; Vec Triangles; B* SubElements[2];
-    void BuildOutput(OutE* out, Vec& tris) {
+    void BuildOutput(OutE* out, Vec* tris) {
         out->BoundingBox = BoundingBox; out->BoundingSphere = BoundingSphere;
         out->StartTriangle = StartTriangle; out->TriangleCount = TriangleCount;
         if (SubElements[0]) { SubElements[0]->BuildOutput(out->BuildSubElement(0), tris); SubElements[1]->BuildOutput(out->BuildSubElement(1), tris); }
-        else for (unsigned long i = 0; i < Triangles.size(); ++i) tris.push_back(Triangles.b[i]);
+        else for (unsigned long i = 0; i < Triangles.size(); ++i) tris->push_back(Triangles.b[i]);
     }
 };
 int main() {
@@ -32,7 +32,7 @@ int main() {
     l = root; r = root; l.SubElements[0] = l.SubElements[1] = 0; r.SubElements[0] = r.SubElements[1] = 0;
     Tri t1 = {{1, 2, 3}}, t2 = {{4, 5, 6}}, t3 = {{7, 8, 9}};
     l.Triangles.push_back(t1); l.Triangles.push_back(t2); r.Triangles.push_back(t3); l.StartTriangle = 0; r.StartTriangle = 2;
-    Vec out; OutE o; std::memset(&o, 0, sizeof(o)); root.BuildOutput(&o, out);
+    Vec out; OutE o; std::memset(&o, 0, sizeof(o)); root.BuildOutput(&o, &out);
     if (out.size() != 3 || out.b[0].Index[0] != 1 || out.b[1].Index[2] != 6 || out.b[2].Index[1] != 8 || !o.SubElements[0] || !o.SubElements[1]
         || o.BoundingBox.Max.X != 5 || o.BoundingSphere.Radius != 7 || o.SubElements[1]->StartTriangle != 2 || o.SubElements[0]->SubElements[0] != 0) {
         std::printf("00ac2a80_TEST FAIL\n"); return 1; }

@@ -1,13 +1,23 @@
-struct CPos;
-struct CNavHelper { int __fastcall Compute(const CPos* edx, const CPos* p); };
-struct CVtbl { bool (__fastcall *m[16])(void*, float arg); };
-struct CNavObj { CVtbl* vptr; };
-class CTCCreatureNavigation { public: void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
-bool __fastcall CTCCreatureNavigation_IsPosNavLineOfSightTo(CTCCreatureNavigation* self, void* edxpad, const CPos* pos)
+// CTCCreatureNavigation::IsPosNavLineOfSightTo asks the active navigator about the segment from its creature.
+// Leaf: ?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z
+// Flags: none
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_ONEPOINTLOS
+#define FABLE_RETAIL_CNAVIGATORBASE
+#include "fable_string.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/CNavigatorBase.h"
+
+bool CTCCreatureNavigation::IsPosNavLineOfSightTo(const C3DVector& pos) const
 {
-    CNavObj* obj = self->obj;
-    CVtbl* vt = obj->vptr;
-    union { int i; float f; } u;
-    u.i = self->helper->Compute(pos, pos);
-    return vt->m[10](self->obj, u.f);
+    return PNavigator->IsNavLineOfSightClear(GetParentCreature().PeekPos(), pos);
 }

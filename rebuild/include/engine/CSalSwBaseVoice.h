@@ -45,6 +45,28 @@ private:
  bool CalcMultiFuncEnvelope(const _CMULTIFUNCENVELOPE*,bool);
  void CalcMultiFuncLFO(const _CMULTIFUNCLFO*);
 #endif
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+public:
+ bool IsStopped() const { return (m_ffParams & 0x100) || (!m_PlayBuffer.IsCreated() && !IsRunningOut()); }
+private:
+ static CSalSwBuffer m_ProcessBuffer;
+protected:
+ static CSalSwBuffer m_FormatBuffer;
+private:
+ void ConvertSampleRate(CSalSwBuffer&, CSalSwBuffer&, unsigned int, unsigned int);
+ bool IsRunningOut() const { return m_nRunOutFrames != 0; }
+ bool IsHistory() const { return m_nHistorySamples != 0; }
+ bool IsFiltering() const { return (m_ffStatus & 0x1e0000) != 0; }
+ bool IsLPFiltering() const { return (m_ffStatus & 0xa0000) != 0; }
+ bool IsEQFiltering() const { return (m_ffStatus & 0x140000) != 0; }
+ bool IsSrcActive() const { return m_uiSrcRate != 0x1000 || m_uiSrcCount != 0; }
+ bool IsStereoFiltering(const CCodaSource* pSource) const;
+ bool IsFormatConverted() const;
+ void ProcessSilence(unsigned int);
+ unsigned int ProcessSamples(CCodaSource*,bool,unsigned int);
+ void SetNextPlayBuffer(CCodaSource*);
+ void StereoFilter(short*,unsigned int,unsigned int);
+#endif
  void UpdateMultiFuncLFO(const _CMULTIFUNCLFO*);
 protected:
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
@@ -91,4 +113,33 @@ private:
  unsigned int m_uiSrcRate;
  unsigned int m_uiSrcCount;
 };
+#ifdef FABLE_RETAIL_SAL_SW_BASE_VOICE_UPDATE_INLINES_PASS30
+#include "engine/CCodaSource.h"
+#include "engine/CSalBuffer.h"
+#include "engine/CodaPCM.h"
+inline bool CSalSwBaseVoice::IsStereoFiltering(const CCodaSource* pcSource) const {
+    return IsFiltering() && pcSource->IsStereoFilter() ? 1 : 0;
+}
+inline bool CSalSwBaseVoice::IsFormatConverted() const {
+    const _CBUFFERDESC& desc=m_pcBuffer->GetDesc();
+    return (desc.ffFormat == C_FORMAT_INT16 && desc.nChannels <= 1 && 0 == ((size_t)desc.pvData % 16)) ? 0 : 1;
+}
+
+inline void CSalSwBaseVoice::StereoFilter(short* psData, unsigned int nSamples, unsigned int nChannel)
+{
+    bool bFilterActive;
+    switch (nChannel) {
+    case 0: bFilterActive = (m_ffStatus & 0x60000) != 0; break;
+    case 1: bFilterActive = (m_ffStatus & 0x180000) != 0; break;
+    default: bFilterActive = false; break;
+    }
+    if (bFilterActive) {
+        if (IsLPFiltering()) {
+            m_Filter[nChannel].ProcessLP(psData, nSamples);
+        } else {
+            m_Filter[nChannel].ProcessEQ(psData, nSamples);
+        }
+    }
+}
+#endif
 #endif

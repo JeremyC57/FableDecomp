@@ -11,6 +11,9 @@ public:
  bool IsValid() const {return FormatIndex!=-1;}
 #endif
  CPixelFormat(_D3DFORMAT format) { Initialise(format); }
+#ifdef FABLE_RETAIL_VOLUME_SERIALIZATION_PASS30
+ class CPixelFormatInit GetInit() const;
+#endif
  // Movie row 0x006286F0: FableWin.pdb ??0CPixelFormat@@QAE@JJJJ@Z (debug only: inline in release). 0x006286F0 calls
  // Initialise(8,8,8,8,false) on a stack CPixelFormat with no -1 store first, so this constructor does not run the
  // default's FormatIndex(-1): it is the Initialise call alone (the bool is pushed as 0).

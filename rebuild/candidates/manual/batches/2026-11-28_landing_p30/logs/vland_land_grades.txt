@@ -1,0 +1,97 @@
+00c51f50   WARN RELOC_NAME: ?SetEAX4Source@CCodaEAX@@AAEHIPAXIPAUEAXSOURCE_tag@@@Z -> 00c51f00 labelled 'CEAXManager::SetVoiceProperty'
+00c51f50   WARN RELOC_NAME: ?EAX4Source@CEAXBuffer@@QAEHKPAXKPAPAU_CHANGES@@@Z -> 00c68510 labelled 'CEAXBuffer::SetSourceProperty_00c68510'
+00c51f50   WARN RELOC_NAME: ?ProcessChanges@CCodaEAX@@AAEXPAU_CHANGES@@PAUEAXSOURCE_tag@@@Z -> 00c51a20 labelled 'CEAXManager::QueueCommit'
+00c51f50   RELOCATION_MATCH PASS   SetEAX4Buffer
+00919ae0   RELOCATION_MATCH PASS   Update
+00d69480   RELOCATION_MATCH PASS   Main
+00d6f4b0   RELOCATION_MATCH PASS   Main
+004cebb0   RELOCATION_MATCH PASS   GetMessagesFromTextName
+009e84d0   RELOCATION_MATCH PASS   TransferIn
+00bfa2a0   WARN RELOC_NAME: ??$AllocAlignedArrayOfObjectsNoConstuctors@VC4DVector@@@CEngineLandscapeMemoryManager@@QAEPAVC4DVector@@JJPAVCMovableResource@@@Z -> 00bfb810 labelled 'CEngineLandscapeMemoryManager::AllocVirtualAlignedSafe_x16'
+00bfa2a0   WARN RELOC_NAME: ??$AllocAlignedArrayOfObjectsNoConstuctors@M@CEngineLandscapeMemoryManager@@QAEPAMJJPAVCMovableResource@@@Z -> 00bfb860 labelled 'CEngineLandscapeMemoryManager::AllocVirtualAlignedSafe_x4'
+00bfa2a0   WARN RELOC_NAME: ??$AllocArrayOfObjectsNoConstuctors@E@CEngineLandscapeMemoryManager@@QAEPAEJPAVCMovableResource@@@Z -> 00bfb780 labelled 'CEngineLandscapeMemoryManager::AllocVirtualSafetyChecked'
+00bfa2a0   WARN RELOC_NAME: ??$AllocAlignedArrayOfObjectsNoConstuctors@UCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@@CEngineLandscapeMemoryManager@@QAEPAUCSubsectionElement@NEnginePrimitiveManagerRepeatedStaticMeshes@@JJPAVCMovableResource@@@Z -> 00bfb8c0 labelled 'CEngineLandscapeMemoryManager::AllocVirtualAlignedSafe_x80'
+00bfa2a0   RELOCATION_MATCH PASS   Load
+008dd0f0   RELOCATION_MATCH PASS   OnActivate
+008de080   WARN RELOC_NAME: ?KillBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@AAEXXZ -> 008d7bb0 labelled 'NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect'
+008de080   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008de080   RELOCATION_MATCH PASS   FrameUpdate
+0064b8b3   RELOCATION_MATCH PASS   Draw
+0064e2cc   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+0064e2cc   RELOCATION_MATCH PASS   Draw
+00ab2520   WARN RELOC_NAME: ?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABVC3DMesh2@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z -> 00ab1cc0 labelled 'BuildEntityScriptBindings_FromVertexIndices'
+00ab2520   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@std@@YIXPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@0ABU__false_type@0@@Z -> 00ab2bd0 labelled 'std::__destroy_aux<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*>'
+00ab2520   RELOCATION_MATCH PASS   BuildMeshAnimation
+00c5b7c0   WARN RELOC_NAME: ?GetDesc@CSalBufferBase@@QBEABU_CBUFFERDESC@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5b7c0   WARN RELOC_NAME: ?ProcessSamples@CSalSwBaseVoice@@AAEIPAVCCodaSource@@_NI@Z -> 00c5b480 labelled 'CSoftwareVoice::ProcessSampleBlock'
+00c5b7c0   WARN RELOC_NAME: ?SetNextPlayBuffer@CSalSwBaseVoice@@AAEXPAVCCodaSource@@@Z -> 00c5b300 labelled 'CSoftwareVoice::AdvanceBuffer'
+00c5b7c0   WARN RELOC_NAME: ?ProcessSilence@CSalSwBaseVoice@@AAEXI@Z -> 00c5af50 labelled 'CSoftwareVoice::ClearMix'
+00c5b7c0   WARN RELOC_NAME: ?StereoFilter@CSalSwBaseVoice@@AAEXPAFII@Z -> 00c5afc0 labelled 'CSoftwareVoice::ApplyFilter'
+00c5b7c0   WARN RELOC_NAME: ?ProcessLP@CSalSwFilter@@QAEXPAFI@Z -> 00c6bae0 labelled 'CStateVariableFilter::Filter'
+00c5b7c0   WARN RELOC_NAME: ?ProcessEQ@CSalSwFilter@@QAEXPAFI@Z -> 00c6b9d0 labelled 'CStateVariableFilter::FilterWithGain'
+00c5b7c0   RELOCATION_MATCH PASS   Update
+00647575   RELOCATION_MATCH PASS   Draw
+00649952   RELOCATION_MATCH PASS   Draw
+00f05a10   RELOCATION_MATCH PASS   RefreshSpyAllegiences
+00b63c00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b63c00   RELOCATION_MATCH PASS   RenderSun
+008de7a0   WARN RELOC_NAME: ??0CIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@QAE@XZ -> 008e2e00 labelled 'SIcicleRecord_008e2e00::SIcicleRecord_008e2e00'
+008de7a0   RELOCATION_MATCH PASS   FrameUpdate
+00785160   RELOCATION_MATCH PASS   CalculateBlendedLightingChannel
+00b8c830   RELOCATION_MATCH PASS   FrameStart
+00a182c0   RELOCATION_MATCH PASS   GetSphereIntersectionFromToUsingFullCollision
+00a17af0   RELOCATION_MATCH PASS   GetSphereIntersectionFromToUsingSegmentation
+00b68070   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b68070   RELOCATION_MATCH PASS   LoadForegroundTextures
+008dcc80   WARN RELOC_NAME: ??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 008e3bb0 labelled 'CThingSearchTools::GetAllThings<CThingAICreature,std::vector<CThingAICreature *,std::allocator<CThingAICreature *> >,CThingFilter_IsNot>'
+008dcc80   WARN RELOC_NAME: ?IsUnconscious@NCreatureMode@@YI_NABVCThing@@@Z -> 0085ee40 labelled '_global::ReturnFalse_ret0_0085ee40'
+008dcc80   RELOCATION_MATCH PASS   Flash
+00b640e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b640e0   RELOCATION_MATCH PASS   RenderMoon
+00541a00   WARN RELOC_NAME: ?GetString@CWParsedItem@@QBEABVCWideString@@XZ -> 00a0cb80 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00541a00   WARN RELOC_ALIAS: _iswspace -> 00bfeb90 is the import thunk 'MSVCR71.DLL::iswspace'
+00541a00   RELOCATION_MATCH PASS   FitInWindow
+00c604e0   RELOCATION_MATCH PASS   CEAXListener
+00490494   WARN RELOC_NAME: ?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z -> 0048e062 labelled 'CEngineSubPrimitiveBase::operator_new'
+00490494   WARN RELOC_NAME: ?DrawTextBox@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@AAV?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@ABVC2DBoxF@@@Z -> 0048faa0 labelled 'CMainGameComponent::BeginInputLoading'
+00490494   RELOCATION_MATCH PASS   DrawPreparePrimitivesForEngine
+00a6a670   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z -> 0041bd80 labelled '_global::DeleteObject_0041bd80'
+00a6a670   RELOCATION_MATCH PASS   ResizePool
+00b9d220   RELOCATION_MATCH PASS   CalcInterpolatedObjectTransform
+0092d1f0   WARN RELOC_NAME: ?IsLockable@CThingBuilding@@QBE_NXZ -> 0082dd90 labelled 'CThingBuilding::HasOccupants'
+0092d1f0   WARN RELOC_NAME: ?IsLocked@CThingBuilding@@QBE_NXZ -> 0082de20 labelled 'CThingBuilding::HasBusyOccupants'
+0092d1f0   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCIsFreeBed@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@U10@0VCIsFreeBed@@@Z -> 0092e790 labelled 'std::find_if<std::_List_iterator<CIntelligentPointer<CThing>, std::_Const_traits<CIntelligentPointer<CThing>>>, CIsFreeBed>'
+0092d1f0   RELOCATION_MATCH PASS   FindFreeBed
+00a35b70   WARN STANDIN_LEAF ?GetRotationMatrixForTransformFromTo@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@0@Z (catalog C3DMeshObject::GetRotationMatrixForTransformFromTo(CRightHandedSet const&, CRightHandedSet const&); names another function)
+00a35b70   RELOCATION_MATCH PASS   GetRotationMatrixForTransformFromTo(CRightHandedSet const&, CRightHandedSet const&)
+0088b0c0   RELOCATION_MATCH PASS   GFLoadSkeletalMorphTargetFromFile
+00beb6c0   RELOCATION_MATCH PASS   Calc2DObjectMatrix
+007348c0   WARN RELOC_NAME: ??$__find@PBV?$CIntelligentPointer@$$CBVCThing@@@@V1@@std@@YIPBV?$CIntelligentPointer@$$CBVCThing@@@@PBV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z -> 00737880 labelled 'BinarySearch_IntelligentPointer'
+007348c0   WARN RELOC_NAME: ?UnsheathePrimaryWeapon@CThingCreatureBase@@QAEXXZ -> 00666820 labelled '_global::TailJmp_UnsheatheMeleeWeapon_00666820'
+007348c0   WARN RELOC_NAME: ?CanBlockWithWeaponClass@CCombatAbilityBlockingData@@QBE_NW4EWeaponClass@@@Z -> 007394c0 labelled 'CTreeOwner_007394c0::Contains'
+007348c0   RELOCATION_MATCH PASS   IsToBlock
+00b17bd0   RELOCATION_MATCH PASS   InterpolateTo
+00f3e6b0   RELOCATION_MATCH PASS   BuildVertexAndPolyMaps
+00871430   RELOCATION_MATCH PASS   Dispatch
+0057d23b   WARN RELOC_NAME: ??1?$vector@V?$CDefPointer@$$CBVCTattooDef@@@@V?$allocator@V?$CDefPointer@$$CBVCTattooDef@@@@@std@@@std@@QAE@XZ -> 00581353 labelled '_global::StdList_Dtor_00581353'
+0057d23b   RELOCATION_MATCH PASS   UpdateAppearanceStats
+009fb3f0   WARN STANDIN_LEAF ?LoadFromDataStream@CTexture@@QAEXAAVCDataInputStream@@@Z (catalog CTexture::LoadFromDataStream(CDataInputStream&); names another function)
+009fb3f0   RELOCATION_MATCH PASS   LoadFromDataStream(CDataInputStream&)
+00a18b50   RELOCATION_MATCH PASS   HasCollidedWithTriangleAt
+00b131e0   WARN STANDIN_LEAF ?DatabaseCopy@CPSCEmitterGeneric@NParticleEngine@@UAEXABVCPSCBase@2@@Z (catalog NParticleEngine::CPSCEmitterGeneric::DatabaseCopy(NParticleEngine::CPSCBase const&); names another function)
+00b131e0   RELOCATION_MATCH PASS   CPSCBase const&)
+00e29b20   RELOCATION_MATCH PASS   Main
+00a73e50   RELOCATION_MATCH PASS   GenerateLineListFromBaseline
+00ab1990   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@std@@YIXPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@0ABU__false_type@0@@Z -> 00ab2bd0 labelled 'std::__destroy_aux<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*>'
+00ab1990   RELOCATION_MATCH PASS   BuildBoneInfoTree
+007bcc40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007bcc40   RELOCATION_MATCH PASS   InitMovement
+00968fa0   RELOCATION_MATCH PASS   FillJug
+0099d8c0   RELOCATION_MATCH PASS   ErrorDialogProc
+00ba9cb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ba9cb0   RELOCATION_MATCH PASS   GetAppropriateMipmap
+0076cce0   RELOCATION_MATCH PASS   IsEnemyOf
+00a68ae0   RELOCATION_MATCH PASS   SaveToDataStream
+006cbe80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006cbe80   WARN RELOC_NAME: ?GetMapSizeZBelowAt@CThingPhysical@@QBEMABVC3DVector@@@Z -> 006a4dd0 labelled 'NUISystem::CSpellContainerList::AddChild'
+006cbe80   RELOCATION_MATCH PASS   GetNearestFleePositionBehindCover

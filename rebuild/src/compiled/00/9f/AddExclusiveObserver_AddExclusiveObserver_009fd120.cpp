@@ -1,3 +1,12 @@
-struct C009fd120 { char pad[0x270]; unsigned long f; void M(unsigned long v); };
-// Leaf: ?M@C009fd120@@QAEXK@Z
-void C009fd120::M(unsigned long v){ this->f = v; }
+// Flags: 
+// Leaf: ?SetTexturePointersValidForFrames@CGraphicDataBank@@QAEXK@Z
+class CDataInputStream;
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CGRAPHICDATABANK_ORIGINAL_METHODS_PASS22
+#include "engine/CGraphicDataBank.h"
+
+void CGraphicDataBank::SetTexturePointersValidForFrames(unsigned long frames)
+{
+    TexturePointersValidForFrames = frames;
+}

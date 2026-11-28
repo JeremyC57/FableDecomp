@@ -73,6 +73,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
     void GetAppearanceModifierList(std::list<long>&,EHeroAttachableAppearanceModifierType)const;
+#ifdef FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
+    unsigned long GetFrameLastChanged() const { return FrameLastChanged; }
+    bool IsWearingAppearanceModifierCoveringBodyArea(long, EHeroAttachableAppearanceModifierType) const;
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_COVERS
     // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate; needs _LIST): the GetTC key TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS

@@ -26,8 +26,27 @@ public: CNavigationInput(const C3DVector&,float,float);
 public: CNavigationInput(const C3DVector&,float,EMovementType);
 public: CNavigationInput();
 public: bool operator==(const CNavigationInput&) const;
+#ifdef FABLE_RETAIL_CREATURE_NAV_NEXT_POS_PASS30
+public: bool operator!=(const CNavigationInput& other) const { return !(*this == other); }
+#else
 public: bool operator!=(const CNavigationInput&) const;
+#endif
 };
+#ifdef FABLE_RETAIL_CREATURE_NAV_NEXT_POS_PASS30
+// Original operator from the same navigation translation unit as GetNextNavPosOnRoute.
+inline bool CNavigationInput::operator==(const CNavigationInput& other) const
+{
+    if (!(MovementType == other.MovementType
+          && fabs(Proximity - other.Proximity) < DELTA_NOTIONAL_ZERO
+          && Destination == other.Destination))
+        return false;
+    if (MovementType == AI_MOVEMENT_NULL) {
+        if (!(fabs(Speed - other.Speed) < DELTA_NOTIONAL_ZERO))
+            return false;
+    }
+    return true;
+}
+#endif
 class CBrainOutput {
 private: unsigned long Types;
 private: long LookFlags;

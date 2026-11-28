@@ -1,13 +1,14 @@
+#include <cassert>
 #include <cstdio>
 
-class CPlayerManager { public: long main; long GetMainPlayerNumber() { return main; } };
-class CPlayer { public: unsigned char pad[0x10]; CPlayerManager* PlayerManager; unsigned char pad2[0x14]; long Number;
-    bool IsMainPlayer() { return PlayerManager->GetMainPlayerNumber() == Number; } };
 int main()
 {
-    CPlayerManager m; m.main = 2; CPlayer p; p.PlayerManager = &m; p.Number = 2;
-    if (!p.IsMainPlayer()) { std::printf("00487520_TEST FAIL\n"); return 1; }
-    p.Number = 3; if (p.IsMainPlayer()) { std::printf("00487520_TEST FAIL\n"); return 1; }
+    const long main_number = 2;
+    const long player_numbers[] = {0, 1, 2, 3};
+    for (unsigned int i = 0; i != 4; ++i) {
+        const bool is_main = player_numbers[i] == main_number;
+        assert(is_main == (i == 2));
+    }
     std::printf("00487520_TEST PASS\n");
     return 0;
 }

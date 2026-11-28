@@ -117,7 +117,12 @@ private:
 #else
     CGameCameraManager* CameraManager;                                // +0x00
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_SCAN_THINGS_PASS30
+    // Ego_r / FableWin CTools type and 00877C40 both place ScanThings at +4.
+    std::vector<CIntelligentPointer<const CThing> > ScanThings;
+#else
     unsigned char ScanThings[0xC];                                    // +0x04 vector<CIntelligentPointer<const CThing> >
+#endif
     float CameraMeshOffsetDistance;                                   // +0x10
     float CameraCreatureOffsetDistance;                               // +0x14
     float CameraLandscapeOffsetDistance;                              // +0x18
@@ -135,6 +140,174 @@ FABLE_STATIC_ASSERT_AT(114, sizeof(NCameraModes::CTools) == 0x20);
 namespace NCameraModes {
 template<class T> inline T CTools::GetRollingAverage(const T& current_val,const T& new_val,float weight) const
 {return ((current_val*weight+new_val)/(weight+1.0f));}
+}
+#endif
+
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_VECTOR_LOS_PASS30
+#include "engine/CThingPhysical.h"
+#include "engine/CTCCameraCollision.h"
+#include "engine/CTCHitLocations.h"
+#include "engine/CPhysicsMeshObject.h"
+#include "engine/CMeshIntersectionData.h"
+#include "engine/C3DVector.h"
+
+namespace NCameraModes {
+inline bool CTools::GetThingPointIntersectionFromTo(const std::vector<const CThing*>& things, const C3DVector& from, const C3DVector& to,
+    C3DVector& hitPos, C3DVector& hitNormal, const CThing** hitThing, bool useCameraMeshes, ELOSTest test) const
+{
+    const CThing* closestThing = 0;
+    float closestDistanceSquared = (to - from).GetSquaredMagnitude();
+    C3DVector direction = to - from;
+    direction.AccurateNormalise();
+    C3DVector closestPos;
+    C3DVector closestNormal;
+    for (std::vector<const CThing*>::const_iterator it = things.begin(); it != things.end(); ++it) {
+        const CThing* thing = *it;
+        if (thing && !thing->IsDead()) {
+            unsigned long flags = thing->GetTypeFlags();
+            if ((!(flags & 8) || (test & 8)) && (flags & 2)) {
+                C3DVector pos;
+                C3DVector normal;
+                bool hit = false;
+                if (useCameraMeshes) {
+                    const CTCCameraCollision* cameraCollision;
+                    if (!thing->PeekTC(&cameraCollision) || !cameraCollision->HasCameraPhysicsMeshObject())
+                        cameraCollision = 0;
+                    if (cameraCollision) {
+                        CPhysicsMeshObject mesh = cameraCollision->GetCameraPhysicsMeshObject();
+                        CMeshIntersectionData data;
+                        if (mesh.GetPointIntersectionFromTo(from, to, data)) {
+                            hit = true;
+                            pos = data.IntersectionPosition;
+                            normal = data.Normal * -1.0f;
+
+                        }
+                    }
+                    if (!hit) {
+                        const CTCHitLocations* hitLocations;
+                        if (thing->PeekTC(&hitLocations)) {
+                            C3DVector locationPos;
+                            C3DVector locationNormal;
+                            if (hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(from, to, locationPos, locationNormal, 0.25f)) {
+                                if (cameraCollision || static_cast<const CThingPhysical*>(thing)->IsThingAbleToComeBetweenCameraAndObservedThing()) {
+                                    C3DVector centre;
+                                    float radius;
+                                    hitLocations->GetBoundingSphere(centre, radius, true);
+                                    C3DVector testPos;
+                                    C3DVector testNormal;
+                                    C3DVector start = direction * radius * 2.5f + to;
+                                    if (hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(start, to - direction * 0.2f, testPos, testNormal, 0.25f)) {
+                                        pos = locationPos;
+                                        normal = locationNormal;
+                                        hit = true;
+                                    }
+                                } else {
+                                    pos = locationPos;
+                                    normal = locationNormal;
+                                    hit = true;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    const CTCHitLocations* hitLocations;
+                    if (thing->PeekTC(&hitLocations) &&
+                        hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(from, to, pos, normal, 0.25f))
+                        hit = true;
+                }
+                if (hit) {
+                    float distanceSquared = (pos - from).GetSquaredMagnitude();
+                    if (distanceSquared < closestDistanceSquared) {
+                        closestDistanceSquared = distanceSquared;
+                        closestPos = pos;
+                        closestNormal = normal;
+                        closestThing = thing;
+                    }
+                }
+            }
+        }
+    }
+    if (closestThing) {
+        *hitThing = closestThing;
+        hitPos = closestPos;
+        hitNormal = closestNormal;
+        return true;
+    }
+    return false;
+}
+}
+// The original 00877840 in cm_helper_functions.obj remains visible at its 00877C40 caller.
+extern const float DELTA_NOTIONAL_ZERO;
+namespace NCameraModes {
+inline bool CTools::IsLineOfSight(const std::vector<const CThing*>& thing_list, const C3DVector& from, const C3DVector& to, C3DVector& collision_pos,
+                           C3DVector& normal_vector, float& cam_radius, const CThing** pphit_thing, ELOSTest test_flags, bool camera_test) const
+{
+    if (!((from - to).GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
+        return true;
+    bool intersection_occured = false;
+    float best_cam_rad = 0.0f;
+    const CThing* pbest_thing = 0;
+    C3DVector best_pos;
+    C3DVector best_normal;
+    {
+        C3DVector test_pos, test_normal;
+        const CThing* ptest_thing;
+        if ((test_flags & 9) && GetThingPointIntersectionFromTo(thing_list, from, to, test_pos, test_normal, &ptest_thing, camera_test, test_flags)) {
+            float test_cam_rad = CameraMeshOffsetDistance;
+            if ((ptest_thing->GetTypeFlags() & 8) && (test_flags & 8))
+                test_cam_rad = CameraCreatureOffsetDistance;
+            best_cam_rad = test_cam_rad;
+            best_pos = test_pos;
+            best_normal = test_normal;
+            pbest_thing = ptest_thing;
+            intersection_occured = true;
+        }
+    }
+    if (test_flags & 4) {
+        C3DVector test_pos, test_normal;
+        if (GetThemePointIntersectionFromTo(from, to, test_pos, test_normal, true)) {
+            float test_cam_rad = CameraThemeOffsetDistance;
+            if (!intersection_occured || (test_pos - from).GetSquaredMagnitude() < (best_pos - from).GetSquaredMagnitude()) {
+                best_pos = test_pos;
+                best_normal = test_normal;
+                best_cam_rad = test_cam_rad;
+            }
+            intersection_occured = true;
+        }
+    }
+    if (test_flags & 0x10) {
+        C3DVector test_pos, test_normal;
+        if (GetThemePointIntersectionFromTo(from, to, test_pos, test_normal, false)) {
+            float test_cam_rad = CameraThemeOffsetDistance;
+            if (!intersection_occured || (test_pos - from).GetSquaredMagnitude() < (best_pos - from).GetSquaredMagnitude()) {
+                best_pos = test_pos;
+                best_normal = test_normal;
+                best_cam_rad = test_cam_rad;
+            }
+            intersection_occured = true;
+        }
+    }
+    if (test_flags & 2) {
+        C3DVector test_pos, test_normal;
+        if (GetLandscapePointIntersectionFromTo(from, to, test_pos, test_normal, camera_test)) {
+            float test_cam_rad = CameraLandscapeOffsetDistance;
+            if (!intersection_occured || (test_pos - from).GetSquaredMagnitude() < (best_pos - from).GetSquaredMagnitude()) {
+                best_pos = test_pos;
+                best_normal = test_normal;
+                best_cam_rad = test_cam_rad;
+            }
+            intersection_occured = true;
+        }
+    }
+    if (intersection_occured) {
+        collision_pos = best_pos;
+        normal_vector = best_normal;
+        cam_radius = best_cam_rad;
+        *pphit_thing = pbest_thing;
+        return false;
+    }
+    return true;
+}
 }
 #endif
 #endif

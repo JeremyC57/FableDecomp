@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?Render@CView3DBase@NDisplayView@@QAEXABVCInterpolationInfo@@_N@Z
 // Shared donor layouts remain visible alongside the retail call views below.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -138,7 +140,7 @@ private: public: unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; uns
 
 // Layout: CTCTavernGame.h donor size0x108. This view exposes the primary virtual
 // slot11 and IsBetting call only; none of its donor data is accessed.
-class CTCTavernGame { public: bool IsBetting() const; virtual void v00(){};virtual void v01(){};virtual void v02(){};virtual void v03(){};virtual void v04(){};virtual void v05(){};virtual void v06(){};virtual void v07(){};virtual void v08(){};virtual void v09(){};virtual void v10(){};virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&); };
+class CTCTavernGame { public: bool IsBetting(); virtual void v00(){};virtual void v01(){};virtual void v02(){};virtual void v03(){};virtual void v04(){};virtual void v05(){};virtual void v06(){};virtual void v07(){};virtual void v08(){};virtual void v09(){};virtual void v10(){};virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&); };
 // Layout: PDB struct88222: Game+0xc and GameTable+0x10, size0x18, agree with retail.
 // GameTable is an unused CIntelligentPointer<CThing> storage region, not a raw pointer.
 class CTCGamePlayer { public: void* VTable; unsigned char ComponentState[8]; CTCTavernGame* Game; unsigned char GameTable[8]; /* CIntelligentPointer<CThing>, original +0x10, opaque to this caller */ CTCTavernGame* GetGame() const; };

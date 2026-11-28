@@ -1,33 +1,42 @@
-// CRetailTree_erase008834f0::~CRetailTree_erase008834f0() -- std::map/set destructor: erase all nodes through 0x008834F0, reset the head, free it
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008842D0, oracle length 66 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je F ; mov eax,[esi] ; mov ecx,[eax+4] ; push ecx ; mov ecx,esi ; call Erase ; (re-read head) mov [eax+8],eax ; mov dword ptr [edx+4],0 ; mov [eax+0Ch],eax ; mov dword ptr [esi+4],0 ; F: mov esi,[esi] ; test esi,esi ; je R ; push esi ; call free ; add esp,4 ; R: pop esi ; ret
-// Destructor of the retail red-black tree {head, size}: when the tree holds nodes the recursive
-// erase @ 0x008834F0 (a __fastcall member taking the root, head->parent) frees them, then the
-// head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
-// the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
-// distinguishes the instantiations, so the class is named by it. One of 108 bodies.
-extern "C" void __cdecl free(void* block);
+// Leaf: ??1?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$_Select1st@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@@std@@QAE@XZ
+// Flags: /Gr
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_FULL
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTERENTRY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_BODY
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#define FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CThing.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/NScreenEffect_CScreenEffectPriorityStack.h"
+#include "engine/ThingAlive.h"
+#include "engine/CMainGameComponent.h"
 
-struct CRetailTree_erase008834f0 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x008834F0
-    ~CRetailTree_erase008834f0();
-};
+typedef NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState BypassState;
+typedef std::pair<CThing* const, BypassState> BypassValue;
+typedef std::_Rb_tree<CThing*, BypassValue, std::_Select1st<BypassValue>, std::less<CThing*>, std::allocator<BypassValue> > BypassTree;
 
-CRetailTree_erase008834f0::~CRetailTree_erase008834f0()
-{
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
-}
+template BypassTree::~_Rb_tree();

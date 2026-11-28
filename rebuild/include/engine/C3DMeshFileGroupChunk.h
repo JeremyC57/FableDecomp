@@ -12,6 +12,11 @@
 class C3DMeshFileGroupChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileGroupChunk();
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "VGRP"; } // FableWin 033D9730.
+    void SetBoneIndex(long index); // 00AB9F70.
+    void AddVertex(const C3DVertexBlend2& vertex); // 00ABCC20.
+#endif
     virtual ~C3DMeshFileGroupChunk();
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;

@@ -15,6 +15,10 @@ private:
  float m_fZ0;
  float m_fZ1;
  unsigned int m_nFadeSamples;
+#ifdef FABLE_RETAIL_CSALSWFILTER_VOICE_PORT30
+ // GameCODA SalSwFilter release and debug objects agree on this private fade member.
+ void ProcessLPFade(short*,unsigned int);
+#endif
  void ProcessEQFade(short*,unsigned int);
 #ifdef FABLE_RETAIL_CSALSWFILTER_SETFREQUENCY
  // Retail opt-in (NF99, q11410..q11412): SDK 2.10 CodeView private ?SetFrequency@CSalSwFilter@@AAEXIM@Z (native 0x00C6BBD0; the
@@ -56,6 +60,9 @@ public:
  void SetEQ(const _CEQFILTER*,float);
 #endif
 public:
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+void ProcessLP(short*,unsigned int);
+#endif
  void ProcessEQ(short*,unsigned int);
 };
 #endif

@@ -17,7 +17,22 @@ public:
  struct CRadialBlurParams {CRGBFloatColour ThresholdColour,IntensityColour;float Length,Fade,Range,Twist;};
  struct CRadialBlurPositionParams {C3DVector AreaCenter,BlurCenter;ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION AreaTrackPos,BlurTrackPos;};
  struct CDisplacementParams {CRGBFloatColour MonochromeEffectColour;};
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+ struct CScreenFilterParams {
+  CScreenFilterParams() { SetToDefault(); }
+  void SetToDefault() {
+   Brightness = 0.0f;
+   Contrast = 0.0f;
+   Alpha = 0.0f;
+   Saturation = 1.0f;
+   Tint.Initialise(1.0f, 1.0f, 1.0f, 1.0f);
+  }
+  float Alpha, Saturation, Contrast, Brightness;
+  CRGBFloatColour Tint;
+ };
+#else
  struct CScreenFilterParams {float Alpha,Saturation,Contrast,Brightness;CRGBFloatColour Tint;};
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_RENDERFRAME
  // Retail opt-in (chunk 2019, row 0x006B42F0 CEnvironment::RenderUpdate): Ego_r.pdb names
  // ?GetRenderFrameInterpolatedRadialBlurParameters@CEnvironmentSpellEffectInterface@@QAE?AUCIDrawEnvironmentRadialBlurParameters@@M@Z,

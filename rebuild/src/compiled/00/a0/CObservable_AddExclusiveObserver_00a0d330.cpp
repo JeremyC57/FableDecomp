@@ -1,7 +1,9 @@
-struct S { char pad[0xAC]; void* o; };
-// Leaf: AddExclusiveObserver
-void __fastcall AddExclusiveObserver(S* self, void* edx, void* arg)
+// Leaf: ?SetPriority@CProcessedInput@@QAEXW4EGameEventPriority@@@Z
+// Flags:
+#define FABLE_RETAIL_PROCESS_ROLLING_PASS30
+#define FABLE_RETAIL_EXPRESSION_FRAME
+#include "engine/CProcessedInput.h"
+void CProcessedInput::SetPriority(EGameEventPriority priority)
 {
-    (void)edx;
-    self->o = arg;
+    Priority = priority;
 }

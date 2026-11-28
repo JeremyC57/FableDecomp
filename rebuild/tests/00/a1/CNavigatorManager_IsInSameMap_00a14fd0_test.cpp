@@ -1,10 +1,11 @@
 #include <cstdio>
 // Behaviour test for 00a14fd0 CNavigatorManager::IsInSameMap: the first map holding either point decides; true only when
 // that map holds the first point and the second; half-open integer areas (truncated coordinates).
-class C3DVector { public: float X, Y, Z; };
+#define FABLE_RETAIL_C2DVECTOR
+#include "engine/C2DVector.h"
 class C2DCoordI { public:
     long X, Y;
-    C2DCoordI(const C3DVector& v) : X((long)v.X), Y((long)v.Y) { }
+    C2DCoordI(const C2DVector& v) : X((long)v.X), Y((long)v.Y) { }
 };
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
@@ -34,10 +35,10 @@ public:
     void*                 __vftable;               // +0x00
     unsigned char         _pad04[0x20];
     list<CNavQuadTreeMap> QuadTrees;               // +0x24
-    bool IsInSameMap(const C3DVector& a, const C3DVector& b) const;
+    bool IsInSameMap(const C2DVector& a, const C2DVector& b) const;
 };
 
-bool CNavigatorManager::IsInSameMap(const C3DVector& a, const C3DVector& b) const
+bool CNavigatorManager::IsInSameMap(const C2DVector& a, const C2DVector& b) const
 {
     for (_List_node<CNavQuadTreeMap>* it = QuadTrees.begin(); it != QuadTrees.end(); it = it->_M_next) {
         if (it->_M_data.MapArea.Contains(C2DCoordI(a)))
@@ -49,7 +50,7 @@ bool CNavigatorManager::IsInSameMap(const C3DVector& a, const C3DVector& b) cons
 }
 
 typedef _List_node<CNavQuadTreeMap> Node;
-static C3DVector V(float x, float y) { C3DVector v; v.X = x; v.Y = y; v.Z = 0; return v; }
+static C2DVector V(float x, float y) { C2DVector v; v.X = x; v.Y = y; return v; }
 int main()
 {
     static CNavigatorManager m;

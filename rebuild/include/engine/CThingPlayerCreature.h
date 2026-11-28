@@ -140,6 +140,11 @@ protected:
 #endif
     C3DVector RelativeMovementAcceleration;                  // +0x1b4
     C3DVector LastRelativeMovementAcceleration;              // +0x1c0
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+public:
+    const C3DVector& GetLastRelativeMovementAcceleration() const { return LastRelativeMovementAcceleration; }
+protected:
+#endif
     bool CollidedWithThing;                                  // +0x1cc
     C3DVector LastThingCollisionNormal;                      // +0x1cd
     C3DVector LastThingCollisionPosition;                    // +0x1d9

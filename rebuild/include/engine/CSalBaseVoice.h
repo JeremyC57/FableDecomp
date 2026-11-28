@@ -24,10 +24,20 @@ protected:
 #ifdef FABLE_RETAIL_CSALSW2D_CALCPARAMS_PASS29
  static void FABLE_CDECL PanToGains(float,float&,float&);
 #endif
+#ifdef FABLE_RETAIL_CSALBASEVOICE_QUEUE_PORT30
+ // Original SDK release PlayQueue calls this protected method before virtual InitPlay.
+ void InitQueue(CCodaSource*);
+#endif
  static int FABLE_CDECL TimeToFrames(float);
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
  bool IsStarting() const { return (m_ffStatus & 1) != 0; }
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+ bool IsReleasingEnvelopes() const { return (m_ffStatus & 0x20) != 0; }
+ bool IsReleasing() const { return (m_ffParams & 0x200) != 0; }
+ bool IsStopping() const { return (m_ffParams & 0x80) != 0; }
+#else
  bool IsReleasingEnvelopes() const { return (m_ffParams & 0x200) != 0; }
+#endif
  bool IsLevelEnvReleased() const { return (m_ffStatus & 0x40) != 0; }
  bool CalcLevelEnvelope(const _CLEVELENVELOPE*,bool);
  void UpdatePitchLFO(const _CPITCHLFO*);

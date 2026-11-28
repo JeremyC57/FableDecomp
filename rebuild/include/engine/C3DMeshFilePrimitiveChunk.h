@@ -17,6 +17,9 @@ class C3DMeshFileVerticesChunk;class C3DMeshFileUniqueVerticesChunk;class C3DMes
 class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFilePrimitiveChunk();
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+    void SetMaterialIndex(long index); // 00ABCF10.
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;

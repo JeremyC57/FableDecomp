@@ -3,7 +3,30 @@
 #include "rebuild_abi.h"
 #include "engine/Direct3D9Types.h"
 struct _GUID;struct HDC__;struct IDirect3DDevice9;
+#ifdef FABLE_RETAIL_VOLUME_SERIALIZATION_PASS30
+// Original Direct3D enum ranges are needed for the texture file header and device descriptions.
+enum _D3DRESOURCETYPE {
+    D3DRTYPE_SURFACE                =  1,
+    D3DRTYPE_VOLUME                 =  2,
+    D3DRTYPE_TEXTURE                =  3,
+    D3DRTYPE_VOLUMETEXTURE          =  4,
+    D3DRTYPE_CUBETEXTURE            =  5,
+    D3DRTYPE_VERTEXBUFFER           =  6,
+    D3DRTYPE_INDEXBUFFER            =  7,
+
+    D3DRTYPE_FORCE_DWORD            = 0x7fffffff
+};
+enum _D3DPOOL {
+    D3DPOOL_DEFAULT                 = 0,
+    D3DPOOL_MANAGED                 = 1,
+    D3DPOOL_SYSTEMMEM               = 2,
+    D3DPOOL_SCRATCH                 = 3,
+
+    D3DPOOL_FORCE_DWORD             = 0x7fffffff
+};
+#else
 enum _D3DRESOURCETYPE{D3DRTYPE_SURFACE=1};enum _D3DPOOL{D3DPOOL_DEFAULT=0};
+#endif
 struct _D3DSURFACE_DESC{_D3DFORMAT Format;_D3DRESOURCETYPE Type;unsigned long Usage;_D3DPOOL Pool;_D3DMULTISAMPLE_TYPE MultiSampleType;unsigned long MultiSampleQuality;unsigned int Width,Height;};
 struct tagRECT{long left,top,right,bottom;};struct _D3DLOCKED_RECT{int Pitch;void* pBits;};
 struct IUnknown{virtual long FABLE_STDCALL QueryInterface(const _GUID&,void**)=0;virtual unsigned long FABLE_STDCALL AddRef()=0;virtual unsigned long FABLE_STDCALL Release()=0;};

@@ -1,5 +1,8 @@
 #ifndef FABLE_ENGINE_C3DANIMATIONSEQUENCEDATA_H
 #define FABLE_ENGINE_C3DANIMATIONSEQUENCEDATA_H
+#ifdef FABLE_RETAIL_ANIMATION_BONE_TREE_PASS30
+#include "fable_string.h"
+#endif
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
 #include "engine/C3DVector.h"
@@ -45,6 +48,11 @@ public:
 private:
  void SetupIdentityFlag();
 public:
+#endif
+#ifdef FABLE_RETAIL_ANIMATION_BONE_TREE_PASS30
+ // FableWin 034870E0 chooses a CCharString temporary, then copy-constructs the result.
+ // Inline-budget: the native 00AB0BF0 sequence forwarder expands this complete string selection.
+ FABLE_FORCEINLINE CCharString GetBoneName() const { return BoneName ? CCharString(BoneName) : CCharString(""); }
 #endif
  C3DAnimationSequenceData():BoneName(0),RotationTrack(0),RotationTrackSize(0),PositionTrackSize(0),PalettedRotationTrackSize(0),PalettedPositionTrackSize(0),PositionTrack(0),PalettedRotationTrack(0),PalettedPositionTrack(0){FrameCount=0;IdentityFlag=false;}
  unsigned long GetFrameCount()const{return FrameCount;}float GetSamplesPerSecond()const{return SamplesPerSecond;}
@@ -102,5 +110,53 @@ public:
  short X,Y,Z;
  C3DVector operator*(float scale) const { return C3DVector(X*scale,Y*scale,Z*scale); }
 };
+#endif
+#ifdef FABLE_RETAIL_ANIMATION_KEYFRAME_TRACKS_PASS30
+#include "engine/C3DKeyframe.h"
+// Inline-budget: both bone accessors expand this complete sequence interpolation.
+FABLE_FORCEINLINE void C3DAnimationSequenceData::InlineGetKeyframeInterpolate(C3DKeyframe& dest, unsigned long frame, float fraction) const
+{
+    unsigned long next_frame = (frame + 1 < FrameCount) ? frame + 1 : 0;
+    float w1 = 1.0f - fraction;
+    float w2 = fraction;
+    if (RotationTrackMode & 2)
+    {
+        unsigned long index = frame;
+        unsigned long next_index = next_frame;
+        if (RotationTrackMode == 3)
+        {
+            index = PalettedRotationTrack[frame];
+            next_index = PalettedRotationTrack[next_frame];
+            if (index == next_index)
+            {
+                dest.Rotation = RotationTrack[index];
+                goto rotation_done;
+            }
+        }
+        dest.Rotation.SetSlerp(RotationTrack[index], RotationTrack[next_index], w2);
+    }
+    else if (RotationTrackMode == 1)
+        dest.Rotation = RotationTrack[0];
+    else
+        dest.Rotation.SetIdentity();
+rotation_done:
+    if (PositionTrackMode & 2)
+    {
+        unsigned long index = frame;
+        unsigned long next_index = next_frame;
+        if (PositionTrackMode == 3)
+        {
+            index = PalettedPositionTrack[frame];
+            next_index = PalettedPositionTrack[next_frame];
+        }
+        const C3DVectorWord& position = PositionTrack[index];
+        const C3DVectorWord& next_position = PositionTrack[next_index];
+        dest.SetPosition(position * (w1 * PositionFactor) + next_position * (w2 * PositionFactor));
+    }
+    else if (PositionTrackMode == 1)
+        dest.SetPosition(PositionTrack[0] * PositionFactor);
+    else
+        dest.SetPosition(C3DVector(0.0f, 0.0f, 0.0f));
+}
 #endif
 #endif

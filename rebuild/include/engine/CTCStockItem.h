@@ -40,6 +40,9 @@ class CTCStockItem : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_STOCK_ITEM; }
     bool IsForSale() const { return ForSale; }
+#ifdef FABLE_RETAIL_BUY_FROM_SELLER_UPDATE_PASS30
+    unsigned long GetBuyersPhrase();
+#endif
 #ifdef FABLE_RETAIL_CTCSTOCKITEM_SETASFORSALE
     void SetAsForSale(bool for_sale) { ForSale = for_sale; }    // ?SetAsForSale@CTCStockItem@@QAEX_N@Z (inline)
 #endif

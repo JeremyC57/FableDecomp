@@ -361,4 +361,28 @@ void FABLE_FASTCALL stable_sort(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 #endif
+#ifdef FABLE_RETAIL_WHISPER_JUMP_FILTERS_PASS30
+// STLport 4.6 _algo.c. The retail distance instantiation is at 008AC060.
+namespace std {
+template<class _ForwardIter, class _Predicate>
+inline _ForwardIter FABLE_FASTCALL remove_if(_ForwardIter first, _ForwardIter last, _Predicate pred) {
+    first = find_if(first, last, pred);
+    if (first == last) return first;
+    _ForwardIter next = first;
+    return remove_copy_if(++next, last, first, pred);
+}
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_TRANSFORM_PASS30
+// 0080C74F and 0080C779 call the original 0080EC50 STLport algorithm.
+namespace std {
+template<class InputIter, class OutputIter, class UnaryOperation>
+inline OutputIter FABLE_FASTCALL transform(InputIter first, InputIter last, OutputIter result, UnaryOperation op)
+{
+    for (; first != last; ++first, ++result)
+        *result = op(*first);
+    return result;
+}
+}
+#endif
 #endif

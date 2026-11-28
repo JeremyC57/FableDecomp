@@ -117,7 +117,12 @@ public:
 #endif
 #endif
 protected:
-    void AddAutoMarker(const CThing& thing, long graphic_index);                                  // 0x0082A500
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+    void InitialiseRegionExitMarkers();
+    void AddAutoMarker(const CThing& thing,long graphic_index);
+#else
+    void AddAutoMarker(const CThing& thing, long graphic_index);
+#endif                                  // 0x0082A500
     bool DrawMarker(const CEnginePrimitivePrepareInfo& info, const CMarkerInfo& marker, long index,
                     const C2DBoxF& box, unsigned char alpha, bool front);                         // 0x0082A570
     void DrawMarkers(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082B7E0
@@ -230,4 +235,27 @@ FABLE_STATIC_ASSERT_AT(137, offsetof(CMiniMapDisplay, PRegion) == 0xb8);
 FABLE_STATIC_ASSERT_AT(138, offsetof(CMiniMapDisplay, UpdateRequired) == 0xbc);
 
 #endif // FABLE_RETAIL_CMINIMAPDISPLAY
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+// Native 0082C920 is the out-of-line insertion for this marker type.
+namespace std {
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+list<CMiniMapDisplay::CMarkerInfo>::iterator
+list<CMiniMapDisplay::CMarkerInfo>::insert(iterator position,const CMiniMapDisplay::CMarkerInfo& x) {
+    _List_node<CMiniMapDisplay::CMarkerInfo>* tmp=_M_create_node(x);
+    _List_node_base* n=position._M_node;
+    _List_node_base* p=n->_M_prev;
+    tmp->_M_next=n;
+    tmp->_M_prev=p;
+    p->_M_next=tmp;
+    n->_M_prev=tmp;
+    return iterator(tmp);
+}
+}
+inline void CMiniMapDisplay::AddAutoMarker(const CThing& thing,long graphic_index) {
+    if(graphic_index>0) Markers.push_back(CMarkerInfo(thing,graphic_index,true));
+}
+#endif
 #endif // FABLE_ENGINE_CMINIMAPDISPLAY_H

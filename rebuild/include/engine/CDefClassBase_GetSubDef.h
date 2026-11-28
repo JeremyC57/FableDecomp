@@ -186,4 +186,31 @@ bool CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef
 #pragma optimize("", on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CCONTEXTSENSITIVEITEMDEF_SIZE_BODY
+// The WallMount creature-action TU needs this visible body to keep the returned
+// def live across its two temporary releases. The call targets the
+// size-optimized 162-byte retail body at 0x005933C8. The scoped compiler options
+// reproduce that copy while preserving the caller's default options.
+// Inline-budget: the call at 00848350 stays out of line in the original action.
+#include "engine/CContextSensitiveItemDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CContextSensitiveItemDef>(CDefPointer<const CContextSensitiveItemDef>* def)const {
+ const CSubDefInfo* psub_def_info=GetPSubDefInfo(CContextSensitiveItemDef::StatGetTypeName());
+ if(psub_def_info){
+  CDefPointer<const CDefClassBase> pbase(PDefManager->GetPDefFromGlobalIndex(psub_def_info->DefIndex));
+  def->SetDynamicCast(pbase);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #endif

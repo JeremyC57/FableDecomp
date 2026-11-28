@@ -20,6 +20,10 @@ class C2DVector;
 class CDataInputStream : public CDataStream {
 public:
     CDataInputStream();
+#ifdef FABLE_RETAIL_ENTITY_LOAD_BINARY_PASS30
+    virtual ~CDataInputStream();
+#endif
+
     // retry11a: no user-declared destructor in retail -- every CMemoryDataInputStream / CDataInputStream local is
     // destroyed by a direct call to ~CDataStream 0x00993B10 (stores the CDataStream vtable 0x0129A69C, then jumps to
     // ~CBaseClassNonCopyable 0x0099A300) with no derived vtable store first (0x00520BFB, 0x00520C3F): both derived

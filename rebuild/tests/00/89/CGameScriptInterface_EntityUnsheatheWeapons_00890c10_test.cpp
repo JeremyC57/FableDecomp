@@ -6,38 +6,38 @@ static char g_seq[64] = "";
 static long g_arg[8];
 static void rec(const char* s) { std::strcat(g_seq, s); }
 static int g_strDtors = 0;
-class CCharString { public:
+class FixtureCCharString { public:
     const char* s;
-    CCharString() : s("") { }
-    CCharString(const char* t) : s(t) { }
-    CCharString(const char* t, long) : s(t) { }
-    CCharString(const CCharString& o) : s(o.s) { }
-    ~CCharString() { ++g_strDtors; }
-    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
+    FixtureCCharString() : s("") { }
+    FixtureCCharString(const char* t) : s(t) { }
+    FixtureCCharString(const char* t, long) : s(t) { }
+    FixtureCCharString(const FixtureCCharString& o) : s(o.s) { }
+    ~FixtureCCharString() { ++g_strDtors; }
+    const FixtureCCharString& operator=(const FixtureCCharString& o) { s = o.s; return *this; }
     bool operator==(const char* t) const { return std::strcmp(s, t) == 0; }
     bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
     bool IsEmpty() const { return s[0] == 0; }
 };
 static const char* g_strings[4] = { "", "DEF_ONE", "DEF_TWO", "DEF_THREE" };
-struct CDefStringTable_Retail { CCharString GetString(long index) { return CCharString(g_strings[index]); } };
-static CDefStringTable_Retail g_defStringTable;
-class CDefString { public:
+struct FixtureCDefStringTable_Retail { FixtureCCharString GetString(long index) { return FixtureCCharString(g_strings[index]); } };
+static FixtureCDefStringTable_Retail g_defStringTable;
+class FixtureCDefString { public:
     long m_index;
-    CDefString(long i) : m_index(i) { }
-    CDefString(const CDefString& o) : m_index(o.m_index) { }
-    bool operator==(const CCharString& name) const { return std::strcmp(g_strings[m_index], name.s) == 0; }
+    FixtureCDefString(long i) : m_index(i) { }
+    FixtureCDefString(const FixtureCDefString& o) : m_index(o.m_index) { }
+    bool operator==(const FixtureCCharString& name) const { return std::strcmp(g_strings[m_index], name.s) == 0; }
 };
-struct CTCBase_Retail { int x; };
-struct CInterfaceMap_Retail {
-    struct SEntry { long type; CTCBase_Retail* component; };
-    SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
+struct FixtureCTCBase_Retail { int x; };
+struct FixtureCInterfaceMap_Retail {
+    struct FixtureSEntry { long type; FixtureCTCBase_Retail* component; };
+    FixtureSEntry* first; FixtureSEntry* last;
+    FixtureSEntry* LowerBound(const long* type) { FixtureSEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-class CScriptThing;
-struct CThing_Retail {
+class FixtureCScriptThing;
+struct FixtureCThing_Retail {
     unsigned char m_type;
     unsigned long m_presentBits[9];
-    CInterfaceMap_Retail m_interfaces;
+    FixtureCInterfaceMap_Retail m_interfaces;
     unsigned char m_flags;
     unsigned char m_dead : 1;
     unsigned char m_91_1 : 7;
@@ -49,21 +49,21 @@ struct CThing_Retail {
     unsigned char m_marryableToHero : 1;
     unsigned char m_1c9_5 : 3;
     bool m_isPlayer;
-    CInterfaceMap_Retail::SEntry m_entries[6]; long m_entryCount;
+    FixtureCInterfaceMap_Retail::FixtureSEntry m_entries[6]; long m_entryCount;
     bool IsPlayer() { rec("P"); return m_isPlayer; }
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b) { rec("A"); g_arg[0] = (long)name.s; g_arg[1] = a; g_arg[2] = b; return 0; }
+    FixtureCTCBase_Retail* AddTC(const FixtureCCharString& name, long a, long b) { rec("A"); g_arg[0] = (long)name.s; g_arg[1] = a; g_arg[2] = b; return 0; }
     void RemoveTC(long type) { rec("R"); g_arg[0] = type; }
     void FinishCurrentAction() { rec("F"); }
     void SheatheAllWeapons() { rec("S"); }
     void UnsheatheAllWeapons() { rec("U"); }
-    void UnsheatheMeleeWeapon() { rec("M"); }
+    void UnsheathePrimaryWeapon() { rec("M"); }
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving) { rec("G"); g_arg[3] = giving; }
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
-            CInterfaceMap_Retail* map = &m_interfaces;
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
+            FixtureCInterfaceMap_Retail* map = &m_interfaces;
+            FixtureCInterfaceMap_Retail::FixtureSEntry* it = map->LowerBound(&type);
             if (it == map->last || interfaceType < it->type)
                 it = map->last;
             *ppOut = (T*)it->component;
@@ -72,7 +72,7 @@ struct CThing_Retail {
         return false;
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    CThing_Retail() { Reset(); }
+    FixtureCThing_Retail() { Reset(); }
     void Reset()
     {
         m_type = 0; std::memset(m_presentBits, 0, sizeof(m_presentBits)); m_flags = 0; m_dead = 0; m_91_1 = 0;
@@ -83,123 +83,123 @@ struct CThing_Retail {
     void AddComponent(long type, void* comp)   // keeps the entries sorted; the end entry carries a null component
     {
         long i = m_entryCount; while (i > 0 && m_entries[i - 1].type > type) { m_entries[i] = m_entries[i - 1]; --i; }
-        m_entries[i].type = type; m_entries[i].component = (CTCBase_Retail*)comp; ++m_entryCount;
+        m_entries[i].type = type; m_entries[i].component = (FixtureCTCBase_Retail*)comp; ++m_entryCount;
         m_interfaces.last = m_entries + m_entryCount; m_entries[m_entryCount].type = 0x7fffffff; m_entries[m_entryCount].component = 0;
         m_presentBits[type >> 5] |= (1UL << (type & 31));
     }
 };
 static bool g_valid = true;
-class CScriptThing { public:
-    CThing_Retail* m_pThing;
-    CThing_Retail* GetThing() const { rec("g"); return m_pThing; }
+class FixtureCScriptThing { public:
+    FixtureCThing_Retail* m_pThing;
+    FixtureCThing_Retail* GetThing() const { rec("g"); return m_pThing; }
     bool IsValid() const { rec("v"); return g_valid; }
 };
 // components
-struct CExpression_Retail { long m_def; CDefString GetDefName() const { rec("D"); return CDefString(m_def); } };
-struct CTCHeroExpression_Retail { CExpression_Retail* m_pCurrentExpression; };
-struct CTCInventory_Retail {
+struct FixtureCExpression_Retail { long m_def; FixtureCDefString GetDefName() const { rec("D"); return FixtureCDefString(m_def); } };
+struct FixtureCTCHeroExpression_Retail { FixtureCExpression_Retail* m_pCurrentExpression; };
+struct FixtureCTCInventory_Retail {
     bool m_held;
     bool IsButtonHeldForExpression(long button) { rec("B"); g_arg[0] = button; return m_held; }
     float GetBestFishWeight(long defIndex) { rec("W"); g_arg[1] = defIndex; return 2.5f; }
 };
-struct CTCFishing_Retail { void GoFishing(const CScriptThing& spot) { rec("O"); g_arg[0] = (long)&spot; } };
-struct CTCOracleMinigame_Retail { void* m_pGame; };
-struct CTCChest_Retail { long GetNumberOfKeysToUnlock(CCharString& keyName) { rec("K"); keyName = "KEY"; return 3; } };
-struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();
-    long GetDefGlobalIndexFromName(const CCharString& name) { rec("I"); return std::strcmp(name.s, "FISH") == 0 ? 77 : 0; }
+struct FixtureCTCFishing_Retail { void GoFishing(const FixtureCScriptThing& spot) { rec("O"); g_arg[0] = (long)&spot; } };
+struct FixtureCTCOracleMinigame_Retail { void* m_pGame; };
+struct FixtureCTCChest_Retail { long GetNumberOfKeysToUnlock(FixtureCCharString& keyName) { rec("K"); keyName = "KEY"; return 3; } };
+struct FixtureCGameDefinitionManager_Retail {
+    static FixtureCGameDefinitionManager_Retail& Get();
+    long GetDefGlobalIndexFromName(const FixtureCCharString& name) { rec("I"); return std::strcmp(name.s, "FISH") == 0 ? 77 : 0; }
 };
-static CGameDefinitionManager_Retail g_gameDefs;
-CGameDefinitionManager_Retail& CGameDefinitionManager_Retail::Get() { return g_gameDefs; }
+static FixtureCGameDefinitionManager_Retail g_gameDefs;
+FixtureCGameDefinitionManager_Retail& FixtureCGameDefinitionManager_Retail::Get() { return g_gameDefs; }
 static const float g_noFishWeight = 0.0f;
-struct CPlayer_Retail {
-    CThing_Retail* m_pHero;
-    CThing_Retail* GetHeroThing() { rec("h"); return m_pHero; }
-    CThing_Retail* GetControlledCreature() { rec("c"); return m_pHero; }
+struct FixtureCPlayer_Retail {
+    FixtureCThing_Retail* m_pHero;
+    FixtureCThing_Retail* GetHeroThing() { rec("h"); return m_pHero; }
+    FixtureCThing_Retail* GetControlledCreature() { rec("c"); return m_pHero; }
 };
-static CPlayer_Retail g_player;
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetPlayer() { return &g_player; }
-    CPlayer_Retail* GetMainPlayer() { return &g_player; }
+static FixtureCPlayer_Retail g_player;
+struct FixtureCPlayerManager_Retail {
+    FixtureCPlayer_Retail* GetPlayer() { return &g_player; }
+    FixtureCPlayer_Retail* GetMainPlayer() { return &g_player; }
     void UnfreezePlayerControls(long player) { rec("Z"); g_arg[5] = player; }
 };
 // world
-struct CRegionDef_Retail {
+struct FixtureCRegionDef_Retail {
     long m_refCount; long m_def; int m_deleted;
-    CDefString m_wanderingPopulationScriptDef;
-    CRegionDef_Retail() : m_refCount(1), m_def(1), m_deleted(0), m_wanderingPopulationScriptDef(2) { }
+    FixtureCDefString m_wanderingPopulationScriptDef;
+    FixtureCRegionDef_Retail() : m_refCount(1), m_def(1), m_deleted(0), m_wanderingPopulationScriptDef(2) { }
     void AddRef() { ++m_refCount; }
     void DeleteThis() { ++m_deleted; }
-    CDefString GetDefName() const { return CDefString(m_def); }
+    FixtureCDefString GetDefName() const { return FixtureCDefString(m_def); }
 };
-template<class T> class CCountedPointer { public:
+template<class T> class FixtureCCountedPointer { public:
     T* Data;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) Data->AddRef(); }
-    ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
-    explicit CCountedPointer(T* data) : Data(data) { if (Data) Data->AddRef(); }
+    FixtureCCountedPointer(const FixtureCCountedPointer& other) : Data(other.Data) { if (Data) Data->AddRef(); }
+    ~FixtureCCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
+    explicit FixtureCCountedPointer(T* data) : Data(data) { if (Data) Data->AddRef(); }
     T* operator->() const { return Data; }
     bool IsNull() const { return Data == 0; }
 };
-struct CRegion_Retail {
-    CCountedPointer<CRegionDef_Retail> m_pDef;
+struct FixtureCRegion_Retail {
+    FixtureCCountedPointer<FixtureCRegionDef_Retail> m_pDef;
     bool m_creatureGenerationEnabled;
-    CRegion_Retail() : m_pDef(0), m_creatureGenerationEnabled(false) { }
+    FixtureCRegion_Retail() : m_pDef(0), m_creatureGenerationEnabled(false) { }
 };
-struct CWorldMap_Retail {
-    CRegion_Retail m_regions[4]; long m_current;
+struct FixtureCWorldMap_Retail {
+    FixtureCRegion_Retail m_regions[4]; long m_current;
     long GetCurrentRegionNumber() { return m_current; }
-    CRegion_Retail& GetRegion(long region) { return m_regions[region]; }
-    CRegion_Retail& GetRegionEntry(long region) { return m_regions[region]; }
-    long GetRegionNumberFromName(const CCharString& name) { return std::strcmp(name.s, "TWO") == 0 ? 2 : (std::strcmp(name.s, "ZERO") == 0 ? 0 : -1); }
+    FixtureCRegion_Retail& GetRegion(long region) { return m_regions[region]; }
+    FixtureCRegion_Retail& GetRegionEntry(long region) { return m_regions[region]; }
+    long GetRegionNumberFromName(const FixtureCCharString& name) { return std::strcmp(name.s, "TWO") == 0 ? 2 : (std::strcmp(name.s, "ZERO") == 0 ? 0 : -1); }
 };
-struct CCombatManager_Retail { void CreatureUnsheathWeapon(CThing_Retail* creature, long mode) { rec("C"); g_arg[0] = (long)creature; g_arg[1] = mode; } };
-class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
-struct CMessageEventManager_Retail {
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data)
+struct FixtureCCombatManager_Retail { void CreatureUnsheathWeapon(FixtureCThing_Retail* creature, long mode) { rec("C"); g_arg[0] = (long)creature; g_arg[1] = mode; } };
+class FixtureC3DVector { public: float X, Y, Z; FixtureC3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+struct FixtureCMessageEventManager_Retail {
+    void* AddMessage(long type, unsigned long delay, const FixtureC3DVector& position, FixtureCThing_Retail* from, FixtureCThing_Retail* to, float value1, float value2, long data)
     { rec("m"); g_arg[0] = type; g_arg[1] = (long)delay; g_arg[2] = (long)(position.X + position.Y + position.Z); g_arg[3] = (long)from + (long)to; g_arg[4] = (long)(value1 + value2); g_arg[6] = data; return 0; }
 };
-struct CAIGameCameraBase_Retail { void ScriptEnd() { rec("E"); } };
-class CWorld { public:
-    CWorldMap_Retail m_map; CCombatManager_Retail m_combat; CMessageEventManager_Retail m_messages; CAIGameCameraBase_Retail m_camera;
-    CCombatManager_Retail* m_pCombatManager;
-    CMessageEventManager_Retail* PMessageEventManager_Data;
-    CAIGameCameraBase_Retail* PCurrentGameCamera;
+struct FixtureCAIGameCameraBase_Retail { void ScriptEnd() { rec("E"); } };
+class FixtureCWorld { public:
+    FixtureCWorldMap_Retail m_map; FixtureCCombatManager_Retail m_combat; FixtureCMessageEventManager_Retail m_messages; FixtureCAIGameCameraBase_Retail m_camera;
+    FixtureCCombatManager_Retail* m_pCombatManager;
+    FixtureCMessageEventManager_Retail* PMessageEventManager_Data;
+    FixtureCAIGameCameraBase_Retail* PCurrentGameCamera;
     bool m_creatureGeneratorsEnabled;
-    CWorldMap_Retail* GetWorldMap() { return &m_map; }
-    CWorldMap_Retail* PeekWorldMap() { return &m_map; }
+    FixtureCWorldMap_Retail* GetWorldMap() { return &m_map; }
+    FixtureCWorldMap_Retail* PeekWorldMap() { return &m_map; }
 };
-struct CQuestManager_Retail { bool m_allowed; bool IsCreatureGenerationAllowed() { return m_allowed; } };
-static CQuestManager_Retail g_questManager;
-static CQuestManager_Retail* g_pQuestManager = &g_questManager;
-struct CPlayerGui_Retail { void Close() { rec("X"); } };
-static CPlayerGui_Retail g_gui;
-static CPlayerGui_Retail* g_pPlayerGui = &g_gui;
-struct CDisplayEngine_Retail { void EndScreenFadeOut() { rec("Y"); } };
-class CGameScriptInterface { public:
-    CWorld* World;
-    CDisplayEngine_Retail* DisplayEngine;
-    CPlayerManager_Retail* PlayerManager;
+struct FixtureCQuestManager_Retail { bool m_allowed; bool IsCreatureGenerationAllowed() { return m_allowed; } };
+static FixtureCQuestManager_Retail g_questManager;
+static FixtureCQuestManager_Retail* g_pQuestManager = &g_questManager;
+struct FixtureCPlayerGui_Retail { void Close() { rec("X"); } };
+static FixtureCPlayerGui_Retail g_gui;
+static FixtureCPlayerGui_Retail* g_pPlayerGui = &g_gui;
+struct FixtureCDisplayEngine_Retail { void EndScreenFadeOut() { rec("Y"); } };
+class FixtureCGameScriptInterface { public:
+    FixtureCWorld* World;
+    FixtureCDisplayEngine_Retail* DisplayEngine;
+    FixtureCPlayerManager_Retail* PlayerManager;
     long CurrentPlayer;
     void SheatheHeroWeapons() const { rec("H"); }
-    void GiveHeroItem(const CScriptThing& thing) const { rec("i"); g_arg[7] = (long)&thing; }
-    bool GiveHeroItemsFromContainer(const CScriptThing& container, bool flag) const { rec("j"); g_arg[7] = (long)&container + flag; return true; }
-    void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing&, bool flag) const { rec("1"); g_arg[1] = flag; }
-    void EntitySetAsToAddToStatChangesWhenHit(const CScriptThing&, bool flag) const { rec("2"); g_arg[2] = flag; }
+    void GiveHeroItem(const FixtureCScriptThing& thing) const { rec("i"); g_arg[7] = (long)&thing; }
+    bool GiveHeroItemsFromContainer(const FixtureCScriptThing& container, bool flag) const { rec("j"); g_arg[7] = (long)&container + flag; return true; }
+    void EntitySetAsToAddToComboMultiplierWhenHit(const FixtureCScriptThing&, bool flag) const { rec("1"); g_arg[1] = flag; }
+    void EntitySetAsToAddToStatChangesWhenHit(const FixtureCScriptThing&, bool flag) const { rec("2"); g_arg[2] = flag; }
     void EndLetterBox() { rec("L"); }
     void UnfreezeControls()
     {
-        CThing_Retail* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
+        FixtureCThing_Retail* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
         if (creature && !creature->m_dead)
             PlayerManager->UnfreezePlayerControls(CurrentPlayer);
     }
-    void EntityUnsheatheWeapons(const CScriptThing& thing, bool flag) const;
+    void EntityUnsheatheWeapons(const FixtureCScriptThing& thing, bool flag) const;
 };
-static CWorld g_world;
-static CDisplayEngine_Retail g_display;
-static CPlayerManager_Retail g_players;
-static CGameScriptInterface g_gsi;
-static CThing_Retail g_hero, g_thing;
-static CScriptThing g_script;
+static FixtureCWorld g_world;
+static FixtureCDisplayEngine_Retail g_display;
+static FixtureCPlayerManager_Retail g_players;
+static FixtureCGameScriptInterface g_gsi;
+static FixtureCThing_Retail g_hero, g_thing;
+static FixtureCScriptThing g_script;
 static void setup()
 {
     g_seq[0] = 0; std::memset(g_arg, 0, sizeof(g_arg)); g_valid = true; g_strDtors = 0;
@@ -213,10 +213,10 @@ static void setup()
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", ADDR, __LINE__); return 1; } } while (0)
 #define SEQ(x) (std::strcmp(g_seq, x) == 0)
 
-void CGameScriptInterface::EntityUnsheatheWeapons(const CScriptThing& thing, bool flag) const
+void FixtureCGameScriptInterface::EntityUnsheatheWeapons(const FixtureCScriptThing& thing, bool flag) const
 {
     if (thing.IsValid()) {
-        CThing_Retail* creature = thing.GetThing();
+        FixtureCThing_Retail* creature = thing.GetThing();
         if (creature->m_flags & 8) {
             if (!creature->IsPlayer()) {
                 creature->FinishCurrentAction();
@@ -225,7 +225,7 @@ void CGameScriptInterface::EntityUnsheatheWeapons(const CScriptThing& thing, boo
                 else
                     World->m_pCombatManager->CreatureUnsheathWeapon(creature, 2);
             } else {
-                creature->UnsheatheMeleeWeapon();
+                creature->UnsheathePrimaryWeapon();
             }
         }
     }

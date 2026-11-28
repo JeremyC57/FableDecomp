@@ -1,3 +1,4 @@
+enum EHeroAttachableAppearanceModifierType { APPEARANCE_HAIR, APPEARANCE_HORN, APPEARANCE_CLOTHING };
 // Behaviour test for 00706450: src/00706450.cpp copied verbatim; true when a worn modifier of the type has an appearance
 // def whose CoversBodyAreaFlags intersect the asked flags; every def reference taken is released.
 #include <cstdio>
@@ -93,10 +94,10 @@ public:
     unsigned char _pad08[0x30 - 0x08];
     CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
     const CDefinitionHolder* GetDefinitions() const;   // 0x006869D0 (CTCBase)
-    bool IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, long type) const;
+    bool IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, EHeroAttachableAppearanceModifierType type) const;
 };
 
-bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, long type) const
+bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, EHeroAttachableAppearanceModifierType type) const
 {
     const CRetailVector<CModifierEntry>& entries = AppearanceModifiers._M_start[type];
     for (const CModifierEntry* it = entries._M_start; it != entries._M_finish; ++it) {
@@ -133,17 +134,17 @@ int main()
     CTCHeroAttachableAppearanceModifiers& mods = *(CTCHeroAttachableAppearanceModifiers*)buf;
     mods.AppearanceModifiers._M_start = lists;
 
-    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, 1) && g_getDefs == 4);
+    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, APPEARANCE_HORN) && g_getDefs == 4);
     CHECK(t1.RefCount == 1 && t2.RefCount == 1 && t3.RefCount == 1 && m2.RefCount == 1 && m3.RefCount == 1 && g_destroyed == 0);
     g_getDefs = 0;
-    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x1, 1) && g_getDefs == 3);
+    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x1, APPEARANCE_HORN) && g_getDefs == 3);
     g_getDefs = 0;
-    CHECK(!mods.IsWearingAppearanceModifierCoveringBodyArea(0x8, 1) && g_getDefs == 4 && g_destroyed == 0);
-    CHECK(!mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, 2) && !mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, 0));
+    CHECK(!mods.IsWearingAppearanceModifierCoveringBodyArea(0x8, APPEARANCE_HORN) && g_getDefs == 4 && g_destroyed == 0);
+    CHECK(!mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, APPEARANCE_CLOTHING) && !mods.IsWearingAppearanceModifierCoveringBodyArea(0x4, APPEARANCE_HAIR));
 
     // the hit path releases the last references
     t3.RefCount = 0; m3.RefCount = 0;
-    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x2, 1) && g_destroyed == 2);
+    CHECK(mods.IsWearingAppearanceModifierCoveringBodyArea(0x2, APPEARANCE_HORN) && g_destroyed == 2);
 
     if (fails == 0) printf("00706450_TEST PASS\n");
     return fails;

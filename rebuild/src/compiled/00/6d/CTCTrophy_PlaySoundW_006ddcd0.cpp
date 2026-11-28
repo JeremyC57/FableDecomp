@@ -1,3 +1,4 @@
+// Flags: 
 // CTCTrophy::PlaySoundW(const CCharString&) -- plays a sound through the owner's sound component (interface 16) and returns its handle, or the invalid handle when the owner has no sound component
 // Leaf: ?PlaySoundW@CTCTrophy@@AAEKABVCCharString@@@Z
 // NF33 (2026-11-16): access per Ego_r.pdb + FableWin.pdb (private AAE: StartDialogBox, PlaySoundW, UpdateGainedWitnessSounds; engine/CTCTrophy.h).
@@ -23,7 +24,7 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-extern unsigned long g_InvalidSoundHandle;  // 0x0129D25C
+extern const unsigned long INVALID_SAMPLE_ID;  // 0x0129D25C
 
 class CTCTrophy { public:
     void*   __vftable;                      // +0x00
@@ -37,5 +38,5 @@ unsigned long CTCTrophy::PlaySoundW(const CCharString& name)
     CTCSoundPlayer* sound;
     if (Thing->HasTC(TCI_SOUND_PLAYER) && Thing->GetTC(TCI_SOUND_PLAYER, &sound))
         return sound->PlayAttachedCriteria(name, true, 0, 0, -1);
-    return g_InvalidSoundHandle;
+    return INVALID_SAMPLE_ID;
 }

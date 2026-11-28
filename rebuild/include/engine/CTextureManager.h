@@ -34,6 +34,9 @@ FABLE_STATIC_ASSERT_AT(24, sizeof(CTextureManager) == 0x5d4);
 // CManagedTextureData> > +0x48 (12 bytes); the first 0x3C bytes are unnamed in the PDB extract (opaque). ?Allocate@CPreallocTexturePool@@
 // QAEPAVCManagedTextureData@@XZ is retail 0x00A69830. No shared header for the pool yet.
 class CManagedTexture;class CManagedTextureData;class CManagedTextureOwner;class CPixelFormat;
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+#include "engine/CPreallocTexturePool.h"
+#else
 class CPreallocTexturePool {
 public:
     CManagedTextureData* Allocate();                                     // 0x00A69830
@@ -43,6 +46,7 @@ public:
     long          PoolIndex;                                             // +0x44
     unsigned char Textures[0xc];                                         // +0x48 CArray<CIVCountedPointer<CManagedTextureData> >
 };
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTEXTUREMANAGER_INITIALISE
 // Retail opt-in (wfE7, row 0x00B3CB30 CEngineResourceManager::CEngineResourceManager): Ego_r.pdb CTextureManagerPoolInfo (20 bytes:
@@ -70,6 +74,9 @@ class CGraphicFrame;class CManagedTexture;
 #endif
 class CTextureManager {
 public:
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+    bool ResizePoolTextureCount(unsigned long texture_size, unsigned long count); // 0x00A6ABE0
+#endif
 #ifdef FABLE_RETAIL_CTEXTUREMANAGER_REUSEBUSY
     // hand3c opt-in (row 0x00B53F60 CEngineWeatherRenderer::FrameStart): FableWin.pdb ?GetReuseBusyTextures@CTextureManager@@SI_NXZ /
     // ?SetReuseBusyTextures@CTextureManager@@SIX_N@Z (static __fastcall inlines, COMDATs of the debug Engine_Weather_Renderer.obj) over

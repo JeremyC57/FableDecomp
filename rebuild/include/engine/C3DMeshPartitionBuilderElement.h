@@ -17,6 +17,9 @@ class C3DMeshPartitionBuilderElement {
     C3DBoundingSphere BoundingSphere;
     CArray<C3DTriangle2> Triangles;
     C3DMeshPartitionBuilderElement* SubElements[2];
+#ifdef FABLE_RETAIL_MESH_PARTITION_BUILD_OUTPUT_PASS30
+    void BuildOutput(class C3DMeshPartitionElement* element, CArray<C3DTriangle2>* ordered_tri_list);
+#endif
     long PartitionSpace(const C3DVertex2*,long,float);
 public:
     C3DMeshPartitionBuilderElement() { SubElements[0]=0; SubElements[1]=0; }

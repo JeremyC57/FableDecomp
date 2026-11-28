@@ -7,6 +7,12 @@ class C3DVertex2 {
 public:
     C3DVector Position,Normal;
     float U,V;
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+    C3DVertex2() {}
+    void SetPosition(const C3DVector& value) { Position=value; }
+    void SetNormal(const C3DVector& value) { Normal=value; }
+    void SetTextureCoord(const C2DVector& value) { U=value.X; V=value.Y; }
+#endif
     const C3DVector GetPosition() const { return Position; }
     const C3DVector GetNormal() const { return Normal; }
     float GetU() const { return U; }

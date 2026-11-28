@@ -138,6 +138,9 @@ public:
     void FrameEnd();
 #endif
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+    bool GetGraphicFrameMipmap(CGraphicFrame&,unsigned long,unsigned long,long,unsigned long) const;
+#endif
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
 #if defined(FABLE_RETAIL_CGRAPHICDATABANK_TEXTUREMANAGERACCESS) || defined(FABLE_RETAIL_CGRAPHICDATABANK_GETPIXELFORMAT)
     // agentC27 (row 0x009FDE80): FableWin.pdb ?GetPixelFormat@CGraphicDataBank@@QBE?AVCPixelFormat@@W4ETextureType@1@@Z (34 debug bytes)

@@ -14,6 +14,11 @@
 #include "engine/C2DVector.h"
 #include "engine/C2DBoxF.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+#include "engine/CBaseClassNonCopyable.h"
+// The editor debug module names the file-scope seven-element array LEVEL_SIZE.
+extern const float LEVEL_SIZE[7];
+#endif
 #ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
 #include "engine/CBaseClassNonCopyable.h"
 #endif
@@ -37,6 +42,9 @@ enum ENavQuadTreeNodeType {                          // Ego_r enum; enumerator n
 };
 #endif
 class CANavQuadTreeNode
+#if defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30) && !defined(FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR)
+    : public CBaseClassNonCopyable
+#endif
 #ifdef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
     : public CBaseClassNonCopyable
 #endif
@@ -50,17 +58,39 @@ public:
     CANavQuadTreeNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer)
         : Position(pos), QuadTreeLevel(quad_tree_level), NavLayer(nav_layer), LeafNode(true), Blocked(false) { }
 #endif
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+    friend class CNavQuadTree;
+#ifndef FABLE_RETAIL_CANAVQUADTREENODE_GENERATOR_CTOR
+    CANavQuadTreeNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer);
+#endif
+#endif
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual ~CANavQuadTreeNode() {}
+#else
     virtual ~CANavQuadTreeNode();                                                        // slot 0
+#endif
     virtual const CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours() const;      // slot 2
     virtual CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours();                  // slot 1
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual bool HasNeighbours() const = 0;
+#else
     virtual bool HasNeighbours() const;                                                  // slot 3
+#endif
     virtual bool IsNeighbourOf(const CANavQuadTreeNode*) const;                          // slot 4
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual long GetRegionID() const = 0;
+#else
     virtual long GetRegionID() const;                                                    // slot 5 (+0x14)
+#endif
 #ifdef FABLE_RETAIL_NAV_NODETYPE_ORIGINAL_POLYMORPHISM_PASS23
     // Both original PDBs: pure introducing slot24. Native base table129cbbc+18 is purecall.
     virtual ENavQuadTreeNodeType GetNodeType() const=0;
 #else
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+    virtual ENavQuadTreeNodeType GetNodeType() const = 0;
+#else
     virtual ENavQuadTreeNodeType GetNodeType() const;
+#endif
 #endif                                    // slot 6 (+0x18)
     virtual const CNavRegion* GetRegion() const;                                         // slot 7
     virtual unsigned char GetPreferabilityCost() const;                                  // slot 8
@@ -78,12 +108,48 @@ protected:
     // protected slot 11 (`jmp [eax+2Ch]` on TLNode..BRNode, CANavQuadTreeNode*), so the original grants CNavQuadTreeNode access too.
     friend class CNavQuadTreeNode;
 #endif
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const = 0;
+#else
     virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;              // slot 11
+#endif
 public:
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+protected:
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&) = 0;
+public:
+#elif defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30)
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&) = 0;
+#else
     virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);          // slot 12 (+0x30)
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&) = 0;
+#elif defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+protected:
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&) = 0;
+public:
+#else
     virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);  // slot 13
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30
+    virtual bool RemoveRegionZero() = 0;
+#elif defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+protected:
+    virtual bool RemoveRegionZero() = 0;
+public:
+#else
     virtual bool RemoveRegionZero();                                                     // slot 14 (+0x38)
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const = 0;
+#elif defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+protected:
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const = 0;
+public:
+#else
     virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;   // slot 15
+#endif
     // slots 16..22 (SetUpNeighboursWithLeaf, SetUpNeighbours, CalculateChildrenNeighbours, RemoveNeighbours, AddToIndexTable,
     // SaveToFile, ConvertIndexesToPointers) are not called through this model; not declared.
 #if defined(FABLE_RETAIL_CANAVQUADTREENODE_SAVETOFILE) || defined(FABLE_RETAIL_CANAVQUADTREENODE_LOADSLOTS)
@@ -100,9 +166,21 @@ protected:
     virtual void SetUpNeighbours(enum ENavQuadTreeNeighbours, CANavQuadTreeNode*);                          // slot 17
     virtual void CalculateChildrenNeighbours();                                                             // slot 18
     virtual void RemoveNeighbours();                                                                        // slot 19
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const = 0;
+#else
     virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;                   // slot 20 (+0x50)
+#endif
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const = 0;
+#else
     virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;   // slot 21 (+0x54)
+#endif
+#if defined(FABLE_RETAIL_NAV_WIDTH_NODE_DTOR_PASS30) || defined(FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30)
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&) = 0;
+#else
     virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);                       // slot 22
+#endif
 public:
 #endif
     // Ego_r ?GetSize@CANavQuadTreeNode@@QBEMXZ (out of line in Ego_r, inline in retail) and ?GetAreaCovering@CANavQuadTreeNode@@
@@ -113,7 +191,11 @@ public:
     // 0x00A1C4CD, as IsRouteClear 0x00A1A66C) where the inline body below would be expanded.
     float GetSize() const;                                                               // 0x00A75B30
 #else
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+    float GetSize() const { return LEVEL_SIZE[QuadTreeLevel]; }
+#else
     float GetSize() const { return g_QuadTreeLevelSizes[QuadTreeLevel]; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CANAVQUADTREENODE_AREA_OUTOFLINE
     // Nested opt-in (chunk 784, row 0x00A15890 CNavigatorManager::OutputWorld): that /O2 TU calls the out-of-line copy 0x00A763B0

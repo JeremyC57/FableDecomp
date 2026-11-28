@@ -22,6 +22,14 @@ public:
 };
 class CEAXListener:public CCodaObjectBase {
 public:
+#ifdef FABLE_RETAIL_CEAXLISTENER_CREATE_PASS30
+    // Both original SDK libraries identify the enum-argument constructor.
+    explicit CEAXListener(EAXVERSION);
+#endif
+#ifdef FABLE_RETAIL_CCODAEAX_SOURCE_BINDERS
+    // CODAApi release and debug CodaEAX.obj name this call from SetEAX4FXSlot.
+    int EAX4FXSlot(unsigned long, unsigned long, void*, unsigned long, _CHANGES**);
+#endif
 #ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
  // Both original EAXListener.obj variants; native00c60410/00c609a0.
  void DeleteChangesList();

@@ -57,6 +57,30 @@ extern "C" int optionSafe;
 int __fastcall RetrieveStringByLanguage(HINSTANCE,unsigned long,char*,unsigned long,unsigned short);
 extern "C" int __fastcall RetrieveString(HINSTANCE,unsigned long,char*,unsigned long);
 extern "C" int __fastcall LocalizedDialogBox(HINSTANCE,const char*,HWND,DLGPROC);
+#ifdef FABLE_RETAIL_ERROR_DIALOG_PROC_PASS30
+#include "engine/Win32Types.h"
+
+// Windows SDK callback messages, result codes and dialog API declarations.
+#define WM_CLOSE 0x0010
+#define WM_INITDIALOG 0x0110
+#define WM_COMMAND 0x0111
+#define IDCANCEL 2
+#define SW_SHOWNORMAL 1
+#define LOWORD(value) ((WORD)(DWORD)(value))
+extern "C" {
+__declspec(dllimport) UINT __stdcall IsDlgButtonChecked(HWND,int);
+__declspec(dllimport) BOOL __stdcall EndDialog(HWND,int);
+__declspec(dllimport) HINSTANCE __stdcall ShellExecuteA(HWND,const char*,const char*,const char*,const char*,int);
+__declspec(dllimport) BOOL __stdcall GetWindowRect(HWND,RECT*);
+__declspec(dllimport) HWND __stdcall GetDesktopWindow();
+__declspec(dllimport) BOOL __stdcall MoveWindow(HWND,int,int,int,int,BOOL);
+__declspec(dllimport) BOOL __stdcall SetWindowTextA(HWND,const char*);
+__declspec(dllimport) BOOL __stdcall SetDlgItemTextA(HWND,int,const char*);
+__declspec(dllimport) HWND __stdcall GetDlgItem(HWND,int);
+__declspec(dllimport) BOOL __stdcall EnableWindow(HWND,BOOL);
+}
+int __fastcall ConvertStaticToHyperlink(HWND);
+#endif
 int __stdcall ErrorDialogProc(HWND,UINT,WPARAM,LPARAM);
 extern "C" void __fastcall ClearDirtyExitFlag();
 extern "C" int __stdcall DisplayErrorDialog(int*,int);

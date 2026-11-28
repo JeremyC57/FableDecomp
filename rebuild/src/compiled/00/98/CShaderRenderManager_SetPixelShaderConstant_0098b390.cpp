@@ -1,5 +1,6 @@
+// Flags: 
 // CShaderRenderManager::SetPixelShaderConstant(const CCharString& name, const C4DVector& value) -- look the named pixel-shader constant up (adding a new name + table slot when it is unknown or unassigned), store the value in its slot and mark the pixel-shader constants dirty
-// Leaf: SetPixelShaderConstant
+// Leaf: ?SetPixelShaderConstant@CShaderRenderManager@@QAEXABVCCharString@@ABVC4DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098B390, length 144 bytes (140 + int3 padding).
 // Callees: the PSConstNames index map's find @ 0x0042B467 (returns the node pointer in eax; the header
 // node is end()), CIndexedArray<CCharString>::Add @ 0x0098DB20 (manifest "CVectorMap_Insert_Morphs"),
@@ -26,11 +27,13 @@ struct CNameIndexNode {                          // STLport _Rb_tree_node<pair<c
     long            index;                       // +0x14
 };
 
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 struct CNameIndexMap {                           // map<CCharString, long>
     CNameIndexNode* header;                      // +0x00 end()
     unsigned long   count;                       // +0x04
     unsigned long   compare;                     // +0x08
-    CNameIndexNode* find(const CCharString& name);   // 0x0042B467
 };
 
 struct CIndexedCharStringArray {                 // CIndexedArray<CCharString>
@@ -62,7 +65,7 @@ void CShaderRenderManager::SetPixelShaderConstant(const CCharString& name, const
 {
     long index;
     CIndexedCharStringArray& names = PSConstNames;
-    CNameIndexNode* it = names.Map.find(name);
+    CNameIndexNode* it = reinterpret_cast<CNameIndexNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&names.Map)->find(name)._M_node);
     if (it == names.Map.header || (index = it->index) == -1) {
         index = PSConstTable.size();
         names.Add(name);

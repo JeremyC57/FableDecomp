@@ -826,7 +826,27 @@ public:
     // byte below 0x80; its twin 0x0099ED10 calls tolower, ?GetAsLowerCase@CCharString@@QBE?AV1@XZ). Declaration only.
     CCharString GetAsUpperCase() const;                        // 0x0099EE20
 #endif
-#if defined(FABLE_RETAIL_CCHARSTRING_REPLACE_EGOD_PASS24)
+#if defined(FABLE_RETAIL_ENGINE_LOADSCENE_STRING_PASS30)
+    // FableWin 018D9CA0 and Ego_d: res and prev both start at data; the search and null branch are inside while(true).
+    FABLE_FORCEINLINE void Replace(const CCharString& What, const CCharString& With) {
+        CCharString ret_str;
+        char* data = (char*)GetAsCharArray();
+        char* what = (char*)What.GetAsCharArray();
+        char* res = data;
+        char* prev = data;
+        while (true) {
+            res = strstr(res, what);
+            if (!res) break;
+            *res = 0;
+            res += strlen(what);
+            ret_str += CCharString(prev);
+            ret_str += With;
+            prev = res;
+        }
+        ret_str += CCharString(prev);
+        *this = ret_str;
+    }
+#elif defined(FABLE_RETAIL_CCHARSTRING_REPLACE_EGOD_PASS24)
     // Inline-budget: four complete CCharString::Replace bodies occur in 005253F0.
     FABLE_FORCEINLINE void Replace(const CCharString& What,const CCharString& With) {
         CCharString ret_str;
@@ -905,6 +925,10 @@ long FABLE_FASTCALL GFCharStringToInt(const CCharString&);
 CCharString FABLE_FASTCALL operator+(
     const CCharString& left,
     const char* right);
+#ifdef FABLE_RETAIL_CCHARSTRING_CONCAT_CHAR_PASS30
+// Both donor PDBs and the call at 00CBFB2D name this character overload.
+CCharString FABLE_FASTCALL operator+(const CCharString&, char);
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING
 // Codex pass 13: the free ??H@YI?AVCCharString@@PBDABV0@@Z (Ego_r + FableWin; `const char*` + CCharString, __fastcall).
 CCharString FABLE_FASTCALL operator+(const char*,const CCharString&);

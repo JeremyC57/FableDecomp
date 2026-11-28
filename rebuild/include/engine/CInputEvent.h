@@ -14,9 +14,22 @@ class C2DVector;
 class C2DVector;
 class C3DVector;
 #endif
-enum EInputKey { };
+enum EInputKey {
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30
+    KB_HASH = 0x29  // EInputKey in FableWin 0x26D4, Ego_r 0x3094, and Ego_d 0x26D4.
+#endif
+};
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+enum EInputDeviceType { INPUT_DEVICE_TYPE_NULL, INPUT_DEVICE_TYPE_JOYSTICK, INPUT_DEVICE_TYPE_KEYBOARD, INPUT_DEVICE_TYPE_MOUSE };
+#else
 enum EInputDeviceType { };
+#endif
+#ifdef FABLE_RETAIL_KEYBOARD_MAINTAINED_TIME_PASS30
+// Ego_d TPI 0x26D2. UpdateMaintainedEvents tests this value before restamping a key.
+enum EInputEventType { IE_KEY_HELD = 2 };
+#else
 enum EInputEventType { };
+#endif
 union UInputEventData {                                                  // 32 bytes (Ego_r.pdb: two anonymous structs)
     unsigned char Raw[0x20];
 };
@@ -32,6 +45,9 @@ public:
     // Opt-in (chunk 760, row 0x009F5690 CInputEventPackage(CAFile&)): FableWin.pdb ??0CInputEvent@@QAE@ABV0@@Z, out of line in
     // retail (0x009E4850, called by push_back's placement copy).
     CInputEvent(const CInputEvent&);                                     // 0x009E4850
+#endif
+#ifdef FABLE_RETAIL_KEYBOARD_MAINTAINED_TIME_PASS30
+    void SetCurrentTime(double time) { CurrentTime = static_cast<float>(time); }
 #endif
     EInputEventType GetType() const;                                     // 0x00A03B40 ?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
     EInputKey GetKey() const;                                            // 0x00A03B70 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ

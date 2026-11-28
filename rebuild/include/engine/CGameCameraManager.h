@@ -357,6 +357,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
     const CWorld& GetWorld()const { return World; }
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD_CTOR_PASS30
+    // Same 0069AE80 constructor declared by the complete manager header.
+    CGameCameraManager(const CWorld& world);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
 private:

@@ -55,6 +55,51 @@ public:
 };
 class CNavNavigableLeafNode : public CANavQuadTreeNode {
 public:
+
+#ifdef FABLE_RETAIL_NAV_BUILD_LEAF_VTABLE_PASS30
+    // The editor donor and retail vtable identify these derived overrides.
+    virtual const CSmallVector<const CANavQuadTreeNode*,8>* GetNeighbours() const { return &Neighbours; }
+    virtual CSmallVector<const CANavQuadTreeNode*,8>* GetNeighbours() { return &Neighbours; }
+    virtual bool IsNeighbourOf(const CANavQuadTreeNode*) const;
+    virtual unsigned char GetPreferabilityCost() const { return PreferabilityCost; }
+protected:
+    virtual void SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours,CANavQuadTreeNode*);
+    virtual void SetUpNeighbours(ENavQuadTreeNeighbours,CANavQuadTreeNode*);
+    virtual void RemoveNeighbours();
+public:
+#endif
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+public:
+    virtual bool HasNeighbours() const;
+public:
+    virtual long GetRegionID() const;
+public:
+    virtual ENavQuadTreeNodeType GetNodeType() const;
+protected:
+    virtual const CANavQuadTreeNode* GetLeafNodeAt(const C2DVector&) const;
+protected:
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+protected:
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+protected:
+#ifndef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_REMOVEREGIONZERO_DECL
+    virtual bool RemoveRegionZero();
+#endif
+protected:
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+protected:
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;
+protected:
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;
+protected:
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);
+public:
+#endif
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+#ifndef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_GENERATOR_CTOR
+    CNavNavigableLeafNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer, unsigned char preferability_cost);
+#endif
+#endif
     CNavNavigableLeafNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file,
                           const std::list<CNavRegion>& regions, bool readPreferability);           // 0x00A772D0
 #ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_GENERATOR_CTOR
@@ -78,7 +123,7 @@ public:
     CNavRegion*                               PRegion;                           // +0x10
     CSmallVector<const CANavQuadTreeNode*, 8> Neighbours;                        // +0x14
     unsigned char                             PreferabilityCost;                 // +0x1c
-#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_RTTI_DECLS
+#if defined(FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_RTTI_DECLS) && !defined(FABLE_RETAIL_NAV_BUILD_LEAF_VTABLE_PASS30)
     // Opt-in (NF319, 2026-11-23): declarations only, no layout change. Each member below is the one the retail RTTI vftable placement
     // (ghidra_out/labels_rtti_port.tsv) names at its address, in the PDB spelling (access, const, types); each overrides a virtual
     // its base CANavQuadTreeNode chain declares at the same slot (no new slot).

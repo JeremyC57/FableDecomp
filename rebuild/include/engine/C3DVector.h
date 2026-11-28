@@ -101,7 +101,22 @@ FABLE_FORCEINLINE float FABLE_FASTCALL GFFastOneOverSqrt(float n)
     return r;
 }
 #else
-#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_SEED_FIELDS_PASS26
+#ifdef FABLE_RETAIL_FLASH_SQRT_SEED_PASS30
+// The original donor names n, seed and r. Copy the 32-bit representation
+// through unsigned int so the calculation also works when long is 64 bits.
+#include <string.h>
+inline float FABLE_FASTCALL GFFastOneOverSqrt(float n)
+{
+    unsigned int bits;
+    memcpy(&bits, &n, sizeof bits);
+    TFloatIntUnion seed = {0.0f};
+    unsigned int rep = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
+        (static_cast<unsigned int>(GFastOneOverSqrtTable[(bits >> 17) & 0x7f]) << 15);
+    memcpy(&seed.Float, &rep, sizeof seed.Float);
+    float r = seed.Float;
+    return (3.0f - r * r * n) * r * 0.5f;
+}
+#elif defined(FABLE_RETAIL_GFFASTONEOVERSQRT_PORTABLE_SEED_FIELDS_PASS26)
 // FableWin 01ACE0A0 and Ego_d agree on n, TFloatIntUnion seed, and r.
 // Copy the 32-bit representation through an unsigned int so both integer widths work.
 #include <string.h>
@@ -349,7 +364,13 @@ public:
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+    // Native 0x0087D94B..0x0087D97F preserves the X and Y negations as expression
+    // units while scheduling the orientation's third component and virtual receiver.
+    FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector((-X),(-Y),-Z);}
+#else
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
+#endif
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
 #ifdef FABLE_RETAIL_C3DVECTOR_ORIGINAL_GROUPED_CROSS_PASS22
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& vector)const{return C3DVector((Y*vector.Z-Z*vector.Y),(Z*vector.X-X*vector.Z),(X*vector.Y-Y*vector.X));}
@@ -391,7 +412,23 @@ public:
 #endif
 #endif
 #endif
+#ifdef FABLE_RETAIL_CREATURE_NAV_NEXT_POS_PASS30
+    // Original approximate comparison at FableWin 0x02479D00 in c_creature_navigation.obj.
+#ifdef _MSC_VER
+#pragma intrinsic(fabs)
+#endif
+    FABLE_VECTOR_INLINE bool operator==(const C3DVector& other) const {
+        if (!(fabs(X - other.X) <= DELTA_NOTIONAL_ZERO))
+            return false;
+        if (!(fabs(Y - other.Y) <= DELTA_NOTIONAL_ZERO))
+            return false;
+        if (!(fabs(Z - other.Z) <= DELTA_NOTIONAL_ZERO))
+            return false;
+        return true;
+    }
+#else
     FABLE_VECTOR_INLINE bool operator==(const C3DVector& other)const{return X==other.X&&Y==other.Y&&Z==other.Z;}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch: the body is one parenthesised sum. VC7.1 keeps a parenthesised sum as a unit where an inlined caller adds
     // the result into a running float total (0x00AE0710 CalculateAveragePatchSize: `fmul; faddp st(1); fmul; faddp st(1);
@@ -554,7 +591,13 @@ public:
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE
     // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
-#if defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_SQUARE_GROUPS_PASS23)
+#ifdef FABLE_RETAIL_FIREBALL_MAGNITUDE_HELPER_PASS30
+    // FableWin GetAccurateMagnitude sums X, Y and Z before calling GFRoot.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude() const {
+        float magnitude = X * X + Y * Y + Z * Z;
+        return GFRoot(magnitude);
+    }
+#elif defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_SQUARE_GROUPS_PASS23)
     // Both original PDBs and donor01d99fb0: three squared components then sqrt.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+(Y*Y)+(Z*Z);return (float)sqrt(magnitude);}
 #elif defined(FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE_PAREN_RETURN)
@@ -794,12 +837,19 @@ public:
     // Chunk 732 (row 0x006AABE0): FableWin.pdb ?IsNonZero@C3DVector@@QBE_NXZ (debug copy 0x01B4F100; no Ego_r.pdb copy, expanded in
     // retail). Body from the row's bytes (0x006AAE00: X, Z, Y loaded in source order, then `> DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO`);
     // GetSquaredMagnitude's one-line sum cannot be reused (it loads Z, Y, X there, and 0x00AE0710 needs that one-line form).
-#if defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
+#ifdef FABLE_RETAIL_FIREBALL_NONZERO_HELPER_PASS30
+    // FableWin IsNonZero reads Y, X and Z and converts the comparison to bool.
+    FABLE_VECTOR_INLINE bool IsNonZero() const {
+        return Y * Y + X * X + Z * Z > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO ? true : false;
+    }
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_NAMED_SQUARED)
     // (same opt-in, see Normalise above): the one-expression sum, FableWin 31i/91b at /Od = this text (fwsize SAME).
     FABLE_VECTOR_INLINE bool IsNonZero()const{return X*X+Y*Y+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_ZXY)
     // (same opt-in, see Normalise above)
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=Z*Z;squared+=X*X+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_SUN_NONZERO_PASS30)
+    FABLE_VECTOR_INLINE bool IsNonZero() const { return Y*Y+X*X+(Z*Z) > DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
 #elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ORIGINAL_YXZ)
     // Original donor01B4F100: Y square, X square, Z square, then the threshold.
     FABLE_VECTOR_INLINE bool IsNonZero()const{return Y*Y+X*X+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
@@ -861,4 +911,37 @@ public:
 inline _CVECTOR C3DVector::Copy()const{_CVECTOR result;result.x=X;result.y=Y;result.z=Z;return result;}
 #endif
 #undef FABLE_VECTOR_INLINE
+#ifdef FABLE_RETAIL_CPHYSICSMESH_SWEEP_TRIANGLE_PASS30
+// FableWin 01D9E1B0 and the point-collision sibling sum X, Y, then Z into a local.
+inline float FABLE_FASTCALL GFDotProduct(const C3DVector& a,const C3DVector& b) {
+    float result=a.X*b.X+a.Y*b.Y+a.Z*b.Z;
+    return result;
+}
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_VECTOR3_GROW_EXTERNAL_PASS30
+namespace std {
+template<> void vector<C3DVector>::_M_insert_overflow(iterator position, const C3DVector& x, const __false_type&, size_type fillLength, bool atEnd);
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_VECTOR3_APPEND_PASS30
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline void vector<C3DVector>::push_back(const C3DVector& x)
+{
+    if (this->_M_finish != this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish, x);
+        ++this->_M_finish;
+    } else {
+        _M_insert_overflow(this->_M_finish, x, _IsPODType(), 1, true);
+    }
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("s", on)
+#endif
+#endif
+
 #endif

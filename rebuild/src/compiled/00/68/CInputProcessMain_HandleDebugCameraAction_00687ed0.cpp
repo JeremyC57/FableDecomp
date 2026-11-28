@@ -1,68 +1,50 @@
-// CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input) -- turn the debug-camera button into manual-camera game events according to the player's mode: mode 19 adds the first event (off), mode 1 with the free camera on adds the second (off), modes 4..13 and 23 do nothing, every other mode adds both (on); each handled case sets the input priority to 5
 // Leaf: ?HandleDebugCameraAction@CInputProcessMain@@AAEXAAVCProcessedInput@@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00687ED0, 131 bytes + the jump table (4 targets) and its 23-entry byte index
-//   table, `ret 4`.
-// Callees: CPlayer::GetCurrentMode @ 0x00633BE0, the file-static `__fastcall` game-event helpers @ 0x00687E10 (game
-//   event 0x0b) and @ 0x00687E70 (game event 0x0c), both labelled AddManualCameraEvent (bool in cl, the processed input
-//   in edx), CProcessedInput::SetPriority @ 0x00A0D330 (Priority +0xac).
-// Layout: Ego_r.pdb CInputProcessGameBase: World +0x14, MyPlayer +0x18 (the engine header CInputProcessMain.h flattens
-//   the whole base into a blob, so the class is modelled locally); CPlayer::UsingFreeCamera +0x220 (retail).
-// Shape: a dense switch on the mode (the byte-indexed four-target jump table); case 1 is an if/else whose else arm
-//   repeats the default body (VC cross-jumps it into the default after the input load, hoisting that load above the
-//   free-camera test; a fall-through into `default:` does not); every handled case sets the priority itself; the
-//   do-nothing cases just break.
-// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
-//   members come from the shared header; the class below keeps only the declarations this body needs.
-#define CPlayer CPlayerDonor
+// Flags:
+#define FABLE_RETAIL_PROCESS_ROLLING_PASS30
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_PLAYER_ISSPELLMODE
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_EXPRESSION_FRAME
 #include "engine/CPlayer.h"
-#undef CPlayer
+#include "engine/CProcessedInput.h"
+#include "engine/CInputProcessMain.h"
 #include "engine/EPlayerMode.h"
-class CProcessedInput { public:
-    void SetPriority(long priority);               // 0x00A0D330
-};
-void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input);   // 0x00687E70
-
-class CPlayer : public CPlayerDonor {
- public:
-    EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                         // 0x00633BE0
-};
-// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
-//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
-//   0x00687E10 ?AddManualCameraEvent@CInputProcessMain@@CIXEAAVCProcessedInput@@@Z (was ?AddManualCameraEvent_0B@@YIX_NAAVCProcessedInput@@@Z)
-class CInputProcessMain { public:
-    virtual void v00();
-    void*    PPlayerInterface;                     // +0x04 (CAInputProcess)
-    unsigned char InputProcessListPos[0xc];        // +0x08
-    void*    World;                                // +0x14 (CInputProcessGameBase)
-    CPlayer* MyPlayer;                             // +0x18
-    private:
-    void HandleDebugCameraAction(CProcessedInput& input);
-    public:
- private: static void __fastcall AddManualCameraEvent(unsigned char, CProcessedInput&); public:  };
-
 void CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input)
 {
     switch (MyPlayer->GetCurrentMode()) {
-    case 19:
+    case PLAYER_MODE_CONTROL_CAMERA:
         CInputProcessMain::AddManualCameraEvent(false, input);
-        input.SetPriority(5);
+        input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         break;
-    case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 23:
+    case PLAYER_MODE_NAVIGATE_INVENTORY:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_CLOTHING:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_WEAPONS:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_ABILITIES_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_MAP_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_MAGIC_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_STATS_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_EXPERIENCE_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_TRADE_SCREEN:
+    case PLAYER_MODE_NAVIGATE_INVENTORY_QUESTS_SCREEN:
+    case PLAYER_MODE_NAVIGATE_IN_GAME_MENU:
         break;
-    case 1:
-        if (MyPlayer->UsingFreeCamera) {
-            AddManualCameraEvent_0C(false, input);
-            input.SetPriority(5);
+    case PLAYER_MODE_CONTROL_CREATURE:
+        if (MyPlayer->IsUsingFreeCamera()) {
+            AddUnbindCameraEvent(false, input);
+            input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         } else {
             CInputProcessMain::AddManualCameraEvent(true, input);
-            AddManualCameraEvent_0C(true, input);
-            input.SetPriority(5);
+            AddUnbindCameraEvent(true, input);
+            input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         }
         break;
     default:
         CInputProcessMain::AddManualCameraEvent(true, input);
-        AddManualCameraEvent_0C(true, input);
-        input.SetPriority(5);
+        AddUnbindCameraEvent(true, input);
+        input.SetPriority(GAME_EVENT_PRIORITY_MAX);
         break;
     }
 }

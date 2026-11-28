@@ -13,6 +13,10 @@ class CDataInputStream;
 // Original names and complete native 0x58 extent; Codex pass 13 typed the members (Ego_r TPI: vector<long> Maps / VisMaps,
 // CDefPointer<const CRegionDef> PDef, map<CCharString,C2DVector> MiniMapRegionExitTextOffsets), same offsets.
 class CRegion {
+#ifdef FABLE_RETAIL_CREGION_ADDMAP_PASS30
+public:
+    void AddMap(long);
+#endif
 protected: std::vector<long,std::allocator<long> > Maps;
 protected: std::vector<long,std::allocator<long> > VisMaps;
 protected: CCharString Name;

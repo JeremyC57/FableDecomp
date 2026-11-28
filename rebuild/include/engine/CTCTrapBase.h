@@ -10,7 +10,13 @@ class CTrapDef;
 class CThing;
 class CThingCreatureBase;
 class CTCParamsBase;
-#ifdef _MSC_VER
+#ifdef FABLE_RETAIL_ICICLE_ASSAULT_PASS30
+// The Ego_d ETrapType enumeration and retail trap-reset path agree on value four.
+enum ETrapType {
+    TRAP_TYPE_TRIGGER_ONCE_ONLY, TRAP_TYPE_TRIGGER_AND_RESET,
+    TRAP_TYPE_TRIGGER_AND_PLAY_CONTINUOUS, TRAP_TYPE_PLAY_CONTINUOUS, TRAP_TYPE_TRIGGER_AND_DIE
+};
+#elif defined(_MSC_VER)
 enum ETrapType;
 #else
 enum ETrapType{};
@@ -63,8 +69,11 @@ private: bool Triggered;
 private: bool LastTriggerOnProximity;
 private: ETrapType TrapType;
 };
+#ifdef FABLE_RETAIL_ICICLE_ASSAULT_PASS30
+inline void CTCTrapBase::SetTrapType(ETrapType type) { TrapType = type; }
+#endif
 inline ETCInterfaceType FABLE_FASTCALL CTCTrapBase::StatGetInterfaceType(){return TCI_TRAP;}
-FABLE_STATIC_ASSERT(sizeof(CTCTrapBase)==96);
+FABLE_STATIC_ASSERT_AT(67,sizeof(CTCTrapBase)==96);
 #endif
 #else
 #ifndef FABLE_ENGINE_CTCTRAPBASE_H
@@ -115,10 +124,10 @@ public:
     unsigned char    _pad_0x5b[0x1];                         // +0x5b
     unsigned char    TrapType[0x4];                          // +0x5c ETrapType
 };
-FABLE_STATIC_ASSERT(sizeof(CTCTrapBase) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, HitThings) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, PTrapDef) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TrapType) == 0x5c);
+FABLE_STATIC_ASSERT_AT(118, sizeof(CTCTrapBase) == 0x60);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CTCTrapBase, HitThings) == 0xc);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CTCTrapBase, PTrapDef) == 0x54);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CTCTrapBase, TrapType) == 0x5c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -145,18 +154,18 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCTrapBase) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, HitThings) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, ImmuneThings) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, PObstruction) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TriggerThings) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TrapOpener) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, PTrapDef_Object) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, Active) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, Triggered) == 0x59);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, LastTriggerOnProximity) == 0x5a);
-FABLE_STATIC_ASSERT(offsetof(CTCTrapBase, TrapType) == 0x5c);
+FABLE_STATIC_ASSERT_AT(148, sizeof(CTCTrapBase) == 0x60);
+FABLE_STATIC_ASSERT_AT(149, offsetof(CTCTrapBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(150, offsetof(CTCTrapBase, HitThings) == 0xc);
+FABLE_STATIC_ASSERT_AT(151, offsetof(CTCTrapBase, ImmuneThings) == 0x18);
+FABLE_STATIC_ASSERT_AT(152, offsetof(CTCTrapBase, PObstruction) == 0x24);
+FABLE_STATIC_ASSERT_AT(153, offsetof(CTCTrapBase, TriggerThings) == 0x2c);
+FABLE_STATIC_ASSERT_AT(154, offsetof(CTCTrapBase, TrapOpener) == 0x38);
+FABLE_STATIC_ASSERT_AT(155, offsetof(CTCTrapBase, PTrapDef_Object) == 0x54);
+FABLE_STATIC_ASSERT_AT(156, offsetof(CTCTrapBase, Active) == 0x58);
+FABLE_STATIC_ASSERT_AT(157, offsetof(CTCTrapBase, Triggered) == 0x59);
+FABLE_STATIC_ASSERT_AT(158, offsetof(CTCTrapBase, LastTriggerOnProximity) == 0x5a);
+FABLE_STATIC_ASSERT_AT(159, offsetof(CTCTrapBase, TrapType) == 0x5c);
 
 #endif // FABLE_RETAIL_CTCTRAPBASE
 

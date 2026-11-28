@@ -305,6 +305,9 @@ public:
 #endif
 #endif
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_SCORPION_KING_ACTIVATE_PASS30
+    void SetRadius(float radius) { Radius = radius; }
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_DIAMETER
     float GetDiameter() const { return (GetRadius()*2.0f); }
 #endif

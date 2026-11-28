@@ -57,4 +57,35 @@ private:
     CCountedPointer<CBoneInfo> BuildBoneInfoTree(const C3DAnimationSequence* sequences, unsigned long sequence_count); // 0x00AB1990
     CArray<CCharString> AddedBonePrefixes;                                  // +0x04
 };
+#ifdef FABLE_RETAIL_MESH_ANIMATION_TREE_PASS30
+#include "engine/C3DBone2.h"
+#include "engine/C3DMesh2.h"
+#include "fable_assert.h"
+// FableWin 034872A0 names the mesh overload and its three CArray::push_back sites.
+inline CCountedPointer<C3DAnimationBuilder::CBoneInfo> C3DAnimationBuilder::BuildBoneInfoTree(
+    const C3DMesh2& mesh, CArray<CCountedPointer<CBoneInfo> >& bone_list)
+{
+    CArray<CCountedPointer<CBoneInfo> > root_bones;
+    bone_list.clear();
+    for (unsigned long c_bone = 0; c_bone < mesh.GetBoneCount(); ++c_bone) {
+        CCountedPointer<CBoneInfo> bone_info(new CBoneInfo);
+        const C3DBone2& bone = *mesh.GetBone(c_bone);
+        bone_info->Name = mesh.GetBoneName(c_bone);
+        bone_info->Index = c_bone;
+        bone_info->OriginalNoChildren = bone.GetOriginalNoChildren();
+        long parent_index = bone.GetParent();
+        if (parent_index >= 0) {
+            FABLE_RETAIL_ASSERT(parent_index < bone_list.size());
+            CBoneInfo& parent = *bone_list[parent_index];
+            parent.Children.push_back(bone_info);
+        } else {
+            root_bones.push_back(bone_info);
+        }
+        bone_list.push_back(bone_info);
+    }
+    if (root_bones.size() == 0)
+        return 0;
+    return root_bones[0];
+}
+#endif
 #endif

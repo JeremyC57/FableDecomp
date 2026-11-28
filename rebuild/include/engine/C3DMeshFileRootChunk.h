@@ -8,6 +8,15 @@
 #include "engine/CChunkedFileSuperChunk.h"
 class C3DMeshFileRootChunk : public CChunkedFileSuperChunk {
 public:
+#ifdef FABLE_RETAIL_QUADRIC_MESH_CTOR_PASS30
+    CCountedPointer<class C3DMeshFileSubMeshChunk> FindFirstSubMesh();
+    CCountedPointer<class C3DMeshFileSubMeshChunk> FindNextSubMesh(const CCountedPointer<const class C3DMeshFileSubMeshChunk>&);
+#endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_READER_PASS30
+    // Both original debugger signatures return a const counted submesh.
+    CCountedPointer<const class C3DMeshFileSubMeshChunk> FindFirstSubMesh() const;
+    CCountedPointer<const class C3DMeshFileSubMeshChunk> FindNextSubMesh(const CCountedPointer<const class C3DMeshFileSubMeshChunk>&) const;
+#endif
     C3DMeshFileRootChunk() : CChunkedFileSuperChunk("3DRT") { }
 #ifdef FABLE_RETAIL_C3DMESHFILEROOTCHUNK_HELPERS
     // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?HasHelpers@C3DMeshFileRootChunk@@QBE_NXZ

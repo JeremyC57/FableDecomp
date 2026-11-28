@@ -4,6 +4,15 @@
 #include "engine/CodaSourceTypes.h"
 class CCodaBufferQueue {
 public:
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+ unsigned int Advance();
+ unsigned int GetPlay() const { return m_nPlay; }
+ bool IsReady() const { return m_ppBuffer[m_nPlay] != 0; }
+ CREFTIME GetPlayTime() const { return m_pPlayTime[m_nPlay]; }
+#ifndef FABLE_RETAIL_CCODASOURCE_EAX
+ CSalBuffer* GetPlayBuffer() const { return IsCreated() ? m_ppBuffer[m_nPlay] : 0; }
+#endif
+#endif
  unsigned int GetSize()const{return m_nBuffers;}
  bool IsCreated()const{return GetSize()!=0;}
  bool IsEmpty()const{return IsCreated() && m_Format.ffFormat==0;}

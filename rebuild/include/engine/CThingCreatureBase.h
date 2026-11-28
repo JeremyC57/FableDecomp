@@ -343,6 +343,9 @@ public:
     // line at 0x006624F0, landed). Declaration only: no layout change.
     void SetAttackedByCreature(CThingCreatureBase* creature);           // 0x006624F0
 #endif
+#ifdef FABLE_RETAIL_TARGET_INFO_PASS30
+    bool IsBlocking() const;
+#endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
 #ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
     bool IsAbleToStrafe() const;                                        // 0x006621A0
@@ -512,6 +515,14 @@ public:
     // Declarations only: no layout change (same line count as the NF247 form: no line below moves).
     void UnsheatheRangedWeapon();                                                                                                // 0x00664A10
 protected: void UnsheatheWeapon(long weapon_def, bool primary); public:                                                         // 0x006648D0
+#endif
+
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30
+public:
+    void UnsheathePrimaryWeapon();
+#ifdef FABLE_RETAIL_ENTITY_UNSHEATHE_OLD_BINDER_PASS30
+    void UnsheatheAllWeapons();
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHEMELEEWEAPON
     // NF253 opt-in (q12711, rows 0x00890C80 / 0x006649C0): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ

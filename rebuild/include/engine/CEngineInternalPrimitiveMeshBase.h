@@ -18,6 +18,9 @@ class CEngineInternalPrimitiveMorphInfo;
 class CEnginePrimitiveSimulationInfo;
 class CEngineInternalPrimitiveMeshBase : public CEngineInternalPrimitiveOcclusionBase {
 public:
+#ifdef FABLE_RETAIL_MESH_2D_OBJECT_MATRIX_PASS30
+ static void FABLE_FASTCALL Calc2DObjectMatrix(CMatrix3x4& matrix, const C3DVector& offset, const C3DVector& world_pos, const CRightHandedSet& rhset, float scale);
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
  CEngineInternalPrimitiveMeshBase(long type,unsigned long mask):CEngineInternalPrimitiveOcclusionBase(type,mask),MeshInfo(0){}
 #endif

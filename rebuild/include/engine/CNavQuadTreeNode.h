@@ -8,6 +8,9 @@
 #define FABLE_RETAIL_CANAVQUADTREENODE
 #endif
 #include "engine/CANavQuadTreeNode.h"
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+class CNavQuadTree;
+#endif
 class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
 #ifdef FABLE_RETAIL_CNAVQUADTREENODE_GETLEAF_PASS26
@@ -16,6 +19,37 @@ protected:
 public:
 #endif
     CNavQuadTreeNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file);   // 0x00A76580
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+    // Inline-budget: VC7.1 otherwise calls the child constructor at all four native expansion sites.
+    FABLE_FORCEINLINE
+    CNavQuadTreeNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer, const CNavQuadTree& quad_tree,
+                     ENavQuadTreeNodeType& type_node_should_be, std::vector<unsigned __int64>& unique_ids_blocking)
+        : CANavQuadTreeNode(pos, quad_tree_level, nav_layer), TLNode(0), TRNode(0), BLNode(0), BRNode(0)
+    {
+        Initialise(quad_tree, type_node_should_be, unique_ids_blocking);
+    }
+    virtual ~CNavQuadTreeNode();
+protected:
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+    virtual bool RemoveRegionZero();
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+    virtual void SetUpNeighboursWithLeaf(ENavQuadTreeNeighbours, CANavQuadTreeNode*);
+    virtual void SetUpNeighbours(ENavQuadTreeNeighbours, CANavQuadTreeNode*);
+    virtual void CalculateChildrenNeighbours();
+    virtual void RemoveNeighbours();
+    virtual void AddToIndexTable(long&, std::map<const CANavQuadTreeNode*, long>&) const;
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;
+    virtual void ConvertIndexesToPointers(const std::map<long, CANavQuadTreeNode*>&);
+protected:
+    bool GoToHigherDetail(const std::vector<C2DBoxF>& detailed_areas) const;
+    void Initialise(const CNavQuadTree& quad_tree, ENavQuadTreeNodeType& type_node_should_be, std::vector<unsigned __int64>& unique_ids_blocking);
+    void SetTLNode(CANavQuadTreeNode* node);
+    void SetTRNode(CANavQuadTreeNode* node);
+    void SetBLNode(CANavQuadTreeNode* node);
+    void SetBRNode(CANavQuadTreeNode* node);
+public:
+#endif
     CANavQuadTreeNode* TLNode;                                                   // +0x10
     CANavQuadTreeNode* TRNode;                                                   // +0x14
     CANavQuadTreeNode* BLNode;                                                   // +0x18

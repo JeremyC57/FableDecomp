@@ -15,6 +15,11 @@ public:
  void Draw(const CEnginePrimitivePrepareInfo&);
  void SetEnabled(bool);
  bool IsEnabled()const;
+#ifdef FABLE_RETAIL_DISPLAYNEXTMESSAGE_PASS30
+ void ClearMessages();
+ void DisplayNextMessage();
+ void SetLevelUpGraphic(long graphic) { LevelUpGraphic = graphic; }
+#endif
 private:
  bool Enabled,ReadyToLevelUp;
  unsigned char FlashAlpha;
@@ -26,6 +31,6 @@ private:
  std::queue<std::pair<CCharString,long> > Messages;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawGuildSeal)==144);
+FABLE_STATIC_ASSERT_AT(29, sizeof(NPlayerGui::CDrawGuildSeal)==144);
 #endif
 #endif

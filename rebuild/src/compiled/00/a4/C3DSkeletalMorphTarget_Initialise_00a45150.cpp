@@ -1,70 +1,21 @@
-// C3DSkeletalMorphTarget::Initialise(CCharString&, CArray<C3DSkeletalBoneMorph>&) -- copy the name and retain nonidentity bone records as this target's sparse morph list.
-// Retail: 0x00A45150, 270 bytes plus two padding bytes. CCharString assignment 0x0099EFB0; bone-array push_back 0x0088B610; sort helpers 0x00A46E00/0x00A46680/0x00A45F90.
-// PDB: Name at0, BoneMorphs at4; native array is12 bytes versus donor16. Each bone is20 bytes: name0, unsigned CRC4, scale words8/12/16.
-// Identity uses exact IEEE words (all0x3f800000). Append preserves existing records and reloads input bounds after each push.
-// Helpers use ECX/EDX first/last and a fastcall unsigned-CRC predicate; native comparator0x00A44C90 is independently byte-exact.
-// Standard logarithm/algorithm expression retains the original compiler instruction ordering without assembly or artificial storage.
-#include "fable_compiler.h"
+// 00a45150 C3DSkeletalMorphTarget::Initialise
+// Flags: /Gr
+// Leaf: ?Initialise@C3DSkeletalMorphTarget@@QAEXABVCCharString@@ABV?$CArray@VC3DSkeletalBoneMorph@@@@@Z
+#define FABLE_RETAIL_STLP_SORT_INLINE
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_SKELETAL_MORPH_FILE_PASS30
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CARRAY_PUSHBACK
 #include "fable_string.h"
-class C3DSkeletalBoneMorph { public:
-    CCharString BoneName;
-    unsigned long BoneNameCRC;
-    unsigned long XBits, YBits, ZBits; // IEEE-754 words for the three scale components
-    C3DSkeletalBoneMorph(const C3DSkeletalBoneMorph& o);
-    C3DSkeletalBoneMorph& operator=(const C3DSkeletalBoneMorph& o);
-};
-struct CArray {
-    C3DSkeletalBoneMorph* first; C3DSkeletalBoneMorph* last; C3DSkeletalBoneMorph* end;
-    unsigned long size() const { return (unsigned long)(last - first); }
-    C3DSkeletalBoneMorph& operator[](unsigned long i) const { return first[i]; }
-};
-struct CVector {
-    C3DSkeletalBoneMorph* first; C3DSkeletalBoneMorph* last; C3DSkeletalBoneMorph* end;
-    void push_back(const C3DSkeletalBoneMorph&);
-};
-class C3DSkeletalMorphTarget { public:
-    CCharString Name; CVector BoneMorphs;
-    void Initialise(CCharString& name, CArray& bones);
-};
-bool __fastcall BoneMorphLess(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b) // 0x00A44C90
-{
-    return a.BoneNameCRC < b.BoneNameCRC;
-}
-void __fastcall IntroSort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last,
-                          long, long depth, bool (__fastcall* less)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)); // 0x00A46E00
-void __fastcall InsertionSort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last,
-                              bool (__fastcall* less)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)); // 0x00A46680
-void __fastcall InsertionSortTail(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last,
-                                  long, bool (__fastcall* less)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)); // 0x00A45F90
+#include "engine/C3DSkeletalMorph.h"
 
-template<class Size> FABLE_FORCEINLINE Size MorphLog(Size n)
-{
-    Size depth;
-    for (depth = 0; n != 1; n >>= 1) ++depth;
-    return depth;
-}
-
-FABLE_FORCEINLINE void SortMorphs(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last)
-{
-    if (first != last) {
-        IntroSort(first, last, 0, MorphLog((long)(last - first)) * 2, BoneMorphLess);
-        if (last - first > 16) {
-            InsertionSort(first, first + 16, BoneMorphLess);
-            InsertionSortTail(first + 16, last, 0, BoneMorphLess);
-        } else {
-            InsertionSort(first, last, BoneMorphLess);
-        }
-    }
-}
-
-void C3DSkeletalMorphTarget::Initialise(CCharString& name, CArray& bones)
+void C3DSkeletalMorphTarget::Initialise(const CCharString& name, const CArray<C3DSkeletalBoneMorph>& morph_list)
 {
     Name = name;
-    C3DSkeletalMorphTarget* target = this;
-    for (unsigned long i = 0; i < bones.size(); ++i) {
-        C3DSkeletalBoneMorph* p = &bones[i];
-        if (p->XBits != 0x3f800000UL || p->YBits != 0x3f800000UL || p->ZBits != 0x3f800000UL)
-            target->BoneMorphs.push_back(*p);
+    for (unsigned long c_morph = 0; c_morph < morph_list.size(); ++c_morph) {
+        const C3DSkeletalBoneMorph& morph = morph_list[c_morph];
+        if (morph.GetScaling().X != 1.0f || morph.GetScaling().Y != 1.0f || morph.GetScaling().Z != 1.0f)
+            BoneMorphs.push_back(morph);
     }
-    SortMorphs(BoneMorphs.first, BoneMorphs.last);
+    std::sort(BoneMorphs.begin(), BoneMorphs.end(), C3DSkeletalBoneMorph::CompareCRCs);
 }

@@ -84,4 +84,12 @@ FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_MeleeCombatNearby, Archer) == 
 FABLE_STATIC_ASSERT_AT(78, sizeof(CAIStateGroup_MeleeCombatNearby) == 0x20);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBY_MOVE
+
+#ifdef FABLE_RETAIL_MELEECOMBAT_PREFERRED_RADIUS_PASS30
+// FableWin 02B904D0 calls GetCreature, GetPhysicsTC, GetDiameter, divides by 1.2f and adds 0.3f.
+inline float CAIStateGroup_MeleeCombatNearby::GetProximityToBeConsideredNearToPreferredPos() const
+{
+    return GetCreature().GetPhysicsTC()->GetDiameter() / 1.2f + 0.3f;
+}
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_MELEECOMBATNEARBY_H

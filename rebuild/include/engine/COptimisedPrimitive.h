@@ -63,7 +63,13 @@ private:
  // (public) and FableWin.pdb inline ?GetVertex@COptimisedPrimitive@QuadricOptimiserInternals@@QAEAAVCOptimisedVertex@2@K@Z (fwsize
  // SAME 12i/28b). Needs the complete COptimisedVertex (engine/QuadricOptimiserTypes.h first). No layout change.
 public:
+#ifdef FABLE_RETAIL_QUADRIC_MESH_CTOR_PASS30
+ ~COptimisedPrimitive();
+#endif
  COptimisedPrimitive(C3DMeshFilePrimitiveChunk& chunk);                                             // 0x00ACDB80
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+ void CopyTo(C3DMeshFilePrimitiveChunk& destination); // 00ACC490.
+#endif
  COptimisedVertex& GetVertex(unsigned long index){return Vertices[index];}
 private:
 #endif

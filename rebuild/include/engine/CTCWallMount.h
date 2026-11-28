@@ -13,6 +13,12 @@
 #include "engine/CThing.h"
 class CTCWallMount : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_WALLMOUNT_PERFORM_PASS30
+    // FableWin 0x01DE78F0, 0x02764EA0 and 0x02765890 establish these APIs.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_WALL_MOUNT; }
+    bool HasObjectAttached() const;                                     // 0x007DE500
+    CThing* UnattachObject(long* bought_for_price);                       // 0x007DF130
+#endif
     CThing* GetObjectAttached();                                         // 0x007DE4E0
     const CThing* PeekObjectAttached() const;                            // 0x007DE4F0
 #ifdef FABLE_RETAIL_CTCWALLMOUNT_ATTACHOBJECT

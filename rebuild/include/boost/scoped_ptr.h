@@ -24,12 +24,19 @@ public:
     // (0x0055F73A: the old pointer read, the new one stored, then `~LHHttp2; operator delete` on the old one). FableWin.pdb
     // ?reset@?$scoped_ptr@VLHHttp2@LHNetworkLib@@@boost@@QAEXPAVLHHttp2@LHNetworkLib@@@Z / ?swap@...@QAEXAAV12@@Z.
     ~scoped_ptr() { checked_delete(ptr); }
+#ifdef FABLE_RETAIL_SCOPED_PTR_RESET_OWNER_PASS30
+    void reset(T* p=0);  // Out-of-line CGamePlayerInterface specialization at 004193C4.
+#else
     void reset(T* p=0) { scoped_ptr<T>(p).swap(*this); }
+#endif
     void swap(scoped_ptr& b) { T* tmp=b.ptr; b.ptr=ptr; ptr=tmp; }
 #elif defined(FABLE_RETAIL_SCOPED_PTR_CHECKED_DELETE_FASTCALL)
     ~scoped_ptr() { checked_delete(ptr); }                      // (agentNF54 opt-in above: the out-of-line checked_delete)
 #else
     ~scoped_ptr();
+#endif
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30) && !defined(FABLE_RETAIL_SCOPED_PTR_RESET)
+    void reset(T* p=0);  // FableWin 018AA166 for CGamePlayerInterface, native 004193C4.
 #endif
     T& operator*() const { return *ptr; }
     T* operator->() const { return ptr; }

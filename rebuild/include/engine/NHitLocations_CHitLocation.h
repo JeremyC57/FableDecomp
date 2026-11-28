@@ -8,9 +8,22 @@
 class CArmourDef;class CHitParameters;
 namespace NHitLocations{class CHitLocation {
 public:
+#ifndef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
  CHitLocation(const NHitLocations::CHitLocation & p0);
+#endif
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ CHitLocation(CThing& owner, const CDefPointer<const CHitLocationDef>& def,
+              const CDefPointer<const CArmourDef>& armour)
+     : POwnerThing(&owner), PDef(def), PArmourDef(armour), HitResponseAction(ACTION_NULL),
+       BlockResponseAction(ACTION_NULL), Enabled(true) {}
+#else
  CHitLocation(CThing & p0, const CDefPointer<CHitLocationDef const > & p1, const CDefPointer<CArmourDef const > & p2);
+#endif
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ void Init() { SetEnabled(PDef->EnableOnCreate); }
+#else
  void Init();
+#endif
  void ProcessHitLocationCode(CThing & p0, const CHitParameters & p1);
  bool GetFirstIntersectionWithFiniteLine(const C3DVector & p0, const C3DVector & p1, C3DVector & p2, C3DVector & p3, float p4) const;
  bool GetFirstIntersectionWithTriangle(const std::vector<C3DVector,std::allocator<C3DVector> > & p0, C3DVector & p1, C3DVector & p2, float p3) const;
@@ -24,7 +37,11 @@ public:
 #endif
  void SetArmourDef(const CDefPointer<CArmourDef const > & p0);
  void ResetDefaultArmourDef();
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ bool IsDefaultLocation() const { return PDef->Default; }
+#else
  bool IsDefaultLocation() const;
+#endif
  CDefString GetHitLocationDefName() const;
  bool IsToPlayGetHitResponse() const;
  bool IsToCauseDecapitionOnHit() const;
@@ -53,7 +70,11 @@ private:
  typedef std::map<enum EHitLocationCodelet,void (__fastcall*)(CThing &,CHitParameters const &)> TRegisteredHitLocationCodeletMap;
 #endif
 public:
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ ~CHitLocation() {}
+#else
  ~CHitLocation();
+#endif
  NHitLocations::CHitLocation & operator=(const NHitLocations::CHitLocation & p0);
 };}
 FABLE_STATIC_ASSERT_AT(54, sizeof(NHitLocations::CHitLocation)==24);

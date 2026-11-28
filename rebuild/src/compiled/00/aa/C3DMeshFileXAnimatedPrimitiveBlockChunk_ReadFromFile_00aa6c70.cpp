@@ -1,3 +1,5 @@
+// Flags: 
+#include "stlport/fable_containers.h"
 // C3DMeshFileXAnimatedPrimitiveBlockChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- read the group list, BonesPerVertex, the vertex list and every bone weight, then the sub-chunks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA6C70, length 928 bytes (virtual, chunk reader slot, ret 0Ch).
 // Callees: CDataInputStream::GetPosition (vtable slot 2) x2, CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0,
@@ -11,7 +13,7 @@
 // then per weight record the bone index and the weight read as dwords, the weight stored unsigned -> float -> long.
 // Layout: retail CArray is 12 bytes (PDB 16): GroupBlock +0x2c, BonesPerVertex +0x44, VertexList +0x48,
 // BoneWeights +0x54, as in the landed WriteToFile 0x00AA5720 and dtor 0x00AA7480; no engine header.
-// Leaf: ReadFromFile@C3DMeshFileXAnimatedPrimitiveBlockChunk
+// Leaf: ?ReadFromFile@C3DMeshFileXAnimatedPrimitiveBlockChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
@@ -57,7 +59,6 @@ struct CULongVector {                      // vector<unsigned long> (trivial ele
     unsigned long* _M_start; unsigned long* _M_finish; unsigned long* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     unsigned long* GetData() { return size() > 0 ? _M_start : (unsigned long*)this; }
-    void _M_fill_insert(unsigned long* pos, unsigned long n, const unsigned long& x);   // 0x004649A3
     void erase(unsigned long* first, unsigned long* last)
     {
         unsigned long* finish = _M_finish;
@@ -70,7 +71,7 @@ struct CULongVector {                      // vector<unsigned long> (trivial ele
         if (newSize < size())
             erase(_M_start + newSize, _M_finish);
         else
-            _M_fill_insert(_M_finish, newSize - size(), x);
+            reinterpret_cast<std::vector<unsigned long>*>(this)->_M_fill_insert(_M_finish, newSize - size(), x);
     }
 };
 struct CBoneWeightVector {                 // vector<C3DIndexedBoneWeight> (element copy loop on erase)

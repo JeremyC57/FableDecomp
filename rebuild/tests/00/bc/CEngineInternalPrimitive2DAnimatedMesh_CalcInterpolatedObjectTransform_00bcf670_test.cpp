@@ -1,118 +1,92 @@
+// 00bcf670 CEngineInternalPrimitive2DAnimatedMesh::CalcInterpolatedObjectTransform
+// Leaf: ?CalcInterpolatedObjectTransform@CEngineInternalPrimitive2DAnimatedMesh@@UBEXAAVCMatrix3x4@@M_N@Z
+// Flags:
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#define FABLE_RETAIL_MESH_2D_OBJECT_MATRIX_PASS30
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_WORLDPOS
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DANIMATEDMESH
+#define FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR
+#define FABLE_RETAIL_C3DORIENTATIONINTERPOLATOR_GETINTERPOLATED
+#define FABLE_RETAIL_C3DPOSITIONINTERPOLATOR_GETINTERPOLATED
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE
+#define FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+#define FABLE_RETAIL_CRIGHTHANDEDSET_SET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_INTERPOLATE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CARRAY
+#include "rebuild_abi.h"
+#include "engine/CRightHandedSet.h"
+#include "engine/CMatrix3x4.h"
+#include "engine/CEngineInternalPrimitive2DAnimatedMesh.h"
+
+
 #include <cstdio>
-#include <cstring>
-#ifndef _MSC_VER
-#define __fastcall
-#define __stdcall
-#define __cdecl
-#define __forceinline inline
-#define __declspec(x)
-#endif
-// Behaviour test: the model and logic below are a copy of the src/ file; the callees are test doubles.
-// CEngineInternalPrimitive2DAnimatedMesh::CalcInterpolatedObjectTransform(CMatrix3x4&, float, bool) const -- interpolate the world position and orientation at `t`, re-orthogonalise the orientation, pick the mesh scale (or 1) and build the object matrix about the object bounding-sphere centre
-// Leaf: CalcInterpolatedObjectTransform
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF670, 219 bytes (+ int3 padding), `ret 0Ch`. Mangled
-//   ?CalcInterpolatedObjectTransform@CEngineInternalPrimitive2DAnimatedMesh@@UBEXAAVCMatrix3x4@@M_N@Z.
-// Callees: CRightHandedSet::Interpolate(const CRightHandedSet&, float) const 0x00A23190 (returns the set by hidden pointer),
-//   CRightHandedSet::MakePerpendicular 0x00A22E10, the 2D CalcObjectMatrix 0x00BEB6C0 (`__fastcall`: matrix in ecx, the centre
-//   in edx, position, orientation and scale on the stack).
-// Layout (Ego_r.pdb, retail agrees): CEngineInternalPrimitiveMeshBase::Scale +0x58; WorldPos (C3DPositionInterpolator, vptr
-//   +0x84) StartPosition +0x88 / EndPosition +0x94; Orientation (C3DOrientationInterpolator, vptr +0xa0) StartOrientation
-//   +0xa4 / EndOrientation +0xbc (CRightHandedSet = Up, Forward); the 2D class's ObjectBoundingSphere centre is read at
-//   +0x140 in retail (Ego_r.pdb / engine/CEngineInternalPrimitive2DAnimatedMesh.h: +0x144, the flattened header has no usable
-//   base layout, so `this` is a local model; the 4-byte shift comes from the base's 12-byte retail containers).
-// Shape: position = start + (end - start) * t through inline C3DVector operators (by-value results, no user copy ctor);
-//   the scale is a named float local (homed in the dead bool slot); the centre is a C3DVector local built member-wise after the
-//   scale (integer moves); the helpers take references to the frame locals. Twin of 0x00BCEF80.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
-
-class CRightHandedSet { public:
-    C3DVector Up;                                      // +0x00
-    C3DVector Forward;                                 // +0x0c
-    CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190
-    void MakePerpendicular();                          // 0x00A22E10
-};
-
-class CMatrix3x4 { public: float E[12]; };
-
-void __fastcall CalcObjectMatrix2D(CMatrix3x4& out, const C3DVector& centre, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEB6C0
-
-class C3DPositionInterpolator { public:
-    void*     __vftable;
-    C3DVector StartPosition;                           // +0x04
-    C3DVector EndPosition;                             // +0x10
-};
-class C3DOrientationInterpolator { public:
-    void*           __vftable;
-    CRightHandedSet StartOrientation;                  // +0x04
-    CRightHandedSet EndOrientation;                    // +0x1c
-};
-
-class CEngineInternalPrimitiveAnimatedMesh { public:
-    virtual void CalcInterpolatedObjectTransform(CMatrix3x4& out, float t, bool applyScale) const;
-    unsigned char              _pad04[0x58 - 4];
-    float                      Scale;                  // +0x58
-    unsigned char              _pad5c[0x84 - 0x5c];
-    C3DPositionInterpolator    WorldPos;               // +0x84
-    C3DOrientationInterpolator Orientation;            // +0xa0
-};
-
-class C3DBoundingSphere { public:
-    C3DVector Center;
-    float     Radius;
-};
-
-class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAnimatedMesh { public:
-    virtual void CalcInterpolatedObjectTransform(CMatrix3x4& out, float t, bool applyScale) const;
-    unsigned char     _pad0d4[0x140 - 0xd4];
-    C3DBoundingSphere ObjectBoundingSphere;            // +0x140 (retail)
-};
-
-void CEngineInternalPrimitive2DAnimatedMesh::CalcInterpolatedObjectTransform(CMatrix3x4& out, float t, bool applyScale) const
+#include <cstdlib>
+static unsigned int stage;
+static float weight, capturedScale;
+static C3DVector capturedCentre, capturedPosition;
+static CRightHandedSet capturedFrame;
+static CMatrix3x4* capturedMatrix;
+static void check(bool x) { if (!x) std::abort(); }
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+C3DPositionInterpolator::C3DPositionInterpolator() {}
+C3DPositionInterpolator::~C3DPositionInterpolator() {}
+C3DOrientationInterpolator::C3DOrientationInterpolator() {}
+CRightHandedSet CRightHandedSet::Interpolate(const CRightHandedSet& other,float t) const {
+    check(stage++==0 && weight==t);
+    CRightHandedSet result;
+    result.Set(GetUp()+other.GetUp()*t,GetForward()+other.GetForward()*t);
+    return result;
+}
+void CRightHandedSet::MakePerpendicular() {
+    check(stage++==1);
+    SetUp(GetUp()+C3DVector(4,2,1));
+}
+void FABLE_FASTCALL CEngineInternalPrimitiveMeshBase::Calc2DObjectMatrix(CMatrix3x4& m,const C3DVector& offset,
+    const C3DVector& position,const CRightHandedSet& axes,float scale) {
+    check(stage++==2); capturedMatrix=&m; capturedScale=scale;
+    capturedCentre=offset; capturedPosition=position; capturedFrame=axes;
+}
+// Exercise both caller branches with the original shared property types.
+// The native differential test covers the complete member on its real layout.
+static void evaluate(const C3DPositionInterpolator& WorldPos,const C3DOrientationInterpolator& Orientation,
+                     const C3DBoundingSphere& ObjectBoundingSphere,float Scale,
+                     CMatrix3x4& dest,float interp,bool use_scaling)
 {
-    C3DVector position = WorldPos.StartPosition + (WorldPos.EndPosition - WorldPos.StartPosition) * t;
-    CRightHandedSet orientation = Orientation.StartOrientation.Interpolate(Orientation.EndOrientation, t);
-    orientation.MakePerpendicular();
-    float scale;
-    if (applyScale)
-        scale = Scale;
-    else
-        scale = 1.0f;
-    C3DVector centre(ObjectBoundingSphere.Center.X, ObjectBoundingSphere.Center.Y, ObjectBoundingSphere.Center.Z);
-    CalcObjectMatrix2D(out, centre, position, orientation, scale);
+    C3DVector world_pos = WorldPos.GetInterpolated(interp);
+    CRightHandedSet rhs = Orientation.GetInterpolated(interp);
+    rhs.MakePerpendicular();
+    CEngineInternalPrimitiveMeshBase::Calc2DObjectMatrix(dest, ObjectBoundingSphere.GetCenter(), world_pos, rhs, use_scaling ? Scale : 1.0f);
 }
 
-// ---- test doubles and driver ----
-void CEngineInternalPrimitiveAnimatedMesh::CalcInterpolatedObjectTransform(CMatrix3x4&, float, bool) const { }   // base slot (not under test)
-static CMatrix3x4* g_out; static C3DVector g_pos, g_centre; static CRightHandedSet g_rhs; static float g_scale; static float g_t; static int g_perp = 0;
-CRightHandedSet CRightHandedSet::Interpolate(const CRightHandedSet& other, float t) const
-{
-    g_t = t; CRightHandedSet r; r.Up = Up + (other.Up - Up) * t; r.Forward = Forward + (other.Forward - Forward) * t; return r;
-}
-void CRightHandedSet::MakePerpendicular() { ++g_perp; Up.X += 100.0f; }
-void __fastcall CalcObjectMatrix2D(CMatrix3x4& out, const C3DVector& centre, const C3DVector& position, const CRightHandedSet& orientation, float scale) { g_out = &out; g_centre = centre; g_pos = position; g_rhs = orientation; g_scale = scale; }
-int main()
-{
-    static CEngineInternalPrimitive2DAnimatedMesh m;
-    m.Scale = 2.5f;
-    m.WorldPos.StartPosition = C3DVector(0.0f, 10.0f, -4.0f);
-    m.WorldPos.EndPosition = C3DVector(8.0f, 20.0f, 4.0f);
-    m.Orientation.StartOrientation.Up = C3DVector(0.0f, 0.0f, 1.0f); m.Orientation.StartOrientation.Forward = C3DVector(0.0f, 1.0f, 0.0f);
-    m.Orientation.EndOrientation.Up = C3DVector(4.0f, 0.0f, 1.0f); m.Orientation.EndOrientation.Forward = C3DVector(0.0f, 1.0f, 8.0f);
-    m.ObjectBoundingSphere.Center = C3DVector(7.0f, 8.0f, 9.0f);
-    CMatrix3x4 out;
-    m.CalcInterpolatedObjectTransform(out, 0.25f, true);
-    bool ok = g_out == &out && g_pos.X == 2.0f && g_pos.Y == 12.5f && g_pos.Z == -2.0f && g_scale == 2.5f && g_t == 0.25f
-        && g_rhs.Up.Z == 1.0f && g_rhs.Forward.Z == 2.0f;
-    m.CalcInterpolatedObjectTransform(out, 1.0f, false);
-    ok = ok && g_scale == 1.0f && g_pos.X == 8.0f && g_pos.Z == 4.0f && g_perp == 2 && g_rhs.Up.X == 104.0f && g_centre.X == 7.0f && g_centre.Y == 8.0f && g_centre.Z == 9.0f;
-    if (!ok) { std::printf("00bcf670_TEST FAIL\n"); return 1; }
-    std::printf("00bcf670_TEST PASS\n");
-    return 0;
+int main() {
+    C3DPositionInterpolator pos;
+    C3DOrientationInterpolator orientation;
+    C3DBoundingSphere bounds;
+    CMatrix3x4 matrix;
+    pos.StartPosition=C3DVector(2,4,8); pos.EndPosition=C3DVector(-2,6,16);
+    orientation.StartOrientation.Set(C3DVector(0,1,0), C3DVector(0,0,1));
+    orientation.EndOrientation.Set(C3DVector(1,2,3),C3DVector(-1,0,2));
+    bounds.Center=C3DVector(17,-11,2);
+    for (int part=-4;part<=8;++part) for (int s=-4;s<=4;++s) for (int flag=0;flag<2;++flag) {
+        weight=0.25f*part;stage=0;
+        evaluate(pos,orientation,bounds,0.5f*s,matrix,weight,flag!=0);
+        check(stage==3 && capturedMatrix==&matrix && capturedScale==(flag ? s*0.5f : 1.0f));
+        check(capturedCentre.X==17 && capturedCentre.Y==-11 && capturedCentre.Z==2);
+        check(capturedPosition.X==2-4*weight && capturedPosition.Y==4+2*weight && capturedPosition.Z==8+8*weight);
+        const C3DVector& u=capturedFrame.GetUp();const C3DVector& f=capturedFrame.GetForward();
+        check(u.X==4+weight && u.Y==3+2*weight && u.Z==1+3*weight);
+        check(f.X==-weight && f.Y==0 && f.Z==1+2*weight);
+    }
+    std::puts("00bcf670_TEST PASS");return 0;
 }

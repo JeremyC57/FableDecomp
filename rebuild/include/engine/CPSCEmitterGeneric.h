@@ -8,6 +8,11 @@ namespace NParticleEngine {
 // ReadBinary00B149D0 and WriteBinary00B12EF0 use the same offsets, size0x50.
 class CPSCEmitterGeneric:public CPSCBase {
 public: virtual void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
+#ifdef FABLE_RETAIL_CPSCEMITTERGENERIC_COLLECT_PARAMS_PASS30
+    // Both original symbol images and retail slot 10 agree on this override.
+    virtual void CollectUpdateParameters(CParticleUpdateParameters<unsigned long,unsigned long>&,
+                                         const unsigned long&);
+#endif
 #ifdef FABLE_RETAIL_CPSCEMITTERGENERIC_CTOR
  // Opt-in (hand3c, row 0x00B103F0): Ego_r.pdb 0x00AD1150 / FableWin.pdb 0x02F47CE0 ??0CPSCEmitterGeneric@NParticleEngine@@QAE@XZ.
  // Declaration only, no layout change.

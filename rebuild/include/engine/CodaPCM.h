@@ -1,6 +1,10 @@
 #ifndef FABLE_ENGINE_CODA_PCM_H
 #define FABLE_ENGINE_CODA_PCM_H
 #ifdef FABLE_RETAIL_CODA_OPENAL_BUFFER_PASS26
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+// CODA.h public buffer capability and source status flags.
+enum { C_PLAYING=2, C_RELEASING=4, C_STOPPED=8, C_MIXING=0x200 };
+#endif
 // Public GameCODA 2.10 CODA.h and SDK AL/al.h constants.
 enum { C_FORMAT_INT16=1, C_FORMAT_INT8=2 };
 enum { C_OK=0, C_ERR_OUTOFMEMORY=-5, C_ERR_NORESOURCES=-9, C_ERR_BUFFERTYPE=-14 };

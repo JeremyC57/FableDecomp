@@ -1,3 +1,4 @@
+// Flags: 
 // CTCWife::CTCWife(CThing* thing) -- CTCBase(thing), the wife vtable, every marriage/courting flag false, the "never" frames at LONG_MAX, no sex-cutscene sample, gift price 500, empty gift and seen-clothing trees, no appearance changes noticed
 // Leaf: ??0CTCWife@@QAE@AAVCThing@@@Z
 // Ported 2026-11-16 onto the shared engine/CTCBase.h: the local base model CTCBase (which bound ??0CTCBase@@QAE@PAVCThing@@@Z to 0x00686800) is gone;
@@ -53,7 +54,7 @@ struct CDefPointerHeroMarriage {
     const CHeroMarriageDef* Object;
     CDefPointerHeroMarriage() : Object(0) { }
 };
-extern const unsigned long g_invalidSampleID;   // 0x0129D25C
+extern const unsigned long INVALID_SAMPLE_ID;   // 0x0129D25C
 class CTCWife : public CTCBase { public:
     CDefPointerHeroMarriage PHeroMarriageDef;   // +0x0c
     long OpinionAttitude;                       // +0x10 EOpinionAttitudeType
@@ -109,7 +110,7 @@ CTCWife::CTCWife(CThing& thing)
     : CTCBase(thing), OpinionAttitude(0), AttitudeUpdateCounter(0), CourtingBlocked(false), PermittedToRegionFollow(false),
       FrameGotMarriedToThePlayer(0x7fffffff), DivorcedHero(false), JustMarried(false), NeedsToChangeBrain(false),
       WaitingForFadeOut(false), WaitingForFadeIn(false), WaitingForDivorce(false), WaitingForDivorceRenting(false),
-      WaitingForDowry(false), WaitingForSex(false), WaitingForSexCutscene(false), CurrentSexCutsceneSampleID(g_invalidSampleID),
+      WaitingForDowry(false), WaitingForSex(false), WaitingForSexCutscene(false), CurrentSexCutsceneSampleID(INVALID_SAMPLE_ID),
       FrameStartedSexCutscene(0x7fffffff), FrameEndedSoundInSexCutscene(0x7fffffff), CurrentProportionOfSoundGap(1.0f),
       FrameLastAwareOfHusband(0), FrameToCheckAppearanceChanges(0), FrameLastReducedOpinion(0), FrameLastEvaluatedGiftOpinion(0),
       FrameLastConsideredGivingGift(0), FrameLastEvaluatedLoveAttitude(0), FrameEnteredAttitudeHate(0x7fffffff),

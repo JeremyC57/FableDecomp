@@ -8,6 +8,9 @@
 #include "engine/CBaseClass.h"
 #include "engine/CEnginePersistentPrimitiveBase.h"
 #include "engine/CIVCountedPointer.h"
+#if defined(FABLE_RETAIL_PROJECTILE_HANDLE_SPEED_PASS30) && defined(_MSC_VER)
+#pragma optimize("ty", on)
+#endif
 class CEnginePrimitiveHandle : public CBaseClass {
 public:
 #ifdef FABLE_RETAIL_MORPHING_SPRITE_DRAW_PASS29
@@ -101,5 +104,8 @@ public:
 private:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
 };
+#if defined(FABLE_RETAIL_PROJECTILE_HANDLE_SPEED_PASS30) && defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
 FABLE_STATIC_ASSERT_AT(76, sizeof(CEnginePrimitiveHandle) == 8);
 #endif

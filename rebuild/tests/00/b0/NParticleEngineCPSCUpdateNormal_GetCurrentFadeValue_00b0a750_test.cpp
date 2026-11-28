@@ -1,37 +1,59 @@
-// Behaviour test for 0x00B0A750 NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue (links the REAL row object, NF261 q12742; the HEAD
-// test carried its own copy of the body with a made-up table scale of 2048 where retail multiplies by the pooled 0.5f and 1024.0f). The
-// layout class is the HEAD test's local model (in place); the row's data and its one callee are defined here.
-#include <cstdio>
-#include <math.h>
-float GFastCosTable[1025];                       // the row's ?GFastCosTable@@3PAMA (0x013CD550): cos(2 pi k / 1024)
-extern const float g_fadeScale = 0.001f;         // the row's ?g_fadeScale@@3MB (0x01266300 holds 0.001f)
-static float g_clock = 1.0f;
+// Leaf: ?GetCurrentFadeValue@CPSCUpdateNormal@NParticleEngine@@IBEMXZ
+// Retail-asm: existing GFFloatToLongNear expands fld and fistp at 00B0A84C / 00B0A850 and 00B0A8D0 / 00B0A8D4.
+#define FABLE_RETAIL_CPSCUPDATENORMAL_NO_CONTAINERS
+#define FABLE_RETAIL_PARTICLE_FADE_VALUE_PASS30
+#include "engine/CPSCUpdateNormal.h"
+#include "engine/NParticleEngine_GFSmoothFadeValue.h"
+
 namespace NParticleEngine {
-float __fastcall GetOneOverTickRate() { return g_clock; }   // 0x00AEAA00 (stub)
-class CPSCUpdateNormal { public:
-    unsigned char _pad00[0x0c]; unsigned long FadeBits; unsigned char _pad10[0x08]; float Lifetime;
-    unsigned char _pad1c[0x98 - 0x1c]; long Frame;
-    protected: float GetCurrentFadeValue() const; public: float TestFade() const { return GetCurrentFadeValue(); }   // the row (PDB IBE) + a test-only accessor
+float CPSCUpdateNormal::GetCurrentFadeValue() const
+{
+    if (!UseSystemLifeSecs)
+        return 1.0f;
+    float age = 0.0f;
+    if (SystemLifeSecs > 0.0f) {
+        age = (NParticleEngine::GetOneOverTickRate() * LifeTimer) / SystemLifeSecs;
+        if (age < 0.0f)
+            age = 0.0f;
+        else if (age > 1.0f)
+            age = 1.0f;
+    }
+    float fadeIn = (float)FadeInEndInteger * 0.001f;
+    float fadeOut = (float)FadeOutBeginInteger * 0.001f;
+    float result = 1.0f;
+    if (age < fadeIn)
+        result = GFSmoothFadeValue(age / fadeIn);
+    if (age > fadeOut)
+        result *= GFSmoothFadeValue((1.0f - age) / (1.0f - fadeOut));
+    return result;
+}
+}
+
+#include <math.h>
+#include <stdio.h>
+float GFastCosTable[1025];
+namespace NParticleEngine {
+float FABLE_FASTCALL GetOneOverTickRate(){return 1.0f;}
+class FadeAccess : public CPSCUpdateNormal {
+public:
+    using CPSCUpdateNormal::GetCurrentFadeValue;
+    void configure(bool enabled,unsigned in,unsigned out,float seconds,long frame){
+        UseSystemLifeSecs=enabled; FadeInEndInteger=in; FadeOutBeginInteger=out; SystemLifeSecs=seconds; LifeTimer=frame;
+    }
 };
 }
-static double Expected(double t)                 // 0.5 - cos(2 pi * (t * 0.5 * 1024) / 1024) / 2, the table read interpolated
-{
-    double scaled = t * 0.5 * 1024.0;
-    return 0.5 - 0.5 * cos(scaled * 3.14159265358979 * 2.0 / 1024.0);
-}
-int main()
-{
-    for (int i = 0; i <= 1024; ++i) GFastCosTable[i] = (float)cos(i * 3.14159265358979 * 2.0 / 1024.0);
-    NParticleEngine::CPSCUpdateNormal u; u.Lifetime = 10.0f; u.Frame = 5; u.FadeBits = 0;
-    bool ok = u.TestFade() == 1.0f;                                 // fade disabled
-    u.FadeBits = 0x2000000 | (1023 << 10) | 511;                               // fade in over 0.511 of the life, fade out from 1.023 (never)
-    float v = u.TestFade();                                         // age 0.5 < fadeIn: eased in
-    ok = ok && fabs(v - Expected(0.5 / 0.511)) < 0.002;
-    u.Frame = 1; v = u.TestFade();                                  // age 0.1: 0.0915 (a 2048 or 512 scale gives 0.33 / 0.024)
-    ok = ok && fabs(v - Expected(0.1 / 0.511)) < 0.002 && v > 0.08f && v < 0.10f;
-    u.Frame = 0; v = u.TestFade(); ok = ok && fabs(v) < 0.01f;      // age 0 -> 0
-    u.FadeBits = 0x2000000 | (300 << 10) | 0;                                  // no fade in; fade out from 0.3
-    u.Frame = 8; v = u.TestFade();                                  // age 0.8: TableCos01((1 - 0.8) / 0.7)
-    ok = ok && fabs(v - Expected(0.2 / 0.7)) < 0.002;
-    std::printf(ok ? "00b0a750_TEST PASS\n" : "00b0a750_TEST FAIL\n"); return ok ? 0 : 1;
+int main() {
+    for(int j=0;j<=1024;++j)GFastCosTable[j]=(float)cos(j*6.283185307179586/1024.0);
+    static unsigned long storage[(sizeof(NParticleEngine::FadeAccess)+3)/4];
+    NParticleEngine::FadeAccess* u=reinterpret_cast<NParticleEngine::FadeAccess*>(storage);
+    const unsigned ins[]={0,200,600,1023},outs[]={0,300,700,1023}; const float life[]={-1,0,10};
+    for(int on=0;on<2;++on) for(int i=0;i<4;++i) for(int o=0;o<4;++o) for(int n=0;n<3;++n) for(int frame=-2;frame<=14;++frame) {
+        u->configure(on!=0,ins[i],outs[o],life[n],frame);float result=u->GetCurrentFadeValue();
+        double age=life[n]>0?frame/(double)life[n]:0;if(age<0)age=0;if(age>1)age=1;
+        double in=ins[i]/1000.0,out=outs[o]/1000.0,expect=1.0;
+        if(on && age<in)expect=0.5-0.5*cos(3.141592653589793*age/in);
+        if(on && age>out)expect*=0.5-0.5*cos(3.141592653589793*(1.0-age)/(1.0-out));
+        if(fabs(result-expect)>0.00002)return 1;
+    }
+    puts("00b0a750_TEST PASS");return 0;
 }

@@ -54,12 +54,32 @@ private:
  bool IsAbleToTurnDaBody() const;
  void UpdateHeadCreatureAnim(const CCharString & p0, ECreatureAnim p1, CAnimateThing * p2);
  float GetHeadCreatureAnimFrame(ECreatureAnim p0) const;
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ float GetHeadTurnRangeXY() const { return (float)(PDef->HeadTurnRangeXY / 360.0f); }
+#else
  float GetHeadTurnRangeXY() const { return (PDef->HeadTurnRangeXY * 0.0027777778f); }
+#endif
  float GetHeadTurnRangeYZ() const;
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ float GetHeadTurnRangeYZUp() const { return (float)(PDef->HeadTurnRangeYZUp / 360.0f); }
+#else
  float GetHeadTurnRangeYZUp() const;
+#endif
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ float GetHeadTurnRangeYZDown() const { return (float)(PDef->HeadTurnRangeYZDown / 360.0f); }
+#else
  float GetHeadTurnRangeYZDown() const;
+#endif
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ float GetEyesTurnRangeXY() const { return (float)(PDef->EyesTurnRangeXY / 360.0f); }
+#else
  float GetEyesTurnRangeXY() const;
+#endif
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ float GetEyesTurnRangeYZ() const { return (float)(PDef->EyesTurnRangeYZ / 360.0f); }
+#else
  float GetEyesTurnRangeYZ() const;
+#endif
  void SetRecoveryAngles(const C3DVector & p0);
  float GetHeadMoveSpeedFromLookFlags() const;
  void SetHeadLooking(float p0, bool p1, bool p2, float p3, float p4);
@@ -69,7 +89,17 @@ private:
  void InitialiseTurningViaAnimation(const C3DVector & p0, long p1);
  void CentreEyes();
  void CentreHead();
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+ void SetHeadTurnState(long state) {
+     if (HeadTurnState != state) {
+         HeadTurnState = state;
+         OneFrameDelay = true;
+     }
+     TimeToStopLooking = -1;
+ }
+#else
  void SetHeadTurnState(long p0);
+#endif
  void SetBodyTurnState(long state) { if(BodyTurnState!=state) BodyTurnState=state; }
  void ChangeHeadAngleXY(float p0, float p1);
  void ChangeHeadAngleYZ(float p0, float p1);
@@ -110,7 +140,13 @@ private:
  }
  return false;
  }
+#if defined(FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30) && !defined(FABLE_RETAIL_CTCLOOK_RANGE_OWNER_PASS30)
+ bool IsWithinYZHeadRange(float angle) {
+     return angle <= GetHeadTurnRangeYZUp() && angle >= -GetHeadTurnRangeYZDown();
+ }
+#else
  bool IsWithinYZHeadRange(float p0);
+#endif
  float GetHeadAngularVelocityMaxXY();
  float GetHeadAngularVelocityMaxYZ();
  void InitialiseHeadAnims();
@@ -158,5 +194,9 @@ private:
 public:
  CTCLook & operator=(const CTCLook & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCLook)==208);
+FABLE_STATIC_ASSERT_AT(161, sizeof(CTCLook)==208);
+#ifdef FABLE_RETAIL_DRAGON_LOOK_INLINES_PASS30
+
+inline ETCInterfaceType FABLE_FASTCALL CTCLook::StatGetInterfaceType() { return TCI_LOOK; }
+#endif
 #endif

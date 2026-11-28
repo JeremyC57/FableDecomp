@@ -10,6 +10,10 @@
 // [m_activeSlots], m_Source.eax3BP +0x1c0 [m_defaultProperties], m_Dest.eax3BP +0x208 [m_deferred], m_BufferID +0x370 [m_sourceID].
 class CEAXBuffer:public CCodaObjectBase {
 public:
+#ifdef FABLE_RETAIL_CCODAEAX_SOURCE_PROPERTY
+    // CODAApi CodaEAX.obj calls this member in SetEAX4Source.
+    int EAX4Source(unsigned long, void*, unsigned long, _CHANGES**);
+#endif
 #ifdef FABLE_RETAIL_CEAXBUFFER_CTOR_PASS23
  // Exact original release/debug SDK constructor and original debug formal names.
  CEAXBuffer(CEAXListener* lpEAXListener,long BufferID,long Volume,EAXVERSION eaxVersion,_CHANGES** lplpChanges);

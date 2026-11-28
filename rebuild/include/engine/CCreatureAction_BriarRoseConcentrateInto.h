@@ -14,6 +14,9 @@
 class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase {                      // vtable 0x01287904
 public:
     CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase& creature, CThingCreatureBase& enemy, bool imposter);   // 0x008E8BB0 (Ego_r.pdb / FableWin.pdb ??0CCreatureAction_BriarRoseConcentrateInto@@QAE@...)
+#ifdef FABLE_RETAIL_BRIAR_ROSE_OLD_BINDER_PASS30
+    virtual void Initialise();
+#endif
     bool Imposter;                                              // +0x114
     CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x115
 };
@@ -41,9 +44,9 @@ public:
     unsigned char PEnemy[0xb];                               // +0x115 CIntelligentPointer<CThingCreatureBase>
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseConcentrateInto) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
+FABLE_STATIC_ASSERT_AT(44,sizeof(CCreatureAction_BriarRoseConcentrateInto) == 0x120);
+FABLE_STATIC_ASSERT_AT(45,offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
+FABLE_STATIC_ASSERT_AT(46,offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseConcentrateInto {

@@ -1,31 +1,73 @@
-// CGetBestIciclePointForTarget::CGetBestIciclePointForTarget(CThing* target, float time) -- the search functor for the best icicle drop point: the target's position extrapolated by its last-frame XY movement times `time`, best score -1
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008E2A90, length 122 bytes.
-// Callees: CThing::GetPos @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof", propagated); the placement record
-//          (+0x60) holds the previous position at +0x18. The 0.0f pool constant @ 0x0122DEDC comes from the literal Z of the
-//          movement vector (`fld time ; fmul 0.0f`: VC keeps the literal as the memory operand).
-// Shape: BestPosScore is the init-list member (stored first, `mov [esi+0Ch],0BF800000h`); TargetPos is assigned in the body
-// from `pos + C3DVector(dx, dy, 0) * time` -- the operator results are hidden-pointer temporaries folded onto the FPU and
-// copied into the member through a frame temporary (three dword moves).
-// Layout: Ego_r.pdb (TargetPos +0, BestPosScore +0x0c, BestPos +0x10).
-// Leaf: ??0CGetBestIciclePointForTarget
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Flags: 
+// Leaf: ??0CGetBestIciclePointForTarget@?A0x9b671e55@@QAE@ABVCThing@@M@Z
+// 008e2a90 ??0CGetBestIciclePointForTarget
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
+#define FABLE_RETAIL_ICICLE_ASSAULT_PASS30
+#define FABLE_RETAIL_GFDEBUGDYNAMICCAST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
+#define FABLE_RETAIL_CSNOWTROLLDEF
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+#define FABLE_RETAIL_JACK_STAGE1_UPDATE
+#define FABLE_RETAIL_CSOUNDPAIR_ORIGINAL_CTORS
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE
+#define FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+#define FABLE_RETAIL_GFRANDOM_OUTOFLINE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTCTRAPBASE
+#define FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
+#include "fable_string.h"
 #include "engine/C3DVector.h"
-struct CTCPhysicsBase {
-    unsigned char _pad00[0x18];
-    C3DVector     m_prevPosition;                  // +0x18
-};
 #include "engine/CThing.h"
-struct CGetBestIciclePointForTarget {
-    C3DVector TargetPos;                           // +0x00
-    float     BestPosScore;                        // +0x0c
-    C3DVector BestPos;                             // +0x10
-    CGetBestIciclePointForTarget(CThing* target, float time);
-};
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingObject.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/ThingAlive.h"
+#include "engine/CTCTrapBase.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_IceTrollIcicleAssaultLoop.h"
+#include "engine/CCreatureAction_IceTrollIcicleAssaultOutOf.h"
+#include "engine/CreatureModes_IciclePoints.h"
+#include "engine/NExplosiveTrailHelpers.h"
+#include "engine/GFRandom.h"
+#include "engine/GFLimit.h"
+#include "stlport/fable_algorithm.h"
+#include "stlport/position_algorithms.h"
 
-CGetBestIciclePointForTarget::CGetBestIciclePointForTarget(CThing* target, float time)
+#include "engine/CTCPhysicsBase.h"
+namespace {
+CGetBestIciclePointForTarget::CGetBestIciclePointForTarget(const CThing& target, float prediction_frames)
     : BestPosScore(-1.0f)
 {
-    const C3DVector& pos = target->GetPos();
-    const C3DVector& prev = target->GetPhysicsTC()->m_prevPosition;
-    TargetPos = pos + C3DVector(pos.X - prev.X, pos.Y - prev.Y, 0.0f) * time;
+    const C3DVector& tpos = target.GetPos();
+    C3DVector vel = tpos - target.GetPhysicsTC()->GetLastPosition();
+    vel.Z = 0.0f;
+    TargetPos = tpos + vel * prediction_frames;
+}
 }

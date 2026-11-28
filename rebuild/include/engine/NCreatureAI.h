@@ -11,6 +11,9 @@ class CThingCreatureBase;
 class C3DVector;
 class CThingCreatureBase;
 namespace NCreatureAI {
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+bool FABLE_FASTCALL IsOverridingFactionEnemyOnTarget(const CThingAICreature*, const CThing*);
+#endif
 #ifdef FABLE_RETAIL_CREATURE_RANGED_COMBAT2_PASS27
 bool FABLE_FASTCALL IsBestTargetForAttack(const CThingAICreature&, const CThingCreatureBase*);
 #endif

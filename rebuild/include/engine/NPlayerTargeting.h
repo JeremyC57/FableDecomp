@@ -4,6 +4,11 @@
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
 #include "engine/CIntelligentPointer.h"
+#ifdef FABLE_RETAIL_TARGET_RANGE_COMPONENT_MAP_PASS30
+// The existing 008028D0 linker name is retained by the 00802D10 binder port.
+class CTargetingDef;
+float FABLE_FASTCALL GetTargetingRangeForTargetType(unsigned long, const CTargetingDef&, const CThing&, const CThing*);
+#endif
 namespace NPlayerTargeting {
 // Original PDB class, size28: intelligent pointer0, index8, vector12, frame24.
 class CTargetPoint {

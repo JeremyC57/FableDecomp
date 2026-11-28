@@ -1,68 +1,84 @@
-// CTCSolidToThing::IsSolidToThing(const CThing* thing) const -- true when the not-solid-to list is empty or does not hold the thing (a linear find of an intelligent pointer to it)
 // Leaf: ?IsSolidToThing@CTCSolidToThing@@QBE_NPBVCThing@@@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00770DE0, 105 bytes (+7 int3), `ret 4`.
-// Name: FableWin.pdb `?IsSolidToThing@CTCSolidToThing@@QBE_NPBVCThing@@@Z`; the landed CTCSolidToThing::AddThingNotSolidTo
-//   0x00770FA0 calls it at this address; other callers are the collision filters 0x006A8300 / 0x00857250 and
-//   CTCPhysicsStandard::IsCollisionWithThingToCauseResponse 0x008E5750 (tail jump). Label correction: catalog
-//   "ContainerFindElement" -> CTCSolidToThing::IsSolidToThing.
-// Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() 0x00A01B10, ::SetPItem 0x00A01B90, ::~CBaseIntelligentPointer
-//   0x00A01C10; STLport __find(first, last, const CIntelligentPointer<const CThing>&, const random_access_iterator_tag&)
-//   0x00737880 (/Gr __fastcall, landed).
-// Layout: Ego_r.pdb CTCSolidToThing: NotSolidToThings (vector<CIntelligentPointer<CThing const> >, retail 12-byte STLport)
-//   +0x0c. CIntelligentPointer<CThing const> vtable 0x01237F1C (the landed AddThingNotSolidTo model).
-// Shape: the empty list answers true first; the temporary intelligent pointer is built for the find (base constructor,
-//   derived vtable, SetPItem) and destroyed at the end of that statement, so end() is re-read after the destructor call.
-class CThing;
-class CBaseObject;
+#define FABLE_RETAIL_CTCSOLIDTOTHING
+#define FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CTCSOLIDTOTHING_ISSOLIDTOTHING
+// Flags:
+#define FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30
+#define FABLE_RETAIL_CTCCOMBAT
+#define FABLE_RETAIL_COMBAT_SETSTRUCK_PASS29
+#define FABLE_RETAIL_STLP_MULTIMAP_PASS22_ATMOS_ITERATION
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#define FABLE_RETAIL_CHITPARAMETERS_VECTOR_MEMBERS
+#define FABLE_RETAIL_CHITPARAMETERS_AUGMENTATIONS
+#define FABLE_RETAIL_CHITPARAMETERS_BLOCKABLE
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCCARRYING
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_CCOMBATABILITY
+#define FABLE_RETAIL_CCOMBATABILITY_MEMBERS
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CCOMBATABILITYBLOCKINGDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_MIXED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_ISDEAD_DIRECT
+#define FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCPERCEIVETHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_AWARENESS
+#define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_GFDEBUGDYNAMICCAST
+#define FABLE_RETAIL_MATH_TRIG_TWO_PI
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                                   // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-};
+#include "fable_string.h"
+#include "engine/CDefClassBase.h"
+#include "engine/C3DVector.h"
+#include "engine/ECombatAbilityInterfaceType.h"
+#include "engine/EWeaponClass.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/ThingAlive.h"
+#include "engine/CWorld.h"
+#include "engine/CHitParameters.h"
+#include "engine/CTCCombat.h"
+#include "engine/CTCWeapon.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCHeroExperience.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CTCPerceiveThing.h"
+#include "engine/CCombatAbilityBlockingData.h"
+#include "engine/GFDebugPDynamicCast.h"
+#include "engine/GFCos.h"
+#include "engine/NCreatureMode.h"
+#include "stlport/fable_algorithm.h"
+#include "fable_assert.h"
 
-struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThing const>, vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointer(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)thing); }
-};
-
-namespace std {
-struct random_access_iterator_tag {
-    random_access_iterator_tag() { }
-};
-CIntelligentPointer* __fastcall __find(CIntelligentPointer* first, CIntelligentPointer* last, const CIntelligentPointer& value,
-                                       const random_access_iterator_tag&);   // 0x00737880
-inline CIntelligentPointer* find(CIntelligentPointer* first, CIntelligentPointer* last, const CIntelligentPointer& value)
-{
-    return __find(first, last, value, random_access_iterator_tag());
-}
-}
-
-struct CThingPointerVector {                                // retail std::vector: first, last, end
-    CIntelligentPointer* m_pFirst;
-    CIntelligentPointer* m_pLast;
-    CIntelligentPointer* m_pEnd;
-    CIntelligentPointer* begin() const { return m_pFirst; }
-    CIntelligentPointer* end() const { return m_pLast; }
-    bool empty() const { return m_pFirst == m_pLast; }
-};
-
-class CTCSolidToThing {
-public:
-    void*               __vftable;                          // +0x00
-    CThing*             ParentThing;                        // +0x04
-    bool                ToBeRemoved;                        // +0x08
-    bool                IsInGlobalUpdateTCs;                // +0x09
-    CThingPointerVector NotSolidToThings;                   // +0x0c
-    bool IsSolidToThing(const CThing* thing) const;
-};
+#include "engine/CTCSolidToThing.h"
 
 bool CTCSolidToThing::IsSolidToThing(const CThing* thing) const
 {
     if (NotSolidToThings.empty())
         return true;
-    CIntelligentPointer* it = std::find(NotSolidToThings.begin(), NotSolidToThings.end(), CIntelligentPointer(thing));
+    std::vector<CIntelligentPointer<const CThing> >::const_iterator it =
+        std::find(NotSolidToThings.begin(), NotSolidToThings.end(), CIntelligentPointer<const CThing>(thing));
     return it == NotSolidToThings.end();
 }

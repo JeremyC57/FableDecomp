@@ -64,14 +64,14 @@ struct CModeDragonFlying {
 struct CModeDragonStrafeBurninate : CModeDragonFlying {
     bool FlameActive;
     int ends;
-    void EndBeamEffect() { ++ends; FlameActive = false; }
+    void KillBeamEffect() { ++ends; FlameActive = false; }
     void OnDeactivate()
     {
         CTCType9* tc = 0;
         ParentThing->GetInterface(&tc, 9);
         tc->m_active = false;
         if (FlameActive)
-            EndBeamEffect();
+            KillBeamEffect();
         CModeDragonFlying::OnDeactivate();
     }
 };

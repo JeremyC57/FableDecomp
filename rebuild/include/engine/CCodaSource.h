@@ -6,6 +6,10 @@
 #include "engine/CCodaBufferQueue.h"
 // Layout: native+0c caps,+10 status,+50 voice,+54 queue,+78 buffer;
 // SDK release object agrees, debug adds only the base diagnostic word.
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+typedef void (FABLE_STDCALL *CDATACALLBACK)(void*, const _CBUFFERDESC*, int);
+    typedef void (FABLE_STDCALL *CBUFFERCALLBACK)(void*, void*, const _CBUFFERDESC*, void**);
+#endif
 class CCoda3DSource;
 #ifdef FABLE_RETAIL_CCODASOURCE_EAX
 struct _GUID;
@@ -69,6 +73,16 @@ public:
 #ifdef FABLE_RETAIL_CSALSW3D_CALCPARAMS
  // Retail opt-in (hand4c w24, row 0x00C54C10): SDK 2.10 CodeView public ?GetCaps@CCodaSource@@QBEIXZ; release reads +0x0c.
  unsigned int GetCaps()const{return m_ffCaps;}
+#endif
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+    const CDATACALLBACK GetPreMixCallback() const { return m_pfnPreMixCallback; }
+    const CBUFFERCALLBACK GetBufferCallback() const { return m_pfnBufferCallback; }
+    unsigned int GetMaxBufferSize() const { return m_cbMaxBufferSize; }
+#endif
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+ CSalBuffer* GetBuffer() const { return m_pBuffer; }
+ CCodaBufferQueue& Queue() { return m_Queue; }
+ void QueueCallback();
 #endif
  bool IsBufferSet()const{return m_pBuffer!=0 || (m_Queue.IsCreated() && !m_Queue.IsEmpty());}
  // Native Play returns its voice-acquisition error or zero; SDK2.10 changed this return to void.

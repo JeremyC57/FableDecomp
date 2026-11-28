@@ -48,6 +48,14 @@ class CWideString; class CRightHandedSet;
 #pragma pack(push, 1)
 class CTCInventoryItem : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_INVENTORY_CONTEXT_CACHE_PASS30
+    // Ego_r and FableWin name the private static at retail 013B8C14.
+    // Native 005D9B9A loads it before looking up CContextSensitiveItemDef.
+private:
+    static CDefPointer<const CThingBaseDef> MostRecentThingDef;
+public:
+    static EContextSensitiveType FABLE_FASTCALL GetContextSensitiveType(long def_index);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
 #ifdef FABLE_RETAIL_GIVE_ITEM_ACTION_PASS26
     NInventory::CTCInventoryBase* GetPInventory() const { return PInventory; }

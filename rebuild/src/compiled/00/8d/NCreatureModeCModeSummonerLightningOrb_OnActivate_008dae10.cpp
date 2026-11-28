@@ -1,3 +1,4 @@
+// Flags: 
 // NCreatureMode::CModeSummonerLightningOrb::OnActivate() -- stand-mode activation; suspend a player's animation; spawn the orb-charge effect (attached to the summoner's LIGHTNING_ORB_FOCUS bone through its particle emitter) and the charge effect; give the summoner an electrocute-on-touch component; arm the timer
 // Leaf: ?OnActivate@CModeSummonerLightningOrb@NCreatureMode@@UAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -20,71 +21,15 @@
 #include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
-static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
-class CSpecialEffectsDef { public:
-    virtual void v00();
-    virtual void Destroy();                           // slot 1
-    long RefCount;                                    // +0x04
-    bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
-};
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
-    CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
-    T* operator->() const { return Object; }
-    CDefPointer& operator=(const CDefPointer& other)
-    {
-        if (Object != other.Object) {
-            if (Object) {
-                if (--Object->RefCount == 0)
-                    Object->Destroy();
-                Object = 0;
-            }
-            Object = other.Object;
-            if (Object)
-                ++Object->RefCount;
-        }
-        return *this;
-    }
-};
-class CDefinitionManager { public:
-    CDefPointer<CSpecialEffectsDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10
-};
-class CDefClassBase { public:
-    virtual void v00(); virtual void Destroy(); virtual void v08(); virtual void v0c(); virtual void v10();
-    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
-    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
-    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
-    long RefCount;                                    // +0x04
-    unsigned char _pad08[0x1c - 8];
-    CDefinitionManager* m_pManager;                   // +0x1c
-    bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for GetSubDef<CSpecialEffectsDef> 0x00669580 (its landed body; see 0x008C0EA0).
-bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
-{
-    long* pIndex;
-    {
-        CCharString name("CSpecialEffectsDef");
-        pIndex = GetSubDefIndex(name);
-    }
-    if (pIndex) {
-        CDefPointer<CSpecialEffectsDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
-        *out = result;
-        return true;
-    }
-    return false;
-}
-#pragma auto_inline(on)
-
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_SKYBEAM_ORIGINAL
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#include "engine/CSpecialEffectsDef.h"
+#include "engine/CDefinitionManager.h"
 namespace NCreatureMode { struct CModeBase; }
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
@@ -97,7 +42,7 @@ class CThing { public:
     unsigned char _pad44[0x5c - 0x44];
     CTCBase*      PTCDriver;                          // +0x5c
     unsigned char _pad60[0x70 - 0x60];
-    CDefClassBase* m_pDef;                            // +0x70
+    CDefPointer<CDefClassBase> m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
@@ -149,7 +94,6 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-extern const float g_FramesPerSecond_0122ded4;        // 0x0122DED4 (3.0f)
 
 namespace NCreatureMode {
 struct CModeBase {                                    // vtable 0x012673CC
@@ -175,7 +119,7 @@ void CModeSummonerLightningOrb::OnActivate()
     CModeStandBase::OnActivate();
     if (m_pThing->m_type == 1)
         ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
-    CDefPointer<CSpecialEffectsDef> effects;
+    CDefPointer<const CSpecialEffectsDef> effects;
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;
         if (effects->GetEffectFromString("LIGHTNING_ORB_CHARGE", effect)) {
@@ -192,6 +136,6 @@ void CModeSummonerLightningOrb::OnActivate()
             PChargeEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false));
     }
     m_pThing->AddTC("CTCElectrocuteOnTouch", true, 0);
-    Timer = (long)(CMainGameComponent::GetConstantFPS() * g_FramesPerSecond_0122ded4);
+    Timer = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
 }
 }

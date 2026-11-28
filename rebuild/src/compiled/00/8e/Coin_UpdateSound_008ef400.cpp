@@ -1,3 +1,4 @@
+// Flags: 
 // Coin::UpdateSound(bool muted) -- tavern-game coin slide sound: stop it when the coin is at rest, otherwise start "TAVERN_GAME_COIN_SLIDE" if needed and set its pitch and (muted ? 0 : 1) volume
 // Leaf: ?UpdateSound@Coin@@QAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -9,14 +10,14 @@
 //   the play method @ 0x0066BD00 (name, false, 0, 0, -1), SetSpecificSamplePitch @ 0x0066AFA0 and SetSpecificSampleVolume
 //   @ 0x0066AFF0 (Ego_r.pdb `(unsigned long, float)` pair; the emitter forwards them to vtable slots 6 / 7),
 //   CCharString(const char*, long) @ 0x0099EBF0 ("TAVERN_GAME_COIN_SLIDE" 0x01288250), ~CCharString @ 0x0099EAE0.
-//   Globals: g_InvalidSoundHandle 0x0129D25C, 0.0f 0x0122DEDC.
+//   Globals: INVALID_SAMPLE_ID 0x0129D25C, 0.0f 0x0122DEDC.
 // Shape: the GetTC out-pointer is not null-initialised and its result is not tested (retail reads the dead `muted` slot on
 //   the absent path, GOTCHAS 24l); the rest test is the squared speed against the pooled 0.0f; the volume is formed in the
 //   `muted` slot. Speed-optimised (default) TU.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
-extern const unsigned long g_InvalidSoundHandle;       // 0x0129D25C
+extern const unsigned long INVALID_SAMPLE_ID;       // 0x0129D25C
 
 class CTCBase;
 class CTCSoundPlayer {                                 // the thing's interface-16 component
@@ -75,13 +76,13 @@ void Coin::UpdateSound(bool muted)
     CTCSoundPlayer* player;
     Thing->GetTC(TCI_SOUND_PLAYER, &player);
     if (Velocity.GetLengthSquared() == 0.0f) {
-        if (Sound != g_InvalidSoundHandle) {
+        if (Sound != INVALID_SAMPLE_ID) {
             player->StopAttachedSound(Sound);
-            Sound = g_InvalidSoundHandle;
+            Sound = INVALID_SAMPLE_ID;
         }
         return;
     }
-    if (Sound == g_InvalidSoundHandle) {
+    if (Sound == INVALID_SAMPLE_ID) {
         CCharString name("TAVERN_GAME_COIN_SLIDE");
         Sound = player->PlayAttachedCriteria(name, false, 0, 0, -1);
     }

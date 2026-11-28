@@ -72,6 +72,9 @@ public:
 #endif
     // Ego_r.pdb non-virtual ??1CGraphicFrameData@@QAE@XZ (the landed ~CEngineSurfaceCompositionManager 0x00B2D1B0 model): IsInitialised
     // (bit 4 of +0x1A) -> Uninitialise 0x009FCBA0, then the PTexture counted pointer; FableWin.pdb ?AddReference@CGraphicFrameData@@QAEXXZ.
+#ifdef FABLE_RETAIL_LANDSCAPE_INLINE_COPIES_PASS30
+    FABLE_FORCEINLINE
+#endif
     ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
     void Uninitialise();                                     // 0x009FCBA0
     void AddReference() { ++ReferenceCount; }
@@ -80,7 +83,19 @@ public:
     // expands it: 0x0041C0E0, 0x0041C700, 0x00A00B90, 0x00B2EEC0, 0x00B2EFB0, 0x00B2D724..0x00B2D766). FABLE_FORCEINLINE per the owner's
     // 2026-11-01 rule for Lionhead header helpers: plain `inline` leaves it called inside the expanded operator= (c1 75, score 85 at f 0.5
     // against the default threshold 74; UpdateDiskCacheTexture 0x00B2D330).
+#ifdef FABLE_RETAIL_LANDSCAPE_INLINE_COPIES_PASS30
+    // The nonvirtual delete in the editor uses ??_G. Retail 0041C090 expands
+    // both calls. The same class uses this spelling in the wf12 inline control.
+    FABLE_FORCEINLINE void Release()
+    {
+        if (--ReferenceCount == 0) {
+            this->~CGraphicFrameData();
+            ::operator delete(this);
+        }
+    }
+#else
     FABLE_FORCEINLINE void Release() { if (--ReferenceCount == 0) delete this; }
+#endif
     friend class CGraphicFrame;
 private:
     unsigned long ReferenceCount;                            // +0x00

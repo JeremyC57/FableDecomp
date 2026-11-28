@@ -14,7 +14,11 @@ public:
     __forceinline
 #endif
     CWideScreenMagicPauseEntities(CGameScriptInterfaceBase& game):Game(&game){Game->PauseAllNonScriptedEntities(true);}
+#ifdef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+    ~CWideScreenMagicPauseEntities() { Game->PauseAllNonScriptedEntities(false); }
+#else
     ~CWideScreenMagicPauseEntities(){Game->PauseAllNonScriptedEntities(false);}
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CWideScreenMagicPauseEntities)==4);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CWideScreenMagicPauseEntities)==4);
 #endif

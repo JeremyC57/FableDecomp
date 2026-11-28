@@ -84,6 +84,9 @@ public:
 };
 class COpinionSet {
 public:
+#ifdef FABLE_RETAIL_OPINION_SET_EXTERNAL_CTOR_PASS30
+    COpinionSet(); // 004538EB
+#endif
 #ifdef FABLE_RETAIL_COPINIONSET_CTOR_INDEX
     // Retail opt-in (wfD5, row 0x00678760): Ego_r.pdb ??0COpinionSet@@QAE@XZ and ??ACOpinionSet@@QAEAAMJ@Z. The constructor is
     // header inline (one zero per opinion, the body of the landed 0x004538EB); retail's copy is that size-optimised COMDAT, which
@@ -119,6 +122,9 @@ public: bool OnHit(bool);
 #endif
 
 public:
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+    bool IsHeroOpinionEnemy() const;
+#endif
 #ifdef FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
     template<class Filter> const COpinionDeed* FindMostRecentDeed(EOpinionDeedType, const Filter&,long*,bool) const;
 #endif
@@ -134,6 +140,17 @@ public:
     template<class Filter> const COpinionDeed* FindMostRecentDeed(const Filter&,long*,bool) const;
 #endif
     CTCCreatureOpinionOfHero(CThing& thing);                             // 0x00684420 ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+    float TransformForcedOpinion(EOpinion, float) const;
+    float TransformOpinionFromHeroStats(EOpinion, float) const;
+    CDefPointer<const COpinionPersonalityDef> PeekPPersonalityDef() const { return PPersonalityDef; }
+    float GetRelativeOpinion(EOpinion opinion, bool clamp) const
+    {
+        const float upper = clamp ? 1.0f : 2.0f;
+        const float lower = clamp ? -1.0f : -2.0f;
+        return GFLimitReturn(RelativeOpinion[opinion], lower, upper);
+    }
+#endif
     virtual void OnSerialise(CPersistContext& context, bool loading);   //  1 0x00684610 (public: Ego_r UAE)
     virtual void OnInitialActivate();                                    //  6 0x006815C0
     virtual bool HasFrameUpdate() const;                                 //  8 0x006866B0
@@ -191,6 +208,12 @@ public:
     // 0x006CEAE0: GetWorld then LastOpinionReactionFrame +0x0C = GetFrame()) and the inline ?SetHasInteracted@ / ?SetHasGreeted@..QAEXXZ
     // (the row stores 1 to +0x340 then +0x341 in place). Members only: no layout change.
     unsigned long GetGreetDialogueGroupIndex(EOpinionAttitudeType attitude);   // 0x00683C10
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+    EOpinionAttitudeType GetForcedAttitude() const { return ForcedAttitude; }
+    long GetLastOpinionReactionFrame() const { return LastOpinionReactionFrame; }
+    bool IsAttitudeEnabled(EOpinionAttitudeType type) const { return AttitudeMask[type]; }
+    bool IsReactionEnabled(EOpinionReactionType type) const { return ReactionMask[type]; }
+#endif
     void ResetLastOpinionReactionFrame();                                // 0x006CEAE0
     void SetHasInteracted() { InteractedFlag = true; }
     void SetHasGreeted() { GreetedFlag = true; }

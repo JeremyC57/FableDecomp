@@ -1,37 +1,34 @@
-// CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite -- initializes 2D geometry, two bank/frame colors, angles, blend state and unaligned UVs; retail 0065595c 194 bytes. Callee 004371a0 copies two C2DVectors into C2DBoxF; its propagated CRightHandedSet label describes a different layout. No wrapper, C2DBoxF, or CRGBColour header exists; internal renderer header is a distinct 0x94 object.
-#include "fable_compiler.h"
-#pragma optimize("y", off)
-#pragma optimize("s", on)
-class C2DVector { public: float X,Y; };
-class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF(const C2DVector&,const C2DVector&); }; // 0x004371a0 (NF104 q4918: Ego_r/FableWin ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z, the reference pair; was a pointer pair no PDB has)
-class CRGBColour { public:
- unsigned char B,G,R,A;
- CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Set(r,g,b,a); }
- FABLE_FORCEINLINE void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
- FABLE_FORCEINLINE CRGBColour(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); }
-};
-class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){} };
-class CEnginePrimitive { public:
- long Type,InterpolationSet;
- CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;
- CEnginePrimitive(long type,long interpolation):Type(type),InterpolationSet(interpolation){}
-};
-struct CEnginePrimitive2DClockSprite : CEnginePrimitive {
- C2DBoxF ClipBox;
- unsigned long Layer,BankIndex,Frame,BankIndex2,Frame2;
- float AngleStart,AngleEnd;
- unsigned long BlendMode;
- CRGBColour Colour,Colour2;
- unsigned char ClipBoxIsPos;
- unsigned long Flags;
- unsigned char Filter;
- unsigned char UVOffsetsStart[8],UVOffsetsEnd[8];
- CEnginePrimitive2DClockSprite(unsigned __int64 unused,const C2DVector* basis,unsigned long layer,unsigned long bank,unsigned long frame,const CRGBColour* colour,unsigned long bank2,unsigned long frame2,const CRGBColour* colour2,unsigned long blend,float start,float end,const C2DVector* uvStart,const C2DVector* uvEnd,unsigned long enabled,unsigned long interpolation);
-};
-CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite(unsigned __int64 unused,const C2DVector* basis,unsigned long layer,unsigned long bank,unsigned long frame,const CRGBColour* colour,unsigned long bank2,unsigned long frame2,const CRGBColour* colour2,unsigned long blend,float start,float end,const C2DVector* uvStart,const C2DVector* uvEnd,unsigned long enabled,unsigned long interpolation)
- : CEnginePrimitive(0x23,interpolation),ClipBox(*basis,*basis),Layer(layer),BankIndex(bank),Frame(frame),BankIndex2(bank2),Frame2(frame2),AngleStart(start),AngleEnd(end),BlendMode(blend),Colour(*colour),Colour2(*colour2),ClipBoxIsPos(1),Flags(enabled),Filter(0)
+// 0065595C CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite
+// Flags: /O1 /Oy- /Gy
+// Fidelity: the private instantiation emits the shared constructor in its own object.
+// Microsoft LINK discards the private call site when the constructor is linked.
+// Leaf: ??0CEnginePrimitive2DClockSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKABVCRGBColour@@KK3W4EEnginePrimitiveBlendMode@@MM11KW4EEngineInterpolationSet@@@Z
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF_CORNERS
+#define FABLE_RETAIL_C2DBOXF_CLOCK_CORNERS_OWNER_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
+#define FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_INCLUDE_PASS23
+#define FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+#define FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COPY_FORCEINLINE_PASS26
+#include "engine/C2DVector.h"
+#include "engine/CEnginePrimitive2DClockSprite.h"
+
+namespace {
+template<class Sprite>
+#if defined(__clang__)
+__attribute__((used, optnone))
+#elif defined(__GNUC__)
+__attribute__((used, optimize("O0")))
+#endif
+static void InstantiateClockConstructor(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,unsigned long bank,unsigned long frame,const CRGBColour&colour,
+  unsigned long bank2,unsigned long frame2,const CRGBColour&colour2,EEnginePrimitiveBlendMode blend,float angle_start,float angle_end,
+  const C2DVector&uv_start,const C2DVector&uv_end,unsigned long flags,EEngineInterpolationSet interpolation)
 {
- (void)unused;
- *reinterpret_cast<C2DVector*>(UVOffsetsStart)=*uvStart;
- *reinterpret_cast<C2DVector*>(UVOffsetsEnd)=*uvEnd;
+    Sprite clock(id, pos, layer, bank, frame, colour, bank2, frame2, colour2, blend, angle_start, angle_end, uv_start, uv_end, flags, interpolation);
+}
+template void InstantiateClockConstructor<CEnginePrimitive2DClockSprite>(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,unsigned long bank,unsigned long frame,const CRGBColour&colour,
+  unsigned long bank2,unsigned long frame2,const CRGBColour&colour2,EEnginePrimitiveBlendMode blend,float angle_start,float angle_end,
+  const C2DVector&uv_start,const C2DVector&uv_end,unsigned long flags,EEngineInterpolationSet interpolation);
 }

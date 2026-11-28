@@ -1,49 +1,28 @@
-// CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover(CThingCreatureBase*, CThing*, const C3DVector&) -- base CCombatActionBase(owner, thing, 150, GetSoundPair(owner, "SWORD_SWING")), then the landing position copied in
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0097B3F0, length 117 bytes. Vtable 0x0129888C.
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair @ 0x008561A0 (`__fastcall`, hidden-pointer CSoundPair),
-// CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30, CCharString::~CCharString @ 0x0099EAE0.
-// Shape: the landed two-argument combat-action family (0x008C4F50); the vtable store precedes the three dword copies of the position
-// (+0x114..+0x11c, alternating edx/ecx straight off the argument pointer): three scalar members initialised from the vector's
-// components (a struct-typed member copies through a `lea` of the member instead); dwords, so no FPU is involved.
-class CThingCreatureBase;
-class CThing;
+// Leaf: ??0CCreatureAction_JumpOutFromCover@@QAE@AAVCThingCreatureBase@@0ABVC3DVector@@@Z
+// Flags:
+#define FABLE_RETAIL_JUMP_OUT_FROM_COVER_OWNER_PASS30
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+#define FABLE_RETAIL_JACK_STAGE1_UPDATE
+#define FABLE_RETAIL_MOVE_FROM_COVER_PASS30
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_JumpOutFromCover.h"
 
-class CCharString { public:                        // one pointer; the default length makes a literal convert implicitly
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                         // 0x0099EAE0
-};
-class CSoundPair { public:                         // a user constructor makes the 8-byte result return through the hidden pointer
-    long FirstSound;
-    long LastSound;
-    CSoundPair() : FirstSound(0), LastSound(0) { }
-};
-
-class CCombatActionBase { public:                  // retail sizeof 0x114
-    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
-    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
-protected:
-    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
-public:
-    virtual void v00();
-    unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
-    CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-};
-class C3DVector { public: long X, Y, Z; };         // floats in the engine; copied as dwords here
-class CCreatureAction_JumpOutFromCover : public CCombatActionBase { public:   // vtable 0x0129888C
-    long m_destinationX;                    // +0x114 where the jump lands (descriptive; floats copied as dwords)
-    long m_destinationY;                    // +0x118
-    long m_destinationZ;                    // +0x11c
-    virtual void v00();
-    CCreatureAction_JumpOutFromCover(CThingCreatureBase* owner, CThing* thing, const C3DVector& destination);
-};
-
-CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover(CThingCreatureBase* owner, CThing* thing, const C3DVector& destination)
-    : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
-    , m_destinationX(destination.X)
-    , m_destinationY(destination.Y)
-    , m_destinationZ(destination.Z)
-{
-}
+CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover(CThingCreatureBase& creature, CThingCreatureBase& target, const C3DVector& direction)
+        : CCombatActionBase(creature, target, 150, GetSoundPair(creature, "SWORD_SWING")), JumpDirection(direction) {}

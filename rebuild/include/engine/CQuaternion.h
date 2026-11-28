@@ -17,6 +17,10 @@ class CQuaternion {
 public:
  float X,Y,Z,W;
  CQuaternion(){}
+#ifdef FABLE_RETAIL_RIGHTHANDEDSET_INTERPOLATE_PASS30
+ float Dot(const CQuaternion& q) const { return X*q.X + Y*q.Y + Z*q.Z + W*q.W; }
+ void SetSlerp(const CQuaternion& from, const CQuaternion& to, float t);
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_ADD
  CQuaternion operator*(const CQuaternion& q)const;
 #endif
@@ -157,6 +161,84 @@ public:
  }
 #endif
 };
+#ifdef FABLE_RETAIL_ANIMATION_KEYFRAME_TRACKS_PASS30
+#include "engine/GFFastArcCos.h"
+#include "engine/GFFastSin.h"
+#ifdef _MSC_VER
+#pragma intrinsic(sqrt)
+#endif
+inline float CQuaternion::Dot(const CQuaternion& q2) const
+{
+    return X * q2.X + Y * q2.Y + Z * q2.Z + W * q2.W;
+}
+inline void CQuaternion::SetIdentity()
+{
+    X = 0.0f; Y = 0.0f; Z = 0.0f; W = 1.0f;
+}
+// Inline-budget: the native interpolation expands both the trigonometric and linear branches.
+FABLE_FORCEINLINE void CQuaternion::SetSlerp(const CQuaternion& q1, const CQuaternion& q2, float weight2)
+{
+    float scale1;
+    float scale2;
+    float cosa = q1.Dot(q2);
+    float sign = 1.0f;
+    if (cosa < 0.0f)
+    {
+        cosa = -cosa;
+        sign = -1.0f;
+    }
+    if (1.0f - cosa > 0.05f)
+    {
+        float angle = GFFastArcCos(cosa);
+        float sina = (float)sqrt(1.0f - cosa * cosa);
+        scale1 = GFFastSin((1.0f - weight2) * angle) / sina;
+        scale2 = GFFastSin(weight2 * angle) / sina;
+    }
+    else
+    {
+        scale1 = 1.0f - weight2;
+        scale2 = weight2;
+    }
+    scale2 *= sign;
+    X = scale1 * q1.X + scale2 * q2.X;
+    Y = scale1 * q1.Y + scale2 * q2.Y;
+    Z = scale1 * q1.Z + scale2 * q2.Z;
+    W = scale1 * q1.W + scale2 * q2.W;
+}
+#endif
+#ifdef FABLE_RETAIL_RIGHTHANDEDSET_INTERPOLATE_PASS30
+#include "engine/GFFastArcCos.h"
+#include "engine/GFFastSin.h"
+extern "C" double __cdecl sqrt(double);
+#ifdef _MSC_VER
+#pragma intrinsic(sqrt)
+#endif
+// Inline-budget: the three native rounding sites in Interpolate expand this member. Plain inline leaves a SetSlerp call.
+FABLE_FORCEINLINE void CQuaternion::SetSlerp(const CQuaternion& from, const CQuaternion& to, float t)
+{
+    float cosom = from.Dot(to);
+    float sign = 1.0f;
+    if (cosom < 0.0f) {
+        sign = -1.0f;
+        cosom = -cosom;
+    }
+    float scale0, scale1;
+    if (1.0f - cosom > 0.05f) {
+        float omega = GFFastArcCos(cosom);
+        float sinom = (float)sqrt(1.0f - cosom * cosom);
+        scale0 = GFFastSin((1.0f - t) * omega) * (1.0f / sinom);
+        scale1 = GFFastSin(omega * t) * (1.0f / sinom);
+    } else {
+        scale0 = 1.0f - t;
+        scale1 = t;
+    }
+    scale1 *= sign;
+    X = scale0 * from.X + scale1 * to.X;
+    Y = scale0 * from.Y + scale1 * to.Y;
+    Z = scale0 * from.Z + scale1 * to.Z;
+    W = scale0 * from.W + scale1 * to.W;
+}
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_MULASSIGN_INLINE
 #ifdef _MSC_VER
 __declspec(noinline)

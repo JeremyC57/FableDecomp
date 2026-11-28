@@ -1,17 +1,10 @@
-// Circular doubly-linked list clear (mislabelled `SortTreeRecursively` in the manifest).
-// Leaf: ?Clear@List@@QAEXXZ
-// __fastcall this=ecx. this+0 = sentinel node; node[0]=next, node[4]=prev.
-// The head re-reads are faithful: the free helper may alias, so the loop test reloads it.
-struct Node { Node* next; Node* prev; };
-struct List { Node* head; void Clear(); };
-extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
-void List::Clear() {
-    Node* n = this->head->next;
-    while (n != this->head) {
-        Node* cur = n;
-        n = n->next;
-        free(cur);
-    }
-    this->head->next = this->head;
-    this->head->prev = this->head;
-}
+// Leaf: ?clear@?$_List_base@U?$pair@VC2DVector@@J@std@@V?$allocator@U?$pair@VC2DVector@@J@std@@@2@@std@@QAEXXZ
+// Flags:
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_STLP_LIST
+#include "engine/C3DVector.h"
+#include "engine/C2DVector.h"
+#include "stlport/fable_containers.h"
+typedef std::pair<C2DVector, long> Pulse;
+template void std::_List_base<Pulse, std::allocator<Pulse> >::clear();

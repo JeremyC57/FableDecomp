@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+004014a0	ACCEPT	?Calc@CCRC@@SIKKPBXK@Z	?Calc@CCRC@@SIKKPBXK@Z	Codex pass 30 respell unit; class-inline owner (FableWin marked inline)

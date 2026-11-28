@@ -25,6 +25,9 @@ class CTexture {
 public:
     // Codex pass 11 consolidation: the inline default constructor (0x009C0880 CDisplayManager / 0x009A3640 font cache zero
     // PD3DTexture and the +4 bitfield word in place) and Initialise (called out of line by 0x009A3640).
+#ifdef FABLE_RETAIL_TEXTURE_STREAM_LOAD_PASS30
+    void LoadFromDataStream(class CDataInputStream& stream);
+#endif
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
     bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,ESurfacePool,bool,bool);
 #ifdef FABLE_RETAIL_CTEXTURE_LOCK

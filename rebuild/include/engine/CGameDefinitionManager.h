@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CGAMEDEFINITIONMANAGER_H
 #define FABLE_ENGINE_CGAMEDEFINITIONMANAGER_H
 #include "engine/CDefinitionManager.h"
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_SET_OWNER_PASS30
+#include "engine/CCountedPointer.h"
+#endif
 // Original class V and public CDefinitionManager base: both PDB name sets,
 // native RTTI. Native ctor0044c6c2 constructs that base and zeroes d0..dc.
 // Both donor TPI sets retain only a forward record for this class; therefore
@@ -21,8 +24,16 @@ class CEnvironmentDef;
 class CHeroStatsDef;
 #endif
 class CGameDefinitionManager : public CDefinitionManager {
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_SET_OWNER_PASS30
+protected:
+    static CCountedPointer<CGameDefinitionManager> PClass;
+#endif
 public:
     static CGameDefinitionManager& __fastcall Get();
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30) || defined(FABLE_RETAIL_CGAMEDEFINITIONMANAGER_SET_OWNER_PASS30)
+    static bool FABLE_FASTCALL IsAllocated();
+    static void FABLE_FASTCALL Set(CGameDefinitionManager*);
+#endif
     CGameDefinitionManager();
     virtual ~CGameDefinitionManager();
     virtual void InitAndCompile();
@@ -43,6 +54,10 @@ public:
     CDefPointer<const CEngineDef> PEngineDef;                           // +0xd4 (descriptive name)
     CDefPointer<const CEnvironmentDef> PEnvironmentDef;                 // +0xd8 (descriptive name)
     CDefPointer<const CHeroStatsDef> PHeroStatsDef;                     // +0xdc (descriptive name)
+#ifdef FABLE_RETAIL_HUD_STAMINA_PASS30
+    // FableWin 01E64AF0 returns a counted copy of the cached definition.
+    CDefPointer<const CHeroStatsDef> GetPHeroStatsDef() const { return PHeroStatsDef; }
+#endif
 #else
 #ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the hero-stats definition the native ctor zeroes in the d0..dc block,
@@ -98,4 +113,8 @@ private:
 #endif // FABLE_RETAIL_CGAMEDEFINITIONMANAGER_DEFPOINTERS
 };
 FABLE_STATIC_ASSERT_AT(82, sizeof(CGameDefinitionManager)==0xe0);
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_SET_OWNER_PASS30
+// Both donors and retail 0044C725 call the out-of-line 00450142 specialization.
+template<> void CCountedPointer<CGameDefinitionManager>::Reset(CGameDefinitionManager*);
+#endif
 #endif

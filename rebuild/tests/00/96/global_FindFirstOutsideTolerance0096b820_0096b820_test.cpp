@@ -1,31 +1,35 @@
-#include <assert.h>
-#include <stdio.h>
-// BEGIN exact source snapshot SHA256 7e151de4ab62edd572240984af0b81ac673664678c11ab89404a71459c9faccc
-// 0096b820 FindFirstOutsideTolerance_0096b820 (owner uncertain)
-// Flags: /O2 /Oy /Gr
-// Leaf: FindFirstOutsideTolerance
-#include <math.h>
-#pragma intrinsic(fabs)
-// Layout: retail 0096b840 reads float +8; iterator increments 12 bytes.
-struct SearchEntry { int first, second; float value; };
-struct WithinTolerance { float target, tolerance; bool operator()(const SearchEntry& e) const { return !(fabs(e.value-target)<tolerance); } };
-struct SearchTag {};
-template<class Iterator, class Predicate> Iterator __fastcall FindFirstOutsideTolerance(Iterator first, Iterator last, Predicate pred, SearchTag) {
- int trips=(last-first)>>2;
- for(; trips>0; --trips) {
-  if(pred(*first)) return first; ++first;
-  if(pred(*first)) return first; ++first;
-  if(pred(*first)) return first; ++first;
-  if(pred(*first)) return first; ++first;
- }
- switch(last-first) {
- case 3: if(pred(*first)) return first; ++first;
- case 2: if(pred(*first)) return first; ++first;
- case 1: if(pred(*first)) return first; ++first;
- default: return last;
- }
-}
-template SearchEntry* __fastcall FindFirstOutsideTolerance(SearchEntry*,SearchEntry*,WithinTolerance,SearchTag);
+// Leaf: ??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_IsWithinHeightRange@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_IsWithinHeightRange@@@0@ABUrandom_access_iterator_tag@0@@Z
+// Flags: /Gr
+#define FABLE_RETAIL_CVECTORFILTER_ISWITHINHEIGHTRANGE_PASS30
+#define FABLE_RETAIL_STLP_REMOVE_COPY_IF
+#define FABLE_RETAIL_STLP_NOT1
+#define FABLE_RETAIL_STLP_FIND_IF_INPUT
+#define FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS
+#define FABLE_RETAIL_STLP_FIND_IF_RANDOM_ACCESS_BODY
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+#include "engine/CVectorFilter_IsWithinHeightRange.h"
+#include "stlport/fable_algorithm.h"
 
-// END exact source snapshot
-int main(){SearchEntry a[9];for(int i=0;i<9;++i)a[i].value=4.0f;WithinTolerance p={4.0f,0.5f};SearchTag tag;assert(FindFirstOutsideTolerance(a,a,p,tag)==a);assert(FindFirstOutsideTolerance(a,a+9,p,tag)==a+9);for(int n=1;n<=9;++n){a[n-1].value=5.0f;assert(FindFirstOutsideTolerance(a,a+n,p,tag)==a+n-1);a[n-1].value=4.0f;}p.tolerance=0;assert(FindFirstOutsideTolerance(a,a+9,p,tag)==a);puts("0096b820_TEST PASS");}
+namespace std {
+template C3DVector* FABLE_FASTCALL __find_if<C3DVector*,unary_negate<CVectorFilter_IsWithinHeightRange> >(
+    C3DVector*,C3DVector*,unary_negate<CVectorFilter_IsWithinHeightRange>,const random_access_iterator_tag&);
+}
+
+#include <stdlib.h>
+#include <stdio.h>
+static void require(bool yes) { if(!yes) exit(1); }
+int main() {
+    C3DVector v[12]; std::random_access_iterator_tag tag;
+    for (int n=0;n<=12;++n) for (int outside=0;outside<=n;++outside) for (int k=0;k<4;++k) {
+        CVectorFilter_IsWithinHeightRange band(4.0f,1.5f);
+        for(int i=0;i<n;++i) { float z=(i&1)?2.51f:5.49f;
+            if (i==outside) z=k==0?2.5f:k==1?5.5f:k==2?2.0f:7.0f;
+            v[i]=C3DVector((float)i, -100.0f, z); }
+        require(std::__find_if(v,v+n,std::not1(band),tag)==v+outside);
+    }
+    CVectorFilter_IsWithinHeightRange negative(4.0f,-1.0f); v[0]=C3DVector(0,0,4);
+    require(std::__find_if(v,v+1,std::not1(negative),tag)==v);
+    puts("0096b820_TEST PASS"); return 0;
+}

@@ -1,16 +1,21 @@
-#include <stdio.h>
-struct CTCInventoryBase {
-  char pad[0xe1];
-  unsigned char canQuickAssign;
-};
-char __fastcall GetCanItemBeQuickAssigned(CTCInventoryBase* self) {
-  return (char)self->canQuickAssign;
+// Leaf: ?IsMouseButton4Pressed@CSystemManager@@QAE_NXZ
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+#include "engine/CSystemManager.h"
+
+bool CSystemManager::IsMouseButton4Pressed()
+{
+    return MouseButton4Pressed;
 }
-int main(){
-  CTCInventoryBase a; a.canQuickAssign = 1;
-  CTCInventoryBase b; b.canQuickAssign = 0;
-  if (GetCanItemBeQuickAssigned(&a) == 0) { printf("FAIL\n"); return 1; }
-  if (GetCanItemBeQuickAssigned(&b) != 0) { printf("FAIL\n"); return 1; }
-  printf("OK_009a5000\n");
-  return 0;
+
+#include <stdio.h>
+int main() {
+    static unsigned long storage[sizeof(CSystemManager)/4+1];
+    unsigned char* state=reinterpret_cast<unsigned char*>(storage);
+    CSystemManager* manager=reinterpret_cast<CSystemManager*>(storage);
+    for(unsigned mask=0;mask<32;++mask) {
+        for(unsigned i=0;i<5;++i)state[0xdd+i]=(mask>>i)&1;
+        if(manager->IsMouseButton4Pressed()!=((mask&(1u<<4))!=0))return 1;
+    }
+    puts("009a5000_TEST PASS");return 0;
 }

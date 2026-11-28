@@ -239,11 +239,19 @@ template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_increment(_Rb
 #pragma optimize("", on)
 #endif
 typedef _Rb_global<bool> _Rb_global_inst;
+#if defined(FABLE_RETAIL_GUILDSEAL_STL_OWNERS_PASS30) && defined(_MSC_VER)
+#pragma optimize("",on)
+#endif
 struct _Rb_tree_base_iterator {
     _Rb_tree_node_base* _M_node;
     bool operator==(const _Rb_tree_base_iterator& y)const{return _M_node==y._M_node;}
     bool operator!=(const _Rb_tree_base_iterator& y)const{return _M_node!=y._M_node;}
 };
+#if defined(FABLE_RETAIL_GUILDSEAL_STL_OWNERS_PASS30) && defined(_MSC_VER)
+#pragma optimize("y",off)
+#pragma optimize("s",on)
+#endif
+
 template<class V,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iterator {
     typedef typename Traits::reference reference;
     typedef typename Traits::pointer pointer;
@@ -296,6 +304,10 @@ protected:
     size_t _M_node_count;
     Compare _M_key_compare;
 public:
+#ifdef FABLE_RETAIL_CTHREADEDFILE_TREE_OWNER_PASS30
+    // STLport 4.6.2 _tree.h exposes the actual key type of the tree.
+    typedef K key_type;
+#endif
     typedef _Rb_tree_iterator<V,_Nonconst_traits<V> > iterator;
     typedef _Rb_tree_iterator<V,_Const_traits<V> > const_iterator;
     iterator insert_equal(const V&);
@@ -471,7 +483,18 @@ protected:
 #endif
     static const K& __fastcall _S_key(_Link_type x){return KeyOfValue()(_S_value(x));}
 private:
-#ifdef FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    // Original STLport 4.6.2 _tree.h (non-template find) returns the typed node.
+    _Link_type _M_find(const K& key) const {
+        _Link_type y=this->_M_header._M_data, x=_M_root();
+        while(x) {
+            if(!_M_key_compare(_S_key(x),key)) { y=x; x=_S_left(x); }
+            else x=_S_right(x);
+        }
+        if(y==this->_M_header._M_data || _M_key_compare(key,_S_key(y))) y=this->_M_header._M_data;
+        return y;
+    }
+#elif defined(FABLE_RETAIL_STLP_TREE_MFIND_DECL)
     // Per-TU opt-in (chunk 1020, row 0x006E94D0 CCombatManager::IsCreatureInAttackRingSector): STLport 4.6.1 _tree.h _M_find, called
     // out of line in that TU (map<unsigned __int64,CCombatantInfo> 0x006F0250: `push &key ; mov ecx,&Combatants ; call`, node in eax)
     // as an opaque call -- retail reloads the attacker's ring index from the first node after the second lookup (0x006E9528), which the
@@ -522,7 +545,11 @@ public:
     // `push &key ; push &result ; call`, hidden iterator result) at three sites and expands it at the others. Same body.
     template<class KT> iterator find(const KT& key){return iterator(_M_find(key));}
 #else
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    iterator find(const K& key){return iterator(static_cast<_Link_type>(_M_find(key)));}
+#else
     iterator find(const K& key){return iterator(_M_find(key));}
+#endif
 #endif
     pair<iterator,bool> insert_unique(const V&);
 #ifdef FABLE_RETAIL_STLP_SET_RANGE
@@ -565,7 +592,25 @@ private:
 #else
     _Rb_tree_node_base* _M_lower_bound(const K& key) const;
 #endif
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    // Original STLport 4.6.2 _tree.h, private _Link_type return.
+#ifdef FABLE_RETAIL_CTHREADEDFILE_UPPER_OWNER_PASS30
+    // STLport 4.6.2 _tree.h, published at 0098FCA0.
+    _Link_type _M_upper_bound(const K& key) const {
+        _Link_type result=this->_M_header._M_data;
+        _Link_type node=_M_root();
+        while (node) {
+            if (_M_key_compare(key,_S_key(node))) { result=node; node=_S_left(node); }
+            else node=_S_right(node);
+        }
+        return result;
+    }
+#else
+    _Link_type _M_upper_bound(const K& key) const;
+#endif
+#else
     _Rb_tree_node_base* _M_upper_bound(const K& key) const;
+#endif
 #endif
 public:
     iterator lower_bound(const K& key) { return iterator(static_cast<_Link_type>(_M_lower_bound(key))); }
@@ -1003,6 +1048,9 @@ public:
     // Actual original nonvirtual destructor COMDAT00CDBFB0, called by00D29880.
     ~map();
 #endif
+#ifdef FABLE_RETAIL_STLP_FLASH_MAP_CTOR_DECL_PASS30
+    map();
+#else
 #if defined(FABLE_RETAIL_STLP_MAP_CTOR_NOINLINE) && defined(_MSC_VER)
     // NF61 opt-in (round 7, row 0x005907AB CTCInventory::ConstructItemCategoryListPC): the same STLport 4.6 _map.h no-argument
     // constructor, visible but kept out of line, as that size TU calls the map<long,long> COMDAT 0x004DF86C (`lea ecx,[local] ; call`;
@@ -1010,6 +1058,7 @@ public:
     __declspec(noinline)
 #endif
     map():_M_t(Compare(),A()){}
+#endif
     explicit map(const Compare& c,const A& a=A()):_M_t(c,a){}
 #else
     explicit map(const Compare& c=Compare(),const A& a=A()):_M_t(c,a){}
@@ -1118,6 +1167,12 @@ public:
     set(const set& x);
 #endif
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
+#ifdef FABLE_RETAIL_UI_SET_ERASE_POSITION_PASS30
+    void erase(iterator pos) {
+        typedef typename _Rep_type::iterator RepIterator;
+        _M_t.erase((RepIterator&)pos);
+    }
+#endif
     size_t erase(const K& value){return _M_t.erase(value);}
 #ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
     // (same opt-in, wf4 row 0x004B3CE0) STLport 4.6 _set.h lower_bound / upper_bound / equal_range (const, forwarding to the tree) and
@@ -1176,6 +1231,13 @@ public:
 #ifndef FABLE_RETAIL_STLP_MULTIMAP_CONSTFIND
     const_iterator end() const { return _M_t.end(); }
 #endif
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_MUTABLE_ITERATOR_OWNER_PASS30
+    iterator lower_bound(const K& key) { return _M_t.lower_bound(key); }
+    iterator upper_bound(const K& key) { return _M_t.upper_bound(key); }
+#endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_PASS30
+    size_t size() const { return _M_t.size(); }
 #endif
     multimap():_M_t(Compare(),A()){}
     iterator insert(const value_type& x){return _M_t.insert_equal(x);}
@@ -1435,4 +1497,169 @@ inline NUISystem::CUIState& CUIStateMap::operator[](const unsigned long& k)
 }
 #pragma optimize("", on)
 #endif
+
+#if defined(FABLE_RETAIL_GUILDSEAL_STL_OWNERS_PASS30)
+#ifdef _MSC_VER
+#pragma optimize("sy",on)
+#endif
+namespace std {
+// Both native caller 0064AA28 and the 20-byte 0042BEF2 copy call the same tree search.
+template<> inline map<CCharString,long>::const_iterator map<CCharString,long>::find(const CCharString& key) const { return _M_t.find(key); }
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_LONG_FIND_PASS30
+// STLport 4.6 find delegates to the tree. Its owner at 00515700 uses default /O2.
+// Include in the owner's speed mode before the consuming row enters size mode.
+namespace std {
+template<> inline map<CCharString,long>::iterator map<CCharString,long>::find(const CCharString& key)
+{
+    return _M_t.find(key);
+}
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_BOOL_FIND_PASS30
+// STLport 4.6 find delegates to the tree. Its owner at 007ADB30 uses default /O2.
+// Include in the owner's speed mode before the consuming row enters size mode.
+namespace std {
+template<> inline map<CCharString,bool>::iterator map<CCharString,bool>::find(const CCharString& key)
+{
+    return _M_t.find(key);
+}
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SET_FIND_PASS30
+// STLport 4.6 find delegates to the tree. Its owner at 004BAA30 uses default /O2.
+// Include in the owner's speed mode before the consuming row enters size mode.
+namespace std {
+template<> inline set<CCharString>::iterator set<CCharString>::find(const CCharString& key) const
+{
+    return _M_t.find(key);
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_SET_ERASE_PASS30
+namespace std {
+template<> inline void _Rb_tree<CCharString, CCharString, _Identity<CCharString>, less<CCharString>, allocator<CCharString > >::_M_erase(_Rb_tree_node<CCharString >* x)
+{
+    while (x) {
+        _M_erase(_S_right(x));
+        _Link_type y = _S_left(x);
+        _Destroy(&x->_M_value_field);
+        this->_M_header.deallocate(x, 1);
+        x = y;
+    }
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_BOOL_ERASE_PASS30
+namespace std {
+template<> inline void _Rb_tree<CCharString, pair<const CCharString, bool>, _Select1st<pair<const CCharString, bool> >, less<CCharString>, allocator<pair<const CCharString, bool> > >::_M_erase(_Rb_tree_node<pair<const CCharString, bool> >* x)
+{
+    while (x) {
+        _M_erase(_S_right(x));
+        _Link_type y = _S_left(x);
+        _Destroy(&x->_M_value_field);
+        this->_M_header.deallocate(x, 1);
+        x = y;
+    }
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_SET_CLEAR_PASS30
+namespace std {
+template<> inline void _Rb_tree<CCharString, CCharString, _Identity<CCharString>, less<CCharString>, allocator<CCharString > >::clear()
+{
+    if (_M_node_count != 0) {
+        _M_erase(static_cast<_Link_type>(this->_M_header._M_data->_M_parent));
+        this->_M_header._M_data->_M_left = this->_M_header._M_data;
+        this->_M_header._M_data->_M_parent = 0;
+        this->_M_header._M_data->_M_right = this->_M_header._M_data;
+        _M_node_count = 0;
+    }
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_BOOL_CLEAR_PASS30
+namespace std {
+template<> inline void _Rb_tree<CCharString, pair<const CCharString, bool>, _Select1st<pair<const CCharString, bool> >, less<CCharString>, allocator<pair<const CCharString, bool> > >::clear()
+{
+    if (_M_node_count != 0) {
+        _M_erase(static_cast<_Link_type>(this->_M_header._M_data->_M_parent));
+        this->_M_header._M_data->_M_left = this->_M_header._M_data;
+        this->_M_header._M_data->_M_parent = 0;
+        this->_M_header._M_data->_M_right = this->_M_header._M_data;
+        _M_node_count = 0;
+    }
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_SET_DTOR_PASS30
+namespace std {
+template<> inline _Rb_tree<CCharString, CCharString, _Identity<CCharString>, less<CCharString>, allocator<CCharString > >::~_Rb_tree()
+{
+    clear();
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SPEED_BOOL_DTOR_PASS30
+namespace std {
+template<> inline _Rb_tree<CCharString, pair<const CCharString, bool>, _Select1st<pair<const CCharString, bool> >, less<CCharString>, allocator<pair<const CCharString, bool> > >::~_Rb_tree()
+{
+    clear();
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_STRING_MAP_FIND_PASS30
+namespace std {
+template<> inline map<CCharString, CCharString>::iterator
+map<CCharString, CCharString>::find(const CCharString& key)
+{
+    return _M_t.find(key);
+}
+}
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_SET_INSERT_PASS30
+namespace std {
+template<> inline pair<set<CCharString>::iterator, bool> set<CCharString>::insert(const CCharString& value)
+{
+    typedef _Rep_type::iterator RepIterator;
+    pair<RepIterator, bool> p = _M_t.insert_unique(value);
+    return pair<iterator, bool>((const iterator&)p.first, p.second);
+}
+}
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_STRING_ITERATOR_PREVIOUS_PASS30
+namespace std {
+template<> inline _Rb_tree_iterator<CCharString, _Nonconst_traits<CCharString> >&
+_Rb_tree_iterator<CCharString, _Nonconst_traits<CCharString> >::operator--()
+{
+    this->_M_node = _Rb_global_inst::_M_decrement(this->_M_node);
+    return *this;
+}
+}
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_SET_CONSTRUCTION_PASS30
+namespace std {
+template<> inline set<CCharString>::set()
+    : _M_t(less<CCharString>(), allocator<CCharString >())
+{
+}
+}
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_BOOL_CONSTRUCTION_PASS30
+namespace std {
+template<> inline map<CCharString, bool>::map()
+    : _M_t(less<CCharString>(), allocator<pair<const CCharString, bool> >())
+{
+}
+}
+#endif
+
 #endif

@@ -1,8 +1,10 @@
-struct CTCInventoryBase {
-// Leaf: GetCanItemBeQuickAssigned
-  char pad[0xe1];
-  unsigned char canQuickAssign;
-};
-char __fastcall GetCanItemBeQuickAssigned(CTCInventoryBase* self) {
-  return (char)self->canQuickAssign;
+// Flags: 
+// Leaf: ?IsMouseButton4Pressed@CSystemManager@@QAE_NXZ
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+#include "engine/CSystemManager.h"
+
+bool CSystemManager::IsMouseButton4Pressed()
+{
+    return MouseButton4Pressed;
 }

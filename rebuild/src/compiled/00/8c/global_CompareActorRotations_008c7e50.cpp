@@ -1,5 +1,6 @@
+// Flags: 
 // CompareActorRotations(CThingCreatureBase* creature, CThing* target) -- is the target more than 70 degrees off the creature's facing (XY bearing as a 0..1 turn fraction against the body's facing angle)
-// Leaf: ?CompareActorRotations@@
+// Leaf: ?CompareActorRotations@@YI_NPAVCThingCreatureBase@@PAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C7E50, length 173 bytes (+ int3 padding), `__fastcall` (creature in
 //   ecx, target in edx), plain `ret`.
 // Identity: callers 0x008C80C4, 0x008C811A, 0x008C816A (the landed IsToCauseRecoil overrides of the bandit-king attack /
@@ -49,7 +50,6 @@ class CThingCreatureBase : public CThing {
 
 float __fastcall GFGetSignedAngleDifference(float from, float to);  // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
-static const float INV_TWO_PI = 0.15915494f;            // 0x01237F08
 static const float MAX_FACING_DIFFERENCE = 0.19444445f; // 70 / 360, 0x012817F0
 
 inline float fabsf(float x) { return (float)fabs(x); }
@@ -69,7 +69,7 @@ bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* targ
     const C3DVector& from = creature->GetPos();
     const C3DVector& to = target->GetPos();
     CPhysicsBody* body = creature->GetBody();
-    float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * INV_TWO_PI;
+    float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * 0.15915494f;
     angle = WrapTurnFraction(angle);
     float difference = GFGetSignedAngleDifference(body->GetFacingAngleXY(), angle);
     if (fabsf(difference) > MAX_FACING_DIFFERENCE)

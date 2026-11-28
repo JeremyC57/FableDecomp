@@ -1,5 +1,6 @@
-// CNavigatorManager::IsInSameMap(const C3DVector&, const C3DVector&) -- find the first quad-tree map whose area holds either point: true only when it is the first point's map and that map also holds the second point
-// Leaf: IsInSameMap
+// CNavigatorManager::IsInSameMap(const C2DVector&, const C2DVector&) -- find the first quad-tree map whose area holds either point: true only when it is the first point's map and that map also holds the second point
+// Leaf: ?IsInSameMap@CNavigatorManager@@QBE_NABVC2DVector@@0@Z
+// Flags:
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A14FD0, 200 bytes (+ int3 padding; `ret 8`).
 // Callees: __ftol2 0x00BFEA70 (each float coordinate truncated to a map cell; the first point's pair is hoisted out of the loop
@@ -9,10 +10,11 @@
 //   +0x1c}, list node data at +8.
 // Shape: the half-open C2DBoxI::Contains(C2DCoordI) is inline; the hit on the first point returns the second test's 1/0 in eax,
 //   the misses return `xor al,al` through their own epilogues.
-class C3DVector { public: float X, Y, Z; };
+#define FABLE_RETAIL_C2DVECTOR
+#include "engine/C2DVector.h"
 class C2DCoordI { public:
     long X, Y;
-    C2DCoordI(const C3DVector& v) : X((long)v.X), Y((long)v.Y) { }
+    C2DCoordI(const C2DVector& v) : X((long)v.X), Y((long)v.Y) { }
 };
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
@@ -42,10 +44,10 @@ public:
     void*                 __vftable;               // +0x00
     unsigned char         _pad04[0x20];
     list<CNavQuadTreeMap> QuadTrees;               // +0x24
-    bool IsInSameMap(const C3DVector& a, const C3DVector& b) const;
+    bool IsInSameMap(const C2DVector& a, const C2DVector& b) const;
 };
 
-bool CNavigatorManager::IsInSameMap(const C3DVector& a, const C3DVector& b) const
+bool CNavigatorManager::IsInSameMap(const C2DVector& a, const C2DVector& b) const
 {
     for (_List_node<CNavQuadTreeMap>* it = QuadTrees.begin(); it != QuadTrees.end(); it = it->_M_next) {
         if (it->_M_data.MapArea.Contains(C2DCoordI(a)))

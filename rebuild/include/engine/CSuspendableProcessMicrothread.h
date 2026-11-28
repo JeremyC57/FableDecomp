@@ -9,6 +9,9 @@
 #include "rebuild_abi.h"
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CASuspendableProcess.h"
+#ifdef FABLE_RETAIL_MICROTHREAD_PROCESS_STACK_PASS30
+#include "stlport/fable_containers.h"
+#endif
 
 struct MicroThreadInfo;
 
@@ -23,10 +26,13 @@ protected:
     static void FABLE_FASTCALL InternalSuspend();
     static void FABLE_FASTCALL InternalSwitchToProcess(CSuspendableProcessMicrothread&);
 private:
+#ifdef FABLE_RETAIL_MICROTHREAD_PROCESS_STACK_PASS30
+    static std::vector<CSuspendableProcessMicrothread*> ProcessStack;
+#endif
     static void ThreadEntry(void*);
 public:
     MicroThreadInfo* PMicrothread;                                       // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(CSuspendableProcessMicrothread) == 0x14);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CSuspendableProcessMicrothread) == 0x14);
 
 #endif // FABLE_ENGINE_CSUSPENDABLEPROCESSMICROTHREAD_H

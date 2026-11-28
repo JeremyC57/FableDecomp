@@ -7,9 +7,19 @@
 // FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE and include engine/CCombatActionBase.h and engine/C3DVector.h first.
 class CCreatureAction_JumpOutFromCover : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_MOVE_FROM_COVER_PASS30
+    // FableWin 02C1DE50 constructs the base with the named sound before copying JumpDirection.
+#ifdef FABLE_RETAIL_JUMP_OUT_FROM_COVER_OWNER_PASS30
+    CCreatureAction_JumpOutFromCover(CThingCreatureBase& creature, CThingCreatureBase& target, const C3DVector& direction);
+#else
+    CCreatureAction_JumpOutFromCover(CThingCreatureBase& creature, CThingCreatureBase& target, const C3DVector& direction)
+        : CCombatActionBase(creature, target, 150, GetSoundPair(creature, "SWORD_SWING")), JumpDirection(direction) {}
+#endif
+    virtual CCreatureActionBase* Clone() const;
+#endif
     virtual void Initialise();                                           // 0x008B7040
 private:
     C3DVector JumpDirection;                                             // +0x114
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JumpOutFromCover) == 0x120);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CCreatureAction_JumpOutFromCover) == 0x120);
 #endif

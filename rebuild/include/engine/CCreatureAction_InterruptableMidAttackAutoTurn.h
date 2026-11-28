@@ -31,22 +31,34 @@ public:
     virtual void FrameUpdate();                                           // slot 56 0x0087CB10 ?FrameUpdate@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
     virtual bool IsToFaceTarget() const;                                  // slot 73 0x0087C900 ?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
     virtual bool IsToPerformActionOnStrike() const;                       // slot 76 0x0087E510 ?IsToPerformActionOnStrike@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+private:
+    void SetupTurningAnimation(float rotation_angle);  // 0x0087CFE0
+#endif
 public:
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+    C3DVector RequiredFacing;
+#else
     float         RequiredFacing_X;                          // +0x114 C3DVector::X
     float         RequiredFacing_Y;                          // +0x118 C3DVector::Y
     float         RequiredFacing_Z;                          // +0x11c C3DVector::Z
+#endif
     unsigned char PWeapon[0x8];                              // +0x120 CIntelligentPointer<CThing_const_>
     bool          PerformedStrikeEnd;                        // +0x128
     unsigned char _pad_0x129[0x3];                           // +0x129
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, _pad_0x129) == 0x129);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x12c);
+#ifdef FABLE_RETAIL_INTERRUPTABLE_AUTOTURN_PASS30
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing) == 0x114);
+#else
+FABLE_STATIC_ASSERT_AT(44, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x11c);
+#endif
+FABLE_STATIC_ASSERT_AT(47, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x120);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x128);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, _pad_0x129) == 0x129);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_InterruptableMidAttackAutoTurn {

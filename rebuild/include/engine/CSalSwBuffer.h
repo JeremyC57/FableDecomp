@@ -3,6 +3,10 @@
 #include "engine/CCodaObjectBase.h"
 class CSalSwBuffer:public CCodaObjectBase{
 public: virtual ~CSalSwBuffer();
+#ifdef FABLE_RETAIL_CSALSWBUFFER_STATIC_CTOR_PASS30
+ // The SDK static buffer initializer calls the original out-of-line constructor.
+ CSalSwBuffer();
+#endif
 #ifdef FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
  bool IsCreated() const { return m_pvBuffer != 0; }
 #endif
@@ -16,6 +20,26 @@ public: virtual ~CSalSwBuffer();
  bool IsEmpty() const { return IsCreated() && m_nValid == 0; }
 #endif
 private:
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+public:
+    bool IsValid() const { return IsCreated() && !IsEmpty(); }
+#ifdef FABLE_RETAIL_CSALSWBUFFER_CURSOR_PORT30
+    unsigned int GetReadPos() const { return m_ReadCursor; }
+#endif
+    unsigned int GetNumValid() const { return m_nValid; }
+    unsigned int GetNumChannels() const { return m_nChannels; }
+    unsigned int GetNumObjects() const { return m_nObjects; }
+    unsigned int GetObjectSize() const { return m_cbObjectSize; }
+    void* GetBuffer() const { return m_pvBuffer; }
+    void CopyChannel(unsigned int, unsigned int);
+    void* GetWriteBuffer() const { return (unsigned char*)m_pvBuffer + m_WriteCursor * m_cbObjectSize; }
+    void Add(unsigned int nObjects);
+    const void* GetReadBuffer() const { return (unsigned char*)m_pvBuffer + m_ReadCursor*m_cbObjectSize; }
+    void Remove(unsigned int);
+    void ZeroChannel(unsigned int, unsigned int);
+    void Invalidate();
+private:
+#endif
  void * m_pvBuffer;
  unsigned int m_nObjects;
  unsigned int m_cbObjectSize;

@@ -28,6 +28,11 @@ struct CAllocSizeToAllocator {                   // Ego_r.pdb: 8 bytes
 // spelling the landed CMemoryAllocator rows use.
 extern CAllocatorInfo g_AllocatorInfo[];
 #endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_SYNCHRONISATION_PASS30
+#include "engine/Win32Types.h"
+// In FableWin and Ego_r lib_memoryallocator.obj, the lock is a file-level CriticalSection.
+extern CRITICAL_SECTION CriticalSection;
+#endif
 class CMemoryAllocator {
 protected:
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR
@@ -46,8 +51,14 @@ protected:
 #endif
  static CMemoryAllocator* PMemoryAllocator;
  static void __fastcall Create();
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_SYNCHRONISATION_PASS30
+ // ClearPerformanceStats 0x009F26B0 expands both synchronization members in retail.
+ static void __fastcall EnterSynchronisation() { EnterCriticalSection(&CriticalSection); }
+ static void __fastcall LeaveSynchronisation() { LeaveCriticalSection(&CriticalSection); }
+#else
  static void __fastcall EnterSynchronisation();
  static void __fastcall LeaveSynchronisation();
+#endif
  void* InternalAllocate(long,unsigned long,bool);
 public:
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_SAVEBINARY_PASS23

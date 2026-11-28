@@ -1,5 +1,15 @@
 #ifndef FABLE_ENGINE_NCREATUREMODE_H
 #define FABLE_ENGINE_NCREATUREMODE_H
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30
+#include "fable_compiler.h"
+class CThing;
+namespace NCreatureMode { bool FABLE_FASTCALL IsAbleToBlock(const CThing&); }
+#endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_UNCONSCIOUS_FLASH_PASS30
+#include "fable_compiler.h"
+class CThing;
+namespace NCreatureMode { bool FABLE_FASTCALL IsUnconscious(const CThing&); }
+#endif
 #ifdef FABLE_RETAIL_WHISPER_POTION_COMBAT_PASS29
 class CThing;
 namespace NCreatureMode { bool FABLE_FASTCALL IsAbleToBeAttacked(const CThing&); }

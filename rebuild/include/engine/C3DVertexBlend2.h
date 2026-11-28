@@ -4,6 +4,10 @@
 // Element type of C3DMeshFileGroupChunk::VertexList (CArray<C3DVertexBlend2>).
 #include "rebuild_abi.h"
 class C3DVertexBlend2 {
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+public:
+    C3DVertexBlend2(unsigned long vertex,float weight) : VertexIndex(vertex),BlendValue(weight) {}
+#endif
 #ifdef FABLE_RETAIL_C3DVERTEXBLEND2_GETTERS
 public:
     // Opt-in (wfA3, row 0x00ACDB80): FableWin.pdb inline ?GetVertexIndex@C3DVertexBlend2@@QBEKXZ / ?GetBlendValue@C3DVertexBlend2@@QBEMXZ

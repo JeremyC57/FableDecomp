@@ -48,6 +48,9 @@ class CEngineInit;
 class CSkyDef;
 class CTexture;
 class CRGBColour;
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+class C3DVector;
+#endif
 class CEngineSkyRenderer : public CEngineComponent {
 public:
 #ifdef FABLE_RETAIL_SKY_WORLDFRAME_PASS29
@@ -108,6 +111,17 @@ private:
     void BuildStarFieldVB();                                                                                                            // 0x00B61FF0
 #endif
     void BuildBuffers();                                                 // 0x00B620A0
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+private:
+    // FableWin 02D428B0 and 02D42C70 identify the private Moon and Sprite calls.
+    void RenderMoon(float interpolate,const C3DVector& moon_origin);
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
+    void RenderSun(float interpolate,const C3DVector& sun_origin);       // 0x00B63C00
+    void RenderBaseBand();                                              // 0x00B63010
+#endif
+    void RenderSprite(const CTexture* texture,const C3DVector& position,
+                      const C3DVector& right,const C3DVector& up,CRGBColour colour);
+#endif
 #ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
     // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z (private,
     // retail 0x00B66190) and the public ?GetEnvironmentMap@CEngineSkyRenderer@@QAEXPAVCTexture@@ABVCEngineComponentRenderParams@@@Z
@@ -152,6 +166,54 @@ FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) 
 FABLE_STATIC_ASSERT_AT(122, offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
 FABLE_STATIC_ASSERT_AT(123, offsetof(CEngineSkyRenderer, StarCount) == 0x150);
 FABLE_STATIC_ASSERT_AT(124, offsetof(CEngineSkyRenderer, PSkyDef) == 0x190);
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_SPRITE_BODY_PASS30
+#include "engine/C3DVector.h"
+#include "engine/CRGBColour.h"
+#include "engine/CRenderManager.h"
+#include "engine/CShaderRenderManager.h"
+#include "engine/CTVertexColTex1.h"
+
+namespace NEngineInternal {
+extern CRenderManager* GPRenderManager;
+extern CShaderRenderManager* GPShaderRenderManager;
+}
+
+// FableWin 02D42C70 and retail 00B63260: the shared private sky-sprite renderer.
+inline void CEngineSkyRenderer::RenderSprite(const CTexture* texture,const C3DVector& centre,
+                                      const C3DVector& right,const C3DVector& up,CRGBColour colour)
+{
+    CTVertexColTex1 verts[4];
+    unsigned long argb = (((((colour.GetA() << 8) + colour.GetR()) << 8) + colour.GetG()) << 8) + colour.GetB();
+    verts[0].SetPosition(centre - right + up);
+    verts[0].U1 = 0.0f;
+    verts[0].V1 = 0.0f;
+    verts[0].DiffuseColour = argb;
+    verts[1].SetPosition(centre + right + up);
+    verts[1].U1 = 1.0f;
+    verts[1].V1 = 0.0f;
+    verts[1].DiffuseColour = argb;
+    verts[2].SetPosition(centre + right - up);
+    verts[2].U1 = 1.0f;
+    verts[2].V1 = 1.0f;
+    verts[2].DiffuseColour = argb;
+    verts[3].SetPosition(centre - right - up);
+    verts[3].U1 = 0.0f;
+    verts[3].V1 = 1.0f;
+    verts[3].DiffuseColour = argb;
+    unsigned short indices[6];
+    indices[0] = 0;
+    indices[1] = 1;
+    indices[2] = 2;
+    indices[3] = 0;
+    indices[4] = 2;
+    indices[5] = 3;
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(SkySpritePixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(SkySpriteVertexShader,false);
+    NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
+    NEngineInternal::GPRenderManager->DrawAsIndexedTris(&texture,1,verts,sizeof(CTVertexColTex1),4,indices,2);
+}
+
+#endif
 #else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"

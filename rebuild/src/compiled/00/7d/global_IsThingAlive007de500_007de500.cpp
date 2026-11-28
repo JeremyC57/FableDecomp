@@ -1,49 +1,20 @@
-// IS_THING_ALIVE<CIntelligentPointer<T>>(holder with the pointer at +0x10) -- GetPItem @ 0x00A01B50 twice: null, then the dead bit (+0x91 & 1)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007DE500, oracle length 39 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; lea esi,[ecx+0x10] ; mov ecx,esi ; call GetPItem ; test eax,eax ; je F ; mov ecx,esi ; call GetPItem ; test byte ptr [eax+91h],1 ; jne F ; mov al,1 ; pop esi ; ret ; F: xor al,al ; pop esi ; ret
-// Script-side liveness predicate over an intelligent pointer embedded at +0x10 of its holder: the item is
-// fetched twice through CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (null means not alive),
-// and its dead bit (bit 0 of the byte at +0x91) decides; the nested-if form keeps both tests as
-// branches with the shared false tail at the end. Fastcall: the reference in ecx. The manifest
-// label is propagated; the thing class is opaque. One of 8 bodies of this shape.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                 // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+// Flags: 
+// Retail 0x007DE500, 39 bytes.
+// Leaf: ?HasObjectAttached@CTCWallMount@@QBE_NXZ
+#define FABLE_RETAIL_WALLMOUNT_PERFORM_PASS30
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#include "engine/CTCWallMount.h"
+#include "engine/ThingAlive.h"
 
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-inline bool IsThingAlive(CIntelligentPointer<CThing>& pointer)
+bool CTCWallMount::HasObjectAttached() const
 {
-    if (pointer.GetPItem() != 0) {
-        if (!pointer.GetPItem()->IsDead())
-            return true;
-    }
-    return false;
-}
-
-struct CHolder { unsigned char _pad[0x10]; CIntelligentPointer<CThing> m_pointer; };
-
-bool __fastcall IsThingAlive_007de500(CHolder& holder)
-{
-    return IsThingAlive(holder.m_pointer);
+    return IS_THING_ALIVE(Trophy);
 }

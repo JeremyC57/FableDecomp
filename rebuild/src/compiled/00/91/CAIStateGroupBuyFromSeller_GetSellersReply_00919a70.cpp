@@ -1,104 +1,57 @@
-// CAIStateGroup_BuyFromSeller::GetSellersReply(CThingCreatureBase* seller) -- waits for a type-0x10 message from the seller addressed to this creature; returns it when the wait action reports 2, else null
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00919A70, length 105 bytes (+ int3 padding), `ret 4`.
-// Callees: two thing-filter constructors @ 0x006AF290 / 0x006AF2B0 (thiscall, CThing* argument, copy the
-// thing's +0x18/+0x1c handle pair and return `this`; the manifest labels both CMessageEventFilter_IsOriginatedByThing),
-// the templated message-wait action @ 0x0091A670 (thiscall: repeat 2, the bound filter by const reference, the
-// CMessageEvent** result; the manifest's "CCOE_AltarEvil::Main" label is propagated).
-// Shape: a CFilter_Bind3 of three pointers at frame +0x14 built directly from the IsOfType(0x10),
-// IsOriginatedByThing(seller) and IsForThing(creature) temporaries at +0, +4, +0xc (creature a named local, loaded
-// and pushed before the first constructor; each constructor's returned `this` is the stored pointer). The wait
-// action is a same-TU out-of-line stand-in that writes the out pointer (so the reply is homed in the dead `seller`
-// argument slot, `lea eax,[esp+2Ch]`) and reads the bound filter's first word (the landed 0x00922600 B-17 idiom:
-// &IsOfType is then stored right after the first filter constructor, as in retail); `status == 2 ? reply : 0`
-// lowers to `sub eax,2 ; neg ; sbb ; not ; and`.
-// Model: local (engine/CAIStateGroup_BuyFromSeller.h flattens the base).
-class CThing;
-class CThingCreatureBase;
+// Leaf: ?GetSellersReply@CAIStateGroup_BuyFromSeller@@AAEPBVCMessageEvent@@PBVCThingCreatureBase@@@Z
+// Flags: /O2 /Oy /W3
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_BUY_FROM_SELLER_UPDATE_PASS30
+#define FABLE_RETAIL_CMESSAGEEVENT
+
+#define FABLE_RETAIL_CAISTATEGROUPBASE_WAITMESSAGE
+#define FABLE_RETAIL_FILTER_BIND3_FUNCTION
+#define FABLE_RETAIL_CMESSAGEEVENTFILTERS
+#define FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
 class CMessageEvent;
+#include "engine/EAIAction.h"
+#include "engine/EMessageEventType.h"
+#include "engine/EMovementType.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIBrain.h"
+#include "engine/CMessageEvent.h"
+#include "engine/CWorld.h"
+#include "engine/CAIStateGroup_WorkBase.h"
+#include "engine/CAIStateGroup_BuyFromSeller.h"
 
-class CMessageEventFilter_IsOfType { public:
-    long m_type;
-    CMessageEventFilter_IsOfType(long type) : m_type(type) { }
-};
+#include "engine/CFilter_Bind3.h"
+#include "engine/CMessageEventFilters.h"
 
-class CMessageEventFilter_IsTargettedAtThing { public:
-    long m_handle[2];
-    CMessageEventFilter_IsTargettedAtThing(const CThing& thing);   // 0x006AF290 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z
-};
-
-class CMessageEventFilter_IsOriginatedByThing { public:
-    long m_handle[2];
-    CMessageEventFilter_IsOriginatedByThing(const CThing& thing);     // 0x006AF2B0 (NF315: the PDB signature, Ego_r + FableWin)
-};
-
-template<class A, class B> class CFilter_Bind2 { public:
-    const A* m_pFirst;
-    const B* m_pSecond;
-    CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
-};
-
-template<class A, class B, class C> class CFilter_Bind3 { public:
-    const A* m_pFirst;
-    const B* m_pSecond;
-    const C* m_pThird;
-    CFilter_Bind3(const CFilter_Bind2<A, B>& ab, const C& c) : m_pFirst(ab.m_pFirst), m_pSecond(ab.m_pSecond), m_pThird(&c) { }
-    CFilter_Bind3(const A& a, const B& b, const C& c) : m_pFirst(&a), m_pSecond(&b), m_pThird(&c) { }
-};
-
-template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(ab, c); }
-
-typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, CMessageEventFilter_IsTargettedAtThing> CReplyFilter;
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* Creature;                           // +0x18
-};
-
-enum EAIActionRepeat { AI_ACTION_REPEAT_0, AI_ACTION_REPEAT_1, AI_ACTION_REPEAT_2 };
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    long AIAction_WaitForMessage(EAIActionRepeat repeat, const CReplyFilter& filter, CMessageEvent** ppMessage);   // 0x0091A670
-};
-
-struct CAIStateGroup_BuyFromSeller : CAIStateGroupBase {
-    long FrameLastBought;                       // +0x14
-    CMessageEvent* GetSellersReply(CThingCreatureBase* seller);
-};
-
-long TmplSink_00919a70(const void* self, long seen);   // stand-in: the message search AIAction_WaitForMessage does
-#pragma auto_inline(off)
-__declspec(noinline) long CAIStateGroupBase::AIAction_WaitForMessage(EAIActionRepeat repeat, const CReplyFilter& filter, CMessageEvent** ppMessage)
+const CMessageEvent* CAIStateGroup_BuyFromSeller::GetSellersReply(const CThingCreatureBase* seller)
 {
-    long result;
-    do {
-        *ppMessage = (CMessageEvent*)TmplSink_00919a70(this, *(const long*)&filter);
-        if (*ppMessage) {
-            result = 2;
-            break;
-        }
-        result = 4;
-    } while (repeat == AI_ACTION_REPEAT_1);
-    return result;
-}
-#pragma auto_inline(on)
-CMessageEvent* CAIStateGroup_BuyFromSeller::GetSellersReply(CThingCreatureBase* seller)
-{
-    CThing* creature = PBrain->Creature;
-    CMessageEvent* reply;
-    long status = AIAction_WaitForMessage(AI_ACTION_REPEAT_2,
-        CReplyFilter(CMessageEventFilter_IsOfType(0x10), CMessageEventFilter_IsOriginatedByThing(*(CThing*)seller),
-            CMessageEventFilter_IsTargettedAtThing(*creature)),
-        &reply);
-    if (status == 2)
-        return reply;
+    const CMessageEvent* pevent;
+    if (AIAction_WaitForMessageCallback(ACTION_REPEAT_CALLBACK,
+        GFFilter_Bind3(CMessageEventFilter_IsOfType(MESSAGE_EVENT_CONVERSATION_ANSWER_YES_OR_NO),
+            CMessageEventFilter_IsOriginatedByThing(*seller), CMessageEventFilter_IsTargettedAtThing(GetCreature())),
+        &pevent) == AI_ACTION_FINISHED)
+        return pevent;
     return 0;
 }

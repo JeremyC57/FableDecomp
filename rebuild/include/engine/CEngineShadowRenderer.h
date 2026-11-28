@@ -135,6 +135,10 @@ private:
     void CalcClipVolume(const class CEngineCamera&);
     void CalcSpotLightClipVolume(const struct CEngineLightingManagerSpotlightParams&);
 #endif
+#ifdef FABLE_RETAIL_SPOTLIGHT_MATRIX_BUILD_PASS30
+    // FableWin and Ego_r retain this private member with the original spelling.
+    void BuildDerivedShadowMatriciesFromWorldToShadowMatrix();
+#endif
     CShadowRendererSceneData  SceneData;                                 // +0x00c
     CRenderStateCaptureBlock  ShadowBufferRenderStateCaptureBlock;       // +0x24c
     float                     ShadowProjectionZOffset;                   // +0x250

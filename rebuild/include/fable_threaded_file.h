@@ -21,6 +21,13 @@ public:
     CThreadedFile();                                                    // 0x0098DFD0
     bool Open(const CWideString& filename, bool noCaching);             // 0x0098E1E0
 #ifdef FABLE_RETAIL_CTHREADEDFILE_PROCESS_PASS27
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    // FableWin lib_threaded_file.obj calls this accessor before indexing DeviceQueue.
+    EThreadedFileDeviceID PeekDeviceID() const { return DeviceID; }
+#endif
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    unsigned long PeekPhysicalSortKey() const { return PhysicalSortKey; }
+#endif
     bool IsOpenForWrite() const { return OpenedForWrite; }
 private:
     friend class CThreadedFileManager;

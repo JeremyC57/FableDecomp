@@ -2,7 +2,7 @@
 #include <cstdlib>
 // Behaviour test for CTCWife::CTCWife (0x006CF040): the constructor of src/ over stand-ins -- the base gets the thing,
 // the flags are false, the "never" frames LONG_MAX, gift price 500, and both trees start empty with self-linked headers.
-static unsigned long g_invalidSampleID = 0xdeadbeef;
+static const unsigned long INVALID_SAMPLE_ID = 0xffffffffUL;
 class CThing { public: int dummy; };
 class CTCBase { public:
     CThing* ParentThing;
@@ -64,7 +64,7 @@ CTCWife::CTCWife(CThing* thing)
     : CTCBase(thing), OpinionAttitude(0), AttitudeUpdateCounter(0), CourtingBlocked(false), PermittedToRegionFollow(false),
       FrameGotMarriedToThePlayer(0x7fffffff), DivorcedHero(false), JustMarried(false), NeedsToChangeBrain(false),
       WaitingForFadeOut(false), WaitingForFadeIn(false), WaitingForDivorce(false), WaitingForDivorceRenting(false),
-      WaitingForDowry(false), WaitingForSex(false), WaitingForSexCutscene(false), CurrentSexCutsceneSampleID(g_invalidSampleID),
+      WaitingForDowry(false), WaitingForSex(false), WaitingForSexCutscene(false), CurrentSexCutsceneSampleID(INVALID_SAMPLE_ID),
       FrameStartedSexCutscene(0x7fffffff), FrameEndedSoundInSexCutscene(0x7fffffff), CurrentProportionOfSoundGap(1.0f),
       FrameLastAwareOfHusband(0), FrameToCheckAppearanceChanges(0), FrameLastReducedOpinion(0), FrameLastEvaluatedGiftOpinion(0),
       FrameLastConsideredGivingGift(0), FrameLastEvaluatedLoveAttitude(0), FrameEnteredAttitudeHate(0x7fffffff),
@@ -94,7 +94,7 @@ int main()
     CHECK(w->FrameEnteredLoveWithHusbandPresentAtHome == 0x7fffffff);
     CHECK(!w->DivorcedHero && !w->JustMarried && !w->NeedsToChangeBrain && !w->WaitingForFadeOut && !w->WaitingForFadeIn);
     CHECK(!w->WaitingForDivorce && !w->WaitingForDivorceRenting && !w->WaitingForDowry && !w->WaitingForSex);
-    CHECK(!w->WaitingForSexCutscene && w->CurrentSexCutsceneSampleID == 0xdeadbeef && w->CurrentProportionOfSoundGap == 1.0f);
+    CHECK(!w->WaitingForSexCutscene && w->CurrentSexCutsceneSampleID == 0xffffffffUL && w->CurrentProportionOfSoundGap == 1.0f);
     CHECK(w->FrameLastAwareOfHusband == 0 && w->FrameLastGaveSexOffer == 0 && w->FrameLastGaveDivorceWarning == 0);
     CHECK(!w->DivorceDeedPending && !w->DivorceWarningPending && w->GiftGivingOpinionDistanceFromMax == 0.0f);
     CHECK(w->GiftGivingPriceValue == 500 && w->GiftToGiveDef == 0 && w->HouseDressingLevelLastCommentedOn == -1);

@@ -32,6 +32,10 @@ struct HINSTANCE__;struct tagMSG;
 enum ESystemCode {SYS_OK=1,SYS_ERROR_INIT_DISPLAY_MANAGER=2,SYS_ERROR_INIT_SOUND_MANAGER=3,SYS_ERROR_INIT_WINDOW=4,SYS_ERROR_INIT_DRIVE_MANAGER=5,SYS_ERROR_INIT_JOYSTICK1=6,SYS_ERROR_INIT_JOYSTICK2=7,SYS_ERROR_INIT_JOYSTICK3=8,SYS_ERROR_INIT_JOYSTICK4=9,SYS_ERROR_INIT_MOUSE=10,SYS_ERROR_INIT_KEYBOARD=11,SYS_ERROR_INIT_INPUT_MANAGER=12,SYS_ERROR_INIT_RENDER_MANAGER=13,SYS_ERROR_INIT_DEBUG_MANAGER=14,SYS_ERROR_INIT_SYSTEM_MANAGER=15,SYS_ERROR_INIT_DDRAW=16,SYS_ERROR_INIT_NETWORK_MANAGER=17,SYS_ERROR_INIT_DLL_MANAGER=18,SYS_ERROR_INIT_GENERIC=19};
 // Layout: original complete CSystemManager, native size0x180; PDisplayManager+0x60. Composite tail storage is named by its original member.
 class CSystemManager:public CInitBaseClass {
+#ifdef FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+public:
+ CGraphicBankManager* GetGraphicBankManager() { return PGraphicBankManager.Get(); }
+#endif
 private:
  bool WindowsQuit,ApplicationActive,ApplicationHasInputFocus;
  _GUID ApplicationGUID,BestGUID;_GUID* PBestGUID;bool PreferPrimaryDevice;
@@ -86,12 +90,24 @@ public:
  HWND GetApplicationWinHandle()const{return ApplicationWinHandle;}
  bool IsMouseButton0Pressed(); bool IsMouseButton1Pressed(); bool IsMouseButton2Pressed();
  bool IsMouseButton3Pressed(); bool IsMouseButton4Pressed();
+#ifdef FABLE_RETAIL_NONEXCLUSIVE_MOUSE_EVENT_PASS30
+ long GetMouseZMove() const { return MouseZMove; }
+ void ClearMouseZMove() { MouseZMove = 0; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER_CRITICALDISPLAY
 // Both exact original PUBLICs/class records; actual native009A4ED0.
 void DisplayCriticalMessage(const char*);
 #endif
 CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30
+// FableWin 018A3B00, stores the members directly at native 00418995.
+ void SetAppReinitFunc(void (FABLE_FASTCALL* func)(void*), void* context)
+ {
+     AppReinitFunc = func;
+     AppReinitContext = context;
+ }
+#endif
 #ifdef FABLE_RETAIL_CSYSTEMMANAGER_INITIALISE
     // b24c4 opt-in (row 0x00402510 GFMain): Ego_r.pdb ?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z,
 // out of line at 0x009A6610 (landed). Declaration only.

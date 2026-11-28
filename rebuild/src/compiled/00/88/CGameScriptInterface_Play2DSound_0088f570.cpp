@@ -1,3 +1,4 @@
+// Flags: 
 // CGameScriptInterface::Play2DSound(const CCharString& symbol) const -- plays the engine sound bank's sample for the symbol once, unpositioned, through the game state's sound player; the invalid sound handle when the symbol has no sample
 // Leaf: ?Play2DSound@CGameScriptInterface@@UBEKABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088F570, length 145 bytes.
@@ -53,7 +54,7 @@ public:
 //   ?GetSampleBank@CMainGameComponent@@QBEAAVCASoundBank@@XZ (engine/CMainGameComponent.h SAMPLEBANK_WORLDSEED); was the stand-in CEngine_Retail* g_pEngine.
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_SAMPLEBANK_WORLDSEED
 #include "engine/CMainGameComponent.h"
-extern long               g_InvalidSoundHandle;     // 0x0129D25C
+extern const unsigned long INVALID_SAMPLE_ID;     // 0x0129D25C
 class CWorld;
 struct CPlayerManager_Retail;
 struct CDefinitionManager_Retail;
@@ -70,5 +71,5 @@ unsigned long CGameScriptInterface::Play2DSound(const CCharString& symbol) const
         init.GainFaderBits = 0x8010;
         return PSoundManager->Get2DEmitter().PlaySample(CMainGameComponent::Get()->GetSampleBank(), sample, false, init, true);
     }
-    return g_InvalidSoundHandle;
+    return INVALID_SAMPLE_ID;
 }

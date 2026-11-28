@@ -584,3 +584,5 @@
 - A payload row with no catalog name needs `leaf` set, or the grader grades the TU's largest function (p29: 10 false DIFFER).
 - llvm-undname output is not a catalog name as is: drop the calling convention before a constructor's class (`__thiscall CFoo` Module) and the `class ` / `struct ` keywords inside template arguments.
 - The tracker counts every `??_7` vftable spelling as a compiler name (agree_std), so a stand-in class inside one (`CComponentBase3_Retail`, or a class retail RTTI contradicts) reads as proven: 106 such addresses on 2026-11-27. Check `??_7` class names against `rebuild/manifest/rtti-vtables.tsv` (codex_pass30 `tools/name_answers.py`).
+- `equiv_check.py` is void when the old tree is `rebuild/include` itself: GCC drops the `-I` that repeats an `-idirafter` directory and falls through to stub headers (4,776 false diffs). Copy the old tree elsewhere first.
+- `relabel.py` mishandles global functions (no `::`, cut = -1); for a global the catalog name is the name and the module `_global`.

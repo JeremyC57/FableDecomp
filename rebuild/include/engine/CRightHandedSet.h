@@ -18,6 +18,9 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     // FableWin 018C4620 constructs Up, then Forward, from the same two source members.
     CRightHandedSet(const CRightHandedSet& other) : Up(other.Up), Forward(other.Forward) {}
 #endif
+#if defined(FABLE_RETAIL_ACTION_EVENT_SHOT_PASS30) && !defined(FABLE_RETAIL_PREDICTIVE_RHS_COPY_PASS26)
+    CRightHandedSet(const CRightHandedSet&);    // 0x0049CF80
+#endif
     const C3DVector& GetUp() const { return Up; }
 #if defined(FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS_GROUPED)
     // Retail opt-in (chunk F1, row 0x00BC2480 CEngineInternalPrimitiveParticleMesh::Update): the component form with all three
@@ -64,7 +67,15 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ROTATE
     void Rotate(const C3DVector& rotate_axis,float angle);
 #endif
+#ifdef FABLE_RETAIL_RIGHTHANDEDSET_INTERPOLATE_PASS30
+    void MakePerpendicular() {
+        Forward.Normalise();
+        Up -= Forward * Up.Dot(Forward);
+        Up.Normalise();
+    }
+#else
     void MakePerpendicular();                                            // 0x00A22E10
+#endif
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_NORMALISE
     // Retail opt-in (chunk 1021, row 0x00A0C570 CCamera::SetAngleXY): FableWin.pdb ?Normalise@CRightHandedSet@@QAEXXZ (debug copy
     // 0x02E881D0; no Ego_r.pdb copy, expanded in retail): Up then Forward through C3DVector::AccurateNormalise 0x00A14440

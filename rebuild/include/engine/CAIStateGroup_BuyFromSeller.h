@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_BUY_FROM_SELLER_UPDATE_PASS30
+#include "engine/CAIStateGroup_WorkBase.h"
+#include "engine/CWorld.h"
+class CMessageEvent;
+class CThingCreatureBase;
+class CAIStateGroup_BuyFromSeller : public CAIStateGroup_WorkBase<CAIStateGroupBase> {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+    static CCharString FABLE_FASTCALL GetName();
+    static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+    virtual void Update();
+private:
+    long FrameLastBought;
+    void BoughtSomething() { FrameLastBought = CWorld::GetFrame(); }
+    const CMessageEvent* GetSellersReply(const CThingCreatureBase* seller);
+};
+FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_BuyFromSeller) == 0x18);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -29,4 +48,5 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_BuyFromSeller) == 0x18);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_BuyFromSeller, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_BuyFromSeller, FrameLastBought) == 0x14);
 
+#endif // FABLE_RETAIL_BUY_FROM_SELLER_UPDATE_PASS30
 #endif // FABLE_ENGINE_CAISTATEGROUP_BUYFROMSELLER_H

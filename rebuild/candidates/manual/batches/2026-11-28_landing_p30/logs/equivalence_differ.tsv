@@ -1,0 +1,7 @@
+00968190	src	DIFF		rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnActivate_00968190.cpp
+00968190	test	DIFF		rebuild/tests/00/96/CAIStateGroupTavernKeeper_OnActivate_00968190_test.cpp
+00968460	src	DIFF		rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetPaymentFinishedMessage_00968460.cpp
+00968510	src	DIFF		rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetPaymentCancelledMessage_00968510.cpp
+009692c0	src	DIFF		rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0.cpp
+0064e978	test	DIFF		rebuild/tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp
+0064ae80	test	DIFF		rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp

@@ -85,6 +85,9 @@ public: unsigned long ThankingPhrase;
     unsigned long GetThankingPhrase() const { return ThankingPhrase; }
 #endif
 public: unsigned long IgnoringPhrase;
+#ifdef FABLE_RETAIL_BUY_FROM_SELLER_UPDATE_PASS30
+    unsigned long GetIgnoringPhrase() const { return IgnoringPhrase; }
+#endif
 public: C3DVector WanderCentrePoint;
 public: float WanderMinDistance;
 public: float WanderMaxDistance;

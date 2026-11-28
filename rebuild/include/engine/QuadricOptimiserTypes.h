@@ -77,6 +77,9 @@ class COptimisedVertex {public:
  COptimisedVertex(const COptimisedVertex& other);
  ~COptimisedVertex();                                                                               // 0x00AD7400
  void AddGroup(unsigned long group,float weight){Groups[group]=weight;}
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+ void LimitGroupCount(unsigned long maximum); // 00ACA5F0.
+#endif
 #else
  unsigned char FaceList[12];bool Exists;unsigned long UniqueIndex,OutputIndex;unsigned char Groups[12],PairContractions[12];
 #endif

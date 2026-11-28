@@ -5,9 +5,16 @@
 // vector deleting destructor); Ego_d sizeof 48 = CDrawBase's (retail 0x28). Retail RTTI .?AVCDrawProjectileTargetingCentre@NPlayerGui@@.
 // Only what the CPlayerGui accessors need (CPlayerGui::IsDrawingTargetingCentre 0x00437640 reads the inherited Drawing +0x18).
 #include "engine/NPlayerGui_CDrawBase.h"
+#ifdef FABLE_RETAIL_DRAWPROJECTILECENTRE_PASS30
+class CEnginePrimitivePrepareInfo;
+#endif
 namespace NPlayerGui {
 class CDrawProjectileTargetingCentre : public CDrawBase {
 public:
+#ifdef FABLE_RETAIL_DRAWPROJECTILECENTRE_PASS30
+    // FableWin and Ego_r both declare Draw with this parameter.
+    void Draw(const CEnginePrimitivePrepareInfo& info);
+#endif
 };
 }
 #endif

@@ -158,6 +158,9 @@ public:
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame, on PeekWorldMap()): the const overload ?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z
     // (both PDBs; retail 0x004FC180) and ?GetLoadedRegion@CWorldMap@@QBEJXZ (both PDBs; retail 0x004FB150).
     const CRegion& GetRegion(long) const;                    // 0x004FC180
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+    long GetNextRegionOnRouteTo(long from,long to) const;
+#endif
     long GetLoadedRegion() const;                            // 0x004FB150
 #ifdef FABLE_RETAIL_CWORLDMAP_REGIONCOUNT
     // Retail opt-in (agent4008 scout, row 0x0060EEB0 CTCInventoryMap::ConstructPCMapList): Ego_r.pdb + FableWin.pdb

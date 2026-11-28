@@ -430,7 +430,12 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetTexture(const CTexture** texture, u
 // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in
 // retail: 0x00BB8F49..0x00BB8F81 reads GraphicList (+0x1E0 begin / +0x1E4 end), divides by sizeof(CGraphicInfo) 0x2C and returns the element
 // address for an index below the count, else 0. Defined here because the element type must be complete.
-inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+#ifdef FABLE_RETAIL_LANDSCAPE_INLINE_COPIES_PASS30
+FABLE_FORCEINLINE
+#else
+inline
+#endif
+const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
 {
     return index < GraphicList.size() ? &GraphicList[index] : 0;
 }
@@ -445,6 +450,14 @@ inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) co
 FABLE_FORCEINLINE const CGraphicInfoFrame* CGraphicDataBank::PeekGraphicInfoFrame(unsigned long graphic, unsigned long frame) const
 {
     return PeekGraphic(graphic) ? PeekGraphic(graphic)->PeekInfoFrame(frame) : 0;
+}
+#endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_MOON_PASS30
+// Both original PDB names and the forwarding order in FableWin 0207B0F0.
+inline bool CGraphicDataBank::GetGraphicFrameMipmap(CGraphicFrame& frame,unsigned long graphic,
+                                                   unsigned long frame_no,long mipmap,unsigned long flags) const
+{
+    return PeekGraphic(graphic)->GetFrame(frame,frame_no,mipmap,flags);
 }
 #endif
 #endif

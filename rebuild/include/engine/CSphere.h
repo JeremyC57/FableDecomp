@@ -11,6 +11,10 @@
 #include "stlport/fable_containers.h"
 #endif
 namespace NBBBMaths {
+#ifdef FABLE_RETAIL_CPHYSICSMESH_SWEEP_TRIANGLE_PASS30
+float FABLE_FASTCALL GetSquaredDistanceBetweenSphereTriangle(const C3DVector& position,float radius,
+    const C3DVector& a,const C3DVector& b_a,const C3DVector& c_a);
+#endif
 class CSphere {
 public:
     CSphere(const C3DVector& base, float radius);

@@ -62,6 +62,12 @@ protected:
     // Opt-in (chunk 2060, row 0x00BA5260; agentC2 row 0x00BB3E80): FableWin.pdb
     // ?GetAppropriateMipmap@CEnginePrimitiveManagerMeshBase@@SIKABVC3DVector@@ABVCMatrix3x4@@ABVC3DPrimitive2@@MPBVC3DMeshMaterial@@PBVCGraphicDataBank@@@Z
     // (public static __fastcall; no Ego_r.pdb or retail out-of-line copy: expanded in place). The including row defines the body.
+#ifdef FABLE_RETAIL_MESH_PRELOAD_CALLS_PASS30
+    // FableWin and Ego_r agree on these public static overloads.
+    static void FABLE_FASTCALL PreloadDiffuseTexture(const C3DMeshMaterial*, class CEngineInternalPrimitiveMorphInfo*, unsigned long, bool&, const CGraphicDataBank*);
+    static void FABLE_FASTCALL PreloadBumpTexture(const C3DMeshMaterial*, class CEngineInternalPrimitiveMorphInfo*, unsigned long, bool&, const CGraphicDataBank*);
+    static void FABLE_FASTCALL PreloadReflectionTexture(const C3DMeshMaterial*, unsigned long, bool&, const CGraphicDataBank*);
+#endif
     static unsigned long FABLE_FASTCALL GetAppropriateMipmap(const C3DVector& camera_position, const CMatrix3x4& transform,
         const C3DPrimitive2& mesh_primitive, float scale, const C3DMeshMaterial* material, const CGraphicDataBank* graphic_bank);
 #endif

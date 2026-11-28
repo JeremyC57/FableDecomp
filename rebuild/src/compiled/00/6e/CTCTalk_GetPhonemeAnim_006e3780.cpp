@@ -1,3 +1,4 @@
+// Flags: 
 // Leaf: ?GetPhonemeAnim@CTCTalk@@ABEKABVCCharString@@@Z
 // CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const -- the animation index the talk definition maps a phoneme name to (0 when the phoneme is not in the map)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E3780, length 77 bytes (+ int3 padding).
@@ -44,10 +45,14 @@ struct SPhonemeNode {                           // STLport _Rb_tree_node<pair<co
     unsigned long m_anim;                       // +0x14
 };
 
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+#include "stlport/fable_map.h"
 struct CPhonemeMap {                            // map<CCharString, unsigned long>
     SPhonemeNode* m_header;                     // +0x00 end()
     unsigned long m_count;                      // +0x04
-    SPhonemeNode* Find(const CCharString& key) const;       // 0x0042B467
 };
 
 class CCreatureDef : public CDefPointeeBase { public:
@@ -91,7 +96,7 @@ unsigned long CTCTalk::GetPhonemeAnim(const CCharString& phoneme) const
     ParentThing->PBaseDef->GetSubDef(&def);
     CCreatureDef* talk = const_cast<CCreatureDef*>(def.m_pObject);
     const CPhonemeMap* phonemes = &talk->Phonemes;
-    SPhonemeNode* it = phonemes->Find(phoneme);
+    SPhonemeNode* it = reinterpret_cast<SPhonemeNode*>(reinterpret_cast<const std::map<CCharString,long>*>(phonemes)->find(phoneme)._M_node);
     unsigned long anim = (it != phonemes->m_header) ? it->m_anim : 0;
     talk->ReleaseDef();
     return anim;

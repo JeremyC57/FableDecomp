@@ -2,18 +2,22 @@
 // Retail opt-in (Codex pass21): original UpdateTargetList helper models; both PDBs and donor/native proof in row00804020.
 #ifndef FABLE_TARGETING_PLAYER_SUPPORT_H
 #define FABLE_TARGETING_PLAYER_SUPPORT_H
+#ifndef FABLE_RETAIL_CFILTER_BIND5_ONLY_PASS30
+// 0080C6D0 uses the five-input filter shared with the player-targeting search.
 #include "engine/CFilter_Bind2.h"
 #include "engine/CFilter_Bind3.h"
 #include "engine/CThingFilter_IsInTargetingRangeAndFOV.h"
 #include "engine/CThingFilter_IsInFOV.h"
 #include "engine/CTargetPointFilters.h"
 #include "engine/CThingCompare_BestForTargeting2.h"
+#endif
 template<class A,class B,class C,class D,class E> class CFilter_Bind5 {
 protected: const A& F1;const B& F2;const C& F3;const D& F4;const E& F5;
 public:CFilter_Bind5(const A&a,const B&b,const C&c,const D&d,const E&e):F1(a),F2(b),F3(c),F4(d),F5(e){}
  template<class T> bool operator()(const T&t)const{return F1(t)&&F2(t)&&F3(t)&&F4(t)&&F5(t);}
 };
 template<class A,class B,class C,class D,class E> inline CFilter_Bind5<A,B,C,D,E> FABLE_FASTCALL GFFilter_Bind5(const A&a,const B&b,const C&c,const D&d,const E&e){return CFilter_Bind5<A,B,C,D,E>(a,b,c,d,e);}
+#ifndef FABLE_RETAIL_CFILTER_BIND5_ONLY_PASS30
 class CThingFilter_IsTargetable:public std::unary_function<CThingPhysical,bool>{
  bool ZTargeting,UsingLightning;
 public:CThingFilter_IsTargetable(bool z,bool l):ZTargeting(z),UsingLightning(l){} bool operator()(const CThing&)const;
@@ -60,6 +64,7 @@ CGetBestTargetInDirection::CGetBestTargetInDirection(const C3DVector& base_pos,c
 }
 }
 namespace NGlobalConsole{extern bool GTargetingTargetPreferenceIn3D;}
+#endif
 #endif
 
 #endif

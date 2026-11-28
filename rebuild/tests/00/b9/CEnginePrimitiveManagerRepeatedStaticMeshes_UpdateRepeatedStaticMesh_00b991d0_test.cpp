@@ -383,7 +383,6 @@ struct SViewRecord_01436E80 {
 };
 extern SViewRecord_01436E80* g_pViewRecord_01436E80; // 0x01436E80
 extern float g_fOne_0122DED8;                         // 0x0122DED8
-extern float g_fReciprocal255_01231724;               // 0x01231724
 
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
     void UpdateRepeatedStaticMesh(const CEnginePrimitiveHandle& handle,
@@ -417,7 +416,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UpdateRepeatedStaticMe
         (desc.FadeDist.MaxDrawDistance - desc.FadeDist.FadeBeginDistance) + g_fOne_0122DED8;
     primitive->AlphaTransformMult = g_fOne_0122DED8 /
         (desc.FadeDist.FadeBeginDistance - desc.FadeDist.MaxDrawDistance);
-    float alpha = (float)desc.AlphaRef * g_fReciprocal255_01231724;
+    float alpha = (float)desc.AlphaRef * (1.0f/255.0f);
     base->FadeDistance_MaxDrawDistance = (g_fOne_0122DED8 - alpha) * desc.FadeDist.MaxDrawDistance +
         alpha * desc.FadeDist.FadeBeginDistance;
     base->FadeDistance_FadeBeginDistance = desc.FadeDist.FadeBeginDistance;
@@ -454,7 +453,6 @@ static unsigned long g_unknown_argument;
 static C3DMeshInfo* g_unknown_receiver;
 
 float g_fOne_0122DED8 = 1.0f;
-float g_fReciprocal255_01231724 = 1.0f / 255.0f;
 SViewRecord_01436E80* g_pViewRecord_01436E80;
 
 void C3DMeshInfoLoadingCallView::BeginLoading(unsigned long priority, bool wait, bool loadTextures) const

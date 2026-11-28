@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CTrackedRenderState { long id; unsigned long m_value; unsigned long m_captureMask; long applied; bool m_queued; void Set(unsigned long v); };
-struct SCaptured { CTrackedRenderState* s; unsigned long prior; };
-class CRenderStateManager { public:
-    SCaptured m_captured[16]; CTrackedRenderState* m_dirty[16]; long m_capturedCount, m_dirtyCount; unsigned long m_captureMask;
-    CTrackedRenderState m_state2854, m_state2890;
-    void ChangeState(CTrackedRenderState& state, unsigned long value)
+struct FixtureTrackedRenderState { long id; unsigned long m_value; unsigned long m_captureMask; long applied; bool m_queued; void Set(unsigned long v); };
+struct SCaptured { FixtureTrackedRenderState* s; unsigned long prior; };
+class FixtureRenderStateManager { public:
+    SCaptured m_captured[16]; FixtureTrackedRenderState* m_dirty[16]; long m_capturedCount, m_dirtyCount; unsigned long m_captureMask;
+    FixtureTrackedRenderState m_state2854, m_state2890;
+    void ChangeState(FixtureTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -14,22 +14,22 @@ class CRenderStateManager { public:
         if (!state.m_queued) { state.m_queued = true; m_dirty[m_dirtyCount] = &state; ++m_dirtyCount; }
     }
 };
-static CRenderStateManager g_core;
-static CRenderStateManager* g_pRenderManagerCore = &g_core;
-void CTrackedRenderState::Set(unsigned long v) { if (m_value != v) g_pRenderManagerCore->ChangeState(*this, v); }
-static void reset(CTrackedRenderState& s, unsigned long v) { s.m_value = v; s.m_captureMask = 0; s.m_queued = false; }
+static FixtureRenderStateManager g_core;
+static FixtureRenderStateManager* g_pRenderManagerCore = &g_core;
+void FixtureTrackedRenderState::Set(unsigned long v) { if (m_value != v) g_pRenderManagerCore->ChangeState(*this, v); }
+static void reset(FixtureTrackedRenderState& s, unsigned long v) { s.m_value = v; s.m_captureMask = 0; s.m_queued = false; }
 
-// behaviour test: CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive
+// behaviour test: FixtureEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive
 static unsigned long g_default = 7; static int g_trails = 0, g_restores = 0, g_applies = 0;
-class CShaderRenderManager { public: bool PixelShadersEnabled; bool flipDuringRender;
+class FixtureShaderRenderManager { public: bool PixelShadersEnabled; bool flipDuringRender;
     void DisablePixelShaders() { PixelShadersEnabled = false; } void EnablePixelShaders() { PixelShadersEnabled = true; } };
-static CShaderRenderManager g_shader;
+static FixtureShaderRenderManager g_shader;
 struct CSub { void* Parent; };
-class CEnginePrimitiveManagerWeaponTrails { public:
+class FixtureEnginePrimitiveManagerWeaponTrails { public:
     void RenderWeaponTrail(void*) { ++g_trails; if (g_shader.flipDuringRender) g_shader.PixelShadersEnabled = true; }
     void RenderSubPrimitive(CSub& sub, long pass);
 };
-void CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CSub& sub, long)
+void FixtureEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(CSub& sub, long)
 {
     g_core.m_captured[g_core.m_capturedCount].s = 0; ++g_core.m_capturedCount; g_core.m_captureMask <<= 1;
     bool pixelShaders = g_shader.PixelShadersEnabled;
@@ -48,7 +48,7 @@ int main()
     g_core.m_capturedCount = 0; g_core.m_dirtyCount = 0; g_core.m_captureMask = 1;
     reset(g_core.m_state2854, 3); reset(g_core.m_state2890, 7);
     g_shader.PixelShadersEnabled = true; g_shader.flipDuringRender = false;
-    CEnginePrimitiveManagerWeaponTrails m; CSub sub; sub.Parent = 0;
+    FixtureEnginePrimitiveManagerWeaponTrails m; CSub sub; sub.Parent = 0;
     m.RenderSubPrimitive(sub, 0);
     bool ok = g_core.m_captureMask == 2 && g_core.m_capturedCount == 2 && g_core.m_state2854.m_value == 0
         && g_core.m_state2890.m_value == 7 && g_core.m_dirtyCount == 1 && g_trails == 1 && g_shader.PixelShadersEnabled && g_restores == 1;

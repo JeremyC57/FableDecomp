@@ -416,6 +416,9 @@ public:
     // (unreferenced COMDAT 0x00B98CC0 in this TU, expanded at 0x00B9AA14..0x00B9AAA0). The including row defines the bodies.
     static EEngineOcclusionLayer __fastcall GetCurrentOcclusionLayer();
     static bool __fastcall GetOcclusionEnable();
+#ifdef FABLE_RETAIL_ANIMATED_MESH_PRELOAD_PASS30
+    static float FABLE_FASTCALL GetCharacterLODErrorTolerance();
+#endif
     static float __fastcall GetLODErrorTolerance();
     static float __fastcall GetLODVirtualScreenSizeFOVAdjusted();
     unsigned long CalculateSubPrimitiveRenderFlags(bool fading, bool translucent, bool alpha_test, unsigned long primitive_flags, bool shadowed);
@@ -443,4 +446,13 @@ public:
 
 FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
 
+#ifdef FABLE_RETAIL_MESH_MIPMAP_PASS30
+#include "engine/CEnginePrimitiveRendererSharedData.h"
+namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }
+// FableWin GetMipmapSizeMultiplier and the shared-data member at +0xB0 in retail.
+inline float FABLE_FASTCALL CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier()
+{
+    return NEngineInternal::GPPrimitiveRendererSharedData->MipmapSizeMultiplier;
+}
+#endif
 #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERUTIL_H

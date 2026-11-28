@@ -37,6 +37,9 @@ public:
     float GetButtonPressureForEvent(const CInputEvent& event) const;
 protected:
     bool IsGameActionEventInQueue(EGameAction action,EInputButtonEventType type) const;
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+    void ProcessAnalogJoystickAxis(float& value) const;
+#endif
 #endif
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30

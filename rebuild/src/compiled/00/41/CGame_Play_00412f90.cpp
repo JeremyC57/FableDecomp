@@ -1,5 +1,6 @@
 // CGame::Play() -- create the first game component (the main game when starting straight into it, else the legacy or new front end), start it, and run components until one reports no successor; when only compiling front-end definitions, just build and discard it
-// Leaf: Play
+// Leaf: ?Play@CGame@@QAEXXZ
+// Flags: /O2 /Oy /W3
 // Names (NF233, 2026-11-22, q12638, in place): the CFrontendGameComponent (0x00496070) and CNewFrontendGameComponent (0x0042EA8F) ctor declarations
 //   take CGame& (the PDB spellings every other binder binds); were CGame*. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00412F90, length 394 bytes (`ret`).
@@ -7,7 +8,7 @@
 //   0x0099B7D0, CCharString ctor/dtor @ 0x0099E4B0 / 0x0099EAE0, CMainGameComponent ctor @ 0x00418DCA,
 //   CFrontendGameComponent ctor @ 0x00496070, CNewFrontendGameComponent ctor @ 0x0042EA8F; the component's virtual slots 0
 //   (deleting destructor), 1 (start) and 2 (run one component, out: the next component).
-// Globals: g_bCompileFrontendDefinitions 0x013B8648, g_bStartMainGame 0x013B8605, g_bUseLegacyFrontend 0x013B8642,
+// Globals: GOnlyBuildStaticMaps 0x013B8648, g_bStartMainGame 0x013B8605, g_bUseLegacyFrontend 0x013B8642,
 //   the main-game start path 0x013B7D5C (a CWideString), the retired component 0x013B7D58.
 // Layout: Ego_r.pdb CGame CurrentGameComponent +0x08, Quit +0x20C; CMainGameComponentInit {InitialWorldName,
 //   InitialWorldHolySiteName, InitialQuestName, SaveGameName}; the front-end init blocks are one zeroed long.
@@ -54,7 +55,7 @@ class CNewFrontendGameComponent : public CGameComponent { public:
     static void __fastcall CompileDefs();               // 0x0042F70B ?CompileDefs@CNewFrontendGameComponent@@SIXXZ (Ego_r / FableWin)
     unsigned char _body[0x144];
 };
-extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
+extern bool GOnlyBuildStaticMaps;              // 0x013B8648
 extern bool g_bStartMainGame;                           // 0x013B8605
 extern bool g_bUseLegacyFrontend;                       // 0x013B8642
 extern CWideString RelaunchSaveGameName;               // 0x013B7D5C
@@ -72,7 +73,7 @@ class CGame { public:
 void CGame::Play()
 {
     CGameComponent* component = 0;
-    if (g_bCompileFrontendDefinitions)
+    if (GOnlyBuildStaticMaps)
         CNewFrontendGameComponent::CompileDefs();
     if (g_bStartMainGame) {
         CMainGameComponentInit init;
@@ -92,7 +93,7 @@ void CGame::Play()
             component->Start();
         }
     }
-    if (g_bCompileFrontendDefinitions) {
+    if (GOnlyBuildStaticMaps) {
         delete component;
         return;
     }

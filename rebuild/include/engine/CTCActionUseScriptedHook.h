@@ -14,6 +14,9 @@ class CThing;
 class CTCActionUseScriptedHook : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ACTION_USE_SCRIPTED_HOOK; }
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+    bool IsHiddenOnMiniMap() const { return HiddenOnMiniMap; }
+#endif
     CThing* GetPEntranceConnectedTo() const { return PEntranceConnectedTo.Get(); }
     const CCharString& GetRegionEntranceName() const;                   // 0x00729C50
     const CCharString& GetRegionEntranceDisplayName() const;            // 0x00729CA0

@@ -41,6 +41,66 @@ public:
     class CPixelFormat GetPixelFormat() const;
     void GetAsTextureList(class CTexture* textures);                     // 0x00A68910
 #endif
+#ifdef FABLE_RETAIL_VOLUME_SERIALIZATION_PASS30
+    long GetNoLevels() const;
+    long GetLevelByteLength(long level) const;
+    void SaveToDataStream(class CDataOutputStream& stream);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(15, sizeof(CVolumeTexture) == 0x10);
+#ifdef FABLE_RETAIL_VOLUME_SERIALIZATION_PASS30
+#include "engine/Direct3DVolumeTexture9.h"
+#include "engine/C3DExtentsI.h"
+#include "engine/CPixelFormat.h"
+inline long CVolumeTexture::GetNoLevels() const
+{
+    return PD3DVolumeTexture->GetLevelCount();
+}
+inline C3DExtentsI CVolumeTexture::GetDimensions(unsigned long level) const
+{
+    _D3DVOLUME_DESC desc;
+    PD3DVolumeTexture->GetLevelDesc(level, &desc);
+    return C3DExtentsI(desc.Width, desc.Height, desc.Depth);
+}
+inline CPixelFormat CVolumeTexture::GetPixelFormat() const
+{
+    _D3DVOLUME_DESC desc;
+    PD3DVolumeTexture->GetLevelDesc(0, &desc);
+    return CPixelFormat(desc.Format);
+}
+inline void CVolumeTexture::Unlock(unsigned long level)
+{
+    PD3DVolumeTexture->UnlockBox(level);
+}
+#endif
+#ifdef FABLE_RETAIL_VOLUME_SAVE_LOCK_BODY_PASS30
+#include "engine/CVolumeLockedBox.h"
+#include "engine/CSystemManager.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CRenderManager.h"
+inline CVolumeLockedBox CVolumeTexture::Lock(unsigned long level, unsigned long flags)
+{
+    C3DExtentsI dimensions = GetDimensions(level);
+    _D3DBOX box;
+    box.Front = 0;
+    box.Top = 0;
+    box.Left = 0;
+    box.Bottom = dimensions.Y;
+    box.Right = dimensions.X;
+    box.Back = dimensions.Z;
+    CSystemManager* system = GFGetSystemManager();
+    system->GetDisplayManager()->GetRenderManager().WaitWhileResourceIsBusy(PD3DVolumeTexture, 1.0f);
+    _D3DLOCKED_BOX locked;
+    if (PD3DVolumeTexture->LockBox(level, &locked, &box, flags) >= 0) {
+        CVolumeLockedBox result;
+        result.Dimensions = dimensions;
+        result.RowPitch = locked.RowPitch;
+        result.SlicePitch = locked.SlicePitch;
+        result.PMem = (unsigned char*)locked.pBits;
+        return result;
+    }
+    return CVolumeLockedBox();
+}
+#endif
+
 #endif

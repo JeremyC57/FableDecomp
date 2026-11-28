@@ -67,7 +67,14 @@ class CEngineInit;
 class CEngineMemoryInit;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
 public:
-#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_SEAMIDGROUND
+#ifdef FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+    void ChangeScene();
+#endif
+
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_TERRAIN_ACCESSORS_PASS30
+    const class CGraphicInfoFrame* GetTerrainTexture(long index);
+    const CGraphicDataBank* PeekTerrainBank() const;
+#elif defined(FABLE_RETAIL_CENGINERESOURCEMANAGER_SEAMIDGROUND)
     // Original PDB member, donor02C85C70; disabled original water texture path.
     const class CGraphicInfoFrame* GetTerrainTexture(long index);
     const CGraphicDataBank* PeekTerrainBank() const;
@@ -326,6 +333,19 @@ private:
     unsigned char ExternalTexturesAllocatedFromEnginePools[12];   // +0x31D4 map<CTexture*,CExternalTextureAllocationInfo>
 #endif
 };
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_TERRAIN_ACCESSORS_PASS30
+// FableWin 0x02C85C70 and 0x02C85CA0 are the two typed forwarders.
+#include "engine/EGraphicBankNo.h"
+#include "engine/CGraphicInfo.h"
+FABLE_FORCEINLINE const CGraphicDataBank* CEngineResourceManager::PeekTerrainBank() const
+{
+    return PeekGraphicBank(MAIN_GRAPHIC_BANK_NO);
+}
+FABLE_FORCEINLINE const CGraphicInfoFrame* CEngineResourceManager::GetTerrainTexture(long index)
+{
+    return PeekTerrainBank()->PeekGraphicInfoFrame(index, 0);
+}
+#endif
 FABLE_STATIC_ASSERT_AT(172, sizeof(CEngineResourceManager)==0x31e0);
 #endif // FABLE_ENGINE_CENGINERESOURCEMANAGER_H
 #else // generated flattened default (unchanged)

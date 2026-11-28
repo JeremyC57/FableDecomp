@@ -1,15 +1,16 @@
-#include "engine/CEngine.h"  // retyped onto the PDB layout; byte parity re-verified
-#include "rebuild_abi.h"
-// CEngine_Methods::ChangeCameraAngle @ 0x00b23a50
-// push esi; esi=ecx; ecx=ds:[g]; call helper(g); [esi+0x39]=1; ret
-struct GObj;
-extern GObj *g_camThing_b23a50;
-extern "C" void FABLE_FASTCALL FableCamCall_b23a50(GObj *engine);
-struct CEngine_Methods : CEngine {
-    void ChangeCameraAngle();
-};
-void CEngine_Methods::ChangeCameraAngle()
+// Flags: 
+// Leaf: ?ChangeCameraAngle@CEngine@@UAEXXZ
+#define FABLE_RETAIL_CIENGINE_RENDER
+#define FABLE_RETAIL_CENGINE
+#define FABLE_RETAIL_CENGINE_OVERRIDES
+#define FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#include "engine/CEngine.h"
+#include "engine/CEnginePrimitiveOcclusionManager.h"
+#include "engine/NEngineInternal.h"
+
+void CEngine::ChangeCameraAngle()
 {
-    FableCamCall_b23a50(g_camThing_b23a50);
-    CameraAngleChanged = 1;
+    NEngineInternal::GPPrimitiveOcclusionManager->StartNewScene();
+    CameraAngleChanged = true;
 }

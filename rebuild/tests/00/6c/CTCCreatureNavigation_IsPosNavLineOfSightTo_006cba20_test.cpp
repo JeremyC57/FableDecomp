@@ -1,31 +1,65 @@
-#include <cstdio>
-struct CPos { int v; };
-struct CNavObj;
-typedef bool (*VFn)(void*, float);
-struct CVtbl { VFn m[16]; };
-struct CNavObj { CVtbl* vptr; int base; };
-struct CNavHelper { int add; };
-static int g_helper_val;
-static float g_arg_seen;
-static bool Vm(void* self, float arg) { CNavObj* o = (CNavObj*)self; union { int i; float f; } u; u.f = arg; g_arg_seen = arg; return (o->base + u.i) != 0; }
-class CTCCreatureNavigation { public: void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
-static int HelperCompute(CNavHelper* h, const CPos* p) { return h->add + p->v; }
-static bool run(CTCCreatureNavigation* self, const CPos* pos) {
-    CNavObj* obj = self->obj;
-    CVtbl* vt = obj->vptr;
-    union { int i; float f; } u;
-    u.i = HelperCompute(self->helper, pos);
-    g_helper_val = u.i;
-    return ((VFn)vt->m[10])(self->obj, u.f);
+// CTCCreatureNavigation::IsPosNavLineOfSightTo asks the active navigator about the segment from its creature.
+// Leaf: ?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z
+// Flags: none
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_FRAMEUPDATE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_ONEPOINTLOS
+#define FABLE_RETAIL_CNAVIGATORBASE
+#include "fable_string.h"
+#include "engine/CTCCreatureNavigation.h"
+#include "engine/CNavigatorBase.h"
+
+bool CTCCreatureNavigation::IsPosNavLineOfSightTo(const C3DVector& pos) const
+{
+    return PNavigator->IsNavLineOfSightClear(GetParentCreature().PeekPos(), pos);
 }
-int main() {
-    CVtbl vt; for (int i=0;i<16;i++) vt.m[i]=(VFn)Vm;
-    CNavObj obj; obj.vptr=&vt; obj.base=5;
-    CNavHelper h; h.add=3;
-    CTCCreatureNavigation self; self.helper=&h; self.obj=&obj;
-    CPos pos; pos.v=2;
-    bool b = run(&self, &pos);
-    /* helper: 3+2=5, vfunc: base 5 + 5 = 10 != 0 -> true */
-    if (b == true && g_helper_val == 5) { std::printf("CTCCreatureNavigation_006cba20_TEST PASS\n"); return 0; }
-    std::printf("CTCCreatureNavigation_006cba20_TEST FAIL b=%d hv=%d\n", (int)b, g_helper_val); return 1;
+
+#include <assert.h>
+#include <stdio.h>
+
+namespace {
+    unsigned long storage[64];
+    unsigned long parent[64];
+    unsigned long navigator[8];
+    unsigned long slots[20];
+    unsigned long start[3],finish[3];
+    unsigned long step;
+    bool clear;
+    bool FABLE_FASTCALL CheckSegment(const void* self,void*,const C3DVector& a,const C3DVector& b)
+    {
+        assert(self == navigator && step++ == 1);
+        assert(&a == reinterpret_cast<const C3DVector*>(start));
+        assert(&b == reinterpret_cast<const C3DVector*>(finish));
+        return clear;
+    }
+}
+const C3DVector& CThingPhysical::PeekPos() const
+{
+    assert(this == reinterpret_cast<const CThingPhysical*>(parent));
+    assert(step++ == 0);
+    return *reinterpret_cast<const C3DVector*>(start);
+}
+int main()
+{
+    const CTCCreatureNavigation* nav = reinterpret_cast<const CTCCreatureNavigation*>(storage);
+    storage[1] = reinterpret_cast<unsigned long>(parent);
+    storage[3] = reinterpret_cast<unsigned long>(navigator);
+    navigator[0] = reinterpret_cast<unsigned long>(slots);
+    slots[10] = reinterpret_cast<unsigned long>(&CheckSegment);
+    for (unsigned int i=0; i<2; ++i) {
+        step = 0;
+        clear = i != 0;
+        const bool result = nav->IsPosNavLineOfSightTo(*reinterpret_cast<const C3DVector*>(finish));
+        assert(result == clear && step == 2);
+    }
+    puts("006cba20_TEST PASS");
+    return 0;
 }

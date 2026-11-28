@@ -1,21 +1,70 @@
-// CGetBestIciclePointForTarget::GetBestPosition(C3DVector* out) -- when the score at +0xc is above zero, copy the position at +0x10 out and return true
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008E2B60, length 49 bytes.
-// Callees: none. Constant 0.0f @ 0x0122DEDC. Shape: `fcomp ; fnstsw ; test ah,41h ; jne` (not above zero -> false), the vector copied as three words, `ret 4`.
+// Flags: 
+// Leaf: ?GetBestPosition@CGetBestIciclePointForTarget@?A0x3ed055e1@@QBE_NAAVC3DVector@@@Z
+// 008e2b60 ?GetBestPosition
+#define FABLE_RETAIL_ICICLE_ASSAULT_PASS30
+#define FABLE_RETAIL_GFDEBUGDYNAMICCAST
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGOBJECT_CREATE
+#define FABLE_RETAIL_CTCDPARTICLEEMITTER_CREATE
+#define FABLE_RETAIL_CSNOWTROLLDEF
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_DRAGONBASE_LIFETIME_PASS29
+#define FABLE_RETAIL_JACK_STAGE1_UPDATE
+#define FABLE_RETAIL_CSOUNDPAIR_ORIGINAL_CTORS
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE
+#define FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+#define FABLE_RETAIL_GFRANDOM_OUTOFLINE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTCTRAPBASE
+#define FABLE_RETAIL_HERO_APPEARANCE_UPDATE_PASS30
+#include "fable_string.h"
 #include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingObject.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/ThingAlive.h"
+#include "engine/CTCTrapBase.h"
+#include "engine/CTCDParticleEmitter.h"
+#include "engine/CSoundPair.h"
+#include "engine/CCreatureAction_IceTrollIcicleAssaultLoop.h"
+#include "engine/CCreatureAction_IceTrollIcicleAssaultOutOf.h"
+#include "engine/CreatureModes_IciclePoints.h"
+#include "engine/NExplosiveTrailHelpers.h"
+#include "engine/GFRandom.h"
+#include "engine/GFLimit.h"
+#include "stlport/fable_algorithm.h"
+#include "stlport/position_algorithms.h"
 
-struct CGetBestIciclePointForTarget {
-    unsigned char _pad[0xc];
-    float         m_bestScore;                     // +0x0c
-    C3DVector     m_bestPosition;                  // +0x10
-    bool GetBestPosition(C3DVector* out);
-};
-
-bool CGetBestIciclePointForTarget::GetBestPosition(C3DVector* out)
+namespace {
+bool CGetBestIciclePointForTarget::GetBestPosition(C3DVector& pos) const
 {
-    if (m_bestScore > 0.0f) {
-        *out = m_bestPosition;
+    if (BestPosScore > 0.0f) {
+        pos = BestPos;
         return true;
     }
     return false;
+}
 }

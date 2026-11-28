@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+008e2a90	ACCEPT	??0CGetBestIciclePointForTarget@@QAE@PAVCThing@@M@Z	??0CGetBestIciclePointForTarget@?A0x	Codex pass 30 respell unit; lane grade on the pass 30 headers self respell
+008e2b60	ACCEPT	?GetBestPosition@CGetBestIciclePointForTarget@@QAE_NPAVC3DVector@@@Z	?GetBestPosition@CGetBestIciclePointForTarget@?A0x	Codex pass 30 respell unit; lane grade on the pass 30 headers self respell

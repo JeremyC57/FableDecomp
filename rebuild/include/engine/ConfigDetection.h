@@ -2,7 +2,11 @@
 #define FABLE_ENGINE_CONFIGDETECTION_H
 // Complete original data members, access and array element types from Ego_r TPI.
 // Native DisplayErrorDialog uses VendorName+196,DeviceName+200,DeviceID+204.
+#ifdef FABLE_RETAIL_ERROR_DIALOG_PROC_PASS30
+#include "engine/Win32Types.h"
+#else
 struct _GUID { unsigned long Data1;unsigned short Data2,Data3;unsigned char Data4[8]; };
+#endif
 struct SOUND_DEVICE {
 public:
     char name[64];

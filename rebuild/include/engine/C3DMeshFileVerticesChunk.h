@@ -22,6 +22,9 @@ public:
     virtual CChunkedFileChunk* CreateNewInstance() const;
 #endif
     void AddVertex(const C3DVertex2& vertex);                    // 0x00ABCEB0
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "VERT"; } // FableWin 033DA070.
+#endif
 #ifdef FABLE_RETAIL_C3DPRIMITIVE2_LOADER
     const C3DVertex2* GetList() const;                           // 0x00ABC420 (ICF)
 #ifndef FABLE_RETAIL_C3DMESHFILEVERTICESCHUNK_PEEKVERTEX          // (that opt-in declares GetCount)

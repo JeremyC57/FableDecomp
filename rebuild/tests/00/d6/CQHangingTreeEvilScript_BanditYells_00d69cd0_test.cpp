@@ -1,19 +1,82 @@
-// Behaviour test for 0x00d69cd0: BanditYells: pause 5 s and clear the flag each time it is set.
-// The reconstructed logic runs over a host model of the retail classes and callees.
-#include <cstdio>
-static int g_fail = 0;
-#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct Script; struct GSI { Script* s; int frames; int pauses; float last; void NewScriptFrame(); void Pause(float t) { ++pauses; last = t; } };
-struct Script { GSI* gsi; bool yelled; int termAfter, termCalls;
-  bool Term() { return ++termCalls > termAfter; }
-  void BanditYells() { while (!Term()) { while (!yelled) { gsi->NewScriptFrame(); if (Term()) return; } if (Term()) return; gsi->Pause(5.0f); yelled = false; gsi->NewScriptFrame(); } } };
-void GSI::NewScriptFrame() { ++frames; if (frames % 3 == 0) s->yelled = true; }
-static int run() { GSI g = {0,0,0,0.0f}; Script s = {&g,false,12,0}; g.s = &s; s.BanditYells();
-  CHECK(g.pauses >= 2 && g.last == 5.0f && s.termCalls == 13); return 0; }
-int main()
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#ifndef _MSC_VER
+#define FABLE_RETAIL_PASS23_HOST_TEST_ABI
+#endif
+#include "engine/TRetVoid.h"
+
+namespace NScript {
+class CQ_HangingTreeEvilScript;
+class ScriptServices {
+public:
+    ScriptServices() : script(0),frames(0),pauses(0) {}
+    void bind(CQ_HangingTreeEvilScript& owner) { script=&owner; }
+    void NewScriptFrame();
+    void Pause(float delay);
+    CQ_HangingTreeEvilScript* script;
+    int frames,pauses;
+};
+class CQ_HangingTreeEvilScript {
+public:
+    explicit CQ_HangingTreeEvilScript(bool initiallyYelled,int stopAt) :
+        BanditYelledRecently(initiallyYelled),stopAt(stopAt),polls(0),length(0) { trace[0]=0;Game.bind(*this); }
+    void BanditYells();
+    bool IsActiveThreadTerminating() { event('|');return ++polls==stopAt; }
+    void event(char c) { if(length>=100) exit(2);trace[length++]=c;trace[length]=0; }
+    ScriptServices Game;
+    bool BanditYelledRecently;
+    int stopAt,polls,length;
+    char trace[102];
+};
+void ScriptServices::NewScriptFrame() {
+    script->event('N');
+    ++frames;
+    if(frames==2 || frames==5) script->BanditYelledRecently=true;
+}
+void ScriptServices::Pause(float delay) {
+    if(delay!=5.0f || !script->BanditYelledRecently) exit(3);
+    script->event('P');
+    ++pauses;
+}
+}
+
+void NScript::CQ_HangingTreeEvilScript::BanditYells()
 {
-    run();
-    if (g_fail) { std::printf("00d69cd0_TEST FAIL\n"); return 1; }
-    std::printf("00d69cd0_TEST PASS\n");
+    TRetVoid _Fail_Val;
+    if (false) {} else for (;; Game.NewScriptFrame()) {
+        if (IsActiveThreadTerminating())
+            return _Fail_Val.Return();
+        while (!BanditYelledRecently) {
+            Game.NewScriptFrame();
+            if (IsActiveThreadTerminating())
+                return _Fail_Val.Return();
+        }
+        if (IsActiveThreadTerminating())
+            return _Fail_Val.Return();
+        Game.Pause(5.0f);
+        BanditYelledRecently = false;
+    }
+    if (IsActiveThreadTerminating())
+        return _Fail_Val.Return();
+}
+
+static void run(bool initiallyYelled,const char* reference) {
+    int poll=0;
+    for(const char* last=reference;*last;++last) {
+        if(*last!='|') continue;
+        NScript::CQ_HangingTreeEvilScript quest(initiallyYelled,++poll);
+        quest.BanditYells();
+        size_t length=static_cast<size_t>(last-reference)+1;
+        if(strlen(quest.trace)!=length || strncmp(quest.trace,reference,length)!=0) {
+            fprintf(stderr,"unexpected frame/guard/pause order at poll %d: %s\n",poll,quest.trace);
+            exit(1);
+        }
+    }
+}
+int main() {
+    run(false,"|N|N||PN|N|N||PN|N|");
+    run(true,"||PN|N||PN|N|N||PN|");
+    puts("00d69cd0_TEST PASS");
     return 0;
 }

@@ -1,3 +1,4 @@
+// Flags: 
 // CEngine::SetVideoOptions(const CEngineVideoOptions& options) -- apply new video options: copy them (and publish the global
 //   pointer), set the display mode (requested settings; then without antialiasing / refresh; then clamped to 1024x768 -- any
 //   fallback makes the result false, total failure returns false), then push the vsync, effects quality, hi-res texture memory
@@ -57,7 +58,9 @@ struct CEngineVideoOptionsListener {
 };
 class CEngineResourceManager { public: bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
 class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def); };   // 0x00B59870
-struct CEngineVideoOptionsSink { void OnVideoOptionsChanged(); };                 // 0x00B2F740
+#define FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#include "engine/CEnginePrimitiveOcclusionManager.h"                 // 0x00B2F740
 
 enum ESmartRestoreComponentVideoMemoryResult { SMART_RESTORE_OK = 0 };
 
@@ -78,7 +81,7 @@ namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x0
 extern CEngineScreenEffectColourFilter* g_pColourFilter;          // 0x01436E40
 extern CShaderBankStateBlock*           g_pShaderBankStateBlock;  // 0x01436E44
 extern CEngineVideoOptionsListener*     g_pVideoOptionsListener;  // 0x01436E54
-extern CEngineVideoOptionsSink*         g_pVideoOptionsSink;      // 0x01436E58
+#include "engine/NEngineInternal.h"      // 0x01436E58
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERER
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_PASS22_DRAWDISTANCE
 #include "engine/CEnginePrimitiveRenderer.h"   // ?SetDrawDistanceQuality@CEnginePrimitiveRenderer@@QAEXW4EEngineVideoOptionQuality@@ABVCEngineVideoOptionsDef@@@Z 0x00B32010
@@ -122,7 +125,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     NEngineInternal::GPPrimitiveRenderer->SetDrawDistanceQuality(VideoOptions.MeshDetail, *meshDef);
     if (NEngineInternal::GPLocalDetailGenerator)
         NEngineInternal::GPLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(*meshDef);
-    g_pVideoOptionsSink->OnVideoOptionsChanged();
+    NEngineInternal::GPPrimitiveOcclusionManager->StartNewScene();
     if (SmartRestoreComponentVideoMemory() != SMART_RESTORE_OK)
         result = false;
     EnablePostDeviceReset = true;

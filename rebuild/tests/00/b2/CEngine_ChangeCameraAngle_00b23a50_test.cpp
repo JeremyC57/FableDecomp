@@ -1,11 +1,22 @@
-#include "rebuild_abi.h"
+// Leaf: ?ChangeCameraAngle@CEngine@@UAEXXZ
+#define FABLE_RETAIL_CIENGINE_RENDER
+#define FABLE_RETAIL_CENGINE
+#define FABLE_RETAIL_CENGINE_OVERRIDES
+#define FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#include "engine/CEngine.h"
+#include "engine/CEnginePrimitiveOcclusionManager.h"
+#include "engine/NEngineInternal.h"
+
+void CEngine::ChangeCameraAngle()
+{
+    NEngineInternal::GPPrimitiveOcclusionManager->StartNewScene();
+    CameraAngleChanged = true;
+}
+
 #include <cstdio>
-struct GObj { int hit; };
-static GObj g_obj={0};
-GObj *g_camThing_b23a50=&g_obj;
-extern "C" void FABLE_FASTCALL FableCamCall_b23a50(GObj *engine){ engine->hit=1; }
-class CEngine { public: char pad[0x39]; char m_flag; void ChangeCameraAngle(); };
-void CEngine::ChangeCameraAngle(){ FableCamCall_b23a50(g_camThing_b23a50); m_flag=1; }
-int main(){ CEngine o; o.m_flag=0; o.ChangeCameraAngle();
- if(o.m_flag!=1||g_obj.hit!=1){std::printf("B1\n");return 1;}
- std::printf("CA_b23a50_OK\n"); return 0; }
+#include <cstring>
+#include <cassert>
+namespace NEngineInternal {CEnginePrimitiveOcclusionManager* GPPrimitiveOcclusionManager;}
+static void* seen;void CEnginePrimitiveOcclusionManager::StartNewScene(){seen=this;}
+int main(){unsigned long storage[sizeof(CEngine)/4],manager[14];NEngineInternal::GPPrimitiveOcclusionManager=(CEnginePrimitiveOcclusionManager*)manager;unsigned char* p=(unsigned char*)storage;for(int i=0;i<256;++i){std::memset(p,i,sizeof(storage));seen=0;((CEngine*)p)->CEngine::ChangeCameraAngle();assert(seen==manager);for(unsigned j=0;j<sizeof(storage);++j)assert(p[j]==(j==0x39?1:i));}std::puts("00b23a50_TEST PASS");return 0;}

@@ -10,6 +10,9 @@
 #include "fable_string.h"
 class C3DMeshFileBoneChunk : public CChunkedFileSuperChunk {
 public:
+#ifdef FABLE_RETAIL_QUADRIC_MESH_CTOR_PASS30
+    long GetParentIndex() const { return ParentIndex; }
+#endif
     C3DMeshFileBoneChunk();
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;

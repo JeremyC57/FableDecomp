@@ -96,6 +96,10 @@ public:
         const C3DVector& from, const C3DVector& to) const;   // 0x00A17690
 #endif
 private:
+#ifdef FABLE_RETAIL_PHYSICS_MESH_BASELINE_PASS30
+    void GenerateLineListFromBaseline(float base_line_z, CArray<C2DLineF>& line_list,
+                                      CArray<long>& used_face_list) const;
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_CALCULATEBOUNDINGINFO
     // Retail opt-in (egod2a, row 0x00A6C640): Ego_r.pdb / FableWin.pdb ?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ (private).
     // With it TotalPoints is typed (CArray<C3DVector>, same 12 bytes at +0x3C). Declaration only.
@@ -111,12 +115,26 @@ private:
     bool GetPointIntersectionFromToUsingSegmentation(const C3DVector& from,
         const C3DVector& to, CMeshIntersectionData& data) const;
     std::vector<long>& GetSingleInstanceCollisionSet() const;
+#ifdef FABLE_RETAIL_CPHYSICSMESH_SEGMENT_SPHERE_PASS30
+    bool GetSphereIntersectionFromToUsingSegmentation(float,const C3DVector&,
+        const C3DVector&,CMeshIntersectionData&) const;
+#endif
     // Original FableWin03199990 and native inline body00a17822..a17a45.
     // Inline-budget: native00a17822..a17a45 expansion; ordinary/flags/depth fail in recorded probes.
     FABLE_FORCEINLINE bool HasCollidedWithTriangleAt(const C3DTriangle2&,const C3DVector&,
         const C3DVector&,float,C3DVector&,C3DVector&) const;
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_SWEEP_TRIANGLE_PASS30
+    bool GetSphereIntersectionFromToUsingFullCollision(float,const C3DVector&,
+        const C3DVector&,CMeshIntersectionData&) const;
+    bool HasCollidedWithTriangleAt(const C3DTriangle2&,float,const C3DVector&,const C3DVector&,
+                                   float,C3DVector&,C3DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_PHYSICS_MESH_FILE_MAPS_PASS29
+#ifdef FABLE_RETAIL_PHYSICS_MESH_READER_PASS30
+    // The original private member is called by the mesh constructor.
+    void GetMeshDataFromFileData(const C3DMeshFile& file_data);
+#endif
     void GetHelperDataFromFileData(const C3DMeshFile&);
     void GetContainmentDataFromFileData(const C3DMeshFile&);
 #endif
@@ -177,4 +195,46 @@ private:
     class CMovableResourceMemoryPool* MemoryPool;       //0xbc
 };
 FABLE_STATIC_ASSERT_AT(77, sizeof(CPhysicsMesh)==0xc0);
+#ifdef FABLE_RETAIL_CPHYSICSMESH_FULL_SPHERE_PASS30
+#include "engine/CSphere.h"
+
+// Original sphere overload used by the sweep over all faces.
+// Inline-budget: native 00A18345..00A1869C expands this typed sphere-triangle helper.
+FABLE_FORCEINLINE
+bool CPhysicsMesh::HasCollidedWithTriangleAt(
+    const C3DTriangle2& tri, float sphere_radius, const C3DVector& from,
+    const C3DVector& normalised_velocity, float speed, C3DVector& intersection_pos,
+    C3DVector& intersection_normal) const
+{
+    C3DVector sphere_intersection;
+    const C3DVector& a = TotalPoints[tri.GetA()];
+    const C3DVector& b = TotalPoints[tri.GetB()];
+    const C3DVector& c = TotalPoints[tri.GetC()];
+    C3DVector b_a = b - a;
+    C3DVector c_a = c - a;
+    C3DVector p_normal = b_a.Cross(c_a);
+    float cos_angle = GFDotProduct(p_normal, normalised_velocity);
+    if (cos_angle > 0.0f) {
+        C3DVector to = from + normalised_velocity * speed;
+        long no_divides = static_cast<long>(speed / sphere_radius) + 1;
+        C3DVector next_pos = no_divides == 1 ? to : from;
+        C3DVector add_pos = (normalised_velocity * speed) / static_cast<float>(no_divides);
+        for (long c1 = 0; c1 < no_divides; ++c1) {
+            float distance_sqr = NBBBMaths::GetSquaredDistanceBetweenSphereTriangle(next_pos, sphere_radius, a, b_a, c_a);
+            if (distance_sqr < GFSqr(sphere_radius)) {
+                intersection_normal = p_normal;
+                intersection_normal.Normalise();
+                intersection_pos = from + normalised_velocity * GFRoot(distance_sqr);
+                return true;
+            }
+            if (c1 == no_divides - 1)
+                next_pos = to;
+            else
+                next_pos += add_pos;
+        }
+    }
+    return false;
+}
+#endif
+
 #endif

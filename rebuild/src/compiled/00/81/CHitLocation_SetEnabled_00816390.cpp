@@ -1,77 +1,45 @@
-// CHitLocation::SetEnabled(bool enabled) -- record the enabled flag; for a default hit location also make it (or stop it being) the owner's default hit location in the owner's hit-locations component (kind 0x7f)
-// Leaf: SetEnabled
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00816390, length 107 bytes.
-// Callees: the component map's LowerBound @ 0x0040F020 (the inlined `find` of kind 0x7f).
-// Layout = Ego_r.pdb CHitLocation (24 bytes): POwnerThing +0, PDef +4 (CDefPointer: the def word), Enabled +0x14; the
-// def's Default flag at retail +0x74 (PDB +0x78, Priority's predecessor shifted); CTCHitLocations' PDefaultHitLocation
-// at retail +0x18 (PDB +0x1c with the 12-byte retail vector).
-// Shape: the component comes through the inline accessor that leaves its local unset when the mask bit is clear
-// (retail then reads the dead `enabled` argument slot, `mov eax,[esp+0Ch]`); the mask word test of kind 0x7f is the
-// sign test (`test ecx,ecx ; jns`).
-#include "fable_compiler.h"
-class CTCHitLocations;
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // the thing's component map at +0x44
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    FABLE_FORCEINLINE CTCHitLocations* Find(long kind)
-    {
-        STCEntry* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCHitLocations*)it->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
-    unsigned char _pad40[4];
-    CTCMap        m_tcs;                           // +0x44
-    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-};
-FABLE_FORCEINLINE CTCHitLocations* GetTCIfPresent(CThing* thing, long kind)
-{
-    CTCHitLocations* tc;                           // deliberately unset when the component is absent
-    if (thing->HasTC(kind))
-        tc = thing->m_tcs.Find(kind);
-    return tc;
-}
-class CHitLocationDef { public:
-    unsigned char _pad[0x74];
-    bool          Default;                         // +0x74
-};
-class CHitLocation;
-class CTCHitLocations { public:
-    unsigned char _pad[0x18];
-    CHitLocation* PDefaultHitLocation;             // +0x18
-};
-class CHitLocation {
-public:
-    CThing*          POwnerThing;                  // +0x00
-    CHitLocationDef* PDef;                         // +0x04 CDefPointer<const CHitLocationDef>
-    void*            PArmourDef;                   // +0x08
-    long             HitResponseAction;            // +0x0c
-    long             BlockResponseAction;          // +0x10
-    bool             Enabled;                      // +0x14
-    void SetEnabled(bool enabled);
-};
+// Leaf: ?SetEnabled@CHitLocation@NHitLocations@@QAEX_N@Z
+// Flags: /Gr
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_HITLOCATIONS_BOUND
+#define FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#include "rebuild_abi.h"
+#include "engine/CThing.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CHitLocationsDef.h"
+#include "engine/CArmourDef.h"
+#include "engine/CTCHitLocations.h"
 
-void CHitLocation::SetEnabled(bool enabled)
-{
-    Enabled = enabled;
-    if (PDef->Default) {
-        CTCHitLocations* locations = GetTCIfPresent(POwnerThing, 0x7f);
-        if (enabled)
-            locations->PDefaultHitLocation = this;
-        else if (locations->PDefaultHitLocation == this)
-            locations->PDefaultHitLocation = 0;
-    }
+// The shared inline SetEnabled definition is provided by the activating component.
+
+// Fidelity: the private instantiation requests the existing inline member for standalone object builds.
+namespace {
+typedef void (NHitLocations::CHitLocation::*Owner)(bool);
+template<Owner Method>
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__((used))
+#endif
+static Owner EmitOriginalMember() { return Method; }
+#if defined(_MSC_VER) && _MSC_VER == 1310 && !defined(__clang__)
+template Owner EmitOriginalMember<static_cast<Owner>(&NHitLocations::CHitLocation::SetEnabled)>();
+#else
+template Owner EmitOriginalMember<&NHitLocations::CHitLocation::SetEnabled>();
+#endif
 }

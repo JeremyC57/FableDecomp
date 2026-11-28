@@ -26,7 +26,6 @@ struct CEnginePrimitiveShadowedSpotLight : CEnginePrimitive {
     float ConeRadius;                                   // +0x30
     unsigned long LightingChannelMask;                  // +0x34
 };
-extern const float g_OneOver255;                        // 0x01231724 = 1/255
 class CEngineInternalPrimitiveShadowedSpotLight { public:
     unsigned char _base00[0x0c];
     unsigned long UpdateParam;                          // +0x0c (descriptive)
@@ -45,7 +44,7 @@ void CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive& p
     UpdateParam = param;
     WorldPos = light.WorldPos;
     Radius = light.Radius;
-    Colour.Set(light.Colour.Red * g_OneOver255, light.Colour.Green * g_OneOver255, light.Colour.Blue * g_OneOver255, light.Colour.Alpha * g_OneOver255);
+    Colour.Set(light.Colour.Red * (1.0f/255.0f), light.Colour.Green * (1.0f/255.0f), light.Colour.Blue * (1.0f/255.0f), light.Colour.Alpha * (1.0f/255.0f));
     SpotRadius = light.SpotRadius;
     Direction = light.Direction;
     ConeRadius = light.ConeRadius;
@@ -55,7 +54,6 @@ void CEngineInternalPrimitiveShadowedSpotLight::Update(const CEnginePrimitive& p
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
-extern const float g_OneOver255 = 1.0f / 255.0f;
 int main() {
     CEnginePrimitiveShadowedSpotLight s; memset(&s, 0, sizeof s);
     s.WorldPos.X = 1; s.WorldPos.Y = 2; s.WorldPos.Z = 3; s.Direction.X = 0; s.Direction.Y = -1; s.Direction.Z = 0.5f;
@@ -66,7 +64,8 @@ int main() {
           && offsetof(CEngineInternalPrimitiveShadowedSpotLight, ConeRadius) == 0x78;
     ok = ok && d.UpdateParam == 0x1234 && d.WorldPos.X == 1 && d.WorldPos.Z == 3 && d.Direction.Y == -1 && d.Direction.Z == 0.5f;
     ok = ok && d.Radius == 10 && d.SpotRadius == 4 && d.ConeRadius == 0.75f;
-    float eg = 51 * g_OneOver255, eb = 255 * g_OneOver255, ea = 102 * g_OneOver255;   /* /Od stores (rounds) these locals like the candidate stores */
+    /* Retail binary32 uses the rounded reciprocal 0x3b808081. */
+    unsigned int patterns[3] = {0x3e4cccceu,0x3f800000u,0x3eccccceu}; float eg,eb,ea; memcpy(&eg,patterns,4);memcpy(&eb,patterns+1,4);memcpy(&ea,patterns+2,4);
     ok = ok && d.Colour.R == 0.0f && d.Colour.G == eg && d.Colour.B == eb && d.Colour.A == ea;
     ok = ok && d.Colour.B > 0.999f && d.Colour.B < 1.001f && d._base10[0] == 0xcd;
     printf(ok ? "00b45460_TEST PASS\n" : "00b45460_TEST FAIL\n"); return ok ? 0 : 1;

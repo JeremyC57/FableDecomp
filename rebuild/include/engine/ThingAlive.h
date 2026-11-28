@@ -32,6 +32,20 @@ template<class T> inline bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing) {
     }
     return false;
 }
+#ifdef FABLE_RETAIL_ACTION_EVENT_SHOT_PASS30
+// Dispatch calls 0x0040DCE0 here and expands the const-pointer specialization.
+template<> inline
+#if defined(_MSC_VER)
+__declspec(noinline)
+#endif
+bool FABLE_FASTCALL IS_THING_ALIVE(CThing* const& thing)
+{
+    if (thing != 0) {
+        if (!thing->IsDead()) return true;
+    }
+    return false;
+}
+#endif
 #ifdef FABLE_RETAIL_AI_SPEECH_CONST_ALIVE_PASS29
 // The caller expands this instantiation at every use. Its creature-speaker
 // instantiation also has an out-of-line call at 0x0098106a.

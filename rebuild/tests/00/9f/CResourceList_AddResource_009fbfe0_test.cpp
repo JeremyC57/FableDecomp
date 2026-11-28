@@ -1,15 +1,15 @@
 #include <cstdio>
 
-class CResourceList;
+class FixtureResourceList;
 
-class CResource { public:
-    long RefCount; CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource;
+class FixtureResource { public:
+    long RefCount; FixtureResourceList* ResourceList; FixtureResource* PrevResource; FixtureResource* NextResource;
     unsigned long ResourceSize; unsigned long LastUsedFrame; int resets;
-    CResource() : RefCount(1), ResourceList(0), PrevResource(0), NextResource(0), ResourceSize(0), LastUsedFrame(0), resets(0) { }
-    virtual ~CResource() { }
+    FixtureResource() : RefCount(1), ResourceList(0), PrevResource(0), NextResource(0), ResourceSize(0), LastUsedFrame(0), resets(0) { }
+    virtual ~FixtureResource() { }
     virtual unsigned long GetUnloadableMemory() { return ResourceSize; }
     virtual void ResetDebugMemoryInUse() { ++resets; }
-    void ListInsert(CResource* prev, CResource* next)
+    void ListInsert(FixtureResource* prev, FixtureResource* next)
     {
         PrevResource = prev; NextResource = next; prev->NextResource = this; NextResource->PrevResource = this;
     }
@@ -26,28 +26,28 @@ class CResource { public:
     }
 };
 
-class CResourceList { public:
-    CResource Head; unsigned long ResourceCount; long AllocatedMemory; long MaximumMemory; unsigned long CurrentFrame;
+class FixtureResourceList { public:
+    FixtureResource Head; unsigned long ResourceCount; long AllocatedMemory; long MaximumMemory; unsigned long CurrentFrame;
     unsigned long DebugStatsFrame; unsigned long UnloadDelay; unsigned long UnloadedThisFrame;
-    CResourceList()
+    FixtureResourceList()
     {
         Head.PrevResource = &Head; Head.NextResource = &Head;
         ResourceCount = 0; CurrentFrame = 0; DebugStatsFrame = 0; AllocatedMemory = 0; MaximumMemory = 0x7fffffff;
         UnloadDelay = 1; UnloadedThisFrame = 0;
     }
-    CResource* GetHead() { return &Head; }
-    void AddResource(CResource* resource)
+    FixtureResource* GetHead() { return &Head; }
+    void AddResource(FixtureResource& resource)
     {
-        resource->ResourceList = this;
-        resource->LastUsedFrame = CurrentFrame;
-        resource->PrevResource = GetHead()->PrevResource;
-        resource->NextResource = GetHead();
-        resource->PrevResource->NextResource = resource;
-        resource->NextResource->PrevResource = resource;
+        resource.ResourceList = this;
+        resource.LastUsedFrame = CurrentFrame;
+        resource.PrevResource = GetHead()->PrevResource;
+        resource.NextResource = GetHead();
+        resource.PrevResource->NextResource = &resource;
+        resource.NextResource->PrevResource = &resource;
         ResourceCount++;
-        AllocatedMemory += resource->ResourceSize;
+        AllocatedMemory += resource.ResourceSize;
     }
-    void RemoveResource(CResource* resource)
+    void RemoveResource(FixtureResource* resource)
     {
         resource->ResourceList = 0;
         resource->ListRemove();
@@ -57,7 +57,7 @@ class CResourceList { public:
     unsigned long GetUnloadableMemory(unsigned long minUnusedFrames)
     {
         unsigned long total = 0;
-        for (CResource* resource = Head.NextResource; resource != &Head; resource = resource->NextResource) {
+        for (FixtureResource* resource = Head.NextResource; resource != &Head; resource = resource->NextResource) {
             if (CurrentFrame - resource->LastUsedFrame < minUnusedFrames)
                 break;
             total += resource->GetUnloadableMemory();
@@ -66,18 +66,18 @@ class CResourceList { public:
     }
     void ResetDebugStats()
     {
-        for (CResource* resource = Head.NextResource; resource != &Head; resource = resource->NextResource)
+        for (FixtureResource* resource = Head.NextResource; resource != &Head; resource = resource->NextResource)
             resource->ResetDebugMemoryInUse();
         DebugStatsFrame = CurrentFrame;
     }
 };
 
 // Walks the list from the head and checks it holds exactly `n` resources in this order, linked both ways.
-static bool Order(CResourceList& l, CResource** want, int n)
+static bool Order(FixtureResourceList& l, FixtureResource** want, int n)
 {
-    CResource* p = &l.Head;
+    FixtureResource* p = &l.Head;
     for (int i = 0; i < n; ++i) {
-        CResource* q = p->NextResource;
+        FixtureResource* q = p->NextResource;
         if (q != want[i] || q->PrevResource != p) return false;
         p = q;
     }
@@ -86,9 +86,9 @@ static bool Order(CResourceList& l, CResource** want, int n)
 
 int main()
 {
-    CResourceList l; CResource a, b; a.ResourceSize = 10; b.ResourceSize = 32; l.CurrentFrame = 5;
-    l.AddResource(&a); l.CurrentFrame = 6; l.AddResource(&b);
-    CResource* want[2] = { &a, &b };
+    FixtureResourceList l; FixtureResource a, b; a.ResourceSize = 10; b.ResourceSize = 32; l.CurrentFrame = 5;
+    l.AddResource(a); l.CurrentFrame = 6; l.AddResource(b);
+    FixtureResource* want[2] = { &a, &b };
     if (!Order(l, want, 2) || a.ResourceList != &l || b.LastUsedFrame != 6 || a.LastUsedFrame != 5 || l.ResourceCount != 2
         || l.AllocatedMemory != 42)
     { std::printf("009fbfe0_TEST FAIL\n"); return 1; }

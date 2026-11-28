@@ -4,6 +4,11 @@
 #ifdef FABLE_RETAIL_DRAW_BUTTON_TEXT_PASS29
 void FABLE_FASTCALL GFACoordToVCoord(const C2DVector&, C2DVector&);
 #endif
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+float FABLE_FASTCALL GFVXToAX(float);
+float FABLE_FASTCALL GFVYToAY(float);
+void FABLE_FASTCALL GFVBoxToABox(const C2DBoxF&,C2DBoxF&);
+#endif
 class CDisplayManager;
 class CRenderManager;
 extern CDisplayManager* GPDisplayManager;

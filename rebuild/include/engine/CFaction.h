@@ -28,6 +28,9 @@ public:
     void SetAsNeutralToFaction(const CFaction& faction);                // 0x006B9510
     void SetAsEnemyOfFaction(const CFaction& faction);                  // 0x006B9530
 #endif
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+    bool IsEnemyOfFaction(const CFaction&) const;
+#endif
 #ifdef FABLE_RETAIL_CFACTION_ISALLIEDWITHFACTION
     // NF37 opt-in (row 0x0076C7F0 CTCEnemy::IsAlliedWithFaction): Ego_r.pdb ?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z (Ego_r 0x006F4EC0;
     // retail 0x006B9460, the catalog's CFaction::IsAlliedWithFaction). Declaration only.

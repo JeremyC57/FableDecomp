@@ -1,89 +1,32 @@
-// CTCScriptedControl::OnDie() (vtable slot 13) -- tell the thing's interface-7 component its state group is gone, flag the CTCAnimationComplex animation (interface 0x5A) as changed, then the empty CTCBase slot-13 base
+// Flags: 
+// 00713740 CTCScriptedControl::OnDie
 // Leaf: ?OnDie@CTCScriptedControl@@UAEXXZ
-// Naming wave 31 (family tcb): the local CTCBase (slots 0-12 padded with the invented v00..v12) is engine/CTCBase.h's retail branch
-//   (FABLE_RETAIL_CTCBASE; DECISIONS_W30 D5; RTTI CTCScriptedControl : CTCBase; ParentThing +0x04 from the header)
-// Naming wave 30 (family c699): the slot-13 pair is OnDie: own row ?OnDie@CTCScriptedControl@@UAEXXZ and the empty base ?OnDie@CTCBase@@UAEXXZ
-//   0x006868E0 (Ego_r.pdb / FableWin.pdb; slot 13 = OnDie in the CTCBase order). Was the placeholder slot-13 Leaf / catalog "OnRemove".
-// Retail: Fable.exe 0x00713740, 135 bytes (plain `ret`). Vtable 0x012658E4 (CTCScriptedControl) slot 13 (manifest
-// "CTCScriptedControl::vfunc_13"; the slot's CTCBase body @ 0x006868E0 is a bare `ret`, manifest "$E2" is wrong).
-// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (x2, the inline GetInterface of the landed
-// CAIStateGroupBase::CleanupMain 0x008FD050), the interface-7 component's OnStateGroupRemoved @ 0x006CB6B0 (manifest
-// "CScriptThing::operator==" is propagated), CTCAnimationComplex::GetAnimation @ 0x0070B460 (returns CAnimateThing&;
-// manifest "CWorld::DrawGetEnvironment" is propagated), CTCBase slot 13 @ 0x006868E0.
-// Layout: CThing presence bitset +0x20 (type 7 = sign of byte +0x20, type 0x5A = bit 26 of +0x28), interface map
-// +0x44; CAnimateThing flag byte +0x94 bit 0.
-// Callee respelled (NF154, PRIORITY q4260): the interface-7 call 0x006CB6B0 is ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ
-//   (Ego_r.pdb 0x007010F0 / FableWin.pdb 0x02478510; engine/CTCCreatureNavigation.h); was the stand-in ?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ.
-// Shape: each lookup re-reads ParentThing; the type key lives in the `push ecx` frame slot; the map pointer is a
-// named local so the end is re-read through it.
-struct CTCBaseAny;
-struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    struct SEntry { long type; CTCBaseAny* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);   // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU stand-in for CVectorMap::LowerBound (STLport lower_bound over the 8-byte {type, component} entries): compiled above
-// the caller so VC7.1 knows the key's address does not escape and packs the lookup keys as retail (the landed 0x00848730 idiom).
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
-class CAnimateThing { public:
-    unsigned char _pad00[0x94];
-    unsigned char m_changed : 1;            // +0x94 bit 0: animation changed
-    unsigned char m_flags94_1 : 7;
-};
-struct CTCBaseAny {
-    CAnimateThing& GetAnimation();          // 0x0070B460 (CTCAnimationComplex, interface 0x5A)
-};
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-};
+#define FABLE_RETAIL_CANIMSET_TYPE
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#define FABLE_RETAIL_CTCCREATURENAVIGATION_NAVIGABLE
+#define FABLE_RETAIL_CTC_SCRIPTED_CONTROL_DIE_PASS30
+#define FABLE_RETAIL_CANIMATETHING_UPDATEANIMATION
+#define FABLE_RETAIL_CTCANIMATIONCOMPLEX_FULL
+#define FABLE_RETAIL_CTCANIMATIONCOMPLEX_GETANIMATION_PASS26
 #define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"                              // : CBaseClassNonCopyable, vtable 0x0125BE0C; slot 13 OnDie 0x006868E0
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "fable_string.h"
 #include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CAnimateThing.h"
+#include "engine/CTCAnimationComplex.h"
+#include "engine/CTCScriptedControl.h"
 #include "engine/CTCCreatureNavigation.h"
-class CTCScriptedControl : public CTCBase { public:       // vtable 0x012658E4
-    virtual void OnDie();
-};
 
 void CTCScriptedControl::OnDie()
 {
-    if (ParentThing->HasInterface(7)) {
-        long type = 7;
-        CInterfaceMap* map = &ParentThing->m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || 7 < it->type)
-            it = map->last;
-        ((CTCCreatureNavigation*)it->component)->InterruptNavigation();
-    }
-    if (ParentThing->HasInterface(0x5a)) {
-        long type = 0x5a;
-        CInterfaceMap* map = &ParentThing->m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || 0x5a < it->type)
-            it = map->last;
-        {
-            CAnimateThing& animation = it->component->GetAnimation();
-            animation.m_changed = 1;
-        }
-    }
+    CTCCreatureNavigation* pnav;
+    if (GetParentThing().GetTC(&pnav))
+        pnav->InterruptNavigation();
+    CTCAnimationComplex* ptc_animation;
+    if (GetParentThing().GetTC(&ptc_animation))
+        ptc_animation->GetAnimation().SetInterruptable(true);
     CTCBase::OnDie();
 }

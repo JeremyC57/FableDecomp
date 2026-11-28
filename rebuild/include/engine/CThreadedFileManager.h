@@ -7,11 +7,29 @@
 #include "stlport/fable_map.h"
 struct _OVERLAPPED;
 enum EFileLoadingStatus { FILE_LOADING_PENDING, FILE_LOADING_READING, FILE_LOADING_READ_ISSUED, FILE_LOADING_READ_COMPLETE };
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+#include "engine/CBaseClassNonCopyable.h"
+// FableWin and Ego_r TPI both give CBaseClassNonCopyable as the public base at offset zero.
+class CThreadedFileManager : public CBaseClassNonCopyable {
+public:
+    CThreadedFileManager();
+    virtual ~CThreadedFileManager();
+#else
 class CThreadedFileManager {
 public:
+#endif
 #ifdef FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE
     // Add-only opt-in (NF293, 2026-11-23; row 0x0098ECD0): Ego_r.pdb + FableWin.pdb ?ProcessObjects@CThreadedFileManager@@AAEXXZ (private);
     // the landed binder 0x0098F2A0 binds AAE. Declaration only.
+private:
+#endif
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+public:
+    void CloseAllStreamsForFile(CThreadedFile* pfile);
+#ifdef FABLE_RETAIL_CTHREADEDFILE_REMOVE_OBJECT_PASS30
+    // Ego_r 00AE97C0, FableWin 0300EC10, retail 0098EB20.
+    bool RemoveObject(unsigned long uid);
+#endif
 private:
 #endif
     void ProcessObjects();
@@ -32,8 +50,19 @@ private:
 public:
 #endif
 private:
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    // TPI in Ego_d, Ego_r and FableWin agrees on the scope and all five enumerators.
+    enum EFileLoadingStatus {
+        FILE_LOADING_STATUS_PENDING, FILE_LOADING_STATUS_PENDING_LOCKED, FILE_LOADING_STATUS_READING,
+        FILE_LOADING_STATUS_READ_COMPLETED, FILE_LOADING_STATUS_FINISHED
+    };
+#endif
     class CFileObject {
     public:
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+        // FableWin lib_threaded_file.obj and the retail conditional on Overlapped.
+        ~CFileObject() { if (Overlapped) GlobalFree(Overlapped); }
+#endif
         CThreadedFileObjectDesc Desc;
         unsigned long UID;
         EFileLoadingStatus LoadingStatus;
@@ -46,7 +75,18 @@ private:
     class CPendingObjectSortKey {
     public:
         CFileObject* Object;
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+        // FableWin lib_threaded_file.obj compares physical position, file offset, then pointer identity.
+        bool operator<(const CPendingObjectSortKey& rhs) const {
+            if (Object->PFile->PeekPhysicalSortKey() < rhs.Object->PFile->PeekPhysicalSortKey()) return true;
+            if (Object->PFile->PeekPhysicalSortKey() > rhs.Object->PFile->PeekPhysicalSortKey()) return false;
+            if (Object->Desc.FilePos < rhs.Object->Desc.FilePos) return true;
+            if (Object->Desc.FilePos > rhs.Object->Desc.FilePos) return false;
+            return Object < rhs.Object;
+        }
+#else
         bool operator<(const CPendingObjectSortKey&) const;
+#endif
     };
     class CPendingObjectMap {
     public:
@@ -56,10 +96,29 @@ private:
     FABLE_STATIC_ASSERT_AT(38, sizeof(CFileObject) == 0x40);
     FABLE_STATIC_ASSERT_AT(39, sizeof(CPendingObjectMap) == 0x10);
     void OnFinishObject(CFileObject*);
+#ifdef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
+    // The editor body reads the device through PeekDeviceID and compares the stored iterator.
+#if defined(FABLE_RETAIL_CTHREADEDFILE_REMOVE_OBJECT_PASS30) && defined(_MSC_VER)
+    __declspec(noinline)
+#endif
+    void RemoveObjectFromPendingMap(CFileObject* object) {
+        EThreadedFileDeviceID device = object->PFile->PeekDeviceID();
+        CPendingObjectSortKey sort_key;
+        sort_key.Object = object;
+        std::map<CPendingObjectSortKey, CFileObject*>::iterator itr =
+            DeviceQueue[device][object->Desc.Priority].Objects.find(sort_key);
+        if (DeviceQueue[device][object->Desc.Priority].CurrentPosition == itr)
+            ++DeviceQueue[device][object->Desc.Priority].CurrentPosition;
+        DeviceQueue[device][object->Desc.Priority].Objects.erase(sort_key);
+    }
+#else
     void RemoveObjectFromPendingMap(CFileObject*);
+#endif
     static void __stdcall OnFileReadCompletion(unsigned long, unsigned long, _OVERLAPPED*);
     static void (__fastcall* HardDiskErrorCallback)(const char*);
+#ifndef FABLE_RETAIL_CTHREADEDFILE_CLOSE_STREAMS_PASS30
     unsigned char Padding[4];
+#endif
     CPendingObjectMap DeviceQueue[THREADED_FILE_DEVICE_COUNT][THREADED_FILE_PRIORITY_COUNT];
     EThreadedFileDeviceID CurrentDeviceAtPriorityLevel[THREADED_FILE_PRIORITY_COUNT];
     double CurrentDeviceEndOfTimeSlice[THREADED_FILE_PRIORITY_COUNT];

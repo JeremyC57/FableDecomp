@@ -1,69 +1,35 @@
-class CThingGameObject;
-// CTCSpecialAbilities::OnSetInLimbo(bool on) -- when switched on, kill every reclaimed undead follower whose thing is still alive and conscious
-// Leaf: ?OnSetInLimbo@CTCSpecialAbilities@@QAEX_N@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0072C3C0, length 98 bytes (`ret 4`), CTCSpecialAbilities vtable 0x0126683C slot 16
-// (a CTCBase bool notification; the catalog has no name for it).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (four times, once per use), CThing 0x0085EE40 (no-argument bool on the thing;
-// manifest label "CThingFilter_IsUnconscious::operator()" is a byte twin, read here as CThing::IsUnconscious),
-// CTCSpecialAbilities::KillReclaimedUndead(CThing*) @ 0x0072B3B0 (manifest "CCreatureAction_KillReclaimedUndead").
-// Layout: PDB CTCSpecialAbilities: UndeadFollowers +0x14 (retail STLport list = one sentinel pointer); CUndeadFollower {long; CIntelligentPointer
-// PThing} so PThing sits at node+0xc. CThing dead flag +0x91 bit 0.
-// Shape: the intelligent pointer is a reference local (`lea esi,[edi+0Ch]` once per node) and every use calls GetPItem again; the loop
-// compares the node with the sentinel re-read from `this`.
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsUnconscious();                       // 0x0085EE40
-};
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-struct CUndeadFollower {                        // CTCSpecialAbilities::CUndeadFollower, 12 bytes
-    long                    m_value;            // +0x00
-    CIntelligentPointer<CThing> PThing;             // +0x04
-};
-struct CUndeadFollowerList {                    // retail std::list<CUndeadFollower>: one sentinel pointer
-    struct node {
-        node*           next;
-        node*           prev;
-        CUndeadFollower value;                  // +0x08
-    };
-    node* head;
-};
-class CTCSpecialAbilities { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04 (CTCBase)
-    unsigned char _base08[4];
-    bool AbilityMutexLock;                      // +0x0c
-    bool UsingBed;                              // +0x0d
-    long CurrentAbility;                        // +0x10
-    CUndeadFollowerList UndeadFollowers;        // +0x14
-    CThing* Creature;                           // +0x18 (PDB +0x20)
-    // Naming (NF439 gen, 2026-11-25): callee 0x0072B3B0 binds its PDB spelling ?ReclaimUndeadFollower@CTCSpecialAbilities@@QAEXAAVCThingGameObject@@@Z (T1 target; was ?KillReclaimedUndead@CTCSpecialAbilities@@QAEXPAVCThing@@@Z).
-    void ReclaimUndeadFollower(CThingGameObject& thing);
-    void OnSetInLimbo(bool on);
-};
-
-void CTCSpecialAbilities::OnSetInLimbo(bool on)
+// Flags: 
+// 0072c3c0 CTCSpecialAbilities::OnSetInLimbo
+// Leaf: ?OnSetInLimbo@CTCSpecialAbilities@@UAEX_N@Z
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+#define FABLE_RETAIL_UNDEAD_FOLLOWER_LIMBO_PASS30
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_NCREATUREMODE_UNCONSCIOUS_FLASH_PASS30
+#include "engine/CThingGameObject.h"
+#include "engine/CTCSpecialAbilities.h"
+#include "engine/ThingAlive.h"
+#include "engine/NCreatureMode.h"
+void CTCSpecialAbilities::OnSetInLimbo(bool in_limbo)
 {
-    if (on) {
-        for (CUndeadFollowerList::node* n = UndeadFollowers.head->next; n != UndeadFollowers.head; n = n->next) {
-            CIntelligentPointer<CThing>& thing = n->value.PThing;
-            if (thing.GetPItem() && !(thing.GetPItem()->m_flags91 & 1) && !thing.GetPItem()->IsUnconscious())
-                ReclaimUndeadFollower(*(CThingGameObject*)(thing.GetPItem()));
+    if (in_limbo) {
+        for (std::list<CUndeadFollower>::iterator it = UndeadFollowers.begin(); it != UndeadFollowers.end(); ++it) {
+            if (IS_THING_ALIVE(it->PThing) && !NCreatureMode::IsUnconscious(*it->PThing))
+                ReclaimUndeadFollower(*static_cast<CThingGameObject*>(it->PThing.GetPItem()));
         }
     }
 }

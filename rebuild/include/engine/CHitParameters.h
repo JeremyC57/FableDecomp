@@ -298,4 +298,42 @@ public:
 #endif
 FABLE_STATIC_ASSERT_AT(236, sizeof(CHitParameters)==0x60);
 
+#ifdef FABLE_RETAIL_FLASH_HIT_CTOR_OWNER_PASS30
+#if defined(_MSC_VER)
+// Fidelity: scaffolding, not retail. The 00789238 owner uses /Os and a frame pointer.
+// The reset below ends with optimize("", on). Set row-specific pragmas after this header.
+#pragma optimize("y",off)
+#pragma optimize("s",on)
+#endif
+inline CHitParameters::CHitParameters(NHitLocations::CHitLocation* hit_location, CThing* thing_hitting, CThing* weapon, const C3DVector& position,
+                   const C3DVector& direction, bool knock_down, bool blockable, bool flourish, bool block_counter)
+        : Localised(true)
+        , Directional(true)
+        , Position(position)
+        , Direction(direction)
+        , KnockDown(knock_down)
+        , Decapitate(false)
+        , Blockable(blockable)
+        , Flourish(flourish)
+        , EpicSpell(false)
+        , BlockCounter(block_counter)
+        , PlayHitResponse(true)
+        , PlayHitResponseOverrideSet(false)
+        , MoveBack(true)
+        , CreateParticleEffectOnHit(true)
+        , CreateDustParticleEffectOnHit(true)
+        , GuaranteeHit(false)
+        , Blocked(false)
+        , HitNegated(false)
+        , CauseRecoil(false)
+        , ShotBuildupTime(0.0f)
+        , PHitLocation(hit_location)
+        , PThingHitting(thing_hitting)
+        , PWeapon(weapon)
+    {
+    }
+#if defined(_MSC_VER)
+#pragma optimize("",on)
+#endif
+#endif
 #endif

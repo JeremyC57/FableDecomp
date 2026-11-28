@@ -10,6 +10,17 @@
 #include "fable_string.h"
 class C3DMeshFileSubMeshChunk : public CChunkedFileSuperChunk {
 public:
+#ifdef FABLE_RETAIL_QUADRIC_MESH_CTOR_PASS30
+    CCountedPointer<class C3DMeshFileBoneChunk> FindFirstBone();
+    CCountedPointer<class C3DMeshFileBoneChunk> FindNextBone(const CCountedPointer<const class C3DMeshFileBoneChunk>&);
+    CCountedPointer<class C3DMeshFilePrimitiveChunk> FindFirstPrimitive();
+    CCountedPointer<class C3DMeshFilePrimitiveChunk> FindNextPrimitive(const CCountedPointer<const class C3DMeshFilePrimitiveChunk>&);
+#endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_READER_PASS30
+    // Both original debugger signatures return a const counted primitive.
+    CCountedPointer<const class C3DMeshFilePrimitiveChunk> FindFirstPrimitive() const;
+    CCountedPointer<const class C3DMeshFilePrimitiveChunk> FindNextPrimitive(const CCountedPointer<const class C3DMeshFilePrimitiveChunk>&) const;
+#endif
     C3DMeshFileSubMeshChunk();
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;

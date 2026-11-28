@@ -160,6 +160,10 @@ public:
     // ReleaseData instantiations for 419 destructors; Ego_r.pdb keeps ReleaseData<CEventBase> out of line, 44 bytes). Same pair for
     // CAction (0x00429160 / jmp 0x00429B72) and CMeshDataBank (0x0042918C / jmp 0x00429BF9). With _DECL_ONLY ReleaseData is declared
     // only (the TU calls it out of line); the destructor stays inline and expands to that call.
+// FableWin names the temporary destructor. Retail 0049060F calls its ReleaseData member.
+#if defined(FABLE_RETAIL_SUBTITLE_PREPARE_FONT_DTOR_PASS30) && defined(_MSC_VER)
+    __forceinline
+#endif
     ~CCountedPointer() { ReleaseData(); }
 #elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY)
     // Per-TU opt-in (Codex name fix 2026-11-10, ~CCountedPointer<NUISystem::CComponent> 0x004291DE): where retail calls the
@@ -643,5 +647,45 @@ void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #endif
+#endif
+#ifdef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+#include "fable_compiler.h"
+#include "fable_assert.h"
+class CScriptGameResourceObjectScriptedThingBase;
+template<> inline void CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Validate() const
+{
+    FABLE_RETAIL_ASSERT_ARM((Data == 0) == (Info == 0));
+}
+template<> FABLE_FORCEINLINE void CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::ReleaseData()
+{
+    Validate();
+    if (Info) {
+        FABLE_RETAIL_ASSERT_ARM(Data != 0);
+        --Info->RefCount;
+        if (!Info->RefCount) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
+            Validate();
+        }
+        Validate();
+    }
+    Data = 0;
+    Info = 0;
+    Validate();
+}
+// Inline-budget: expose the two original member bodies in the scripted-entity handle.
+// Its 66-byte ordinary and 87-byte deleting copies both expand the complete pointer release.
+template<> FABLE_FORCEINLINE CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::~CCountedPointer()
+{
+    ReleaseData();
+}
+#endif
+
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+// Original FableWin 0346E720, expanded in CChunkedFileSuperChunk::RemoveSubChunk.
+template<class T,class U> inline bool FABLE_FASTCALL operator==(const CCountedPointer<T>& first,const CCountedPointer<U>& second)
+{
+    return first.Data==second.Data;
+}
 #endif
 #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H

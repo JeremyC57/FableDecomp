@@ -9,7 +9,15 @@
 class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+ void SetGameCamera(const CCamera*);
+ void Process(bool);
+#endif
  CEngineCamera(bool);
+#ifdef FABLE_RETAIL_CENGINECAMERA_PEEKWINDOWHEIGHT_PASS30
+ // FableWin 0x02C88D30, inlined into the landscape texture LOD calculation.
+ float PeekWindowHeight() const { return WindowHeight; }
+#endif
 #ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
  // Ego_r and FableWin names, retail 0x00B308E0.
  bool ClipWorldSpaceBoundingBox(const class C3DBoundingBox& box, float max_draw_dist, bool& all_inside) const;

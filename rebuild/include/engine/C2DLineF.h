@@ -17,6 +17,19 @@ public:
     float GetPointOnLine(const C2DVector& point,C2DVector& point_on_line,float radius,
                          C2DVector* point_on_infinite_line,bool* off_start) const;
 #endif
+#ifdef FABLE_RETAIL_NAV_WIDTH_PASS30
+    float GetDist(const C2DBoxF&, float*, float*, bool*) const;
+    bool IsWithinDist(const C2DVector&, float);
+#endif
+#ifdef FABLE_RETAIL_NAV_BOX_DISTANCE_PASS30
+    // FableWin 0324D72C, 0324D740, 0324D797 and 0324D7AF, in the box distance overload.
+    C2DLineF() {}
+    bool ContainedBy(const C2DBoxF&) const;
+    void Initialise(float x1,float y1,float x2,float y2) {
+        Point1.X=x1; Point1.Y=y1; Point2.X=x2; Point2.Y=y2;
+    }
+    float GetDist(const C2DLineF&,float*,float*,bool*) const;
+#endif
     float GetLowestX() const { return (float)Min<double>(Point1.X, Point2.X); }
     float GetHighestX() const { return (float)Max<double>(Point1.X, Point2.X); }
     float GetLowestY() const { return (float)Min<double>(Point1.Y, Point2.Y); }

@@ -6,7 +6,12 @@ class CWParsedItem;
 // Original Ego_r4ebab/FableWin CWStringParser,16 bytes. Native00a0cdd0 offsets4/8/c.
 class CWStringParser:public CBaseClass {
 public:
-#ifdef FABLE_RETAIL_CWSTRINGPARSER_READUNTIL
+#ifdef FABLE_RETAIL_CWSTRINGPARSER_ICONTEXT_PASS30
+ // FableWin 018B4C30 ctor and 030F28A0 ReadNextChunkAsString.
+ CWStringParser(const wchar_t* text) { Init(text); }
+ void Init(const wchar_t* text);
+ bool ReadNextChunkAsString(CWParsedItem*);
+#elif defined(FABLE_RETAIL_CWSTRINGPARSER_READUNTIL)
  // Retail opt-in (chunk 2010, row 0x00492381 CSubtitleRenderer::ProcessEmbeddedGraphicTags): Ego_r.pdb / FableWin.pdb ??0CWStringParser@@QAE@PB_W@Z
  // (retail 0x00437260, landed), ?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@_W@Z (0x00A0CCD0, hidden result) and
  // ?SkipWhitespace@CWStringParser@@QAEJXZ (0x00A0C910, returns long). No user-declared destructor: a stack parser is destroyed in retail

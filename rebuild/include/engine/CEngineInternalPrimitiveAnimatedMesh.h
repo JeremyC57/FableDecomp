@@ -30,6 +30,10 @@ public:
  CEngineRenderInfoAnimatedMesh* GetRenderInfo(){return &RenderInfo;}
  bool SetupMesh(float,float);
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_CTOR_PASS30
+ // FableWin names the public default constructor; the native constructor calls the base with type 9 and mask 10.
+ CEngineInternalPrimitiveAnimatedMesh();
+#endif
  virtual void CalcInterpolatedObjectTransform(CMatrix3x4&,float,bool)const;
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ISINSIDEFRUSTUM
  // Opt-in (egod e07, row 0x00BCF040): Ego_r.pdb ?IsInsideFrustum@CEngineInternalPrimitiveAnimatedMesh@@UAE_NABVCEngineCamera@@_N@Z, the override

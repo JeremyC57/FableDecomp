@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CTHINGSHOTDEF_H
 #define FABLE_ENGINE_CTHINGSHOTDEF_H
 #include "engine/CParentDefClassBase.h"
+#ifdef FABLE_RETAIL_DRAGON_FIREBALL_MOVEMENT_PASS30
+#include "engine/CFloatRange.h"
+#endif
 #ifdef FABLE_RETAIL_CTHINGSHOTDEF_DEFSTRING
 #include "engine/CDefString.h"
 #endif
@@ -28,10 +31,15 @@ public:
 #else
     long          ShotDefinitionClassName_TablePos;          // +0x60 CDefString::TablePos
 #endif
+#ifdef FABLE_RETAIL_DRAGON_FIREBALL_MOVEMENT_PASS30
+    CFloatRange ShotOffsetAngleRange;
+    CFloatRange ShotOffsetRadiusRange;
+#else
     float         ShotOffsetAngleRange_HighValue;            // +0x64 CFloatRange::HighValue
     float         ShotOffsetAngleRange_LowValue;             // +0x68 CFloatRange::LowValue
     float         ShotOffsetRadiusRange_HighValue;           // +0x6c CFloatRange::HighValue
     float         ShotOffsetRadiusRange_LowValue;            // +0x70 CFloatRange::LowValue
+#endif
     long          ExplosionDef;                              // +0x74
     long          GroundExplosionDef;                        // +0x78
     long          ObjectDef;                                 // +0x7c

@@ -1,19 +1,16 @@
-#include "engine/CTCQuestCard.h"  // retyped onto the PDB layout; byte parity re-verified
-class CDefPointeeBase { public:
-    char pad[0x59];
-    char b59;
-    char b5a;
-    char b5b;
-};
+// Flags: 
+// Leaf: ?IsRouteToAppearOnMinimap@CTCQuestCard@@QBE_NXZ
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCQUESTCARD
+#define FABLE_RETAIL_CTCQUESTCARD_ACCESSORS
+#define FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+#define FABLE_RETAIL_CDEFPOINTER_ORIGINAL_DIRECT_DEREF_PASS26
+#include "engine/CTCQuestCard.h"
 
-
-int __fastcall CTCQuestCard_IsRouteToAppearOnMinimap(CTCQuestCard* self)
+bool CTCQuestCard::IsRouteToAppearOnMinimap() const
 {
-    CDefPointeeBase* p = self->PDef_Object;
-    if (!p->b5b)
-    {
-        if (p->b59)
-            return 0;
-    }
-    return 1;
+    return PDef->MakeVignetteRouteAppearOnMinimap || !PDef->IsVignette;
 }

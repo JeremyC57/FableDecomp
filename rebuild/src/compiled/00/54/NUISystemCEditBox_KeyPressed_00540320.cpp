@@ -7,8 +7,8 @@
 // VC6 for scope: FableWin opens the escape, home and enter loops with `xor reg,reg ; je` (0x0225EA83, 0x0225ED7A, 0x0225EEC5), the
 //   TLC `#define for if (0) {} else for` idiom; spelled `if (false) {} else for (...)` with the loop variable declared before it
 //   (landed precedent 0x007C4430, GOTCHAS "VC6 for-scope idiom").
-// Leaf: ?KeyPressed@CEditBox@NUISystem@@UAEX_W@Z
-// Flags: /Zc:wchar_t
+// Flags: /O2 /Oy
+// Leaf: ?KeyPressed@CEditBox@NUISystem@@UAEXG@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00540320, 755 bytes, `ret 4`.
 // Callees: CWideString GetLength 0x0099B220, operator const wchar_t* 0x0099AF00, CWideString() 0x0099AED0, operator=(const wchar_t*)
 //   0x0099B800 (L"" 0x0122D70C), operator=(const CWideString&) 0x0099B7D0, ~CWideString 0x0099B510, GetSubString 0x0099BDB0,

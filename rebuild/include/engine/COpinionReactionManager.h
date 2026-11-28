@@ -10,6 +10,9 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #endif
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+#include <math.h>
+#endif
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
@@ -46,6 +49,12 @@ public:
 #ifdef FABLE_RETAIL_OPINION_STRENGTH_PASS26
 private:
     void GetOpinions(const CTCCreatureOpinionOfHero* ptc_opinion,COpinionSet& opinions,const CTCOpinionSource* ptc_source) const;
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+    float GetCombinedOpinion(float personal, float village, float scaling) const
+    {
+        return fabsf(personal) > fabsf(village * scaling) ? personal : village * scaling;
+    }
+#endif
 #endif
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_CTOR
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0COpinionReactionManager@@QAE@ABVCWorld@@@Z, retail 0x007004B0. Declaration only.
@@ -61,6 +70,9 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRY
     EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing&)const;
+#ifdef FABLE_RETAIL_OPINION_SELECTION_INLINE_ATTITUDE_PASS30
+    FABLE_FORCEINLINE
+#endif
     EOpinionAttitudeType GetAttitudeType(const CThing& thing,const CTCOpinionSource* source)const {
         return source?(EOpinionAttitudeType)GetAttitudeOrReactionType(thing,true,AttitudeMask,source):GetThingAttitudeToPlayer(thing);
     }
@@ -161,9 +173,16 @@ private:
 #endif
     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000
     CWorld* World;                                                       // +0x004
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+    mutable
+#endif
     bool ReactionFlagsTemp[79];                                          // +0x008
     std::list<CReactionMatch*> Reactions;                                // +0x058
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+    EOpinionAttitudeType AttitudeCondition[79];
+#else
     long AttitudeCondition[79];                                          // +0x05c EOpinionAttitudeType
+#endif
     long TargetingCondition[79];                                         // +0x198 EOpinionTargetingConditionType
     unsigned long PreReactionDelaySeconds[79];                           // +0x2d4
     bool BlockFurtherReactionsFlags[79];                                 // +0x410

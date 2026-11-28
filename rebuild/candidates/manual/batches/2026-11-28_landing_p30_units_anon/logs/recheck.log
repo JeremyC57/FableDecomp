@@ -1,0 +1,11 @@
+addr       parity           behav  name
+  WARN leaf '??0CGetBestIciclePointForTarget@?A0x9b671e55@@QAE@ABVCThing@@M@Z' matches no symbol in 008e2a90.obj; graded the largest function
+  WARN leaf '??0CGetBestIciclePointForTarget@?A0x9b671e55@@QAE@ABVCThing@@M@Z' matches no symbol in 008e2a90.obj; graded the largest function
+008e2a90   RELOCATION_MATCH PASS   CGetBestIciclePointForTarget
+  WARN leaf '?GetBestPosition@CGetBestIciclePointForTarget@?A0x3ed055e1@@QBE_NAAVC3DVector@@@Z' matches no symbol in 008e2b60.obj; graded the largest function
+  WARN leaf '?GetBestPosition@CGetBestIciclePointForTarget@?A0x3ed055e1@@QBE_NAAVC3DVector@@@Z' matches no symbol in 008e2b60.obj; graded the largest function
+008e2b60   RELOCATION_MATCH PASS   GetBestPosition
+
+WINS: 2
+  008e2a90 RELOCATION_MATCH CGetBestIciclePointForTarget::??0CGetBestIciclePointForTarget@?A0x9b671e55@@QAE@ABVCThing@@M@Z
+  008e2b60 RELOCATION_MATCH CGetBestIciclePointForTarget::?GetBestPosition@CGetBestIciclePointForTarget@?A0x3ed055e1@@QBE_NAAVC3DVector@@@Z

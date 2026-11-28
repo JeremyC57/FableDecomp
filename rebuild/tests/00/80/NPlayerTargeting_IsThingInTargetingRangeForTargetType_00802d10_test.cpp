@@ -1,41 +1,71 @@
-// behaviour test for 0x00802D10 NPlayerTargeting::IsThingInTargetingRangeForTargetType(const CThing& thing, const CThing&
-// target, unsigned long type): the carried thing (primary carrying slot, if the thing has the carrying component 0x46)
-// feeds the targeting-def range lookup; the test is the horizontal (X/Y) distance squared against range squared.
+// Behavioral fixture for NPlayerTargeting::IsThingInTargetingRangeForTargetType.
+// The collaborators supply component availability, slot contents, and targeting range.
+// The vector operations and squared range come from the same headers as the retail row.
 #include <cstdio>
-struct Vec { float x, y, z; };
-struct Thing { Vec pos; bool carrying; const Thing* carried; };
-struct Def { float baseRange; };
-static float GetTargetingRangeForTargetType(unsigned long type, const Def& def, const Thing&, const Thing* carried)
-{
-    float range = def.baseRange + (float)type;
-    if (carried) range *= 2.0f;
-    return range;
+#include <cstdlib>
+#include "engine/C3DVector.h"
+#include "engine/GFSqr.h"
+
+struct RangeActor {
+    C3DVector position;
+    bool hasCarryingComponent;
+    const RangeActor* primarySlot;
+    float baseRange;
+};
+
+struct RangeQuery {
+    const RangeActor* expectedTarget;
+    const RangeActor* expectedSlot;
+    unsigned long expectedType;
+    unsigned int slotReads;
+    unsigned int rangeReads;
+
+    const RangeActor* readSlot(const RangeActor& actor) {
+        ++slotReads;
+        return actor.primarySlot;
+    }
+
+    float readRange(unsigned long type, float baseRange, const RangeActor& target,
+                    const RangeActor* carried) {
+        ++rangeReads;
+        if (type != expectedType || &target != expectedTarget || carried != expectedSlot)
+            std::abort();
+        const float range = baseRange + static_cast<float>(type);
+        return carried ? range * 2.0f : range;
+    }
+};
+
+static bool inTargetingRange(const RangeActor& actor, const RangeActor& target,
+                             unsigned long type, RangeQuery& query) {
+    const RangeActor* carried = 0;
+    if (actor.hasCarryingComponent)
+        carried = query.readSlot(actor);
+    return (target.position - actor.position).GetSquaredMagnitude2D() <
+        GFSqr(query.readRange(type, actor.baseRange, target, carried));
 }
-static bool IsThingInTargetingRangeForTargetType(const Thing& thing, const Thing& target, unsigned long type, const Def& def)
-{
-    const Thing* carried = 0;
-    if (thing.carrying) carried = thing.carried;
-    Vec delta = { target.pos.x - thing.pos.x, target.pos.y - thing.pos.y, target.pos.z - thing.pos.z };
-    float range = GetTargetingRangeForTargetType(type, def, target, carried);
-    float distanceSquared = delta.y * delta.y;
-    distanceSquared += delta.x * delta.x;
-    return distanceSquared < range * range;
-}
-int main()
-{
-    Def def = { 3.0f };
-    Thing sword = { { 0, 0, 0 }, false, 0 };
-    Thing hero = { { 0, 0, 0 }, false, 0 };
-    Thing far = { { 3.0f, 4.0f, 100.0f }, false, 0 };     // horizontal distance 5, height ignored
-    bool ok = !IsThingInTargetingRangeForTargetType(hero, far, 0, def);   // 25 < 9 ? no
-    ok = ok && IsThingInTargetingRangeForTargetType(hero, far, 3, def);   // range 6: 25 < 36
-    hero.carrying = true; hero.carried = &sword;                           // carried doubles the range: 6 -> 36
-    ok = ok && IsThingInTargetingRangeForTargetType(hero, far, 0, def);
-    hero.carried = 0;                                                      // component present, empty slot: no carried thing
-    ok = ok && !IsThingInTargetingRangeForTargetType(hero, far, 0, def);
-    Thing edge = { { 0, 3.0f, 0 }, false, 0 };                             // exactly on the range is not inside
-    ok = ok && !IsThingInTargetingRangeForTargetType(hero, edge, 0, def);
-    if (!ok) { std::printf("00802d10_TEST FAIL\n"); return 1; }
-    std::printf("00802d10_TEST PASS\n");
+
+int main() {
+    RangeActor actor, target, weapon;
+    actor.position = C3DVector(13.0f, -7.0f, 300.0f);
+    actor.baseRange = 3.0f;
+    target.position.Z = -300.0f;
+    for (int mode = 0; mode < 3; ++mode) {
+        actor.hasCarryingComponent = mode != 0;
+        actor.primarySlot = mode == 2 ? &weapon : 0;
+        for (unsigned long type = 0; type < 3; ++type) {
+            const float range = (3.0f + static_cast<float>(type)) * (mode == 2 ? 2.0f : 1.0f);
+            for (int x = -6; x <= 6; ++x) {
+                for (int y = -6; y <= 6; ++y) {
+                    target.position.X = actor.position.X + x;
+                    target.position.Y = actor.position.Y + y;
+                    RangeQuery query = {&target, actor.primarySlot, type, 0, 0};
+                    if (inTargetingRange(actor, target, type, query) != (x*x + y*y < range*range) ||
+                        query.rangeReads != 1 || query.slotReads != (mode != 0))
+                        return 1;
+                }
+            }
+        }
+    }
+    std::puts("00802d10_TEST PASS");
     return 0;
 }

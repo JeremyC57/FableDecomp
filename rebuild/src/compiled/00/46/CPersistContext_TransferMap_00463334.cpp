@@ -1,5 +1,6 @@
+// Flags: 
 // CPersistContext::TransferMap<CCharString, long>(const char* name, map<CCharString, long>& map, const long& defaultValue) -- transfer a string-keyed long map in the context's mode: text load ("name[key] value;" entries parsed from a copy of the parser, inserted, the consumed text cleaned), text save (one "name[key] value;\r\n" line per entry), binary load/save through the stream helpers, or clear
-// Leaf: TransferMap
+// Leaf: ?TransferMap@CPersistContext@@QAEXPBDAAUCStringLongMap@@ABJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00463334, 838 bytes, `ret 0Ch` (/Os, ebp frame).
 // Callees: CPersistContext::CheckCRC 0x00404500, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy 0x0099EC30 /
 //   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CStringParser copy 0x0046381B / dtor 0x004047A0 / SkipPastWholeString
@@ -112,9 +113,11 @@ struct CStringLongIterator {                           // STLport _Rb_tree_itera
     SMapNode* _M_node;
     CStringLongIterator() { }
 };
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 struct CStringLongMap {                                // STLport map<CCharString, long>
     SMapNode* _M_header;                               // +0x00
-    SMapNode* find(const CCharString& key);            // 0x0042B467
     CStringLongIterator insert_equal(const CStringLongPair& value); // 0x004636CF (_Rb_tree::insert_equal; iterator result)
     void clear();                                      // 0x0043027A
 };
@@ -182,7 +185,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
                 CCharString key;
                 traits.TransferIn(*this, parser, key);
                 if (parser.ReadAsSymbol() == "]") {
-                    map.find(key);
+                    reinterpret_cast<const std::map<CCharString,long>*>(&map)->find(key);
                     long value;
                     CPersistTraitsSLONG::TransferIn(*this, parser, value);
                     map.insert_equal(CStringLongPair(key, value));

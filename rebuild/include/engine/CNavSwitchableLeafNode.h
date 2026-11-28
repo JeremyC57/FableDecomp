@@ -12,6 +12,25 @@
 #include "engine/CVectorMap.h"
 class CNavSwitchableLeafNode : public CNavNavigableLeafNode {
 public:
+#ifdef FABLE_RETAIL_NAVQUADTREE_BUILD_PASS30
+public:
+    virtual bool HasNeighbours() const;
+public:
+    virtual long GetRegionID() const;
+public:
+    virtual ENavQuadTreeNodeType GetNodeType() const;
+protected:
+    virtual bool MakeRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+protected:
+    virtual bool AddNavigableNodeNeighbouringSwitchableNodeToRegion(const CNavRegion*, std::list<CANavQuadTreeNode*>&);
+protected:
+    virtual bool RemoveRegionZero();
+protected:
+    virtual unsigned long GetMemoryUsage(unsigned long&, unsigned long&, unsigned long&, unsigned long&) const;
+protected:
+    virtual void SaveToFile(CAFile&, const std::map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const;
+public:
+#endif
     CNavSwitchableLeafNode(const C2DVector& position, unsigned char quadTreeLevel, unsigned char navLayer, CAFile& file,
                            const std::list<CNavRegion>& regions, bool readPreferability);          // 0x00A79A30
 #ifdef FABLE_RETAIL_CNAVSWITCHABLELEAFNODE_GENERATOR_CTOR

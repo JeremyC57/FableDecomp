@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?ApplyScriptedMapBrushByName@CMapBrushOwner004fe510@@QAEXABVCCharString@@J@Z
 // CMapBrushOwner004fe510::ApplyScriptedMapBrushByName(const CCharString&, long) -- look the name up in the name-to-index map and forward the brush to the indexed entry's map
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004FE510, length 54 bytes (+ int3 padding).
 // Callees: map<CCharString, long>::Find(const CCharString&) @ 0x0042B467 (the VC6 Dinkumware walk with less<CCharString>; returns the node or the head), CMap::ApplyScriptedMapBrush
@@ -8,10 +10,14 @@
 // array (`lea edx,[eax+eax*8]` then `[eax+edx*8+10h]`); the second argument is forwarded as a 4-byte value.
 class CCharString;
 
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+#include "stlport/fable_map.h"
 struct CRetailNameMap {                            // VC6 Dinkumware map<CCharString, long>: head node pointer (+ size)
     struct node { node* left; node* parent; node* right; long colour; void* key; long value; };
     node* head;
-    node* Find(const CCharString& key);            // 0x0042B467
 };
 
 class CMap { public:
@@ -35,7 +41,7 @@ struct CMapBrushOwner004fe510 {
 void CMapBrushOwner004fe510::ApplyScriptedMapBrushByName(const CCharString& name, long flags)
 {
     CRetailNameMap* map = &m_nameToIndex;
-    CRetailNameMap::node* found = map->Find(name);
+    CRetailNameMap::node* found = reinterpret_cast<CRetailNameMap::node*>(reinterpret_cast<const std::map<CCharString,long>*>(map)->find(name)._M_node);
     if (found != map->head)
         m_pEntries[found->value].m_pMap->ApplyScriptedMapBrush(name, flags);
 }

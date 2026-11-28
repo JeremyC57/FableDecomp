@@ -44,4 +44,20 @@ private:
 #endif
 };
 FABLE_STATIC_ASSERT_AT(41, sizeof(C3DMeshFile) == 0x14);
+#ifdef FABLE_RETAIL_PHYSICS_MESH_READER_ROOT_PASS30
+#include "engine/C3DMeshFileRootChunk.h"
+// Inline-budget: both mesh readers call the original 101-byte GetRoot. Its visible body preserves the lifetime of the result.
+#ifdef _MSC_VER
+#pragma auto_inline(off)
+#endif
+inline CCountedPointer<const C3DMeshFileRootChunk> C3DMeshFile::GetRoot() const
+{
+    CCountedPointer<const C3DMeshFileRootChunk> root;
+    root.SetStaticCast(CCountedPointer<const CChunkedFileSuperChunk>(GetChunkedFileRoot()));
+    return root;
+}
+#ifdef _MSC_VER
+#pragma auto_inline(on)
+#endif
+#endif
 #endif // FABLE_ENGINE_C3DMESHFILE_H

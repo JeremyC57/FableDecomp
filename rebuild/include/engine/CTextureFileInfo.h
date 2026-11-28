@@ -18,7 +18,23 @@ public:
     unsigned long    UseageFlags;                                        // +0x0B
     ESurfacePool     Pool;                                               // +0x0F
 };
+#ifdef FABLE_RETAIL_VOLUME_SERIALIZATION_PASS30
+// The volume texture file uses the same one-byte file layout as the surface texture.
+class CVolumeTextureFileInfo {
+public:
+    unsigned short Width;
+    unsigned short Height;
+    unsigned short Depth;
+    unsigned char NoLevels;
+    CPixelFormatInit PixelFormatInit;
+    unsigned long UseageFlags;
+    EVolumePool Pool;
+};
+FABLE_STATIC_ASSERT(sizeof(CVolumeTextureFileInfo) == 21);
+FABLE_STATIC_ASSERT(offsetof(CVolumeTextureFileInfo, UseageFlags) == 13);
+FABLE_STATIC_ASSERT(offsetof(CVolumeTextureFileInfo, Pool) == 17);
+#endif
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CTextureFileInfo) == 19);
-FABLE_STATIC_ASSERT(offsetof(CTextureFileInfo, UseageFlags) == 0x0b);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CTextureFileInfo) == 19);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CTextureFileInfo, UseageFlags) == 0x0b);
 #endif

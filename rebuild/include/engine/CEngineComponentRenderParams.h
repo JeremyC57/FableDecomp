@@ -23,11 +23,24 @@ public:
     bool          OffWorldTickProcessFlag;                               // +0x7c
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineComponentParams) == 0x80);
+#ifdef FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+class CEngineCamera;
+class CEngineComponentLoadNewSceneParams {
+public:
+    CEngineComponentLoadNewSceneParams(const CEngineComponentParams& params, const CEngineCamera& camera, float progress, unsigned long flags)
+        : Params(params), Camera(camera), Progress(progress), Flags(flags) {}
+    CEngineComponentParams Params;
+    const CEngineCamera& Camera;
+    float Progress;
+    unsigned long Flags;
+};
+FABLE_STATIC_ASSERT_AT(1195,sizeof(CEngineComponentLoadNewSceneParams)==140);
+#endif
 class CEngineComponentRenderParams {
 public:
     CEngineComponentParams* Params;                                      // +0x00
     long                    RenderLayer;                                 // +0x04 EEngineRenderLayer
     unsigned long           RenderLayerFlags;                            // +0x08 ERenderRenderLayerFlags
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineComponentRenderParams) == 0xc);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CEngineComponentRenderParams) == 0xc);
 #endif

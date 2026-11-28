@@ -9,6 +9,12 @@ class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CData
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimationSequence{
 public:C3DAnimationSequence():Data(0),ParentIndex(-1),Shared(false){}
+#ifdef FABLE_RETAIL_ANIMATION_BONE_TREE_PASS30
+ // FableWin 034870A0 and 032269D0; both accessors expand in the native builder.
+ // Inline-budget: BuildBoneInfoTree expands this forwarder and its data accessor at 00AB1A36.
+ FABLE_FORCEINLINE CCharString GetBoneName() const { return Data->GetBoneName(); }
+ long GetParentIndex() const { return ParentIndex; }
+#endif
  unsigned long GetFrameCount()const{return Data->GetFrameCount();}float GetSamplesPerSecond()const{return Data->GetSamplesPerSecond();}
  bool InitialiseFromFileData(const C3DAnimFileSequenceChunk&,C3DAnimationSequenceData*,CSimpleMemoryPool&);
  void ReadCompressedFromFile(CDataInputStream&,unsigned long,C3DAnimationSequenceData*,CSimpleMemoryPool&);

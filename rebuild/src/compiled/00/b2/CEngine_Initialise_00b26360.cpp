@@ -1,3 +1,4 @@
+// Flags: 
 // CEngine::Initialise(const CEngineInit& init) -- bring the engine up: uninitialise, take the definition manager and look up the
 //   ENGINE def and the four ENGINE_VIDEO_OPTIONS defs, publish the system / display / render / shader managers, register the device
 //   reset callback, size the memory pools, create the engine components (the world-map / water / landscape / sky / weather /
@@ -132,7 +133,7 @@ namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo
 //   Ego_d PDB publics; was the free g_pLocalDetailGenerator).
 namespace NEngineInternal { extern CEngineLocalDetailGenerator*             GPLocalDetailGenerator; }             // 0x01436E88
 namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }                   // 0x01436E8C
-extern CEngineStateBlocks*                      g_pEngineStateBlocks;                // 0x01436E90
+namespace NEngineInternal { extern CEngineStateBlocks* GPEngineStateBlocks; }                // 0x01436E90
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }                  // 0x01436E98
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
@@ -178,7 +179,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEnginePrimitiveOcclusionManager(), g_pPrimitiveOcclusionManager, 0);
     AddEngineComponent(new CEngineEnvironment(), NEngineInternal::GPEngineEnvironment, 0);
     AddEngineComponent(new CEngineCamera(true), NEngineInternal::GPCamera, 0);
-    AddEngineComponent(new CEngineStateBlocks(), g_pEngineStateBlocks, 0);
+    AddEngineComponent(new CEngineStateBlocks(), NEngineInternal::GPEngineStateBlocks, 0);
     AddEngineComponent(new CEngineBillboardGenerator(), g_pEngineBillboardGenerator, 0);
     AddEngineComponent(new CEngineScreenEffectOutlineGlow(init), NEngineInternal::GPScreenEffectOutlineGlow, 0);
     AddEngineComponent(new CEngineScreenEffectDisplacementRenderer(init), NEngineInternal::GPScreenEffectDisplacementRenderer, 0);

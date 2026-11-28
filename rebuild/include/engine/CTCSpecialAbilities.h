@@ -20,6 +20,11 @@ class CTCSpecialAbilities:public CTCBase {
 public: void SetUsingBed(bool value) { UsingBed=value; }
 #endif
 
+#ifdef FABLE_RETAIL_UNDEAD_FOLLOWER_LIMBO_PASS30
+public:
+    virtual void OnSetInLimbo(bool in_limbo);
+    void ReclaimUndeadFollower(CThingGameObject& thing);
+#endif
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
 #ifdef FABLE_RETAIL_DIVINE_WRATH_CTOR_PASS28
  // FableWin 0267D580, with both member stores inlined in retail at 0078EE1A.

@@ -52,7 +52,26 @@ class C2DBoxF;
 #endif
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_ISFLAGSET
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+// Ego_d type 0xB9FF, original 13 enumerators.
+enum ESubtitleFlag {
+    SUBTITLE_RESIZE_WINDOW_TO_FIT_TEXT = 0x1,
+    SUBTITLE_CLICK_PAST = 0x2,
+    SUBTITLE_YES_NO_CONFIRMATION = 0x4,
+    SUBTITLE_GAME_INFO = 0x8,
+    SUBTITLE_ADD_CHARACTERS_OVER_TIME = 0x10,
+    SUBTITLE_FORCE_TEXT_BOX = 0x20,
+    SUBTITLE_HERO_RECEIVE_ITEM = 0x40,
+    SUBTITLE_TAVERN_GAME = 0x80,
+    SUBTITLE_PAUSE_GAME = 0x100,
+    SUBTITLE_DISPLAY_ALL_GROUP_ENTRIES = 0x200,
+    SUBTITLE_BETTING = 0x400,
+    SUBTITLE_DISPLAY_OVER_SCREEN_FADE = 0x800,
+    SUBTITLE_FIREHEART_MINIGAME = 0x1000
+};
+#else
 enum ESubtitleFlag { };   // FableWin.pdb type name only (no enumerator survives)
+#endif
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_FORMATTEXTWITHGAMEACTIONNAMES
 #include "fable_string.h"
@@ -109,6 +128,10 @@ public:
 #else
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
 #endif
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+    C2DBoxF VWindow;
+    C2DBoxF VTelevisionWindow;
+#else
     float             VWindow_TLX;                           // +0x04 C2DBoxF::TLX
     float             VWindow_TLY;                           // +0x08 C2DBoxF::TLY
     float             VWindow_BRX;                           // +0x0c C2DBoxF::BRX
@@ -117,6 +140,7 @@ public:
     float             VTelevisionWindow_TLY;                 // +0x18 C2DBoxF::TLY
     float             VTelevisionWindow_BRX;                 // +0x1c C2DBoxF::BRX
     float             VTelevisionWindow_BRY;                 // +0x20 C2DBoxF::BRY
+#endif
     long              TextCharactersShowing;                 // +0x24
     bool              TextGroupHasEntriesRemaining;          // +0x28
     unsigned char     _pad_0x29[0x3];                        // +0x29
@@ -160,8 +184,13 @@ public:
     float             MaxDisplayTime;                        // +0x88
     float             TextTimer;                             // +0x8c
     unsigned char     PlayerModeAdded[0x4];                  // +0x90 EPlayerMode
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;
+    std::vector<CEnginePrimitiveHandle> ButtonPrimitiveHandles;
+#else
     unsigned char     PrimitiveHandles[0xc];                 // +0x94 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char     ButtonPrimitiveHandles[0xc];           // +0xa0 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
     std::vector<CEnginePrimitiveHandle> EmbeddedPrimitiveHandles;   // +0xac
     std::vector<CEmbeddedGraphic>       EmbeddedGraphics;           // +0xb8
@@ -368,6 +397,14 @@ private:
 #endif
 #ifdef FABLE_RETAIL_SUBTITLE_TEXT_DRAW_PASS29
     C2DBoxF DrawTextPrimitives(const CEnginePrimitivePrepareInfo&, const C2DBoxF&, const C2DBoxF&);
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+    void DrawTextBox(const CEnginePrimitivePrepareInfo&,std::vector<CEnginePrimitiveHandle>&,const C2DBoxF&);
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_TEXT_BOX_PASS30
+public:
+    static void FABLE_FASTCALL DrawBox(const CEnginePrimitivePrepareInfo&, std::vector<CEnginePrimitiveHandle>&, const C2DBoxF&, EEngine2DLayer);
+private:
+#endif
+#endif
     void DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo&, const C2DBoxF&);
     void DrawTextEmbeddedHighlights(const CEnginePrimitivePrepareInfo&, const C2DBoxF&);
     void Draw2DText(const C2DVector&, const CWideString&, const CFontBank&, const CRGBColour&, bool, float, float, bool);
@@ -399,6 +436,10 @@ FABLE_STATIC_ASSERT_AT(253, sizeof(CSubtitleRenderer) == 0x120);
 #ifndef FABLE_RETAIL_CSUBTITLERENDERER_DTOR
 FABLE_STATIC_ASSERT_AT(255, offsetof(CSubtitleRenderer, __vftable) == 0x0);
 #endif
+#ifdef FABLE_RETAIL_SUBTITLE_DRAW_PREPARE_PASS30
+FABLE_STATIC_ASSERT_AT(257, offsetof(CSubtitleRenderer,VWindow) == 4);
+FABLE_STATIC_ASSERT_AT(261, offsetof(CSubtitleRenderer,VTelevisionWindow) == 0x14);
+#else
 FABLE_STATIC_ASSERT_AT(257, offsetof(CSubtitleRenderer, VWindow_TLX) == 0x4);
 FABLE_STATIC_ASSERT_AT(258, offsetof(CSubtitleRenderer, VWindow_TLY) == 0x8);
 FABLE_STATIC_ASSERT_AT(259, offsetof(CSubtitleRenderer, VWindow_BRX) == 0xc);
@@ -407,6 +448,7 @@ FABLE_STATIC_ASSERT_AT(261, offsetof(CSubtitleRenderer, VTelevisionWindow_TLX) =
 FABLE_STATIC_ASSERT_AT(262, offsetof(CSubtitleRenderer, VTelevisionWindow_TLY) == 0x18);
 FABLE_STATIC_ASSERT_AT(263, offsetof(CSubtitleRenderer, VTelevisionWindow_BRX) == 0x1c);
 FABLE_STATIC_ASSERT_AT(264, offsetof(CSubtitleRenderer, VTelevisionWindow_BRY) == 0x20);
+#endif
 FABLE_STATIC_ASSERT_AT(265, offsetof(CSubtitleRenderer, TextCharactersShowing) == 0x24);
 FABLE_STATIC_ASSERT_AT(266, offsetof(CSubtitleRenderer, TextGroupHasEntriesRemaining) == 0x28);
 FABLE_STATIC_ASSERT_AT(267, offsetof(CSubtitleRenderer, TextGroupIndex) == 0x2c);

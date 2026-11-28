@@ -10,6 +10,11 @@
 #include "engine/CParsedItem.h"
 // Layout: original pointer boundaries, size8, class keyV.
 class CStringParserCommentBoundaries {public:const char* PStart;const char* PEnd;};
+#ifdef FABLE_RETAIL_SKELETAL_MORPH_FILE_PASS30
+namespace std {
+template<> _List_base<CStringParserCommentBoundaries, allocator<CStringParserCommentBoundaries> >::~_List_base();
+}
+#endif
 class CStringParser : public CBaseClass {
 public:
 #ifdef FABLE_RETAIL_CSTRINGPARSER_INLINE_CTOR
@@ -183,6 +188,15 @@ inline void CStringParser::Init(const CCharString& string,void (__fastcall* erro
     Init(string.GetAsCharArray(),errorCallback,filename,baseLineOffset);
 }
 #endif
+#endif
+#ifdef FABLE_RETAIL_SKELETAL_MORPH_FILE_PASS30
+// FableWin game_tools.obj calls the char-pointer constructor. Retail expands its
+// member initialization and calls the same Init overload from the leaf.
+inline CStringParser::CStringParser(const char* string, void (FABLE_FASTCALL* callback)(const CCharString&),
+                                    const CCharString& filename, long base_line_offset)
+{
+    Init(string, callback, filename, base_line_offset);
+}
 #endif
 #elif !defined(FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY)
 #ifndef FABLE_ENGINE_CSTRINGPARSER_H

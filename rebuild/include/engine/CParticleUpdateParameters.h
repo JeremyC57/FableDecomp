@@ -4,7 +4,18 @@
 #include "engine/CVectorMap.h"
 // Layout: both original PDB type records and donor Update02F3F4C0;
 // native B0DC20 member accesses use the original retail container sizes.
+#ifdef FABLE_RETAIL_ORBIT_UPDATE_PARAMS_PASS30
+#include <string.h>
+#include "engine/CCRC.h"
+#endif
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_ORBIT_UPDATE_PARAMS_PASS30
+// FableWin 02F3ED00 calls strlen and then CCRC::Calc. Retail folds the three string lengths.
+inline unsigned long FABLE_FASTCALL MAKE_UPDATE_PARAM_FROM_BASE(unsigned long base, const char* update_param)
+{
+    return CCRC::Calc(base, update_param, (unsigned long)strlen(update_param));
+}
+#endif
 template<class K,class V>class CParticleUpdateParameters:public CBaseClass {
 public:
  template<class T>class CParticleUpdateCCompareVector:public CKeyPairCompareLess<T,C3DVector>{};

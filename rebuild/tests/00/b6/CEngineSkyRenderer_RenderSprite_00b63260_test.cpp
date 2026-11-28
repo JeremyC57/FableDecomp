@@ -3,9 +3,9 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); }
-class CTexture { public: int id; };
-class CVertexShader { public: int id; };
-class CPixelShader { public: int id; };
+class FixtureTexture { public: int id; };
+class FixtureVertexShader { public: int id; };
+class FixturePixelShader { public: int id; };
 struct CStaticShaderManager {
     bool VertexShadersEnabled, PixelShadersEnabled;
     long CurrentVSConstantLayoutIndex;
@@ -15,9 +15,9 @@ struct CStaticShaderManager {
 };
 static CStaticShaderManager g_ShaderRenderManager;
 struct CShaderRenderManagerMock {
-    CVertexShader* vs; CPixelShader* ps;
-    void ApplyVertexShader(CVertexShader* s, bool) { vs = s; Log("VS"); }
-    void ApplyPixelShader(CPixelShader* s) { ps = s; Log("PS"); }
+    FixtureVertexShader* vs; FixturePixelShader* ps;
+    void ApplyVertexShader(FixtureVertexShader* s, bool) { vs = s; Log("VS"); }
+    void ApplyPixelShader(FixturePixelShader* s) { ps = s; Log("PS"); }
     void PrepareForRender(unsigned long) { Log("R"); }
 };
 static CShaderRenderManagerMock g_shaderMgr;
@@ -27,9 +27,9 @@ struct CRenderStateManagerMock {
     void RestoreCaptureBlock() { --depth; Log("]"); }
 };
 static CRenderStateManagerMock g_rsm;
-static CTexture* g_drawnTexture;
+static FixtureTexture* g_drawnTexture;
 static long g_drawnStride, g_drawnVerts;
-static void DrawAsIndexedTris(CTexture** tex, long, const void*, long stride, long verts, const unsigned short*, long)
+static void DrawAsIndexedTris(FixtureTexture** tex, long, const void*, long stride, long verts, const unsigned short*, long)
 {
     g_drawnTexture = *tex; g_drawnStride = stride; g_drawnVerts = verts; Log("D");
 }
@@ -51,32 +51,32 @@ struct CShaderLayoutSaver {
     CShaderLayoutSaver(long l) { m_layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex; g_ShaderRenderManager.SetVertexShaderConstantLayout(l); }
     ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
 };
-struct CRenderStateCaptureBlock {
-    CRenderStateCaptureBlock() { g_rsm.OpenCaptureBlock(); }
-    ~CRenderStateCaptureBlock() { g_rsm.RestoreCaptureBlock(); }
+struct FixtureRenderStateCaptureBlock {
+    FixtureRenderStateCaptureBlock() { g_rsm.OpenCaptureBlock(); }
+    ~FixtureRenderStateCaptureBlock() { g_rsm.RestoreCaptureBlock(); }
 };
 static void ResetEnv() { g_log[0] = 0; g_drawnTexture = 0; g_ShaderRenderManager.VertexShadersEnabled = false; g_ShaderRenderManager.PixelShadersEnabled = false; g_ShaderRenderManager.CurrentVSConstantLayoutIndex = 0; g_rsm.depth = 0; }
-class C3DVector { public:
+class Fixture3DVector { public:
     float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    Fixture3DVector() {}
+    Fixture3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    Fixture3DVector operator+(const Fixture3DVector& o) const { return Fixture3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    Fixture3DVector operator-(const Fixture3DVector& o) const { return Fixture3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-class CRGBColour { public:
+class FixtureRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) + R) << 8) + G << 8) + B; }
 };
-struct SSkySpriteVertex { C3DVector Pos; unsigned long Colour; float U, V; };
+struct SSkySpriteVertex { Fixture3DVector Pos; unsigned long Colour; float U, V; };
 static SSkySpriteVertex g_verts[4];
 static unsigned short g_indices[6];
-static void DrawSprite(CTexture** tex, const SSkySpriteVertex* v, const unsigned short* idx)
+static void DrawSprite(FixtureTexture** tex, const SSkySpriteVertex* v, const unsigned short* idx)
 {
     for (int i = 0; i < 4; ++i) g_verts[i] = v[i];
     for (int i = 0; i < 6; ++i) g_indices[i] = idx[i];
     DrawAsIndexedTris(tex, 1, v, 0x18, 4, idx, 2);
 }
-static void RenderSprite(CTexture* texture, const C3DVector& centre, const C3DVector& right, const C3DVector& up, CRGBColour colour)
+static void RenderSprite(FixtureTexture* texture, const Fixture3DVector& centre, const Fixture3DVector& right, const Fixture3DVector& up, FixtureRGBColour colour)
 {
     SSkySpriteVertex verts[4];
     unsigned long argb = colour.GetARGB();
@@ -93,10 +93,10 @@ static void RenderSprite(CTexture* texture, const C3DVector& centre, const C3DVe
 }
 int main()
 {
-    CTexture t;
-    CRGBColour c; c.R = 0x11; c.G = 0x22; c.B = 0x33; c.A = 0x44;
+    FixtureTexture t;
+    FixtureRGBColour c; c.R = 0x11; c.G = 0x22; c.B = 0x33; c.A = 0x44;
     ResetEnv();
-    RenderSprite(&t, C3DVector(10, 20, 30), C3DVector(1, 0, 0), C3DVector(0, 2, 0), c);
+    RenderSprite(&t, Fixture3DVector(10, 20, 30), Fixture3DVector(1, 0, 0), Fixture3DVector(0, 2, 0), c);
     if (g_verts[0].Colour != 0x44112233UL || g_verts[0].Pos.X != 9 || g_verts[0].Pos.Y != 22 || g_verts[2].Pos.X != 11
         || g_verts[2].Pos.Y != 18 || g_verts[3].V != 1.0f || g_indices[5] != 3 || g_drawnTexture != &t
         || std::strcmp(g_log, "PSVSRD") != 0) {

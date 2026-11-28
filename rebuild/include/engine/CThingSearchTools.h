@@ -281,7 +281,12 @@ public:
                                 CThing* loop_thing=&pmapwho->GetParentThing();
                                 if((loop_thing->GetTypeFlags()&flags)==flags) {
                                     T* tthing=static_cast<T*>(loop_thing);
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_SHOT_COLLISION_PASS30
+                                    // FableWin 0x02707271 checks tthing before line 326 calls the filter.
+                                    if(tthing && filter_func(*tthing))
+#else
                                     if(filter_func(*tthing))
+#endif
                                         things.push_back(tthing);
                                 }
                             }

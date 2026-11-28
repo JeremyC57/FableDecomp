@@ -23,9 +23,17 @@ public:
  NHitLocations::CHitLocation * GetPCombatFirstHitLocationIntersectionWithTriangle(const std::vector<C3DVector,std::allocator<C3DVector> > & p0, C3DVector & p1, C3DVector & p2, float p3);
  const NHitLocations::CHitLocation * GetPCombatFirstHitLocationPosInside(const C3DVector & p0) const;
  NHitLocations::CHitLocation * GetPCombatFirstHitLocationPosInside(const C3DVector & p0);
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ void SetPDefaultHitLocation(NHitLocations::CHitLocation* location) { PDefaultHitLocation = location; }
+#else
  void SetPDefaultHitLocation(NHitLocations::CHitLocation * p0);
+#endif
  const NHitLocations::CHitLocation * GetPDefaultHitLocation() const;
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+ NHitLocations::CHitLocation* GetPDefaultHitLocation() { return PDefaultHitLocation; }
+#else
  NHitLocations::CHitLocation * GetPDefaultHitLocation();
+#endif
  NHitLocations::CHitLocation * GetPHitLocationWithDefName(const CCharString & p0);
  void GetBoundingSphere(C3DVector & p0, float & p1, bool p2) const;
 private:
@@ -39,7 +47,21 @@ public:
  virtual ~CTCHitLocations();
  CTCHitLocations & operator=(const CTCHitLocations & p0);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCHitLocations)==52);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CTCHitLocations)==52);
+#ifdef FABLE_RETAIL_HITLOCATIONS_ACTIVATE_PASS30
+inline void NHitLocations::CHitLocation::SetEnabled(bool enabled)
+{
+    Enabled = enabled;
+    if (IsDefaultLocation()) {
+        CTCHitLocations* hit_locations;
+        POwnerThing->GetTC(&hit_locations);
+        if (enabled)
+            hit_locations->SetPDefaultHitLocation(this);
+        else if (hit_locations->GetPDefaultHitLocation() == this)
+            hit_locations->SetPDefaultHitLocation(0);
+    }
+}
+#endif
 #else
 // New header (chunk 724 round 3, row 0x008771A0). CTCHitLocations : CTCBase (RTTI vtable 0x012434E4). Ego_r TPI size 0x38 with a
 // Dinkumware vector; retail STLport vector is 0xC: HitLocations +0x0C, PDefaultHitLocation +0x18, PDef +0x1C,

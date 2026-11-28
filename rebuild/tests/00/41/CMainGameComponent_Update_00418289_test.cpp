@@ -23,8 +23,8 @@ static double g_time;
 static double GFGetTime() { g_time += 0.25; return g_time; }
 
 static CInputManager g_input; static CInputManager* PInputManager = &g_input;
-static long g_FrameSleepMilliseconds; static bool g_ControllerDisconnectPaused; static long g_ForceRenderFrames;
-static unsigned long g_RenderFrame;
+static long GDelayEachFrameMS; static long GForceRenderFramesPerSec;
+static unsigned long GWorldFrame;
 static void Sleep(unsigned long) { Log(14); }
 
 struct Game {
@@ -43,17 +43,18 @@ struct Game {
     long GetFrameDifferenceFromCurrent(long) const { return Difference; }
     void Update()
     {
-        if (g_FrameSleepMilliseconds > 0) Sleep(g_FrameSleepMilliseconds);
+        static bool BRequireUnpause;
+        if (GDelayEachFrameMS > 0) Sleep(GDelayEachFrameMS);
         CSubtitleRenderer& subtitle_renderer = g_subtitles;
         if (IsControllerDisconnected() && subtitle_renderer.IsInInteractiveState()) {
             if (!GetInstance()->HasErrorMessage()) {
-                if (!PWorld->IsPaused()) { CGameEvent event(9); event.AddUBYTE(true); AddGameEvent(event); g_ControllerDisconnectPaused = true; }
-                else g_ControllerDisconnectPaused = false;
+                if (!PWorld->IsPaused()) { CGameEvent event(9); event.AddUBYTE(true); AddGameEvent(event); BRequireUnpause = true; }
+                else BRequireUnpause = false;
                 ShowErrorMessage(0);
             }
         } else if (GetInstance()->HasErrorMessage()) {
             GetInstance()->ClearErrorMessage();
-            if (g_ControllerDisconnectPaused) { CGameEvent event(9); event.AddUBYTE(false); AddGameEvent(event); g_ControllerDisconnectPaused = false; }
+            if (BRequireUnpause) { CGameEvent event(9); event.AddUBYTE(false); AddGameEvent(event); BRequireUnpause = false; }
         }
         TimePassedSinceLastUpdate = (float)(GFGetTime() - LastUpdateTime);
         LastUpdateTime = (float)GFGetTime();
@@ -68,7 +69,7 @@ struct Game {
         } else {
             if (Client.IsLocal() && CurrentServerFrame > 1 && !PInputManager->IsLoadingEvents() && !PInputManager->IsSavingEvents()) {
                 long difference = GetFrameDifferenceFromCurrent(CurrentServerFrame);
-                if (g_ForceRenderFrames == 0 && difference > 15) { CurrentServerFrame += difference; AllowRender = false; }
+                if (GForceRenderFramesPerSec == 0 && difference > 15) { CurrentServerFrame += difference; AllowRender = false; }
             }
             if (Client.GetGameEventPackageSet(&EventPackageSet)) {
                 PWorld->UpdateInputRelatedInterpolation(); GetInputs(); SignalFrameUpdate();
@@ -76,7 +77,7 @@ struct Game {
                 UpdateFromEventPackageSet(&EventPackageSet); NoRenderFramesSinceLastGameUpdate = 0; WorldUpdateTurn = true;
             }
         }
-        g_RenderFrame = CWorld::GetFrame();
+        GWorldFrame = CWorld::GetFrame();
     }
 };
 
@@ -86,8 +87,8 @@ static void Reset(Game& g)
     g.CurrentServerFrame = 5; g.LoadingEventPackages = g.SavingEventPackages = false; g.WorldUpdateTurn = true; g.AllowRender = true;
     g.NoRenderFramesSinceLastGameUpdate = 3; g.LastUpdateTime = 0.0f; g.Disconnected = false; g.TimeForUpdate = true; g.FromSave = true;
     g.Difference = 0; g.Events = 0; g.LastEventByte = -1; g_ui.HasError = false; g_subtitles.Interactive = true;
-    g_input.Loading = g_input.Saving = false; g_FrameSleepMilliseconds = 0; g_ControllerDisconnectPaused = false; g_ForceRenderFrames = 0;
-    g_RenderFrame = 0;
+    g_input.Loading = g_input.Saving = false; GDelayEachFrameMS = 0; GForceRenderFramesPerSec = 0;
+    GWorldFrame = 0;
 }
 
 int main()
@@ -96,18 +97,18 @@ int main()
     Game g;
     // disconnected, world running: pause event (byte 1), error shown
     Reset(g); g.Disconnected = true; g.Update();
-    if (g.Events != 1 || g.LastEventByte != 1 || !g_ControllerDisconnectPaused || !g_ui.HasError) ++fails;
+    if (g.Events != 1 || g.LastEventByte != 1 || !g_ui.HasError) ++fails;
     // reconnected: error cleared and an unpause event (byte 0)
     g.Disconnected = false; g.Update();
-    if (g.Events != 2 || g.LastEventByte != 0 || g_ControllerDisconnectPaused || g_ui.HasError) ++fails;
+    if (g.Events != 2 || g.LastEventByte != 0 || g_ui.HasError) ++fails;
     // disconnected while already paused: no event, flag false, error shown
     Reset(g); g.Disconnected = true; g.World.Paused = true; g.Update();
-    if (g.Events != 0 || g_ControllerDisconnectPaused || !g_ui.HasError) ++fails;
+    if (g.Events != 0 || !g_ui.HasError) ++fails;
     // timing: 0.25 - 0 then 0.5
     if (g.TimePassedSinceLastUpdate != 0.25f || g.LastUpdateTime != 0.5f) ++fails;
     // client path: catch-up and the package set applied
-    Reset(g); g.Difference = 20; g_FrameSleepMilliseconds = 3; g.SavingEventPackages = true; g.Update();
-    if (g.CurrentServerFrame != 25 || g.AllowRender || !g.WorldUpdateTurn || g.NoRenderFramesSinceLastGameUpdate != 0 || g_RenderFrame != 777) ++fails;
+    Reset(g); g.Difference = 20; GDelayEachFrameMS = 3; g.SavingEventPackages = true; g.Update();
+    if (g.CurrentServerFrame != 25 || g.AllowRender || !g.WorldUpdateTurn || g.NoRenderFramesSinceLastGameUpdate != 0 || GWorldFrame != 777) ++fails;
     if (g_n != 7 || g_log[0] != 14 || g_log[1] != 11 || g_log[2] != 10 || g_log[3] != 18 || g_log[4] != 17 || g_log[5] != 15 || g_log[6] != 16) ++fails;
     // no catch-up while loading input events
     Reset(g); g.Difference = 20; g_input.Loading = true; g.Client.HasSet = false; g.Update();

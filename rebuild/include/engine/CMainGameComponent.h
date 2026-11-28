@@ -95,6 +95,20 @@ class CGameEventDispatch;
 class CPlayerManager; class CLUA; class CFontBank;
 #endif
 class CMainGameComponent : public CGameComponent {
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30
+protected:
+    // FableWin and Ego_r declarations, called out of line by the native Init.
+    void InitialiseText();
+    void InitialiseFonts();
+    bool InitDefinitions(bool);
+    bool InitGraphics();
+    void InitPlayerManager();
+    void InitWorld();
+    void InitDisplayEngine();
+    void CreatePlayers();
+    void InitParticleEngine();
+    static void FABLE_FASTCALL AppReinitFunc(void*);
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 protected:
     // Retail opt-in (Codex 2026-11-10): both PDB InitSound names and native00417a58/caller00418886.
@@ -278,7 +292,7 @@ protected:
     void AddEventPackageSetToSave(const CGameEventPackageSet* event_package_set);   // 0x004161A7
 public:
 #endif
-#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG) || defined(FABLE_RETAIL_CTHINGPHYSICAL_DEBUGDRAW_PASS24)
+#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG) || defined(FABLE_RETAIL_CTHINGPHYSICAL_DEBUGDRAW_PASS24) || defined(FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_PASS30)
     const CFontBank& PeekDebugFont()const{return *PDebugFont;}
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }

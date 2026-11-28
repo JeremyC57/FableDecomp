@@ -203,6 +203,9 @@ public:
     // Retail opt-in (chunk 1025, row 0x008028D0 GetTargetingRangeForTargetType): FableWin.pdb ?IsSpellMode@CPlayer@@QBE_NXZ (no Ego_r.pdb
     // or Fable.exe copy: the row reads SpellMode +0x218 in place off CThing::PeekPlayer, `mov cl,[eax+218h] ; test cl,cl`, 0x00802903).
     bool IsSpellMode() const { return SpellMode; }
+#ifdef FABLE_RETAIL_PROCESS_ROLLING_PASS30
+    bool IsUsingFreeCamera() const { return UsingFreeCamera; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_PLAYER_GETNUMBER
     // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb ?GetNumber@CPlayer@@QBEJXZ, inline in
@@ -254,6 +257,9 @@ public:
 private:
     void SetUpControlsBasedOnAggressiveMode();                   // 0x00487DE0
 public:
+#endif
+#ifdef FABLE_RETAIL_TARGET_INFO_PASS30
+    bool IsAggressiveMode() const { return AggressiveMode; }
 #endif
 #ifdef FABLE_RETAIL_CPLAYER_AGGRESSIVEMODE
     // NF83 opt-in (round 7, rows 0x00487E90 / 0x00487EB0): Ego_r.pdb 0x00493730 / FableWin.pdb 0x01AD0810 ?ToggleAggressiveMode@CPlayer@@QAEXXZ

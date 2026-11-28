@@ -1,52 +1,52 @@
-// CEnvironmentSpellEffectInterpolator::ScreenFilterFadeTo(float duration, ScreenEffectPriority priority, float alpha, float saturation, float contrast, float brightness, const CRGBFloatColour& tint, const CThingGraphicArgList* things) -- build a screen-filter parameter block and push it onto the screen-effect priority stack
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006B85D0, 102 bytes (+ int3 padding).
-// Callees: NScreenEffect::CScreenEffectPriorityStack::InsertScreenFilterEntry(float, const CScreenFilterParams*,
-//          const vector<CThingGraphicArgPasser>*, ScreenEffectPriority) @ 0x00881C90 (manifest:
-//          "CEnvironmentSpellEffectInterface_AddScreenFilter", untyped).
-// Layout (Ego_r.pdb): CScreenFilterParams { Alpha, Saturation, Contrast, Brightness, CRGBFloatColour Tint } = 32 bytes;
-//   the interpolator's CScreenEffectPriorityStack sits at +0x90 (`add ecx,90h`).
-// Shape: the block is a 0x20-byte frame local filled field by field (the tint as a POD copy, dword by dword) before
-//   the argument pushes; the thing list is forwarded as a plain pointer.
-class CRGBFloatColour { public: float R, G, B, A; };
+// Leaf: ?ScreenFilterFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMABVCRGBFloatColour@@ABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@@Z
+// Flags: /Gr
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADETO
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_FULL
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTERENTRY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_BODY
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#define FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CThing.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/NScreenEffect_CScreenEffectPriorityStack.h"
+#include "engine/ThingAlive.h"
+#include "engine/CMainGameComponent.h"
 
-struct CScreenFilterParams {
-    float           Alpha;                             // +0x00
-    float           Saturation;                        // +0x04
-    float           Contrast;                          // +0x08
-    float           Brightness;                        // +0x0c
-    CRGBFloatColour Tint;                              // +0x10
-};
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 
-enum ScreenEffectPriority { SCREEN_EFFECT_PRIORITY_DEFAULT = 0 };
-
-struct CThingGraphicArgList;                           // vector<CScreenEffectPriorityStack::CThingGraphicArgPasser>
-
-struct CScreenEffectPriorityStack {
-    void InsertScreenFilterEntry(float duration, const CScreenFilterParams* params,
-                                 const CThingGraphicArgList* things, ScreenEffectPriority priority);   // 0x00881C90
-};
-
-class CEnvironment;
-class CEnvironmentSpellEffectInterface;
-
-class CEnvironmentSpellEffectInterpolator { public:
-    CEnvironment*                     Environment;           // +0x00
-    CEnvironmentSpellEffectInterface* SpellInterface;        // +0x04
-    unsigned char                     _pad8[0x90 - 0x8];     // radial-blur fade and theme-transition state
-    CScreenEffectPriorityStack        ScreenEffectPriorityStack;   // +0x90
-    void ScreenFilterFadeTo(float duration, ScreenEffectPriority priority, float alpha, float saturation, float contrast,
-                            float brightness, const CRGBFloatColour& tint, const CThingGraphicArgList* things);
-};
-
-void CEnvironmentSpellEffectInterpolator::ScreenFilterFadeTo(float duration, ScreenEffectPriority priority, float alpha,
-                                                             float saturation, float contrast, float brightness,
-                                                             const CRGBFloatColour& tint, const CThingGraphicArgList* things)
+void* CEnvironmentSpellEffectInterpolator::ScreenFilterFadeTo(float time, NScreenEffect::ScreenEffectPriority priority,
+    float alpha, float saturation, float contrast, float brightness, const CRGBFloatColour& tint,
+    const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things)
 {
-    CScreenFilterParams params;
-    params.Alpha = alpha;
-    params.Saturation = saturation;
-    params.Contrast = contrast;
-    params.Brightness = brightness;
-    params.Tint = tint;
-    ScreenEffectPriorityStack.InsertScreenFilterEntry(duration, &params, things, priority);
+    CEnvironmentSpellEffectInterface::CScreenFilterParams p;
+    p.Alpha = alpha;
+    p.Saturation = saturation;
+    p.Contrast = contrast;
+    p.Brightness = brightness;
+    p.Tint = tint;
+    return ScreenEffectPriorityStack.InsertScreenFilterEntry(time, p, things, priority);
 }

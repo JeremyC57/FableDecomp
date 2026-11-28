@@ -1,19 +1,19 @@
-// Behaviour test for 0x00734340 CTCCombat::GetBlockAbilityIterator(iterator&, EWeaponClass).
+// Behaviour test for 0x00734340 FixtureCTCCombat::GetBlockAbilityIterator(iterator&, EWeaponClass).
 #include <stdio.h>
 // ---- test model: STLport-shaped tree of combat abilities ----
-class CCombatAbilityData { public:
-    virtual ~CCombatAbilityData() {}
+class FixtureCCombatAbilityData { public:
+    virtual ~FixtureCCombatAbilityData() {}
     virtual long GetDataType() const { return DataType; }
     long DataType;
     long InterfaceType;
     long WeaponClass;
 };
-template <class T> class CCountedPointer { public:
+template <class T> class FixtureCCountedPointer { public:
     T*    Object;
     long* Count;
     T* operator->() const { return Object; }
 };
-class CCombatAbility { public:
+class FixtureCCombatAbility { public:
     long RepeatTimer;
     long ActiveTimer;
     void Reset()
@@ -22,17 +22,17 @@ class CCombatAbility { public:
         RepeatTimer = -1;
     }
 };
-struct SCombatAbilityPair { CCountedPointer<CCombatAbilityData> first; CCombatAbility second; };
-struct SCombatAbilityValue { long first; SCombatAbilityPair second; };
-struct _Rb_tree_node_base {
+struct FixtureSCombatAbilityPair { FixtureCCountedPointer<FixtureCCombatAbilityData> first; FixtureCCombatAbility second; };
+struct FixtureSCombatAbilityValue { long first; FixtureSCombatAbilityPair second; };
+struct FixtureRb_tree_node_base {
     long                _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
+    FixtureRb_tree_node_base* _M_parent;
+    FixtureRb_tree_node_base* _M_left;
+    FixtureRb_tree_node_base* _M_right;
 };
-struct _Rb_tree_node : _Rb_tree_node_base { SCombatAbilityValue _M_value_field; };
-struct _Rb_global {
-    static _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* _M_node)
+struct FixtureRb_tree_node : FixtureRb_tree_node_base { FixtureSCombatAbilityValue _M_value_field; };
+struct FixtureRb_global {
+    static FixtureRb_tree_node_base* _M_increment(FixtureRb_tree_node_base* _M_node)
     {
         if (_M_node->_M_right != 0) {
             _M_node = _M_node->_M_right;
@@ -40,7 +40,7 @@ struct _Rb_global {
                 _M_node = _M_node->_M_left;
         }
         else {
-            _Rb_tree_node_base* y = _M_node->_M_parent;
+            FixtureRb_tree_node_base* y = _M_node->_M_parent;
             while (_M_node == y->_M_right) {
                 _M_node = y;
                 y = y->_M_parent;
@@ -51,35 +51,35 @@ struct _Rb_global {
         return _M_node;
     }
 };
-struct _Rb_tree_iterator {
-    _Rb_tree_node_base* _M_node;
-    _Rb_tree_iterator() {}
-    _Rb_tree_iterator(_Rb_tree_node_base* x) { _M_node = x; }
-    SCombatAbilityValue& operator*() const { return ((_Rb_tree_node*)_M_node)->_M_value_field; }
-    SCombatAbilityValue* operator->() const { return &(operator*()); }
-    _Rb_tree_iterator& operator++() { _M_node = _Rb_global::_M_increment(_M_node); return *this; }
-    bool operator==(const _Rb_tree_iterator& o) const { return _M_node == o._M_node; }
-    bool operator!=(const _Rb_tree_iterator& o) const { return _M_node != o._M_node; }
+struct FixtureRb_tree_iterator {
+    FixtureRb_tree_node_base* _M_node;
+    FixtureRb_tree_iterator() {}
+    FixtureRb_tree_iterator(FixtureRb_tree_node_base* x) { _M_node = x; }
+    FixtureSCombatAbilityValue& operator*() const { return ((FixtureRb_tree_node*)_M_node)->_M_value_field; }
+    FixtureSCombatAbilityValue* operator->() const { return &(operator*()); }
+    FixtureRb_tree_iterator& operator++() { _M_node = FixtureRb_global::_M_increment(_M_node); return *this; }
+    bool operator==(const FixtureRb_tree_iterator& o) const { return _M_node == o._M_node; }
+    bool operator!=(const FixtureRb_tree_iterator& o) const { return _M_node != o._M_node; }
 };
-struct CCombatAbilityMap {
-    typedef _Rb_tree_iterator iterator;
-    _Rb_tree_node_base* _M_header;
+struct FixtureCCombatAbilityMap {
+    typedef FixtureRb_tree_iterator iterator;
+    FixtureRb_tree_node_base* _M_header;
     unsigned int        _M_node_count;
     iterator begin() { return iterator(_M_header->_M_left); }
     iterator end() { return iterator(_M_header); }
-    static const long& _S_key(_Rb_tree_node_base* x) { return ((_Rb_tree_node*)x)->_M_value_field.first; }
-    _Rb_tree_node_base* _M_lower_bound(const long& k) const
+    static const long& _S_key(FixtureRb_tree_node_base* x) { return ((FixtureRb_tree_node*)x)->_M_value_field.first; }
+    FixtureRb_tree_node_base* _M_lower_bound(const long& k) const
     {
-        _Rb_tree_node_base* y = _M_header;
-        _Rb_tree_node_base* x = _M_header->_M_parent;
+        FixtureRb_tree_node_base* y = _M_header;
+        FixtureRb_tree_node_base* x = _M_header->_M_parent;
         while (x != 0)
             if (!(_S_key(x) < k)) y = x, x = x->_M_left; else x = x->_M_right;
         return y;
     }
-    _Rb_tree_node_base* _M_upper_bound(const long& k) const
+    FixtureRb_tree_node_base* _M_upper_bound(const long& k) const
     {
-        _Rb_tree_node_base* y = _M_header;
-        _Rb_tree_node_base* x = _M_header->_M_parent;
+        FixtureRb_tree_node_base* y = _M_header;
+        FixtureRb_tree_node_base* x = _M_header->_M_parent;
         while (x != 0)
             if (k < _S_key(x)) y = x, x = x->_M_left; else x = x->_M_right;
         return y;
@@ -88,24 +88,24 @@ struct CCombatAbilityMap {
     iterator upper_bound(const long& k) { return iterator(_M_upper_bound(k)); }
 };
 // plain (unbalanced) BST insert for building fixtures: equal keys go right, header bookkeeping as STLport
-static void TestInsert(CCombatAbilityMap& m, _Rb_tree_node* z)
+static void TestInsert(FixtureCCombatAbilityMap& m, FixtureRb_tree_node* z)
 {
-    _Rb_tree_node_base* h = m._M_header;
-    _Rb_tree_node_base* y = h;
-    _Rb_tree_node_base* x = h->_M_parent;
-    while (x) { y = x; x = (z->_M_value_field.first < CCombatAbilityMap::_S_key(x)) ? x->_M_left : x->_M_right; }
+    FixtureRb_tree_node_base* h = m._M_header;
+    FixtureRb_tree_node_base* y = h;
+    FixtureRb_tree_node_base* x = h->_M_parent;
+    while (x) { y = x; x = (z->_M_value_field.first < FixtureCCombatAbilityMap::_S_key(x)) ? x->_M_left : x->_M_right; }
     z->_M_parent = y; z->_M_left = 0; z->_M_right = 0;
     if (y == h) { h->_M_parent = z; h->_M_left = z; h->_M_right = z; }
-    else if (z->_M_value_field.first < CCombatAbilityMap::_S_key(y)) { y->_M_left = z; if (y == h->_M_left) h->_M_left = z; }
+    else if (z->_M_value_field.first < FixtureCCombatAbilityMap::_S_key(y)) { y->_M_left = z; if (y == h->_M_left) h->_M_left = z; }
     else { y->_M_right = z; if (y == h->_M_right) h->_M_right = z; }
     ++m._M_node_count;
 }
-static void TestInitMap(CCombatAbilityMap& m, _Rb_tree_node_base* header)
+static void TestInitMap(FixtureCCombatAbilityMap& m, FixtureRb_tree_node_base* header)
 {
     header->_M_color = 0; header->_M_parent = 0; header->_M_left = header; header->_M_right = header;
     m._M_header = header; m._M_node_count = 0;
 }
-static void TestInitNode(_Rb_tree_node* n, long key, CCombatAbilityData* data)
+static void TestInitNode(FixtureRb_tree_node* n, long key, FixtureCCombatAbilityData* data)
 {
     n->_M_color = 0;
     n->_M_value_field.first = key;
@@ -115,16 +115,16 @@ static void TestInitNode(_Rb_tree_node* n, long key, CCombatAbilityData* data)
     n->_M_value_field.second.second.ActiveTimer = 6;
 }
 // ---- end test model ----
-class CTCCombat {
+class FixtureCTCCombat {
 public:
-    CCombatAbilityMap CombatAbilities;
-    bool GetBlockAbilityIterator(CCombatAbilityMap::iterator& it, long weaponClass);
+    FixtureCCombatAbilityMap CombatAbilities;
+    bool GetBlockAbilityIterator(FixtureCCombatAbilityMap::iterator& it, long weaponClass);
 };
-bool CTCCombat::GetBlockAbilityIterator(CCombatAbilityMap::iterator& it, long weaponClass)
+bool FixtureCTCCombat::GetBlockAbilityIterator(FixtureCCombatAbilityMap::iterator& it, long weaponClass)
 {
-    CCombatAbilityMap::iterator last = CombatAbilities.upper_bound(1);
+    FixtureCCombatAbilityMap::iterator last = CombatAbilities.upper_bound(1);
     for (it = CombatAbilities.lower_bound(1); it != last; ++it) {
-        CCombatAbilityData* data = it->second.first.Object;
+        FixtureCCombatAbilityData* data = it->second.first.Object;
         if (data->GetDataType() == 1 && data->WeaponClass == weaponClass)
             return true;
     }
@@ -133,8 +133,8 @@ bool CTCCombat::GetBlockAbilityIterator(CCombatAbilityMap::iterator& it, long we
 int main()
 {
     int fail = 0;
-    _Rb_tree_node_base header; _Rb_tree_node nodes[5]; CCombatAbilityData data[5];
-    CTCCombat c; TestInitMap(c.CombatAbilities, &header);
+    FixtureRb_tree_node_base header; FixtureRb_tree_node nodes[5]; FixtureCCombatAbilityData data[5];
+    FixtureCTCCombat c; TestInitMap(c.CombatAbilities, &header);
     long keys[5]    = { 1, 0, 1, 2, 1 };
     long dtypes[5]  = { 1, 1, 0, 1, 1 };
     long weapons[5] = { 4, 6, 6, 6, 6 };
@@ -142,7 +142,7 @@ int main()
         data[i].DataType = dtypes[i]; data[i].WeaponClass = weapons[i];
         TestInitNode(&nodes[i], keys[i], &data[i]); TestInsert(c.CombatAbilities, &nodes[i]);
     }
-    CCombatAbilityMap::iterator it;
+    FixtureCCombatAbilityMap::iterator it;
     if (!c.GetBlockAbilityIterator(it, 4) || it._M_node != &nodes[0]) fail |= 1;
     // weapon 6: key-0 and key-2 nodes are outside the range, nodes[2] has the wrong data type
     if (!c.GetBlockAbilityIterator(it, 6) || it._M_node != &nodes[4]) fail |= 2;

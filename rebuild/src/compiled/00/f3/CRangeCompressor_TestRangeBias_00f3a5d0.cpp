@@ -1,3 +1,5 @@
+// Flags: 
+#include "stlport/fable_containers.h"
 // CRangeCompressor::TestRangeBias(const CArray<unsigned long>& in, CArray<unsigned long>& out, CScriptEntry& entry, long bytes) -- find the unsigned and the sign-extended (to `bytes` wide) value ranges of the input, pick the bias that gives the smaller range, write the biased, masked values to `out`, and record the bias in the script entry (flagging it as biased unless flag 0x10 is set)
 // Leaf: ?TestRangeBias@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3A5D0, length 320 bytes (`ret 10h`). FableWin.pdb
@@ -21,7 +23,6 @@ public:
     unsigned long size() const { return (unsigned long)(last - first); }
     T& operator[](unsigned long i) { return first[i]; }
     const T& operator[](unsigned long i) const { return first[i]; }
-    void InsertN(T* where, unsigned long count, const T& value);   // 0x004649A3
     static T* CopyDown(T* src, T* srcEnd, T* dest)
     {
         if (src == srcEnd)
@@ -34,7 +35,7 @@ public:
         if (n < size())
             last = CopyDown(last, last, first + n);
         else
-            InsertN(last, n - size(), value);
+            reinterpret_cast<std::vector<T>*>(this)->_M_fill_insert(last, n - size(), value);
     }
 };
 

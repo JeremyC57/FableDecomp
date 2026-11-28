@@ -1,12 +1,19 @@
-#include "rebuild_abi.h"
-// CSpellContainerList::AddChild @ 0x006a4dd0
-// mov eax,[esp+4]; push eax; call h1; mov ecx,eax; call h2; ret 4
-// Wrap the argument via a __cdecl factory, then pass the result (in ecx) to a __fastcall consumer.
-struct CSpellNode;
-extern "C" CSpellNode *FABLE_STDCALL FableSpellWrap_6a4dd0_004c79e0(void *arg);
-extern "C" void FABLE_FASTCALL FableSpellConsume_6a4dd0_0063a300(CSpellNode *node);
-struct CSpellContainerList { void AddChild(void *arg); };
-void CSpellContainerList::AddChild(void *arg)
+// Retail 0x006A4DD0, 20 bytes.
+// Leaf: ?GetMapSizeZBelowAt@CThingPhysical@@QBEMABVC3DVector@@@Z
+// Flags: /O2 /Oy /W3
+#define FABLE_RETAIL_CREATURE_NAV_FLEE_COVER_PASS30
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CWORLDMAP
+#include "fable_string.h"
+#include "engine/CThingPhysical.h"
+#include "engine/CWorldMap.h"
+
+float CThingPhysical::GetMapSizeZBelowAt(const C3DVector& pos) const
 {
-    FableSpellConsume_6a4dd0_0063a300(FableSpellWrap_6a4dd0_004c79e0(arg));
+    return PeekWorldMap().GetGroundSizeZAt(pos);
 }

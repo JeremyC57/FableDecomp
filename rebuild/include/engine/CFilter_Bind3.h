@@ -8,7 +8,12 @@ protected:
  const TF3& F3;
 public:
  CFilter_Bind3(const TF1& f1,const TF2& f2,const TF3& f3):F1(f1),F2(f2),F3(f3){}
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_SHOT_COLLISION_PASS30
+ // Inline-budget: the shot search expands this 128-byte Bind3 operator.
+ template<class T> FABLE_FORCEINLINE bool operator()(const T& t)const{return F1(t)&&F2(t)&&F3(t);}
+#else
  template<class T> bool operator()(const T& t)const{return F1(t)&&F2(t)&&F3(t);}
+#endif
 };
 #ifdef FABLE_RETAIL_FILTER_BIND3_FUNCTION
 // Original FableWin02c4bd5e/02c4bdb7 call the named factory, with three const references.

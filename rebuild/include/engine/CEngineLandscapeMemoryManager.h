@@ -68,6 +68,13 @@ public:
     // Declaration only.
     void FreeVirtualAligned(void* block);                                // 0x00BD9CA0
 #endif
+#ifdef FABLE_RETAIL_REPEATED_MESH_ALLOCATIONS_PASS30
+    // Both donor PDBs use long alignment and a CMovableResource owner for 0x00BD9C40.
+    // FableWin Engine_Local_Detail_Primitives.cpp 252,259,281,295,311 calls the templates below.
+    void* AllocVirtualAligned(long size, long alignment, CMovableResource* parent);
+    template<class T> T* AllocArrayOfObjectsNoConstuctors(long count, CMovableResource* parent);
+    template<class T> T* AllocAlignedArrayOfObjectsNoConstuctors(long count, long alignment, CMovableResource* parent);
+#endif
     void* AllocVirtual(long size, CMovableResource* owner);              // 0x00BD9AF0 ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z
     void FreeVirtual(void* block);                                       // 0x00BD9B90 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
     CIndexBuffer* AllocateIndexBuffer(CMovableResource* owner, long count, unsigned long usage, EIndexBufferFormat format, EPrimitiveType type);   // 0x00BDA360
@@ -83,6 +90,32 @@ public:
     long                            AllocationCount;                     // +0x3c
     bool                            EnableDelayedResourceDestruction;    // +0x40
 };
+#ifdef FABLE_RETAIL_REPEATED_MESH_ALLOCATIONS_PASS30
+#include "fable_assert.h"
+// Retail BFB780/BFB7C0 and BFB810/BFB860/BFB8C0. NoConstuctors is the PDB spelling.
+template<class T>
+inline T* CEngineLandscapeMemoryManager::AllocArrayOfObjectsNoConstuctors(long count, CMovableResource* parent)
+{
+    long long overflow_check = static_cast<long long>(count) * sizeof(T);
+    if (overflow_check < 0 || overflow_check > 0x7fffffff) {
+        FABLE_RETAIL_ASSERT(false);
+        return 0;
+    }
+    T* arr = static_cast<T*>(AllocVirtual(count * sizeof(T), parent));
+    return arr;
+}
+template<class T>
+inline T* CEngineLandscapeMemoryManager::AllocAlignedArrayOfObjectsNoConstuctors(long count, long alignment, CMovableResource* parent)
+{
+    long long overflow_check = static_cast<long long>(count) * sizeof(T);
+    if (overflow_check < 0 || overflow_check > 0x7fffffff) {
+        FABLE_RETAIL_ASSERT(false);
+        return 0;
+    }
+    T* arr = static_cast<T*>(AllocVirtualAligned(count * sizeof(T), alignment, parent));
+    return arr;
+}
+#endif
 FABLE_STATIC_ASSERT_AT(42, sizeof(CEngineLandscapeMemoryManager) == 0x44);
 FABLE_STATIC_ASSERT_AT(43, offsetof(CEngineLandscapeMemoryManager, VirtualMemPool) == 0x8);
 FABLE_STATIC_ASSERT_AT(44, offsetof(CEngineLandscapeMemoryManager, CurrentDisposalListIndex) == 0x34);

@@ -23,6 +23,10 @@ public:
     virtual void OnDeactivate();
     virtual ~CModeDragonFlying();
 private:
+#ifdef FABLE_RETAIL_DRAGON_FLYING_PROTECTED_PASS30
+    // Ego_d field list 0x2b564 declares these inherited flight fields protected.
+protected:
+#endif
     CAnimFilterOfGroup Filter;
     C3DVector Destination;
     C3DVector StartPos;
@@ -40,6 +44,6 @@ private:
     bool UsePreviousPos;
 };
 
-FABLE_STATIC_ASSERT(sizeof(CModeDragonFlying) == 0x94);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CModeDragonFlying) == 0x94);
 }
 #endif

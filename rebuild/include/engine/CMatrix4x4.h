@@ -139,6 +139,17 @@ public:
         E31=m.E31; E32=m.E32; E33=m.E33; E34=0.0f;
         E41=m.E41; E42=m.E42; E43=m.E43; E44=1.0f;
     }
+#ifdef FABLE_RETAIL_MATRIX_POST_MULTIPLY_PASS30
+    // FableWin 02D796C0 and Ego_d retain temp_matrix, long v and long u.
+    // Both debug loop openings use the original VC6 for-scope form.
+    void PostMultiply(const CMatrix4x4& matrix) {
+        CMatrix4x4 temp_matrix;
+        if (false) {} else for (long v=0; v<4; ++v)
+            if (false) {} else for (long u=0; u<4; ++u)
+                temp_matrix.Data[v][u] = Data[v][0] * matrix.Data[0][u] + Data[v][1] * matrix.Data[1][u] + Data[v][2] * matrix.Data[2][u] + Data[v][3] * matrix.Data[3][u];
+        *this = temp_matrix;
+    }
+#else
     void PostMultiply(const CMatrix4x4& m) {
         CMatrix4x4 result;
         for (int i = 0; i < 4; ++i)
@@ -146,6 +157,7 @@ public:
                 result.Data[i][j] = Data[i][0] * m.Data[0][j] + Data[i][1] * m.Data[1][j] + Data[i][2] * m.Data[2][j] + Data[i][3] * m.Data[3][j];
         *this = result;
     }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE
     // Retail opt-in (row 0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace): FableWin.pdb ??0CMatrix4x4@@QAE@W4EMatrix34Init@@@Z
@@ -172,6 +184,16 @@ public:
         point.Y = y / w;
         point.Z = z / w;
     }
+#ifdef FABLE_RETAIL_SHADOW_TRANSFORMS_PASS30
+    // Inline-budget: retail expands this complete transform at each call site. The original debug loops have long row.
+    FABLE_FORCEINLINE void PostTranslate(const C3DVector& vec) {
+        if (false) {} else for (long row = 0; row < 4; ++row) {
+            Data[row][0] += vec.X * Data[row][3];
+            Data[row][1] += vec.Y * Data[row][3];
+            Data[row][2] += vec.Z * Data[row][3];
+        }
+    }
+#else
     FABLE_FORCEINLINE void PostTranslate(const C3DVector& translation) {
         for (int i = 0; i < 4; ++i) {
             Data[i][0] += Data[i][3] * translation.X;
@@ -179,6 +201,17 @@ public:
             Data[i][2] += Data[i][3] * translation.Z;
         }
     }
+#endif
+#ifdef FABLE_RETAIL_SHADOW_TRANSFORMS_PASS30
+    // Inline-budget: retail expands this complete transform at each call site. The original debug loops have long row.
+    FABLE_FORCEINLINE void PostScale(const C3DVector& vec) {
+        if (false) {} else for (long row = 0; row < 4; ++row) {
+            Data[row][0] *= vec.X;
+            Data[row][1] *= vec.Y;
+            Data[row][2] *= vec.Z;
+        }
+    }
+#else
     FABLE_FORCEINLINE void PostScale(const C3DVector& scale) {
         for (int i = 0; i < 4; ++i) {
             Data[i][0] *= scale.X;
@@ -187,12 +220,21 @@ public:
         }
     }
 #endif
+#endif
 #ifdef FABLE_RETAIL_CMATRIX4X4_COPYTO
     void CopyTo(class CMatrix3x4& matrix) const;                        // FableWin ?CopyTo@CMatrix4x4@@QBEXAAVCMatrix3x4@@@Z (inline)
 #endif
     void SetIdentity() {
+#ifdef FABLE_RETAIL_MATRIX_IDENTITY_ROW_ORDER_PASS30
+        // The original SetIdentity stores sixteen values in row order.
+        E11=1.0f; E12=0.0f; E13=0.0f; E14=0.0f;
+        E21=0.0f; E22=1.0f; E23=0.0f; E24=0.0f;
+        E31=0.0f; E32=0.0f; E33=1.0f; E34=0.0f;
+        E41=0.0f; E42=0.0f; E43=0.0f; E44=1.0f;
+#else
         E11=1.0f; E22=1.0f; E33=1.0f; E44=1.0f;
         E12=0.0f; E13=0.0f; E14=0.0f; E21=0.0f; E23=0.0f; E24=0.0f; E31=0.0f; E32=0.0f; E34=0.0f; E41=0.0f; E42=0.0f; E43=0.0f;
+#endif
     }
 };
 FABLE_STATIC_ASSERT_AT(86, sizeof(CMatrix4x4)==64);

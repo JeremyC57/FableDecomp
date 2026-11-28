@@ -1,46 +1,23 @@
-// Behaviour test for 0x00B23C80 CEngine::SetAttachedPrimitive: the forwarder must call CEnginePrimitiveAttachmentManager::SetAttachedPrimitive on the published component
-// pointer with every argument unchanged and return the callee's result.
-#include <cstdio>
-class CEnginePrimitive { public: int v; };
-class CEnginePrimitiveHandle { public: int v; };
-class CEnginePrimitiveAttachmentInfo { public: int v; };
-static int gCalls = 0;
-static const void* gThis = 0;
-static const void* gPtr[8];
-static double gVal[8];
-class CEnginePrimitiveAttachmentManager { public:
-    void SetAttachedPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, const CEnginePrimitiveAttachmentInfo& attachmentInfo, const CEnginePrimitiveHandle& parentHandle, long attachIndex, unsigned long flags)
-    {
-        ++gCalls; gThis = this;
-        gPtr[0] = &handle;
-        gPtr[1] = &primitive;
-        gPtr[2] = &attachmentInfo;
-        gPtr[3] = &parentHandle;
-        gVal[4] = (double)attachIndex;
-        gVal[5] = (double)flags;
-    }
-};
-static CEnginePrimitiveAttachmentManager gComponent;
-CEnginePrimitiveAttachmentManager* g_pEnginePrimitiveAttachmentManager = &gComponent;
-class CEngine { public:
-    virtual void SetAttachedPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, const CEnginePrimitiveAttachmentInfo& attachmentInfo, const CEnginePrimitiveHandle& parentHandle, long attachIndex, unsigned long flags);
-};
+// Leaf: ?SetAttachedPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z
+#define FABLE_RETAIL_CIENGINE_RENDER
+#define FABLE_RETAIL_CENGINE
+#define FABLE_RETAIL_CENGINE_OVERRIDES
+#define FABLE_RETAIL_ENGINE_ATTACHED_PRIMITIVE_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER
+#include "engine/CEngine.h"
+#include "engine/CEnginePrimitiveAttachmentManager.h"
+#include "engine/NEngineInternal.h"
+
 void CEngine::SetAttachedPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, const CEnginePrimitiveAttachmentInfo& attachmentInfo, const CEnginePrimitiveHandle& parentHandle, long attachIndex, unsigned long flags)
 {
-    g_pEnginePrimitiveAttachmentManager->SetAttachedPrimitive(handle, primitive, attachmentInfo, parentHandle, attachIndex, flags);
+    NEngineInternal::GPPrimitiveAttachmentManager->SetAttachedPrimitive(handle, primitive, attachmentInfo, parentHandle, attachIndex, flags);
 }
-int main()
-{
-    CEnginePrimitiveHandle o0;
-    CEnginePrimitive o1;
-    CEnginePrimitiveAttachmentInfo o2;
-    CEnginePrimitiveHandle o3;
-    CEngine engine;
-    engine.SetAttachedPrimitive(o0, o1, o2, o3, -11, 45u);
-    if (gCalls != 1 || gThis != &gComponent || gPtr[0] != &o0 || gPtr[1] != &o1 || gPtr[2] != &o2 || gPtr[3] != &o3 || gVal[4] != -11.0 || gVal[5] != 45.0) {
-        std::printf("00b23c80_TEST FAIL\n");
-        return 1;
-    }
-    std::printf("00b23c80_TEST PASS\n");
-    return 0;
-}
+
+#include <cstdio>
+#include <cstring>
+#include <cassert>
+
+namespace NEngineInternal {CEnginePrimitiveAttachmentManager* GPPrimitiveAttachmentManager;}
+static const void* captured[5];static long lastIndex;static unsigned long lastFlags;
+void CEnginePrimitiveAttachmentManager::SetAttachedPrimitive(CEnginePrimitiveHandle& a,const CEnginePrimitive& b,const CEnginePrimitiveAttachmentInfo& c,const CEnginePrimitiveHandle& e,long i,unsigned long f){captured[0]=this;captured[1]=&a;captured[2]=&b;captured[3]=&c;captured[4]=&e;lastIndex=i;lastFlags=f;}
+int main(){unsigned long buf[256];NEngineInternal::GPPrimitiveAttachmentManager=(CEnginePrimitiveAttachmentManager*)(buf+8);for(int i=-8;i<9;++i){((CEngine*)buf)->CEngine::SetAttachedPrimitive(*(CEnginePrimitiveHandle*)(buf+1),*(CEnginePrimitive*)(buf+2),*(CEnginePrimitiveAttachmentInfo*)(buf+3),*(CEnginePrimitiveHandle*)(buf+4),i,(unsigned long)~i);for(int j=0;j<5;++j)assert(captured[j]==buf+(j?j:8));assert(lastIndex==i && lastFlags==(unsigned long)~i);}std::puts("00b23c80_TEST PASS");return 0;}

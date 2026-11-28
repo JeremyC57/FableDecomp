@@ -9,4 +9,7 @@ enum EOpinion {
     OPINION_ATTRACTIVENESS = 4,
     OPINION_LAST = 5
 };
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+inline EOpinion& FABLE_FASTCALL operator++(EOpinion& value) { return value = (EOpinion)(value + 1); }
+#endif
 #endif

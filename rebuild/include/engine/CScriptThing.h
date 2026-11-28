@@ -167,4 +167,129 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 
 #endif // FABLE_RETAIL_NSCRIPT
 
+#ifdef FABLE_RETAIL_AMBUSH_TRADERS_SPY_INLINES_PASS30
+
+inline CScriptThing::~CScriptThing() { }
+inline bool CScriptThing::IsAlive() const { return !PImp.IsNull() && PImp->IsAlive(); }
+#endif
+#ifdef FABLE_RETAIL_NOSTRO_CREATURE_GENERATION_PASS30
+// Native 004AA980, FableWin GetPos: virtual dispatch on PImp with static NullCoord fallback.
+inline const C3DVector& CScriptThing::GetPos() const {
+    if (PImp.IsNull()) return NullCoord;
+    return PImp->GetPos();
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SCRIPT_SHARE_OWNER_PASS30
+// 007044D0 expands ReleaseData while keeping the two pointer inputs live.
+template<> inline void CCountedPointer<CScriptThing>::ShareData(CScriptThing* data, CCPPointerInfo* info)
+{
+    if (Info != info) {
+        ReleaseData();
+        Data = data;
+        Info = info;
+        if (info)
+            ++info->RefCount;
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SCRIPT_ASSIGN_OWNER_PASS30
+// 00704580 expands ShareData using the original data and count fields.
+template<> inline CCountedPointer<CScriptThing>& CCountedPointer<CScriptThing>::operator=(
+    const CCountedPointer<CScriptThing>& other)
+{
+    ShareData(other.Data, other.Info);
+    return *this;
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SCRIPT_COPY_PASS30
+// The random-access __copy at 008AC2A0 is the original STLport count-and-assign loop.
+#include "stlport/fable_containers.h"
+namespace std {
+template<> inline CScriptThing* FABLE_FASTCALL
+__copy<CScriptThing*, CScriptThing*, int>(CScriptThing* first, CScriptThing* last,
+    CScriptThing* result, const random_access_iterator_tag&, int*)
+{
+    for (int n = last - first; n > 0; --n) {
+        *result = *first;
+        ++first;
+        ++result;
+    }
+    return result;
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SCRIPT_COUNTED_COPY_PASS30
+// Inline-budget: 004ABE90 expands PImp's two-word copy and the conditional increment of RefCount.
+template<>
+FABLE_FORCEINLINE
+CCountedPointer<CScriptThing>::CCountedPointer(const CCountedPointer<CScriptThing>& other)
+    : Data(other.Data), Info(other.Info)
+{
+    if (Info)
+        ++Info->RefCount;
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SCRIPT_VECTOR_ERASE_PASS30
+// STLport vector body. Native owner 008AC9D0 uses the default speed setting.
+#include "stlport/fable_containers.h"
+namespace std {
+template<> inline vector<CScriptThing>::iterator vector<CScriptThing>::erase(iterator first, iterator last)
+{
+    iterator result = __copy_ptrs(last, this->_M_finish, first, _IsPODType());
+    _Destroy(result, this->_M_finish);
+    this->_M_finish = result;
+    return first;
+}
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SCRIPT_VECTOR_CLEAR_PASS30
+// STLport vector body. Native owner 008AD5C0 uses the default speed setting.
+#include "stlport/fable_containers.h"
+namespace std {
+template<> inline void vector<CScriptThing>::clear()
+{
+    erase(begin(), end());
+}
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SCRIPT_VECTOR_DTOR_PASS30
+// STLport vector body. Native owner 008AC970 uses the default speed setting.
+#include "stlport/fable_containers.h"
+namespace std {
+template<> inline vector<CScriptThing>::~vector()
+{
+    _Destroy(this->_M_start, this->_M_finish);
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SCRIPT_GROW_EXTERNAL_PASS30
+namespace std {
+template<> void vector<CScriptThing>::_M_insert_overflow(iterator position, const CScriptThing& x, const __false_type&, size_type fillLength, bool atEnd);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_CUTSCENE_SCRIPT_VECTOR_PUSH_BACK_PASS30
+// STLport vector body. Native owner 008ADF90 uses the default speed setting.
+#include "stlport/fable_containers.h"
+namespace std {
+template<> inline void vector<CScriptThing>::push_back(const CScriptThing& x)
+{
+    if (this->_M_finish != this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish, x);
+        ++this->_M_finish;
+    } else {
+        _M_insert_overflow(this->_M_finish, x, _IsPODType(), 1, true);
+    }
+}
+}
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_SCRIPT_VECTOR_CLEAR_STORAGE_PASS30
+namespace std {
+template<> inline void vector<CScriptThing>::_M_clear()
+{
+    _Destroy(this->_M_start, this->_M_finish);
+    this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
+}
+}
+#endif
+
 #endif // FABLE_ENGINE_CSCRIPTTHING_H

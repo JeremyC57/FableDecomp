@@ -338,6 +338,9 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     void SetFlourishEffect(long effect);                            // 0x00437650
     void SetAbilityButton(long button, long graphic);               // 0x00438A20
 #endif
+#ifdef FABLE_RETAIL_TARGET_INFO_PASS30
+    void SetButtonAlpha(long button, bool normal, float alpha);
+#endif
     void Update(bool paused);                                            // 0x0043A080
 #ifdef FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27
     void ToggleMiniMapCentering();

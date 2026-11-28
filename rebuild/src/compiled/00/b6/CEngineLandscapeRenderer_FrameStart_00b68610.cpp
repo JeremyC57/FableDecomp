@@ -1,9 +1,10 @@
+// Flags: 
 // CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params) -- per-frame landscape update: pick the current
 //   vertex-buffer / shader set by the render settings' mode (2 = alternate set), then (if the params ask for a landscape update)
 //   run the memory manager's FrameStart, open two render-state capture blocks, take the sub-frame time plus the renderer's
 //   offset, walk the world map's visible maps to update background LODs / tesselation (each optional) and foregrounds, load the
 //   foreground textures and restore both capture blocks.
-// Leaf: FrameStart
+// Leaf: ?FrameStart@CEngineLandscapeRenderer@@UAEXABVCEngineComponentParams@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B68610, 440 bytes (+int3), `ret 4`, 8-byte aligned frame for the double time.
 // Callees: CEngineLandscapeMemoryManager::FrameStart 0x00BD9AC0, GFGetFastSubFrameTimer 0x009E1C70 (__fastcall double),
 //   CEngineLandscapeMap::UpdateBackgroundLOD 0x00BDC180 / UpdateBackgroundTesselation 0x00BDC020 / UpdateForeground 0x00BDC510,
@@ -87,7 +88,9 @@ class CEngineLandscapeRenderer { public:
     bool                      UpdateBackgroundTesselations;   // +0x650
     unsigned char             _pad651[0x6b0 - 0x651];
     CEngineLandscapeMemoryManager* MemoryManager;          // +0x6b0
-    bool LoadForegroundTextures(bool force);               // 0x00B68070
+private:
+    bool LoadForegroundTextures(bool loading_new_scene);   // FableWin 02C887C0; retail 00B68070.
+public:
     virtual void FrameStart(const CEngineComponentParams& params);
 };
 

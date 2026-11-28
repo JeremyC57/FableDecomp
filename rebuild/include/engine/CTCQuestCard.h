@@ -76,6 +76,9 @@ public:
     // 0x007022E0; GetQuestName / GetQuestSummary / GetQuestObjective (CWideString by value) and GetRegionName (CCharString by value))
     // and the inline ?GetPDef@CTCQuestCard@@QBE?AV?$CDefPointer@$$CBVCQuestCardDef@@@@XZ (FableWin.pdb 0x01C543E0; retail copies PDef
     // +0x0C in place: null test, `inc [ecx+4]`, read, `dec [ecx+4]` / release, 0x0061E7D3). Needs the complete engine/CQuestCardDef.h.
+#ifdef FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30
+    bool IsRouteToAppearOnMinimap() const;
+#endif
     bool IsCore() const;                                                 // 0x00702280
 #ifdef FABLE_RETAIL_CTCQUESTCARD_ISFEAT_PASS26
     // FableWin 0x01C54420 and the native +0x14 comparison at 0x004B1F43.

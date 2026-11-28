@@ -1,3 +1,4 @@
+// Flags: 
 // CAudioSource::InitializeProperties(CAudioSound* sound, const CAudioSourceProperties* props, __int64 now) -- derive the playback flags of a source from its sound and property block: pick the mix path, schedule the gain fade-in and pitch fade end times from `now`, hand the pitch block to the pitch setup, clear the OpenAL source's buffer state and return the flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C72AF0, length 336 bytes, ret 10h (the 64-bit time is passed by value).
 // Callees: __ftol2 @ 0x00BFEA70 (twice), CAudioSource::SetPitchProperties @ 0x00C71F10 (catalog "Audio_InitSource_Properties"),
@@ -13,7 +14,7 @@
 //          resolver is the landed CAudioContext::Listener3f shape inlined on the global context object.
 // Naming wave 17: the +0x50 slot is alSourcef (0x012BEE14 is "alSourcef"; landed CAudioContext::Sourcef 0x00C72510 agrees;
 //          alSourcei is +0x5C / 0x012B8E58), c675 -- was pfnSourcei / Sourcei (name-only).
-// Leaf: InitializeProperties
+// Leaf: ?InitializeProperties@CAudioSource@@QAEKPAVCAudioObject@@PBUCAudioSourceProperties@@_J@Z
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 typedef void (__cdecl* PFN_alSourcef)(unsigned long source, long param, float value);
 
@@ -34,7 +35,7 @@ struct CAudioContext {
     }
 };
 extern CAudioContext g_AudioContext;                     // 0x0143BDB0
-extern __int64 g_AudioClockRate;                         // 0x0139CA20
+#include "engine/CodaCaps.h"
 
 class CAudioObject { public:
     virtual void v00();
@@ -81,7 +82,7 @@ unsigned long CAudioSource::InitializeProperties(CAudioObject* sound, const CAud
     unsigned long f = Flags & ~0x5e;
     Flags = f;
     if (fade) {
-        FadeEndTime = (__int64)(g_AudioClockRate * *fade) + now;
+        FadeEndTime = (__int64)(g_SalCaps.RefTimeTicksPerSec * *fade) + now;
         FadeGain = 0.0f;
         Flags = f;
     } else
@@ -91,7 +92,7 @@ unsigned long CAudioSource::InitializeProperties(CAudioObject* sound, const CAud
     const float* pitch = props->PitchTime;
     SetPitchProperties(pitch, now);
     if (pitch && *pitch > 0.0f)
-        PitchEndTime = (__int64)(g_AudioClockRate * *pitch) + now;
+        PitchEndTime = (__int64)(g_SalCaps.RefTimeTicksPerSec * *pitch) + now;
     if (props->PitchTime)
         flags |= 0x20;
     if (!(sound->Flags & 0x2000)) {

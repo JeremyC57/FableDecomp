@@ -64,6 +64,11 @@ public:
     void Open(float fade_in_time, float fade_out_time, CRGBColour to_colour);
     void Update(float time_delta);
     bool IsOpen() const;
+#ifdef FABLE_RETAIL_HUD_STAMINA_PASS30
+    // FableWin 01A652A0 / 020DC2A0, both inline in the stamina caret.
+    bool IsOpening() const { return Opening; }
+    bool IsClosed() const { return !Active; }
+#endif
     float GetFadeInOutAlpha() const;
     void Close() { Opening = false; Closing = true; }
 #endif

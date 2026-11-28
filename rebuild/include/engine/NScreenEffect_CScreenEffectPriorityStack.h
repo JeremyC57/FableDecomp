@@ -25,6 +25,9 @@ public:
  virtual ~CScreenEffectPriorityStack();
  void* InsertRadialBlurEntry(float,const CEnvironmentSpellEffectInterface::CRadialBlurParams&,const CEnvironmentSpellEffectInterface::CRadialBlurPositionParams&,ScreenEffectPriority);
  void ScreenFilterSetFlags(const ThingGraphicArgPassers&,void*);
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+ void* InsertScreenFilterEntry(float, const CEnvironmentSpellEffectInterface::CScreenFilterParams&, const ThingGraphicArgPassers&, ScreenEffectPriority);
+#endif
 private:
  std::list<CRadialBlurEntry> RadialParamStack[NUM_SCREEN_EFFECT_PRIORITIES];
  std::set<CStackEntry*> RadialBlurKeys;
@@ -67,6 +70,14 @@ struct CScreenEffectPriorityStack::CScreenFilterEntry : public CStackEntry {
   bool bypassReset;
  };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+ CScreenFilterEntry(long duration) : CStackEntry(duration) {}
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTER_DTOR_OWNER_PASS30
+ virtual ~CScreenFilterEntry();
+#else
+ virtual ~CScreenFilterEntry() {}
+#endif
+#endif
  CEnvironmentSpellEffectInterface::CScreenFilterParams param;
  std::map<CThing*,CThingGraphicByPassFlagState> reset;
 };

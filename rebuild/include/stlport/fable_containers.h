@@ -252,7 +252,12 @@ __forceinline void* __copy_trivial(const void* first,const void* last,void* resu
 // Inline-budget: the bool erase owner at 004676BB expands the original POD copy dispatch.
 FABLE_FORCEINLINE void* __copy_trivial(const void* first,const void* last,void* result) {
 #else
+#ifdef FABLE_RETAIL_CTHREADEDFILE_ULONG_OVERFLOW_PASS30
+// Inline-budget: the size-built growth owner expands both POD copies.
+FABLE_FORCEINLINE void* __copy_trivial(const void* first,const void* last,void* result) {
+#else
 inline void* __copy_trivial(const void* first,const void* last,void* result) {
+#endif
 #endif
 #endif
     return last==first?result:(char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
@@ -268,7 +273,12 @@ template<class Input,class Output> __declspec(noinline) Output __fastcall __copy
 #else
 template<class Input,class Output> inline Output __copy_ptrs(Input first,Input last,Output result,const __false_type&) {
 #endif
+#ifdef FABLE_RETAIL_ANIMATION_BUILDER_LONG_DISTANCE_PASS30
+    // The settled 00AB1480 random-access copy uses a signed long distance in the 00AB1F30 caller.
+    return __copy(first,last,result,random_access_iterator_tag(),(long*)0);
+#else
     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
+#endif
 }
 #if defined(FABLE_RETAIL_STLP_COPY_PTRS_FALSE_NOINLINE) && !(defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)) && defined(_MSC_VER)
 #pragma auto_inline(on)
@@ -354,7 +364,12 @@ template<class R,class B,class D> inline B __copy_backward(R first,R last,B resu
 #if defined(FABLE_RETAIL_STLP_COPY_BACKWARD_NOINLINE) && !defined(FABLE_RETAIL_STLP_PASS22_COPY_BACKWARD_FASTCALL) && defined(_MSC_VER)
 #pragma auto_inline(on)
 #endif
+#if defined(FABLE_RETAIL_THEME_FILL_HELPERS_PASS30) && defined(_MSC_VER)
+// The pair<long,float> fill-insert owner 00786020 calls the original fastcall instantiation 006B5540.
+template<class I,class O> __declspec(noinline) O FABLE_FASTCALL __copy_backward_ptrs(I first,I last,O result,const __false_type&) {
+#else
 template<class I,class O> inline O __copy_backward_ptrs(I first,I last,O result,const __false_type&) {
+#endif
     return __copy_backward(first,last,result,random_access_iterator_tag(),(typename iterator_traits<I>::difference_type*)0);
 }
 #else
@@ -642,6 +657,17 @@ template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,cons
 #endif
 #endif
 // _alloc.h (malloc-based allocator)
+#if defined(FABLE_RETAIL_STLP_MICROTHREAD_MALLOC_PASS30) && !defined(FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE)
+// STLport 4.6.2 _alloc.h gives the class, method and local names.
+// The allocation at 00A44B75 uses the malloc result directly.
+template<int __inst> class __malloc_alloc {
+public:
+    static void* allocate(size_t __n) {
+        void* __result = malloc(__n);
+        return __result;
+    }
+};
+#endif
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
 // Per-TU opt-in (row 0x00D30030): STLport's allocator<T>::deallocate forwards to __sgi_alloc = __malloc_alloc<0>::deallocate,
 // whose body is `free(p)` (stl/_alloc.h); the extra inline layer is invisible in /O2 code but adds to the caller size VC7.1's
@@ -672,11 +698,17 @@ public:
     // inliner scores later sites with.
     _Tp* allocate(size_t n,const void* =0) { return n != 0 ? (_Tp*)__malloc_alloc_allocate<0>::allocate(n * sizeof(_Tp)) : 0; }
 #else
+#if defined(FABLE_RETAIL_STLP_MICROTHREAD_MALLOC_PASS30) && !defined(FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE)
+    _Tp* allocate(size_t __n, const void* = 0) {
+        return __n != 0 ? (_Tp*)__malloc_alloc<0>::allocate(__n * sizeof(_Tp)) : 0;
+    }
+#else
 #if defined(FABLE_RETAIL_QUICK_MENU_PAIR_ALLOCATE_PASS27)
 // Inline-budget: native 0059400C expands allocation, including the zero-length test and malloc.
     FABLE_FORCEINLINE _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
 #else
     _Tp* allocate(size_t n,const void* =0) { return n?(_Tp*)malloc(n*sizeof(_Tp)):0; }
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE
@@ -777,6 +809,31 @@ protected:
     _Tp* _M_finish;
     _STLP_alloc_proxy<_Tp*,_Tp,_Alloc> _M_end_of_storage;
 };
+#if defined(FABLE_RETAIL_STRIPIFIER_VERTEX_MAPS_PASS30) || defined(FABLE_RETAIL_PALETTE_VECTOR_BASE_SIZE_PASS30)
+// Fidelity: scaffolding, not retail. 005D82F3 is the 52-byte /Os allocator owner.
+// The pragma block ends with optimize("", on). Use the original inline allocation.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+template<> inline _Vector_base<long,allocator<long> >::_Vector_base(size_t n,const allocator<long>& a)
+        : _M_start(0), _M_finish(0), _M_end_of_storage(a,0) {
+        _M_start=_M_end_of_storage.allocate(n);
+        _M_finish=_M_start;
+        _M_end_of_storage._M_data=_M_start+n;
+    }
+#if defined(FABLE_RETAIL_PALETTE_VECTOR_BASE_SIZE_PASS30)
+// Fidelity: scaffolding, not retail. 00450E3A uses the same 52-byte /Os body.
+template<> inline _Vector_base<float,allocator<float> >::_Vector_base(size_t n,const allocator<float>& a)
+        : _M_start(0), _M_finish(0), _M_end_of_storage(a,0) {
+        _M_start=_M_end_of_storage.allocate(n);
+        _M_finish=_M_start;
+        _M_end_of_storage._M_data=_M_start+n;
+    }
+#endif
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
 template<class _Tp, class _Alloc=allocator<_Tp> >
 class vector : public _Vector_base<_Tp,_Alloc> {
 public:
@@ -1130,6 +1187,10 @@ public:
     // vector<pair<long, float> >::clear 0x006B5B50 (landed; call at 0x006B3FDA) instead of expanding erase(begin(), end()).
     void clear();
 #else
+#ifdef FABLE_RETAIL_OCCLUSION_HANDLE_CLEAR_PASS30
+    // Inline-budget: 00B91140 expands clear with its retail POD memmove arm.
+    FABLE_FORCEINLINE
+#endif
     void clear() { erase(begin(),end()); }
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22
@@ -1165,7 +1226,10 @@ public:
 #endif
 #endif
 #endif
-#ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#if defined(FABLE_RETAIL_PALETTE_BUILD_PASS30)
+    // Inline-budget: retail 00888A60 expands the original one-argument STLport wrapper.
+    FABLE_FORCEINLINE void resize(size_type n) { resize(n,_Tp()); }
+#elif defined(FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL)
     // Retail opt-in (Codex 2026-11-09): native00443f90 is the one-argument
     // vector<CEnginePrimitiveHandle>::resize called by00651293.
     void resize(size_type n);
@@ -1281,10 +1345,20 @@ template<class _Tp,class _Alloc> vector<_Tp,_Alloc>& vector<_Tp,_Alloc>::operato
             this->_M_start=tmp;
             this->_M_end_of_storage._M_data=this->_M_start+xlen;
         } else if(size()>=xlen) {
+#ifdef FABLE_RETAIL_PALETTE_MUTABLE_VECTOR_COPY_PASS30
+            // In 00889F00 these ranges use the original mutable iterator instance at 00889950.
+            _Tp* i=__copy_ptrs(x._M_start,x._M_finish,this->_M_start,_IsPODType());
+#else
             _Tp* i=__copy_ptrs((const _Tp*)x._M_start+0,(const _Tp*)x._M_finish+0,(_Tp*)this->_M_start,_IsPODType());
+#endif
             _Destroy(i,this->_M_finish);
         } else {
+#ifdef FABLE_RETAIL_PALETTE_MUTABLE_VECTOR_COPY_PASS30
+            // In 00889F00 these ranges use the original mutable iterator instance at 00889950.
+            __copy_ptrs(x._M_start,x._M_start+size(),this->_M_start,_IsPODType());
+#else
             __copy_ptrs((const _Tp*)x._M_start,(const _Tp*)x._M_start+size(),(_Tp*)this->_M_start,_IsPODType());
+#endif
             __uninitialized_copy((const _Tp*)x._M_start+size(),(const _Tp*)x._M_finish+0,this->_M_finish,_IsPODType());
         }
         this->_M_finish=this->_M_start+xlen;
@@ -1334,6 +1408,45 @@ template<class _Tp,class _Alloc> FABLE_STLP_OVERFLOW_OUTOFLINE void vector<_Tp,_
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
 #endif
+#endif
+#ifdef FABLE_RETAIL_CTHREADEDFILE_ULONG_OVERFLOW_PASS30
+// Native vector<unsigned long> growth owner uses the size-optimised STLport body.
+#ifdef _MSC_VER
+#pragma optimize("y",off)
+#pragma optimize("s",on)
+#endif
+// Inline-budget: the owner expands the unsigned-long fill loop.
+template<> FABLE_FORCEINLINE unsigned long* fill_n<unsigned long*,unsigned int,unsigned long>(unsigned long* first,unsigned int n,const unsigned long& x) { for(;n>0;--n,++first) *first=x;return first; }
+#ifdef _MSC_VER
+#pragma auto_inline(off)
+#endif
+template<> inline void vector<unsigned long>::_M_insert_overflow(iterator position,const unsigned long& x,const __true_type&,size_type fillLength,bool atEnd) {
+    const size_type oldSize=size();
+    const size_type len=oldSize+(max)(oldSize,fillLength);
+    iterator newStart=this->_M_end_of_storage.allocate(len);
+    iterator newFinish=static_cast<iterator>(__copy_trivial(this->_M_start,position,newStart));
+    newFinish=fill_n(newFinish,fillLength,x);
+    if(!atEnd) newFinish=static_cast<iterator>(__copy_trivial(position,this->_M_finish,newFinish));
+    _M_clear();
+    _M_set(newStart,newFinish,newStart+len);
+}
+#ifdef _MSC_VER
+#pragma auto_inline(on)
+#pragma optimize("",on)
+#endif
+#endif
+#if defined(FABLE_RETAIL_OCCLUSION_HANDLE_CLEAR_PASS30) && defined(_MSC_VER)
+// Inline-budget: 0046496F emits the same range erase in size/frame mode.
+#pragma optimize("s",on)
+#pragma optimize("y",off)
+template<> inline unsigned long* vector<unsigned long>::erase(iterator first,iterator last)
+{
+    iterator result=__copy_ptrs(last,this->_M_finish,first,_IsPODType());
+    _Destroy(result,this->_M_finish);
+    this->_M_finish=result;
+    return first;
+}
+#pragma optimize("",on)
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESERVE
 // Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): STLport 4.6 stl/_vector.c reserve, the body the
@@ -1403,6 +1516,32 @@ template<class I, class N> inline void advance(I& it, N n) {
 template<class I, class N> inline void advance(I&, N);
 #endif
 #endif
+#ifdef FABLE_RETAIL_LANDSCAPE_INLINE_COPIES_PASS30
+// Fidelity: the ordinary STLport unsigned-long methods. Keep the bound size-optimized
+// copies at 0046496F and 00464931 when they also expand in the landscape renderer.
+#if defined(_MSC_VER) && !defined(__clang__)
+#pragma optimize("s", on)
+#endif
+template<> inline unsigned long* vector<unsigned long>::erase(unsigned long* first, unsigned long* last)
+{
+    iterator result = __copy_ptrs(last, this->_M_finish, first, _IsPODType());
+    _Destroy(result, this->_M_finish);
+    this->_M_finish = result;
+    return first;
+}
+template<> inline void vector<unsigned long>::resize(size_type n, const unsigned long& value)
+{
+    if (n < size())
+        erase(begin() + n, end());
+    else
+        insert(end(), n - size(), value);
+}
+#if defined(_MSC_VER) && !defined(__clang__)
+#pragma optimize("", on)
+#endif
+#endif
+#ifndef FABLE_RETAIL_STLP_VECTOR_FILL_INSERT_DECL_ONLY
+// The 00B68070 TU calls the separately emitted unsigned-long instance at 004649A3.
 template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterator position,size_type n,const _Tp& x) {
     if(n!=0) {
         if(size_type(this->_M_end_of_storage._M_data-this->_M_finish)>=n) {
@@ -1432,6 +1571,7 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterato
         } else _M_insert_overflow(position,x,_IsPODType(),n,false);
     }
 }
+#endif
 #endif
 // _pair.h
 template<class _T1,class _T2> struct pair {
@@ -1802,6 +1942,10 @@ public:
     // the list's nor the value's address.
     FABLE_STLP_NOINLINE iterator insert(iterator position,const _Tp& x) {
 #else
+#ifdef FABLE_RETAIL_BUY_FROM_SELLER_LIST_INSERT_PASS30
+    // Inline-budget: 004BA4E0 expands insert in the 73-byte push_back of a CIntelligentPointer<CThing>.
+    FABLE_FORCEINLINE
+#endif
     iterator insert(iterator position,const _Tp& x) {
 #endif
         _List_node<_Tp>* tmp=_M_create_node(x);
@@ -2055,9 +2199,16 @@ template<> inline size_t list<CIntelligentPointer<CThingAICreature> >::size() co
 template<size_t _Nw> struct _Base_bitset {
     typedef unsigned long _WordT;
     _WordT _M_w[_Nw];
+#if defined(FABLE_RETAIL_MINIMAP_REGION_EXIT_MARKERS_PASS30) && defined(_MSC_VER)
+    // STLport 4.6.1 _bitset.h specifies _STLP_CALL (__cdecl) on these three static members.
+    static size_t __cdecl _S_whichword(size_t n) { return n/(8*sizeof(_WordT)); }
+    static size_t __cdecl _S_whichbit(size_t n) { return n%(8*sizeof(_WordT)); }
+    static _WordT __cdecl _S_maskbit(size_t n) { return _WordT(1)<<_S_whichbit(n); }
+#else
     static size_t _S_whichword(size_t n) { return n/(8*sizeof(_WordT)); }
     static size_t _S_whichbit(size_t n) { return n%(8*sizeof(_WordT)); }
     static _WordT _S_maskbit(size_t n) { return _WordT(1)<<_S_whichbit(n); }
+#endif
     _WordT _M_getword(size_t n) const { return _M_w[_S_whichword(n)]; }
 #ifdef FABLE_RETAIL_STLP_BITSET_INDEX
     _WordT& _M_getword(size_t n) { return _M_w[_S_whichword(n)]; }
@@ -2740,6 +2891,54 @@ void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIt
         __insertion_sort(__first,__last,__comp);
 }
 #endif
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+// The original float storage and fill constructors use the size-optimised native owners.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+template<> FABLE_FORCEINLINE float* allocator<float>::allocate(size_t n,const void*)
+{
+    return n ? static_cast<float*>(malloc(n * sizeof(float))) : 0;
+}
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+_Vector_base<float,allocator<float> >::_Vector_base(size_t n,const allocator<float>& a)
+    : _M_start(0), _M_finish(0), _M_end_of_storage(a,0)
+{
+    _M_start = _M_end_of_storage.allocate(n);
+    _M_finish = _M_start;
+    _M_end_of_storage._M_data = _M_start + n;
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+float* FABLE_FASTCALL fill_n(float* first,unsigned int n,const float& x)
+{
+    for (; n > 0; --n, ++first) *first = x;
+    return first;
+}
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+vector<float,allocator<float> >::vector(size_type n,const float& x,const allocator<float>& a)
+    : _Vector_base<float,allocator<float> >(n,a)
+{
+    _M_finish = uninitialized_fill_n(_M_start,n,x);
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
 #ifdef FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY
 // NF214 opt-in (2026-11-21, q6333 / q6342; rows 0x007E4B60 CTCCreditsUI::Activate, 0x006116E0 CTCInventoryMap::OpenInventory).
 // Fidelity: scaffolding, not retail. With FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY those TUs compile
@@ -2782,6 +2981,31 @@ inline _Vector_base<bool, allocator<bool> >::_Vector_base(size_t n, const alloca
     _M_end_of_storage._M_data = _M_start + n;
 }
 
+#ifdef FABLE_RETAIL_VERTEX_BLOCK_BOOL_FILL_PASS30
+// Inline-budget: the size-built 00451583 owner calls the 46-byte vector base constructor
+// and expands the vendor fill chain. Forced bool dispatch keeps the caller's existing expansion.
+template<> FABLE_FORCEINLINE bool* fill_n<bool*,size_t,bool>(bool* first,size_t n,const bool& x)
+{
+    for (; n>0; --n,++first)
+        *first=x;
+    return first;
+}
+template<> FABLE_FORCEINLINE bool* __uninitialized_fill_n<bool*,size_t,bool>(bool* first,size_t n,const bool& x,const __true_type&)
+{
+    return std::fill_n(first,n,x);
+}
+template<> FABLE_FORCEINLINE bool* uninitialized_fill_n<bool*,size_t,bool>(bool* first,size_t n,const bool& x)
+{
+    return __uninitialized_fill_n(first,n,x,__true_type());
+}
+#pragma optimize("y", off)
+template<> inline vector<bool, allocator<bool> >::vector(size_type n,const bool& value,const allocator<bool>& a)
+    : _Vector_base<bool, allocator<bool> >(n,a)
+{
+    this->_M_finish=uninitialized_fill_n(this->_M_start,n,value);
+}
+#pragma optimize("y", on)
+#endif
 template<>
 FABLE_FORCEINLINE bool* __copy_ptrs<bool*, bool*>(bool* first, bool* last, bool* result, const __true_type&)
 {
@@ -2883,6 +3107,57 @@ template<> inline void vector<long>::_M_insert_overflow(iterator position,const 
     _M_clear();
     _M_set(newStart,newFinish,newStart+len);
 }
+#endif
+#ifdef FABLE_RETAIL_STRIPIFIER_VERTEX_MAPS_PASS30
+// Inline-budget: the CArray<unsigned short> constructor folds to the 90-byte vector constructor at 00a87090.
+template<> FABLE_FORCEINLINE vector<unsigned short>::vector(const vector<unsigned short>& x)
+    : _Vector_base<unsigned short,allocator<unsigned short> >(x.size(),x.get_allocator()) {
+    this->_M_finish = __uninitialized_copy((const unsigned short*)x._M_start,
+        (const unsigned short*)x._M_finish, this->_M_start, __true_type());
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_LONG_OVERFLOW_PASS30
+// Inline-budget: retail calls the long overflow and expands the short one.
+#ifdef _MSC_VER
+#pragma auto_inline(off)
+#endif
+template<> inline void vector<long>::_M_insert_overflow(iterator position,const long& x,const __true_type&,size_type fillLength,bool atEnd) {
+    const size_type oldSize=size();
+    const size_type len=oldSize+(max)(oldSize,fillLength);
+    long* newStart=this->_M_end_of_storage.allocate(len);
+    long* newFinish=(long*)__copy_trivial(this->_M_start,position,newStart);
+    newFinish=fill_n(newFinish,fillLength,x);
+    if(!atEnd) newFinish=(long*)__copy_trivial(position,this->_M_finish,newFinish);
+    _M_clear();
+    _M_set(newStart,newFinish,newStart+len);
+}
+#ifdef _MSC_VER
+#pragma auto_inline(on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_STRIPIFIER_VERTEX_MAPS_PASS30
+// Inline-budget: CArray<unsigned short>'s generated assignment expands vector assignment at the folded owner.
+template<> FABLE_FORCEINLINE vector<unsigned short>& vector<unsigned short>::operator=(const vector<unsigned short>& x) {
+    typedef unsigned short _Tp;
+    if(&x!=this) {
+        const size_type xlen=x.size();
+        if(xlen>capacity()) {
+            _Tp* tmp=_M_allocate_and_copy(xlen,(const _Tp*)x._M_start+0,(const _Tp*)x._M_finish+0);
+            _M_clear();
+            this->_M_start=tmp;
+            this->_M_end_of_storage._M_data=this->_M_start+xlen;
+        } else if(size()>=xlen) {
+            _Tp* i=__copy_ptrs((const _Tp*)x._M_start+0,(const _Tp*)x._M_finish+0,(_Tp*)this->_M_start,_IsPODType());
+            _Destroy(i,this->_M_finish);
+        } else {
+            __copy_ptrs((const _Tp*)x._M_start,(const _Tp*)x._M_start+size(),(_Tp*)this->_M_start,_IsPODType());
+            __uninitialized_copy((const _Tp*)x._M_start+size(),(const _Tp*)x._M_finish+0,this->_M_finish,_IsPODType());
+        }
+        this->_M_finish=this->_M_start+xlen;
+    }
+    return *this;
+}
+template<> vector<long>& vector<long>::operator=(const vector<long>&);
 #endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_LONG_PUSHBACK_OWNER_PASS26
 // The 00485ff3 owner uses a frame pointer and optimizes for size. Preserve the
@@ -3065,4 +3340,96 @@ template<> FABLE_FORCEINLINE void vector<unsigned char>::resize(size_type n) { r
 #endif
 }
 #endif
+#ifdef FABLE_RETAIL_CUTSCENE_STRING_VECTOR_DESTRUCTION_PASS30
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline vector<CCharString>::~vector()
+{
+    _Destroy(this->_M_start, this->_M_finish);
+}
+}
+#if defined(_MSC_VER)
+#pragma optimize("s", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_FLOAT_OVERFLOW_PASS30
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline void vector<float>::_M_insert_overflow(iterator position,const float& x,const __true_type&,size_type fillLength,bool atEnd) {
+    const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
+    float* newStart=this->_M_end_of_storage.allocate(len);
+    float* newFinish=(float*)__copy_trivial(this->_M_start,position,newStart);
+    newFinish=fill_n(newFinish,fillLength,x);
+    if(!atEnd) newFinish=(float*)__copy_trivial(position,this->_M_finish,newFinish);
+    _M_clear();_M_set(newStart,newFinish,newStart+len);
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("s", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CUTSCENE_FLOAT_VECTOR_APPEND_PASS30
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline void vector<float>::push_back(const float& x)
+{
+    if (this->_M_finish != this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish, x);
+        ++this->_M_finish;
+    } else {
+        _M_insert_overflow(this->_M_finish, x, _IsPODType(), 1, true);
+    }
+}
+}
+#if defined(_MSC_VER)
+#pragma optimize("s", on)
+#endif
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_STRING_OVERFLOW_PASS30
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline void vector<CCharString>::_M_insert_overflow(iterator position,const CCharString& x,const __false_type&,size_type fillLength,bool atEnd) {
+    const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
+    CCharString* newStart=this->_M_end_of_storage.allocate(len);CCharString* newFinish=newStart;
+    newFinish=__uninitialized_copy(this->_M_start,position,newStart,__false_type());
+    if(fillLength==1) {_Construct(newFinish,x);++newFinish;}
+    else newFinish=__uninitialized_fill_n(newFinish,fillLength,x,__false_type());
+    if(!atEnd) newFinish=__uninitialized_copy(position,this->_M_finish,newFinish,__false_type());
+    _M_clear();_M_set(newStart,newFinish,newStart+len);
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("s", on)
+#endif
+#endif
+
+#ifdef FABLE_RETAIL_CUTSCENE_STRING_APPEND_PASS30
+#ifdef _MSC_VER
+#pragma optimize("", on)
+#endif
+namespace std {
+template<> inline void vector<CCharString>::push_back(const CCharString& x)
+{
+    if (this->_M_finish != this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish, x);
+        ++this->_M_finish;
+    } else {
+        _M_insert_overflow(this->_M_finish, x, _IsPODType(), 1, true);
+    }
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("s", on)
+#endif
+#endif
+
 #endif

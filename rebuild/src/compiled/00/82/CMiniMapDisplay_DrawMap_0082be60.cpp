@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?DrawMap@CMiniMapDisplay@@QAEXAAVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z
 // CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front) -- draw the minimap sprite (switching the prison-courtyard map on the hero's height and the Headsman's Hill half on its y), then its markers
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -82,7 +84,10 @@ struct CMinimapNode {                              // map<CCharString, long> nod
     CCharString   Name;                            // +0x10
     long          Graphic;                         // +0x14
 };
-struct CMinimapMap { CMinimapNode* Find(const CCharString& name); };   // 0x0042B467
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
+struct CMinimapMap { };   // 0x0042B467
 class CPlayerGuiDef { public:
     unsigned char _pad00[0x94c];
     CMinimapMap   Minimaps;                        // +0x94C
@@ -117,7 +122,7 @@ void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& 
         CMinimapNode* node;
         {
             CCharString name("MINIMAP_PRISONCOURTYARD2", -1);
-            node = def->Minimaps.Find(name);
+            node = reinterpret_cast<CMinimapNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&def->Minimaps)->find(name)._M_node);
         }
         MiniMapGraphic = node->Graphic;
         MiniMapIsPrisonCourtyard1 = false;
@@ -126,7 +131,7 @@ void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& 
         CMinimapNode* node;
         {
             CCharString name("MINIMAP_PRISONCOURTYARD1", -1);
-            node = def->Minimaps.Find(name);
+            node = reinterpret_cast<CMinimapNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&def->Minimaps)->find(name)._M_node);
         }
         MiniMapGraphic = node->Graphic;
         MiniMapIsPrisonCourtyard1 = true;

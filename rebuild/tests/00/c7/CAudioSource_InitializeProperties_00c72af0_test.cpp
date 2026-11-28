@@ -4,7 +4,6 @@
 #include <cstring>
 #include <cstdlib>
 #ifndef _MSC_VER
-#define __forceinline inline
 #define __declspec(x)
 #define __fastcall
 #define __stdcall

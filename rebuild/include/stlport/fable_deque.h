@@ -114,10 +114,20 @@ public:
  typedef T value_type;typedef size_t size_type;typedef T& reference;typedef const T& const_reference;
 #ifdef FABLE_RETAIL_STLP_DEQUE_PASS22_POP
  bool empty()const{return this->_M_finish._M_cur==this->_M_start._M_cur;}
+#ifdef FABLE_RETAIL_GUILDSEAL_DEQUE_POP_PASS30
+ void _M_pop_front_aux();
+ void pop_front() {
+  if (this->_M_start._M_cur != this->_M_start._M_last - 1) {
+   this->_M_start._M_cur->value_type::~value_type();
+   ++this->_M_start._M_cur;
+  } else _M_pop_front_aux();
+ }
+#else
  void pop_front(){
   if(this->_M_start._M_cur!=this->_M_start._M_last-1){_Destroy(this->_M_start._M_cur);++this->_M_start._M_cur;}
   else {_Destroy(this->_M_start._M_cur);this->_M_map_size.deallocate(this->_M_start._M_first,this->buffer_size());this->_M_start._M_set_node(this->_M_start._M_node+1);this->_M_start._M_cur=this->_M_start._M_first;}
  } // STLport4.6 _deque.h / _deque.c, expanded in0040C790
+#endif
 #endif
 #if defined(FABLE_RETAIL_STLP_STACK_EMPTY) && !defined(FABLE_RETAIL_STLP_DEQUE_PASS22_POP)
  // NF86 per-TU opt-in (with stack::empty below): STLport 4.6 _deque.h `bool empty() const { return _M_finish == _M_start; }`, inline
@@ -233,6 +243,9 @@ template<class T,class A> void deque<T,A>::_M_push_back_aux_v(const value_type& 
 // sequence c), push only: `void push(const value_type& __x) { c.push_back(__x); }`.
 template<class T,class Sequence=deque<T> >class queue {
 public:
+#ifdef FABLE_RETAIL_DISPLAYNEXTMESSAGE_PASS30
+ typename Sequence::reference front(){ return c.front(); }
+#endif
  typedef typename Sequence::value_type value_type;
 #ifdef FABLE_RETAIL_STLP_DEQUE_PASS22_POP
  bool empty()const{return c.empty();}

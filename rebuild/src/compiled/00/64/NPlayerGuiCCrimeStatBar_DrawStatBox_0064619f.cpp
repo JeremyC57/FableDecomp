@@ -1,3 +1,6 @@
+#define FABLE_RETAIL_C2DBOXF_CLOCK_CORNERS_OWNER_PASS30
+#define FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+#define FABLE_RETAIL_CRGBCOLOUR_ORIGINAL_COPY_FORCEINLINE_PASS26
 // NPlayerGui::CCrimeStatBar::DrawStatBox -- draw the crime clock and icon above its stat box.
 // Retail: 0064619f,509 bytes,thiscall.
 // Flags: /O1 /Oy-

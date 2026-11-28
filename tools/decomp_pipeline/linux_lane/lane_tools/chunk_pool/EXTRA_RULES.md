@@ -627,3 +627,7 @@ approximation, not a count).
    Unchanged: a `fix:` batch (the test needs its own definition of the callee to link). Changed: an Option S unit with the owner, else
    booked as debt.
 4. **Codex:** the pass 30 brief takes a rule 7 amendment now (`pending/2026-11-27_codex_pass30/RULE7_AMENDMENT.md`).
+
+**Codex pass 30 claimed approvals (2026-11-28, advisor decision, owner delegated).** A claimed owner approval in a hand-back is
+checked, not trusted: each row is graded, and portability findings that reproduce at HEAD (inherited header asserts, `_stricmp`)
+do not block. Landed: 0x004014A0 (scaffolding comment), 0x005D9B90, 0x005933C8, the 3 particle units. Held: 0x00CBFB7D (DIFFER).

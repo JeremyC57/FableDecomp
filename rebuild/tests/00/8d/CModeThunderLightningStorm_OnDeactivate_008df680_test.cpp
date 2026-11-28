@@ -115,7 +115,7 @@ struct CModeThunderLightningStorm : CModeStandBase {
 class CTCSoundPlayer { public:
     void StopAttachedSound(unsigned long); // 0x0066ADD0
 };
-extern long g_InvalidSoundHandle_0129D25C;
+extern const unsigned long INVALID_SAMPLE_ID;
 
 template<class T> static void KillLive(CIntelligentPointer<T>& item)
 {
@@ -149,10 +149,10 @@ void CModeThunderLightningStorm::OnDeactivate()
         ParentThing->RemoveTC(0xee);
 
     long sound=LoopingSound;
-    if (sound != g_InvalidSoundHandle_0129D25C) {
+    if (sound != INVALID_SAMPLE_ID) {
         if (ParentThing->HasTC(0x10))
             ParentThing->GetTC(0x10)->StopAttachedSound(sound);
-        LoopingSound = g_InvalidSoundHandle_0129D25C;
+        LoopingSound = INVALID_SAMPLE_ID;
     }
 
     HitThings.clear();
@@ -167,7 +167,7 @@ void CModeThunderLightningStorm::OnDeactivate()
 
 // ---- end source ----
 
-long g_InvalidSoundHandle_0129D25C = -1;
+extern const unsigned long INVALID_SAMPLE_ID = -1;
 static int calls[8];
 static int setItemCalls;static int actionDestroyed,stringDestroyed,baseCleanupOrdered;
 static CTCSoundPlayer soundPlayer;

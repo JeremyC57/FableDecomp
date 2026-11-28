@@ -53,6 +53,32 @@ public:
     class CSpawnNewHobbe;                                                // Alloc 0x00D9CE80
     class CQ_HobbeToothWhisper;                                          // Alloc 0x00D9CF60
 };
+#ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_ORCHARD_FARMER
+// Both original class layouts and the retail 28-byte entity allocation at 00D9C560.
+class CQ_HobbeToothContestScript::COrchardFarmFarmer : public CEntityScriptBase {
+public:
+    typedef CQ_HobbeToothContestScript TParentClass;
+#ifdef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(
+        CQ_HobbeToothContestScript& parent, CScriptDataBase* data, const CScriptThing& me)
+    {
+        return CCountedPointer<CEntityScriptBase>(new COrchardFarmFarmer(parent, data, me));
+    }
+#else
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeToothContestScript&, CScriptDataBase*, const CScriptThing&);
+#endif
+    COrchardFarmFarmer(CQ_HobbeToothContestScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_HobbeToothContestScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+private:
+    virtual void Main();
+    virtual void Init();
+};
+FABLE_STATIC_ASSERT(sizeof(CQ_HobbeToothContestScript::COrchardFarmFarmer) == 0x1c);
+#endif
 #ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_CSPAWNNEWHOBBE
 // Retail opt-in (chunk 838): the nested entity script CSpawnNewHobbe (Ego_r.pdb, 0x1c: ParentClass +0x14, PMasterData +0x18,
 // struct_layouts_egor.tsv; the landed Alloc 0x00D9CE80 allocates 0x1c). Methods: Ego_r.pdb ?Main@CSpawnNewHobbe@...@EAEXXZ (private
@@ -72,9 +98,9 @@ private:
 };
 #endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeToothContestScript) == 0x68);
+FABLE_STATIC_ASSERT_AT(75, sizeof(NScript::CQ_HobbeToothContestScript) == 0x68);
 #ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_CSPAWNNEWHOBBE
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe) == 0x1c);
+FABLE_STATIC_ASSERT_AT(77, sizeof(NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe) == 0x1c);
 #endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_HOBBETOOTHCONTESTSCRIPT_H

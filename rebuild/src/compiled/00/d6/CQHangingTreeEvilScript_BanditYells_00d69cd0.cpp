@@ -1,54 +1,32 @@
-// CQ_HangingTreeEvilScript::BanditYells() -- script thread: each time a bandit has yelled, pause five seconds and clear the flag; otherwise wait a script frame; stops when the script thread is terminating
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00D69CD0, length 101 bytes.
-// Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (landed), and through the quest's game script
-// interface (+0x40): NewScriptFrame (slot 7, +0x1c), Pause(float) (slot 376, +0x5e0).
-// Layout: BanditYelledRecently +0x55 (Ego_r.pdb +0x69 - 0x14).
-// Shape: the outer `while (!terminating)` is rotated (entry test, bottom test after the frame); the inner wait loop
-// for the flag is the landed EndMission loop; the flag is cleared after the pause.
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+// Leaf: ?BanditYells@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+// Flags: /O2 /Oy /W3
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CGameScriptInterface.h"
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
+#include "engine/TRetVoid.h"
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CGameScriptInterfaceBase.h"
+#include "engine/CQ_HangingTreeEvilScript.h"
 
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#include "engine/CScriptBase.h"
-
-struct CQuestScriptBase : CScriptBase {                     // retail 0x48 bytes
-    CGameScriptInterface* GSI;                              // +0x40
-    void*                 Owner;                            // +0x44
-};
-
-struct CQ_HangingTreeEvilScript : CQuestScriptBase {
-    bool IntroCutscenePlayed;                               // +0x48
-    bool BanditsStarted;                                    // +0x49
-    bool BanditKilled;                                      // +0x4a
-    bool PartySuccessfullySetUp;                            // +0x4b
-    bool MissionSucceeded;                                  // +0x4c
-    bool MissionFailed;                                     // +0x4d
-    bool BanditsLeftRegion;                                 // +0x4e
-    bool SpawnHere;                                         // +0x4f
-    bool AtWayPoint;                                        // +0x50
-    bool SwitchingRegions;                                  // +0x51
-    bool RemoveBandits;                                     // +0x52
-    bool AllEnemiesDead;                                    // +0x53
-    bool QuestStartScreenShown;                             // +0x54
-    bool BanditYelledRecently;                              // +0x55
-    void BanditYells();
-};
-
-void CQ_HangingTreeEvilScript::BanditYells()
+void NScript::CQ_HangingTreeEvilScript::BanditYells()
 {
-    while (!IsActiveThreadTerminating()) {
+    TRetVoid _Fail_Val;
+    if (false) {} else for (;; Game.NewScriptFrame()) {
+        if (IsActiveThreadTerminating())
+            return _Fail_Val.Return();
         while (!BanditYelledRecently) {
-            GSI->NewScriptFrame();
+            Game.NewScriptFrame();
             if (IsActiveThreadTerminating())
-                return;
+                return _Fail_Val.Return();
         }
         if (IsActiveThreadTerminating())
-            return;
-        GSI->Pause(5.0f);
+            return _Fail_Val.Return();
+        Game.Pause(5.0f);
         BanditYelledRecently = false;
-        GSI->NewScriptFrame();
     }
+    if (IsActiveThreadTerminating())
+        return _Fail_Val.Return();
 }

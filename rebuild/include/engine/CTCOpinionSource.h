@@ -20,6 +20,10 @@
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
 #include "engine/EOpinionDeedType.h"
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+#include "engine/CFactionDef.h"
+#include "engine/CDefPointer.h"
+#endif
 class CTCOpinionSource : public CTCBase {
 #ifdef FABLE_RETAIL_GREETING_PASS23
 public:
@@ -33,7 +37,17 @@ public:
     bool IsReactToSelfPermitted() const { return ReactToSelfPermitted; }
     bool IsUnknownThreatSource() const { return UnknownThreatSource; }
 #endif
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+    CDefPointer<const CFactionDef> PeekRestrictToFactionAndAllies() const { return RestrictToFactionAndAllies; }
+    bool PeekRestrictToFactionIsReversed() const { return RestrictToFactionIsReversed; }
+    const bool* PeekReactionFlags() const { return ReactionFlags; }
+#endif
     bool IsAlwaysAwareOf() const { return AlwaysAwareOf; }
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+    bool PeekBypassesPersonality() const { return BypassesPersonality; }
+    bool PeekRelativeEffect() const { return RelativeEffect; }
+    const COpinionSet& PeekOpinionProduced() const { return *POpinionProduced; }
+#endif
     EOpinionDeedType PeekVirtualDeed() const { return VirtualDeed; }
     long PeekVirtualDeedID() const { return VirtualDeedID; }
 #ifdef FABLE_RETAIL_CTCOPINIONSOURCE_AWARENESS_PEEKS
@@ -55,14 +69,22 @@ private:
     bool             WitnessesWillOverrideFactionEnemy;  // +0x1a
     bool             BypassesPersonality;                // +0x1b
     bool             RelativeEffect;                     // +0x1c
+#ifdef FABLE_RETAIL_OPINION_SELECTION_PASS30
+    CDefPointer<const CFactionDef> RestrictToFactionAndAllies;
+#else
     unsigned long    RestrictToFactionAndAllies_;        // +0x20 CDefPointer<const CFactionDef> RestrictToFactionAndAllies
+#endif
     bool             RestrictToFactionIsReversed;        // +0x24
     bool             ReactionFlags[79];                  // +0x25
     bool             ReactToSelfPermitted;               // +0x74
     bool             AlwaysAwareOf;                      // +0x75
     bool             UnknownThreatSource;                // +0x76
     bool             ReactNonstopFlag;                   // +0x77
+#ifdef FABLE_RETAIL_GET_OPINIONS_PASS30
+    CCountedPointer<COpinionSet> POpinionProduced;
+#else
     unsigned long    POpinionProduced_[2];               // +0x78 CCountedPointer<COpinionSet> POpinionProduced
+#endif
     EOpinionDeedType VirtualDeed;                        // +0x80
     long             VirtualDeedID;                      // +0x84
     unsigned long    FrameToClearVirtualDeed;            // +0x88

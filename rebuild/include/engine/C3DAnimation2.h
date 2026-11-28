@@ -115,6 +115,18 @@ private:CCountedPointer<CSimpleMemoryPool> Allocator;CMovableResourceMemoryPool*
 #endif
 };
 FABLE_STATIC_ASSERT_AT(101, sizeof(C3DAnimation2)==0x7c);
+#ifdef FABLE_RETAIL_ANIMATION_KEYFRAME_FIX_POSITION_PASS30
+// Inline-budget: FableWin calls this private helper immediately after time conversion. Retail expands it.
+FABLE_FORCEINLINE void C3DAnimation2::GetKeyframeInterpolateFixPos(unsigned long bone_index, C3DKeyframe& dest, unsigned long frame, float fraction) const
+{
+    Sequences[bone_index].InlineGetKeyframeInterpolate(dest, frame, fraction);
+    if (RigidBoneMask && RigidBoneMask[bone_index])
+    {
+        dest.SetPosition(RigidBonePositions[bone_index]);
+    }
+}
+#endif
+
 #endif
 #else
 #ifndef FABLE_ENGINE_C3DANIMATION2_H

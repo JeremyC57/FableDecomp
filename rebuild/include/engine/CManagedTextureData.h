@@ -5,8 +5,25 @@
 #include "engine/CCountedPointer.h"
 class CManagedTextureOwner;class CTexture;class CVolumeTexture;
 struct IDirect3DTexture9;
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+#include "engine/CTexture.h"
+#include "boost/scoped_ptr.h"
+struct IDirect3DVolumeTexture9;
+#endif
 class CManagedTextureData : public CResource {
 public:
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+    // FableWin 03184A90 and 03184C70. Both constructors in ResizePool are expanded in retail.
+    CManagedTextureData()
+        : Width(0), Height(0), Owner(0), D3DHeader(0), Data(0), AllocSize(0), PoolIndex(0),
+          Allocated(false), Locked(false), BusyFlag(false) {}
+    void Initialise(unsigned long alloc_size, unsigned long pool_index)
+    {
+        Texture.Reset(new CTexture());
+        AllocSize = alloc_size;
+        PoolIndex = pool_index;
+    }
+#endif
 #ifdef FABLE_RETAIL_PASS22_RESOURCE_ORIGINAL_SPECIAL_MEMBERS
     CManagedTextureData();
 #endif
@@ -56,7 +73,11 @@ private:
     CCountedPointer<CVolumeTexture> VolumeTexture;
     CManagedTextureOwner* Owner;
     IDirect3DTexture9* D3DHeader;
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+    boost::scoped_ptr<IDirect3DVolumeTexture9> D3DVolumeHeader;
+#else
     unsigned char D3DVolumeHeader[4]; // boost::scoped_ptr<IDirect3DVolumeTexture9>
+#endif
     void* Data;
     unsigned long AllocSize,PoolIndex;
     bool Allocated,Locked,BusyFlag;

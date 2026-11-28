@@ -82,6 +82,13 @@ public:
 #ifdef FABLE_RETAIL_CREATOR_UPDATE_PASS29
     long GetRoughExperienceLevel() const;
 #endif
+#ifdef FABLE_RETAIL_HUD_COMBAT_MULTIPLIER_PASS30
+    // Both original PDBs and the two native HUD calls give the const long-returning signatures.
+    long GetExperienceMultiplierFallbackIndex() const;
+#ifndef FABLE_RETAIL_CTCHEROEXPERIENCE_PICKUP_MULTIPLIER
+    long GetExperiencePickUpMultiplier() const;
+#endif
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}
     const CHeroCombatDef& PeekHeroCombatDef()const{return *PHeroCombatDef;}
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_GETPHEROCOMBATDEF
@@ -106,6 +113,9 @@ public:
     // FableWin.pdb spellings): GetTrainableStatLevel 0x006D6520 (QBE), GetTrainableStatMaxLevel 0x006D6770 (QBE),
     // GetCostToUpgradeTrainableStat 0x006D67B0 (QBE), GetCategoryTrainableStatIsIn 0x006D6850 (QBE), GetStatExperience
     // 0x006D6510 (QBE), GetTrainableStatPossibleLevelUpAmount 0x006D6FA0 (QAE, the fraction by reference).
+#if defined(FABLE_RETAIL_CTCCOMBAT_ISTOBLOCK_PASS30) && !defined(FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS)
+    bool IsToAutoBlock()const;
+#endif
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS
     bool IsToAutoBlock()const;
     bool IsBlockRecoilAnimToConserveAnimationHandedness()const;

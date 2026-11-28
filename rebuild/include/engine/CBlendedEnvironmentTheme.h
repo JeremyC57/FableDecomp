@@ -6,11 +6,18 @@ class CEnvironmentDef;
 class CEnvironmentThemeDaySetDef;
 class CEnvironmentThemeDef;
 namespace NEnvironmentInternal {
+#ifdef FABLE_RETAIL_PALETTE_BUILD_PASS30
+// Both donor Build signatures use the struct key.
+struct CEnvironmentLookupTexture;
+#else
 class CEnvironmentLookupTexture;
+#endif
 class CBlendedEnvironmentTheme {
 public:
     CBlendedEnvironmentTheme();
+#ifndef FABLE_RETAIL_PALETTE_THEME_DTOR_IMPLICIT_PASS30
     ~CBlendedEnvironmentTheme();
+#endif
     void BuildFromSource(const CEnvironmentDef&,const CEnvironmentLookupTexture&,const CEnvironmentThemeDaySetDef&,const CEnvironmentThemeDef&,long);
     void BlendTextureSets(const CIDrawEnvironmentTextureSet&,const CIDrawEnvironmentTextureSet&,CIDrawEnvironmentTextureSet&,float) const;
     void Blend(CBlendedEnvironmentTheme&,const CBlendedEnvironmentTheme&,float) const;
@@ -28,7 +35,7 @@ public:
     CIDrawEnvironmentTextureSet TextureSets[3];
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NEnvironmentInternal::CBlendedEnvironmentTheme)==500);
+FABLE_STATIC_ASSERT_AT(31, sizeof(NEnvironmentInternal::CBlendedEnvironmentTheme)==500);
 #ifdef FABLE_RETAIL_BLENDED_WEIGHTED
 void NEnvironmentInternal::CBlendedEnvironmentTheme::SetAsWeightedBlendOfThemes(const CArray<CBlendedEnvironmentTheme>& themes,const CArray<float>& weights) {
     if(weights.empty() || themes.empty()) return;

@@ -11,6 +11,9 @@
 class CAppearanceModifierScalingDef;
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_HUD_STAMINA_PASS30
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CHEROSTATSDEF_STATLEVELS
 #include "engine/CAbilityTrackDef.h"
 #endif
@@ -64,7 +67,11 @@ public:
     unsigned char StatLevels[0xc];                               // +0xfc vector<CAbilityTrackDef>
 #endif
     unsigned char MaxHitPointsPerHealthLevel[0xc];               // +0x108 vector<float>
+#ifdef FABLE_RETAIL_HUD_STAMINA_PASS30
+    std::vector<long> MaxStaminaPointsPerMagicPowerLevel;        // +0x114
+#else
     unsigned char MaxStaminaPointsPerMagicPowerLevel[0xc];       // +0x114 vector<long>
+#endif
     unsigned char SoundDistanceMultiplierPerStealthLevel[0xc];   // +0x120 vector<float>
     unsigned char VisibilityMultiplierPerStealthLevel[0xc];      // +0x12c vector<float>
 #ifdef FABLE_RETAIL_CHEROSTATSDEF_ALLOC

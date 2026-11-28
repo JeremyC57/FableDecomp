@@ -1,3 +1,12 @@
-struct C00b2f740 { char pad[0x35]; unsigned char f; void M(); };
-// Leaf: ?M@C00b2f740@@QAEXXZ
-void C00b2f740::M(){ this->f = 1u; }
+// Flags: 
+// Leaf: ?StartNewScene@CEnginePrimitiveOcclusionManager@@QAEXXZ
+#define FABLE_RETAIL_ENGINE_LOADSCENE_PASS30
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER
+#define FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/CEnginePrimitiveOcclusionManager.h"
+
+void CEnginePrimitiveOcclusionManager::StartNewScene()
+{
+    NewSceneFlag = true;
+}

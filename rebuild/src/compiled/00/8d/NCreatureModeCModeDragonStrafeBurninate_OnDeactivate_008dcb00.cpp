@@ -1,63 +1,55 @@
-// NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate() -- switch the type-9 component off, end a still-active flame beam, then the flying deactivation
+// Flags: 
+// 008dcb00 NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate
 // Leaf: ?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Retail: Fable.exe (TLC, VC7.1) @ 0x008DCB00, 94 bytes (+ int3 padding), `ret`; vtable 0x01268718 slot 6.
-// Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined out-parameter GetInterface, type 9 = bit 9 of the +0x20 dword),
-//   CModeDragonStrafeBurninate::EndBeamEffect @ 0x008D7BB0 (landed; manifest "CTCKraken::EndHeadEffects" is propagated),
-//   CModeDragonFlying::OnDeactivate @ 0x008DC590 (landed, qualified).
-// Name: FableWin.pdb `?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ` (slot 6).
-// Layout (retail, the landed ctor 0x008E1580): FlameActive +0xbc; the type-9 component's flag +0x10.
-// Shape: the GetInterface result is not tested: the absent path joins with the never-written out variable (`mov eax,[esp+4]`)
-//   before the single flag store.
-class CTCBase;
-
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES
+#define FABLE_RETAIL_C3DVECTOR_NOT_EQUAL
+#define FABLE_RETAIL_CLOOKDEF
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_INTERPOLATE
+#define FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION
+#define FABLE_RETAIL_LOOK_HEAD_ANIM
+#define FABLE_RETAIL_CANIMSET_TYPE
+#define FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24
+#define FABLE_RETAIL_CANIMATETHING_MAINANIM
+#define FABLE_RETAIL_CTCANIMATIONCOMPLEX_ANIMDURATION
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
+#define FABLE_RETAIL_CTCTARGETED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_DIRECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ORIGINAL_SETPTR_PASS22
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-struct CTCType9 {                          // the type-9 component (as the landed 0x008E7B90)
-    unsigned char _pad00[0x10];
-    bool          m_active;                // +0x10
-};
-
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;             // +0x04
-    unsigned char _body[0x14];
-};
-
-namespace NCreatureMode {
-struct __declspec(novtable) CModeDragonFlyingBase : CModeBase {
-    unsigned char FlightSpline[0x14];      // +0x1c CCardinalSpline
-    float         SplinePercentageComplete;   // +0x30
-    float         LegAnimAlpha;            // +0x34
-};
-struct CModeDragonFlying : CModeDragonFlyingBase {   // retail sizeof 0x94
-    unsigned char _flying[0x94 - 0x38];
-    void OnActivate();                     // 0x008DBB30
-    virtual void OnDeactivate();           // 0x008DC590
-};
-struct CModeDragonStrafeBurninate : CModeDragonFlying {   // vtable 0x01268718
-    long          Timer;                   // +0x94
-    unsigned char PBeamWeaponEffect[8];    // +0x98 CIntelligentPointer<CThing>
-    long          LastExplodeFrame;        // +0xa0
-    float         FlameStartPos[3];        // +0xa4
-    float         FlameEndPos[3];          // +0xb0
-    bool          FlameActive;             // +0xbc
-    float         FlameStartPercentage;    // +0xc0
-    float         FlameStopPercentage;     // +0xc4
-    void EndBeamEffect();                  // 0x008D7BB0
-    void OnDeactivate();
-};
-}
+#include "engine/CTCTargeted.h"
+#include "engine/NCreatureMode_CModeDragonStrafeBurninate.h"
+#include "engine/ThingAlive.h"
 
 void NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate()
 {
-    CTCType9* tc;
-    ParentThing->GetTC(TCI_TARGETED, &tc);
-    tc->m_active = false;
+    CTCTargeted* ptc_targeted;
+    GetParentThing().GetTC(&ptc_targeted);
+    ptc_targeted->SetTargetable(false);
     if (FlameActive)
-        EndBeamEffect();
+        KillBeamEffect();
     CModeDragonFlying::OnDeactivate();
 }

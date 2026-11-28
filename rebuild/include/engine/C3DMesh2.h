@@ -1,5 +1,10 @@
 #ifndef FABLE_ENGINE_C3DMESH2_H
 #define FABLE_ENGINE_C3DMESH2_H
+#ifdef FABLE_RETAIL_MESH_ANIMATION_TREE_PASS30
+#include "engine/C3DBone2.h"
+#include "fable_string.h"
+#include "fable_assert.h"
+#endif
 #include "engine/C3DMeshMaterial.h"
 #include "engine/C3DPrimitive2.h"
 #include <stddef.h>
@@ -81,7 +86,22 @@ public:
     // ?GetBoneCount@C3DMesh2@@QBEKXZ and ?GetBone@C3DMesh2@@QBEPBVC3DBone2@@K@Z, inline (BoneCount +0x98 / Bones +0x9C read in
     // place, 0x00BD2AC3 / 0x00BD2B10; C3DBone2 is 0x3C bytes in Ego_r).
     unsigned long GetBoneCount() const { return BoneCount; }
+#ifdef FABLE_RETAIL_MESH_ANIMATION_TREE_PASS30
+    // FableWin 0293A320 bounds-checks index before indexing Bones.
+    const C3DBone2* GetBone(unsigned long index) const {
+        FABLE_RETAIL_ASSERT(index < BoneCount);
+        return &Bones[index];
+    }
+#else
     const C3DBone2* GetBone(unsigned long index) const { return &Bones[index]; }
+#endif
+#ifdef FABLE_RETAIL_MESH_ANIMATION_TREE_PASS30
+    // FableWin 0293AA90 checks the index, then constructs the result from the packed name table.
+    CCharString GetBoneName(unsigned long index) const {
+        FABLE_RETAIL_ASSERT(index < BoneCount);
+        return BoneNameData + BoneNameIndices[index];
+    }
+#endif
 #endif
 #ifdef FABLE_RETAIL_C3DMESH2_INITIALISEBONES
     // Retail opt-in (wfE8, row 0x00A8B990 C3DMesh2::InitialiseBones): Ego_r.pdb / FableWin.pdb private ?InitialiseBones@C3DMesh2@@AAE_N

@@ -14,6 +14,10 @@ public:
 #endif
     virtual ~CResourceList();
     virtual bool HandleFailedAllocation(unsigned long);
+#ifdef FABLE_RETAIL_TEXTUREPOOL_RESIZE_PASS30
+    // FableWin 031777D0 and Ego_r 00B6BE90 agree on the reference parameter.
+    void AddResource(CResource& resource);                              // 0x009FBFE0
+#endif
 #ifdef FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
     // wf22 (row 0x00A24520): Ego_r.pdb ?MakeFreeSpace@CResourceList@@QAE_NK@Z (retail 0x009FC4F0, landed). Declaration only.
     bool MakeFreeSpace(unsigned long);                                   // 0x009FC4F0

@@ -1,11 +1,38 @@
-// Null-guarded teardown: run the cleanup member, then free the object.
-// Leaf: OnDie
-// __fastcall object=ecx, no args.
-struct T { void Cleanup_00ad84d0(); };
-void operator delete(void*);   // 0x00bfe9bc
-extern "C" void __fastcall OnDie(T* p) {
-    if (p) {
-        p->Cleanup_00ad84d0();
-        operator delete(p);
-    }
-}
+// Leaf: ?DeleteData@?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@SIXPAX@Z
+// Flags: /Gr
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CARRAY_ORIGINAL_USER_SPECIAL_MEMBERS_PASS22
+#define FABLE_RETAIL_CARRAY_ORIGINAL_INDEX_BASE_PASS22
+#define FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK
+#define FABLE_RETAIL_C3DMESHFILESUBMESHCHUNK
+#define FABLE_RETAIL_C3DMESHFILEPRIMITIVECHUNK
+#define FABLE_RETAIL_C3DMESHFILEBONECHUNK_GETBONE
+#define FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_QUADRIC_CUNIQUEVERTEX
+#define FABLE_RETAIL_QUADRIC_COPTIMISEDVERTEX_GROUPS
+#define FABLE_RETAIL_QUADRIC_COPTIMISEDFACE
+#define FABLE_RETAIL_QUADRIC_COPTIMISEDEDGE
+#define FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE
+#define FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_CTOR
+#define FABLE_RETAIL_COPTIMISEDSUBMESH_PASS22
+#define FABLE_RETAIL_QUADRIC_MESH_CTOR_PASS30
+#include "engine/CArray.h"
+#include "engine/C3DMeshFileRootChunk.h"
+#include "engine/C3DMeshFile.h"
+#include "engine/C3DMeshFileSubMeshChunk.h"
+#include "engine/C3DMeshFilePrimitiveChunk.h"
+#include "engine/C3DMeshFileBoneChunk.h"
+#include "engine/QuadricOptimiserTypes.h"
+#include "engine/COptimisedPrimitive.h"
+#include "engine/COptimisedMesh.h"
+
+
+template void CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>::DeleteData(void*);

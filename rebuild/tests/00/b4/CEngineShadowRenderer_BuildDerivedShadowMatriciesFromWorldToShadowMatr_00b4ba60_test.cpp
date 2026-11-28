@@ -1,64 +1,82 @@
-// Behaviour test for CEngineShadowRenderer::BuildDerivedShadowMatriciesFromWorldToShadowMatrix @ 0x00B4BA60
-#include <cstdio>
-#include <cmath>
+// 00b4ba60 CEngineShadowRenderer::BuildDerivedShadowMatriciesFromWorldToShadowMatrix
+// Leaf: ?BuildDerivedShadowMatriciesFromWorldToShadowMatrix@CEngineShadowRenderer@@AAEXXZ
+// Flags: /O2 /Oy
+#define FABLE_RETAIL_MATRIX_POST_MULTIPLY_PASS30
+#define FABLE_RETAIL_SHADOW_TRANSFORMS_PASS30
+#define FABLE_RETAIL_MATRIX_IDENTITY_ROW_ORDER_PASS30
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_MEMBERS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESCENE
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_PACKED_VECTORS
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_CALCLOCALWORLD
+#define FABLE_RETAIL_CENGINESHADOWRENDERER_CLIPVOLUMES_PASS22
+#define FABLE_RETAIL_SPOTLIGHT_MATRIX_BUILD_PASS30
+#define FABLE_RETAIL_CMATRIX4X4_FROMMATRIX3X4
+#define FABLE_RETAIL_CMATRIX4X4_SHADOWSPACE
+#define FABLE_RETAIL_CMATRIX3X4_PRETRANSLATE_PASS23
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER
+#define FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/CEngineLightingManager.h"
+#include "engine/CEngineShadowRenderer.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
-class CMatrix4x4 { public:
-    float M[4][4];
-    void Scale(const C3DVector& s)
-    {
-        for (int i = 0; i < 4; ++i) { M[i][0] *= s.X; M[i][1] *= s.Y; M[i][2] *= s.Z; }
-    }
-    void Translate(const C3DVector& t)
-    {
-        for (int i = 0; i < 4; ++i) {
-            M[i][0] += M[i][3] * t.X; M[i][1] += M[i][3] * t.Y; M[i][2] += M[i][3] * t.Z;
-        }
-    }
-};
-struct SceneData { CMatrix4x4 W2S, HSS, TS; };
-struct Renderer {
-    SceneData* Data;
-    long Technique;
-    float UVScaleX, UVScaleY, UVScaleZ;
-    float ZBias;
-    void Build()
-    {
-        Data->HSS = Data->W2S;
-        Data->HSS.Scale(C3DVector(2.0f, -2.0f, 1.0f));
-        Data->HSS.Translate(C3DVector(-1.0f, 1.0f, 0.0f));
-        Data->TS = Data->W2S;
-        Data->TS.Scale(C3DVector(UVScaleX, UVScaleY, UVScaleZ));
-        if (Technique == 2)
-            Data->TS.Translate(C3DVector(0.0f, 0.0f, ZBias));
-    }
-};
 
-static int near_(float a, float b) { return std::fabs(a - b) < 1e-4f; }
+// The fixture provides matrix storage; operations below come from the shared retail headers.
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+struct MatrixFixture {
+    struct Matrices {
+        CMatrix4x4 WorldToShadowBufferMatrix;
+        CMatrix4x4 WorldToShadowBufferMatrixHomogenousScreenSpace;
+        CMatrix4x4 WorldToShadowBufferMatrixTextureSpace;
+    } SceneData;
+    C3DVector ShadowBufferTextureUVScaler;
+    float ColourBufferShadowTextureZBias;
+    CEngineShadowRenderer::EShadowRenderingTechnique RenderingTechnique;
+    void BuildDerivedShadowMatriciesFromWorldToShadowMatrix();
+};
+void MatrixFixture::BuildDerivedShadowMatriciesFromWorldToShadowMatrix()
+{
+    SceneData.WorldToShadowBufferMatrixHomogenousScreenSpace = SceneData.WorldToShadowBufferMatrix;
+    SceneData.WorldToShadowBufferMatrixHomogenousScreenSpace.PostScale(C3DVector(2.0f, -2.0f, 1.0f));
+    SceneData.WorldToShadowBufferMatrixHomogenousScreenSpace.PostTranslate(C3DVector(-1.0f, 1.0f, 0.0f));
+    SceneData.WorldToShadowBufferMatrixTextureSpace = SceneData.WorldToShadowBufferMatrix;
+    SceneData.WorldToShadowBufferMatrixTextureSpace.PostScale(ShadowBufferTextureUVScaler);
+    if (RenderingTechnique == CEngineShadowRenderer::SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER)
+        SceneData.WorldToShadowBufferMatrixTextureSpace.PostTranslate(C3DVector(0.0f, 0.0f, ColourBufferShadowTextureZBias));
+}
 
 int main()
 {
-    SceneData d;
-    for (int i = 0; i < 4; ++i)
-        for (int j = 0; j < 4; ++j)
-            d.W2S.M[i][j] = (float)(i * 4 + j + 1);
-    Renderer r;
-    r.Data = &d; r.Technique = 2; r.UVScaleX = 0.5f; r.UVScaleY = -0.5f; r.UVScaleZ = 1.0f; r.ZBias = 0.25f;
-    r.Build();
-    // row 1: (5,6,7,8): HSS x = 5*2 + 8*-1 = 2 ; y = 6*-2 + 8 = -4 ; z = 7 ; w = 8
-    if (!near_(d.HSS.M[1][0], 2.0f) || !near_(d.HSS.M[1][1], -4.0f) || !near_(d.HSS.M[1][2], 7.0f) || !near_(d.HSS.M[1][3], 8.0f)) {
-        std::printf("00b4ba60_TEST FAIL\n"); return 1;
+    for (int technique = 0; technique < 3; ++technique) {
+        for (int seed = -4; seed <= 4; ++seed) {
+            MatrixFixture fixture;
+            fixture.RenderingTechnique = static_cast<CEngineShadowRenderer::EShadowRenderingTechnique>(technique);
+            fixture.ShadowBufferTextureUVScaler = C3DVector(2.0f, -0.5f, 0.25f);
+            fixture.ColourBufferShadowTextureZBias = 0.125f * seed;
+            for (int row = 0; row < 4; ++row)
+                for (int col = 0; col < 4; ++col)
+                    fixture.SceneData.WorldToShadowBufferMatrix.Data[row][col] = (row * 4 + col - 5) * 0.25f * seed;
+            CMatrix4x4 before = fixture.SceneData.WorldToShadowBufferMatrix;
+            fixture.BuildDerivedShadowMatriciesFromWorldToShadowMatrix();
+            assert(memcmp(&before, &fixture.SceneData.WorldToShadowBufferMatrix, sizeof(before)) == 0);
+            for (int r = 0; r < 4; ++r) {
+                const float* old = before.Data[r];
+                const float* screen = fixture.SceneData.WorldToShadowBufferMatrixHomogenousScreenSpace.Data[r];
+                const float* tex = fixture.SceneData.WorldToShadowBufferMatrixTextureSpace.Data[r];
+                assert(screen[0] == 2 * old[0] - old[3]);
+                assert(screen[1] == -2 * old[1] + old[3]);
+                assert(screen[2] == old[2] && screen[3] == old[3]);
+                assert(tex[0] == 2 * old[0] && tex[1] == -0.5f * old[1]);
+                const float expectedZ = 0.25f * old[2] + (technique == 2 ? old[3] * fixture.ColourBufferShadowTextureZBias : 0.0f);
+                assert(tex[2] == expectedZ && tex[3] == old[3]);
+            }
+        }
     }
-    // TS row 1: x = 2.5, y = -3, z = 7 + 8*0.25 = 9
-    if (!near_(d.TS.M[1][0], 2.5f) || !near_(d.TS.M[1][1], -3.0f) || !near_(d.TS.M[1][2], 9.0f)) {
-        std::printf("00b4ba60_TEST FAIL\n"); return 1;
-    }
-    r.Technique = 1;
-    r.Build();
-    if (!near_(d.TS.M[1][2], 7.0f)) { std::printf("00b4ba60_TEST FAIL\n"); return 1; }
-    std::printf("00b4ba60_TEST PASS\n");
+    puts("00b4ba60_TEST PASS");
     return 0;
 }

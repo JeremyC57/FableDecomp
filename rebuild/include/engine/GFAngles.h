@@ -4,6 +4,21 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 class C3DVector;
+#ifdef FABLE_RETAIL_GFARCTAN_CUTSCENE_PASS30
+// FableWin's public overload and the two calls in dene_scripting_tools identify this helper.
+// Both retail SlideTeleport arms multiply the x87 result by one binary32 reciprocal.
+// Inline-budget: both arms expand this helper. Plain inline and higher caller thresholds left calls.
+FABLE_FORCEINLINE float FABLE_FASTCALL GFArcTan(double value)
+{
+#if defined(_MSC_VER) && _MSC_VER == 1310 && defined(_M_IX86) && !defined(FABLE_PORTABLE)
+    // VC7.1 keeps this cast on the x87 stack and multiplies from the original float literal.
+    return (float)atan(value) * 0.15915494f;
+#else
+    // Preserve x87 precision through the multiply on targets which round an intermediate float.
+    return (float)(atan(value) * 0.15915494f);
+#endif
+}
+#endif
 #ifdef FABLE_RETAIL_SHOVE_FRAME_PASS23
 // FableWin 01ACF300, donor GetAngleXY 0273AB10; retail 007D0186..194.
 inline float FABLE_FASTCALL GFArcTan(double opposite,double adjacent) { return (float)atan2(opposite,adjacent)/6.2831855f; }
@@ -12,7 +27,11 @@ inline float FABLE_FASTCALL GFArcTan(double opposite,double adjacent) { return (
 // Original FableWin01ACF300: float atan result, division by promoted float two-pi.
 inline float FABLE_FASTCALL GFArcTan(double opposite,double adjacent){return (float)atan2(opposite,adjacent)/6.2831855f;}
 #endif
+#ifdef FABLE_RETAIL_CTCLOOK_SET_HEAD_LOOKING_PASS30
+inline bool FABLE_FASTCALL GFIsSignedAngleWithinRange(float angle, float range) { return fabs(angle) * 2.0f <= range; }
+#else
 bool FABLE_FASTCALL GFIsSignedAngleWithinRange(float,float);
+#endif
 #ifndef FABLE_RETAIL_GFANGLES_ANGLEXYTO_BODY
 float FABLE_FASTCALL GFGetAngleXYTo(const C3DVector&,const C3DVector&);
 #endif
@@ -21,7 +40,11 @@ float FABLE_FASTCALL GFGetSignedAngleDifference(float,float);
 extern float BODY_ANGULAR_ACCELERATION_XY;
 extern float BODY_ANGULAR_VELOCITY_MAX_XY;
 // Original FableWin 01a824b0 and 01acf220 bodies, debug assertions omitted.
+#ifdef FABLE_RETAIL_NAV_ROUTE_SIGN_PASS30
+long FABLE_FASTCALL GFGetSign(float value);
+#else
 inline long FABLE_FASTCALL GFGetSign(float value) { return value<0.0f ? -1 : 1; }
+#endif
 #if defined(FABLE_RETAIL_SHOVE_FRAME_PASS23) || defined(FABLE_RETAIL_JACK_STAGE1_UPDATE) || defined(FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE)
 // (FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE, wfA2 row 0x0068CB90: same body, expanded at all eight sites of that row,
 // fmod 0x00BFEB28 called inline at 0x0068CE4C..; inline-budget device, default text unchanged.)

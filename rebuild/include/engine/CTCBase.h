@@ -161,8 +161,13 @@ public:
 #if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBASE_ADDTOGLOBALTCS)
     void AddToGlobalTCs();
 #endif
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+    CThing& GetParentThing() { return ParentThing; }
+    const CThing& GetParentThing() const { return ParentThing; }
+#else
     CThing& GetParentThing() { return *ParentThing; }
     const CThing& GetParentThing() const { return *ParentThing; }
+#endif
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
     CThingManager& GetThingManager();                                    // 0x00686AE0 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ (Ego_r 0x006B1ED0)
@@ -217,12 +222,21 @@ public:
     bool IsToBeRemoved() const { return ToBeRemoved; }
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+    CThing& ParentThing; // Ego_d 0x9a89 is LF_POINTER, pointer mode 1 (lvalue reference).
+#else
     CThing* ParentThing;                                                 // +0x04
+#endif
     bool    ToBeRemoved;                                                 // +0x08
     bool    IsInGlobalUpdateTCs;                                         // +0x09
 };
 FABLE_STATIC_ASSERT_AT(203, sizeof(CTCBase) == 0xc);
+#ifdef FABLE_RETAIL_CTCENEMY_ISENEMYOF_PASS30
+// VC7.1 offsetof on a reference returns its referent. The next field bounds the stored reference.
+FABLE_STATIC_ASSERT_AT(204, offsetof(CTCBase, ToBeRemoved) - sizeof(CThing*) == 0x4);
+#else
 FABLE_STATIC_ASSERT_AT(204, offsetof(CTCBase, ParentThing) == 0x4);
+#endif
 FABLE_STATIC_ASSERT_AT(205, offsetof(CTCBase, ToBeRemoved) == 0x8);
 FABLE_STATIC_ASSERT_AT(206, offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 #if defined(FABLE_RETAIL_CTCBASE_REGISTRY_LOOKUP) && defined(FABLE_RETAIL_CTCBASE_ALLOCATETC_BODY)

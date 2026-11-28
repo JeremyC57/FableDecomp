@@ -12,6 +12,9 @@
 class C3DMeshFileTrianglesChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileTrianglesChunk();                    // 0x00ABC860
+#ifdef FABLE_RETAIL_QUADRIC_COPY_TO_PASS30
+    void AddTriangle(const C3DTriangle2& triangle); // 00ABCEC0.
+#endif
     virtual ~C3DMeshFileTrianglesChunk();
     virtual const CCharString GetChunkDescription() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);

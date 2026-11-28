@@ -246,6 +246,9 @@ public:
 #if defined(FABLE_RETAIL_CTCTALK_VOICED_GROUP_PASS24) && !defined(FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT)
     const CTextEntry* GetTextEntryFromGroup(unsigned long groupId, const CCharString& narrator, bool& found, long* lastId, bool allowPending) const;
 #endif
+#ifdef FABLE_RETAIL_SUBTITLE_GETMESSAGES_PASS30
+    enum EDataType { TYPE_TEXT = 0, TYPE_GROUP = 1, TYPE_NARRATOR_LIST = 2 };
+#endif
 #ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long groupId, bool a) const;   // 0x009C8890
 #endif

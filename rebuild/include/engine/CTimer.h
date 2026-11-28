@@ -18,10 +18,19 @@ class CGameScriptInterfaceBase;
 extern CGameScriptInterfaceBase* pDSTGame; // Ego_r and FableWin S_PUB32; native pointer 0143e8f8.
 #endif
 
+#ifdef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+#include "engine/CGameScriptInterfaceBase.h"
+extern CGameScriptInterfaceBase* pDSTGame;
+#endif
+
 class CTimer {
 public:
     CTimer();                                                            // 0x00CD4450
+#ifdef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+    ~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }                     // 0x00CD4470
+#else
     ~CTimer();                                                           // 0x00CD4470
+#endif
     CTimer& operator=(long);
     bool operator==(long) const;
     bool operator!=(long) const;
@@ -40,5 +49,39 @@ private:
 };
 FABLE_STATIC_ASSERT_AT(36, sizeof(CTimer) == 0x4);
 
+#ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_ORCHARD_FARMER
+#include "fable_compiler.h"
+#include "engine/CGameScriptInterfaceBase.h"
+extern CGameScriptInterfaceBase* pDSTGame;
+
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) {}
+#ifndef FABLE_RETAIL_ORCHARD_FARMER_INLINE_VIRTUAL
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+#endif
+// Inline-budget: both original assignments expand the SetTimer call in the farmer.
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) {
+    pDSTGame->SetTimer(TimerIndex, time);
+    return *this;
+}
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+#endif
+
 #endif // FABLE_RETAIL_NSCRIPT
+#ifdef FABLE_RETAIL_HANGING_TIMER_INLINES_PASS30
+#include "engine/CGameScriptInterfaceBase.h"
+extern CGameScriptInterfaceBase* pDSTGame;
+inline CTimer& CTimer::operator=(long time)
+{
+    pDSTGame->SetTimer(TimerIndex, time);
+    return *this;
+}
+#endif
+#ifdef FABLE_RETAIL_SCYTHE_INFO_PASS30
+#include "engine/CGameScriptInterfaceBase.h"
+extern CGameScriptInterfaceBase* pDSTGame;
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline bool CTimer::operator==(long seconds) const { return GetTime() == seconds; }
+#endif
 #endif // FABLE_ENGINE_CTIMER_H

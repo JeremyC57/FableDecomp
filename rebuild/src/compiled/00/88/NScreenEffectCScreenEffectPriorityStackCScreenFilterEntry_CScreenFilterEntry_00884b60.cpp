@@ -1,53 +1,41 @@
-// NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::~CScreenFilterEntry() -- this class's vtable, the entry list at +0x30 cleared (erase from the head's first link, re-link the head, zero the count) and its head node freed, then the CStackEntry base's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00884B60, length 83 bytes.
-// Callees: the list's erase @ 0x008834F0 (on the list; the manifest label "LTextTreeWalkThrough::BuildTreeArray" is propagated), free @ 0x00BFEA14. Vtables 0x01278060 =
-// CScreenFilterEntry, 0x01277FF0 = CStackEntry (rtti-vtables.tsv). Shape: the list address is formed with `lea esi,[edi+30h]` before the vtable store; the head node is
-// re-read from the list for each store; the base destructor's vtable store is last.
-extern "C" void __cdecl free(void* block);        // 0x00BFEA14
+// Leaf: ??1CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@UAE@XZ
+// Flags: /Gr
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTER_DTOR_OWNER_PASS30
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_BYPASSCOLORFILTER
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_FULL
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_SCREENFILTERENTRY
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_BODY
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_INSERT_FILTER_PASS30
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_STLP_MAP_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#define FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CThing.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
+#include "engine/NScreenEffect_CScreenEffectPriorityStack.h"
+#include "engine/ThingAlive.h"
+#include "engine/CMainGameComponent.h"
 
-struct SEntryNode_00884b60 {                          // the list node: +4 the first entry link, +8 next, +0xc prev
-    long             m_0;
-    SEntryNode_00884b60* m_pFirst;                    // +0x04
-    SEntryNode_00884b60* m_pNext;                     // +0x08
-    SEntryNode_00884b60* m_pPrev;                     // +0x0c
-};
-
-struct CRetailEntryList_00884b60 {                    // a retail list: head node and count; clear() erases from the head's first link and re-links the head
-    SEntryNode_00884b60* m_pHead;                     // +0x00
-    long             m_count;                      // +0x04
-    void EraseFrom(SEntryNode_00884b60* node);        // 0x008834F0
-    void clear()
-    {
-        if (m_count) {
-            EraseFrom(m_pHead->m_pFirst);
-            m_pHead->m_pNext = m_pHead;
-            m_pHead->m_pFirst = 0;
-            m_pHead->m_pPrev = m_pHead;
-            m_count = 0;
-        }
-    }
-    ~CRetailEntryList_00884b60()
-    {
-        clear();
-        if (m_pHead)
-            free(m_pHead);
-    }
-};
-
-namespace NScreenEffect {
-class CScreenEffectPriorityStack { public:
-    struct CStackEntry {                           // vtable 0x01277FF0
-        virtual void v00();
-        unsigned char _pad[0x2c];                  // +0x04 .. +0x30
-        ~CStackEntry() { }
-    };
-    struct CScreenFilterEntry : CStackEntry {      // vtable 0x01278060
-        CRetailEntryList_00884b60 m_entries;       // +0x30
-        virtual void v00();
-        ~CScreenFilterEntry();
-    };
-};
-}
 
 NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::~CScreenFilterEntry()
 {

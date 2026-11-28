@@ -74,6 +74,10 @@ public:
     CThingPhysical(unsigned long type);                                  // 0x005296B0
 #endif
     const C3DVector& PeekPos() const;
+#ifdef FABLE_RETAIL_CREATURE_NAV_FLEE_COVER_PASS30
+    // Ego_r 0x00683E20 and FableWin 0x01F20B00, native 0x006A4DD0.
+    float GetMapSizeZBelowAt(const C3DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_SAVE_CALLED
 protected:
     // Ego_r and FableWin give the protected virtual Save. Native 0x00837586 calls 0x006A4BA0.

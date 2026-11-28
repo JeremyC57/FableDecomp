@@ -13,6 +13,9 @@ public:
  virtual void AddSwInput(const int*);
  virtual void Update(const CCodaEnvironment*)=0;
  virtual void Process()=0;
+#ifdef FABLE_RETAIL_CSALSW_UPDATE_PASS30
+bool IsActive() const { return m_bActive; }
+#endif
 protected:bool m_bActive;
 };
 class CSalBaseReverb:public CSalReverb {

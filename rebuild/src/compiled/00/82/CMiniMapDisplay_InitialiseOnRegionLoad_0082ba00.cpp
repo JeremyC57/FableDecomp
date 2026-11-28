@@ -1,3 +1,5 @@
+// Flags: 
+// Leaf: ?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXPAVCRegion@@@Z
 // CMiniMapDisplay::InitialiseOnRegionLoad(CRegion* region) -- pick the region's minimap graphic, flag the prison-courtyard / execution-tree special maps, size the region minimap for the world map and remember the region
 // Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -21,11 +23,13 @@ struct SGraphicNode {                           // STLport _Rb_tree_node<pair<co
     CCharString   Key;                          // +0x10
     long          Value;                        // +0x14
 };
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 struct CCharStringLongMap {                     // STLport map<CCharString, long> (12 bytes)
     SGraphicNode* _M_header;
     unsigned long _M_node_count;
     unsigned long _M_compare;
-    SGraphicNode* find(const CCharString& key); // 0x0042B467
     SGraphicNode* end() const { return _M_header; }
 };
 class CPlayerGuiDef { public:
@@ -87,18 +91,18 @@ void CMiniMapDisplay::InitialiseOnRegionLoad(CRegion* region)
     MiniMapIsHeadsmansHillNorth = false;
     MiniMapIsHeadsmansHillSouth = false;
     CCharStringLongMap& graphics = def->MiniMapGraphics;
-    SGraphicNode* found = graphics.find(region->MiniMapGraphic);
+    SGraphicNode* found = reinterpret_cast<SGraphicNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&graphics)->find(region->MiniMapGraphic)._M_node);
     if (found != graphics.end()) {
         MiniMapGraphic = found->Value;
         SGraphicNode* courtyard;
         {
             CCharString name("MINIMAP_PRISONCOURTYARD1", -1);
-            courtyard = graphics.find(name);
+            courtyard = reinterpret_cast<SGraphicNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&graphics)->find(name)._M_node);
         }
         SGraphicNode* executionTree;
         {
             CCharString name("MINIMAP_EXECUTIONTREE", -1);
-            executionTree = graphics.find(name);
+            executionTree = reinterpret_cast<SGraphicNode*>(reinterpret_cast<const std::map<CCharString,long>*>(&graphics)->find(name)._M_node);
         }
         if (MiniMapGraphic == courtyard->Value)
             MiniMapIsPrisonCourtyard1 = true;

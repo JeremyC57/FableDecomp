@@ -1,11 +1,6 @@
-#include <cstdio>
+#include <stdio.h>
 #include <math.h>
-#pragma intrinsic(cos)
-extern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);
-int main()
-{
-    if (g_c != 1.0f) { std::printf("0121ee10_TEST FAIL\n"); return 1; }
-
-    std::printf("0121ee10_TEST PASS\n");
-    return 0;
-}
+#include "rebuild_abi.h"
+#include "engine/GFCos.h"
+namespace { const float COS_45 = (float)GFCos(45.0f/360.0f); }
+int main() { if (fabs(COS_45-0.70710678)>0.000001) return 1; puts("0121ee10_TEST PASS"); return 0; }

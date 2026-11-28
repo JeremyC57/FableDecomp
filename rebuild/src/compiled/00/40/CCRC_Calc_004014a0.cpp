@@ -1,32 +1,16 @@
-// CCRC::Calc(unsigned long seed, const void* data, unsigned long byteCount) -- table-driven reflected CRC-32 (crc0: no pre/post inversion) of a byte run folded into `seed`
-// Leaf: ?Calc@CCRC@@
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004014A0, 56 bytes. No callees; reads the 256-entry
-// table at 0x0129A168.
-//
-// Retail bytes:  push esi ; mov esi,[byteCount] ; test esi,esi ; mov eax,ecx ; je X ; xor ecx,ecx ;
-//   test esi,esi ; jbe X ; push ebx ; push edi ; L: movzx edi,byte [ecx+edx] ; mov ebx,eax ;
-//   and ebx,0xff ; xor edi,ebx ; mov ebx,[edi*4+table] ; shr eax,8 ; xor eax,ebx ; inc ecx ;
-//   cmp ecx,esi ; jb L ; pop edi ; pop ebx ; X: pop esi ; ret 4
-// __fastcall (seed in ecx, data in edx, byteCount on the stack -> `ret 4`); the manifest records
-// it as a static `Calc` with (ulong, void*, ulong). This is the engine's crc0 (docs: reflected
-// poly 0xEDB88320, seed 0, no final inversion) step. The explicit `byteCount != 0` guard is kept
-// separate from the loop test (both `test esi,esi` survive); the running value stays in eax.
-// An earlier lane already landed this body as Global_CCRC_Calc_004014a0.cpp (fable_crc.h); this
-// TU is self-contained.
-// NF479 (Codex pass 29 name fixes): the CRC-32 table at 0x0129A168 is the global ?CRC32TAB@@3QBKB (raw Ego_r / FableWin / Ego_d PDB publics).
-extern const unsigned long CRC32TAB[256];          // 0x0129A168 (was the non-const ?g_CRCTable@@3PAKA)
+// 004014a0 CCRC::Calc, reflected CRC-32 with a caller-supplied seed.
+// Leaf: ?Calc@CCRC@@SIKKPBXK@Z
+// Flags: /O2 /Oy /W3
+#define FABLE_RETAIL_CCRC_ORIGINAL_TYPED_LOOP_PASS27
+#define FABLE_RETAIL_CRC32TAB_PASS29
+#include "engine/CCRC.h"
 
-struct CCRC {
-    static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long byteCount);
-};
-
-unsigned long __fastcall CCRC::Calc(unsigned long seed, const void* data, unsigned long byteCount)
-{
-    if (byteCount != 0)
-    {
-        const unsigned char* bytes = static_cast<const unsigned char*>(data);
-        for (unsigned long index = 0; index < byteCount; ++index)
-            seed = CRC32TAB[bytes[index] ^ (seed & 0xFF)] ^ (seed >> 8);
-    }
-    return seed;
-}
+// Fidelity: scaffolding, not retail. FableWin marks CCRC::Calc inline (S_FRAMEPROC `marked inline`, main.obj and
+// Engine_Water_Sea_Generator.obj), so the body is the class-inline member in engine/CCRC.h (NF86/NF88 form).
+// The isolated VC7.1 owner build requires a reference to emit this class-inline member.
+// This private reference has no executable body.
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__((used))
+#endif
+static unsigned long (FABLE_FASTCALL &StandaloneCalcDefinition)(
+    unsigned long, const void*, unsigned long) = CCRC::Calc;

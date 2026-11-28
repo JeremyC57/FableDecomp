@@ -121,7 +121,7 @@ class CMainGameComponent { public: unsigned char _pad00[0x1c]; CPlayerManager* P
 
 // Layout: CTCTavernGame.h donor size0x108. This view exposes the primary virtual
 // slot11 and IsBetting call only; none of its donor data is accessed.
-class CTCTavernGame { public: bool IsBetting() const; virtual void v00(){};virtual void v01(){};virtual void v02(){};virtual void v03(){};virtual void v04(){};virtual void v05(){};virtual void v06(){};virtual void v07(){};virtual void v08(){};virtual void v09(){};virtual void v10(){};virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&); };
+class CTCTavernGame { public: bool IsBetting(); virtual void v00(){};virtual void v01(){};virtual void v02(){};virtual void v03(){};virtual void v04(){};virtual void v05(){};virtual void v06(){};virtual void v07(){};virtual void v08(){};virtual void v09(){};virtual void v10(){};virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&); };
 // Layout: PDB struct88222: Game+0xc and GameTable+0x10, size0x18, agree with retail.
 // GameTable is an unused CIntelligentPointer<CThing> storage region, not a raw pointer.
 class CTCGamePlayer { public: void* VTable; unsigned char ComponentState[8]; CTCTavernGame* Game; unsigned char GameTable[8]; /* CIntelligentPointer<CThing>, original +0x10, opaque to this caller */ CTCTavernGame* GetGame() const; };
@@ -302,7 +302,7 @@ const CTCMap::Entry* CTCMap::LowerBound(const long& key) const { const Entry* p=
 CPlayer& CPlayerManager::GetMainPlayer(){event(8);return player;}const CPlayer& CPlayerManager::GetMainPlayer()const{event(8);return player;}
 CThingPlayerCreature* CPlayer::GetPControlledCreature()const{event(9);return hasControlled?&creature:0;}const CThingPlayerCreature* CPlayer::PeekPControlledCreature()const{event(9);return hasControlled?&creature:0;}
 void CTCInGameMenu::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& p){event(10);checkprepare(p);}
-bool CTCTavernGame::IsBetting()const{event(11);return bettingResult!=0;}void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& p){event(12);checkprepare(p);}
+bool CTCTavernGame::IsBetting(){event(11);return bettingResult!=0;}void CTCTavernGame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& p){event(12);checkprepare(p);}
 CTCTavernGame* CTCGamePlayer::GetGame()const{event(13);return Game;}
 void CSubtitleRenderer::DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& p){checkprepare(p);event(14);}
 bool CPlayerGui::IsOpen()const{return guiOpen!=0;}void CPlayerGui::SetVWindowForDeprecatedDrawInterface(const C2DBoxF& b){event(15);if(b.Left!=0||b.Top!=0||b.Right!=65536.0f||b.Bottom!=65536.0f)event(97);}

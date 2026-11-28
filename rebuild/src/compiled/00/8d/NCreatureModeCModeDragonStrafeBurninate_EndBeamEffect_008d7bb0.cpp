@@ -1,50 +1,53 @@
-// NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect() -- if the dragon's beam-weapon effect thing is still alive, kill it and clear the pointer
-// Leaf: EndBeamEffect
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D7BB0, length 112 bytes. Catalog label "CTCKraken::EndHeadEffects" is a
-// propagated byte-twin label: CTCKraken is only 0x78 bytes (PDB) and this body works on +0x98; the only callers are
-// CModeDragonStrafeBurninate vfunc_6 @ 0x008DCB4F and CModeDragonStrafeBurninate::FrameUpdate @ 0x008DE132 (vtable 0x01268718).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x4), CThing::Kill(bool) @ 0x004C9B80, CBaseIntelligentPointer ctor
-// @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / dtor @ 0x00A01C10; CIntelligentPointer<CThing> vtable 0x01238C6C.
-// Layout: PDB CModeDragonStrafeBurninate (0xCC) has PBeamWeaponEffect at +0x9C; retail is +0x98 (4 bytes lower).
-// Shape: IS_THING_ALIVE inlined (pointer set and CThing +0x91 bit 0 "dead" clear), Kill(true), then the landed "clear through a
-// default-constructed stack CIntelligentPointer" form (0x008C99C0): ctor, vtable store, SetPItem(0), SetPItem(temp), dtor.
+// Flags: 
+// 008d7bb0 NCreatureMode::CModeDragonStrafeBurninate::KillBeamEffect
+// Leaf: ?KillBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@AAEXXZ
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODEBASE_PARENTTHING
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES
+#define FABLE_RETAIL_C3DVECTOR_NOT_EQUAL
+#define FABLE_RETAIL_CLOOKDEF
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_INTERPOLATE
+#define FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION
+#define FABLE_RETAIL_LOOK_HEAD_ANIM
+#define FABLE_RETAIL_CANIMSET_TYPE
+#define FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24
+#define FABLE_RETAIL_CANIMATETHING_MAINANIM
+#define FABLE_RETAIL_CTCANIMATIONCOMPLEX_ANIMDURATION
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
+#define FABLE_RETAIL_CTCTARGETED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_DIRECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ORIGINAL_SETPTR_PASS22
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CThing.h"
-class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject*a0);            // 0x00A01B90
-};
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
-{
-    if (((CThing*)p.GetPItem()) != 0) {
-        if (!((CThing*)p.GetPItem())->IsDead())
-            return true;
-    }
-    return false;
-}
-namespace NCreatureMode {
-struct CModeDragonStrafeBurninate {
-    virtual void v00();
-    unsigned char _pad04[0x98 - 4];
-    CBaseIntelligentPointer PBeamWeaponEffect;   // +0x98 (PDB +0x9c)
-    void EndBeamEffect();
-};
+#include "engine/CTCTargeted.h"
+#include "engine/NCreatureMode_CModeDragonStrafeBurninate.h"
+#include "engine/ThingAlive.h"
 
-void CModeDragonStrafeBurninate::EndBeamEffect()
+void NCreatureMode::CModeDragonStrafeBurninate::KillBeamEffect()
 {
     if (IS_THING_ALIVE(PBeamWeaponEffect)) {
-        ((CThing*)PBeamWeaponEffect.GetPItem())->Kill(true);
-        CIntelligentPointer none;
-        none.SetPItem(0);
-        PBeamWeaponEffect.SetPItem((CBaseObject*)(((CThing*)none.GetPItem())));
+        PBeamWeaponEffect->Kill(true);
+        PBeamWeaponEffect = (CThing*)0;
     }
-}
 }

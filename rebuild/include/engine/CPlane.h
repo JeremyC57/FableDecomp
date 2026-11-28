@@ -15,6 +15,10 @@ public:
     CPlane() { }
     CPlane(const C3DVector& a,const C3DVector& b,const C3DVector& c) { Initialise(a,b,c); }
 #endif
+#ifdef FABLE_RETAIL_PHYSICS_MESH_BASELINE_PASS30
+    bool GetIntersectionWithTriangle(const C3DVector&, const C3DVector&, const C3DVector&,
+                                     C3DVector&, C3DVector&) const;
+#endif
     C3DVector Normal;       // +0x00
     float Distance;         // +0x0C
 #ifdef FABLE_RETAIL_CPLANE_NORMAL_DISTANCE

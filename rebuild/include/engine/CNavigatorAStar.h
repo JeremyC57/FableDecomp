@@ -151,5 +151,11 @@ class CAStarStateTotalGreaterThan:public std::binary_function<const CNavigatorAS
 public:bool operator()(const CNavigatorAStar::CAStarState* a,const CNavigatorAStar::CAStarState* b) const{return a->GetTotalCost()>b->GetTotalCost();}
 };
 #endif
+#ifdef FABLE_RETAIL_NAV_RANDOM_POS_PASS30
+inline const CANavQuadTreeNode* CNavigatorAStar::GetNodeAt(const C3DVector& pos) const
+{
+    return NavigationManager.GetNodeAt(pos, (unsigned char)GetNavigationLevelAt(pos));
+}
+#endif
 FABLE_STATIC_ASSERT_AT(75, sizeof(CNavigatorAStar)==0xc4);
 #endif

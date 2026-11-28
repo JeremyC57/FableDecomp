@@ -1,283 +1,169 @@
-// Test for 0x00AB1F30 C3DAnimationBuilder::BuildBoneInfoTree: four sequence chunks (two roots, a chain of two children) build
-// four named, indexed bones with parent child lists and counts; the stale bone list is cleared first; the first root returns.
 #include <stdio.h>
-#include <string.h>
-#ifndef _MSC_VER
-#define __fastcall
-#define __declspec(x)
-#define __cdecl
-#endif
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void*);                   // +0x4
-    void* Data;                                             // +0x8
-    CCPPointerInfo(unsigned long refCount, void (__fastcall* deleteFunc)(void*), void* data)
-        : RefCount(refCount), DeleteFunc(deleteFunc), Data(data) { }
-};
-
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(T* data) : Data(data)
-    {
-        if (data)
-            Info = new CCPPointerInfo(1, DeleteData, data);
-        else
-            Info = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-    static void __fastcall DeleteData(void* data) { delete static_cast<T*>(data); }
-};
 #include <stdlib.h>
-#include <new>
+#include <string.h>
+#define FABLE_PORTABLE
+#ifndef _MSC_VER
+#include <strings.h>
+#define _stricmp strcasecmp
+#define FABLE_RETAIL_PASS23_HOST_TEST_ABI
+#define __fastcall
+#define __cdecl
+#define __stdcall
+#define __declspec(x)
+#define __int64 long long
+#endif
+#define FABLE_RETAIL_C3DANIMATIONBUILDER_BASE
+#define FABLE_RETAIL_ANIMATION_BONE_TREE_PASS30
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY_PUSHBACK
+#include "engine/C3DAnimationBuilder.h"
+#include "engine/C3DAnimationSequence.h"
+#include "fable_assert.h"
 
-class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString();                                         // 0x0099E4B0
-    CCharString(const CCharString& other);                 // 0x0099EC30
-    ~CCharString();                                        // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-namespace std {
-
-struct __false_type { __false_type() { } };
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy { _Value _M_data; };
-template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-
-#pragma auto_inline(off)
-// Same-TU bodies of the two range helpers (retail instantiates them out of line next to this body: 0x00AB1480 / 0x00AB2BD0).
-template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__declspec(noinline) _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
-                                                   const random_access_iterator_tag&, _Distance*)
-{
-    for (_Distance __n = __last - __first; __n > 0; --__n) {
-        *__result = *__first;
-        ++__first;
-        ++__result;
-    }
-    return __result;
+static void check(bool condition, const char* why) {
+    if (!condition) { fprintf(stderr, "%s\n", why); exit(1); }
 }
-template <class _ForwardIterator>
-__declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
-{
-    for (; __first != __last; ++__first)
-        _Destroy(&*__first);
-}
-#pragma auto_inline(on)
 
-template <class _Tp, class _Alloc> class vector {           // retail STLport 4.6 vector (12 bytes)
+class CSimpleMemoryPool {};
+class C3DMesh2 {};
+namespace N3DAnimationBuilder { class COutputAnimation {}; }
+class C3DAnimFileSequenceChunk {
 public:
-    typedef _Tp value_type;
-    typedef _Tp* pointer;
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    typedef unsigned long size_type;
-    _Tp* _M_start;                                          // +0x00
-    _Tp* _M_finish;                                         // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x08
-
-    vector() : _M_start(0), _M_finish(0) { _M_end_of_storage._M_data = 0; }
-    ~vector()
-    {
-        __destroy_aux(_M_start, _M_finish, __false_type());
-        if (_M_start)
-            free(_M_start);
-    }
-    iterator begin() { return _M_start; }
-    iterator end() { return _M_finish; }
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-    size_type size() const { return size_type(end() - begin()); }
-    _Tp& operator[](size_type __n) { return *(begin() + __n); }
-    const _Tp& operator[](size_type __n) const { return *(begin() + __n); }
-    void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend);   // 0x00AB3300
-    void push_back(const _Tp& __x)
-    {
-        if (_M_finish != _M_end_of_storage._M_data) {
-            _Construct(_M_finish, __x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);
-    }
-    iterator erase(iterator __first, iterator __last)
-    {
-        pointer __i = __copy(__last, _M_finish, __first, random_access_iterator_tag(), (long*)0);
-        __destroy_aux(__i, _M_finish, __false_type());
-        _M_finish = __i;
-        return __first;
-    }
-    void clear() { erase(begin(), end()); }
+    char* name;
+    long parent;
+    const CCharString GetBoneName() const { return CCharString(name ? name : ""); }
+    long GetParentIndex() const { return parent; }
 };
 
-#pragma auto_inline(off)
-// Same-TU stand-in for vector<CCountedPointer<CBoneInfo>>::_M_insert_overflow 0x00AB3300 (landed): grow the storage, copy
-// the old elements, construct x at the position; it only reads x, so VC7.1 knows the caller's pointer is not modified.
-template <class _Tp, class _Alloc>
-void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
-                                              bool __atend)
-{
-    size_type __old = size();
-    size_type __len = __old + (__old > __fill_len ? __old : __fill_len);
-    _Tp* __new_start = (_Tp*)malloc(__len * sizeof(_Tp));
-    _Tp* __new_finish = __new_start;
-    for (_Tp* __p = _M_start; __p != __position; ++__p, ++__new_finish)
-        _Construct(__new_finish, *__p);
-    for (size_type __k = 0; __k < __fill_len; ++__k, ++__new_finish)
-        _Construct(__new_finish, __x);
-    if (!__atend)
-        for (_Tp* __p = __position; __p != _M_finish; ++__p, ++__new_finish)
-            _Construct(__new_finish, *__p);
-    __destroy_aux(_M_start, _M_finish, __false_type());
-    if (_M_start)
-        free(_M_start);
-    _M_start = __new_start;
-    _M_finish = __new_finish;
-    _M_end_of_storage._M_data = __new_start + __len;
+bool C3DAnimationSequenceData::InitialiseFromFileData(const C3DAnimFileSequenceChunk& chunk, CSimpleMemoryPool&) {
+    BoneName = chunk.name; return true;
 }
-#pragma auto_inline(on)
+bool C3DAnimationSequence::InitialiseFromFileData(const C3DAnimFileSequenceChunk& chunk, C3DAnimationSequenceData* data, CSimpleMemoryPool&) {
+    Data = data; ParentIndex = (short)chunk.parent; Shared = false; return true;
+}
 
-}   // namespace std
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+C3DAnimationBuilder::C3DAnimationBuilder() {}
+typedef C3DAnimationBuilder::CBoneInfo Bone;
+static int destroyed;
+C3DAnimationBuilder::CBoneInfo::~CBoneInfo() { ++destroyed; }
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-
-class C3DAnimFileSequenceChunk { public:                   // retail: CChunkedFileSuperChunk base 0x2c bytes
-    unsigned char _pad_0x00[0x2c];
-    long          BoneIndex;                               // +0x2c
-    long          ParentIndex;                             // +0x30
-    CCharString   BoneName;                                // +0x34
-    long GetParentIndex() const { return ParentIndex; }    // ?GetParentIndex@C3DAnimFileSequenceChunk@@QBEJXZ (inline)
-    const CCharString GetBoneName() const { return BoneName; }   // ?GetBoneName@C3DAnimFileSequenceChunk@@QBE?BVCCharString@@XZ (inline)
-};
-
-class C3DAnimationBuilder { public:
-    class CBoneInfo { public:                              // retail 0x24 bytes
-        CCharString                           Name;                  // +0x00
-        unsigned long                         Index;                 // +0x04
-        unsigned long                         OriginalNoChildren;    // +0x08
-        CArray<CCountedPointer<CBoneInfo> >   Children;              // +0x0c
-        CCountedPointer<CBoneInfo>            AnimSource;            // +0x18
-        bool                                  ExtensionChild;        // +0x20
-        bool                                  ExtensionParent;       // +0x21
-        CBoneInfo() : ExtensionChild(false), ExtensionParent(false) { }
-        ~CBoneInfo();                                                // 0x00AB34C0
-    };
-    CCountedPointer<CBoneInfo> BuildBoneInfoTree(const CArray<CCountedPointer<C3DAnimFileSequenceChunk> >& sequences,
-                                                 CArray<CCountedPointer<CBoneInfo> >& bones);
-};
+struct StringRecord { const CCharString* object; const char* text; };
+static StringRecord strings[256];
+static int stringCount;
+static int findString(const CCharString* value) {
+    for (int i=0; i<stringCount; ++i) if (strings[i].object == value) return i;
+    check(false, "unregistered string"); return 0;
+}
+static void newString(const CCharString* value, const char* text) {
+    check(stringCount < 256, "string fixture capacity");
+    strings[stringCount].object = value; strings[stringCount++].text = text;
+}
+CCharString::CCharString() : PStringData(0) { newString(this, ""); }
+CCharString::CCharString(const char* text, long) : PStringData(0) { newString(this,text); }
+CCharString::CCharString(const CCharString& value) : PStringData(0) { newString(this, strings[findString(&value)].text); }
+const CCharString& CCharString::operator=(const CCharString& value) {
+    strings[findString(this)].text = strings[findString(&value)].text; return *this;
+}
+CCharString::~CCharString() { int i=findString(this); strings[i]=strings[--stringCount]; }
 
 CCountedPointer<C3DAnimationBuilder::CBoneInfo> C3DAnimationBuilder::BuildBoneInfoTree(
-    const CArray<CCountedPointer<C3DAnimFileSequenceChunk> >& sequences, CArray<CCountedPointer<CBoneInfo> >& bones)
+    const CArray<CCountedPointer<C3DAnimFileSequenceChunk> >& anim, CArray<CCountedPointer<CBoneInfo> >& bone_list)
 {
-    CArray<CCountedPointer<CBoneInfo> > roots;
-    bones.clear();
-    for (unsigned long i = 0; i < sequences.size(); ++i) {
-        CCountedPointer<CBoneInfo> bone(new CBoneInfo);
-        const C3DAnimFileSequenceChunk* sequence = sequences[i].Get();
-        bone->Name = sequence->GetBoneName();
-        bone->Index = i;
-        bone->OriginalNoChildren = 0;
-        long parent = sequence->GetParentIndex();
-        if (parent >= 0) {
-            CBoneInfo* parentBone = bones[parent].Get();
-            parentBone->Children.push_back(bone);
-            parentBone->OriginalNoChildren++;
+    CArray<CCountedPointer<CBoneInfo> > root_bones;
+    bone_list.clear();
+    for (unsigned long c_bone = 0; c_bone < anim.size(); ++c_bone) {
+        CCountedPointer<CBoneInfo> bone_info(new CBoneInfo);
+        const C3DAnimFileSequenceChunk& bone_anim = *anim[c_bone];
+        bone_info->Name = bone_anim.GetBoneName();
+        bone_info->Index = c_bone;
+        bone_info->OriginalNoChildren = 0;
+        long parent_index = bone_anim.GetParentIndex();
+        if (parent_index >= 0) {
+            FABLE_RETAIL_ASSERT(parent_index < bone_list.size());
+            CBoneInfo& parent = *bone_list[parent_index];
+            parent.Children.push_back(bone_info);
+            ++parent.OriginalNoChildren;
+        } else {
+            root_bones.push_back(bone_info);
         }
-        else
-            roots.push_back(bone);
-        bones.push_back(bone);
+        bone_list.push_back(bone_info);
     }
-    return roots[0];
+    FABLE_RETAIL_ASSERT(root_bones.size() == 1);
+    return root_bones[0];
 }
 
-// ---- test doubles -------------------------------------------------------------------------------------------------------
-class CCharStringData { public: char* m_pData; long m_length; long m_refCount; };
-static int g_liveStrings = 0;
-static CCharStringData* MakeData(const char* text)
-{
-    CCharStringData* d = (CCharStringData*)malloc(sizeof(CCharStringData));
-    d->m_length = (long)strlen(text); d->m_pData = (char*)malloc(d->m_length + 1); strcpy(d->m_pData, text); d->m_refCount = 1;
-    g_liveStrings++;
-    return d;
-}
-static void Release(CCharStringData* d) { if (d && --d->m_refCount == 0) { free(d->m_pData); free(d); g_liveStrings--; } }
-CCharString::CCharString() : PStringData(0) { }
-CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { if (PStringData) ++PStringData->m_refCount; }
-CCharString::~CCharString() { Release(PStringData); PStringData = 0; }
-const CCharString& CCharString::operator=(const CCharString& other)
-{
-    if (other.PStringData) ++other.PStringData->m_refCount;
-    Release(PStringData); PStringData = other.PStringData; return *this;
-}
-static int g_boneInfosDeleted = 0;
-C3DAnimationBuilder::CBoneInfo::~CBoneInfo() { g_boneInfosDeleted++; }
-static const char* Text(const CCharString& s) { return s.PStringData ? s.PStringData->m_pData : ""; }
-
-int main(void)
-{
-    int ok = 1;
-    typedef C3DAnimationBuilder::CBoneInfo CBoneInfo;
-    const char* names[4] = { "Root", "Spine", "Head", "Prop" };
-    long parents[4] = { -1, 0, 1, -1 };
-    CArray<CCountedPointer<C3DAnimFileSequenceChunk> > sequences;
-    for (int k = 0; k < 4; k++) {
-        C3DAnimFileSequenceChunk* chunk = new C3DAnimFileSequenceChunk;
-        memset(chunk, 0, sizeof(*chunk));
-        chunk->BoneIndex = k; chunk->ParentIndex = parents[k]; chunk->BoneName.PStringData = MakeData(names[k]);
-        sequences.push_back(CCountedPointer<C3DAnimFileSequenceChunk>(chunk));
+static char names[42][12];
+static long parents[42];
+static const char* expectedNames[42];
+static bool seen[42];
+static unsigned long expectedSize;
+static unsigned long visits;
+static void verify(const Bone& b, unsigned long index) {
+    check(index < expectedSize && !seen[index], "duplicate bone or invalid index");
+    seen[index] = true; ++visits;
+    check(b.Index == index, "bone index");
+    check(!b.ExtensionChild && !b.ExtensionParent && b.AnimSource.IsNull(), "new bone state");
+    check(strcmp(strings[findString(&b.Name)].text, expectedNames[index]) == 0, "bone name");
+    unsigned long child = 0;
+    for (unsigned long i=index+1; i<expectedSize; ++i) if (parents[i] == (long)index) {
+        check(child < b.Children.size(), "missing child");
+        verify(*b.Children[child++], i);
     }
-    CArray<CCountedPointer<CBoneInfo> > bones;
-    bones.push_back(CCountedPointer<CBoneInfo>(new CBoneInfo));     // stale entry, cleared by the call
+    check(b.OriginalNoChildren == child && b.Children.size() == child, "child count");
+}
+unsigned long C3DAnimationBuilder::BuildMeshAnimation(N3DAnimationBuilder::COutputAnimation&,
+        const C3DAnimationSequence* anim, unsigned long size, const C3DMesh2&, bool, CSimpleMemoryPool&) {
+    expectedSize = size; visits = 0;
+    memset(seen, 0, sizeof(seen));
     {
-        C3DAnimationBuilder builder;
-        CCountedPointer<CBoneInfo> root = builder.BuildBoneInfoTree(sequences, bones);
-        if (g_boneInfosDeleted != 1) ok = 0;
-        if (bones.size() != 4) ok = 0;
-        for (unsigned long i = 0; ok && i < 4; i++) {
-            CBoneInfo* bone = bones[i].Get();
-            if (!bone || strcmp(Text(bone->Name), names[i]) != 0 || bone->Index != i) ok = 0;
-            if (bone->ExtensionChild || bone->ExtensionParent || bone->AnimSource.Get() != 0) ok = 0;
+        CArray<CCountedPointer<C3DAnimFileSequenceChunk> > chunks;
+        for (unsigned long i = 0; i < size; ++i) {
+            CCountedPointer<C3DAnimFileSequenceChunk> input(new C3DAnimFileSequenceChunk);
+            input->name = (char*)expectedNames[i];
+            input->parent = parents[i];
+            chunks.push_back(input);
         }
-        if (ok) {
-            if (bones[0]->OriginalNoChildren != 1 || bones[0]->Children.size() != 1 || bones[0]->Children[0].Get() != bones[1].Get()) ok = 0;
-            if (bones[1]->OriginalNoChildren != 1 || bones[1]->Children.size() != 1 || bones[1]->Children[0].Get() != bones[2].Get()) ok = 0;
-            if (bones[2]->OriginalNoChildren != 0 || bones[2]->Children.size() != 0) ok = 0;
-            if (bones[3]->OriginalNoChildren != 0 || bones[3]->Children.size() != 0) ok = 0;
-            if (root.Get() != bones[0].Get() || root.Info != bones[0].Info) ok = 0;
-            /* bones[0]: the list and the returned root (roots was destroyed); bones[1]: the list and bone 0's child list */
-            if (bones[0].Info->RefCount != 2 || bones[1].Info->RefCount != 2 || bones[3].Info->RefCount != 1) ok = 0;
-        }
+        CArray<CCountedPointer<CBoneInfo> > bone_list;
+        CCountedPointer<CBoneInfo> old(new CBoneInfo);
+        bone_list.push_back(old);
+        CCountedPointer<CBoneInfo> root = BuildBoneInfoTree(chunks, bone_list);
+        check(!root.IsNull(), "missing root");
+        check(bone_list.size() == size && old.GetReferenceCount() == 1, "existing output cleared");
+        for (unsigned long i = 0; i < size; ++i) check(bone_list[i]->Index == i, "output index order");
+        check(root.Get() == bone_list[0].Get(), "returned root is first output bone");
+        verify(*root, 0);
+        check(visits == expectedSize, "unreachable descendant");
     }
-    bones.clear();
-    if (g_boneInfosDeleted != 5) ok = 0;
-    sequences.clear();
-    if (g_liveStrings != 0) ok = 0;
-    printf(ok ? "00ab1f30_TEST PASS\n" : "00ab1f30_TEST FAIL\n");
-    return 0;
+    return visits;
+}
+int main() {
+    C3DAnimationBuilder builder; N3DAnimationBuilder::COutputAnimation out;
+    C3DMesh2 mesh; CSimpleMemoryPool pool;
+    for (unsigned long size=1; size<=42; ++size)
+        for (unsigned shape=0; shape<5; ++shape) {
+            C3DAnimationSequence animation[42];
+            C3DAnimationSequenceData data[42];
+            for (unsigned long i=0; i<size; ++i) {
+                sprintf(names[i], "bone%lu", i);
+                parents[i] = !i ? -1 : shape==0 ? 0 : shape==1 ? (long)i-1 :
+                    shape==2 ? (long)(i-1)/2 : shape==3 ? (long)(i-1)/4 : (long)((i*19+7)%i);
+                C3DAnimFileSequenceChunk chunk;
+                chunk.name = (i+shape)%3 == 0 ? 0 : ((i+shape)%3 == 1 ? (char*)"" : names[i]);
+                expectedNames[i] = chunk.name ? chunk.name : "";
+                chunk.parent = parents[i];
+                data[i].InitialiseFromFileData(chunk, pool);
+                animation[i].InitialiseFromFileData(chunk, &data[i], pool);
+            }
+            int before = destroyed;
+            check(builder.BuildMeshAnimation(out, animation, size, mesh, false, pool) == size, "returned count");
+            check(destroyed-before == (int)size+1 && stringCount == 0, "bone/string lifetime");
+        }
+    puts("00ab1f30_TEST PASS"); return 0;
 }
