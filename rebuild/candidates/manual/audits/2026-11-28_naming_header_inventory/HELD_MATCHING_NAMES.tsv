@@ -1,0 +1,66 @@
+address	group	tracker_self	leaf_check	leaf
+005458a0	matches at base, held by A for	no tracker record	leaf is a PDB name	?AssignSpell@CSpellContainer@NUISystem@@UAEJAAV?$CCountedPointer@VCComponent@NUI
+0064fdb4	matches at base, held by A for	no tracker record	leaf is a PDB name	?DrawAt@CQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEn
+007d75a0	matches at base, held by A for	no tracker record	leaf is a PDB name	?GetRandomCard@CTCTavernGameCardPairs@@UAEXAAJ0JJ@Z
+009f3da0	matches at base, held by A for	no tracker record	leaf is a PDB name	?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z
+009f4590	matches at base, held by A for	PROVEN	leaf is a PDB name	?SaveAsTGA@CSurface@@QBE_NABVCWideString@@PBVC2DExtentsI@@_N@Z
+00d05a60	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+00d06130	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+00d2d1a0	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CBattleMinion@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+00d67890	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CQ_GuildTrainingWoodsWillScript@NScript@@UAEXXZ
+00da71e0	matches at base, held by A for	PROVEN	leaf is a PDB name	?GuardChatter@CQ_MinionClifftopChaseScript@NScript@@QAEXVCScriptThing@@@Z
+00db3fa0	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CNOVI_BookTrader@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+00e0ca50	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@EAEXXZ
+00e70460	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CDF_BeEvil@CV_DemonDoorsScript@NScript@@EAEXXZ
+00eb5750	matches at base, held by A for	no tracker record	leaf is a PDB name	?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScrip
+00ebe620	matches at base, held by A for	no tracker record	leaf is a PDB name	?Main@CVO_Woman@CV_OracleScript@NScript@@EAEXXZ
+00f277f0	matches at base, held by A for	PROVEN	std / compiler name	?_M_fill_insert@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatur
+00c0af90	parked (in the pool)	no tracker record	leaf not in any PDB	?ReadSecond@CUnprovenAudioChannelBank@@UAEMI@Z
+00c1c460	parked (in the pool)	UNSETTLED	leaf not in any PDB	?UpdateSourcePositions@CUnprovenSoundWorld_00c1c460@@QAEXXZ
+00c298d0	parked (in the pool)	UNSETTLED	std / compiler name	?_Insert_n@?$vector@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@V?$allocator@V
+00c29a3c	parked (in the pool)	no tracker record	std / compiler name	?_Insert_n@?$vector@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@V?$allocator@V
+01210e95	parked (in the pool)	no tracker record	leaf not in any PDB	?ReadSecond@CUnprovenAudioChannelBank@@UAEMI@Z
+01212472	parked (in the pool)	no tracker record	leaf not in any PDB	?UpdateSourcePositions@CUnprovenSoundWorld_00c1c460@@QAEXXZ
+004184bd	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?Init@CMainGameComponent@@UAEXXZ
+00524ec0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?LoadFromGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersis
+0064822a	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?Draw@CDrawCombatMultiplier@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+0064a9c8	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?DisplayNextMessage@CDrawGuildSeal@NPlayerGui@@QAEXXZ
+0064ccb3	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?Draw@CDrawStamina@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+006a40d0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?ProcessRolling@CInputProcessJumpingAndRolling@@AAEXABVCInputEvent@@AAVCProcesse
+006cbac0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavi
+00700ae0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?GetOpinions@COpinionReactionManager@@ABEXPBVCTCCreatureOpinionOfHero@@AAVCOpini
+007b5e50	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?FrameUpdate@CTCWaterWader@@UAEXXZ
+007c2d10	reserved for Codex (pass 30 ha	PROVEN	std / compiler name	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@
+0080c6d0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?UpdateDynamicHitThings@CTCDExplosion@@AAEXMM@Z
+00816ac0	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?OnInitialActivate@CTCHitLocations@@UAEXXZ
+0082afa0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?InitialiseRegionExitMarkers@CMiniMapDisplay@@IAEXXZ
+00848020	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?PerformAction@CCreatureAction_UseWallMount@@UAEXXZ
+008637d0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CheckForNewBodyReorientationAngle@CThingBodyReorienter@@AAEXXZ
+0087d590	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?Initialise@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+00881c90	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?InsertScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEPAXMABUCSc
+00888a60	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?Build@CEnvironmentThemeResourcePallette@NEnvironmentInternal@@QAEXABVCGameDefin
+008dfb00	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?FrameUpdate@CModeSummonerLightningOrb@NCreatureMode@@UAEXXZ
+008fc050	reserved for Codex (pass 30 ha	UNSETTLED	leaf is a PDB name	??$UpdateScan@V?$list@VCPhysicsMeshObject@@V?$allocator@VCPhysicsMeshObject@@@st
+0096a3c0	reserved for Codex (pass 30 ha	PROVEN_LANDED_WRONG (self right, callers wrong)	leaf is a PDB name	?GetValidJumpPosition@CAIStateGroup_WhisperPotionCombat@@IAE_NAAVC3DVector@@@Z
+00973900	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?SummonPillarsOld@CAIStateGroup_JackOfBladesBase@@IAEXXZ
+0097a1b0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?MoveFromCoverToFiringPosition@CAIStateGroup_CreatureTakeCover@@AAE_NABVC3DVecto
+0098e7d0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+00a1a260	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?IsRouteClear@CNavigatorAStar@@ABE_NABVCNavWayPoint@@0_N@Z
+00a1b5a0	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@M_N@Z
+00a1d6e0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVCNavWayPoint@@0AAM1_N@Z
+00a23190	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?Interpolate@CRightHandedSet@@QBE?AV1@ABV1@M@Z
+00a4cec0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CalcLocalTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z
+00a4d330	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CalcLocalBoneTransformation@C3DAnimation2@@QBEXAAVC3DKeyframe@@KM@Z
+00a53c50	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?GetKeyframeInterpolateFixPos@C3DAnimation2@@ABEXKAAVC3DKeyframe@@KM@Z
+00a6cc10	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?GetMeshDataFromFileData@CPhysicsMesh@@AAEXABVC3DMeshFile@@@Z
+00a79b30	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?Initialise@CNavQuadTreeNode@@IAEXABVCNavQuadTree@@AAW4ENavQuadTreeNodeType@@AAV
+00ab4bb0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?GetNonExclusiveModeDeviceMouseEvent@CMouseDX@@IAE_NPAVCMouseEvent@@@Z
+00acc490	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CopyTo@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXAAVC3DMeshFilePrimiti
+00ace600	reserved for Codex (pass 30 ha	UNSETTLED	leaf is a PDB name	??0COptimisedMesh@QuadricOptimiserInternals@@QAE@AAVC3DMeshFile@@@Z
+00b17410	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?CollectUpdateParameters@CPSCOrbit@NParticleEngine@@UAEXAAV?$CParticleUpdatePara
+00b277a0	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?LoadNewScene@CEngine@@AAEXABVCEngineInterpolationInfo@@@Z
+00b4ef80	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?UpdateSpotLightShadowSpace@CEngineShadowRenderer@@AAEXABUCEngineLightingManager
+00ba4c10	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineIntern
+00bd2360	reserved for Codex (pass 30 ha	no tracker record	leaf is a PDB name	?PreloadPrimitive@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE_NAAVCEngineInte
+00cbf29f	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?CutsceneCameraPreloader@@YI_NAAV?$vector@VCCharString@@V?$allocator@VCCharStrin
+00d89710	reserved for Codex (pass 30 ha	PROVEN	leaf is a PDB name	?DealWithCreatureGeneration@CQ_HeroSoulsNostroScript@NScript@@QAEXXZ

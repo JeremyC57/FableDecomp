@@ -1,0 +1,106 @@
+{
+ "landed": {
+  "rows": 57393,
+  "self_name": [
+   [
+    "PROVEN",
+    31421
+   ],
+   [
+    "UNSETTLED",
+    18161
+   ],
+   [
+    "PROVEN_LANDED_WRONG (self right, callers wrong)",
+    2584
+   ],
+   [
+    "PROVEN_RTTI (respell to the RTTI slot name)",
+    2455
+   ],
+   [
+    "PROVEN_LANDED_WRONG (self leaf wrong)",
+    1491
+   ],
+   [
+    "REGISTERED_GUESS",
+    1237
+   ],
+   [
+    "FOLDED",
+    44
+   ]
+  ],
+  "leaf_kind": [
+   [
+    "full mangled Leaf",
+    33619
+   ],
+   [
+    "no Leaf line (grades the catalog name)",
+    12818
+   ],
+   [
+    "plain C / extern Leaf",
+    5890
+   ],
+   [
+    "prefix Leaf (matched by prefix, not checkable in full)",
+    5066
+   ]
+  ],
+  "in_T3": 3583,
+  "catalog_backlog": 5794,
+  "rows_with_unsettled_callees": 7330,
+  "unsettled_callee_bindings": 10977,
+  "rows_with_landed_wrong_callees": 5022,
+  "landed_wrong_callee_bindings": 7318,
+  "redefines_shared": 28194,
+  "pad_arrays": 10461,
+  "standin_tokens": 9189,
+  "fidelity": 717,
+  "no_open_item": 8124,
+  "redefines_other_header": 16140,
+  "pdb_classes_no_header_yet": 6306,
+  "rows_with_any_shared_class_redefined": 32479
+ },
+ "held, matches": {
+  "rows": 65,
+  "self_name": [
+   [
+    "PROVEN",
+    32
+   ],
+   [
+    "no tracker record",
+    28
+   ],
+   [
+    "UNSETTLED",
+    4
+   ],
+   [
+    "PROVEN_LANDED_WRONG (self right, callers wrong)",
+    1
+   ]
+  ],
+  "leaf_kind": [
+   [
+    "full mangled Leaf",
+    65
+   ]
+  ],
+  "in_T3": 0,
+  "catalog_backlog": 0,
+  "rows_with_unsettled_callees": 0,
+  "unsettled_callee_bindings": 0,
+  "rows_with_landed_wrong_callees": 0,
+  "landed_wrong_callee_bindings": 0,
+  "redefines_shared": 0,
+  "pdb_classes_without_header": 0,
+  "pad_arrays": 0,
+  "standin_tokens": 6,
+  "fidelity": 3,
+  "no_open_item": 33
+ }
+}
