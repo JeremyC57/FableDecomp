@@ -16,8 +16,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **Codex pass 31** (`pending/2026-11-28_codex_pass31/README.md`): the owner released 82 held rows; 57 go to Codex (CODEX31, ISSUES.tsv),
   16 match at HEAD and are held by A (A_MATCHED_HOLD; gate work, the 00D05A60 / 00D06130 inline-Main ruling), 9 are interior addresses
   (owner item: drop them from functions.tsv). The paused AUTH30B agent's work is archived there; its brief names rows it no longer holds.
-- **Open:** the naming / header inventory of landed rows (first counts: 28,194 rows redefine a class that has a shared header; 20,060
-  define a PDB class that has no header yet).
+- **Naming / header inventory** (`audits/2026-11-28_naming_header_inventory/README.md`): 10,172 landed rows have nothing open; 32,479
+  write their own copy of a shared-header class; naming: 1,474 mechanical respells (T1/T2), 19,174 T3, 3,941 unverified; 65 held
+  matching rows with one blocker line each (`HELD_MATCHING.tsv`).
 ## Account A, 2026-11-25 to 27 (naming paused except NF479, Codex p29's name fixes; Codex pass 29 checkpoint 1 landed)
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
 - **Naming:** 35,948 of 64,151 done (56.04%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names, and 223 vendor names libsig proved, owner 2026-11-26); 37,965 (59.18%) with the 2,017 registered best guesses (NF454 registered 1,821; 11 removed by Codex p29's PDB/SDK callers, 1 by NF479). Landed today:

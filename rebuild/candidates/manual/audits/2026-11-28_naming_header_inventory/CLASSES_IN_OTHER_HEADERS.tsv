@@ -1,4 +1,4 @@
-class	rows_defining_it_locally	defined_in (include/; a same-named class in another namespace is possible: check before adopting)
+class	rows_defining_it_locally	defined_in (a same-named class in another namespace is possible: check before adopting)
 CCharString	5793	candidates/build_number_compiled.h fable_string.h
 CBaseIntelligentPointer	1644	engine/CIntelligentPointer.h
 _Rb_tree_node_base	1416	stlport/fable_map.h
@@ -9,17 +9,17 @@ forward_iterator_tag	760	stlport/fable_containers.h
 bidirectional_iterator_tag	738	stlport/fable_containers.h
 CCharStringData	530	fable_string.h
 CComponent	344	engine/NUISystem_CComponent.h engine/_quarantine/CComponent.h
-CBase	312	engine/NCameraModes_CBase.h engine/NHeroInformationScreens_CBase.h engine/NHeroStatModifierEvent_CHitThing.h
+CBase	313	engine/NCameraModes_CBase.h engine/NHeroInformationScreens_CBase.h engine/NHeroStatModifierEvent_CHitThing.h
 _GUID	276	engine/CBaseVideoRenderer.h engine/CSystemManager.h engine/ConfigDetection.h
 CCPPointerInfo	253	engine/CCountedPointer.h
-CTCGraphicAppearance	250	engine/NGraphicAppearance_CTCGraphicAppearance.h engine/_quarantine/CTCGraphicAppearance.h
-CTCInventoryBase	233	engine/NInventory_CTCInventoryBase.h engine/_quarantine/CTCInventoryBase.h
+CTCGraphicAppearance	251	engine/NGraphicAppearance_CTCGraphicAppearance.h engine/_quarantine/CTCGraphicAppearance.h
+CTCInventoryBase	234	engine/NInventory_CTCInventoryBase.h engine/_quarantine/CTCInventoryBase.h
 CModeBase	222	engine/CTCCreatureModeManager.h
 CChangingStateComponent	173	engine/NUISystem_CChangingStateComponent.h
 CEntry	157	engine/CAppearanceModifierGraphics.h engine/CChecksumCacheFile.h engine/CExpressionSet.h
 CEventBase	136	engine/NEntityEvents_CEventCreatureCharging.h engine/NEntityEvents_CEventExpressionPerformedTo.h engine/NEntityEvents_CEventHitBase.h
 _AMMediaType	107	engine/CMediaType.h
-CDataBank	104	engine/NGameText_CDataBank.h fable_game_text_bank.h
+CDataBank	105	engine/NGameText_CDataBank.h fable_game_text_bank.h
 IUnknown	92	engine/CBaseVideoRenderer.h engine/Direct3DSurface9.h
 CVector	84	engine/LHA_CEventPlayOptions.h
 CSubDefInfo	84	engine/CDefClassBase.h
@@ -27,8 +27,8 @@ CScriptModuleBase	77	engine/NCameraModes_CScriptModuleBase.h
 CUIInterface	77	engine/NUISystem_CComponent.h
 CHeroLogBookEntry	75	engine/CHeroLogBook.h
 CQ_SecretPassageScript	72	engine/NScript_CQ_SecretPassageScript.h
-CActionParam	71	engine/NUISystem_CComponent.h
-CDrawQuestInfo	69	engine/NPlayerGui_CDrawQuestInfo.h
+CActionParam	72	engine/NUISystem_CComponent.h
+CDrawQuestInfo	70	engine/NPlayerGui_CDrawQuestInfo.h
 CDrawBase	65	engine/NPlayerGui_CDrawBase.h
 CSymbolInfo	62	engine/CSymbolMap.h
 CClickable	59	engine/NUISystem_CClickable.h
@@ -58,14 +58,14 @@ CAnimComponentMap	42	engine/CAnimationEntry.h
 IPin	40	engine/CBasePin.h
 _RTL_CRITICAL_SECTION	40	engine/CBankFileAsync.h engine/CSystemManager.h engine/KernelStreaming.h
 CObjectEntry	40	engine/CDynamicObjectHeap.h
+CTCCameraPointDefinitionBase	39	engine/CTCCameraPointGeneralCase.h
 COptimisedVertex	39	engine/QuadricOptimiserTypes.h
 CEngineLandscapeMap	38	candidates/landscape_background_lod_compiled.h candidates/landscape_background_patch_load_compiled.h candidates/landscape_map_open_compiled.h
+CTCCoopSpirit	38	engine/_quarantine/CTCCoopSpirit.h
 CObservable	38	engine/NUISystem_CObservable.h
 CQuestInfoElement	38	engine/NPlayerGui_CDrawQuestInfo.h engine/_quarantine/CQuestInfoElement.h
-CTCCameraPointDefinitionBase	38	engine/CTCCameraPointGeneralCase.h
 IPersist	38	engine/CBaseVideoRenderer.h
 IMediaFilter	38	engine/CBaseVideoRenderer.h
-CTCCoopSpirit	37	engine/_quarantine/CTCCoopSpirit.h
 CSkeletalMorph	37	engine/CRandomAppearanceMorph.h
 CSortElement	37	engine/CEngineSubPrimitiveRenderer.h
 CEventHitBase	36	engine/NEntityEvents_CEventHitBase.h
@@ -97,11 +97,11 @@ CEventHitBy	28	engine/NEntityEvents_CEventHitBy.h
 CIsEventCreatedAfter	28	engine/NEntityEvents_EventFilters.h
 CCombatWheel	27	engine/CDefendingCombatantInfo.h
 CTheRealGuildmaster	27	engine/CQ_GuildTrainingMeleeScript.h engine/CQ_GuildTrainingPreMeleeScript.h engine/CQ_GuildTrainingSkillScript.h
+CStatBar	27	engine/NPlayerGui_CStatBar.h
 CContractionReference	27	engine/QuadricOptimiserTypes.h
 CMapwhoNode	27	engine/CTCMapwho.h engine/NThingMap_CThingMap.h
 CV_HeroDuelScript	26	engine/NScript_CV_HeroDuelScript.h
 CRuntimeQuestPersistence	26	engine/CQuestManager.h
-CStatBar	26	engine/NPlayerGui_CStatBar.h
 CStackEntry	26	engine/NScreenEffect_CScreenEffectPriorityStack.h
 CNavigationInput	26	engine/campfire_types.h
 CRedefinerList	26	engine/NUISystem_CRedefinerList.h
@@ -136,9 +136,11 @@ IDirect3DSurface9	20	engine/Direct3DSurface9.h
 CWeaponTrailEntry	20	engine/CEnginePrimitiveWeaponTrail.h
 CIME	19	engine/NUISystem_CIME.h fable_ime.h
 COpinionSet	19	engine/CTCCreatureOpinionOfHero.h
+CEngineThemeDef	19	engine/_quarantine/CEngineThemeDef.h
 CEditBox	19	engine/NUISystem_CEditBox.h
 CProjectileWeapon	19	engine/NCameraModes_CProjectileWeapon.h
 CScreenFilterEntry	19	engine/NScreenEffect_CScreenEffectPriorityStack.h
+CDrawAbilityButtons	19	engine/NPlayerGui_CDrawAbilityButtons.h
 CPendingObjectSortKey	19	engine/CThreadedFileManager.h
 CDrawQuickAccessIcons	19	engine/NPlayerGui_CDrawQuickAccessIcons.h engine/_quarantine/CDrawQuickAccessIcons.h
 CPrimitiveIterator	19	engine/CEngineInternalPrimitiveParticleGroup.h
@@ -152,7 +154,6 @@ CIndexList	19	engine/QuadricOptimiserTypes.h
 CDataElement	19	engine/CVertexStreamFormat.h
 PerCreatureInfo	19	engine/CTCDivineWrath.h engine/CTCUnholyPower.h
 COpinionPersonalityTraits	18	engine/COpinionPersonalityDef.h
-CEngineThemeDef	18	engine/_quarantine/CEngineThemeDef.h
 CArea	18	engine/CSimpleMemoryPool.h
 CUIRegionInfo	18	engine/CTCInventoryMap.h
 C3DAnimationStateBase	18	engine/C3DAnimationState.h
@@ -164,11 +165,11 @@ CTestQuestNameCompare	18	engine/CTestQuest.h
 sockaddr_in	18	engine/LSocket.h
 CStreamInfo	18	engine/CVertexShaderInput.h
 CControlsDef	17	engine/_quarantine/CControlsDef.h
+CTrapDef	17	engine/_quarantine/CTrapDef.h
 CSpellContainerList	17	engine/NUISystem_CSpellContainerList.h
 CQuadric	17	engine/QuadricOptimiserTypes.h
 CLandscapeBackgroundLoadTask	17	candidates/background_tree_node_compiled.h
 CModeDragonFlying	17	engine/NCreatureMode_CModeDragonFlying.h
-CDrawAbilityButtons	17	engine/NPlayerGui_CDrawAbilityButtons.h
 CKeyCamera	17	engine/CTCCameraPointScriptedSpline.h
 COptimisedFace	17	engine/QuadricOptimiserTypes.h
 CDisplacementMonochromeEffectColourEntry	17	engine/NScreenEffect_CScreenEffectPriorityStack.h
@@ -176,7 +177,6 @@ CGraphicHeader	17	engine/CGraphicDataBank.h
 CPhysicsForceModelBase	17	engine/NCameraModes_CPhysicsForceModelBase.h engine/NCameraModes_CPhysicsLeaf.h
 CRadialBlurEntry	17	engine/NScreenEffect_CScreenEffectPriorityStack.h
 CCoopSpiritDef	16	engine/_quarantine/CCoopSpiritDef.h
-CTrapDef	16	engine/_quarantine/CTrapDef.h
 CEngineLandscapePatch	16	candidates/00bf3a90.hpp candidates/00bf4130.hpp candidates/landscape_map_update_foreground_compiled.h
 CDraggable	16	engine/NUISystem_CScrollBar.h
 CModeIceTrollGroundSmashIcicleAssault	16	engine/NCreatureMode_CModeIceTrollGroundSmashIcicleAssault.h
@@ -202,6 +202,8 @@ _D3DVERTEXELEMENT9	15	engine/Direct3D9Types.h
 KnickKnack	15	engine/CTCTavernGameSpotTheAddition.h
 CConsoleCommandParameters	15	engine/CConsoleCommandBase.h
 PerEffectInfo	15	engine/CTCDivineWrath.h engine/CTCUnholyPower.h
+CSpecialAbilitiesMultiArrowDef	14	engine/_quarantine/CSpecialAbilitiesMultiArrowDef.h
+CDrawMeleeActionButtonEffects	14	engine/NPlayerGui_CDrawMeleeActionButtonEffects.h
 CUIMiscThingsDef	14	engine/NUISystem_CUIMiscThingsDef.h
 COpinionTransientOffset	14	engine/CTCCreatureOpinionOfHero.h
 CPSCOrbit	14	engine/NParticleEngine_CPSCOrbit.h
@@ -211,11 +213,14 @@ CDynamicList	14	engine/NUISystem_CDynamicList.h
 CIcicleData	14	engine/NCreatureMode_CModeIceTrollGroundSmashIcicleAssault.h
 MirroredCriminalStatus	14	engine/CTCHeroStats.h
 CLipSyncEntry	14	engine/CMeshDataBank.h
+CDrawGuildSeal	14	engine/NPlayerGui_CDrawGuildSeal.h
 CViewport	14	engine/NUISystem_CViewport.h
 CScreenFilterParams	14	engine/CEnvironmentSpellEffectInterface.h
 CMemoryArea	14	engine/CMemoryAllocatorVariableSize.h
-CSpecialAbilitiesMultiArrowDef	13	engine/_quarantine/CSpecialAbilitiesMultiArrowDef.h
+CGuildMasterDef	13	engine/_quarantine/CGuildMasterDef.h
+CTCShotDefinitionDrainLife	13	engine/NThingShot_CTCShotDefinitionDrainLife.h
 CBS_Teacher	13	engine/CV_BookCollectingScript.h engine/CV_HeroDollsScript.h
+CTCGraphicAppearanceSprite	13	engine/NGraphicAppearance_CTCGraphicAppearanceSprite.h
 CCreatureAction_PutDownThingAtTable	13	engine/CCreatureAction_Tankard.h
 CSummonerToKill	13	engine/CQ_HeroSoulsArenaScript.h
 CFrontEndButton	13	engine/NUISystem_CFrontEndButton.h
@@ -233,12 +238,12 @@ CParticleCreationParameters	13	engine/CTCDParticleEmitter.h
 CMemoryAreaChunk	13	engine/CMemoryAllocatorVariableSize.h
 CBodyPartMesh	13	engine/CRandomAppearanceMorph.h
 CLandscapeLayerMesh	12	candidates/landscape_layer_mesh_load_foreground_compiled.h candidates/landscape_patch_load_foreground_compiled.h candidates/landscape_patch_relocation_compiled.h
-CGuildMasterDef	12	engine/_quarantine/CGuildMasterDef.h
-CDrawMeleeActionButtonEffects	12	engine/NPlayerGui_CDrawMeleeActionButtonEffects.h
-CTCShotDefinitionDrainLife	12	engine/NThingShot_CTCShotDefinitionDrainLife.h
+CAttackPatternDef	12	engine/_quarantine/CAttackPatternDef.h
 CScriptModuleSelfTerminateBase	12	engine/NCameraModes_CScriptModuleBase.h
 CModeDragonHover	12	engine/NCreatureMode_CModeDragonHover.h
-CTCGraphicAppearanceSprite	12	engine/NGraphicAppearance_CTCGraphicAppearanceSprite.h
+CTCGraphicAppearanceAnimatedMesh	12	engine/NGraphicAppearance_CTCGraphicAppearanceAnimatedMesh.h
+CTCGraphicAppearanceReplaceableMesh	12	engine/NGraphicAppearance_CTCGraphicAppearanceReplaceableMesh.h
+CAIStateGroup_GameMaster	12	engine/_quarantine/CAIStateGroup_GameMaster.h
 CKeyboardDX	12	engine/_quarantine/CKeyboardDX.h
 CGroupEntry	12	engine/NGameText_CDataBank.h
 CSharedData	12	engine/C3DAnimationBlendState.h
@@ -248,17 +253,16 @@ CAnimationData	12	engine/C3DAnimationInfo.h
 CLocalDetailObjectCollectionType	12	engine/CLocalDetailPrimitiveMeshZSpriteBatch.h
 CDialogueLayerDef	12	engine/NSpeechGainManager.h
 CMeshEffectPriorityEntry	12	engine/NGraphicAppearance_CTCGraphicAppearance.h
-CDrawGuildSeal	12	engine/NPlayerGui_CDrawGuildSeal.h
 CDangerStatus	12	engine/CTCStealth.h
 CFileScanInfo	12	engine/CAFile.h
 CSortPrimaryMeshesFirst	12	engine/NGraphicAppearance_CMeshInfo.h
 CSortPrimaryMeshesLast	12	engine/NGraphicAppearance_CMeshInfo.h
 CAbilityDef	11	engine/_quarantine/CAbilityDef.h
-CAttackPatternDef	11	engine/_quarantine/CAttackPatternDef.h
+CCombatSequenceDef	11	engine/_quarantine/CCombatSequenceDef.h
+CWallMountEffectsDef	11	engine/_quarantine/CWallMountEffectsDef.h
+CHeroMorphDef	11	engine/_quarantine/CHeroMorphDef.h
 CAIStateGroup_Clean	11	engine/_quarantine/CAIStateGroup_Clean.h
-CTCGraphicAppearanceAnimatedMesh	11	engine/NGraphicAppearance_CTCGraphicAppearanceAnimatedMesh.h
-CTCGraphicAppearanceReplaceableMesh	11	engine/NGraphicAppearance_CTCGraphicAppearanceReplaceableMesh.h
-CAIStateGroup_GameMaster	11	engine/_quarantine/CAIStateGroup_GameMaster.h
+CTCTavernGameCardSorting	11	engine/card_sorting_types.h
 tagRECT	11	engine/Direct3DSurface9.h engine/ImeUi.h engine/Win32Types.h
 CRotateAround	11	engine/NCameraModes_CRotateAround.h
 CEventExpressionPerformedTo	11	engine/NEntityEvents_CEventExpressionPerformedTo.h
@@ -274,11 +278,15 @@ CMouseCursor	11	engine/NUISystem_CMouseCursor.h
 CSlider	11	engine/NUISystem_CSlider.h
 CBulletTimeInfo	11	engine/CBulletTimeManager.h
 CState	11	engine/CMusicManager.h
-CCombatSequenceDef	10	engine/_quarantine/CCombatSequenceDef.h
-CWallMountEffectsDef	10	engine/_quarantine/CWallMountEffectsDef.h
-CHeroMorphDef	10	engine/_quarantine/CHeroMorphDef.h
+CSpecialAbilitiesSummonSpellDef	10	engine/_quarantine/CSpecialAbilitiesSummonSpellDef.h
+CPlayerDef	10	engine/_quarantine/CPlayerDef.h
+CFishingRodDef	10	engine/_quarantine/CFishingRodDef.h
+CMultiStaticMeshDef	10	engine/_quarantine/CMultiStaticMeshDef.h
+CRumbleDef	10	engine/_quarantine/CRumbleDef.h
+CClockDef	10	engine/_quarantine/CClockDef.h
 CCreatureAction_BeStunned	10	engine/_quarantine/CCreatureAction_BeStunned.h
-CTCTavernGameCardSorting	10	engine/card_sorting_types.h
+CTCGraphicAppearanceStaticMesh	10	engine/NGraphicAppearance_CTCGraphicAppearanceStaticMesh.h
+CMultiStatBar	10	engine/NPlayerGui_CMultiStatBar.h
 CActionMoveTo	10	engine/NTCScriptedControl_CActionMoveTo.h
 CFlash	10	engine/CTCCreatureHitNotification.h
 CEventHitBySpecialAbility	10	engine/NEntityEvents_CEventHitBy.h
@@ -303,23 +311,25 @@ CVertexPairContraction	10	engine/QuadricOptimiserTypes.h
 CUniqueVertex	10	engine/QuadricOptimiserTypes.h
 CSoundBankEntry	10	engine/CSoundDef.h
 UInputEventData	10	engine/CInputEvent.h
-CSpecialAbilitiesSummonSpellDef	9	engine/_quarantine/CSpecialAbilitiesSummonSpellDef.h
+CInventoryCategoryDef	9	engine/_quarantine/CInventoryCategoryDef.h
+CVillagerInteractionsDef	9	engine/_quarantine/CVillagerInteractionsDef.h
+CSpecialAbilitiesGhostSwordDef	9	engine/_quarantine/CSpecialAbilitiesGhostSwordDef.h
 CSpecialAbilitiesBurntEffectDef	9	engine/_quarantine/CSpecialAbilitiesBurntEffectDef.h
-CPlayerDef	9	engine/_quarantine/CPlayerDef.h
+CSpecialAbilitiesDrunkennessDef	9	engine/_quarantine/CSpecialAbilitiesDrunkennessDef.h
 CAtmosBankEntry	9	engine/CSoundDef.h
-CFishingRodDef	9	engine/_quarantine/CFishingRodDef.h
-CMultiStaticMeshDef	9	engine/_quarantine/CMultiStaticMeshDef.h
-CRumbleDef	9	engine/_quarantine/CRumbleDef.h
-CClockDef	9	engine/_quarantine/CClockDef.h
+CSummonableCreatureDef	9	engine/_quarantine/CSummonableCreatureDef.h
+CTeleporterDef	9	engine/_quarantine/CTeleporterDef.h
 CEngineInternalPrimitiveDecal	9	engine/_quarantine/CEngineInternalPrimitiveDecal.h
 CAIStateGroup_MinionSitAtHome	9	engine/_quarantine/CAIStateGroup_MinionSitAtHome.h
 CTCCameraPointShapeActivationBase	9	engine/CTCCameraPointGeneralCase.h
-CTCGraphicAppearanceStaticMesh	9	engine/NGraphicAppearance_CTCGraphicAppearanceStaticMesh.h
-CMultiStatBar	9	engine/NPlayerGui_CMultiStatBar.h
+CAIStateGroup_MinionBehaviourSad	9	engine/_quarantine/CAIStateGroup_MinionBehaviourSad.h
+CTCGraphicAppearanceStaticMeshFadeOutOnProximity	9	engine/NGraphicAppearance_CTCGraphicAppearanceStaticMeshFadeOutOnProximity.h
+CTCShotDefinitionMultiArrow	9	engine/NThingShot_CTCShotDefinitionMultiArrow.h
 CModeGuildmasterPowerUpSpeed	9	engine/NCreatureMode_CModeGuildmasterPowerUpShield.h
 CBCGameMaster	9	engine/CQ_BanditCampBossBattleScript.h
 CBankInfo	9	engine/CBankFileManager.h fable_retail_banks.h
 CYesNo	9	engine/NUISystem_CYesNo.h
+CCrimeStatBar	9	engine/NPlayerGui_CCrimeStatBar.h
 CModeDragonStrafeBurninate	9	engine/NCreatureMode_CModeDragonStrafeBurninate.h
 CFileBlock	9	engine/CEngineStaticMapFileBlockManager.h
 CObjectFamilyEntry	9	candidates/object_family_compiled.h engine/CObjectFamilyDef.h
@@ -337,29 +347,25 @@ CEngineComponentParams	9	engine/CEngineComponentRenderParams.h
 CSubContraction	9	engine/QuadricOptimiserTypes.h
 CCache	9	engine/CEngineInternalPrimitiveAnimatedMesh.h
 CTextureManagerPoolInfo	9	engine/CTextureManager.h
-CInventoryCategoryDef	8	engine/_quarantine/CInventoryCategoryDef.h
-CVillagerInteractionsDef	8	engine/_quarantine/CVillagerInteractionsDef.h
+CThingSwitchDef	8	engine/_quarantine/CThingSwitchDef.h
 COpinionSourceDef	8	engine/_quarantine/COpinionSourceDef.h
 CSpecialAbilitiesBattleChargeDef	8	engine/_quarantine/CSpecialAbilitiesBattleChargeDef.h
-CSpecialAbilitiesGhostSwordDef	8	engine/_quarantine/CSpecialAbilitiesGhostSwordDef.h
 CSpecialAbilitiesElectrocutedEffectDef	8	engine/_quarantine/CSpecialAbilitiesElectrocutedEffectDef.h
-CSpecialAbilitiesDrunkennessDef	8	engine/_quarantine/CSpecialAbilitiesDrunkennessDef.h
 CMeleeCombatKnockdownEffects	8	engine/_quarantine/CMeleeCombatKnockdownEffects.h
 CPlayerInventoryDef	8	engine/_quarantine/CPlayerInventoryDef.h
-CSummonableCreatureDef	8	engine/_quarantine/CSummonableCreatureDef.h
-CTeleporterDef	8	engine/_quarantine/CTeleporterDef.h
 CSmokeGeneratorDef	8	engine/_quarantine/CSmokeGeneratorDef.h
+CCreatureModeDef	8	engine/_quarantine/CCreatureModeDef.h
+CSoundAtmospheresDef	8	engine/_quarantine/CSoundAtmospheresDef.h
+CBalverineBattleDef	8	engine/_quarantine/CBalverineBattleDef.h
+CIdleSchedulerDef	8	engine/_quarantine/CIdleSchedulerDef.h
 CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	8	engine/_quarantine/CAIStateGroup_MinionBehaviourPodiumEmoteNeutral.h
 CCreatureAction_TentacleStrikeLoop	8	engine/_quarantine/CCreatureAction_TentacleStrikeLoop.h
 CCreatureAction_WhisperSommersaultForward	8	engine/_quarantine/CCreatureAction_WhisperSommersaultForward.h
-CAIStateGroup_MinionBehaviourSad	8	engine/_quarantine/CAIStateGroup_MinionBehaviourSad.h
-CTCGraphicAppearanceStaticMeshFadeOutOnProximity	8	engine/NGraphicAppearance_CTCGraphicAppearanceStaticMeshFadeOutOnProximity.h
-CTCShotDefinitionMultiArrow	8	engine/NThingShot_CTCShotDefinitionMultiArrow.h
+CTCShotDefinitionThrow	8	engine/NThingShot_CTCShotDefinitionThrowPredictive.h
 CSpellContainer	8	engine/NUISystem_CSpellContainer.h
 CModeJackOfBladesFlash	8	engine/NCreatureMode_CModeJackOfBladesFlash.h
 CSUMMONED_CREATURE	8	engine/CQ_ArenaScript.h
 RegionData	8	engine/CV_AssassinAttacksScript.h
-CCrimeStatBar	8	engine/NPlayerGui_CCrimeStatBar.h
 CDrawStamina	8	engine/NPlayerGui_CDrawStamina.h
 CTVertexLandscapeBackground	8	engine/CLandscapePatchTesselator.h
 CChangeText	8	engine/NPlayerGui_CStatBar.h
@@ -384,19 +390,20 @@ CVertexGroupBlockList	8	engine/CVertexGroupBlockOptimiser.h
 CSubTitle	8	engine/CMovieSubtitles.h
 COldFileFormatHeightMapCell1	8	engine/CFileFormatBrush.h
 CDragonActionHoverDef	7	engine/_quarantine/CDragonActionHoverDef.h
-CThingSwitchDef	7	engine/_quarantine/CThingSwitchDef.h
+CHeroPostcardGeneratorDef	7	engine/_quarantine/CHeroPostcardGeneratorDef.h
+COpinionDeedMaskDef	7	engine/_quarantine/COpinionDeedMaskDef.h
 CSpecialAbilitiesCreatureTintDef	7	engine/_quarantine/CSpecialAbilitiesCreatureTintDef.h
+CDrunkennessDef	7	engine/_quarantine/CDrunkennessDef.h
 CCarryingDef	7	engine/_quarantine/CCarryingDef.h
-CCreatureModeDef	7	engine/_quarantine/CCreatureModeDef.h
-CSoundAtmospheresDef	7	engine/_quarantine/CSoundAtmospheresDef.h
+CParticleAttacherDef	7	engine/_quarantine/CParticleAttacherDef.h
+CSkeletalMorphDef	7	engine/_quarantine/CSkeletalMorphDef.h
 CMazeBattleDef	7	engine/_quarantine/CMazeBattleDef.h
-CBalverineBattleDef	7	engine/_quarantine/CBalverineBattleDef.h
-CIdleSchedulerDef	7	engine/_quarantine/CIdleSchedulerDef.h
 CCreatureAction_TentacleStrikeOutOf	7	engine/_quarantine/CCreatureAction_TentacleStrikeOutOf.h
 CCreatureAction_WhisperSommersaultBackward	7	engine/_quarantine/CCreatureAction_WhisperSommersaultBackward.h
 CCreatureActionHeroJump	7	engine/_quarantine/CCreatureActionHeroJump.h
 CEmbeddedGraphic	7	engine/CSubtitleRenderer.h
-CTCShotDefinitionThrow	7	engine/NThingShot_CTCShotDefinitionThrowPredictive.h
+CTCSingleUserActionPoints	7	engine/CTCUserActionPointBase.h engine/campfire_types.h
+CTCShotDefinitionNymphFun	7	engine/NThingShot_CTCShotDefinitionNymphFun.h
 CModeScreamerAggressive	7	engine/NCreatureMode_CModeScreamerAggressive.h
 CModeThunderLightningStorm	7	engine/NCreatureMode_CModeThunderLightningStorm.h
 CModeGuildmasterPowerUpShield	7	engine/NCreatureMode_CModeGuildmasterPowerUpShield.h
@@ -407,6 +414,7 @@ CMagicBarrier	7	engine/CQ_TraderEscortScript.h
 CMazeAtTavern	7	engine/CQS_GuardianSisterInfo2_SisterInBanditCampScript.h engine/CQS_GuardianSisterInfoScript.h
 CSpectator	7	engine/NScript_CV_ChickenKickingScript.h
 CMI_InfoKeeper	7	engine/CV_MayorsInvitationScript.h
+CDrawDamage	7	engine/NPlayerGui_CDrawDamage.h
 CEngineInternalAttachedPrimitiveInfo	7	engine/CEnginePrimitiveAttachmentManager.h
 CModeKnockedDown	7	engine/NCreatureMode_CModeKnockedDown.h
 CModeDragonFlyingBase	7	engine/NCreatureMode_CModeDragonFlyingBase.h
@@ -429,17 +437,17 @@ CClanInfo	7	engine/CTCHeroOnlineScoreboard.h
 CMusicSetEntry	7	engine/CSoundDef.h
 COldFileFormatHeightMapCell2	7	engine/CFileFormatBrush.h
 CMorphSet	7	engine/CRandomAppearanceMorph.h
+CSpecialAbilitiesForcePushDataDef	6	engine/_quarantine/CSpecialAbilitiesForcePushDataDef.h
 CDragonActionNapalmDef	6	engine/_quarantine/CDragonActionNapalmDef.h
-CHeroPostcardGeneratorDef	6	engine/_quarantine/CHeroPostcardGeneratorDef.h
-COpinionDeedMaskDef	6	engine/_quarantine/COpinionDeedMaskDef.h
+CEngineLocalDetailGeneratorDef	6	engine/_quarantine/CEngineLocalDetailGeneratorDef.h
+CCreatureAbilityDef	6	engine/_quarantine/CCreatureAbilityDef.h
+CEngineThemeGroupDef	6	engine/_quarantine/CEngineThemeGroupDef.h
 CActionParamString	6	engine/NUISystem_CActionParamString.h engine/NUISystem_CClickable.h
-CDrunkennessDef	6	engine/_quarantine/CDrunkennessDef.h
-CParticleAttacherDef	6	engine/_quarantine/CParticleAttacherDef.h
-CSkeletalMorphDef	6	engine/_quarantine/CSkeletalMorphDef.h
+CBoastingPodiumDef	6	engine/_quarantine/CBoastingPodiumDef.h
+CAreaOfEffectAttackDef	6	engine/_quarantine/CAreaOfEffectAttackDef.h
 CMurderTwistAssassinGuard	6	engine/CV_MurderTwistFinalScript.h
 CCreatureAction_TentacleIdle	6	engine/_quarantine/CCreatureAction_TentacleIdle.h
-CTCSingleUserActionPoints	6	engine/CTCUserActionPointBase.h engine/campfire_types.h
-CTCShotDefinitionNymphFun	6	engine/NThingShot_CTCShotDefinitionNymphFun.h
+CTCSmashableWindow	6	engine/CTCSmashableBase.h
 CActionEventSound	6	engine/NCreatureActionEvents.h
 CActionEventAddObject	6	engine/NCreatureActionEvents.h
 CActionTurnToFacePosition	6	engine/NTCScriptedControl_CActionTurnToFacePosition.h
@@ -452,13 +460,13 @@ CTemporaryBuffer	6	candidates/landscape_background_patch_compressed.h
 CFinalMaze	6	engine/CQ_GuildTrainingWoodsDepartureScript.h
 CEndGameBarrier	6	engine/CPersonalScript_GlobalThingsScript.h
 CRTFE_RockTroll	6	engine/CV_RockTrollFirstEncounterScript.h
-CDrawDamage	6	engine/NPlayerGui_CDrawDamage.h
 CMesh	6	engine/NUISystem_CMesh.h
 CScrollBarOutside	6	engine/NUISystem_CScrollBarOutside.h
 CBasicShape	6	engine/NShape_CBasicShape.h
 CEventHitThing	6	engine/NEntityEvents_CEventHitThing.h
 CEventHeroHasBeenSpottedStealing	6	engine/NEntityEvents_CEventHeroHasBeenSpottedStealing.h
 CEventFiredShot	6	engine/NEntityEvents_CEventFiredShot.h
+CDrawTargetInfo	6	engine/NPlayerGui_CDrawTargetInfo.h
 CComponentContainer	6	engine/NUISystem_CComponentContainer.h
 CDelayedAnimation	6	engine/CAnimateThing.h
 CQuestInfoElementCounter	6	engine/NPlayerGui_CDrawQuestInfo.h
@@ -481,16 +489,16 @@ COldFileFormatHeightMapCell3	6	engine/CFileFormatBrush.h
 _D3DVOLUME_DESC	6	engine/Direct3DVolumeTexture9.h
 _D3DBOX	6	engine/Direct3DVolumeTexture9.h
 _D3DLOCKED_BOX	6	engine/Direct3DVolumeTexture9.h
-CSpecialAbilitiesForcePushDataDef	5	engine/_quarantine/CSpecialAbilitiesForcePushDataDef.h
-CEngineLocalDetailGeneratorDef	5	engine/_quarantine/CEngineLocalDetailGeneratorDef.h
-CCreatureAbilityDef	5	engine/_quarantine/CCreatureAbilityDef.h
-CEngineThemeGroupDef	5	engine/_quarantine/CEngineThemeGroupDef.h
-CBoastingPodiumDef	5	engine/_quarantine/CBoastingPodiumDef.h
-CAreaOfEffectAttackDef	5	engine/_quarantine/CAreaOfEffectAttackDef.h
+CSimVoicesDef	5	engine/_quarantine/CSimVoicesDef.h
+CThingGroupDef	5	engine/_quarantine/CThingGroupDef.h
+CWaspQueenBattleDef	5	engine/_quarantine/CWaspQueenBattleDef.h
 CMC_MinionGuard	5	engine/CQ_MinionCampScript.h
 CAC_HighScorePost	5	engine/CV_ArcheryCompetitionScript.h
 CListArrow	5	engine/NUISystem_CListArrow.h
-CTCSmashableWindow	5	engine/CTCSmashableBase.h
+CTCShotDefinitionSpreadShotProjectile	5	engine/NThingShot_CTCShotDefinitionSpreadShotProjectile.h
+CTCShotDefinitionThrowPredictive	5	engine/NThingShot_CTCShotDefinitionThrowPredictive.h
+CTCShotDefinitionProjectilePredictive	5	engine/NThingShot_CTCShotDefinitionProjectilePredictive.h
+CTCShotDefinitionDragonFireball	5	engine/NThingShot_CTCShotDefinitionDragonFireball.h
 CActionEventCameraShake	5	engine/NCreatureActionEvents.h
 CActionEventExplosion	5	engine/NCreatureActionEvents.h
 CActionEventShot	5	engine/NCreatureActionEvents.h
@@ -509,6 +517,7 @@ CEM_SuspiciousVillager	5	engine/CV_ExposeMayorScript.h
 CGhostGrannyNecklace	5	engine/CV_GhostGrannyNecklaceScript.h
 CMurderTwistBrotherYounger	5	engine/CV_MurderTwistScript.h
 CVO_Woman	5	engine/CV_OracleScript.h
+CDrawCombatMultiplier	5	engine/NPlayerGui_CDrawCombatMultiplier.h
 COakvaleFan	5	engine/CQ_ArenaHoldingScriptScript.h
 CBowerstoneFan	5	engine/CQ_ArenaHoldingScriptScript.h
 CHookCoastFan	5	engine/CQ_ArenaHoldingScriptScript.h
@@ -547,19 +556,13 @@ COldFileFormatHeightMapCell5	5	engine/CFileFormatBrush.h
 COldFileFormatHeightMapCell4	5	engine/CFileFormatBrush.h
 CMorphSetTextureMorph	5	engine/CRandomAppearanceMorph.h
 CEngineSubPrimitiveMeshBase	5	engine/CEngineSubPrimitiveRepeatedStaticMesh.h
-CSimVoicesDef	4	engine/_quarantine/CSimVoicesDef.h
-CThingGroupDef	4	engine/_quarantine/CThingGroupDef.h
-CWaspQueenBattleDef	4	engine/_quarantine/CWaspQueenBattleDef.h
+CDrawSpiritTargetingCursor	4	engine/NPlayerGui_CDrawSpiritTargetingCursor.h
 CHTE_Audience	4	engine/CQ_HangingTreeEvilScript.h
 CHTG_Boss	4	engine/CQ_HangingTreeGoodScript.h
 CBordelloLady	4	engine/CV_BordelloScript.h
 CFisherman	4	engine/CV_FishermanScript.h
 WaypointData	4	engine/CV_TourGuideScript.h
 CEngineInternalPrimitiveParticleLineGroup	4	engine/_quarantine/CEngineInternalPrimitiveParticleLineGroup.h
-CTCShotDefinitionSpreadShotProjectile	4	engine/NThingShot_CTCShotDefinitionSpreadShotProjectile.h
-CTCShotDefinitionThrowPredictive	4	engine/NThingShot_CTCShotDefinitionThrowPredictive.h
-CTCShotDefinitionProjectilePredictive	4	engine/NThingShot_CTCShotDefinitionProjectilePredictive.h
-CTCShotDefinitionDragonFireball	4	engine/NThingShot_CTCShotDefinitionDragonFireball.h
 CInvisibleBarrier	4	engine/CPersonalScript_GlobalThingsScript.h
 CSecretPassageSarcophagos	4	engine/CQ_OpeningGraveyardSecretPassageScript.h
 CSecretPassageGate	4	engine/CQ_OpeningGraveyardSecretPassageScript.h
@@ -629,9 +632,12 @@ CEventKillLocked	4	engine/NEntityEvents_CEventKillLocked.h
 CAIFilterBase	4	engine/CAIStateGroupBase.h
 CUILocaleGraphicsDef	4	engine/NUISystem_CUILocaleGraphicsDef.h
 CDrawExperience	4	engine/NPlayerGui_CDrawExperience.h
-CDrawTargetInfo	4	engine/NPlayerGui_CDrawTargetInfo.h
+CDrawFishingGame	4	engine/NPlayerGui_CDrawFishingGame.h
+CDrawProjectileTargetingCentre	4	engine/NPlayerGui_CDrawProjectileTargetingCentre.h
+CDrawQuickAccessIconsPC	4	engine/NPlayerGui_CDrawQuickAccessIconsPC.h
 CEmbeddedIcon	4	engine/NUISystem_CIconText.h
 SDamageValue	4	engine/NPlayerGui_CDrawDamage.h
+CDrawHighlightingTargetingCursor	4	engine/NPlayerGui_CDrawHighlightingTargetingCursor.h
 CEngineInternalPrimitiveWeatherMask	4	engine/_quarantine/CEngineInternalPrimitiveWeatherMask.h
 CSubPatchSorterEntry	4	engine/CEngineLandscapeRenderer.h
 CDebugScriptElement	4	engine/CEngineCamera.h
@@ -659,7 +665,6 @@ CAStarStateTotalGreaterThan	4	engine/CNavigatorAStar.h
 CActionEventRemoveObject	4	engine/NCreatureActionEvents.h
 CGetThingFromIntelligentPointer	4	engine/tcd_explosion_filters.h
 in_addr	4	engine/LSocket.h
-CDrawSpiritTargetingCursor	3	engine/NPlayerGui_CDrawSpiritTargetingCursor.h
 CDisplacedTrader	3	engine/CQ_BreakSiegeScript.h
 CHTG_Prisoner	3	engine/CQ_HangingTreeGoodScript.h
 CBanditSacrifice	3	engine/CQ_HobbeCaveScript.h
@@ -748,7 +753,6 @@ CArenaSpawn	3	engine/CQ_ArenaScript.h
 CWhisperAlly	3	engine/CQ_ArenaScript.h
 CCagedBalverine	3	engine/CQ_ArenaScript.h
 CEngineInternalPrimitiveParticleLine	3	engine/_quarantine/CEngineInternalPrimitiveParticleLine.h
-CDrawCombatMultiplier	3	engine/NPlayerGui_CDrawCombatMultiplier.h
 CDrawNPCName	3	engine/NPlayerGui_CDrawNPCName.h
 CMoveOnCylinder	3	engine/NCameraModes_CMoveOnCylinder.h
 CLookAtFront	3	engine/NCameraModes_CLookAtFront.h
@@ -777,13 +781,13 @@ CArenaCellExitGuard	3	engine/CQ_ArenaScript.h
 CTyler	3	engine/NScript_CV_FisticuffsClubScript.h
 CScriptModuleOpenGate	3	engine/NCameraModes_CScriptModuleOpenGate.h
 CModeSitTavernStool	3	engine/NCreatureMode_CModeSitFloor.h
+CDrawSpiritsHealth	3	engine/NPlayerGui_CDrawSpiritsHealth.h
 CDrawReceivedItems	3	engine/NPlayerGui_CDrawReceivedItems.h
+CDrawBettingHUD	3	engine/NPlayerGui_CDrawBettingHUD.h
 CThingFilter_IsAICreatureAwareOf	3	engine/TargetingInteractionFilters_pass24.h
-CDrawQuickAccessIconsPC	3	engine/NPlayerGui_CDrawQuickAccessIconsPC.h
 CModeSitFloor	3	engine/NCreatureMode_CModeSitFloor.h
 CSubdivisionTriangle	3	engine/NShape_CSubdivisionTriangle.h
 CQuestInfoElementCounterList	3	engine/NPlayerGui_CDrawQuestInfo.h
-CDrawHighlightingTargetingCursor	3	engine/NPlayerGui_CDrawHighlightingTargetingCursor.h
 CFractal	3	engine/NFractal.h
 CHitThing	3	engine/NHeroStatModifierEvent_CHitThing.h
 CClosedShapeBase	3	engine/NShape_CClosedShapeBase.h
@@ -797,6 +801,7 @@ CMapCellPosInfo	3	engine/CThingMapManager.h
 CMapCellPosInfoGroup	3	engine/CThingMapManager.h
 CThingFilter_IsValidAttackTargetForCreature	3	engine/CTCTargetingAI_Filters.h
 CEngineBillboard	3	engine/CEnginePrimitiveManagerRepeatedZSprites.h
+CDrawScriptScreenText	3	engine/NPlayerGui_CDrawScriptScreenText.h
 CIsNavigator	3	engine/CNavigatorQueueManager.h
 DIDEVICEOBJECTDATA	3	engine/CJoystickDX.h engine/DirectInputTypes.h
 CThingFilter_IsEvadeExplosion	3	engine/tcd_explosion_filters.h
@@ -878,9 +883,6 @@ CArenaCellDoorGuard	2	engine/CQ_ArenaScript.h
 CArenaCellDoorGuard2	2	engine/CQ_ArenaScript.h
 CModeSitBench	2	engine/NCreatureMode_CModeSitFloor.h
 CEventPerformedSpecialAbility	2	engine/NEntityEvents_CEventPerformedSpecialAbility.h
-CDrawFishingGame	2	engine/NPlayerGui_CDrawFishingGame.h
-CDrawBettingHUD	2	engine/NPlayerGui_CDrawBettingHUD.h
-CDrawProjectileTargetingCentre	2	engine/NPlayerGui_CDrawProjectileTargetingCentre.h
 CCreatureAction_PickUpTankard	2	engine/CCreatureAction_Tankard.h
 CNavigatorManagerExternalInterface	2	engine/CGameNavigatorManagerExternalInterface.h
 CBaseInit	2	engine/NCameraModes_CBaseInit.h
@@ -922,7 +924,6 @@ GlyphBank	2	engine/CStaticFontBank.h engine/CStreamingFontBank.h
 CPhysicsTargetModelGoTo	2	engine/NCameraModes_CPhysicsLeaf.h
 CBoneInfo	1	engine/C3DAnimationBuilder.h
 CEventKicked	1	engine/NEntityEvents_CEventKicked.h
-CDrawSpiritsHealth	1	engine/NPlayerGui_CDrawSpiritsHealth.h
 CTriangleStripifierBase	1	engine/CTriangleStripifier2.h
 CEngineStateBlockAlpha2XTFactor	1	engine/CEngineStateBlocks.h
 CEngineStateBlockAlpha	1	engine/CEngineStateBlocks.h
@@ -951,7 +952,6 @@ CIsSameItemType	1	engine/CCategory.h
 CThingFilter_IsInterestingToCreature	1	engine/NTargeting_ThingFilters.h
 CActionParamSLONG	1	engine/NUISystem_CActionParamSLONG.h
 COccluderSlot	1	engine/CEngineOcclusionManager.h
-CDrawScriptScreenText	1	engine/NPlayerGui_CDrawScriptScreenText.h
 CGlyph	1	engine/CStaticFontBank.h
 CClipListElement	1	engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h
 CActionParamState	1	engine/NUISystem_CActionParamState.h
